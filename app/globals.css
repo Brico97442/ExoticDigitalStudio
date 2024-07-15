@@ -5,25 +5,20 @@
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
   }
 }
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
+  background: linear-gradient(to bottom,
       transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+  position: relative;
 }
 
 @layer utilities {
@@ -31,3 +26,120 @@ body {
     text-wrap: balance;
   }
 }
+
+
+/** Animation Section**/
+section {
+  box-sizing: border-box;
+  height: 25vh;
+  display: flex;
+  justify-content: flex-start;
+  overflow: hidden;
+  padding: 8em;
+}
+
+
+section span {
+  display: block;
+  transform: translateX(-100px);
+  opacity: 0;
+  font-size: 1.5em;
+}
+
+
+.image-container{
+  top: 0;
+  left: 0;
+  width: 25vh;
+  height: 25vh;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  z-index: 1;
+}
+
+.image-container img {
+  object-fit: cover;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  z-index: 1;
+  border-radius: 15px;
+}
+
+.el:nth-of-type(1) .image-container{
+  object-fit: cover;
+  top: 42vh;
+  left: 15vw;
+  height: 20vh;
+  width: 50vw;
+  z-index: 2;
+  display: flex;
+  box-sizing: content-box;
+
+}
+
+.el:nth-of-type(2) .image-container{
+  box-sizing: content-box;
+  object-fit: cover;
+  top: -8vh;
+  left: 30vw;
+  height: 70vh;
+  width: 30vw;
+  z-index: 2;
+  display: flex;
+}
+
+.el:nth-of-type(3) .image-container{
+  box-sizing: content-box;
+  object-fit: cover;
+  left: 0;
+  top: 0vh;
+  height: 60vh;
+  width: 25vw;
+  z-index: 3;
+  display: flex;
+  ;
+}
+
+/***Burger Menu ***/
+.burger-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 30px;
+  cursor: pointer;
+  pointer-events: none;
+  position: relative;
+}
+
+.burger-menu::before , .burger-menu::after {
+  display: block;
+  content: "";
+  width: 30px;
+  height:3px;
+  mix-blend-mode: difference;
+  background-color: white;
+  box-sizing: border-box;
+
+}
+
+.bounds {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  pointer-events: all;
+}
+
+.burger-menu .bounds:hover{
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: scale(3);
+}
+
