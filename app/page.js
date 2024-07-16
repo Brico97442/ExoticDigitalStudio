@@ -3,6 +3,7 @@ import Header from "./components/Navbar";
 import Hero from "./components/Hero";
 import SkillsSection from "./components/SkillsSection";
 import Word from "./components/Word";
+import TextScroll from "./components/TextScroll";
 
 const paragraphe = "C'est  ici  et  maintenant  que  tout  se  joue  saisissez  l'opportunité  d'une  expérience  unique" 
 

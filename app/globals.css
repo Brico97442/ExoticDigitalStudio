@@ -143,12 +143,7 @@ section span {
   transform: scale(3);
 }
 
-.paragraphe span{
-  margin-right: 12px;
-  margin-top: 12px;
-}
-
-.paragraphe {
+/* .paragraphe {
   display: flex;
   opacity: 0;
-}
+} */

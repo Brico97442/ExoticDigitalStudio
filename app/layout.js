@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
 const stickyElement = useRef(null)
 
   return (
-    <html lang="en">
+    <html lang="fr">
       <body className={inter.className}>
         <Navbar ref={stickyElement}/>
         <StickyCursor stickyElement={stickyElement}/>
