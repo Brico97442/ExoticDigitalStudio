@@ -2,11 +2,9 @@ import Image from "next/image";
 import Header from "./components/Navbar";
 import Hero from "./components/Hero";
 import SkillsSection from "./components/SkillsSection";
-import StickyCursor from "./components/StickyCursor";
-import TextScroll from "./components/TextScroll";
 import Word from "./components/Word";
 
-const paragraphe = "C'est  ici  et  maintenant  que  tout  se  joue  saisissez l'opportunité  d'une  expérience  unique" 
+const paragraphe = "C'est  ici  et  maintenant  que  tout  se  joue  saisissez  l'opportunité  d'une  expérience  unique" 
 
 export default function Home() {
   return (

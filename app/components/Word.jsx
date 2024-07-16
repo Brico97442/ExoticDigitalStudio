@@ -7,9 +7,9 @@ export default function Paragraphe({ value }) {
     const element = useRef(null)
     const { scrollYProgress } = useScroll({
         target: element,
-        offset: ['start 0.9', 'start 0.25']
+        offset: ['start 0.8', 'start 0.25']
     })
-    const words = value.split("")
+    const words = value.split("") 
 
     return (
     <p style={{ opacity: scrollYProgress }} className="<paragraphe gap-2 bg-black leading-none flex h-[100vh] text-[40px] flex-wrap mw-[1000px] p-40 justify-center items-center">
