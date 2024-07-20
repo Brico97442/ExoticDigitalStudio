@@ -37,14 +37,14 @@ export const animatePageOut = (href, router) => {
       duration:1,
     }).to([bannerOne, bannerTwo, bannerThree, bannerFour], {
       yPercent: 0,
-      stagger: 0.1,
+      stagger: 0.2,
       duration:1, 
       onComplete: () => {
         router.push(href);
       },    
     }).to([bannerOne, bannerTwo, bannerThree, bannerFour], {
-      yPercent: -100,
-      stagger: 0.1,
+      yPercent: 100,
+      stagger: 0.2,
       duration:1,
      });
   }

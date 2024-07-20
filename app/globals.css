@@ -107,6 +107,18 @@ section span {
   ;
 }
 
+.el:nth-of-type(4) .image-container {
+  box-sizing: content-box;
+  object-fit: cover;
+  left: -61vh;
+  top: 15vh;
+  height: 100vh;
+  width: 30vw;
+  z-index: 3;
+  display: flex;
+  ;
+}
+
 /***Burger Menu ***/
 .burger-menu {
   display: flex;

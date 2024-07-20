@@ -6,7 +6,7 @@ import { motion, useMotionValue, useSpring } from "framer-motion"
 export default function StickyCursorIndex({ stickyElement }) {
 
   const [isHovered, setIsHovered] = useState(false);
-  const curSorSize = isHovered ? 80 : 25;
+  const curSorSize = isHovered ? 80 : 35;
   const mouse = {
     x: useMotionValue(0),
     y: useMotionValue(0)
@@ -31,9 +31,9 @@ export default function StickyCursorIndex({ stickyElement }) {
 
 
     if (isHovered) {
-      const absDistance = Math.max(Math.abs(distance.x), Math.abs(distance.y));
-      const newScaleX = transform(absDistance, [0, width / 2], [1, 1.3])
-      const newScaleY = transform(absDistance, [0, height / 2], [1, 0.8])
+      // const absDistance = Math.max(Math.abs(distance.x), Math.abs(distance.y));
+      // const newScaleX = transform(absDistance, [0, width / 2], [1, 1.3])
+      // const newScaleY = transform(absDistance, [0, height / 2], [1, 0.8])
       scale.x.set(newScaleX)
       scale.y.set(newScaleY)
 
@@ -67,7 +67,7 @@ export default function StickyCursorIndex({ stickyElement }) {
     <div>
       <motion.div
         style={{ left: smoothMouse.x, top: smoothMouse.y }}
-        className="text-black rounded-[50%] w-[60px] h-[60px] bg-orange-400 fixed z-60"
+        className="rounded-[50%] w-[60px] h-[60px] bg-orange-400 fixed mix-blend-difference"
         animate={{ width: curSorSize, height: curSorSize, zIndex: 0 }}
       >
       </motion.div>

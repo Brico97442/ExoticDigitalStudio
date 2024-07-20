@@ -24,6 +24,15 @@ module.exports = {
           900: '#164e63',
         },
       },
+      keyframes: {
+        halo: {
+          '0%, 100%': { boxShadow: '0 0 10px rgba(255, 255, 255, 0.5)' },
+          '50%': { boxShadow: '0 0 20px rgba(255, 255, 255, 1)' },
+        },
+      },
+      animation: {
+        halo: 'halo 1.5s infinite',
+      },
     },
   },
   plugins: [],

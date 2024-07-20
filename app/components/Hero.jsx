@@ -4,8 +4,9 @@ import Image from 'next/image'
 import HeroImg from '../../assets/ia.png'
 import HeroImg2 from '../../assets/portrait2.jpg'
 import HeroImg3 from '../../assets/portrait.jpg'
+import HeroImg4 from '../../assets/portrait3.jpg'
 import { useScroll, useTransform, motion } from 'framer-motion'
-
+import { useSpring } from 'framer-motion'
 export default function Hero() {
   const container = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -16,6 +17,7 @@ export default function Hero() {
   const scale4 = useTransform(scrollYProgress, [0, 1], [0.9, 4]);
   const scale5 = useTransform(scrollYProgress, [0, 1], [0.8, 4]);
   const scale6 = useTransform(scrollYProgress, [0, 1], [0.7, 4]);
+  const scale7 = useTransform(scrollYProgress, [0, 1], [0.8, 4]);
 
   const pictures = [
     {
@@ -30,12 +32,16 @@ export default function Hero() {
       src: HeroImg3,
       scale: scale6
     },
+    {
+      src: HeroImg4,
+      scale: scale7
+    },
 
   ]
   return (
     <div className='w-full bg-[#FFECD1]'>
       <div className='h-[100vh] flex flex-col justify-center items-center gap-3'>
-        <h1 className='p-36 text-[10vh] text-[#5F0F40] leading-none'>Besoin d'un site web <span className='text-6xl '> <br/>à la <span className=' text-teal-700 font-bold uppercase'> Réunion </span>?</span>
+        <h1 className='p-36 text-[10vh] text-[#5F0F40] leading-none '>Besoin d'un site web <span className='text-6xl '> <br/>à la <span className=' text-teal-700 text-6xl font-bold uppercase'> Réunion </span>?</span>
         </h1>
         <button href='decouvrir'className='w-full  text-lg text-white font-bold border-[1px] bg-[#5F0F40] hover:bg-teal-700 max-w-[250px] rounded-lg p-3'>En savoir plus</button>
 
