@@ -25,28 +25,34 @@ function ContactForm() {
             );
     };
     return (
+        <div className="flex items-center justify-center flex-col p-6 ">
+            <div className=" gap-6 flex items-center flex-col">
+                <h2 className="text-[8vh] w-2/3 leading-none">Dites m'en plus</h2> 
+                <p >sur votre projet</p>
+                </div>
 
-        <form ref={form} onSubmit={sendEmail} className="flex flex-col gap-6 items-center">
-            <h2>Dites m'en un peu plus</h2>
-            <input type="text" id="user_name" name="user_name" required placeholder="Nom" />
-            <input
-                type="email"
-                id="email"
-                name="user_email"
-                required
-                placeholder="Email"
-            />
-            <input
-                type="text"
-                id="subject"
-                name="subject"
-                required
-                placeholder="Sujet"
-            />
-            <textarea id="message" name="message" placeholder="Votre Message" required></textarea>
-            <button type="submit">Envoyer</button>
-            {successMessage && <p>{successMessage}</p>}
-        </form>
+            <form ref={form} onSubmit={sendEmail} className="flex flex-col gap-6 w-1/2">
+
+                <input type="text" id="user_name" name="user_name" required placeholder="Nom" />
+                <input
+                    type="email"
+                    id="email"
+                    name="user_email"
+                    required
+                    placeholder="Email"
+                />
+                <input
+                    type="text"
+                    id="subject"
+                    name="subject"
+                    required
+                    placeholder="Sujet"
+                />
+                <textarea id="message" name="message" placeholder="Votre Message" required></textarea>
+                <button type="submit">Envoyer</button>
+                {successMessage && <p>{successMessage}</p>}
+            </form></div>
+
 
     );
 }

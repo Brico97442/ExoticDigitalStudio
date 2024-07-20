@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useEffect, useState } from "react"
-import { motion, transform, useMotionValue, useSpring } from "framer-motion"
+import { motion, useMotionValue, useSpring } from "framer-motion"
 
 export default function StickyCursorIndex({ stickyElement }) {
 
@@ -31,11 +31,11 @@ export default function StickyCursorIndex({ stickyElement }) {
 
 
     if (isHovered) {
-      // const absDistance = Math.max(Math.abs(distance.x), Math.abs(distance.y));
-      // const newScaleX = transform(absDistance, [0, width / 2], [1, 1.3])
-      // const newScaleY = transform(absDistance, [0, height / 2], [1, 0.8])
-      // scale.x.set(newScaleX)
-      // scale.y.set(newScaleY)
+      const absDistance = Math.max(Math.abs(distance.x), Math.abs(distance.y));
+      const newScaleX = transform(absDistance, [0, width / 2], [1, 1.3])
+      const newScaleY = transform(absDistance, [0, height / 2], [1, 0.8])
+      scale.x.set(newScaleX)
+      scale.y.set(newScaleY)
 
 
       mouse.x.set((center.x - curSorSize / 2) + distance.x * 0.1);
@@ -62,15 +62,16 @@ export default function StickyCursorIndex({ stickyElement }) {
       stickyElement.current.removeEventListener("mouseover", manageMouseOver)
       stickyElement.current.removeEventListener("mouseleave", manageMouseLeave)
     }
-  })
-  return (<div>
-    <motion.div
-      style={{ left: smoothMouse.x, top: smoothMouse.y }}
-      className="text-black rounded-[50%] w-[60px] h-[60px] bg-orange-400 fixed"
-      animate={{ width: curSorSize, height: curSorSize , zIndex: 0 }}
-    >
-    </motion.div>
-  </div>
+  }, [])
+  return (
+    <div>
+      <motion.div
+        style={{ left: smoothMouse.x, top: smoothMouse.y }}
+        className="text-black rounded-[50%] w-[60px] h-[60px] bg-orange-400 fixed z-60"
+        animate={{ width: curSorSize, height: curSorSize, zIndex: 0 }}
+      >
+      </motion.div>
+    </div>
 
   )
 }

@@ -31,23 +31,23 @@ function Section({ children, className }) {
 
 export default function App() {
   return (
-    <div className="mix-blend-difference">
-      <Section className="bg-sky-950">
+    <div >
+      <Section className="bg-[#5F0F40]">
         <div className="h-full p-6 text-2xl text-yellow-100	">
           <AnimatedText>Dynamiques</AnimatedText>
         </div>
       </Section>
-      <Section className="bg-teal-700">
+      <Section className="bg-[#9A031E]">
         <div className="h-full p-6 text-2xl">
           <AnimatedText>Adaptatif</AnimatedText>
         </div>
       </Section>
-      <Section className="bg-orange-500">
+      <Section className="bg-[#FB8B24]">
         <div className="h-full p-6 text-2xl">
           <AnimatedText>Moderne</AnimatedText>
         </div>
       </Section>
-      <Section className="bg-green-600">
+      <Section className="bg-[#E36414]">
         <div className="h-full p-6 text-2xl">
           <AnimatedText>Exotique</AnimatedText>
         </div>

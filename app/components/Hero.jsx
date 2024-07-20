@@ -1,9 +1,9 @@
 'use client'
 import React, { useRef } from 'react'
 import Image from 'next/image'
-import HeroImg from '@/assets/ia.png'
-import HeroImg2 from '@/assets/portrait2.jpg'
-import HeroImg3 from '@/assets/portrait.jpg'
+import HeroImg from '../../assets/ia.png'
+import HeroImg2 from '../../assets/portrait2.jpg'
+import HeroImg3 from '../../assets/portrait.jpg'
 import { useScroll, useTransform, motion } from 'framer-motion'
 
 export default function Hero() {
@@ -33,14 +33,21 @@ export default function Hero() {
 
   ]
   return (
-    <div className='w-full mix-blend-difference'>
-      <h1 className='p-36 z-10 flex text-[10vh] h-[100vh] flex-col justify-center gap-3 items-start m-[80px] text-yellow-100'>Besoin d'un site web <span className='text-6xl '> à la <span className=' text-teal-700 font-bold uppercase'> Réunion?</span></span></h1>
-      <h1 className=' z-10 flex text-[10vh] font-bold h-[100vh]pt-[20vh] justify-center gap-3 items-center m-[80px] text-yellow-100'>Redécouvrez l'expérience du web</h1>
+    <div className='w-full bg-[#FFECD1]'>
+      <div className='h-[100vh] flex flex-col justify-center items-center gap-3'>
+        <h1 className='p-36 text-[10vh] text-[#5F0F40] leading-none'>Besoin d'un site web <span className='text-6xl '> <br/>à la <span className=' text-teal-700 font-bold uppercase'> Réunion </span>?</span>
+        </h1>
+        <button href='decouvrir'className='w-full  text-lg text-white font-bold border-[1px] bg-[#5F0F40] hover:bg-teal-700 max-w-[250px] rounded-lg p-3'>En savoir plus</button>
+
+      </div>
+
+
+      <h1 id='decouvrir' className=' z-10 flex text-[10vh] h-[100vh] pt-[20vh] justify-center gap-3 items-center m-[80px] text-[#E36414]'>Redécouvrez l'expérience du web</h1>
       <div className="flex h-[300vh]  relative w-full mt-[50vh]" ref={container}>
-        <div className=" parrallaxe flex flex-col h-[100vh] w-full top-0 sticky overflow-hidden ">
+        <div className=" parrallaxe flex flex-col h-[100vh] w-full top-0 left-0 sticky overflow-hidden ">
           {
             pictures.map(({ src, scale }, index) => {
-              return <motion.div style={{ scale }} key={index} className="el flex items-center justify-center h-full w-full top-0 absolute">
+              return <motion.div style={{ scale }} transition={{type:'inertia',velocity:450}}  key={index} className="el flex items-center justify-center h-full w-full top-0 absolute">
                 <div className="relative w-[25vw] h-[25vh] image-container">
                   <Image
                     src={src}

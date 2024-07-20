@@ -12,7 +12,7 @@ export default function Paragraphe({ value }) {
     const words = value.split("")
 
     return (
-        <p ref={element} style={{ opacity: scrollYProgress }} className="flex h-[100vh] flex-wrap bg-black text-[40vh] items-center mw-[1280px] p-40 opacity[0]">
+        <p ref={element} style={{ opacity: scrollYProgress }} className="flex h-[100vh] flex-wrap bg-[#001524] text-[40vh] items-center mw-[1280px] p-40 opacity[0]">
             {
                 words.map((word, i) => {
                     const start = i / words.length;
@@ -27,7 +27,7 @@ export default function Paragraphe({ value }) {
 const Word = ({ children, range, progress }) => {
     const opacity = useTransform(progress, range, [0, 1])
     return (
-            <span className='m-1 flex text-[10vh] font-bold uppercase flex-wrap relative text-orange-300'>
+            <span className='m-1 flex text-[10vh] font-bold flex-wrap relative text-orange-300'>
                 <span className="flex w-full absolute opacity-[0.1] text-orange-600">{children}</span>
                 <motion.span style={{ opacity }}>{children}</motion.span>
             </span>

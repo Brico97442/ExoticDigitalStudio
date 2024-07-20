@@ -14,6 +14,6 @@ export default function TextScroll({ value }) {
     }, [element])
     
     return (
-        <motion.p style={{ opacity: scrollYProgress }} ref={element} className="flex h-[100vh] text-black text-[40px] mw-[1280px] p-40 opacity[0]">{value}</motion.p>
+        <motion.p style={{ opacity: scrollYProgress }} ref={element} className="flex h-[100vh] text-[40px] mw-[1280px] p-40 opacity[0]">{value}</motion.p>
     )
 }
