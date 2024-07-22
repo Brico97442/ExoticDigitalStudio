@@ -187,3 +187,8 @@ section span {
   width: 100%;
   background-color: rgb(0, 23, 44);
 }
+
+
+.none {
+  display: none;
+}
