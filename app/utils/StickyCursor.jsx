@@ -13,7 +13,7 @@ export default function StickyCursorIndex({ stickyElement }) {
   }
 
   const smoothOptions = {
-    damping: 20, stiffness: 300, mass: 0.5
+    damping: 25, stiffness: 210, mass: 0.5
   }
 
   const smoothMouse = {
@@ -34,8 +34,8 @@ export default function StickyCursorIndex({ stickyElement }) {
       // const absDistance = Math.max(Math.abs(distance.x), Math.abs(distance.y));
       // const newScaleX = transform(absDistance, [0, width / 2], [1, 1.3])
       // const newScaleY = transform(absDistance, [0, height / 2], [1, 0.8])
-      scale.x.set(newScaleX)
-      scale.y.set(newScaleY)
+      // scale.x.set(newScaleX)
+      // scale.y.set(newScaleY)
 
 
       mouse.x.set((center.x - curSorSize / 2) + distance.x * 0.1);

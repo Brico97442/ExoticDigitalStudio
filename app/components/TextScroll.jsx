@@ -1,19 +1,48 @@
-"use client"
-import React, { useEffect, useRef } from "react"
-import { useScroll, motion } from "framer-motion"
+'use client';
+import React, { useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import SplitType from 'split-type';
 
-export default function TextScroll({ value }) {
-    const element = useRef(null)
-    const { scrollYProgress } = useScroll({
-        target: element,
-        offset: ['start 0.5', 'start start']
-    })
+gsap.registerPlugin(ScrollTrigger);
+
+export default function TextScroll({value}) {
+    const textRefs = useRef([]);
 
     useEffect(() => {
-        scrollYProgress.on("change", e => console.log(e))
-    }, [element])
-    
+        textRefs.current.forEach((textRef) => {
+            if (textRef) {
+                // Split the text into characters and words
+                const splitText = new SplitType(textRef, { types: 'chars, words' });
+
+                // Create the animation
+                gsap.from(splitText.chars, {
+                    scrollTrigger: {
+                        trigger: textRef,
+                        start: 'top 80%',
+                        end: 'top 10%',
+                        scrub: true,
+                        markers: false,
+                    },
+                    opacity: 0,
+                    y: 30,
+                    stagger: 0.05,
+                    duration: 5,
+                });
+            }
+        });
+
+
+
+
+    }, []);
+
     return (
-        <motion.p style={{ opacity: scrollYProgress }} ref={element} className="flex h-[100vh] text-[40px] mw-[1280px] p-40 opacity[0]">{value}</motion.p>
-    )
+        <div className='text-black text-8xl w-full h-[120vh] flex items-center justify-center px-20'>
+            <div>
+                <p ref={el => textRefs.current[0] = el} className="text-target text-teal-700">{value}</p>
+            </div >
+
+        </div>
+    );
 }

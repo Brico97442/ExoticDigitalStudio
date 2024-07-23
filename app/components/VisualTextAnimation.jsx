@@ -18,7 +18,7 @@ export default function Home() {
           WebkitMaskSize: `${size}px`
 
         }}
-        transition={{ type: 'tween', ease: 'backOut' }}
+        transition={{ type: 'tween', ease: 'backOut', duration:0.5}}
       >
         <p onMouseEnter={() => { setIsHovered(true) }} onMouseLeave={() => { setIsHovered(false) }}
           className="w-[1000px] ">
@@ -26,7 +26,7 @@ export default function Home() {
         </p>
       </motion.div>
       <div className="body-mask">
-        <p className="  w-[1000px] text-blue-100">
+        <p className="w-[1000px] text-blue-100">
           Le monde se modernise et les sites internet aussi, aujourd'hui, votre site internet se doit se refléter les valeurs les plus ancrées de votre entreprise
         </p>
       </div>

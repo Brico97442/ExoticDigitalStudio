@@ -1,6 +1,6 @@
 'use client';
 import gsap from 'gsap';
-import { useEffect,useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 export default function Pricing() {
     const sliderData = [
@@ -44,37 +44,37 @@ export default function Pricing() {
 
     const overlays = useRef([]);
 
+    
+    const onContainerEnter = () => {
+        gsap.to("#title-text", {
+            visibility: "hidden",
+            ease: "sine.in",
+            
+        })
+    }
+    
+    const onContainerExit = () => {
+        gsap.to("#title-text", {
+            visibility: "visible",
+            opacity: 1,
+            ease: "sine.out",
+        })
+    }
     const handleMouseEnter = (index) => {
         gsap.to(overlays.current[index], {
             opacity: 1,
             visibility: 'visible',
-            duration: 0.3,
+            duration: 0.5,
             ease: "sine.in",
         })
     };
-
-    const onContainerEnter = () => {
-        gsap.to("#title-text", {
-            display: "flex",
-            opacity: 0,
-
-        })
-    }
-
-    const onContainerExit = () => {
-        gsap.to("#title-text", {
-            display: "flex",
-            opacity: 1,
-
-        })
-    }
-
+    
     const handleMouseLeave = (index) => {
-
+        
         gsap.to(overlays.current[index], {
             opacity: 1,
             visibility: 'hidden',
-            duration: 0.3,
+            duration: 0.5,
             ease: "sine.out",
         });
     };
@@ -90,7 +90,7 @@ export default function Pricing() {
                 {sliderData.map((data, index) => (
                     <div
                         key={index}
-                        className={`${data.classNameColor} flex items-center justify-center h-4/6 w-1/4 transition-all p-6 hover:w-full`}
+                        className={`${data.classNameColor} flex items-center justify-center h-full w-1/4 transition-all hover:w-full`}
                         onMouseEnter={() => handleMouseEnter(index)}
                         onMouseLeave={() => handleMouseLeave(index)}
                     >
@@ -100,7 +100,7 @@ export default function Pricing() {
                         </div>
                         <div
                             ref={el => overlays.current[index] = el}
-                            className='flex-col absolute w-full right-full h-4/6 bottom-0 transition-all text-white text-xl'
+                            className='flex-col absolute w-full right-full bottom-0 bg-gray-500 bg-opacity-0.5 transition-all h-4/6 p-6 text-white text-xl'
                             style={{ opacity: 0, visibility: 'hidden' }}
                         >
                             <p className='w-3/4'>{data.description}</p>
