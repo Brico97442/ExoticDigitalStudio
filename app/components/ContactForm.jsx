@@ -25,13 +25,8 @@ function ContactForm() {
             );
     };
     return (
-        <div className="flex items-center justify-center flex-col p-6 ">
-            <div className=" gap-6 flex items-center flex-col">
-                <h2 className="text-[8vh] w-2/3 leading-none">Dites m'en plus</h2> 
-                <p >sur votre projet</p>
-                </div>
-
-            <form ref={form} onSubmit={sendEmail} className="flex flex-col gap-6 w-1/2">
+        <div className="flex items-center justify-center flex-col w-full z-10">
+            <form ref={form} onSubmit={sendEmail} className="flex flex-col gap-6 w-full text-black">
 
                 <input type="text" id="user_name" name="user_name" required placeholder="Nom" />
                 <input

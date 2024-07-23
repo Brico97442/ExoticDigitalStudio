@@ -6,7 +6,9 @@ import HeroImg2 from '../../assets/portrait2.jpg'
 import HeroImg3 from '../../assets/portrait.jpg'
 import HeroImg4 from '../../assets/portrait3.jpg'
 import { useScroll, useTransform, motion } from 'framer-motion'
-import { useSpring } from 'framer-motion'
+
+
+
 export default function Hero() {
   const container = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -43,7 +45,7 @@ export default function Hero() {
       <div className='h-[100vh] flex flex-col justify-center items-center gap-3'>
         <h1 className='p-36 text-[10vh] text-[#5F0F40] leading-none '>Besoin d'un site web <span className='text-6xl '> <br/>à la <span className=' text-teal-700 text-6xl font-bold uppercase'> Réunion </span>?</span>
         </h1>
-        <button href='decouvrir'className='w-full  text-lg text-white font-bold border-[1px] bg-[#5F0F40] hover:bg-teal-700 max-w-[250px] rounded-lg p-3'>En savoir plus</button>
+        <button href='decouvrir'className='w-full text-lg text-white font-bold border-[1px] bg-[#5F0F40] hover:bg-teal-700 max-w-[250px] rounded-lg p-3'>En savoir plus</button>
 
       </div>
 

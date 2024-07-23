@@ -1,27 +1,28 @@
 'use client';
 import gsap from 'gsap';
-import { useEffect, useState, useRef } from 'react';
+import { useEffect,useRef } from 'react';
 
 export default function Pricing() {
     const sliderData = [
         {
-            title: "Web ",
-            description: "Web Starter Pack 300€",
+            title: "Web starter pack 300€",
+            description:
+                "Idéal pour les petites entreprises ou les entrepreneurs qui ont besoin d'une présence en ligne professionnelle sans fonctionnalités complexes.",
             classNameColor: "bg-teal-800",
         },
         {
-            title: "Web",
-            description: "Web Starter Pack 600€",
+            title: "Web Starter Standard 500€",
+            description: "Parfait pour les entreprises de taille moyenne qui veulent un site web plus complet avec des fonctionnalités additionnelles.",
             classNameColor: "bg-teal-500",
         },
         {
-            title: "Web",
-            description: "Web Starter Pack 700€",
+            title: "Web Starter Premium 1000€",
+            description: "Pour les entreprises ou associations qui ont besoin d'un site web complet et performant avec des fonctionnalités sur mesure.",
             classNameColor: "bg-teal-300",
         },
         {
-            title: "Web",
-            description: "Web Starter Pack 900€",
+            title: "Formule Référencement SEO 150€",
+            description: "Améliorez votre visibilité en ligne et attirez plus de visiteurs grâce à notre service de référencement SEO.",
             classNameColor: "bg-teal-100",
         }
     ];
@@ -48,14 +49,33 @@ export default function Pricing() {
             opacity: 1,
             visibility: 'visible',
             duration: 0.3,
-        });
+            ease: "sine.in",
+        })
     };
 
-    const handleMouseLeave = (index) => {
-        gsap.to(overlays.current[index], {
+    const onContainerEnter = () => {
+        gsap.to("#title-text", {
+            display: "flex",
             opacity: 0,
+
+        })
+    }
+
+    const onContainerExit = () => {
+        gsap.to("#title-text", {
+            display: "flex",
+            opacity: 1,
+
+        })
+    }
+
+    const handleMouseLeave = (index) => {
+
+        gsap.to(overlays.current[index], {
+            opacity: 1,
             visibility: 'hidden',
             duration: 0.3,
+            ease: "sine.out",
         });
     };
 
@@ -63,24 +83,27 @@ export default function Pricing() {
         <section className="bg-black h-screen w-full relative m-auto">
             <div className="flex flex-col w-full w-1/2 gap-20">
                 <h1 className='flex pricing text-[12vh] leading-none mt-20' id='price-title'>Nos Tarifs</h1>
-                <p id='title-text' className='text-2xl w-3/4'>Exotik Digital Studio, vous propose des formules adaptées à tout type de budget. Que vous soyez une petite ou moyenne entreprise, particulier ou professionnel, retrouvez la formule qui correspond à vos besoins.</p>
+                <p id='title-text' className='text-xl w-3/4'>Exotik Digital Studio, vous propose des formules adaptées à tout type de budget. Que vous soyez une petite ou moyenne entreprise, particulier ou professionnel, retrouvez la formule qui correspond à vos besoins.</p>
             </div>
-            <div className='flex text-black h-full w-full relative cursor-pointer'>
-        
+            <div onMouseEnter={() => onContainerEnter()} onMouseLeave={() => onContainerExit()}
+                className='flex text-black h-full w-full justify-center items-center relative cursor-pointer '>
                 {sliderData.map((data, index) => (
                     <div
                         key={index}
-                        className={`${data.classNameColor} flex items-center justify-center h-full w-1/4 transition-all`}
+                        className={`${data.classNameColor} flex items-center justify-center h-4/6 w-1/4 transition-all p-6 hover:w-full`}
                         onMouseEnter={() => handleMouseEnter(index)}
                         onMouseLeave={() => handleMouseLeave(index)}
                     >
-                        {data.title}
+                        <div className='flex flex-col items-center justify-between gap-6 h-2/6'>
+                            <h3 className='text-center'>{data.title}</h3>
+                            <button className='border text-white border-white rounded-lg p-1 bg-[#5F0F40] text-sm'>Nous contacter</button>
+                        </div>
                         <div
                             ref={el => overlays.current[index] = el}
-                            className='flex-col bg-red-500 absolute w-full p-6 right-full h-3/6 bottom-0 transition-all'
+                            className='flex-col absolute w-full right-full h-4/6 bottom-0 transition-all text-white text-xl'
                             style={{ opacity: 0, visibility: 'hidden' }}
                         >
-                            {data.description}
+                            <p className='w-3/4'>{data.description}</p>
                         </div>
                     </div>
                 ))}
