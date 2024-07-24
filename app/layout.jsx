@@ -18,9 +18,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={GeistSans.className}>
+        <Navbar ref={stickyElement} />
         <Template>
           <main className="flex w-full min-h-screen flex-col bg-[#FFECD1]">
-            <Navbar ref={stickyElement} />
             <StickyCursor stickyElement={stickyElement} />
             {children}
           </main>

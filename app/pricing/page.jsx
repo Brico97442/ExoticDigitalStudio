@@ -86,11 +86,11 @@ export default function Pricing() {
                 <p id='title-text' className='text-xl w-3/4'>Exotik Digital Studio, vous propose des formules adaptées à tout type de budget. Que vous soyez une petite ou moyenne entreprise, particulier ou professionnel, retrouvez la formule qui correspond à vos besoins.</p>
             </div>
             <div onMouseEnter={() => onContainerEnter()} onMouseLeave={() => onContainerExit()}
-                className='flex text-black h-full w-full justify-center items-center relative cursor-pointer '>
+                className='flex text-black h-full w-full gap-6 justify-center items-center relative cursor-pointer '>
                 {sliderData.map((data, index) => (
                     <div
                         key={index}
-                        className={`${data.classNameColor} flex items-center justify-center h-full w-1/4 transition-all hover:w-full`}
+                        className={`${data.classNameColor} flex items-center justify-center h-full w-1/4 rounded-lg transition-all hover:w-full`}
                         onMouseEnter={() => handleMouseEnter(index)}
                         onMouseLeave={() => handleMouseLeave(index)}
                     >

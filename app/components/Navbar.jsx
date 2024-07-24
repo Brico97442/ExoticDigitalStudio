@@ -20,9 +20,9 @@ const Navbar = forwardRef(function index(props,ref) {
                     <li  className="transition z-20">
                         <TransitionLink href="/contact" label="Contact"/>
                     </li>
-                    <li className=" relative transition flex justify-center items-center cursor-pointer  w-[35px] h-[18px] p-[30px]">
+                    <li className=" relative transition flex justify-center items-center cursor-pointer w-[35px] h-[18px] p-[30px]">
                         <div className="fixed flex justify-center w-full items-center ">
-                            <div className="burger-menu">
+                            <div className="burger-menu z-0">
                                 <div ref={ref} className="bounds">
                                 </div>
                             </div>

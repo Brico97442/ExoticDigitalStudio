@@ -28,13 +28,15 @@ function ContactForm() {
         <div className="flex items-center justify-center flex-col w-full z-10">
             <form ref={form} onSubmit={sendEmail} className="flex flex-col gap-6 w-full text-black">
 
-                <input type="text" id="user_name" name="user_name" required placeholder="Nom" />
+                <input className="h-[10vh]"
+                    v type="text" id="user_name" name="user_name" required placeholder="Nom" />
                 <input
                     type="email"
                     id="email"
                     name="user_email"
                     required
                     placeholder="Email"
+                    className="h-[10vh]"
                 />
                 <input
                     type="text"
@@ -42,8 +44,11 @@ function ContactForm() {
                     name="subject"
                     required
                     placeholder="Sujet"
+                    className="h-[10vh]"
+
                 />
-                <textarea id="message" name="message" placeholder="Votre Message" required></textarea>
+                <textarea className="h-[10vh]"
+                    id="message" name="message" placeholder="Votre Message" required></textarea>
                 <button type="submit">Envoyer</button>
                 {successMessage && <p>{successMessage}</p>}
             </form></div>
