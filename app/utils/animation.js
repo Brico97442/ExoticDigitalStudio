@@ -1,6 +1,4 @@
 // animation.js
-
-
 import gsap from "gsap";
 
 export const animatePageIn = () => {

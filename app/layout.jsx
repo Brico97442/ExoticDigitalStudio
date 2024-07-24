@@ -6,7 +6,6 @@ import Navbar from "../app/components/Navbar";
 import StickyCursor from "./utils/StickyCursor";
 import Template from "./utils/template";
 
-
 const metadata = {
   title: "Create Next App",
   description: "Site Web de la compagnie Exotic Digitale Studio",
