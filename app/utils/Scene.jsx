@@ -10,11 +10,11 @@ export default function Scene() {
 
   
   return (
-    <div className='h-screen w-full p-20 flex '>
+    <div className='h-screen fixed bg-black w-full flex z-[204]'>
       <Canvas >
         <Model />
         <ambientLight position={[0, 3, 2]} intensity={5} />
-        <Environment preset="city"/>
+        <Environment preset="forest"/>
         <OrbitControls />
       </Canvas>
     </div>
