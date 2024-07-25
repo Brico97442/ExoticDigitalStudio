@@ -1,27 +1,4 @@
-// import * as THREE from 'three';
 
-// import { useGLTF,MeshTransmissionMaterial } from "@react-three/drei";
-// import { useFrame } from "@react-three/fiber";
-// import React, { useRef } from "react";
-
-// export default function Model(props) {
-//     const { scene } = useGLTF("/media/reunion.glb");
-
-//     useFrame(() => {
-//         scene.rotation.y += 0.002;
-//     });
-
-//     // Traverse the scene to find all meshes and apply the material
-//     scene.traverse((child) => {
-//         if (child.isMesh) {
-//             child.material = new THREE.MeshStandardMaterial({ color: 'teal' } );
-//         }
-//     });
-
-//     return (
-//         <primitive object={scene} {...props} />
-//     );
-// }
 import React, { useRef } from 'react'
 import { useGLTF, Text, MeshTransmissionMaterial } from "@react-three/drei";
 import { useFrame, useThree } from '@react-three/fiber'
@@ -50,10 +27,7 @@ export default function Model() {
     })
 
     return (
-        <group scale={viewport.width / 3.75} >
-            <Text position={[0, 0, -1]} fontSize={0.5} color="teal" anchorX="center" anchorY="middle">
-                hello world!
-            </Text>
+        <group scale={viewport.width /5} >
             <mesh ref={island} {...nodes.reunion}>
             <MeshTransmissionMaterial {...materialProps}/>
             </mesh>
