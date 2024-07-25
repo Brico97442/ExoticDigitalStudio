@@ -60,7 +60,7 @@ export default function Hero() {
   return (
     <div className='w-full bg-[#FFECD1]'>
       <div className='h-[100vh] flex flex-col justify-center items-center gap-3'>
-        <h1 id='hero-title' className='p-36 text-[10vh] text-[#5F0F40] leading-none '>Besoin d'un site web <span className='text-6xl '> <br />à la <span className=' text-teal-700 text-6xl font-bold uppercase'> Réunion </span>?</span>
+        <h1 id='hero-title' className='p-36 text-[10vh] text-[#5F0F40] leading-none'>Besoin d'un site web <span className='text-6xl '> <br />à la <span className=' text-teal-700 text-6xl font-bold uppercase'> Réunion </span>?</span>
         </h1>
         <button className='w-full text-lg text-white font-bold border-[1px] bg-[#5F0F40] hover:bg-teal-700 max-w-[250px] rounded-lg p-3 z-10'>En savoir plus</button>
 
