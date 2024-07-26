@@ -11,9 +11,12 @@ export const animatePageIn = () => {
     tl.set([bannerOne, bannerTwo, bannerThree, bannerFour], {
       yPercent: 0,
       duration:1,
+      ease:"power4.inOut",
+
     }).to([bannerOne, bannerTwo, bannerThree, bannerFour], {
       yPercent: 100,
-      stagger: 0.2
+      stagger: 0.2,
+      ease:"power4.inOut",
     });
   }
 };
@@ -33,10 +36,12 @@ export const animatePageOut = (href, router) => {
       yPercent: -100,
       stagger: 0.2,
       duration:1,
+      ease:"power4.inOut",
     }).to([bannerOne, bannerTwo, bannerThree, bannerFour], {
       yPercent: 0,
       stagger: 0.2,
-      duration:1, 
+      duration:1,
+      ease:"power4.inOut",
       onComplete: () => {
         router.push(href);
       },    
@@ -44,6 +49,7 @@ export const animatePageOut = (href, router) => {
       yPercent: 100,
       stagger: 0.2,
       duration:1,
+      ease:"power4.inOut",
      });
   }
 };

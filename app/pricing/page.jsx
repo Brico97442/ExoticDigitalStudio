@@ -29,16 +29,19 @@ export default function Pricing() {
 
     useEffect(() => {
         gsap.fromTo(['#price-title', '#title-text'], {
-            y: 200,
+            y: `${100}%`,
             opacity: 0,
-            bottom: 0
+            bottom: 0,
+            ease: "power4.inOut",
+
         },
             {
                 y: 0,
                 opacity: 1,
                 duration: 0.8,
-                stagger: 0.2,
-                delay: 1
+                stagger: 0.1,
+                ease: "power4.inOut",
+
             });
     }, []);
 
@@ -65,7 +68,7 @@ export default function Pricing() {
             opacity: 1,
             visibility: 'visible',
             duration: 0.5,
-            ease: "sine.in",
+            ease: "power4.inOut",
         })
     };
     

@@ -26,9 +26,16 @@ export default function Model() {
 
     })
 
+    useFrame((state, delta) => {
+        if (island.current) {
+          island.current.rotation.y += 0.002; // Rotation sur l'axe Y
+        }
+      });
+    
+
     return (
-        <group scale={viewport.width /5} >
-            <mesh ref={island} {...nodes.reunion}>
+        <group scale={viewport.width /3.5}position={[0,0,-6]}>
+            <mesh  ref={island} {...nodes.reunion}>
             <MeshTransmissionMaterial {...materialProps}/>
             </mesh>
         </group>
