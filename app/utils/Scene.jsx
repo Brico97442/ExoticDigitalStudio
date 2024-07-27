@@ -12,7 +12,7 @@ export default function Scene() {
     // Animation de la couleur de fond du noir à transparent
     gsap.to(divRef.current, {
       backgroundColor: 'rgba(0, 0, 0, 0)',
-      duration: 2,
+      // duration: 2,
       delay: 5,
       zIndex:0,
     });
@@ -20,7 +20,7 @@ export default function Scene() {
   }, []);
 
   return (
-    <div ref={divRef} className='h-screen fixed w-screen flex z-[206]' style={{ backgroundColor: 'black' }}>
+    <div ref={divRef} className='h-screen fixed w-full flex z-[206]' style={{ backgroundColor: 'black' }}>
       <Canvas>
         <Suspense>
           <Model />
