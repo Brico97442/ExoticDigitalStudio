@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from 'react';
-import { useGLTF } from '@react-three/drei';
-import { useFrame, useThree } from '@react-three/fiber';
+import { useGLTF, Text } from '@react-three/drei';
+import { useFrame, useLoader, useThree } from '@react-three/fiber';
+import { TextureLoader } from 'three';
 import gsap from 'gsap';
 
 export default function Model() {
@@ -8,40 +9,51 @@ export default function Model() {
     const { viewport } = useThree();
     const island = useRef(null);
     const materialRef = useRef(null);
+    const texture = useLoader(TextureLoader, '/media/texture.webp'); // Charger la texture correctement
+    const alphaMap = useLoader(TextureLoader, '/media/calque-reunion.png'); // Charger l'alpha map
 
     useEffect(() => {
-        if (island.current && materialRef.current) {
+        if (island && materialRef) {
+
+            // Position initiale et animation
+            island.current.position.set(-0.2, 0.2, -1.5); // Position initiale de l'île
+            
+            // Rotation initiale de 90 degrés (Math.PI / 2 radians) sur l'axe Y
+            const initialRotationX = 20 * (Math.PI / 180); // Convertir les degrés en radians
+            const initialRotationY = -80 * (Math.PI / 180); // Convertir les degrés en radians
+            island.current.rotation.set(initialRotationX, initialRotationY, 0);
+            
             // Initialisation des propriétés du matériau
             materialRef.current.color.set('#0f4c5c');
             materialRef.current.transparent = true;
             materialRef.current.opacity = 0.7;
-
-            // Position initiale et animation
-            island.current.position.set(0, 0, -1.5); // Position initiale de l'île
-            // Rotation initiale de 90 degrés (Math.PI / 2 radians) sur l'axe Y
-            const initialRotationY = 100 * (Math.PI / 180); // Convertir les degrés en radians
-            island.current.rotation.set(0, initialRotationY, 0);
+            materialRef.current.map = texture; // Appliquer la texture comme alphaMap
+            // materialRef.current.alphaMap = alphaMap; 
+            // Appliquer la texture comme alphaMap
+            materialRef.current.dephtTest=false
             // Animation de la position de l'île
-            gsap.to(island.current.position, 
-                { 
+            gsap.to(island.current.position,
+                {
                     // z: -2,
-                    duration: 2,
-                    onComplete: () => {
-                        gsap.to(island.current.position, {
-                            z: -4,
-                            y: -0.8,
-                            x: 1.5,
-                            delay: 3,
-                        });
-                    }
+                    // duration: 2,
+                    // onComplete: () => {
+                    //     gsap.to(island.current.position, {
+                    z: -4,
+                    y: -0.8,
+                    x: 1.5,
+                    delay: 5,
+                    // });
                 }
-            );
+                    // }
+                );
+                materialRef.current.transparent = false;
         }
     }, []);
 
     useFrame(() => {
         if (island.current && island.current.position.x === 1.5) {
             // Rotation continue sur l'axe Y
+
             island.current.rotation.y += 0.001;
 
             // Exemple d'animation de l'opacité (oscillation)
@@ -50,10 +62,34 @@ export default function Model() {
     });
 
     return (
-        <group scale={viewport.width / 3.5}>
-            <mesh ref={island} geometry={nodes.reunion.geometry}>
-                <meshStandardMaterial ref={materialRef} />
-            </mesh>
-        </group>
+        <>
+            <group scale={viewport.width / 3.5}>
+                <mesh scale={[0.9, 0.9, 0.9]} ref={island} geometry={nodes.reunion.geometry}>
+                    <meshStandardMaterial ref={materialRef} />
+                    <Text
+                        position={[1, 0.2, 0]} // Position du texte
+                        fontSize={0.08} // Taille du texte
+                        color="#0000" // Couleur du texte
+                        rotation={[0, 80 * Math.PI / 180, 0]}
+                    >
+                        Réunion Island
+                    </Text>
+                    <Text
+                        position={[1, 0.12, -0]} // Position du texte
+                        fontSize={0.05} // Taille du texte
+                        color="#0000" // Couleur du texte
+                        
+                        rotation={[0, 80 * Math.PI / 180, 0]}
+                    >
+                        Le Tampon
+                    </Text>
+                    
+                </mesh>
+                {/* <pointLight position={[-0.9, 0.2, 0.4]} intensity={5} /> */}
+
+
+                <pointLight position={[-0.3, -0.19, -0.65]} intensity={27} color={'red'}/>
+            </group>
+        </>
     );
 }

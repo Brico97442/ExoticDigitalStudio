@@ -16,6 +16,9 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
+      <head>
+        
+      </head>
       <body className={GeistSans.className}>
         <Navbar ref={stickyElement} />
         <Template>

@@ -28,17 +28,16 @@ export default function Pricing() {
     ];
 
     useEffect(() => {
-        gsap.fromTo(['#price-title', '#title-text'], {
+        gsap.fromTo(['#price-title', '#title-text','#price-container'], {
             y: `${100}%`,
             opacity: 0,
-            bottom: 0,
             ease: "power4.inOut",
 
         },
             {
                 y: 0,
                 opacity: 1,
-                duration: 0.8,
+                duration: 1,
                 stagger: 0.1,
                 ease: "power4.inOut",
 
@@ -68,7 +67,7 @@ export default function Pricing() {
             opacity: 1,
             visibility: 'visible',
             duration: 0.5,
-            ease: "power4.inOut",
+            ease: "sine.in",
         })
     };
     
@@ -88,7 +87,7 @@ export default function Pricing() {
                 <h1 className='flex pricing text-[12vh] leading-none mt-20' id='price-title'>Nos Tarifs</h1>
                 <p id='title-text' className='text-xl w-3/4'>Exotik Digital Studio, vous propose des formules adaptées à tout type de budget. Que vous soyez une petite ou moyenne entreprise, particulier ou professionnel, retrouvez la formule qui correspond à vos besoins.</p>
             </div>
-            <div onMouseEnter={() => onContainerEnter()} onMouseLeave={() => onContainerExit()}
+            <div id='price-container' onMouseEnter={() => onContainerEnter()} onMouseLeave={() => onContainerExit()}
                 className='flex text-black h-full w-full gap-6 justify-center items-center relative cursor-pointer '>
                 {sliderData.map((data, index) => (
                     <div
@@ -99,11 +98,10 @@ export default function Pricing() {
                     >
                         <div className='flex flex-col items-center justify-between gap-6 h-2/6'>
                             <h3 className='text-center'>{data.title}</h3>
-                            <button className='border text-white border-white rounded-lg p-1 bg-[#5F0F40] text-sm'>Nous contacter</button>
                         </div>
                         <div
                             ref={el => overlays.current[index] = el}
-                            className='flex-col absolute w-full right-full bottom-0 bg-gray-500 bg-opacity-0.5 transition-all h-4/6 p-6 text-white text-xl'
+                            className='flex-col absolute w-full right-full bottom-0 bg-gray-500 bg-opacity-0.5 mx-6 transition-all h-4/6 p-6 text-white text-xl'
                             style={{ opacity: 0, visibility: 'hidden' }}
                         >
                             <p className='w-3/4'>{data.description}</p>
