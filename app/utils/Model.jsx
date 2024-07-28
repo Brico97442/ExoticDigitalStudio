@@ -16,10 +16,10 @@ export default function Model() {
         if (island && materialRef) {
 
             // Position initiale et animation
-            island.current.position.set(-0.2, 0.2, -1.5); // Position initiale de l'île
+            // island.current.position.set(0, 0, 0); // Position initiale de l'île
             
             // Rotation initiale de 90 degrés (Math.PI / 2 radians) sur l'axe Y
-            const initialRotationX = 20 * (Math.PI / 180); // Convertir les degrés en radians
+            const initialRotationX = 10 * (Math.PI / 180); // Convertir les degrés en radians
             const initialRotationY = -80 * (Math.PI / 180); // Convertir les degrés en radians
             island.current.rotation.set(initialRotationX, initialRotationY, 0);
             
@@ -28,25 +28,21 @@ export default function Model() {
             materialRef.current.transparent = true;
             materialRef.current.opacity = 0.7;
             materialRef.current.map = texture; // Appliquer la texture comme alphaMap
-            // materialRef.current.alphaMap = alphaMap; 
+            materialRef.current.alphaMap = alphaMap; 
             // Appliquer la texture comme alphaMap
             materialRef.current.dephtTest=false
-            // Animation de la position de l'île
+            // Animation de la position de l'
+            
             gsap.to(island.current.position,
                 {
-                    // z: -2,
-                    // duration: 2,
-                    // onComplete: () => {
-                    //     gsap.to(island.current.position, {
-                    z: -4,
+                    z: -3,
                     y: -0.8,
                     x: 1.5,
                     delay: 5,
-                    // });
                 }
-                    // }
                 );
-                materialRef.current.transparent = false;
+            
+            materialRef.current.transparent = false;
         }
     }, []);
 
@@ -64,31 +60,30 @@ export default function Model() {
     return (
         <>
             <group scale={viewport.width / 3.5}>
-                <mesh scale={[0.9, 0.9, 0.9]} ref={island} geometry={nodes.reunion.geometry}>
+                <mesh  ref={island} geometry={nodes.reunion.geometry}>
                     <meshStandardMaterial ref={materialRef} />
                     <Text
-                        position={[1, 0.2, 0]} // Position du texte
+                        position={[1, 0.25, 0.7]} // Position du texte
                         fontSize={0.08} // Taille du texte
                         color="#0000" // Couleur du texte
-                        rotation={[0, 80 * Math.PI / 180, 0]}
+                        rotation={[0, 85 * Math.PI / 180, 0]}
                     >
                         Réunion Island
                     </Text>
                     <Text
-                        position={[1, 0.12, -0]} // Position du texte
+                        position={[1, 0.1, 0.4]} // Position du texte
                         fontSize={0.05} // Taille du texte
                         color="#0000" // Couleur du texte
                         
-                        rotation={[0, 80 * Math.PI / 180, 0]}
+                        rotation={[0, 85 * Math.PI / 180, 0]}
                     >
                         Le Tampon
                     </Text>
                     
+                <pointLight position={[1.08, -0.1, 0.33]} intensity={35} color={'red'}/>
                 </mesh>
+                
                 {/* <pointLight position={[-0.9, 0.2, 0.4]} intensity={5} /> */}
-
-
-                <pointLight position={[-0.3, -0.19, -0.65]} intensity={27} color={'red'}/>
             </group>
         </>
     );

@@ -16,18 +16,21 @@ export default function TextScroll({value}) {
                 const splitText = new SplitType(textRef, { types: 'chars, words' });
 
                 // Create the animation
-                gsap.from(splitText.chars, {
+                gsap.from(splitText.words, {
                     scrollTrigger: {
                         trigger: textRef,
                         start: 'top 80%',
-                        end: 'top 10%',
+                        end: 'top 25%',
                         scrub: true,
                         markers: false,
                     },
-                    opacity: 0,
-                    y: 30,
-                    stagger: 0.05,
-                    duration: 5,
+                    y: `${100}vh`,
+                    opacity: 1,
+                    ease: "power4.inOut",
+                    visibility: "visible",
+                    duration: .2,
+                    stagger: 0.08,
+                    delay: 0.6
                 });
             }
         });
@@ -38,9 +41,9 @@ export default function TextScroll({value}) {
     }, []);
 
     return (
-        <div className='text-black text-8xl w-full h-[120vh] flex items-center justify-center px-20'>
+        <div className='text-scroll text-black text-8xl w-full h-[120vh] flex items-center justify-center px-20'>
             <div>
-                <p ref={el => textRefs.current[0] = el} className="text-target text-teal-700">{value}</p>
+                <h1 ref={el => textRefs.current[0] = el} className="text-target text-teal-700">{value}</h1>
             </div >
 
         </div>

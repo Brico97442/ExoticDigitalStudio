@@ -1,22 +1,23 @@
 'use client';
 import gsap from 'gsap';
 import { useEffect, useRef } from 'react';
+import SplitType from 'split-type';
 
 export default function Pricing() {
+
     const sliderData = [
         {
-            title: "Web starter pack 300€",
-            description:
-                "Idéal pour les petites entreprises ou les entrepreneurs qui ont besoin d'une présence en ligne professionnelle sans fonctionnalités complexes.",
+            title: "Web starter 300€",
+            description: "Idéal pour les petites entreprises ou les entrepreneurs qui ont besoin d'une présence en ligne professionnelle sans fonctionnalités complexes.",
             classNameColor: "bg-teal-800",
         },
         {
-            title: "Web Starter Standard 500€",
+            title: "Web Standard 500€",
             description: "Parfait pour les entreprises de taille moyenne qui veulent un site web plus complet avec des fonctionnalités additionnelles.",
             classNameColor: "bg-teal-500",
         },
         {
-            title: "Web Starter Premium 1000€",
+            title: "Web Premium 1000€",
             description: "Pour les entreprises ou associations qui ont besoin d'un site web complet et performant avec des fonctionnalités sur mesure.",
             classNameColor: "bg-teal-300",
         },
@@ -27,52 +28,68 @@ export default function Pricing() {
         }
     ];
 
-    useEffect(() => {
-        gsap.fromTo(['#price-title', '#title-text','#price-container'], {
-            y: `${100}%`,
-            opacity: 0,
-            ease: "power4.inOut",
-
-        },
-            {
-                y: 0,
-                opacity: 1,
-                duration: 1,
-                stagger: 0.1,
-                ease: "power4.inOut",
-
-            });
-    }, []);
-
+    const textRef = useRef([]);
     const overlays = useRef([]);
 
-    
+    useEffect(() => {
+        const splitTextInstances = textRef.current.map((ref) => {
+            return new SplitType(ref, { types: 'chars, words' });
+        });
+
+        splitTextInstances.forEach((splitText) => {
+            gsap.to(splitText.chars, {
+                y: 0,
+                opacity: 1,
+                ease: "power4.inOut",
+                visibility: "visible",
+                duration: .2,
+                stagger: 0.05,
+                delay: 0.6
+            });
+        });
+
+        gsap.fromTo("#title-text",
+            {
+            x:`${-100}vh`,
+            opacity: 0,
+            visibility: "hidden",
+            ease: "power4.inOut",
+            duration: 0.4,
+            },
+             {
+            x: 0,
+            opacity: 1,
+            visibility: "visible",
+            stagger: 0.07,
+            delay: 1.6
+        });
+    }, []);
+
     const onContainerEnter = () => {
         gsap.to("#title-text", {
             visibility: "hidden",
             ease: "sine.in",
-            
-        })
-    }
-    
+        });
+    };
+
     const onContainerExit = () => {
         gsap.to("#title-text", {
             visibility: "visible",
             opacity: 1,
             ease: "sine.out",
-        })
-    }
+        });
+    };
+
     const handleMouseEnter = (index) => {
         gsap.to(overlays.current[index], {
             opacity: 1,
             visibility: 'visible',
             duration: 0.5,
             ease: "sine.in",
-        })
+        });
     };
-    
+
     const handleMouseLeave = (index) => {
-        
         gsap.to(overlays.current[index], {
             opacity: 1,
             visibility: 'hidden',
@@ -82,17 +99,17 @@ export default function Pricing() {
     };
 
     return (
-        <section className="bg-black h-screen w-full relative m-auto">
-            <div className="flex flex-col w-full w-1/2 gap-20">
-                <h1 className='flex pricing text-[12vh] leading-none mt-20' id='price-title'>Nos Tarifs</h1>
+        <section className="pricing bg-black h-screen w-full relative m-auto ">
+            <div className="pricing-text flex flex-col w-full w-1/2 gap-20">
+                <h1 id='price-title' ref={(el) => textRef.current[0] = el} className='text-[12vh] leading-none mt-20 z-0' >Nos Tarifs</h1>
                 <p id='title-text' className='text-xl w-3/4'>Exotik Digital Studio, vous propose des formules adaptées à tout type de budget. Que vous soyez une petite ou moyenne entreprise, particulier ou professionnel, retrouvez la formule qui correspond à vos besoins.</p>
             </div>
-            <div id='price-container' onMouseEnter={() => onContainerEnter()} onMouseLeave={() => onContainerExit()}
-                className='flex text-black h-full w-full gap-6 justify-center items-center relative cursor-pointer '>
+            <div id='price-container' onMouseEnter={onContainerEnter} onMouseLeave={onContainerExit}
+                className='flex text-black h-full w-full justify-center items-center relative cursor-pointer z-30'>
                 {sliderData.map((data, index) => (
                     <div
                         key={index}
-                        className={`${data.classNameColor} flex items-center justify-center h-full w-1/4 rounded-lg transition-all hover:w-full`}
+                        className={`${data.classNameColor} flex items-center justify-center h-full w-1/4 transition-all hover:w-full`}
                         onMouseEnter={() => handleMouseEnter(index)}
                         onMouseLeave={() => handleMouseLeave(index)}
                     >
@@ -100,7 +117,7 @@ export default function Pricing() {
                             <h3 className='text-center'>{data.title}</h3>
                         </div>
                         <div
-                            ref={el => overlays.current[index] = el}
+                            ref={(el) => overlays.current[index] = el}
                             className='flex-col absolute w-full right-full bottom-0 bg-gray-500 bg-opacity-0.5 mx-6 transition-all h-4/6 p-6 text-white text-xl'
                             style={{ opacity: 0, visibility: 'hidden' }}
                         >
@@ -112,4 +129,3 @@ export default function Pricing() {
         </section>
     );
 }
-

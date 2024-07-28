@@ -68,7 +68,7 @@ export default function StickyCursorIndex({ stickyElement }) {
       <motion.div
         style={{ left: smoothMouse.x, top: smoothMouse.y }}
         className="rounded-[50%] w-[60px] h-[60px] bg-orange-400 cursor-auto fixed mix-blend-difference"
-        animate={{ width: curSorSize, height: curSorSize, zIndex: 0 }}
+        animate={{ width: curSorSize, height: curSorSize, zIndex: 1 }}
       >
       </motion.div>
     </div>
