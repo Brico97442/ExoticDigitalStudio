@@ -26,7 +26,7 @@ export default function Model() {
             // Initialisation des propriétés du matériau
             materialRef.current.color.set('#0f4c5c');
             materialRef.current.transparent = true;
-            materialRef.current.opacity = 0.6;
+            materialRef.current.opacity = 0.7;
             materialRef.current.map = texture; // Appliquer la texture comme alphaMap
             materialRef.current.dephtTest = false
             // materialRef.current.alphaMap = alphaMap; 
@@ -40,7 +40,7 @@ export default function Model() {
                     x: 1.5,
                     delay: 5,
                     duration: 1,
-                    onComplete: () => {
+                    onUpdate: () => {
                         if (materialRef) {
                             materialRef.current.transparent = false;
                             materialRef.current.opacity = 1;
