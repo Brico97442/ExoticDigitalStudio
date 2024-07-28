@@ -40,7 +40,7 @@ export default function Hero() {
         delay: 6
       });
 
-    gsap.fromTo(['#title-text'], {
+    gsap.fromTo(['#title-text','#hero-button'], {
       x: -200,
       opacity: 0,
       bottom: 0
@@ -83,7 +83,7 @@ export default function Hero() {
         <div className='gap-6 flex flex-col'>
         <h1 id='hero-title' className='text-[10vh] text-[#5F0F40]'>Besoin d'un site web</h1>
         <p id='title-text' className='text-6xl text-[#5F0F40] leading-none '> <br />à la <span className='text-teal-700 text-6xl font-bold uppercase'>Réunion </span>?</p>
-        <button className='w-full text-lg text-white font-bold border-[1px] bg-[#5F0F40] hover:bg-teal-700 max-w-[250px] rounded-lg p-3 z-10'>En savoir plus</button>
+        <button id='hero-button'className='w-full mt-6 text-lg text-white font-bold border-[1px] bg-[#5F0F40] hover:bg-teal-700 max-w-[250px] rounded-lg p-3 z-10'>En savoir plus</button>
       </div>
 
       </div>

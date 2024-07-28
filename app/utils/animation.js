@@ -22,8 +22,6 @@ export const animatePageIn = () => {
 };
 
 export const animatePageOut = (href, router) => {
-  const pushRouter = () => {
-  }
 
   const bannerOne = document.getElementById('banner-1');
   const bannerTwo = document.getElementById('banner-2');

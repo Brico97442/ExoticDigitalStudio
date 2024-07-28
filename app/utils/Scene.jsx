@@ -16,19 +16,18 @@ export default function Scene() {
     // Animation de la couleur de fond du noir à transparent
     gsap.to(divRef.current, {
       backgroundColor: 'rgba(0, 0, 0, 0)',
-      // duration: 2,
+      duration: 2,
       delay: 5,
       zIndex: 0,
       ease: "power4.inOut",
       right: 0,
       bottom: 0,
-      
       onStart: () => {
         gsap.to(divRef2.current, {
           display: "none",
           opacity: 0,
         })
-      }
+      },
     })
   }, []);
 
@@ -37,7 +36,7 @@ export default function Scene() {
 
     useEffect(() => {
       gsap.to(camera.position, {
-        z: 11,
+        z: 10,
         x: 0.4,
         y: -0.4,
         duration: 2,
@@ -50,8 +49,8 @@ export default function Scene() {
 
 
   return (
-    <div ref={divRef} className='h-screen flex-col fixed bg-black items-center justify-center w-full flex z-[206]'>
-      <div ref={divRef2} className='absolute z-[207] top-0 left-0'>
+    <div ref={divRef} className='h-screen relatived flex-col fixed bg-black items-center justify-center w-full flex z-[206]'>
+      <div ref={divRef2} className='fixed z-[207] top-0 left-0 h-screen w-screen'>
         <Image src={logo} alt="logo de la compagnie" width={320} height={50} />
         <h1 className='ml-20'> En chargement . . .</h1>
       </div>
@@ -59,10 +58,10 @@ export default function Scene() {
         <Suspense fallback={null}>
           <Model />
         </Suspense>
-        <ambientLight castShadow position={[0, 0, 0.6]} intensity={10} />
+        <ambientLight castShadow position={[0, 0, 0.8]} intensity={10} />
         <Environment preset="forest" />
         {/* <OrbitControls /> */}
-        <CameraAnimation position={[-0.4, 0.4, 11]} />
+        <CameraAnimation position={[-0.4, 0.4, 10]} />
       </Canvas>
     </div>
   );
