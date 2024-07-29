@@ -160,7 +160,7 @@ section span {
 }
 
 .mask {
-  position: absolute;
+  position: fixed;
   mask-image: url('../assets/Ellipse.svg');
   mask-repeat: no-repeat;
   mask-size: 40px;
@@ -207,6 +207,7 @@ section span {
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
   line-height: 9vh;
 }
+
 .pricing p {
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
   line-height: 3vh;
@@ -223,6 +224,6 @@ section span {
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
 }
 
-h1{
+h1 {
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
 }

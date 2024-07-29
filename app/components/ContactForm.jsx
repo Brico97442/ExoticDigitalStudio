@@ -29,7 +29,7 @@ function ContactForm() {
             <form ref={form} onSubmit={sendEmail} className="flex flex-col gap-6 w-full text-black">
 
                 <input className="h-[10vh]"
-                    v type="text" id="user_name" name="user_name" required placeholder="Nom" />
+                    type="text" id="user_name" name="user_name" required placeholder="Nom" />
                 <input
                     type="email"
                     id="email"
