@@ -36,17 +36,15 @@ export default function Model({ mousePosition }) {
         onUpdate: () => {
             materialRef.current.transparent = false;
             materialRef.current.opacity = 1;
-            setInitialRotation({ x: initialRotationX, y: initialRotationY });
-            island.current.rotation.set(initialRotationX, -45 * (Math.PI / 180), 0);
-          
-        }
+        },
+       
       });
     }
   }, []);
 
   useFrame(() => {
     if (island.current) {
-      const rotationFactor = 0.6;
+      const rotationFactor = 0.3;
       island.current.rotation.y = initialRotation.y + mousePosition.x * rotationFactor;
       island.current.rotation.x = initialRotation.x - mousePosition.y * rotationFactor;
     }
