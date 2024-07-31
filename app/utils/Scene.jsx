@@ -17,7 +17,7 @@ export default function Scene() {
     gsap.to(divRef.current, {
       backgroundColor: 'rgba(0, 0, 0, 0)',
       duration: 2,
-      delay: 5,
+      delay: 15,
       zIndex: 0,
       ease: "power4.inOut",
       onStart: () => {
@@ -45,6 +45,9 @@ export default function Scene() {
   // Numeric counter 
   let counterElement;
   let currentValue = 0;
+  const totalDuration = 15000; // Durée totale en ms (10 secondes)
+  const updatesCount = 100; // Nombre total de mises à jour
+  const delay = totalDuration / updatesCount; // Délai entre chaque mise à jour
 
   function startLoader() {
     counterElement = document.getElementById('couter-number');
@@ -55,15 +58,9 @@ export default function Scene() {
     if (currentValue >= 100) {
       return;
     }
-    currentValue += Math.floor(Math.random() * 10) + 1;
-    if (currentValue > 100) {
-      currentValue = 100;
-    }
-    if (counterElement) {
-      counterElement.textContent = currentValue;
-    }
-    let delay = Math.floor(Math.random() * 200) + 50;
-    setTimeout(updateCounter, delay);
+    currentValue++;
+    counterElement.textContent = currentValue;
+    setTimeout(updateCounter, delay); // Utilisation du délai calculé
   }
 
   function CameraAnimation() {
@@ -71,7 +68,7 @@ export default function Scene() {
 
     useEffect(() => {
       gsap.to(camera.position, {
-        z: 28, // Ajustez cette valeur pour éloigner la caméra
+        z: 30, // Ajustez cette valeur pour éloigner la caméra
         x: 0.4,
         y: -0.4,
         duration: 2,
@@ -80,9 +77,8 @@ export default function Scene() {
 
       gsap.fromTo("#counter", {
         width: `${0}%`,
-        opacity: 0
       }, {
-        opacity: 1,
+        opacity: 0,
         width: `${100}%`,
         duration: 5,
         stagger: 0.1,
@@ -94,6 +90,12 @@ export default function Scene() {
   }
 
   useEffect(() => {
+    gsap.to("#counter-number",{
+      delay: 15,
+      ease: "power4.Out",
+      opacity:0
+    });
+
     startLoader();
   }, []);
 
@@ -101,14 +103,14 @@ export default function Scene() {
     <div ref={divRef} className='h-screen fixed flex-col fixed bg-black items-center justify-center w-full flex z-40'>
       <div ref={divRef2} className='fixed top-0 left-0 h-screen w-screen'>
         <Image src={logo} alt="logo de la compagnie" width={320} height={50} />
-        <h1 className='ml-20'> Loading . . .</h1>
+        {/* <h1 className='ml-20'> Loading . . .</h1> */}
+            <h1 id="couter-number" className='ml-20 text-6xl'>0</h1>
         <div>
-          <div className=' ml-20 counter-bg h-10 bg-white w-[400px]'>
-            <div id='counter' className='counter w-full h-full bg-gray-900 border-solid border-x-2 border-y-2 border-white'>
+          <div className=' ml-20 h-10 bg-white w-[400px]'>
+            <div id='counter' className='w-full h-full bg-gray-900 border-solid border-x-2 border-y-2 border-white'>
             </div>
           </div>
           <div>
-            <h1 id="couter-number">0</h1>
           </div>
         </div>
       </div>

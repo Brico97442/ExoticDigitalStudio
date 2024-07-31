@@ -18,7 +18,6 @@ export default function Model({ mousePosition }) {
     const [animationComplete, setAnimationComplete] = useState(false);
 
     useEffect(() => {
-        
         if (island && materialRef) {
             const initialRotationX = 5 * (Math.PI / 180);
             const initialRotationY = -75 * (Math.PI / 180);
@@ -33,25 +32,41 @@ export default function Model({ mousePosition }) {
             materialRef.current.depthTest = false;
 
             gsap.to(island.current.position, {
-
                 z: -3,
                 y: -0.8,
                 x: 1.5,
-                delay: 5,
+                delay: 15,
                 duration: 1,
                 onUpdate: () => {
                     setAnimationComplete(true);
                     materialRef.current.transparent = false;
                     materialRef.current.opacity = 1;
                 }
-
             });
         }
+    }, []);
 
+    useEffect(() => {
+        // Animation de la respiration pour les textes
+        if (textRef1.current && textRef2.current) {
+            gsap.to(textRef1.current.material, {
+                opacity: 0.5,
+                duration: 1,
+                repeat: -1,
+                yoyo: true,
+                ease: 'power1.inOut'
+            });
+            gsap.to(textRef2.current.material, {
+                opacity: 0.5,
+                duration: 1,
+                repeat: -1,
+                yoyo: true,
+                ease: 'power1.inOut'
+            });
+        }
     }, []);
 
     useFrame(() => {
-
         if (island.current) {
             const rotationFactor = 0.4;
             let rotationX = initialRotation.x - mousePosition.y * rotationFactor;
@@ -68,7 +83,6 @@ export default function Model({ mousePosition }) {
                 textRef2.current.rotation.set(0, -rotationY, 0);
             }
         }
-
     });
 
     return (
@@ -93,11 +107,6 @@ export default function Model({ mousePosition }) {
                 </Text>
                 <pointLight position={[1.08, -0.1, 0.33]} intensity={55} color={'red'} />
             </mesh>
-            {/* <mesh geometry={nodes.location.geometry}>
-                <meshStandardMaterial />
-            </mesh> */}
         </group>
     );
 }
-
-
