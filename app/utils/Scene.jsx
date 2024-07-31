@@ -22,7 +22,7 @@ export default function Scene() {
       ease: "power4.inOut",
       onStart: () => {
         gsap.to(divRef2.current, {
-          display: "none",
+          // display: "none",
           opacity: 0,
         });
       },
@@ -91,7 +91,6 @@ export default function Scene() {
 
   useEffect(() => {
     gsap.to("#counter-number",{
-      delay: 15,
       ease: "power4.Out",
       opacity:0
     });
@@ -100,7 +99,7 @@ export default function Scene() {
   }, []);
 
   return (
-    <div ref={divRef} className='h-screen fixed flex-col fixed bg-black items-center justify-center w-full flex z-40'>
+    <div ref={divRef} className='h-screen fixed flex-col fixed bg-black items-center justify-center w-full flex z-[206]'>
       <div ref={divRef2} className='fixed top-0 left-0 h-screen w-screen'>
         <Image src={logo} alt="logo de la compagnie" width={320} height={50} />
         {/* <h1 className='ml-20'> Loading . . .</h1> */}

@@ -36,6 +36,7 @@ export default function Model({ mousePosition }) {
                 y: -0.8,
                 x: 1.5,
                 delay: 15,
+                opacity:1,
                 duration: 1,
                 onUpdate: () => {
                     setAnimationComplete(true);
