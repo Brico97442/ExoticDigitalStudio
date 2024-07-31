@@ -51,14 +51,14 @@ export default function Model({ mousePosition }) {
         if (textRef1.current && textRef2.current) {
             gsap.to(textRef1.current.material, {
                 opacity: 0.1,
-                duration: 1.5,
+                duration: 1.7,
                 repeat: -1,
                 yoyo: true,
                 ease: 'power1.inOut'
             });
             gsap.to(textRef2.current.material, {
                 opacity: 0.1,
-                duration: 1.5,
+                duration: 1.7,
                 repeat: -1,
                 yoyo: true,
                 ease: 'power1.inOut'
