@@ -31,7 +31,7 @@ export default function Model({ mousePosition }) {
 
             islandMaterialRef.current.color.set('#0f4c5c');
             islandMaterialRef.current.transparent = true;
-            islandMaterialRef.current.opacity = 0.7;
+            islandMaterialRef.current.opacity = 0.8;
             islandMaterialRef.current.map = texture;
             islandMaterialRef.current.depthTest = false;
 
@@ -52,28 +52,31 @@ export default function Model({ mousePosition }) {
 
         // Animation de la respiration pour les textes
         if (textRef1.current && textRef2.current) {
-            gsap.to(textRef1.current.material, {
+            gsap.from(textRef1.current.material, {
                 opacity: 0.1,
                 duration: 1.7,
                 repeat: -1,
                 yoyo: true,
                 ease: 'power1.inOut'
             });
-            gsap.to(textRef2.current.material, {
+            gsap.from(textRef2.current.material, {
                 opacity: 0.1,
                 duration: 1.7,
                 repeat: -1,
                 yoyo: true,
                 ease: 'power1.inOut'
             });
+        }
+
+        if (location.current && locationMaterialRef.current) {
+            locationMaterialRef.current.color.set('#0000'); // Set the color for the location mesh
+            locationMaterialRef.current.transparent=false; // Set the color for the location mesh
+            locationMaterialRef.current.depthTest = false;
+            locationMaterialRef.current.opacity = 1
         }
     }, []);
 
-    useEffect(() => {
-        if (location.current && locationMaterialRef.current) {
-            locationMaterialRef.current.color.set('#ff0000'); // Set the color for the location mesh
-        }
-    }, []);
+   
 
     useFrame(() => {
         if (island.current) {
@@ -92,6 +95,12 @@ export default function Model({ mousePosition }) {
                 textRef2.current.rotation.set(0, -rotationY, 0);
             }
         }
+
+        if (location.current) {
+            location.current.rotation.y += 0.01; // Ajustez cette valeur pour contrôler la vitesse de rotation
+        }
+
+
     });
 
     return (
@@ -115,7 +124,7 @@ export default function Model({ mousePosition }) {
                     Le Tampon
                 </Text>
                 <pointLight position={[1.08, -0.1, 0.33]} intensity={55} color={'red'} />
-                <mesh ref={location} geometry={locationNodes.location.geometry} scale={[0.01, 0.01, 0.01]}>
+                <mesh ref={location} geometry={locationNodes.location.geometry} scale={[0.007, 0.007, 0.007]} position={[1.1, -0.05, 0.32]}>
                     <meshStandardMaterial ref={locationMaterialRef} />
                 </mesh>
             </mesh>
