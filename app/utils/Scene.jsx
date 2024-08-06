@@ -5,25 +5,59 @@ import Model from './Model';
 import { OrbitControls, Environment } from '@react-three/drei';
 import { gsap } from 'gsap';
 import Image from 'next/image';
+import { ScrollTrigger } from 'gsap/all';
 import logo from '../../assets/LogoExoticDigitalStudioWhite.png';
 
 export default function Scene() {
   const divRef = useRef(null);
   const divRef2 = useRef(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const island = useRef(null);
 
   useEffect(() => {
     // Animation de la couleur de fond du noir à transparent
-    gsap.to(divRef.current, {
-      backgroundColor: 'rgba(0, 0, 0, 0)',
-      duration: 2,
-      delay: 1500,
-      zIndex: 0,
-      ease: "power4.inOut",
-      onStart: () => {
+    ScrollTrigger.create({
+      trigger: divRef.current,
+      start: 'top top',
+      end: '+=500',
+      scrub: 1,
+      onEnter: () => {
+        gsap.to(divRef.current, {
+          backgroundColor: 'rgba(0, 0, 0, 0)',
+          duration: 2,
+          zIndex: 0,
+          ease: 'power4.inOut',
+          onStart: () => {
+            gsap.to(divRef2.current, {
+              opacity: 0,
+            });
+          },
+        });
+        // Animation de l'île lors du défilement
+        gsap.to(island.current.position, {
+          x: 0.5,
+          y: -0.2,
+          z: -1,
+          duration: 2,
+          ease: 'power4.inOut',
+        });
+      },
+      onLeaveBack: () => {
+        gsap.to(divRef.current, {
+          backgroundColor: 'rgba(0, 0, 0, 1)',
+          duration: 2,
+          zIndex: 206,
+          ease: 'power4.inOut',
+        });
         gsap.to(divRef2.current, {
-          // display: "none",
-          opacity: 0,
+          opacity: 1,
+        });
+        gsap.to(island.current.position, {
+          x: 0,
+          y: 0,
+          z: 0,
+          duration: 2,
+          ease: 'power4.inOut',
         });
       },
     });
@@ -43,25 +77,25 @@ export default function Scene() {
   }, []);
 
   // Numeric counter 
-  // let counterElement;
-  // let currentValue = 0;
-  // const totalDuration = 15000; // Durée totale en ms (10 secondes)
-  // const updatesCount = 100; // Nombre total de mises à jour
-  // const delay = totalDuration / updatesCount; // Délai entre chaque mise à jour
+  let counterElement;
+  let currentValue = 0;
+  const totalDuration = 15000; // Durée totale en ms (10 secondes)
+  const updatesCount = 100; // Nombre total de mises à jour
+  const delay = totalDuration / updatesCount; // Délai entre chaque mise à jour
 
-  // function startLoader() {
-  //   counterElement = document.getElementById('couter-number');
-  //   updateCounter();
-  // }
+  function startLoader() {
+    counterElement = document.getElementById('couter-number');
+    updateCounter();
+  }
 
-  // function updateCounter() {
-  //   if (currentValue >= 100) {
-  //     return;
-  //   }
-  //   currentValue++;
-  //   counterElement.textContent = currentValue;
-  //   setTimeout(updateCounter, delay); // Utilisation du délai calculé
-  // }
+  function updateCounter() {
+    if (currentValue >= 100) {
+      return;
+    }
+    currentValue++;
+    counterElement.textContent = currentValue;
+    setTimeout(updateCounter, delay); // Utilisation du délai calculé
+  }
 
   function CameraAnimation() {
     const { camera } = useThree();
@@ -75,51 +109,51 @@ export default function Scene() {
       //   ease: 'power4.inOut',
       // });
 
-      gsap.fromTo("#counter", {
+      gsap.from("#counter", {
         width: `${0}%`,
-      }, {
-        opacity: 0,
-        width: `${100}%`,
-        duration: 5,
+        duration: 10,
         stagger: 0.1,
+        opacity: 0,
+
       });
 
-    }, [camera]);
+    }, []);
 
     return null;
   }
 
-  // useEffect(() => {
-  //   gsap.to("#counter-number",{
-  //     ease: "power4.Out",
-  //     opacity:0
-  //   });
+  useEffect(() => {
+    gsap.to("#counter-number",{
+      ease: "power4.Out",
+      opacity:0
+    });
 
-  //   startLoader();
-  // }, []);
+    startLoader();
+  }, []);
 
   return (
     <div ref={divRef} className='h-screen fixed flex-col fixed bg-black items-center justify-center w-full flex z-[206]'>
       <div ref={divRef2} className='fixed top-0 left-0 h-screen w-screen'>
         <Image src={logo} alt="logo de la compagnie" width={320} height={50} />
         {/* <h1 className='ml-20'> Loading . . .</h1> */}
-        {/* <h1 id="couter-number" className='ml-20 text-6xl'>0</h1> */}
-        {/* <div>
+        <h1 id="couter-number" className='ml-20 text-6xl'>0</h1>
+        <div>
           <div className=' ml-20 h-10 bg-white w-[400px]'>
             <div id='counter' className='w-full h-full bg-gray-900 border-solid border-x-2 border-y-2 border-white'>
             </div>
           </div>
           <div>
           </div>
-        </div> */}
+        </div>
       </div>
+
       <Canvas camera={{ position: [0,0,6]}}>
         <Suspense fallback={null}>
-          <Model mousePosition={mousePosition}/>
+          <Model mousePosition={mousePosition}  island={island}/>
         </Suspense>
         <ambientLight castShadow position={[0, 0, 1]} intensity={9} color={'white'} />
         <Environment preset="forest" />
-        <OrbitControls />
+        {/* <OrbitControls /> */}
         <CameraAnimation />
       </Canvas>
     </div>
