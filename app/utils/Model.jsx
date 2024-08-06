@@ -35,60 +35,12 @@ export default function Model({ mousePosition, island }) {
             island.current.rotation.set(initialRotationX, initialRotationY, 0);
 
             island.current.transparent = true;
+            island.current.depthTest= false;
             islandMaterialRef.current.color.set('#0f4c5c');
             islandMaterialRef.current.opacity = 0.8;
             islandMaterialRef.current.map = texture;
             islandMaterialRef.current.depthTest = false;
-            // islandMaterialRef.current.side = 1; // THREE.FrontSide is 2, to make the material front-only
-
-            // gsap.to(island.current.position, {
-            //     // scrollTrigger: island,
-            //     z: -1,
-            //     y: -0.2,
-            //     x: 0.5,
-            //     delay: 10,
-            //     opacity: 1,
-            //     duration: 1,
-            //     onComplete: () => {
-            //         setAnimationComplete(true);
-            //         islandMaterialRef.current.transparent = false;
-            //         islandMaterialRef.current.opacity = 1;
-            //     }
-            // });
-            // ScrollTrigger.create({
-            //     trigger: island.current,
-            //     start: 'top center',
-            //     end: 'bottom center',
-            //     onEnter: () => {
-            //         gsap.to(island.current.position, {
-            //             z: -1,
-            //             y: -0.2,
-            //             x: 0.5,
-            //             opacity: 1,
-            //             duration: 1,
-            //             onComplete: () => {
-            //                 setAnimationComplete(true);
-            //                 islandMaterialRef.current.transparent = false;
-            //                 islandMaterialRef.current.opacity = 1;
-            //             }
-            //         });
-            //     },
-            //     onLeaveBack: () => {
-            //         gsap.to(island.current.position, {
-            //             z: 0,
-            //             y: 0,
-            //             x: 0,
-            //             opacity: 0.8,
-            //             duration: 1,
-            //             onComplete: () => {
-            //                 setAnimationComplete(false);
-            //                 islandMaterialRef.current.transparent = true;
-            //                 islandMaterialRef.current.opacity = 0.8;
-            //             }
-            //         });
-            //     }
-            // });
-
+            islandMaterialRef.current.side = 1; // THREE.FrontSide is 2, to make the material front-only
         }
 
         // Animation de la respiration pour les textes

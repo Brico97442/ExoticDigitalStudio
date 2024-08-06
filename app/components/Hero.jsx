@@ -10,8 +10,9 @@ import gsap from 'gsap'
 import TextScroll from './TextScroll'
 
 
-export default function Hero() {
+export default function Hero({target}) {
   const container = useRef(null);
+
   const { scrollYProgress } = useScroll({
     target: container,
     offset: ['start start', 'end end']
@@ -40,7 +41,7 @@ export default function Hero() {
         delay: 6
       });
 
-    gsap.fromTo(['#title-text','#hero-button'], {
+    gsap.fromTo(['#title-text', '#hero-button'], {
       x: -200,
       opacity: 0,
       bottom: 0
@@ -81,15 +82,17 @@ export default function Hero() {
     <div id='hero' className='hero w-full bg-[#FFECD1]'>
       <div className='h-[100vh] flex flex-col justify-center items-center  '>
         <div className='gap-6 flex flex-col'>
-        <h1 id='hero-title' className='text-[10vh] text-[#5F0F40]'>Besoin d'un site web</h1>
-        <p id='title-text' className='text-6xl text-[#5F0F40] leading-none '> <br />à la <span className='text-teal-700 text-6xl font-bold uppercase'>Réunion </span>?</p>
-        <button id='hero-button'className='w-full mt-6 text-lg text-white font-bold border-[1px] bg-[#5F0F40] hover:bg-teal-700 max-w-[250px] rounded-lg p-3 z-10'>En savoir plus</button>
+          <h1 id='hero-title' className='text-[10vh] text-[#5F0F40]'>Besoin d'un site web</h1>
+          <p id='title-text' className='text-6xl text-[#5F0F40] leading-none '> <br />à la <span className='text-teal-700 text-6xl font-bold uppercase'>Réunion </span>?</p>
+          <button id='hero-button' className='w-full mt-6 text-lg text-white font-bold border-[1px] bg-[#5F0F40] hover:bg-teal-700 max-w-[250px] rounded-lg p-3 z-10'>En savoir plus</button>
+        </div>
       </div>
-
+      <div className="flex h-screen">
+      <div id='target' ref={target} className='w-1/2 bg-red-400 flex items-center justify-center'><p>Cible</p></div>
+      <div className='w-1/2 bg-blue-400'></div>
       </div>
-
-      <TextScroll value="Réimaginer l'expérience web"/>
-      <div className="flex h-[300vh] w-full relative w-full mt-[50vh]" ref={container}>
+      <TextScroll value="Réimaginer l'expérience web" />
+      <div className="flex h-[300vh]  relative w-full mt-[50vh]" ref={container}>
 
         <div className=" parrallaxe flex flex-col h-[100vh] w-full top-0 left-0 sticky overflow-hidden ">
           {

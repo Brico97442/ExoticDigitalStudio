@@ -22,19 +22,22 @@ export default function Scene() {
       start: 'top top',
       end: '+=500',
       scrub: 1,
+      
       onEnter: () => {
         gsap.to(divRef.current, {
           backgroundColor: 'rgba(0, 0, 0, 0)',
           duration: 2,
           zIndex: 0,
           ease: 'power4.inOut',
+          
           onStart: () => {
             gsap.to(divRef2.current, {
               opacity: 0,
             });
           },
-          
+
         });
+        
         // Animation de l'île lors du défilement
         gsap.to(island.current.position, {
           x: 0.5,
@@ -42,7 +45,7 @@ export default function Scene() {
           z: -0.8,
           duration: 1.5,
           ease: 'power4.inOut',
-          onComplete: () => setLoading(false) // Fin du chargement
+          onComplete: () => setLoading(false), // Fin du chargement
         });
       },
       onLeaveBack: () => {
@@ -61,9 +64,34 @@ export default function Scene() {
           z: 0,
           duration: 1,
           ease: 'power4.inOut',
-         });
+        });
       },
     });
+
+    // ScrollTrigger.create({
+    //   trigger: target.current,
+    //   start: 'top center',
+    //   end: 'bottom center',
+    //   scrub: 1,
+    //   onEnter: () => {
+    //     gsap.to(island.current.position, {
+    //       x: 1,
+    //       y: 0.5,
+    //       z: -0.5,
+    //       duration: 1.5,
+    //       ease: 'power4.inOut',
+    //     });
+    //   },
+    //   onLeaveBack: () => {
+    //     gsap.to(island.current.position, {
+    //       x: 0.5,
+    //       y: -0.2,
+    //       z: -0.8,
+    //       duration: 1.5,
+    //       ease: 'power4.inOut',
+    //     });
+    //   },
+    // });
 
     const handleMouseMove = (event) => {
       setMousePosition({
@@ -108,20 +136,20 @@ export default function Scene() {
       noScroll.classList.remove('no-scroll');
     }
 
-    gsap.from("#counter", {
-      width: 0,
+    startLoader()
+    gsap.fromTo("#counter", {
+      width: `${0}%`
+    }, {
+      width: `${100}%`,
       duration: 10,
       stagger: 0.1,
-      opacity: 0,
-
     });
-    startLoader()
   }, [loading]);
 
 
   return (
     <div ref={divRef} className='h-screen fixed flex-col fixed bg-black items-center justify-center w-full flex z-[206]'>
-      <div ref={divRef2} className='fixed top-0 left-0 h-screen w-screen'>
+      <div ref={divRef2} className='fixed top-0 left-0 h-screen w-screen z-[205]'>
         <Image src={logo} alt="logo de la compagnie" width={320} height={50} />
         {/* <h1 className='ml-20'> Loading . . .</h1> */}
         <h1 id="couter-number" className='ml-20 text-6xl'>0</h1>
@@ -133,14 +161,14 @@ export default function Scene() {
           <div>
           </div>
         </div>
-        <p className='text-2xl w-screen h-screen fixed flex justify-center items-end z-[206]'>Scroller pour découvrir</p>
+        <p className='text-xl w-screen fixed flex justify-center z-[208] bottom-0 mb-20'>Scroller pour découvrir</p>
       </div>
 
-      <Canvas camera={{ position: [0,0,6]}}>
+      <Canvas camera={{ position: [0, 0, 6] }}>
         <Suspense fallback={null}>
-          <Model mousePosition={mousePosition}  island={island}/>
+          <Model mousePosition={mousePosition} island={island} />
         </Suspense>
-        <ambientLight castShadow position={[1, 4, 1]} intensity={9} color={'white'} />
+        <ambientLight position={[1, 4, 1]} intensity={9} color={'white'} />
         <Environment preset="city" />
         {/* <OrbitControls /> */}
         {/* <CameraAnimation /> */}
