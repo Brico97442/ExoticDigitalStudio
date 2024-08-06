@@ -78,8 +78,8 @@ export default function Hero() {
   ]
   return (
 
-    <div className='hero w-full bg-[#FFECD1]'>
-      <div className='h-[100vh] flex flex-col justify-center items-center '>
+    <div id='hero' className='hero w-full bg-[#FFECD1]'>
+      <div className='h-[100vh] flex flex-col justify-center items-center  '>
         <div className='gap-6 flex flex-col'>
         <h1 id='hero-title' className='text-[10vh] text-[#5F0F40]'>Besoin d'un site web</h1>
         <p id='title-text' className='text-6xl text-[#5F0F40] leading-none '> <br />à la <span className='text-teal-700 text-6xl font-bold uppercase'>Réunion </span>?</p>
@@ -89,7 +89,7 @@ export default function Hero() {
       </div>
 
       <TextScroll value="Réimaginer l'expérience web"/>
-      <div className="flex h-[300vh]  relative w-full mt-[50vh]" ref={container}>
+      <div className="flex h-[300vh] w-full relative w-full mt-[50vh]" ref={container}>
 
         <div className=" parrallaxe flex flex-col h-[100vh] w-full top-0 left-0 sticky overflow-hidden ">
           {

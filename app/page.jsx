@@ -28,10 +28,10 @@ export default function Home() {
 
   return (
 
-    <main className="flex w-full relative min-h-screen flex-col bg-[#FFECD1]">
-      {/* <Leva hidden={true} /> */}
+    <main className="flex w-full relative min-h-screen flex-col bg-blue-200">
       <Scene />
-      <div className="flex item-center justify-center w-screen bg-[#FFECD1] ">
+      {/* <Leva hidden={true} /> */}
+      <div className="flex item-center justify-center bg-[#FFECD1] ">
         <Hero />
       </div>
       <SkillsSection />

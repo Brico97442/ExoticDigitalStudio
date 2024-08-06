@@ -13,6 +13,7 @@ export default function Scene() {
   const divRef2 = useRef(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const island = useRef(null);
+  const [loading, setLoading] = useState(true); // Ajouter un état pour le chargement
 
   useEffect(() => {
     // Animation de la couleur de fond du noir à transparent
@@ -32,20 +33,22 @@ export default function Scene() {
               opacity: 0,
             });
           },
+          
         });
         // Animation de l'île lors du défilement
         gsap.to(island.current.position, {
           x: 0.5,
           y: -0.2,
-          z: -1,
-          duration: 2,
+          z: -0.8,
+          duration: 1.5,
           ease: 'power4.inOut',
+          onComplete: () => setLoading(false) // Fin du chargement
         });
       },
       onLeaveBack: () => {
         gsap.to(divRef.current, {
           backgroundColor: 'rgba(0, 0, 0, 1)',
-          duration: 2,
+          duration: 1,
           zIndex: 206,
           ease: 'power4.inOut',
         });
@@ -56,9 +59,9 @@ export default function Scene() {
           x: 0,
           y: 0,
           z: 0,
-          duration: 2,
+          duration: 1,
           ease: 'power4.inOut',
-        });
+         });
       },
     });
 
@@ -97,39 +100,24 @@ export default function Scene() {
     setTimeout(updateCounter, delay); // Utilisation du délai calculé
   }
 
-  function CameraAnimation() {
-    const { camera } = useThree();
-
-    useEffect(() => {
-      // gsap.to(camera.position, {
-      //   z: 30, // Ajustez cette valeur pour éloigner la caméra
-      //   x: 0.4,
-      //   y: -0.4,
-      //   duration: 2,
-      //   ease: 'power4.inOut',
-      // });
-
-      gsap.from("#counter", {
-        width: `${0}%`,
-        duration: 10,
-        stagger: 0.1,
-        opacity: 0,
-
-      });
-
-    }, []);
-
-    return null;
-  }
-
   useEffect(() => {
-    gsap.to("#counter-number",{
-      ease: "power4.Out",
-      opacity:0
-    });
+    const noScroll = document.getElementById('hero')
+    if (loading) {
+      noScroll.classList.add('no-scroll');
+    } else {
+      noScroll.classList.remove('no-scroll');
+    }
 
-    startLoader();
-  }, []);
+    gsap.from("#counter", {
+      width: 0,
+      duration: 10,
+      stagger: 0.1,
+      opacity: 0,
+
+    });
+    startLoader()
+  }, [loading]);
+
 
   return (
     <div ref={divRef} className='h-screen fixed flex-col fixed bg-black items-center justify-center w-full flex z-[206]'>
@@ -145,17 +133,19 @@ export default function Scene() {
           <div>
           </div>
         </div>
+        <p className='text-2xl w-screen h-screen fixed flex justify-center items-end z-[206]'>Scroller pour découvrir</p>
       </div>
 
       <Canvas camera={{ position: [0,0,6]}}>
         <Suspense fallback={null}>
           <Model mousePosition={mousePosition}  island={island}/>
         </Suspense>
-        <ambientLight castShadow position={[0, 0, 1]} intensity={9} color={'white'} />
-        <Environment preset="forest" />
+        <ambientLight castShadow position={[1, 4, 1]} intensity={9} color={'white'} />
+        <Environment preset="city" />
         {/* <OrbitControls /> */}
-        <CameraAnimation />
+        {/* <CameraAnimation /> */}
       </Canvas>
     </div>
   );
 }
+gsap.registerPlugin(ScrollTrigger);

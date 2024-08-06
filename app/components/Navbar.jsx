@@ -7,8 +7,8 @@ import { forwardRef } from "react"
 const Navbar = forwardRef(function index(props,ref) {
 
     return (
-        <header className="fixed w-full z-20  ">
-            <nav className="flex justify-between font-bold items-center p-3 uppercase text-[#5F0F40] text-lg">
+        <header className="fixed w-full z-20">
+            <nav className="flex justify-between font-bold items-center uppercase text-[#5F0F40] text-lg">
                 <TransitionLink href='/' className='mix-blend-difference' label={<Image src={logo} alt="logo de la compagnie" width={150} height={60} />}/> 
                 <ul className="flex gap-6 mr-6 items-center mix-blend-difference">
                     <li className="transition z-20">
