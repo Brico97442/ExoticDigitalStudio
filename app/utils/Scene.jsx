@@ -22,7 +22,6 @@ export default function Scene({ island, targetRef }) {
       trigger: divRef.current,
       start: 'top top',
       end: '+=500',
-      scrub: 1,
 
       onEnter: () => {
         gsap.to(divRef.current, {
@@ -74,44 +73,7 @@ export default function Scene({ island, targetRef }) {
       },
     });
 
-    // ScrollTrigger.create({
-    //   trigger: targetRef.current,
-    //   start: 'top center',
-    //   endTrigger: 'body',
-    //   end: '+=300',
-    //   scrub: 1,
-    //   // pin: true,
-    //   markers: true, // Epingler l'objet à la cible
-    //   onEnter: () => {
-    //     gsap.to(island.current.position, {
-    //       x: -1,
-    //       y: 0,
-    //       z: -0.5,
-    //       duration: 1.5,
-    //       ease: 'power4.inOut',
-    //     });
-    //     gsap.to(island.current.rotation, {
-    //       rotationX: 75 * (Math.PI / 180),
-    //       duration: 1.5,
-    //       ease: 'power4.inOut',
-    //     });
-    //   },
-    //   onLeaveBack: () => {
-    //     gsap.to(island.current.position, {
-    //       x: 0.5,
-    //       y: -0.2,
-    //       z: -0.8,
-    //       duration: 1.5,
-    //       ease: 'power4.inOut',
-    //     });
-    //     // gsap.to(island.current.rotation, {
-    //     //   z: "-=0.5",
-    //     //   duration: 1.5,
-    //     //   ease: 'power4.inOut',
-    //     // });
-    //   },
-
-    // });
+   
 
     const handleMouseMove = (event) => {
       setMousePosition({
@@ -130,7 +92,7 @@ export default function Scene({ island, targetRef }) {
   /////////////////////////////////////////////// Numeric counter /////////////////////////////////////////////////////////////////////////////////////////////
   let counterElement;
   let currentValue = 0;
-  const totalDuration = 10000; // Durée totale en ms (10 secondes)
+  const totalDuration = 15000; // Durée totale en ms (10 secondes)
   const updatesCount = 100; // Nombre total de mises à jour
   const delay = totalDuration / updatesCount; // Délai entre chaque mise à jour
 
@@ -140,7 +102,7 @@ export default function Scene({ island, targetRef }) {
   }
 
   function updateCounter() {
-    if (currentValue >= 100) {
+    if (currentValue === 100) {
       setLoadingComplete(true);
       return;
     }else{
@@ -153,8 +115,9 @@ export default function Scene({ island, targetRef }) {
     // Mise à jour de la largeur du compteur
     gsap.to("#counter", {
       width: `${currentValue}%`,
+      opacity:1,
       duration: delay / 1000, // Durée de l'animation pour chaque étape (convertie en secondes)
-      ease: 'power4.inOut',
+      ease: 'linear',
       onComplete: () => {
         updateCounter()
       },
@@ -183,8 +146,8 @@ export default function Scene({ island, targetRef }) {
         {/* <h1 className='ml-20'> Loading . . .</h1> */}
         <h1 id="couter-number" className='ml-20 text-6xl'>0</h1>
         <div>
-          <div className='absolute ml-20 mb-20 bottom-0 h-10 bg-white w-[400px]'>
-            <div id='counter' className='w-full h-full bg-gray-900 border-solid border-x-2 border-y-2 border-white'>
+          <div className='absolute ml-20 mb-20 bottom-0 h-10 bg-black w-[400px] border-solid border-x-2 border-y-2 border-white'>
+            <div id='counter' className='w-full h-full bg-white '>
             </div>
           </div>
           <div>
