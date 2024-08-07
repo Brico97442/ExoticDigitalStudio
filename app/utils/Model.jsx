@@ -25,6 +25,7 @@ export default function Model({ mousePosition, island ,animationComplete}) {
     const [initialRotation, setInitialRotation] = useState({ x: 0, y: 0 });
 
     useEffect(() => {
+        
         if (island.current && islandMaterialRef.current) {
 
             const initialRotationX = 5 * (Math.PI / 180);
@@ -67,21 +68,20 @@ export default function Model({ mousePosition, island ,animationComplete}) {
     useFrame(() => {
         if (island.current) {
             const rotationFactor = 0.2;
-            let rotationX = initialRotation.x;
-            let rotationY = initialRotation.y;
-    
-            if (!animationComplete) {
-                rotationX -= mousePosition.y * rotationFactor;
-                rotationY += mousePosition.x * rotationFactor;
-            } else {
-                rotationY += mousePosition.x * rotationFactor;
-            }
+            let rotationX = initialRotation.x -mousePosition.y * rotationFactor;
+            let rotationY = initialRotation.y +mousePosition.x * rotationFactor;
+            
+            // } else {
+            //     rotationX -= mousePosition.y * rotationFactor;
+            //     rotationY += mousePosition.x * rotationFactor;
+            // }
     
             island.current.rotation.set(rotationX, rotationY, 0);
             
             if (textRef1.current && textRef2.current) {
                 textRef1.current.rotation.set(0, -rotationY, 0);
                 textRef2.current.rotation.set(0, -rotationY, 0);
+                
             }
         }
     

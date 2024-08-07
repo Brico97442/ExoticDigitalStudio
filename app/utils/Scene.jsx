@@ -14,7 +14,7 @@ export default function Scene({ island, targetRef }) {
   const [animationComplete, setAnimationComplete] = useState(false);
 
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [loading, setLoading] = useState(true); // Ajouter un état pour le chargement
+  const [loadingComplete, setLoadingComplete] = useState(true); // Ajouter un état pour le chargement
 
   useEffect(() => {
     // Animation de la couleur de fond du noir à transparent
@@ -45,20 +45,26 @@ export default function Scene({ island, targetRef }) {
           duration: 2,
           ease: 'power4.inOut',
           onComplete: () => {
-            setLoading(false);
             setAnimationComplete(true); // Animation terminée
           },
         });
+
       },
+
       onLeaveBack: () => {
         gsap.to(divRef.current, {
           backgroundColor: 'rgba(0, 0, 0, 1)',
           duration: 1,
-          zIndex: 206,
+          zIndex:208,
           ease: 'power4.inOut',
+          onStart: () => {
+            setAnimationComplete(false); // Animation terminée
+          },
         });
         gsap.to(divRef2.current, {
           opacity: 1,
+          duration: 1,
+          ease: 'power4.inOut',
         });
         gsap.to(island.current.position, {
           x: 0,
@@ -66,53 +72,49 @@ export default function Scene({ island, targetRef }) {
           z: 0,
           duration: 1,
           ease: 'power4.inOut',
-          onStart: () => {
-            setLoading(true);
-            setAnimationComplete(false);
-          }
         });
 
       },
     });
 
-    ScrollTrigger.create({
-      trigger: targetRef.current,
-      start: 'top center',
-      endTrigger: 'body',
-      end: '+=300',
-      scrub: 1,
-      // pin: true,
-      markers: true, // Epingler l'objet à la cible
-      onEnter: () => {
-        gsap.to(island.current.position, {
-          x: -1,
-          y: 0,
-          z: -0.5,
-          duration: 1.5,
-          ease: 'power4.inOut',
-        });
-        gsap.to(island.current.rotation, {
-          rotationX: 75 * (Math.PI / 180),
-          duration: 1.5,
-          ease: 'power4.inOut',
-        });
-      },
-      onLeaveBack: () => {
-        gsap.to(island.current.position, {
-          x: 0.5,
-          y: -0.2,
-          z: -0.8,
-          duration: 1.5,
-          ease: 'power4.inOut',
-        });
-        // gsap.to(island.current.rotation, {
-        //   z: "-=0.5",
-        //   duration: 1.5,
-        //   ease: 'power4.inOut',
-        // });
-      },
-      
-    });
+    // ScrollTrigger.create({
+    //   trigger: targetRef.current,
+    //   start: 'top center',
+    //   endTrigger: 'body',
+    //   end: '+=300',
+    //   scrub: 1,
+    //   // pin: true,
+    //   markers: true, // Epingler l'objet à la cible
+    //   onEnter: () => {
+    //     gsap.to(island.current.position, {
+    //       x: -1,
+    //       y: 0,
+    //       z: -0.5,
+    //       duration: 1.5,
+    //       ease: 'power4.inOut',
+    //     });
+    //     gsap.to(island.current.rotation, {
+    //       rotationX: 75 * (Math.PI / 180),
+    //       duration: 1.5,
+    //       ease: 'power4.inOut',
+    //     });
+    //   },
+    //   onLeaveBack: () => {
+    //     gsap.to(island.current.position, {
+    //       x: 0.5,
+    //       y: -0.2,
+    //       z: -0.8,
+    //       duration: 1.5,
+    //       ease: 'power4.inOut',
+    //     });
+    //     // gsap.to(island.current.rotation, {
+    //     //   z: "-=0.5",
+    //     //   duration: 1.5,
+    //     //   ease: 'power4.inOut',
+    //     // });
+    //   },
+
+    // });
 
     const handleMouseMove = (event) => {
       setMousePosition({
@@ -128,51 +130,59 @@ export default function Scene({ island, targetRef }) {
     };
   }, []);
 
-  // Numeric counter 
+  /////////////////////////////////////////////// Numeric counter /////////////////////////////////////////////////////////////////////////////////////////////
   let counterElement;
   let currentValue = 0;
-  const totalDuration = 15000; // Durée totale en ms (10 secondes)
+  const totalDuration = 10000; // Durée totale en ms (10 secondes)
   const updatesCount = 100; // Nombre total de mises à jour
   const delay = totalDuration / updatesCount; // Délai entre chaque mise à jour
 
-  function startLoader() {
+  function startNumericLoader() {
     counterElement = document.getElementById('couter-number');
     updateCounter();
-    
   }
 
   function updateCounter() {
     if (currentValue >= 100) {
+      setLoadingComplete(true);
       return;
+    }else{
+      setLoadingComplete(false)
     }
+
     currentValue++;
     counterElement.textContent = currentValue;
-    setTimeout(updateCounter, delay); // Utilisation du délai calculé
+
+    // Mise à jour de la largeur du compteur
+    gsap.to("#counter", {
+      
+      width: `${currentValue}%`,
+      duration: delay / 1000, // Durée de l'animation pour chaque étape (convertie en secondes)
+      ease: 'power4.inOut',
+      onComplete: () => {
+        updateCounter()
+      },
+     
+    });
   }
 
-  useEffect(() => {
-    const noScroll = document.getElementById('hero')
-    if (loading) {
-      noScroll.classList.add('no-scroll');
-    } else {
-      noScroll.classList.remove('no-scroll');
-    }
+  // Initialisation de l'animation
 
-    startLoader()
-    gsap.fromTo("#counter", {
-      width: `${0}%`
-    }, {
-      width: `${100}%`,
-      duration: 10,
-      stagger: 0.1,
-      
-    });
-    
-  }, [loading]);
+  useEffect(() => {
+    // const hero = document.getElementById('hero')
+    if (!animationComplete) {
+      // hero.classList.add('no-scroll')
+      setAnimationComplete(false)
+      startNumericLoader()
+    }else{
+      // hero.classList.remove('no-scroll')
+    }
+  }, [animationComplete]);
 
 
   return (
-    <div ref={divRef} className='h-screen flex-col fixed bg-black items-center justify-center w-full flex z-[206]'>
+    <div ref={divRef} className={` ${animationComplete ? 'absolute' : 'fixed'} h-screen flex-col bg-black items-center justify-center w-full flex z-[206] overflow-hidden`}
+    >
       <div ref={divRef2} className='fixed top-0 left-0 h-screen w-screen z-[205]'>
         <Image src={logo} alt="logo de la compagnie" width={320} height={50} />
         {/* <h1 className='ml-20'> Loading . . .</h1> */}
@@ -185,7 +195,11 @@ export default function Scene({ island, targetRef }) {
           <div>
           </div>
         </div>
-        <p className='text-xl w-screen fixed flex justify-center z-[208] bottom-0 mb-20'>Scroller pour découvrir</p>
+        {loadingComplete && (
+          <p className='text-xl w-screen fixed flex justify-center z-[208] bottom-0 mb-20'>
+            Scroller pour découvrir
+          </p>
+        )}
       </div>
 
       <Canvas camera={{ position: [0, 0, 6] }}>

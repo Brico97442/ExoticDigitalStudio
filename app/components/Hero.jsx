@@ -80,7 +80,7 @@ export default function Hero({ target }) {
   return (
 
     <div id='hero' className='hero w-full bg-[#FFECD1]'>
-      <div className='h-[105vh] flex flex-col justify-center items-center  '>
+      <div className='h-[100vh] flex flex-col justify-center items-center'>
         <div className='gap-6 flex flex-col' data-speed='0.5'>
           <h1 id='hero-title' className='text-[10vh] text-[#5F0F40]'>Besoin d'un site web</h1>
           <p id='title-text' className='text-6xl text-[#5F0F40] leading-none '> <br />à la <span className='text-teal-700 text-6xl font-bold uppercase'>Réunion </span>?</p>

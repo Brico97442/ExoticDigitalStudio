@@ -29,15 +29,12 @@ export default function Home() {
     const island = useRef(null);
     const targetRef = useRef(null);
 
-
   return (
 
-    <main className="flex w-full relative min-h-screen flex-col">
+    <main id="main" className="flex w-full relative min-h-screen flex-col">
       <Scene island={island} targetRef={targetRef} />
       {/* <Leva hidden={true} /> */}
-      <div className="flex item-center justify-center bg-[#FFECD1]">
-      <Hero target={targetRef} />
-      </div>
+      <Hero target={targetRef}  />
       <SkillsSection />
       <VisualTextAnimation />
       <TextScroll value="La technologie avance tellement vite, ne nous laissons pas dépassé" />
