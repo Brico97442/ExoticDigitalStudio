@@ -29,6 +29,7 @@ export default function Scene({ island, targetRef }) {
           backgroundColor: 'rgba(0, 0, 0, 0)',
           duration: 2,
           zIndex: 0,
+          delay:1,
           ease: 'power4.inOut',
           onStart: () => {
             gsap.to(divRef2.current, {
@@ -44,22 +45,18 @@ export default function Scene({ island, targetRef }) {
           z: -0.8,
           duration: 2,
           ease: 'power4.inOut',
-          onComplete: () => {
-            setAnimationComplete(true); // Animation terminée
-          },
+          
         });
-
+        setAnimationComplete(true); // Animation terminée
       },
 
       onLeaveBack: () => {
+        setAnimationComplete(false); // Animation terminée
         gsap.to(divRef.current, {
           backgroundColor: 'rgba(0, 0, 0, 1)',
           duration: 1,
           zIndex:208,
           ease: 'power4.inOut',
-          onStart: () => {
-            setAnimationComplete(false); // Animation terminée
-          },
         });
         gsap.to(divRef2.current, {
           opacity: 1,
@@ -155,14 +152,12 @@ export default function Scene({ island, targetRef }) {
 
     // Mise à jour de la largeur du compteur
     gsap.to("#counter", {
-      
       width: `${currentValue}%`,
       duration: delay / 1000, // Durée de l'animation pour chaque étape (convertie en secondes)
       ease: 'power4.inOut',
       onComplete: () => {
         updateCounter()
       },
-     
     });
   }
 
