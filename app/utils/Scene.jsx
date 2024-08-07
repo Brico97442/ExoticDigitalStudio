@@ -8,11 +8,12 @@ import Image from 'next/image';
 import { ScrollTrigger } from 'gsap/all';
 import logo from '../../assets/LogoExoticDigitalStudioWhite.png';
 
-export default function Scene() {
+export default function Scene({ island, targetRef }) {
   const divRef = useRef(null);
   const divRef2 = useRef(null);
+  const [animationComplete, setAnimationComplete] = useState(false);
+
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const island = useRef(null);
   const [loading, setLoading] = useState(true); // Ajouter un état pour le chargement
 
   useEffect(() => {
@@ -22,30 +23,31 @@ export default function Scene() {
       start: 'top top',
       end: '+=500',
       scrub: 1,
-      
+
       onEnter: () => {
         gsap.to(divRef.current, {
           backgroundColor: 'rgba(0, 0, 0, 0)',
           duration: 2,
           zIndex: 0,
           ease: 'power4.inOut',
-          
           onStart: () => {
             gsap.to(divRef2.current, {
               opacity: 0,
             });
           },
-
         });
-        
+
         // Animation de l'île lors du défilement
         gsap.to(island.current.position, {
           x: 0.5,
           y: -0.2,
           z: -0.8,
-          duration: 1.5,
+          duration: 2,
           ease: 'power4.inOut',
-          onComplete: () => setLoading(false), // Fin du chargement
+          onComplete: () => {
+            setLoading(false);
+            setAnimationComplete(true); // Animation terminée
+          },
         });
       },
       onLeaveBack: () => {
@@ -64,34 +66,53 @@ export default function Scene() {
           z: 0,
           duration: 1,
           ease: 'power4.inOut',
+          onStart: () => {
+            setLoading(true);
+            setAnimationComplete(false);
+          }
         });
+
       },
     });
 
-    // ScrollTrigger.create({
-    //   trigger: target.current,
-    //   start: 'top center',
-    //   end: 'bottom center',
-    //   scrub: 1,
-    //   onEnter: () => {
-    //     gsap.to(island.current.position, {
-    //       x: 1,
-    //       y: 0.5,
-    //       z: -0.5,
-    //       duration: 1.5,
-    //       ease: 'power4.inOut',
-    //     });
-    //   },
-    //   onLeaveBack: () => {
-    //     gsap.to(island.current.position, {
-    //       x: 0.5,
-    //       y: -0.2,
-    //       z: -0.8,
-    //       duration: 1.5,
-    //       ease: 'power4.inOut',
-    //     });
-    //   },
-    // });
+    ScrollTrigger.create({
+      trigger: targetRef.current,
+      start: 'top center',
+      endTrigger: 'body',
+      end: '+=300',
+      scrub: 1,
+      // pin: true,
+      markers: true, // Epingler l'objet à la cible
+      onEnter: () => {
+        gsap.to(island.current.position, {
+          x: -1,
+          y: 0,
+          z: -0.5,
+          duration: 1.5,
+          ease: 'power4.inOut',
+        });
+        gsap.to(island.current.rotation, {
+          rotationX: 75 * (Math.PI / 180),
+          duration: 1.5,
+          ease: 'power4.inOut',
+        });
+      },
+      onLeaveBack: () => {
+        gsap.to(island.current.position, {
+          x: 0.5,
+          y: -0.2,
+          z: -0.8,
+          duration: 1.5,
+          ease: 'power4.inOut',
+        });
+        // gsap.to(island.current.rotation, {
+        //   z: "-=0.5",
+        //   duration: 1.5,
+        //   ease: 'power4.inOut',
+        // });
+      },
+      
+    });
 
     const handleMouseMove = (event) => {
       setMousePosition({
@@ -117,6 +138,7 @@ export default function Scene() {
   function startLoader() {
     counterElement = document.getElementById('couter-number');
     updateCounter();
+    
   }
 
   function updateCounter() {
@@ -143,18 +165,20 @@ export default function Scene() {
       width: `${100}%`,
       duration: 10,
       stagger: 0.1,
+      
     });
+    
   }, [loading]);
 
 
   return (
-    <div ref={divRef} className='h-screen fixed flex-col fixed bg-black items-center justify-center w-full flex z-[206]'>
+    <div ref={divRef} className='h-screen flex-col fixed bg-black items-center justify-center w-full flex z-[206]'>
       <div ref={divRef2} className='fixed top-0 left-0 h-screen w-screen z-[205]'>
         <Image src={logo} alt="logo de la compagnie" width={320} height={50} />
         {/* <h1 className='ml-20'> Loading . . .</h1> */}
         <h1 id="couter-number" className='ml-20 text-6xl'>0</h1>
         <div>
-          <div className=' ml-20 h-10 bg-white w-[400px]'>
+          <div className='absolute ml-20 mb-20 bottom-0 h-10 bg-white w-[400px]'>
             <div id='counter' className='w-full h-full bg-gray-900 border-solid border-x-2 border-y-2 border-white'>
             </div>
           </div>
@@ -166,7 +190,7 @@ export default function Scene() {
 
       <Canvas camera={{ position: [0, 0, 6] }}>
         <Suspense fallback={null}>
-          <Model mousePosition={mousePosition} island={island} />
+          <Model mousePosition={mousePosition} island={island} animationComplete={animationComplete} />
         </Suspense>
         <ambientLight position={[1, 4, 1]} intensity={9} color={'white'} />
         <Environment preset="city" />

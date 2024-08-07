@@ -7,7 +7,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all'
 import { inherits } from 'util';
 
-export default function Model({ mousePosition, island }) {
+export default function Model({ mousePosition, island ,animationComplete}) {
     const { nodes } = useGLTF('/media/reunion2.glb');
     const { viewport } = useThree();
     const islandMaterialRef = useRef(null);
@@ -23,7 +23,6 @@ export default function Model({ mousePosition, island }) {
 
     // Store the initial rotation and animation completion state
     const [initialRotation, setInitialRotation] = useState({ x: 0, y: 0 });
-    const [animationComplete, setAnimationComplete] = useState(false);
 
     useEffect(() => {
         if (island.current && islandMaterialRef.current) {
@@ -40,7 +39,7 @@ export default function Model({ mousePosition, island }) {
             islandMaterialRef.current.opacity = 0.8;
             islandMaterialRef.current.map = texture;
             islandMaterialRef.current.depthTest = false;
-            islandMaterialRef.current.side = 1; // THREE.FrontSide is 2, to make the material front-only
+            // islandMaterialRef.current.side = 1; // THREE.FrontSide is 2, to make the material front-only
         }
 
         // Animation de la respiration pour les textes
@@ -63,51 +62,42 @@ export default function Model({ mousePosition, island }) {
 
     }, []);
 
-
+//Utiliser la rotation de la souris en x et y si l'animation du Loader n'est pas terminer 
 
     useFrame(() => {
         if (island.current) {
-
             const rotationFactor = 0.2;
-            // const translationFactor = 0.12; // Ajustez cette valeur pour contrôler l'amplitude de la translation
-
-            let rotationX = initialRotation.x - mousePosition.y * rotationFactor;
-            let rotationY = initialRotation.y + mousePosition.x * rotationFactor;
-
-            // let translationX = mousePosition.x * translationFactor;
-            // let translationY = -mousePosition.y * translationFactor;
-
-            // island.current.position.x = translationX;
-            // island.current.position.y = -translationY;
-
-            if (animationComplete) {
-                rotationX = initialRotation.x;
+            let rotationX = initialRotation.x;
+            let rotationY = initialRotation.y;
+    
+            if (!animationComplete) {
+                rotationX -= mousePosition.y * rotationFactor;
+                rotationY += mousePosition.x * rotationFactor;
+            } else {
+                rotationY += mousePosition.x * rotationFactor;
             }
-
+    
             island.current.rotation.set(rotationX, rotationY, 0);
-
+            
             if (textRef1.current && textRef2.current) {
                 textRef1.current.rotation.set(0, -rotationY, 0);
                 textRef2.current.rotation.set(0, -rotationY, 0);
-
             }
         }
-
+    
         if (location.current) {
             location.current.rotation.y += 0.01;
-            location.current.oppacity = inherits
             locationMaterialRef.current.color.set('#0000');
             locationMaterialRef.current.transparent = false;
         }
-
-
     });
+    
 
     return (
             <group scale={viewport.width / 3}>
                 <group>
-                    <mesh ref={island} geometry={nodes.reunion.geometry} scale={[0.015, 0.015, 0.015]} object={lines}  >
-                        {/* {lines && <primitive object={lines} />} */}
+                    <mesh ref={island} geometry={nodes.reunion.geometry} scale={[0.015, 0.015, 0.015]}>
+                        {lines && <primitive object={lines} />}
                         <meshStandardMaterial ref={islandMaterialRef} />
 
                         <Text
