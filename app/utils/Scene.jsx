@@ -141,7 +141,7 @@ export default function Scene({ island }) {
   return (
     <div ref={divRef} className={` ${animationComplete ? 'absolute' : 'fixed'} h-screen top-0  flex-col bg-black items-center justify-center w-full flex z-[206] overflow-hidden`}
     >
-      <div ref={divRef2} className={`fixed top-0 left-0 h-screen w-screen z-[205] transition ${loadingComplete? 'blur-none':'blur-sm'}`}>
+      <div ref={divRef2} className={`fixed top-0 left-0 h-screen w-screen z-[205] transition ${animationComplete?'blur-sm' : 'blur-none'}`}>
         <Image src={logo} alt="logo de la compagnie" width={320} height={50} />
         {/* <h1 className='ml-20'> Loading . . .</h1> */}
         <h1 id="couter-number" className='ml-20 text-6xl'>0</h1>
