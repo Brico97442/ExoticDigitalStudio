@@ -8,7 +8,7 @@ import Image from 'next/image';
 import { ScrollTrigger } from 'gsap/all';
 import logo from '../../assets/LogoExoticDigitalStudioWhite.png';
 
-export default function Scene({ island, targetRef }) {
+export default function Scene({ island }) {
   const divRef = useRef(null);
   const divRef2 = useRef(null);
   const [animationComplete, setAnimationComplete] = useState(false);
@@ -139,7 +139,7 @@ export default function Scene({ island, targetRef }) {
 
 
   return (
-    <div ref={divRef} className={` ${animationComplete ? 'absolute' : 'fixed'} h-screen flex-col bg-black items-center justify-center w-full flex z-[206] overflow-hidden`}
+    <div ref={divRef} className={` ${animationComplete ? 'absolute' : 'fixed'} h-screen top-0  flex-col bg-black items-center justify-center w-full flex z-[206] overflow-hidden`}
     >
       <div ref={divRef2} className='fixed top-0 left-0 h-screen w-screen z-[205]'>
         <Image src={logo} alt="logo de la compagnie" width={320} height={50} />

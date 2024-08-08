@@ -10,13 +10,14 @@ export const animatePageIn = () => {
     const tl = gsap.timeline();
     tl.set([bannerOne, bannerTwo, bannerThree, bannerFour], {
       yPercent: 0,
-      duration:1,
-      ease:"power4.inOut",
-
+      duration: 1,
+      ease: "power4.inOut",
+      zIndex: 209,
     }).to([bannerOne, bannerTwo, bannerThree, bannerFour], {
-      yPercent: 100,
-      stagger: 0.2,
-      ease:"power4.inOut",
+      yPercent: -100,
+      ease: "power4.inOut",
+      zIndex: 209,
+      delay: 1,
     });
   }
 };
@@ -31,23 +32,23 @@ export const animatePageOut = (href, router) => {
     const tl = gsap.timeline();
 
     tl.set([bannerOne, bannerTwo, bannerThree, bannerFour], {
-      yPercent: -100,
-      stagger: 0.2,
-      duration:1,
-      ease:"power4.inOut",
+      yPercent: 100,
+      duration: 1,
+      ease: "power4.inOut",
+
     }).to([bannerOne, bannerTwo, bannerThree, bannerFour], {
       yPercent: 0,
+      duration: 1,
+      ease: "power4.inOut",
       stagger: 0.2,
-      duration:1,
-      ease:"power4.inOut",
       onComplete: () => {
         router.push(href);
-      },    
+      },
     }).to([bannerOne, bannerTwo, bannerThree, bannerFour], {
       yPercent: 100,
-      stagger: 0.2,
-      duration:1,
-      ease:"power4.inOut",
-     });
+      duration: 1,
+      delay: 1,
+      ease: "power4.inOut",
+    });
   }
 };

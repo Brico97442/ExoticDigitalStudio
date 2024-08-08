@@ -5,7 +5,6 @@ import { useFrame, useLoader, useThree } from '@react-three/fiber';
 import { LineSegments, BufferGeometry, Float32BufferAttribute, LineBasicMaterial, TextureLoader } from 'three';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all'
-import { inherits } from 'util';
 
 export default function Model({ mousePosition, island ,animationComplete}) {
     const { nodes } = useGLTF('/media/reunion2.glb');
@@ -123,6 +122,5 @@ export default function Model({ mousePosition, island ,animationComplete}) {
                     </mesh>
                 </group>
             </group>
-
     );
 }

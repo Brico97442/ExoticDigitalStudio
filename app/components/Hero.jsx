@@ -11,7 +11,7 @@ import TextScroll from './TextScroll'
 import { ScrollTrigger } from 'gsap/all';
 gsap.registerPlugin(ScrollTrigger)
 
-export default function Hero({  }) {
+export default function Hero({ }) {
   const container = useRef(null);
 
   const { scrollYProgress } = useScroll({
@@ -24,7 +24,8 @@ export default function Hero({  }) {
   const scale6 = useTransform(scrollYProgress, [0, 1], [0.7, 4]);
   const scale7 = useTransform(scrollYProgress, [0, 1], [0.8, 4]);
 
-  const target =useRef(null)
+  const target = useRef(null)
+  const target2 = useRef(null)
 
 
   useEffect(() => {
@@ -85,19 +86,36 @@ export default function Hero({  }) {
     // });
     gsap.fromTo(target.current, {
       xPercent: 200,
-      opacity:0,
-    },{
-      xPercent:0,
-      duration:1,
-      opacity:1,
-      ease:'power4.inOut',
-      pin:true,
+      opacity: 0,
+    }, {
+      xPercent: 0,
+      duration: 1,
+      opacity: 1,
+      ease: 'power4.inOut',
       scrollTrigger: {
-        trigger:target.current,
-        markers:true,
-        start:'top 50% ',
-        end:'bottom 70%',
-        toggleActions:'play none none reverse',
+        trigger: target.current,
+        markers: true,
+        start: 'top 50% ',
+        end: 'bottom 70%',
+        toggleActions: 'play none none reverse',
+      },
+    }
+    )
+    gsap.fromTo(target2.current, {
+      yPercent: -200,
+      opacity: 0,
+    }, {
+      yPercent: 0,
+      duration: 1,
+      opacity: 1,
+      ease: 'power4.inOut',
+      pin: true,
+      scrollTrigger: {
+        trigger: target2.current,
+        markers: true,
+        start: 'top 50% ',
+        end: 'bottom 70%',
+        toggleActions: 'play none none reverse',
       },
     })
   }, []);
@@ -124,22 +142,22 @@ export default function Hero({  }) {
   ]
   return (
 
-    <div id='hero' className='hero w-full bg-black  overflow-hidden'>
+    <div id='hero' className='hero w-full bg-black overflow-hidden'>
       <div className='h-[100vh] flex flex-col justify-center items-center'>
-        <div className='gap-6 flex flex-col' data-speed='0.5'>
+        <div className='gap-6 flex flex-col' data-speed='0.3'>
           <h1 id='hero-title' className='text-[10vh]  text-[#5F0F40]'>Besoin d'un site web</h1>
           <p id='title-text' className='title-text text-6xl text-[#5F0F40] leading-[1vh]'> <br />à la <span className='text-teal-700 text-6xl font-bold uppercase'>Réunion </span>?</p>
           <button id='hero-button' className='w-full mt-6 text-lg text-white font-bold border-[1px] bg-[#5F0F40] hover:bg-teal-700 max-w-[250px] rounded-lg p-3 z-10'>Nous contacter</button>
         </div>
       </div>
       <div className="flex h-screen p-56 gap-10">
-        <div className='w-1/2 flex items-center justify-center'>
+        <div ref={target2} className='w-1/2 flex items-center justify-center'>
           <video width={`${100}%`} loop autoPlay muted>
             <source src="/media/motion.mp4" type="video/mp4" />
           </video>
         </div>
         <div className='w-1/2 h-full flex items-center justify-center p-6'>
-          <p ref={target}id='target-text' className='flex h-full items-center justify-center leading-normal text-gray-200 text-xl'> Exotik Digital Studio est un studio de design et création digital, localiser au Tampon à l'ile de la réunion avec un atrait pour le l'UI , l'UX et le motion design </p>
+          <p ref={target} id='target-text' className='flex h-full items-center justify-center leading-normal text-gray-200 text-xl'> Exotik Digital Studio est un studio de design et création digital, localiser au Tampon à l'ile de la réunion avec un atrait pour le l'UI , l'UX et le motion design </p>
         </div>
       </div>
 
