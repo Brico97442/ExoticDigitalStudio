@@ -30,11 +30,11 @@ export default function StickyCursor({ stickyElement }) {
     if (stickyElement.current) {
       const { left, top, width, height } = stickyElement.current.getBoundingClientRect();
       const center = { x: left + width / 2, y: top + height / 2 };
-
+      const distance = { x: x - center.x, y: y - center.y };  // Utiliser x et y directement pour calculer la distance
       // Mettre à jour les valeurs de mouvement pour le curseur fluide
       if (isHovered) {
-        mouseX.set(center.x - curSorSize / 2);
-        mouseY.set(center.y - curSorSize / 2);
+        mouseX.set((center.x - curSorSize / 2) + distance.x * 0.1);
+        mouseY.set((center.y - curSorSize / 2) + distance.y * 0.1);
       } else {
         mouseX.set(x - curSorSize / 2);
         mouseY.set(y - curSorSize / 2);
