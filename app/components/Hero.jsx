@@ -87,7 +87,6 @@ export default function Hero({ }) {
     gsap.fromTo(target.current, {
       xPercent: 200,
       opacity: 0,
-      scrub:true,
     }, {
       xPercent: 0,
       opacity: 1,
@@ -118,7 +117,6 @@ export default function Hero({ }) {
         start: 'top 50% ',
         end: 'bottom 70%',
         toggleActions: 'play none none reverse',
-        pins:true
       },
     })
   }, []);

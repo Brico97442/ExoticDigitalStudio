@@ -11,6 +11,7 @@ import logo from '../../assets/LogoExoticDigitalStudioWhite.png';
 export default function Scene({ island }) {
   const divRef = useRef(null);
   const divRef2 = useRef(null);
+  const callBtn = useRef(null);
   const [animationComplete, setAnimationComplete] = useState(false);
 
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -28,7 +29,7 @@ export default function Scene({ island }) {
           backgroundColor: 'rgba(0, 0, 0, 0)',
           duration: 2,
           zIndex: 0,
-          delay:1,
+          delay: 1,
           ease: 'power4.inOut',
           onStart: () => {
             gsap.to(divRef2.current, {
@@ -44,7 +45,7 @@ export default function Scene({ island }) {
           z: -0.8,
           duration: 2,
           ease: 'power4.inOut',
-          
+
         });
         setAnimationComplete(true); // Animation terminée
       },
@@ -54,7 +55,7 @@ export default function Scene({ island }) {
         gsap.to(divRef.current, {
           backgroundColor: 'rgba(0, 0, 0, 1)',
           duration: 1,
-          zIndex:208,
+          zIndex: 208,
           ease: 'power4.inOut',
         });
         gsap.to(divRef2.current, {
@@ -73,7 +74,7 @@ export default function Scene({ island }) {
       },
     });
 
-   
+
 
     const handleMouseMove = (event) => {
       setMousePosition({
@@ -105,7 +106,7 @@ export default function Scene({ island }) {
     if (currentValue === 100) {
       setLoadingComplete(true);
       return;
-    }else{
+    } else {
       setLoadingComplete(false)
     }
 
@@ -115,33 +116,42 @@ export default function Scene({ island }) {
     // Mise à jour de la largeur du compteur
     gsap.to("#counter", {
       width: `${currentValue}%`,
-      opacity:1,
+      opacity: 1,
       duration: delay / 1000, // Durée de l'animation pour chaque étape (convertie en secondes)
       ease: 'linear',
       onComplete: () => {
         updateCounter()
       },
     });
+  
   }
+  gsap.to(callBtn.current, {
+    opacity: 1,
+    duration: 1.7,
+    repeat: -1,
+    yoyo: true,
+    ease: 'power1.inOut',
+  });
 
   // Initialisation de l'animation
-
   useEffect(() => {
     // const hero = document.getElementById('hero')
     if (!animationComplete) {
       // hero.classList.add('no-scroll')
       setAnimationComplete(false)
       startNumericLoader()
-    }else{
+    } else {
       // hero.classList.remove('no-scroll')
     }
+
+   
   }, [animationComplete]);
 
 
   return (
     <div ref={divRef} className={` ${animationComplete ? 'absolute' : 'fixed'} h-screen top-0  flex-col bg-black items-center justify-center w-full flex z-[206] overflow-hidden`}
     >
-      <div ref={divRef2} className={`fixed top-0 left-0 h-screen w-screen z-[205] transition ${animationComplete?'blur-sm' : 'blur-none'}`}>
+      <div ref={divRef2} className={`fixed top-0 left-0 h-screen w-screen z-[205] transition ${animationComplete ? 'blur-sm' : 'blur-none'}`}>
         <Image src={logo} alt="logo de la compagnie" width={320} height={50} />
         {/* <h1 className='ml-20'> Loading . . .</h1> */}
         <h1 id="couter-number" className='ml-20 text-6xl'>0</h1>
@@ -154,7 +164,7 @@ export default function Scene({ island }) {
           </div>
         </div>
         {loadingComplete && (
-          <p className='text-xl w-screen fixed flex justify-center z-[208] bottom-0 mb-20'>
+          <p ref={callBtn} className='text-xl w-screen fixed flex justify-center z-[208] bottom-0 mb-20'>
             Scroller pour découvrir
           </p>
         )}
