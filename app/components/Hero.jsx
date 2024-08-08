@@ -92,7 +92,7 @@ export default function Hero({ }) {
       xPercent: 0,
       opacity: 1,
       ease: 'power4.inOut',
-      duration: 2,
+      duration: 1,
 
       scrollTrigger: {
         trigger: target.current,
@@ -110,7 +110,7 @@ export default function Hero({ }) {
       xPercent: 0,
       opacity: 1,
       ease: 'power4.inOut',
-      duration: 2 ,
+      duration: 1 ,
 
       scrollTrigger: {
         trigger: target2.current,

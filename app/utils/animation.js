@@ -13,6 +13,7 @@ export const animatePageIn = () => {
       duration: 1,
       ease: "power4.inOut",
       zIndex: 209,
+      delay: 1,
     }).to([bannerOne, bannerTwo, bannerThree, bannerFour], {
       yPercent: -100,
       ease: "power4.inOut",
