@@ -23,7 +23,7 @@ function AnimatedText({ children }) {
 
 function Section({ children, className }) {
   return (
-    <section className={`h-screen ${className}`}>
+    <section className={`h-screen relative ${className}`}>
       {children}
     </section>
   );
@@ -32,23 +32,23 @@ function Section({ children, className }) {
 export default function App() {
   return (
     <div className="h-full">
-      <Section className="bg-[#5F0F40]">
+      <Section className="bg-[#5F0F40] sticky">
         <div className="h-1/4 p-6 text-2xl text-yellow-100	">
           <AnimatedText>Dynamiques</AnimatedText>
         </div>
       </Section>
-      <Section className="bg-[#9A031E]">
+      <Section className="bg-[#9A031E] sticky">
         <div className="h-1/4 p-6 text-2xl">
           <AnimatedText>Adaptatif</AnimatedText>
         </div>
       </Section>
-      <Section className="bg-[#FB8B24]">
+      <Section className="bg-[#FB8B24] sticky">
         <div className="h-1/4 p-6 text-2xl">
           <AnimatedText>Moderne</AnimatedText>
         </div>
       </Section>
-      <Section className="bg-[#E36414]">
-        <div className="h-2/4 p-6 text-2xl">
+      <Section className="bg-[#E36414] sticky">
+        <div className="h-1/4 p-6 text-2xl">
           <AnimatedText>Exotique</AnimatedText>
         </div>
       </Section>

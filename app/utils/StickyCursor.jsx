@@ -2,16 +2,18 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
-import useMousePosition from "./CursorTest"; // Assurez-vous que le chemin est correct
+import useMousePosition from "./CursorTest";
 
 export default function StickyCursor({ stickyElement }) {
-  const { x, y } = useMousePosition(); // Utilisez le hook pour obtenir la position de la souris
+
+  const { x, y } = useMousePosition(); // Hook pour obtenir la position de la souris 
 
   const [isHovered, setIsHovered] = useState(false); // État pour gérer le survol du curseur
 
-  const curSorSize = isHovered ? 80 : 40; // Taille du curseur en fonction du survol
+  const curSorSize = isHovered ? 80 : 40;
 
   // Définir la valeur de mouvement et les paramètres pour le mouvement fluide
+
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
@@ -25,40 +27,50 @@ export default function StickyCursor({ stickyElement }) {
   const smoothMouseY = useSpring(mouseY, smoothOptions);
 
   useEffect(() => {
-    // Mettre à jour les valeurs de mouvement pour le curseur fluide
-    mouseX.set(x - curSorSize / 2);
-    mouseY.set(y - curSorSize / 2);
-  }, [x, y, curSorSize]);
+    if (stickyElement.current) {
+      const { left, top, width, height } = stickyElement.current.getBoundingClientRect();
+      const center = { x: left + width / 2, y: top + height / 2 };
+
+      // Mettre à jour les valeurs de mouvement pour le curseur fluide
+      if (isHovered) {
+        mouseX.set(center.x - curSorSize / 2);
+        mouseY.set(center.y - curSorSize / 2);
+      } else {
+        mouseX.set(x - curSorSize / 2);
+        mouseY.set(y - curSorSize / 2);
+      }
+    } else {
+      // Cas où stickyElement.current est null
+      mouseX.set(x - curSorSize / 2);
+      mouseY.set(y - curSorSize / 2);
+    }
+  }, [x, y, curSorSize, isHovered, stickyElement]);
 
   // Gestion du survol via les props en utilisant React
   const handleMouseOver = () => setIsHovered(true);
   const handleMouseLeave = () => setIsHovered(false);
 
   useEffect(() => {
-    const element = stickyElement.current;
+    const navBarElement = stickyElement.current;
 
-    if (element) {
+    if (navBarElement) {
       // Utiliser les gestionnaires d'événements React pour gérer le survol
-      element.addEventListener("mouseenter", handleMouseOver);
-      element.addEventListener("mouseleave", handleMouseLeave);
+      navBarElement.addEventListener("mouseenter", handleMouseOver);
+      navBarElement.addEventListener("mouseleave", handleMouseLeave);
 
       return () => {
-        element.removeEventListener("mouseenter", handleMouseOver);
-        element.removeEventListener("mouseleave", handleMouseLeave);
+        navBarElement.removeEventListener("mouseenter", handleMouseOver);
+        navBarElement.removeEventListener("mouseleave", handleMouseLeave);
       };
     }
   }, [stickyElement]);
 
   return (
     <motion.div
-      style={{
-        left: smoothMouseX,
-        top: smoothMouseY,
-        width: curSorSize,
-        height: curSorSize,
-      }}
+      style={{ left: smoothMouseX, top: smoothMouseY }}
+      animate={{ width: curSorSize, height: curSorSize }}
       transition={{ type: 'tween', ease: 'backOut', duration: 0.5 }}
-      className="fixed rounded-full bg-red-500 curser-auto mix-blend-difference z-10"
-    ></motion.div>
+      className="fixed rounded-full flex justify-center items-center bg-red-500 curser-auto mix-blend-difference z-10"
+    >Eds</motion.div>
   );
 }
