@@ -148,7 +148,7 @@ section span {
 }
 
 .bounds {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   display: flex;
   width: 100%;
   height: 100%;
@@ -169,7 +169,7 @@ section span {
 
 .burger-menu .bounds:hover {
 
-  transform: scale(3);
+  transform: scale(3.5);
 }
 
 .mask {

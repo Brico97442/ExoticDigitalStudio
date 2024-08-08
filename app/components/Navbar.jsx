@@ -3,7 +3,7 @@ import TransitionLink from "../utils/TransitionLink"
 import Image from "next/image"
 import logo from "../../assets/LogoExoticDigitalStudioWhite.png"
 import { forwardRef } from "react"
-
+import Magnetic from '../utils/Magnetic'
 const Navbar = forwardRef(function index(props,ref) {
 
     return (
@@ -22,10 +22,12 @@ const Navbar = forwardRef(function index(props,ref) {
                     </li>
                     <li className=" relative transition flex justify-center items-center cursor-pointer w-[35px] h-[18px] p-[30px]">
                         <div className="fixed flex justify-center w-full items-center ">
+                        <Magnetic>
                             <div className="burger-menu z-0">
                                 <div ref={ref} className="bounds">
                                 </div>
                             </div>
+                        </Magnetic>  
                         </div>
                     </li>
                 </ul>

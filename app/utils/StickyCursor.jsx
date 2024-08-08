@@ -1,8 +1,9 @@
 "use client"
 
 import React, { useState, useEffect, useRef } from "react";
-import { motion, useMotionValue, useSpring } from "framer-motion";
+import { animate, motion, transform, useMotionValue, useSpring } from "framer-motion";
 import useMousePosition from "./CursorTest";
+import Template from "./template";
 
 export default function StickyCursor({ stickyElement }) {
 
@@ -10,6 +11,7 @@ export default function StickyCursor({ stickyElement }) {
 
   const [isHovered, setIsHovered] = useState(false); // État pour gérer le survol du curseur
 
+  const cursorRef = useRef(null)
   const curSorSize = isHovered ? 80 : 40;
 
   // Définir la valeur de mouvement et les paramètres pour le mouvement fluide
@@ -18,21 +20,45 @@ export default function StickyCursor({ stickyElement }) {
   const mouseY = useMotionValue(0);
 
   const smoothOptions = {
-    damping: 25,
-    stiffness: 200,
+    damping: 20,
+    stiffness: 300,
     mass: 0.5,
   };
+
+  const scale = {
+    x: useMotionValue(1),
+    y: useMotionValue(1)
+  }
+
+  const rotate = (distance) => {
+    const angle = Math.atan2(distance.y, distance.x)
+    animate(cursorRef.current, { rotate: `${angle}rad` }, { duration: 0 })
+  }
 
   const smoothMouseX = useSpring(mouseX, smoothOptions);
   const smoothMouseY = useSpring(mouseY, smoothOptions);
 
+
   useEffect(() => {
+    const { left, top, width, height } = stickyElement.current.getBoundingClientRect();
+    const center = { x: left + width / 2, y: top + height / 2 };
+    const distance = { x: x - center.x, y: y - center.y };  // Utiliser x et y directement pour calculer la distance
+
+    // Mettre à jour les valeurs de mouvement pour le curseur fluide
     if (stickyElement.current) {
-      const { left, top, width, height } = stickyElement.current.getBoundingClientRect();
-      const center = { x: left + width / 2, y: top + height / 2 };
-      const distance = { x: x - center.x, y: y - center.y };  // Utiliser x et y directement pour calculer la distance
-      // Mettre à jour les valeurs de mouvement pour le curseur fluide
+
+
       if (isHovered) {
+        //Rotation du Custom Cursor
+        rotate(distance)
+
+        //Etirer le curseur selon la distance entre le pointer end le Custom cursor
+        const absDistance = Math.max(Math.abs(distance.x), Math.abs(distance.y))
+        const newScaleX = transform(absDistance, [0, width / 2], [1, 1.3])
+        const newScaleY = transform(absDistance, [0, height / 2], [1, 0.8])
+        scale.x.set(newScaleX)
+        scale.y.set(newScaleY)
+
         mouseX.set((center.x - curSorSize / 2) + distance.x * 0.1);
         mouseY.set((center.y - curSorSize / 2) + distance.y * 0.1);
       } else {
@@ -47,8 +73,14 @@ export default function StickyCursor({ stickyElement }) {
   }, [x, y, curSorSize, isHovered, stickyElement]);
 
   // Gestion du survol via les props en utilisant React
-  const handleMouseOver = () => setIsHovered(true);
-  const handleMouseLeave = () => setIsHovered(false);
+  const handleMouseOver = () => {
+    setIsHovered(true);
+  }
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    animate(cursorRef.current, { scaleX: 1, scaleY: 1 }, { duration: 0.1 }, { type: "spring" })
+  }
+
 
   useEffect(() => {
     const navBarElement = stickyElement.current;
@@ -65,12 +97,18 @@ export default function StickyCursor({ stickyElement }) {
     }
   }, [stickyElement]);
 
+  const template = ({ rotate, scaleX, scaleY }) => {
+    return `rotate(${rotate}) scaleX(${scaleX}) scaleY(${scaleY})`
+  }
+
   return (
     <motion.div
-      style={{ left: smoothMouseX, top: smoothMouseY }}
+      transformTemplate={template}
+      ref={cursorRef}
+      style={{ left: smoothMouseX, top: smoothMouseY, scaleX: scale.x, scaleY: scale.y }}
       animate={{ width: curSorSize, height: curSorSize }}
       transition={{ type: 'tween', ease: 'backOut', duration: 0.5 }}
       className="fixed rounded-full flex justify-center items-center bg-red-500 curser-auto mix-blend-difference z-10"
-    >Eds</motion.div>
+    ></motion.div>
   );
 }
