@@ -35,12 +35,12 @@ export const animatePageOut = (href, router) => {
       yPercent: 100,
       duration: 1,
       ease: "power4.inOut",
-
     }).to([bannerOne, bannerTwo, bannerThree, bannerFour], {
       yPercent: 0,
       duration: 1,
       ease: "power4.inOut",
       stagger: 0.2,
+      scrub: 1,
       onComplete: () => {
         router.push(href);
       },
@@ -48,6 +48,7 @@ export const animatePageOut = (href, router) => {
       yPercent: 100,
       duration: 1,
       delay: 1,
+      scrub: 1,
       ease: "power4.inOut",
     });
   }

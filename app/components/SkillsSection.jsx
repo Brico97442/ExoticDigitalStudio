@@ -48,7 +48,7 @@ export default function App() {
         </div>
       </Section>
       <Section className="bg-[#E36414]">
-        <div className="h-1/4 p-6 text-2xl">
+        <div className="h-2/4 p-6 text-2xl">
           <AnimatedText>Exotique</AnimatedText>
         </div>
       </Section>

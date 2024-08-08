@@ -141,7 +141,7 @@ export default function Scene({ island }) {
   return (
     <div ref={divRef} className={` ${animationComplete ? 'absolute' : 'fixed'} h-screen top-0  flex-col bg-black items-center justify-center w-full flex z-[206] overflow-hidden`}
     >
-      <div ref={divRef2} className='fixed top-0 left-0 h-screen w-screen z-[205]'>
+      <div ref={divRef2} className={`fixed top-0 left-0 h-screen w-screen z-[205] transition ${loadingComplete? 'blur-none':'blur-sm'}`}>
         <Image src={logo} alt="logo de la compagnie" width={320} height={50} />
         {/* <h1 className='ml-20'> Loading . . .</h1> */}
         <h1 id="couter-number" className='ml-20 text-6xl'>0</h1>
@@ -158,8 +158,8 @@ export default function Scene({ island }) {
             Scroller pour découvrir
           </p>
         )}
-      </div>
 
+      </div>
       <Canvas camera={{ position: [0, 0, 6] }}>
         <Suspense fallback={null}>
           <Model mousePosition={mousePosition} island={island} animationComplete={animationComplete} />
