@@ -9,6 +9,8 @@ import { useScroll, useTransform, motion } from 'framer-motion'
 import gsap from 'gsap'
 import TextScroll from './TextScroll'
 import { ScrollTrigger } from 'gsap/all';
+import Lines from './Lines'
+
 gsap.registerPlugin(ScrollTrigger)
 
 export default function Hero({ }) {
@@ -152,7 +154,8 @@ export default function Hero({ }) {
         </div>
       </div>
       <div className="flex flex-col h-screen p-56 gap-10 overflow-hidden">
-        <hr className='w-full bg-white h-[2px]'/>
+        {/* <hr className='w-full bg-white h-[2px]'/> */}
+        <Lines/>
         <div className='flex gap-10'>
           <div ref={target2} className='w-1/2 flex items-start justify-center'>
             <video width={`${100}%`} loop autoPlay muted>
@@ -160,12 +163,11 @@ export default function Hero({ }) {
             </video>
           </div>
           <div className='w-1/2 h-full flex justify-center'>
-            <p ref={target} id='target-text' className='flex h-full justify-center leading-normal text-gray-200 text-xl'> Exotik Digital Studio est un studio de design et de création de produits digital, localiser au Tampon à l'ile de la réunion avec un atrait pour le l'UI , l'UX et le motion design </p>
+            <p ref={target} id='target-text' className='flex h-full justify-center leading-normal text-gray-200 text-xl'> Exotik Digital Studio est un studio de design et de création de produits digital spécialisé dans la création de site internet qui place l'utilisateur au coeur d'une expérience unique, localisé au Tampon à l'ile de la réunion. Clairement orienter vers l'UI , l'UX et le motion design </p>
           </div>
         </div>
 
       </div>
-
       <TextScroll value="Plonger au coeur de solution web innovante" />
       <div className="flex h-[250vh]  relative w-full mt-[50vh]" ref={container}>
 
