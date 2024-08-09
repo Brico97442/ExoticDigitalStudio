@@ -1,21 +1,19 @@
-"use client"
+"use client";
 
 import React, { useState, useEffect, useRef } from "react";
 import { animate, motion, transform, useMotionValue, useSpring } from "framer-motion";
-import useMousePosition from "./CursorTest";
-import Template from "./template";
+import UseMousePosition from "./CursorTest";
 
 export default function StickyCursor({ stickyElement }) {
-
-  const { x, y } = useMousePosition(); // Hook pour obtenir la position de la souris 
+  const { x, y } = UseMousePosition(); // Hook pour obtenir la position de la souris 
 
   const [isHovered, setIsHovered] = useState(false); // État pour gérer le survol du curseur
 
-  const cursorRef = useRef(null)
+  const cursorRef = useRef(null);
+  const cursorRef2 = useRef(null);
   const curSorSize = isHovered ? 80 : 40;
 
   // Définir la valeur de mouvement et les paramètres pour le mouvement fluide
-
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
@@ -27,46 +25,42 @@ export default function StickyCursor({ stickyElement }) {
 
   const scale = {
     x: useMotionValue(1),
-    y: useMotionValue(1)
-  }
+    y: useMotionValue(1),
+  };
 
   const rotate = (distance) => {
-    const angle = Math.atan2(distance.y, distance.x)
-    animate(cursorRef.current, { rotate: `${angle}rad` }, { duration: 0 })
-  }
+    const angle = Math.atan2(distance.y, distance.x);
+    animate(cursorRef.current, { rotate: `${angle}rad` }, { duration: 0 });
+  };
 
   const smoothMouseX = useSpring(mouseX, smoothOptions);
   const smoothMouseY = useSpring(mouseY, smoothOptions);
 
-
   useEffect(() => {
     const { left, top, width, height } = stickyElement.current.getBoundingClientRect();
     const center = { x: left + width / 2, y: top + height / 2 };
-    const distance = { x: x - center.x, y: y - center.y };  // Utiliser x et y directement pour calculer la distance
+    const distance = { x: x - center.x, y: y - center.y };
 
     // Mettre à jour les valeurs de mouvement pour le curseur fluide
     if (stickyElement.current) {
-
-
       if (isHovered) {
-        //Rotation du Custom Cursor
-        rotate(distance)
+        // Rotation du Custom Cursor
+        rotate(distance);
 
-        //Etirer le curseur selon la distance entre le pointer end le Custom cursor
-        const absDistance = Math.max(Math.abs(distance.x), Math.abs(distance.y))
-        const newScaleX = transform(absDistance, [0, width / 2], [1, 1.3])
-        const newScaleY = transform(absDistance, [0, height / 2], [1, 0.8])
-        scale.x.set(newScaleX)
-        scale.y.set(newScaleY)
+        // Étirer le curseur selon la distance entre le pointer et le Custom cursor
+        const absDistance = Math.max(Math.abs(distance.x), Math.abs(distance.y));
+        const newScaleX = transform(absDistance, [0, width / 2], [1, 1.3]);
+        const newScaleY = transform(absDistance, [0, height / 2], [1, 0.8]);
+        scale.x.set(newScaleX);
+        scale.y.set(newScaleY);
 
-        mouseX.set((center.x - curSorSize / 2) + distance.x * 0.1);
-        mouseY.set((center.y - curSorSize / 2) + distance.y * 0.1);
+        mouseX.set(center.x + distance.x * 0.1 - curSorSize / 2);
+        mouseY.set(center.y + distance.y * 0.1 - curSorSize / 2);
       } else {
         mouseX.set(x - curSorSize / 2);
         mouseY.set(y - curSorSize / 2);
       }
     } else {
-      // Cas où stickyElement.current est null
       mouseX.set(x - curSorSize / 2);
       mouseY.set(y - curSorSize / 2);
     }
@@ -75,12 +69,11 @@ export default function StickyCursor({ stickyElement }) {
   // Gestion du survol via les props en utilisant React
   const handleMouseOver = () => {
     setIsHovered(true);
-  }
+  };
   const handleMouseLeave = () => {
     setIsHovered(false);
-    animate(cursorRef.current, { scaleX: 1, scaleY: 1 }, { duration: 0.1 }, { type: "spring" })
-  }
-
+    animate(cursorRef.current, { scaleX: 1, scaleY: 1 }, { duration: 0.1 }, { type: "spring" });
+  };
 
   useEffect(() => {
     const navBarElement = stickyElement.current;
@@ -98,17 +91,30 @@ export default function StickyCursor({ stickyElement }) {
   }, [stickyElement]);
 
   const template = ({ rotate, scaleX, scaleY }) => {
-    return `rotate(${rotate}) scaleX(${scaleX}) scaleY(${scaleY})`
-  }
+    return `rotate(${rotate}) scaleX(${scaleX}) scaleY(${scaleY})`;
+  };
 
   return (
-    <motion.div
-      transformTemplate={template}
-      ref={cursorRef}
-      style={{ left: smoothMouseX, top: smoothMouseY, scaleX: scale.x, scaleY: scale.y }}
-      animate={{ width: curSorSize, height: curSorSize }}
-      transition={{ type: 'tween', ease: 'backOut', duration: 0.5 }}
-      className="fixed rounded-full flex justify-center items-center bg-red-500 curser-auto mix-blend-difference z-10"
-    ></motion.div>
+    <>
+      <motion.div
+        transformTemplate={template}
+        ref={cursorRef}
+        style={{ left: smoothMouseX, top: smoothMouseY, scaleX: scale.x, scaleY: scale.y }}
+        animate={{ width: curSorSize, height: curSorSize }}
+        transition={{ type: 'tween', ease: 'backOut', duration: 0.5 }}
+        className="fixed rounded-full flex justify-center items-center pointer-events-none bg-teal-500 curser-auto mix-blend-difference z-[39]"
+      ></motion.div>
+      <div>
+        <div className="absolute w-full h-full backdrop-blur-[200px] z-20"></div>
+      <motion.div
+      id="blob"
+        ref={cursorRef2}
+        style={{ left: smoothMouseX, top: smoothMouseY, transform: 'translate(-50%, -50%)' }}
+        transition={{ type: 'tween', ease: 'backOut', duration: 0.5 }}
+        className="  fixed rounded-full flex justify-center items-center h-[400px] w-[400px] bg-gradient-to-r from-indigo-600 via-purple-500 to-pink-500 curser-auto pointer-events-none mix-blend-difference z-10"
+      ></motion.div>
+      </div>
+     
+    </>
   );
 }

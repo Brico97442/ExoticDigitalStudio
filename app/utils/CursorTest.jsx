@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-export default function useMousePosition() {
+export default function UseMousePosition() {
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
     const updateMousePosition = (e) => {

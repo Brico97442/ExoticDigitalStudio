@@ -14,7 +14,6 @@ export default function Model({ mousePosition, island ,animationComplete}) {
     const textRef1 = useRef(null);
     const textRef2 = useRef(null);
 
-    const [lines, setLines] = useState(null);
 
     const location = useRef(null);
     const { nodes: locationNodes } = useGLTF('/media/location.glb');
@@ -88,6 +87,13 @@ export default function Model({ mousePosition, island ,animationComplete}) {
             location.current.rotation.y += 0.01;
             locationMaterialRef.current.color.set('#0000');
             locationMaterialRef.current.transparent = false;
+            gsap.from(locationMaterialRef.current, {
+                opacity: 0.1,
+                duration: 1.7,
+                repeat: -1,
+                yoyo: true,
+                ease: 'power1.inOut'
+            });
         }
     });
     
@@ -96,7 +102,7 @@ export default function Model({ mousePosition, island ,animationComplete}) {
             <group scale={viewport.width / 3}>
                 <group>
                     <mesh ref={island} geometry={nodes.reunion.geometry} scale={[0.015, 0.015, 0.015]}>
-                        {lines && <primitive object={lines} />}
+                        {/* {lines && <primitive object={lines} />} */}
                         <meshStandardMaterial ref={islandMaterialRef} />
 
                         <Text

@@ -20,9 +20,7 @@ body {
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+ 
   position: relative;
   padding: 0;
   margin: 0;
@@ -159,17 +157,18 @@ section span {
 }
 
 .burger-menu .bounds {
+  /* border: solid 1px red ; */
   position: absolute;
   left: 0;
   top: 0;
   pointer-events: none;
   pointer-events: all;
-
+  transform: scale(1);
 }
 
 .burger-menu .bounds:hover {
-
-  transform: scale(3.5);
+  /* border: solid 1px blue ;*/
+  transform: scale(3.8);
 }
 
 .mask {
@@ -239,3 +238,24 @@ section span {
 h1 {
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
 }
+
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  50%{
+    scale: 1.6 1;
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+#blob {
+  animation: rotate 20s infinite;
+  translate: -50% -50%;
+  left: 50%;
+  top: -50%;
+}
+ 

@@ -31,7 +31,7 @@ export default function Home() {
 
   return (
 
-    <main id="main" className="flex w-full relative min-h-screen flex-col">
+    <main id="main" className="flex w-full bg-zinc-950 relative min-h-screen flex-col">
       <Scene island={island} targetRef={targetRef} />
       {/* <Leva hidden={true} /> */}
       <Hero target={targetRef}  />

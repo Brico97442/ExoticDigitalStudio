@@ -7,6 +7,7 @@ import { gsap } from 'gsap';
 import Image from 'next/image';
 import { ScrollTrigger } from 'gsap/all';
 import logo from '../../assets/LogoExoticDigitalStudioWhite.png';
+import { kill } from 'process';
 
 export default function Scene({ island }) {
   const divRef = useRef(null);
@@ -28,7 +29,7 @@ export default function Scene({ island }) {
         gsap.to(divRef.current, {
           backgroundColor: 'rgba(0, 0, 0, 0)',
           duration: 2,
-          zIndex: 0,
+          zIndex: 40,
           delay: 1,
           ease: 'power4.inOut',
           onStart: () => {
@@ -98,16 +99,19 @@ export default function Scene({ island }) {
   const delay = totalDuration / updatesCount; // Délai entre chaque mise à jour
 
   function startNumericLoader() {
-    counterElement = document.getElementById('couter-number');
+    counterElement = document.getElementById('counter-number');
     updateCounter();
   }
 
   function updateCounter() {
     if (currentValue === 100) {
+
       setLoadingComplete(true);
+
       return;
     } else {
       setLoadingComplete(false)
+   
     }
 
     currentValue++;
@@ -123,15 +127,9 @@ export default function Scene({ island }) {
         updateCounter()
       },
     });
-  
+
   }
-  gsap.to(callBtn.current, {
-    opacity: 1,
-    duration: 1.7,
-    repeat: -1,
-    yoyo: true,
-    ease: 'power1.inOut',
-  });
+
 
   // Initialisation de l'animation
   useEffect(() => {
@@ -140,23 +138,39 @@ export default function Scene({ island }) {
       // hero.classList.add('no-scroll')
       setAnimationComplete(false)
       startNumericLoader()
+
     } else {
       // hero.classList.remove('no-scroll')
     }
+    
 
-   
   }, [animationComplete]);
+  
+  useEffect(()=>{
+      if(!loadingComplete){
+        gsap.from(["#counter-body","#counter-number"], {
+          opacity: 0.4,
+          duration: 4,
+          repeat: -1,
+          yoyo: true,
+          ease: 'power1.inOut',
+          onComplete:()=> setLoadingComplete(true)
+
+        })
+      }
+  },[loadingComplete])
+
 
 
   return (
-    <div ref={divRef} className={` ${animationComplete ? 'absolute' : 'fixed'} h-screen top-0  flex-col bg-black items-center justify-center w-full flex z-[206] overflow-hidden`}
+    <div ref={divRef} className={` ${animationComplete ? 'absolute' : 'fixed'} h-screen top-0  flex-col bg-slate-950 items-center justify-center w-full flex z-[206] overflow-hidden`}
     >
       <div ref={divRef2} className={`fixed top-0 left-0 h-screen w-screen z-[205] transition ${animationComplete ? 'blur-sm' : 'blur-none'}`}>
         <Image src={logo} alt="logo de la compagnie" width={320} height={50} />
         {/* <h1 className='ml-20'> Loading . . .</h1> */}
-        <h1 id="couter-number" className='ml-20 text-6xl'>0</h1>
+        <h1 id="counter-number" className='ml-20 text-6xl'>0</h1>
         <div>
-          <div className='absolute ml-20 mb-20 bottom-0 h-10 bg-black w-[400px] border-solid border-x-2 border-y-2 border-white'>
+          <div id='counter-body' className='absolute ml-20 mb-20 bottom-0 h-10 bg-black w-[400px] border-solid border-x-2 border-y-2 border-white'>
             <div id='counter' className='w-full h-full bg-white '>
             </div>
           </div>

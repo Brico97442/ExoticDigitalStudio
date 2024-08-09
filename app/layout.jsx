@@ -12,7 +12,7 @@ const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  
+
   const stickyElement = useRef(null);
 
   return (
