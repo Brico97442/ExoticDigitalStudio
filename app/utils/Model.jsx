@@ -43,19 +43,25 @@ export default function Model({ mousePosition, island ,animationComplete}) {
 
         // Animation de la respiration pour les textes
         if (textRef1.current && textRef2.current) {
-            gsap.from(textRef1.current.material, {
-                opacity: 0.1,
-                duration: 1.7,
-                repeat: -1,
-                yoyo: true,
+            gsap.from(textRef1.current.position, {
+                z: 25,
+                duration: 4,
                 ease: 'power1.inOut'
             });
-            gsap.from(textRef2.current.material, {
-                opacity: 0.1,
-                duration: 1.7,
-                repeat: -1,
-                yoyo: true,
+            gsap.from(textRef2.current.position, {
+                z: -25,
+                duration: 4,
                 ease: 'power1.inOut'
+            });
+            gsap.fromTo(textRef1.current, {
+                opacity: 0,
+            },{
+                opacity:1
+            });
+            gsap.fromTo(textRef2.current, {
+                opacity: 0,
+            },{
+                opacity:1
             });
         }
 

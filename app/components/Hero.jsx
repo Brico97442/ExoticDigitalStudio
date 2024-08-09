@@ -115,7 +115,7 @@ export default function Hero({ }) {
 
       scrollTrigger: {
         trigger: target2.current,
-        markers: true,
+        markers: false,
         start: '-50% 50% ',
         end: 'bottom 70%',
         toggleActions: 'play none none reverse',
@@ -148,9 +148,9 @@ export default function Hero({ }) {
     <div id='hero' className='hero w-full'>
       <div className='h-[100vh] flex flex-col justify-center items-center z-50'>
         <div className='gap-6 flex flex-col' data-speed='0.3'>
-          <h1 id='hero-title' className='text-[10vh] z-50  text-[#5F0F40]'>Besoin d'un site web</h1>
+          <h1 id='hero-title' className='text-[10vh] z-50 bg-clip-text text-transparent bg-gradient-to-r from-violet-500/80 to-teal-800/80'>Besoin d'un site web</h1>
           <p id='title-text' className='title-text text-6xl text-[#5F0F40] leading-[1vh] z-50'> <br />à la <span className='text-teal-700 text-6xl font-bold uppercase'>Réunion </span>?</p>
-          <button id='hero-button' className='w-full mt-6 text-lg text-white font-bold border-[1px] bg-[#5F0F40] hover:bg-teal-700 max-w-[250px] rounded-lg p-3 z-50'>Nous contacter</button>
+          <button id='hero-button' className='w-full mt-6 text-lg text-white font-bold bg-[#5F0F40]/15 hover:bg-teal-700 max-w-[250px] rounded-lg p-2 z-50'>Nous contacter</button>
         </div>
       </div>
       <div className="flex flex-col h-screen p-56 gap-10 z-50 overflow-hidden">
@@ -158,7 +158,7 @@ export default function Hero({ }) {
         <Lines/>
         <div className='flex gap-10' >
           <div ref={target2} className='w-1/2 flex items-start z-50 justify-center'>
-            <video className='bg-neutral-950 z-50'  width={`${100}%`} loop autoPlay muted>
+            <video className=' z-50 bg-clip-border'  width={`${100}%`} loop autoPlay muted>
               <source src="/media/motion.mp4" type="video/mp4" />
             </video>
           </div>

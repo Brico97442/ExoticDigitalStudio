@@ -9,7 +9,7 @@ import { ScrollTrigger } from 'gsap/all';
 import logo from '../../assets/LogoExoticDigitalStudioWhite.png';
 import { kill } from 'process';
 
-export default function Scene({ island }) {
+export default function Scene({ island}) {
   const divRef = useRef(null);
   const divRef2 = useRef(null);
   const callBtn = useRef(null);
@@ -163,7 +163,7 @@ export default function Scene({ island }) {
 
 
   return (
-    <div ref={divRef} className={` ${animationComplete ? 'absolute' : 'fixed'} h-screen top-0  flex-col bg-slate-950 items-center justify-center w-full flex z-[206] overflow-hidden`}
+    <div ref={divRef} className={` ${animationComplete ? 'absolute' : 'fixed'} h-screen top-0  flex-col bg-gradient-to-b from-black via-stone-950 to-transparent items-center justify-center w-full flex z-[206] overflow-hidden`}
     >
       <div ref={divRef2} className={`fixed top-0 left-0 h-screen w-screen z-[205] transition ${animationComplete ? 'blur-sm' : 'blur-none'}`}>
         <Image src={logo} alt="logo de la compagnie" width={320} height={50} />
