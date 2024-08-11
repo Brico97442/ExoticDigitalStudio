@@ -7,18 +7,18 @@
     animatePageIn()
   },[])
    return (
-     <div className="fex flex-row">
+     <div className="flex flex-row z-40">
       <div id='banner-1'
-      className='min-h-screen bg-neutral-950 z-40 fixed top-0 left-0 w-1/4 text-whit'>
+      className='min-h-screen bg-neutral-950 fixed top-0 left-0 w-1/4 text-white z-40'>
       </div>
       <div id='banner-2'
-      className='min-h-screen bg-neutral-950 z-40 fixed top-0 left-1/4 w-1/4'>
+      className='min-h-screen bg-neutral-950 fixed top-0 left-1/4 w-1/4 z-40'>
       </div>
       <div id='banner-3'
-      className='min-h-screen bg-neutral-950 z-40 fixed top-0 left-2/4 w-1/4'>
+      className='min-h-screen bg-neutral-950 fixed top-0 left-2/4 w-1/4 z-40'>
       </div>
       <div id='banner-4'
-      className='min-h-screen bg-neutral-950 z-40 fixed top-0 left-3/4 w-1/4'>
+      className='min-h-screen bg-neutral-950 fixed top-0 left-3/4 w-1/4 z-40'>
       </div>
       {children}
      </div>

@@ -14,6 +14,7 @@ export default function TransitionLink({label,href}) {
             animatePageOut(href, router)
         }
     }
+    
   return (
     <div>
       <button onClick={handleClick}>

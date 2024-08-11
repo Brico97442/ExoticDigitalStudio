@@ -5,8 +5,7 @@ import { animate, motion, transform, useMotionValue, useSpring } from "framer-mo
 import UseMousePosition from "./CursorTest";
 
 export default function StickyCursor({ stickyElement }) {
-  const { x, y } = UseMousePosition(); // Hook pour obtenir la position de la souris 
-
+  const { x, y } = UseMousePosition(); // Hook pour obtenir la position de la souris
   const [isHovered, setIsHovered] = useState(false); // État pour gérer le survol du curseur
 
   const cursorRef = useRef(null);
@@ -14,8 +13,8 @@ export default function StickyCursor({ stickyElement }) {
   const curSorSize = isHovered ? 80 : 40;
 
   // Définir la valeur de mouvement et les paramètres pour le mouvement fluide
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
+  const mouseX = useMotionValue(x);
+  const mouseY = useMotionValue(y);
 
   const smoothOptions = {
     damping: 20,
@@ -28,11 +27,6 @@ export default function StickyCursor({ stickyElement }) {
     y: useMotionValue(1),
   };
 
-  const rotate = (distance) => {
-    const angle = Math.atan2(distance.y, distance.x);
-    animate(cursorRef.current, { rotate: `${angle}rad` }, { duration: 0 });
-  };
-
   const smoothMouseX = useSpring(mouseX, smoothOptions);
   const smoothMouseY = useSpring(mouseY, smoothOptions);
 
@@ -41,11 +35,12 @@ export default function StickyCursor({ stickyElement }) {
     const center = { x: left + width / 2, y: top + height / 2 };
     const distance = { x: x - center.x, y: y - center.y };
 
-    // Mettre à jour les valeurs de mouvement pour le curseur fluide
+    // Mettre à jour les valeurs de mouvement pour le curseur
     if (stickyElement.current) {
       if (isHovered) {
         // Rotation du Custom Cursor
-        rotate(distance);
+        const angle = Math.atan2(distance.y, distance.x);
+        animate(cursorRef.current, { rotate: `${angle}rad` }, { duration: 0 });
 
         // Étirer le curseur selon la distance entre le pointer et le Custom cursor
         const absDistance = Math.max(Math.abs(distance.x), Math.abs(distance.y));
@@ -64,12 +59,12 @@ export default function StickyCursor({ stickyElement }) {
       mouseX.set(x - curSorSize / 2);
       mouseY.set(y - curSorSize / 2);
     }
-  }, [x, y, curSorSize, isHovered, stickyElement]);
+  }, [x, y, curSorSize, isHovered, stickyElement, scale]);
 
-  // Gestion du survol via les props en utilisant React
   const handleMouseOver = () => {
     setIsHovered(true);
   };
+
   const handleMouseLeave = () => {
     setIsHovered(false);
     animate(cursorRef.current, { scaleX: 1, scaleY: 1 }, { duration: 0.1 }, { type: "spring" });
@@ -79,7 +74,6 @@ export default function StickyCursor({ stickyElement }) {
     const navBarElement = stickyElement.current;
 
     if (navBarElement) {
-      // Utiliser les gestionnaires d'événements React pour gérer le survol
       navBarElement.addEventListener("mouseenter", handleMouseOver);
       navBarElement.addEventListener("mouseleave", handleMouseLeave);
 
@@ -102,19 +96,20 @@ export default function StickyCursor({ stickyElement }) {
         style={{ left: smoothMouseX, top: smoothMouseY, scaleX: scale.x, scaleY: scale.y }}
         animate={{ width: curSorSize, height: curSorSize }}
         transition={{ type: 'tween', ease: 'backOut', duration: 0.5 }}
-        className="fixed rounded-full flex justify-center items-center pointer-events-none bg-teal-500 curser-auto mix-blend-difference z-[39]"
+        className="z-[4] fixed rounded-full flex justify-center items-center pointer-events-none bg-teal-500 cursor-auto mix-blend-difference"
       ></motion.div>
       <div>
-        <div className="absolute w-full h-full backdrop-blur-[200px] z-20"></div>
-      <motion.div
-      id="blob"
-        ref={cursorRef2}
-        style={{ left: smoothMouseX, top: smoothMouseY, transform: 'translate(-50%, -50%)' }}
-        transition={{ type: 'tween', ease: 'backOut', duration: 0.5 }}
-        className="  fixed rounded-full flex justify-center items-center h-[400px] w-[400px] bg-gradient-to-r from-indigo-600 via-purple-500 to-pink-500 curser-auto pointer-events-none mix-blend-difference z-10"
-      ></motion.div>
+        <div className="absolute w-full h-full backdrop-blur-[200px] z-[1]"></div>
+        <motion.div
+          id="blob"
+          ref={cursorRef2}
+          style={{ left: smoothMouseX, top: smoothMouseY, transform: 'translate(-50%, -50%)' }}
+          animate={{ rotate: 360 }}
+          transition={{ type: 'tween', ease: 'backOut', duration: 0.5 }}
+          className="fixed rounded-full flex justify-center items-center h-[400px] w-[400px] bg-gradient-to-r from-indigo-600 via-purple-500 to-pink-500 cursor-auto pointer-events-none mix-blend-difference"
+        ></motion.div>
       </div>
-     
     </>
   );
 }
+

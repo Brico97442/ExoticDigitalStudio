@@ -25,7 +25,7 @@ function ContactForm() {
             );
     };
     return (
-        <div className="flex items-center justify-center flex-col w-full z-50">
+        <div className="flex items-center justify-center flex-col w-full">
             <form ref={form} onSubmit={sendEmail} className="flex flex-col gap-6 w-full text-black">
 
                 <input className="h-[10vh]"

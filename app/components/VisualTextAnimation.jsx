@@ -10,7 +10,7 @@ export default function Home() {
   const size = isHovered ? 600 : 40;
 
   return (
-    <main className='main-mask-container z-0'>
+    <main className='main-mask-container'>
       <div
         className="mask"
         animate={{

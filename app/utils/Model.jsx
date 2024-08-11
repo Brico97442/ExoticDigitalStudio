@@ -65,7 +65,7 @@ export default function Model({ mousePosition, island ,animationComplete}) {
             });
         }
 
-    }, []);
+    }, [island,texture]);
 
 //Utiliser la rotation de la souris en x et y si l'animation du Loader n'est pas terminer 
 

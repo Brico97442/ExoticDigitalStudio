@@ -92,7 +92,6 @@ export default function Hero({ }) {
     }, {
       xPercent: 0,
       opacity: 1,
-      ease: 'power4.inOut',
       duration: 1,
 
       scrollTrigger: {
@@ -105,13 +104,14 @@ export default function Hero({ }) {
     }
     )
     gsap.fromTo(target2.current, {
-      xPercent: -200,
-      opacity: 0,
+      translateZ: `${100}vh`,
+      opacity:0,
     }, {
-      xPercent: 0,
+      translateZ: `${0}vh`,
       opacity: 1,
       ease: 'power4.inOut',
-      duration: 1 ,
+      duration: 1,
+      delay: 1,
 
       scrollTrigger: {
         trigger: target2.current,
@@ -146,35 +146,35 @@ export default function Hero({ }) {
   return (
 
     <div id='hero' className='hero w-full'>
-      <div className='h-[100vh] flex flex-col justify-center items-center z-50'>
+      <div className='h-[100vh] flex flex-col justify-center items-center '>
         <div className='gap-6 flex flex-col' data-speed='0.3'>
-          <h1 id='hero-title' className='text-[10vh] z-50 bg-clip-text text-transparent bg-gradient-to-r from-violet-500/80 to-teal-800/80'>Besoin d'un site web</h1>
-          <p id='title-text' className='title-text text-6xl text-[#5F0F40] leading-[1vh] z-50'> <br />à la <span className='text-teal-700 text-6xl font-bold uppercase'>Réunion </span>?</p>
-          <button id='hero-button' className='w-full mt-6 text-lg text-white font-bold bg-[#5F0F40]/15 hover:bg-teal-700 max-w-[250px] rounded-lg p-2 z-50'>Nous contacter</button>
+          <h1 id='hero-title' className='text-[10vh] bg-clip-text text-transparent bg-gradient-to-r from-violet-200/80 to-teal-100/80'>Besoin d'un site web</h1>
+          <p id='title-text' className='title-text text-6xl leading-[1vh]'> <br />à la <span className='text-6xl font-bold uppercase'>Réunion </span>?</p>
+          <button id='hero-button' className='w-full mt-6 text-lg text-white font-bold bg-[#5F0F40]/15 hover:bg-teal-700 max-w-[250px] rounded-lg p-2'>Nous contacter</button>
         </div>
       </div>
-      <div className="flex flex-col h-screen p-56 gap-10 z-50 overflow-hidden">
+      <div className="flex flex-col h-screen p-56 gap-10 overflow-hidden">
         {/* <hr className='w-full bg-white h-[2px]'/> */}
         <Lines/>
         <div className='flex gap-10' >
-          <div ref={target2} className='w-1/2 flex items-start z-50 justify-center'>
-            <video className=' z-50 bg-clip-border'  width={`${100}%`} loop autoPlay muted>
+          <div ref={target2} id ='video-target'className='w-1/2 flex items-start justify-center overflow-hidden'>
+            {/* <video width={`${100}%`} height={`${100}%`} loop autoPlay muted>
               <source src="/media/motion.mp4" type="video/mp4" />
-            </video>
+            </video> */}
           </div>
-          <div className='w-1/2 h-full flex justify-center z-50'>
-            <p ref={target} id='target-text' className='flex h-full justify-center leading-normal text-gray-200 text-xl z-50'> Exotik Digital Studio est un studio de design et de création de produits digital spécialisé dans la création de site internet qui place l'utilisateur au coeur d'une expérience unique, localisé au Tampon à l'ile de la réunion. Clairement orienter vers l'UI , l'UX et le motion design </p>
+          <div className='w-1/2 h-full flex justify-center'>
+            <p ref={target} id='target-text' className='flex h-full justify-center leading-normal text-gray-200 text-xl'>Exotik Digital Studio est un studio de design et de création de produits digital spécialisé dans la création de site internet qui place l'utilisateur au coeur d'une expérience unique axée sur l'UI, l'UX et le motion design, localisé au Tampon à l'ile de la réunion.</p>
           </div>
         </div>
 
       </div>
-      <TextScroll className='z-50' value="Plonger au coeur de solution web innovante"/>
-      <div className="flex h-[250vh]  relative w-full mt-[50vh] z-50"  ref={container}>
+      <TextScroll className='z-50 ' value="Plonger au coeur de solution web innovante"/>
+      <div className="flex h-[250vh]  relative w-full mt-[50vh]"  ref={container}>
 
-        <div className=" parrallaxe flex h-[100vh] w-full top-0 left-0 sticky overflow-hidden z-50 ">
+        <div className=" parrallaxe flex h-[100vh] w-full top-0 left-0 sticky overflow-hidden">
           {
             pictures.map(({ src, scale }, index) => {
-              return <motion.div style={{ scale }} transition={{ type: 'inertia', velocity: 450 }} key={index} className="el z-50 flex items-center justify-center h-full w-full top-0 absolute">
+              return <motion.div style={{ scale }} transition={{ type: 'inertia', velocity: 450 }} key={index} className="el flex items-center justify-center h-full w-full top-0 absolute">
 
                 <div className="relative w-[25vw] h-[25vh] image-container">
                   <Image

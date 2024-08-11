@@ -5,6 +5,7 @@ import "./globals.css";
 import Navbar from "../app/components/Navbar";
 import StickyCursor from "./utils/StickyCursor";
 import Template from "./utils/template";
+import {AnimationProvider} from './context/animationContext';
 
 const metadata = {
   title: "Create Next App",
@@ -16,18 +17,20 @@ export default function RootLayout({ children }) {
   const stickyElement = useRef(null);
 
   return (
-    <html lang="en">
-      <head>
-      </head>
-      <body className={GeistSans.className}>
-        <Template>
-          <Navbar ref={stickyElement} />
-          <StickyCursor stickyElement={stickyElement} />
-          <main className="flex w-full min-h-screen flex-col bg-[#FFECD1] z-60">
-            {children}
-          </main>
-        </Template>
-      </body>
-    </html >
+    <AnimationProvider>
+      <html lang="en">
+        <head>
+        </head>
+        <body className={GeistSans.className}>
+          <Template>
+            <Navbar ref={stickyElement} />
+            <StickyCursor stickyElement={stickyElement} />
+            <main className="flex w-full min-h-screen flex-col bg-black">
+              {children}
+            </main>
+          </Template>
+        </body>
+      </html>
+    </AnimationProvider>
   );
 }
