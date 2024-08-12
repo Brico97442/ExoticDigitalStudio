@@ -174,7 +174,7 @@ export default function Hero({ }) {
         <div className=" parrallaxe flex h-[100vh] w-full top-0 left-0 sticky overflow-hidden">
           {
             pictures.map(({ src, scale }, index) => {
-              return <motion.div style={{ scale }} transition={{ type: 'inertia', velocity: 450 }} key={index} className="el flex items-center justify-center h-full w-full top-0 absolute">
+              return <motion.div style={{ scale }} transition={{ type: 'inertia', velocity: 500 }} key={index} className="el flex items-center justify-center h-full w-full top-0 absolute">
 
                 <div className="relative w-[25vw] h-[25vh] image-container">
                   <Image
