@@ -27,7 +27,7 @@ export default function RootLayout({ children }) {
           <Template>
             <Navbar ref={stickyElement} />
             <StickyCursor stickyElement={stickyElement} />
-            <main className="flex w-full min-h-screen flex-col bg-gradient-to-tr from-indigo-600 via-sky-300 to-black">
+            <main className="flex w-full min-h-screen flex-col bg-gradient-to-bl from-zinc-600 via-zinc-400 to-neutral-400">
               {children}
             </main>
           </Template>

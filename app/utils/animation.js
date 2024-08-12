@@ -12,11 +12,13 @@ export const animatePageIn = () => {
       yPercent: 0,
       duration: 1,
       ease: "power4.inOut",
-      zIndex: 0,
+      zIndex: 10,
     }).to([bannerOne, bannerTwo, bannerThree, bannerFour], {
       yPercent: -100,
       ease: "power4.inOut",
       zIndex: 10,
+      delay: 1,
+
     });
   }
 };
@@ -33,7 +35,8 @@ export const animatePageOut = (href, router) => {
     tl.set([bannerOne, bannerTwo, bannerThree, bannerFour], {
       yPercent: 100,
       duration: 1,
-      ease: "power4.inOut",
+      ease: "power4.inOut",     
+       zIndex: 10,
     }).to([bannerOne, bannerTwo, bannerThree, bannerFour], {
       yPercent: 0,
       duration: 1,
@@ -41,7 +44,7 @@ export const animatePageOut = (href, router) => {
       stagger: 0.2,
       scrub: 1,
       zIndex: 10,
-
+      delay: 1,
       onComplete: () => {
         router.push(href);
       },
@@ -51,6 +54,7 @@ export const animatePageOut = (href, router) => {
       scrub: 1,
       ease: "power4.inOut",
       zIndex: 10,
+      delay: 1,
     });
   }
 };

@@ -10,7 +10,7 @@ export default function StickyCursor({ stickyElement }) {
 
   const cursorRef = useRef(null);
   const cursorRef2 = useRef(null);
-  const curSorSize = isHovered ? 80 : 40;
+  const curSorSize = isHovered ? 80 : 30;
 
   // Définir la valeur de mouvement et les paramètres pour le mouvement fluide
   const mouseX = useMotionValue(x);
@@ -18,7 +18,7 @@ export default function StickyCursor({ stickyElement }) {
 
   const smoothOptions = {
     damping: 20,
-    stiffness: 300,
+    stiffness: 280,
     mass: 0.5,
   };
 
@@ -106,7 +106,7 @@ export default function StickyCursor({ stickyElement }) {
           style={{ left: smoothMouseX, top: smoothMouseY, transform: 'translate(-50%, -50%)' }}
           animate={{ rotate: 360 }}
           transition={{ type: 'tween', ease: 'backOut', duration: 0.5 }}
-          className="fixed rounded-full flex justify-center items-center h-[300px] w-[300px] bg-gradient-to-r from-indigo-600 via-purple-500 to-pink-500 cursor-auto pointer-events-none mix-blend-difference"
+          className="fixed rounded-full flex justify-center items-center h-[300px] w-[300px] bg-gradient-to-r from-red-600 via-indigo-500 to-red-500 cursor-auto pointer-events-none mix-blend-difference"
         ></motion.div>
       </div>
     </>

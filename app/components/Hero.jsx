@@ -148,11 +148,12 @@ export default function Hero({ }) {
   ]
   return (
 
-    <div id='hero' className='hero w-full'>
-      <div className='h-[100vh] flex flex-col justify-center items-center'>
+    <div id='hero' className='hero w-full text-black mx-60'>
+      <div className='h-[100vh] flex flex-col justify-center items-start w-full'>
         <div className='gap-6 flex flex-col' data-speed='0.3'>
-          <h1 id='hero-title' className='text-[10vh] uppercase bg-clip-text text-transparent bg-gradient-to-r from-violet-200/80 to-teal-100/80'>Solution web</h1>
-          <p id='title-text' className='title-text text-6xl leading-[1vh]'> <br />à la <span className='text-6xl font-bold uppercase'>Réunion</span></p>
+          <h1 id='hero-title' className='text-[8em] uppercase bg-clip-text text-transparent tracking-tight  bg-gradient-to-r from-black to-neutral-950/80'>Solution web <span className='text-[0.75em]'>&</span></h1>
+          <h1 id='hero-title' className='text-[8em] uppercase bg-clip-text z-[3] text-transparent tracking-tight  bg-gradient-to-r from-black to-neutral-950/80'>Motion Design</h1>
+          <p id='title-text' className='title-text text-6xl leading-[1vh]'> <br />à la <span className='text-6xl font-bold'>Réunion</span></p>
           <button id='hero-button' className='w-full mt-6 text-lg text-white font-bold bg-[#5F0F40]/15 hover:bg-teal-700 max-w-[250px] rounded-lg p-2'>Nous contacter</button>
         </div>
       </div>

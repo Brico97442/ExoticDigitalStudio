@@ -7,6 +7,7 @@ import { useAnimation } from '../context/animationContext';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
 import logo from '../../assets/LogoExoticDigitalStudioWhite.png';
+import { animatePageIn, animatePageOut } from "../utils/animation"
 
 
 export default function Scene({ island }) {
@@ -27,8 +28,6 @@ export default function Scene({ island }) {
         onEnter: () => {
           gsap.to(divRef.current, {
             backgroundColor: 'rgba(0, 0, 0, 0)',
-            duration: 1,
-            delay: 0.2,
             ease: 'power4.inOut',
             zIndex: 2,
             onStart: () => {
@@ -37,10 +36,10 @@ export default function Scene({ island }) {
               });
             },
           });
-
+          
           gsap.to(island.current.position, {
-            x: 0.5,
-            y: -0.2,
+            x: 0.2,
+            y: -0.3,
             z: -0.8,
             duration: 1,
             ease: 'power4.inOut',
@@ -63,7 +62,6 @@ export default function Scene({ island }) {
             duration: 1,
             ease: 'power4.inOut',
             zIndex: 6,
-
           });
           gsap.to(island.current.position, {
             x: 0,
@@ -164,6 +162,7 @@ export default function Scene({ island }) {
           <div className='absolute bottom-0 right-0 mr-20 mb-20 text-sm'>
             Reunion Island Studio
           </div>
+          <p className='absolute text-xs ml-20 bottom-0 mb-40'>Since 2024</p>
         </div>
         {loadingComplete && (
           <p ref={callBtn} className='text-lg w-screen fixed flex justify-center items-center transition-ease-2 bottom-0 mb-20 hover:scale-100 transition ease-out duration-500 hover:opacity-25'>
@@ -175,7 +174,7 @@ export default function Scene({ island }) {
         <Suspense fallback={null}>
           <Model mousePosition={mousePosition} island={island} animationComplete={animationComplete} />
         </Suspense>
-        <ambientLight position={[1, 4, 1]} intensity={7} color={'red'} />
+        <ambientLight position={[1, 2, -2]} intensity={5} color={'blue'} />
         {/* <OrbitControls /> */}
       </Canvas>
     </div>
