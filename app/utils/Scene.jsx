@@ -171,8 +171,7 @@ export default function Scene({island}) {
         <Suspense fallback={null}>
           <Model mousePosition={mousePosition} island={island} animationComplete={animationComplete} />
         </Suspense>
-        <ambientLight position={[1, 4, 1]} intensity={9} color={'white'} />
-        <Environment preset="city" />
+        <ambientLight position={[1, 4, 1]} intensity={7} color={'red'} />
         {/* <OrbitControls /> */}
       </Canvas>
     </div>

@@ -10,7 +10,7 @@ export default function Framer({children}) {
         const {height, width, left, top} = ref.current.getBoundingClientRect();
         const middleX = clientX - (left + width/2)
         const middleY = clientY - (top + height/2)
-        setPosition({x: middleX *0.1, y: middleY * 0.1})
+        setPosition({x: middleX *0.01, y: middleY * 0.01})
     }
 
     const reset = () => {

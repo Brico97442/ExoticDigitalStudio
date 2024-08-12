@@ -10,6 +10,7 @@ import gsap from 'gsap'
 import TextScroll from './TextScroll'
 import { ScrollTrigger } from 'gsap/all';
 import Lines from './Lines'
+import Magnetic from '../utils/Magnetic'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -152,15 +153,18 @@ export default function Hero({ }) {
           <p id='title-text' className='title-text text-6xl leading-[1vh]'> <br />à la <span className='text-6xl font-bold uppercase'>Réunion </span>?</p>
           <button id='hero-button' className='w-full mt-6 text-lg text-white font-bold bg-[#5F0F40]/15 hover:bg-teal-700 max-w-[250px] rounded-lg p-2'>Nous contacter</button>
         </div>
+        <div className='rounded-full z-[6] bg-red-700 hover:bg-green-500 w-full h-full w-40 h-40 text-black fixed bottom-0 right-0 justify-center mr-40 mb-40 flex items-center' ><p>Nous contacter </p></div>
       </div>
       <div className="flex flex-col h-screen p-56 gap-10 overflow-hidden">
         {/* <hr className='w-full bg-white h-[2px]'/> */}
         <Lines/>
         <div className='flex gap-10' >
+          <TextScroll className='z-50 text-2xl leading-none ' value="Exotik Digital Studio est un studio de design et de création de produits digital spécialisé dans la création de site internet qui place l'utilisateur au coeur d'une expérience unique axée sur l'UI, l'UX et le motion design, localisé au Tampon à l'ile de la réunion."/>
           <div ref={target2} id ='video-target'className='w-1/2 flex items-start justify-center overflow-hidden'>
             {/* <video width={`${100}%`} height={`${100}%`} loop autoPlay muted>
               <source src="/media/motion.mp4" type="video/mp4" />
             </video> */}
+
           </div>
           <div className='w-1/2 h-full flex justify-center'>
             <p ref={target} id='target-text' className='flex h-full justify-center leading-normal text-gray-200 text-xl'>Exotik Digital Studio est un studio de design et de création de produits digital spécialisé dans la création de site internet qui place l'utilisateur au coeur d'une expérience unique axée sur l'UI, l'UX et le motion design, localisé au Tampon à l'ile de la réunion.</p>

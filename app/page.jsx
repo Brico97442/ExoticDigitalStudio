@@ -36,11 +36,9 @@ export default function Home() {
       <Scene island={island} targetRef={targetRef} />
       {/* {animationComplete && ( */}
         <>
-          {/* <Leva hidden={true} /> */}
           <Hero target={targetRef} />
           <SkillsSection />
           {/* <VisualTextAnimation /> */}
-          <TextScroll value="La technologie avance tellement vite, ne nous laissons pas dépassés" />
         </>
       {/* )} */}
     </main>

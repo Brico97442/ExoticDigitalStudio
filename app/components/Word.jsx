@@ -27,8 +27,8 @@ export default function Paragraphe({ value }) {
 const Word = ({ children, range, progress }) => {
     const opacity = useTransform(progress, range, [0, 1])
     return (
-            <span className='m-1 flex text-6xl font-bold flex-wrap relative text-orange-500'>
-                <span className="flex w-full absolute opacity-[0.1] text-orange-600">{children}</span>
+            <span className='m-1 flex font-bold flex-wrap relative'>
+                <span className="flex w-full absolute opacity-[0.1]">{children}</span>
                 <motion.span style={{ opacity ,zIndex:60 }}>{children}</motion.span>
             </span>
     )
