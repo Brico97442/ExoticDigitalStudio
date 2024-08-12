@@ -50,19 +50,19 @@ export default function Pricing() {
 
         gsap.fromTo("#title-text",
             {
-            x:`${-100}vh`,
-            opacity: 0,
-            visibility: "hidden",
-            ease: "power4.inOut",
-            duration: 0.4,
+                x: `${-100}vh`,
+                opacity: 0,
+                visibility: "hidden",
+                ease: "power4.inOut",
+                duration: 0.4,
             },
-             {
-            x: 0,
-            opacity: 1,
-            visibility: "visible",
-            stagger: 0.07,
-            delay: 1.6
-        });
+            {
+                x: 0,
+                opacity: 1,
+                visibility: "visible",
+                stagger: 0.07,
+                delay: 1.6
+            });
     }, []);
 
     const onContainerEnter = () => {

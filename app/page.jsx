@@ -31,15 +31,16 @@ export default function Home() {
       cancelAnimationFrame(raf);
     };
   }, []);
+
   return (
     <main id="main" className="flex w-full relative min-h-screen flex-col z-[3]">
       <Scene island={island} targetRef={targetRef} />
       {/* {animationComplete && ( */}
-        <>
-          <Hero target={targetRef} />
-          <SkillsSection />
-          {/* <VisualTextAnimation /> */}
-        </>
+      <>
+        <Hero target={targetRef} />
+        <SkillsSection />
+        {/* <VisualTextAnimation /> */}
+      </>
       {/* )} */}
     </main>
   );

@@ -11,7 +11,7 @@ import logo from '../../assets/LogoExoticDigitalStudioWhite.png';
 // Enregistrement du plugin ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
 
-export default function Scene({island}) {
+export default function Scene({ island }) {
   const divRef = useRef(null);
   const divRef2 = useRef(null);
   const callBtn = useRef(null);
@@ -20,63 +20,63 @@ export default function Scene({island}) {
   const { animationComplete, setAnimationComplete } = useAnimation();
 
   useEffect(() => {
-    if(island){
+    if (island) {
       // Configuration de ScrollTrigger
-    ScrollTrigger.create({
-      trigger: divRef.current,
-      start: 'top top',
-      end: '+=500',
-      onEnter: () => {
-        gsap.to(divRef.current, {
-          backgroundColor: 'rgba(0, 0, 0, 0)',
-          duration: 1,
-          zIndex: 6,
-          delay: 0.2,
-          ease: 'power4.inOut',
-          onStart: () => {
-            gsap.to(divRef2.current, {
-              opacity: 0,
-            });
-          },
-        });
+      ScrollTrigger.create({
+        trigger: divRef.current,
+        start: 'top top',
+        end: '+=500',
+        onEnter: () => {
+          gsap.to(divRef.current, {
+            backgroundColor: 'rgba(0, 0, 0, 0)',
+            duration: 1,
+            zIndex: 6,
+            delay: 0.2,
+            ease: 'power4.inOut',
+            onStart: () => {
+              gsap.to(divRef2.current, {
+                opacity: 0,
+              });
+            },
+          });
 
-        gsap.to(island.current.position, {
-          x: 0.5,
-          y: -0.2,
-          z: -0.8,
-          duration: 1,
-          ease: 'power4.inOut',
-          zIndex:0
-        });
-        setAnimationComplete(true);
-        document.body.classList.remove('no-scroll');
-      },
-      onLeaveBack: () => {
-        setAnimationComplete(false);
-        document.body.classList.add('no-scroll');
-        console.log('Animation onLeaveBack triggered');
-        gsap.to(divRef.current, {
-          backgroundColor: 'rgba(0, 0, 0, 1)',
-          duration: 1,
-          zIndex: 6,
-          ease: 'power4.inOut',
-        });
-        gsap.to(divRef2.current, {
-          opacity: 1,
-          duration: 1,
-          ease: 'power4.inOut',
-        });
-        gsap.to(island.current.position, {
-          x: 0,
-          y: 0,
-          z: 0,
-          duration: 1,
-          ease: 'power4.inOut',
-          zIndex:6,
-        });
-       
-      },
-    });
+          gsap.to(island.current.position, {
+            x: 0.5,
+            y: -0.2,
+            z: -0.8,
+            duration: 1,
+            ease: 'power4.inOut',
+            zIndex: 0
+          });
+          setAnimationComplete(true);
+          document.body.classList.remove('no-scroll');
+        },
+        onLeaveBack: () => {
+          setAnimationComplete(false);
+          document.body.classList.add('no-scroll');
+          console.log('Animation onLeaveBack triggered');
+          gsap.to(divRef.current, {
+            backgroundColor: 'rgba(0, 0, 0, 1)',
+            duration: 1,
+            zIndex: 6,
+            ease: 'power4.inOut',
+          });
+          gsap.to(divRef2.current, {
+            opacity: 1,
+            duration: 1,
+            ease: 'power4.inOut',
+          });
+          gsap.to(island.current.position, {
+            x: 0,
+            y: 0,
+            z: 0,
+            duration: 1,
+            ease: 'power4.inOut',
+            zIndex: 6,
+          });
+
+        },
+      });
 
     }
   }, [island, setAnimationComplete]);
@@ -122,17 +122,17 @@ export default function Scene({island}) {
     }
     // Gestion du mouvement de la souris
     const handleMouseMove = (event) => {
-     setMousePosition({
-       x: (event.clientX / window.innerWidth) * 2 - 1,
-       y: -(event.clientY / window.innerHeight) * 2 + 1,
-     });
-   };
+      setMousePosition({
+        x: (event.clientX / window.innerWidth) * 2 - 1,
+        y: -(event.clientY / window.innerHeight) * 2 + 1,
+      });
+    };
 
-   window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mousemove', handleMouseMove);
 
-   return () => {
-     window.removeEventListener('mousemove', handleMouseMove);
-   };
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
   }, [animationComplete]);
 
   useEffect(() => {
