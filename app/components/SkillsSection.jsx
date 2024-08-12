@@ -23,7 +23,7 @@ function AnimatedText({ children }) {
 
 function Section({ children, className }) {
   return (
-    <section className={`h-screen relative ${className}`}>
+    <section className={`h-screen z-[3] relative ${className}`}>
       {children}
     </section>
   );

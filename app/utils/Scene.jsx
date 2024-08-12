@@ -8,8 +8,6 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
 import logo from '../../assets/LogoExoticDigitalStudioWhite.png';
 
-// Enregistrement du plugin ScrollTrigger
-gsap.registerPlugin(ScrollTrigger);
 
 export default function Scene({ island }) {
   const divRef = useRef(null);
@@ -30,9 +28,9 @@ export default function Scene({ island }) {
           gsap.to(divRef.current, {
             backgroundColor: 'rgba(0, 0, 0, 0)',
             duration: 1,
-            zIndex: 6,
             delay: 0.2,
             ease: 'power4.inOut',
+            zIndex: 2,
             onStart: () => {
               gsap.to(divRef2.current, {
                 opacity: 0,
@@ -46,25 +44,26 @@ export default function Scene({ island }) {
             z: -0.8,
             duration: 1,
             ease: 'power4.inOut',
-            zIndex: 0
           });
           setAnimationComplete(true);
           document.body.classList.remove('no-scroll');
         },
+
         onLeaveBack: () => {
           setAnimationComplete(false);
           document.body.classList.add('no-scroll');
-          console.log('Animation onLeaveBack triggered');
           gsap.to(divRef.current, {
             backgroundColor: 'rgba(0, 0, 0, 1)',
             duration: 1,
-            zIndex: 6,
             ease: 'power4.inOut',
+            zIndex: 9,
           });
           gsap.to(divRef2.current, {
             opacity: 1,
             duration: 1,
             ease: 'power4.inOut',
+            zIndex: 6,
+
           });
           gsap.to(island.current.position, {
             x: 0,
@@ -72,7 +71,6 @@ export default function Scene({ island }) {
             z: 0,
             duration: 1,
             ease: 'power4.inOut',
-            zIndex: 6,
           });
 
         },
@@ -82,6 +80,7 @@ export default function Scene({ island }) {
   }, [island, setAnimationComplete]);
 
   /////////////////////////////////////////////// Numeric counter /////////////////////////////////////////////////////////////////////////////////////////////
+
   let counterElement;
   let currentValue = 0;
   const totalDuration = 15000; // Durée totale en ms (15 secondes)
@@ -133,8 +132,11 @@ export default function Scene({ island }) {
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
     };
-  }, [animationComplete]);
+  }, [animationComplete,startNumericLoader]);
 
+  /////////////////////////////////////Animation clignotement compteur//////////////////////////////////////////////////////////
+  
+  
   useEffect(() => {
     if (!loadingComplete) {
       gsap.from(["#counter-body", "#counter-number"], {
@@ -148,10 +150,12 @@ export default function Scene({ island }) {
     }
   }, [loadingComplete]);
 
+
+  
   return (
     <div ref={divRef} className={` ${animationComplete ? 'absolute' : 'fixed'} bg-black h-screen top-0 flex-col items-center justify-center w-full flex z-[6] `}>
-      <div ref={divRef2} className={` ${animationComplete ? 'blur-sm' : 'blur-none'} fixed top-0 left-0 h-screen w-screen transition`}>
-        <Image src={logo} alt="logo de la compagnie" width={250} height={20} className='ml-8' />
+      <div ref={divRef2} className={` ${animationComplete ? 'blur-sm' : 'blur-none'} fixed top-0 text-white left-0 h-screen w-screen transition z-[6]`}>
+        <Image src={logo} alt="logo de la compagnie" width={250} height={20} className='ml-8  ' />
         <h1 id="counter-number" className='ml-20 text-4xl'>0</h1>
         <div>
           <div id='counter-body' className='absolute ml-20 mb-24 bottom-0 h-1 bg-black w-[30vw]'>
@@ -177,3 +181,5 @@ export default function Scene({ island }) {
     </div>
   );
 }
+// Enregistrement du plugin ScrollTrigger
+gsap.registerPlugin(ScrollTrigger);

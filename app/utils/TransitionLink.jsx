@@ -16,7 +16,7 @@ export default function TransitionLink({label,href}) {
     }
     
   return (
-    <div>
+    <div className="" >
       <button onClick={handleClick}>
         {label}
       </button>

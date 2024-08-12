@@ -6,6 +6,8 @@ import Navbar from "../app/components/Navbar";
 import StickyCursor from "./utils/StickyCursor";
 import Template from "./utils/template";
 import { AnimationProvider } from './context/animationContext';
+import { useAnimation } from './context/animationContext'; // Importez votre hook personnalisé
+
 
 const metadata = {
   title: "Create Next App",
@@ -18,7 +20,7 @@ export default function RootLayout({ children }) {
 
   return (
     <AnimationProvider>
-      <html lang="en">
+      <html lang="fr">
         <head>
         </head>
         <body className={GeistSans.className}>

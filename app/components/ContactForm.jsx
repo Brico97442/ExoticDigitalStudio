@@ -28,7 +28,7 @@ function ContactForm() {
         <div className="flex items-center justify-center flex-col w-full">
             <form ref={form} onSubmit={sendEmail} className="flex flex-col gap-6 w-full text-black">
 
-                <input className="h-[10vh]"
+                <input className="h-[10vh] w-[40%] p-6 "
                     type="text" id="user_name" name="user_name" required placeholder="Nom" />
                 <input
                     type="email"

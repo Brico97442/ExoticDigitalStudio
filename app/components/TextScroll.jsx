@@ -41,7 +41,7 @@ export default function TextScroll({value}) {
     }, []);
 
     return (
-        <div className='text-scroll w-full h-[100vh] flex items-center justify-center p-20 overflow-hidden'>
+        <div className='text-scroll w-full flex items-center justify-center p-20 overflow-hidden'>
             <div>
                 <h1 ref={el => textRefs.current[0] = el} className="text-target text-gray-200 leading-normal overflow-hidden ">{value}</h1>
             </div >

@@ -2,19 +2,16 @@
 
 import Hero from "./components/Hero";
 import SkillsSection from "./components/SkillsSection";
-import VisualTextAnimation from "./components/VisualTextAnimation";
 import Lenis from 'lenis';
 import TextScroll from './components/TextScroll';
 import { useEffect, useRef } from "react";
 import dynamic from "next/dynamic";
-import { useAnimation } from './context/animationContext'; // Importez votre hook personnalisé
 
 const Scene = dynamic(() => import('./utils/Scene'), {
   ssr: false
 });
 
 export default function Home() {
-  const { animationComplete } = useAnimation(); // Récupérez l'état de l'animation
   const island = useRef(null);
   const targetRef = useRef(null);
 
@@ -33,14 +30,12 @@ export default function Home() {
   }, []);
 
   return (
-    <main id="main" className="flex w-full relative min-h-screen flex-col z-[3]">
+    <main id="main" className="flex w-full relative min-h-screen flex-col ">
       <Scene island={island} targetRef={targetRef} />
       {/* {animationComplete && ( */}
-      <>
         <Hero target={targetRef} />
         <SkillsSection />
         {/* <VisualTextAnimation /> */}
-      </>
       {/* )} */}
     </main>
   );

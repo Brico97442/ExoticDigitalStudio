@@ -99,13 +99,13 @@ export default function Pricing() {
     };
 
     return (
-        <section className="pricing bg-black h-screen w-full relative m-auto">
-            <div className="pricing-text flex flex-col w-full w-1/2 gap-20 ">
-                <h1 id='price-title' ref={(el) => textRef.current[0] = el} className='text-[12vh] leading-none mt-20 z-[1]' >Nos Tarifs</h1>
-                <p id='title-text' className='text-xl w-3/4 z-[1]'>Exotik Digital Studio, vous propose des formules adaptées à tout type de budget. Que vous soyez une petite ou moyenne entreprise, particulier ou professionnel, retrouvez la formule qui correspond à vos besoins.</p>
+        <section className="pricing h-screen w-full relative m-auto">
+            <div className="pricing-text flex flex-col w-full w-1/2 gap-20 z-[3]">
+                <h1 id='price-title' ref={(el) => textRef.current[0] = el} className='text-[12vh] leading-none mt-20 ' >Nos Tarifs</h1>
+                <p id='title-text' className='text-xl w-3/4'>Exotik Digital Studio, vous propose des formules adaptées à tout type de budget. Que vous soyez une petite ou moyenne entreprise, particulier ou professionnel, retrouvez la formule qui correspond à vos besoins.</p>
             </div>
             <div id='price-container' onMouseEnter={onContainerEnter} onMouseLeave={onContainerExit}
-                className='flex text-black h-full w-full justify-center items-center relative cursor-pointer z-[2]'>
+                className='flex text-black h-full w-full justify-center items-center relative cursor-pointer z-[3]'>
                 {sliderData.map((data, index) => (
                     <div
                         key={index}

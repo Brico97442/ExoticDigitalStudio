@@ -13,12 +13,10 @@ export const animatePageIn = () => {
       duration: 1,
       ease: "power4.inOut",
       zIndex: 0,
-      delay: 1,
     }).to([bannerOne, bannerTwo, bannerThree, bannerFour], {
       yPercent: -100,
       ease: "power4.inOut",
-      zIndex: 0,
-      delay: 1,
+      zIndex: 10,
     });
   }
 };
@@ -42,15 +40,17 @@ export const animatePageOut = (href, router) => {
       ease: "power4.inOut",
       stagger: 0.2,
       scrub: 1,
+      zIndex: 10,
+
       onComplete: () => {
         router.push(href);
       },
     }).to([bannerOne, bannerTwo, bannerThree, bannerFour], {
       yPercent: 100,
       duration: 1,
-      delay: 1,
       scrub: 1,
       ease: "power4.inOut",
+      zIndex: 10,
     });
   }
 };

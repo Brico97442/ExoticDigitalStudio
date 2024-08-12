@@ -59,7 +59,7 @@ export default function StickyCursor({ stickyElement }) {
       mouseX.set(x - curSorSize / 2);
       mouseY.set(y - curSorSize / 2);
     }
-  }, [x, y, curSorSize, isHovered, stickyElement, scale]);
+  }, [x, y, curSorSize, isHovered, stickyElement, scale,mouseX,mouseY]);
 
   const handleMouseOver = () => {
     setIsHovered(true);
@@ -96,17 +96,17 @@ export default function StickyCursor({ stickyElement }) {
         style={{ left: smoothMouseX, top: smoothMouseY, scaleX: scale.x, scaleY: scale.y }}
         animate={{ width: curSorSize, height: curSorSize }}
         transition={{ type: 'tween', ease: 'backOut', duration: 0.5 }}
-        className="z-[4] fixed rounded-full flex justify-center items-center pointer-events-none bg-teal-500 cursor-auto mix-blend-difference"
+        className="z-[5] fixed rounded-full flex justify-center items-center pointer-events-none bg-teal-500 cursor-auto mix-blend-difference"
       ></motion.div>
       <div>
-        <div className="absolute w-full h-full backdrop-blur-[150px] z-[1]"></div>
+        <div className="absolute w-full h-full backdrop-blur-[200px] z-[1]"></div>
         <motion.div
           id="blob"
           ref={cursorRef2}
           style={{ left: smoothMouseX, top: smoothMouseY, transform: 'translate(-50%, -50%)' }}
           animate={{ rotate: 360 }}
           transition={{ type: 'tween', ease: 'backOut', duration: 0.5 }}
-          className="fixed rounded-full flex justify-center items-center h-[400px] w-[400px] bg-gradient-to-r from-indigo-600 via-purple-500 to-pink-500 cursor-auto pointer-events-none mix-blend-difference"
+          className="fixed rounded-full flex justify-center items-center h-[300px] w-[300px] bg-gradient-to-r from-indigo-600 via-purple-500 to-pink-500 cursor-auto pointer-events-none mix-blend-difference"
         ></motion.div>
       </div>
     </>
