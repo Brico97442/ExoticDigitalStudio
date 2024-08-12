@@ -65,7 +65,7 @@ export default function Model({ mousePosition, island, animationComplete }) {
                 },
                 vertexShader,
                 fragmentShader,
-                wireframe: true, // Active le wireframe
+                wireframe: true, // Activer le wireframe
                 transparent: true,
                 depthTest: false,
                 alphaTest: true
