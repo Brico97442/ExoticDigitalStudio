@@ -227,7 +227,7 @@ section span {
 }
 
 .hero h1 {
-  line-height: 10.6vh;
+  line-height: 19vh;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
 }
 

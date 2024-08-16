@@ -1,7 +1,6 @@
 'use client'
 
 import Hero from "./components/Hero";
-import SkillsSection from "./components/SkillsSection";
 import Lenis from 'lenis';
 import TextScroll from './components/TextScroll';
 import { useEffect, useRef } from "react";
@@ -34,8 +33,6 @@ export default function Home() {
       <Scene island={island} targetRef={targetRef} />
       {/* {animationComplete && ( */}
         <Hero target={targetRef} />
-        <SkillsSection />
-        {/* <VisualTextAnimation /> */}
       {/* )} */}
     </main>
   );

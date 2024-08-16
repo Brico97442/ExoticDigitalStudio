@@ -148,20 +148,20 @@ export default function Hero({ }) {
   ]
   return (
 
-    <div id='hero' className='hero flex flex-col items-center justify-center w-full max-w-[70vw] m-auto text-black'>
-      <div className='h-[100vh] flex flex-col justify-center items-start w-full'>
-        <div className='gap-6 flex flex-col items-center' data-speed='0.3'>
-          <h1 id='hero-title' className='text-[8em] perspective-[200px] uppercase bg-clip-text text-transparent tracking-tight  bg-gradient-to-r from-black to-neutral-950/80'>Solution web <span className='text-[0.75em]'>&</span></h1>
-          <h1 id='hero-title' className='text-[8em] uppercase bg-clip-text z-[3] text-transparent tracking-tight  bg-gradient-to-r from-black to-neutral-950/80'>Motion Design</h1>
-          <p id='title-text' className='title-text text-6xl leading-[1vh]'> <br />à la <span className='text-6xl font-bold'>Réunion</span></p>
+    <div id='hero' className='hero flex flex-col items-center justify-center w-full  text-black'>
+      <div className='h-[100vh] flex flex-col justify-center items-start w-full max-w-[85vw] m-auto'>
+        <div className=' flex flex-col items-center' data-speed='0.3'>
+          <h1 id='hero-title' className='text-[200px] uppercase bg-clip-text w-full text-transparent bg-gradient-to-r from-black to-neutral-950/80'>Web Design</h1>
+          <h1 id='hero-title' className='text-[200px] uppercase bg-clip-text z-[3] w-full text-transparent bg-gradient-to-r from-black to-neutral-950/80'>Motion Design</h1>
+          <h1 id='hero-title' className='text-[200px] uppercase bg-clip-text z-[3] w-full text-transparent bg-gradient-to-r from-black to-neutral-950/80'><span className='text-[0.75em]'>&</span> ui/ux</h1>
           <button id='hero-button' className='w-full mt-6 text-lg text-white font-bold bg-[#5F0F40]/15 hover:bg-teal-700 max-w-[250px] rounded-lg p-2'>Nous contacter</button>
         </div>
       </div>
 
-      <div className="flex flex-col h-screen items-center overflow-hidden z-[3] border-box ">
+      <div className="flex flex-col h-screen items-center overflow-hidden z-[3] border-box max-w-[85vw] m-auto">
         {/* <div className='rounded-full font-bold bg-[#5F0F40]/40 hover:bg-teal-700/50 shadow-xl w-full h-full w-40 h-40 fixed bottom-0 right-0 justify-center mr-40 mb-40 flex items-center' ><p>Nous contacter </p></div> */}
         {/* <hr className='w-full bg-white h-[2px]'/> */}
-        <div className='w-full'>
+        <div className='w-full ' >
         <h1 id='about-title' className='text-[8em] uppercase bg-clip-text z-[3] text-align-left text-transparent tracking-tight my-20 bg-gradient-to-r from-black to-neutral-950/80'>A propos</h1>
         <Lines />
         </div>
