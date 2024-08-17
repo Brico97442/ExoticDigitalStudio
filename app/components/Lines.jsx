@@ -62,8 +62,8 @@ function Lines() {
     return (
         <div className='h-[1px] w-full relative mb-20 z-[2]'>
             <div onMouseEnter={manageMouseEnter} onMouseMove={manageMouseMove} onMouseLeave={manageMouseLeave} className='z-[3] box h-[40px] relative top-[-20px] hover:h-[150px] hover:top-[-75px]'></div>
-            <svg fill='none' className='flex items-center w-[400px] bg-transparent h-[100px] top-[-50px] absolute overflow-visible '>
-                <path className='stroke-[1px] stroke-white w-full' ref={path}>
+            <svg fill='none' className='flex items-center bg-transparent h-[100px] top-[-50px] absolute overflow-visible '>
+                <path className='stroke-[1px] stroke-black w-full' ref={path}>
                 </path>
             </svg>
         </div>

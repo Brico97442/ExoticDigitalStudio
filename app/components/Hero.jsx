@@ -64,31 +64,6 @@ export default function Hero({ }) {
         zIndex: 2
       });
 
-    // ScrollTrigger.create({
-    //   trigger: target.current,
-    //   start: 'top center',
-    //   endTrigger: 'body',
-    //   end: '+=300',
-    //   scrub: 1,
-    //   toggleActions:"restart none reverse none",
-    //   markers: true, // Epingler l'objet à la cible
-    //   onEnter: () => {
-    //     gsap.from(target.current.position, {
-    //       x: -200,
-    //       duration: 3,
-    //       ease: 'power4.inOut',
-    //     });
-    //   },
-    //   onLeaveBack: () => {
-    //     gsap.to(target.current.position, {
-    //       x: 0,
-    //       duration: 1.5,
-    //       ease: 'power4.inOut',
-    //       scrub:1,
-    //     });
-    //   },
-
-    // });
     gsap.fromTo(target.current, {
       xPercent: 200,
       opacity: 0,
@@ -148,46 +123,17 @@ export default function Hero({ }) {
   ]
   return (
 
-    <div id='hero' className='hero flex flex-col items-center justify-center w-full  text-black'>
-      <div className='h-[100vh] flex flex-col justify-center items-start w-full max-w-[85vw] m-auto'>
-        <div className=' flex flex-col items-center' data-speed='0.3'>
-          <h1 id='hero-title' className='text-[200px] uppercase bg-clip-text w-full text-transparent bg-gradient-to-r from-black to-neutral-950/80'>Web Design</h1>
-          <h1 id='hero-title' className='text-[200px] uppercase bg-clip-text z-[3] w-full text-transparent bg-gradient-to-r from-black to-neutral-950/80'>Motion Design</h1>
-          <h1 id='hero-title' className='text-[200px] uppercase bg-clip-text z-[3] w-full text-transparent bg-gradient-to-r from-black to-neutral-950/80'><span className='text-[0.75em]'>&</span> ui/ux</h1>
-          <button id='hero-button' className='w-full mt-6 text-lg text-white font-bold bg-[#5F0F40]/15 hover:bg-teal-700 max-w-[250px] rounded-lg p-2'>Nous contacter</button>
+    <div id='hero' className='hero flex flex-col justify-center w-full text-black'>
+      <div className='h-screen flex w-full z-[3] '>
+        <div className=' w-full max-w-[85vw] flex justify-end items-center '>
+        <h2 className='text-[4em] w-1/2 leading-none text-right' >Créez le Futur du Web Innovation, Design et Magie Numérique</h2>
         </div>
-      </div>
-
-      <div className="flex flex-col h-screen items-center overflow-hidden z-[3] border-box max-w-[85vw] m-auto">
-        {/* <div className='rounded-full font-bold bg-[#5F0F40]/40 hover:bg-teal-700/50 shadow-xl w-full h-full w-40 h-40 fixed bottom-0 right-0 justify-center mr-40 mb-40 flex items-center' ><p>Nous contacter </p></div> */}
-        {/* <hr className='w-full bg-white h-[2px]'/> */}
-        <div className='w-full ' >
-        <h1 id='about-title' className='text-[8em] uppercase bg-clip-text z-[3] text-align-left text-transparent tracking-tight my-20 bg-gradient-to-r from-black to-neutral-950/80'>A propos</h1>
-        <Lines />
-        </div>
-
-        <div className='flex flex-col m-auto items-center z-[3]' >
-          <div className='flex justify-center z-[3] h-screen items-center'> 
-            {/* <div ref={target2} id='video-target' className='w-1/2 flex items-start justify-center overflow-hidden'>
-              <video width={`${100}%`} height={`${100}%`} loop autoPlay muted>
-              <source src="/media/motion.mp4" type="video/mp4" />
-              </video>
-              </div> */}
-              <TextScroll className=' w-1/2 h-full leading-none' value="Exotik Digital Studio est un studio de design et de création de produits digital spécialisé dans la création de site internet qui place l'utilisateur au coeur d'une expérience unique axée sur l'UI, l'UX et le motion design, localisé au Tampon à l'ile de la réunion." />
-          </div>
-            <div className='h-full w-full flex'>
-              <p ref={target} id='target-text' className='flex w-1/2 h-full justify-center leading-normal text-gray-200 text-xl'>Exotik Digital Studio est un studio de design et de création de produits digital spécialisé dans la création de site internet qui place l'utilisateur au coeur d'une expérience unique axée sur l'UI, l'UX et le motion design, localisé au Tampon à l'ile de la réunion.</p>
-            </div>
-        </div>
-
       </div>
       <div className="flex h-[250vh] z-[3] relative w-full mt-[50vh]" ref={container}>
-
         <div className=" parrallaxe flex h-[100vh] w-full top-0 left-0 sticky overflow-hidden">
           {
             pictures.map(({ src, scale }, index) => {
               return <motion.div style={{ scale }} transition={{ type: 'inertia', velocity: 500 }} key={index} className="el flex items-center justify-center h-full w-full top-0 absolute">
-
                 <div className="relative w-[25vw] h-[25vh] image-container">
                   <Image
                     src={src}
