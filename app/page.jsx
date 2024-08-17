@@ -10,7 +10,7 @@ import Lines from './components/Lines'
 import Slideshow from './components/Slider'
 import { Suspense } from 'react'
 import { Canvas } from '@react-three/fiber'
-import CarouselItem from './components/CarouselItem'
+import Carousel from './components/Carousel'
 
 const Scene = dynamic(() => import('./utils/Scene'), {
   ssr: false
@@ -69,7 +69,7 @@ export default function Home() {
       <div className="z-[4] h-screen w-screen">
       <Canvas>
         <Suspense fallback={null}>
-          <CarouselItem />
+        <Carousel />
         </Suspense>
       </Canvas>
       </div>

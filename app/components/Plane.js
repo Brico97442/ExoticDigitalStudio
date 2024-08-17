@@ -17,16 +17,12 @@ const Plane = ({ texture, width, height, active, ...props }) => {
         viewport.height / height
 
       gsap.to($mesh.current.material.uniforms.uProgress, {
-        value: active ? 1 : 0,
-        duration: 2.5,
-        ease: 'power3.out,'
+        value: active ? 1 : 0
       })
 
       gsap.to($mesh.current.material.uniforms.uRes.value, {
         x: active ? viewport.width : width,
-        y: active ? viewport.height : height,
-        duration: 2.5,
-        ease: 'power3.out,'
+        y: active ? viewport.height : height
       })
     }
   }, [viewport, active])
