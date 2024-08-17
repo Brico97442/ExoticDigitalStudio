@@ -7,8 +7,10 @@ import TextScroll from './components/TextScroll';
 import { useEffect, useRef } from "react";
 import dynamic from "next/dynamic";
 import Lines from './components/Lines'
-import SimpleSlider from './components/Slider'
-
+import Slideshow from './components/Slider'
+import { Suspense } from 'react'
+import { Canvas } from '@react-three/fiber'
+import Plane from './components/Plane'
 
 const Scene = dynamic(() => import('./utils/Scene'), {
   ssr: false
@@ -63,7 +65,15 @@ export default function Home() {
         </div>
       </div>
       <Hero target={targetRef} />
-      <SimpleSlider />
+      {/* <Slideshow /> */}
+      <div className="z-[4] h-screen w-screen">
+      <Canvas>
+        <Suspense fallback={null}>
+          <Plane />
+        </Suspense>
+      </Canvas>
+      </div>
+     
       {/* )} */}
     </main>
   );
