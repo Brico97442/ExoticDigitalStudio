@@ -30,8 +30,8 @@ export default function RootLayout({ children }) {
             <main className="flex w-full min-h-screen flex-col bg-gradient-to-bl from-zinc-100 to-neutral-100">
               {children}
             </main>
-            <Footer/>
           </Template>
+            <Footer/>
         </body>
       </html>
     </AnimationProvider>
