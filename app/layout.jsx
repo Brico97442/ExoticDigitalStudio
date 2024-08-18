@@ -7,7 +7,7 @@ import StickyCursor from "./utils/StickyCursor";
 import Template from "./utils/template";
 import { AnimationProvider } from './context/animationContext';
 import { useAnimation } from './context/animationContext'; // Importez votre hook personnalisé
-
+import Footer from "../app/components/Footer";
 
 const metadata = {
   title: "Create Next App",
@@ -30,6 +30,7 @@ export default function RootLayout({ children }) {
             <main className="flex w-full min-h-screen flex-col bg-gradient-to-bl from-zinc-100 to-neutral-100">
               {children}
             </main>
+            <Footer/>
           </Template>
         </body>
       </html>

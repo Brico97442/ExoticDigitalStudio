@@ -236,7 +236,7 @@ section span {
 }
 
 h1 {
-  line-height: 19vh;
+  line-height: 20vh;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
 }
 

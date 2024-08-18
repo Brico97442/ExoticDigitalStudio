@@ -11,6 +11,7 @@ import Slideshow from './components/Slider'
 import { Suspense } from 'react'
 import { Canvas } from '@react-three/fiber'
 import Carousel from './components/Carousel'
+import ContactForm from './components/ContactForm'
 
 const Scene = dynamic(() => import('./utils/Scene'), {
   ssr: false
@@ -66,14 +67,31 @@ export default function Home() {
       </div>
       <Hero target={targetRef} />
       {/* <Slideshow /> */}
-      <div className="z-[4] h-screen w-screen">
-      <Canvas>
-        <Suspense fallback={null}>
-        <Carousel />
-        </Suspense>
-      </Canvas>
+      <div className="z-[4] h-screen w-full">
+        <div id="3d-carousel" className="w-full h-screen sticky relative">
+          <div className="h-screen w-full absolute top-0 left-0 ">
+            <div className="max-w-[85vw] m-auto">
+
+              <h1 className="text-[12.5em] mt-10">Nos Prestations</h1>
+            </div>
+          </div>
+          <div className="h-screen w-full flex">
+            <Canvas>
+              <Suspense fallback={null}>
+                <Carousel />
+              </Suspense>
+            </Canvas>
+          </div>
+        </div>
       </div>
-     
+      <div id="contact" className="z-[4] max-w-[85vw] m-auto w-full h-screen relative">
+        <h1 className="text-[12.5em] mt-10 mb-10 ">Démarrons</h1>
+        <h1 className="text-[12.5em] mb-10 leading-none">un projet</h1>
+        <h2 className="absolute right-0 top-[40vh] text-[2em] w-1/4">"Les grandes histoires commençent souvent par un Hey!"</h2>
+        <Lines />
+        <ContactForm/>
+      </div>
+
       {/* )} */}
     </main>
   );
