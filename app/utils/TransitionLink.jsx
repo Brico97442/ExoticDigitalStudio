@@ -1,26 +1,27 @@
 'use client'
-import { usePathname,useRouter } from "next/navigation";
-import  {animatePageOut} from "./animation";
+import { usePathname, useRouter } from "next/navigation";
+import { animatePageOut } from "./animation";
 
-
-
-export default function TransitionLink({label,href}) {
-    
-  const router = useRouter()
+export default function TransitionLink({ label, href, children,onClick }) {
+    const router = useRouter()
     const pathname = usePathname()
 
-    const handleClick =()=>{
-        if(pathname !== href){
+    const handleClick = (e) => {
+        e.preventDefault();
+        if(onClick) {
+          onClick();
+      }
+
+        if (pathname !== href) {
             animatePageOut(href, router)
         }
     }
     
-  return (
-    <div className="" >
-      <button onClick={handleClick}>
-        {label}
-      </button>
-    </div>
-  )
+    return (
+        <div>
+            <button onClick={handleClick}>
+                {children || label}
+            </button>
+        </div>
+    )
 }
-

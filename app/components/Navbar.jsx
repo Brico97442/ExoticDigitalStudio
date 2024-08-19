@@ -9,6 +9,10 @@ import Aside from './Aside'
 const Navbar = forwardRef(function Index(props, ref) {
 
     const [isActive, setIsActive] = useState(false)
+
+    const toggleAside = () => {
+        setIsActive(!isActive)
+    }
     return (
         <header className="flex w-full absolute h-[100px] items-center justify-center z-[5]">
             <nav className="flex justify-between w-full font-bold items-center uppercase mix-blend-difference">
@@ -36,18 +40,18 @@ const Navbar = forwardRef(function Index(props, ref) {
 
                         </li>
                     </div>}
-                    <li className=" relative transition ease flex justify-center items-center cursor-pointer w-[35px] h-[18px] p-[30px] z-[5]">
+                    <li  onClick={toggleAside} className=" relative transition ease flex justify-center items-center cursor-pointer w-[35px] h-[18px] p-[30px] z-[5]">
                         <div className="fixed flex justify-center w-full items-center z-[5]">
-                            <Magnetic>
-                                <div className={`${isActive ? 'burger-active' : 'burger-menu'}`} onClick={() => { setIsActive(!isActive) }}>
-                                    <div ref={ref} className="bounds">
-                                    </div>
+                        <Magnetic>
+                            <div className={`${isActive ? 'burger-active' : 'burger-menu'} `}>
+                                <div ref={ref} className="bounds">
                                 </div>
-                            </Magnetic>
+                            </div>
+                        </Magnetic>
                         </div>
                     </li>
                 </ul>
-                {isActive && <Aside />}
+                <Aside isOpen={isActive} onClose={toggleAside}/>
             </nav>
         </header>
     )

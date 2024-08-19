@@ -146,6 +146,7 @@ section span {
   mix-blend-mode: difference;
   background-color: #660708;
   box-sizing: border-box;
+  transition: all 0.3s;
 }
 
 .burger-active::after {
@@ -160,6 +161,7 @@ section span {
   top: 0;
   transform: rotate(45deg);
   box-sizing: border-box;
+  transition: all 0.3s;
 
 }
 
@@ -173,6 +175,8 @@ section span {
   height: 3px;
   background-color: #660708;
   box-sizing: border-box;
+  transition: all 0.3s;
+
 }
 
 .bounds {

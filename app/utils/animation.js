@@ -34,17 +34,16 @@ export const animatePageOut = (href, router) => {
 
     tl.set([bannerOne, bannerTwo, bannerThree, bannerFour], {
       yPercent: 100,
-      duration: 1,
-      ease: "power4.inOut",     
-       zIndex: 10,
+      duration: 0.5,
+      ease: "power4.inOut",
+      zIndex: 10,
     }).to([bannerOne, bannerTwo, bannerThree, bannerFour], {
       yPercent: 0,
-      duration: 1,
+      duration: 0.5,
       ease: "power4.inOut",
       stagger: 0.2,
       scrub: 1,
       zIndex: 10,
-      delay: 1,
       onComplete: () => {
         router.push(href);
       },
@@ -58,3 +57,30 @@ export const animatePageOut = (href, router) => {
     });
   }
 };
+
+export const animateOverlayIn = (overlayRef) => {
+  if (overlayRef.current) {
+    gsap.fromTo(overlayRef.current, {
+      x: `${100}%`,
+      duration: 0.5,
+      visibility: 'hidden',
+      opacity: 1,
+      ease: [0.76, 0, 0.24, 1],
+    }, {
+      x: 0,
+      visibility: 'visible',
+      opacity: 1,
+    })
+  }
+}
+export const animateOverlayOut = (overlayRef) => {
+  if (overlayRef.current) {
+    gsap.fromTo(overlayRef.current, {
+      x: 0,
+      duration: 0.5,
+      ease: [0.76, 0, 0.24, 1],
+    }, {
+      x: `${100}%`,
+    })
+  }
+}
