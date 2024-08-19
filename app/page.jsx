@@ -38,7 +38,7 @@ export default function Home() {
 
   return (
     <main id="main" className="flex w-full relative min-h-screen flex-col ">
-      <Scene island={island} targetRef={targetRef} />
+      {/* <Scene island={island} targetRef={targetRef} /> */}
       {/* {animationComplete && ( */}
       <div className='h-screen flex flex-col justify-center items-start w-full max-w-[85vw] m-auto relative'>
         <div className=' flex flex-col justify-center'>
@@ -74,7 +74,7 @@ export default function Home() {
         <Button position="absolute right-[6vw] top-[20vh]"/>
             </div>
           </div>
-          <div className="h-screen w-full flex fixed z-[1]">
+          <div className="h-screen w-full flex z-[1]">
             <Canvas>
               <Suspense fallback={null}>
                 <Carousel />

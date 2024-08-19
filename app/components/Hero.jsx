@@ -43,9 +43,9 @@ export default function Hero({ }) {
         opacity: 1,
         ease: "power4.inOut",
         visibility: "visible",
-        duration: .2,
+        duration: 2,
         stagger: 0.2,
-        delay: 6,
+        delay: 3,
         zIndex: 2
       });
 
@@ -59,9 +59,9 @@ export default function Hero({ }) {
         opacity: 1,
         ease: "power4.inOut",
         visibility: "visible",
-        duration: .3,
+        duration: 2,
         stagger: 0.2,
-        delay: 6.3,
+        delay: 3,
         zIndex: 2
       });
 
@@ -71,7 +71,7 @@ export default function Hero({ }) {
     }, {
       xPercent: 0,
       opacity: 1,
-      duration: 1,
+      duration: 2,
 
       scrollTrigger: {
         trigger: target.current,
@@ -89,8 +89,7 @@ export default function Hero({ }) {
       translateZ: `${0}vh`,
       opacity: 1,
       ease: 'power4.inOut',
-      duration: 1,
-      delay: 1,
+      duration: 2,
 
       scrollTrigger: {
         trigger: target2.current,

@@ -96,7 +96,7 @@ export default function StickyCursor({ stickyElement }) {
         style={{ left: smoothMouseX, top: smoothMouseY, scaleX: scale.x, scaleY: scale.y }}
         animate={{ width: curSorSize, height: curSorSize }}
         transition={{ type: 'tween', ease: 'backOut', duration: 0.5 }}
-        className="z-[5] fixed rounded-full flex justify-center items-center pointer-events-none bg-teal-500 cursor-auto mix-blend-difference"
+        className="z-[6] fixed rounded-full flex justify-center items-center pointer-events-none bg-teal-500 cursor-auto mix-blend-difference"
       ></motion.div>
       <div>
         <div className="absolute w-full h-full backdrop-blur-[150px] z-[1]"></div>
