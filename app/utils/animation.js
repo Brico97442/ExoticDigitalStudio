@@ -62,7 +62,7 @@ export const animateOverlayIn = (overlayRef) => {
   if (overlayRef.current) {
     gsap.fromTo(overlayRef.current, {
       x: `${100}%`,
-      duration: 0.5,
+      duration: 0.8,
       visibility: 'hidden',
       opacity: 1,
       ease: [0.76, 0, 0.24, 1],
@@ -70,6 +70,8 @@ export const animateOverlayIn = (overlayRef) => {
       x: 0,
       visibility: 'visible',
       opacity: 1,
+      duration: 0.8,
+
     })
   }
 }
@@ -77,10 +79,11 @@ export const animateOverlayOut = (overlayRef) => {
   if (overlayRef.current) {
     gsap.fromTo(overlayRef.current, {
       x: 0,
-      duration: 0.5,
+      duration: 0.8,
       ease: [0.76, 0, 0.24, 1],
     }, {
       x: `${100}%`,
+      duration: 0.8,
     })
   }
 }
