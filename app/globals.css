@@ -318,3 +318,10 @@ z-index: 4;
 .carousel-control.next {
   right: 10px;
 }
+
+/* #polygon{
+  clip-path: url('/assets/polygon.svg');
+  background-color: aqua;
+  box-sizing: border-box;
+  z-index: 4;
+} */

@@ -38,7 +38,7 @@ export default function Scene({ island }) {
           });
           
           gsap.to(island.current.position, {
-            x: 0.2,
+            x: 0.4,
             y: -0.3,
             z: -0.8,
             duration: 1,
@@ -151,7 +151,7 @@ export default function Scene({ island }) {
 
   
   return (
-    <div ref={divRef} className={` ${animationComplete ? 'absolute' : 'fixed'} bg-black h-screen top-0 flex-col items-center justify-center w-full flex z-[6] `}>
+    <div ref={divRef} className={` ${animationComplete ? 'fixed' : 'fixed'} bg-black h-screen top-0 flex-col items-center justify-center w-full flex z-[6] `}>
       <div ref={divRef2} className={` ${animationComplete ? 'blur-sm' : 'blur-none'} fixed top-0 text-white left-0 h-screen w-screen transition z-[6]`}>
         <Image src={logo} alt="logo de la compagnie" width={250} height={20} className='ml-8  ' />
         <h1 id="counter-number" className='ml-20 text-4xl'>0</h1>
@@ -174,7 +174,7 @@ export default function Scene({ island }) {
         <Suspense fallback={null}>
           <Model mousePosition={mousePosition} island={island} animationComplete={animationComplete} />
         </Suspense>
-        <ambientLight position={[1, 2, -2]} intensity={5} color={'blue'} />
+        <ambientLight position={[1, 2, -2]} intensity={5} color={'t'} />
         {/* <OrbitControls /> */}
       </Canvas>
     </div>

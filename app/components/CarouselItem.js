@@ -45,13 +45,12 @@ const CarouselItem = ({
   Hover effect
   ------------------------------*/
   useEffect(() => {
-    const hoverScale = hover && !isActive ? 1.3 : 1
+    const hoverScale = hover && !isActive ? 1.1 : 1
     gsap.to($root.current.scale, {
       x: hoverScale,
       y: hoverScale,
       duration: 0.5,
       ease: 'power3.out',
-      rotateY:360,
     })
   }, [hover, isActive])
 
@@ -80,20 +79,21 @@ const CarouselItem = ({
         height={height}
         texture={item.image}
         active={isActive}
+        transparent={true} opacity={0.4}
       />
 
       {isCloseActive ? (
 
-        <mesh position={[0, 0, 0.01]} onClick={handleClose}>
+        <mesh position={[0, 0, 0.01]} onClick={handleClose}   >
           <planeGeometry args={[viewport.width, viewport.height]} />
-          <meshBasicMaterial transparent={true} opacity={0} color={'red'} />
+          <meshBasicMaterial transparent={true} opacity={0} />
         </mesh>
       ) : null}
       <Text
         ref={textRef1}
-        position={[-0.1, -1.5, 0]} // Adjust position as needed
-        fontSize={isActive? 0.3 : 0.2} // Adjust size as needed
-        color="white" // Adjust color as needed
+        position={isActive?[-3, 0, 0]:[-0.25, -1.5, 0]} // Adjust position as needed
+        fontSize={isActive? 0.2 : 0.15} // Adjust size as needed
+        color="Black" // Adjust color as needed
         maxWidth={width * 3} // Adjust as needed
         height={height * 3} // Adjust as needed
       >

@@ -99,14 +99,14 @@ export default function StickyCursor({ stickyElement }) {
         className="z-[5] fixed rounded-full flex justify-center items-center pointer-events-none bg-teal-500 cursor-auto mix-blend-difference"
       ></motion.div>
       <div>
-        <div className="absolute w-full h-full backdrop-blur-[200px] z-[1]"></div>
+        <div className="absolute w-full h-full backdrop-blur-[150px] z-[1]"></div>
         <motion.div
           id="blob"
           ref={cursorRef2}
-          style={{ left: smoothMouseX, top: smoothMouseY, transform: 'translate(-50%, -50%)' }}
           animate={{ rotate: 360 }}
+          style={{ left: smoothMouseX, top: smoothMouseY, transform: 'translate(-50%, -50%)' }}
           transition={{ type: 'tween', ease: 'backOut', duration: 0.5 }}
-          className="fixed rounded-full flex justify-center items-center h-[300px] w-[300px] bg-gradient-to-r from-red-600 via-indigo-500 to-red-500 cursor-auto pointer-events-none mix-blend-difference"
+          className="fixed rounded-full flex justify-center items-center h-[300px] w-[300px]  bg-gradient-to-r from-[#A4161A] to-[#8D99AE]  cursor-auto pointer-events-none mix-blend-difference"
         ></motion.div>
       </div>
     </>

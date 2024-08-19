@@ -72,7 +72,7 @@ export default function Model({ mousePosition, island, animationComplete }) {
       const shaderMaterial = new ShaderMaterial({
         uniforms: {
           opacity: {  value: isHovered ? 1 : 0.03 }, // Opacité du modèle
-          color: { value: new Color(animationComplete? '#3c6e71' : '#DEE2F6') }, // Couleur du quadrillage
+          color: { value: new Color(isHovered? '#660708' : 'white') }, // Couleur du quadrillage
           depthTest: false
 
         },
@@ -122,7 +122,7 @@ export default function Model({ mousePosition, island, animationComplete }) {
             ref={textRef1}
             position={[20, 2, 16]}
             fontSize={2}
-            color="#0000"
+            color="white"
           >
             Reunion Island
           </Text>
@@ -130,7 +130,7 @@ export default function Model({ mousePosition, island, animationComplete }) {
             ref={textRef2}
             position={[28, 0, 8]}
             fontSize={1.5}
-            color="#0000"
+            color="white"
           >
             Le Tampon
             <mesh ref={location} geometry={locationNodes.location.geometry} scale={[0.1, 0.1, 0.1]} position={[0, -2, 3]}>

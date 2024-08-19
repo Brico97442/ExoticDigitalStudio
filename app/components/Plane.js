@@ -89,7 +89,7 @@ const Plane = ({ texture, width, height, active, ...props }) => {
 
   return (
     <mesh ref={$mesh} {...props}>
-      <planeGeometry args={[width, height, 30, 30]} />
+      <planeGeometry args={[width, height, 30, 30]}/>
       <shaderMaterial args={[shaderArgs]} />
     </mesh>
   )

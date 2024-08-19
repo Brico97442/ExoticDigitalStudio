@@ -1,6 +1,7 @@
 
 "use client"
 import React, { useRef, useState } from "react";
+import Magnetic from "../utils/Magnetic"
 
 function ContactForm() {
     const form = useRef();
@@ -26,9 +27,9 @@ function ContactForm() {
     };
     return (
         <div className="flex items-center justify-center flex-col w-full">
-            <form ref={form} onSubmit={sendEmail} className="flex flex-col gap-6 w-full text-black">
+            <form ref={form} onSubmit={sendEmail} className="flex flex-col items-start gap-6 w-full text-black">
 
-                <input className="h-[10vh] w-[40%] p-6 "
+                <input className="h-[10vh] p-6 w-full bg-transparent"
                     type="text" id="user_name" name="user_name" required placeholder="Nom" />
                 <input
                     type="email"
@@ -36,7 +37,7 @@ function ContactForm() {
                     name="user_email"
                     required
                     placeholder="Email"
-                    className="h-[10vh]"
+                    className="h-[10vh]  p-6 w-full bg-transparent"
                 />
                 <input
                     type="text"
@@ -44,12 +45,14 @@ function ContactForm() {
                     name="subject"
                     required
                     placeholder="Sujet"
-                    className="h-[10vh]"
+                    className="h-[10vh] p-6 w-full bg-transparent text-white"
 
                 />
-                <textarea className="h-[10vh]"
+                <textarea className="h-[10vh] p-6 w-full bg-transparent"
                     id="message" name="message" placeholder="Votre Message" required></textarea>
-                <button type="submit">Envoyer</button>
+                <Magnetic>
+                    <button className="w-full h-full min-w-[200px] border hover:scale-x-200 border-black p-2 rounded-full bg-gradient-to-b from-[#D90429]/50 to-[#2B2D42]/50 bg-transparent" type="submit">Envoyer</button>
+                    </Magnetic>
                 {successMessage && <p>{successMessage}</p>}
             </form></div>
 
