@@ -89,13 +89,16 @@ export const animateOverlayOut = (overlayRef) => {
 }
 export const animateOverlayText = (overlayTextRef) => {
   if (overlayTextRef.current) {
+    console.log(overlayTextRef)
     gsap.fromTo(overlayTextRef.current, {
       x: `${100}%`,
       duration: 0.9,
+      stagger:0.1,
       ease: [0.76, 0, 0.24, 1],
     }, {
-      x: `${10}%`,
+      x: `${0}%`,
       duration: 0.9,
+      stagger:0.2,
     })
   }
 }

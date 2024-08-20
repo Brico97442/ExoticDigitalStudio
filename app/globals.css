@@ -363,3 +363,12 @@ h1 {
   box-sizing: border-box;
   z-index: 4;
 } */
+.svg-curve{
+  position: absolute;
+  top: 0;
+  left: -99px;
+  width: 100px;
+  height: 100%;
+  fill: black;
+  stroke: firebrick;
+}

@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react'
-import { animateOverlayIn, animateOverlayOut ,animateOverlayText} from "../utils/animation"
+import { animateOverlayIn, animateOverlayOut, animateOverlayText } from "../utils/animation"
 import TransitionLink from "../utils/TransitionLink"
+import Curve from "./Curve"
 
 function Aside({ isOpen, onClose }) {
     const overlayRef = useRef(null);
@@ -47,15 +48,16 @@ function Aside({ isOpen, onClose }) {
         <div
             id='overlay'
             ref={overlayRef}
-            className='h-full w-1/3 fixed top-0 flex right-0 bg-red-500 justify-center items-center z-[2]'
+            className='h-full w-1/3 fixed top-0 flex right-0 justify-center items-center z-[2]'
             onClick={handleOverlayClick}
         >
-            <aside ref={contentRef} className='w-full flex items-center flex-col'>
-                <div className='w-full border-box ' ref={overlayTextRef}>
-                    <h1 className='leading-none text-[1.5em] '>Navigation</h1>
+            <aside ref={contentRef} className='w-full flex h-full z-[2]  items-center pt-40 flex-col relative'>
+            <Curve />
+                <div className='w-full border-box ml-40 h-full bg-red-500' >
+                    <h1 className='leading-none text-[1.5em]'>Navigation</h1>
                     <nav>
-                    <hr className=' w-[80%] mt-6'/>
-                        <ul className='flex flex-col gap-4 mt-10'>
+                        <hr className='w-[80%] h-[1px] mt-6' />
+                        <ul ref={overlayTextRef} className='flex flex-col gap-4 mt-60 text-2xl'>
                             {navItems.map((item, index) => (
                                 <li key={index}>
                                     <TransitionLink
