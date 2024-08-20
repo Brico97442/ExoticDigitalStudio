@@ -19,24 +19,24 @@ export default function GridAnimation() {
         const images = imageRefs.current.filter(Boolean)
 
         images.forEach((img, index) => {
-            const isReverse = index === 2 || index === 4 || index === 0
+            const isReverse = index === 2 || index === 4 || index=== 0
 
             // Initial state
             gsap.set(img, {
                 clipPath: isReverse 
-                    ? 'polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%)' // Start from the right
-                    : 'polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)', // Start from the left
+                    ? 'polygon(100% 0, 100% 0, 100% 0, 100% 0)' // Start from the right
+                    : 'polygon(0% 0%, 0% 0%, 0% 0%, 0% 0%)', // Start from the left
             })
 
             // Animation
             gsap.to(img, {
                 clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)', // Full reveal
-                ease: 'power4.inOut',
-                duration: 5,
+                ease: 'ease-in-out',
+                duration: 2,
                 scrollTrigger: {
                     trigger: img,
-                    start: '40% 80%', // Ajuste le déclencheur pour une meilleure visibilité
-                    end: 'bottom 50%',
+                    start: 'top 50%', // Ajuste le déclencheur pour une meilleure visibilité
+                    end: 'bottom 80%',
                     scrub: 1,
                     markers: true
                 }
