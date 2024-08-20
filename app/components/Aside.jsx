@@ -1,13 +1,30 @@
+'use client'
 import React, { useEffect, useRef } from 'react'
 import { animateOverlayIn, animateOverlayOut, animateOverlayText } from "../utils/animation"
 import TransitionLink from "../utils/TransitionLink"
 import Curve from "./Curve"
+import { motion } from 'framer-motion';
 
 function Aside({ isOpen, onClose }) {
     const overlayRef = useRef(null);
     const contentRef = useRef(null);
     const overlayTextRef = useRef(null);
+    const initialPath = `M100 0 L100 ${window.innerHeight} Q-100 ${window.innerHeight / 2} 100 0`
+    const targetPath = `M100 0 L100 ${window.innerHeight} Q100 ${window.innerHeight / 2} 100 0`
 
+    const curve = {
+        initial: {
+            d: initialPath
+        },
+        enter: {
+            d: targetPath,
+            transition: { duration: 1, ease: [0.76, 0, 0.24, 1] }
+        },
+        exit: {
+            d: initialPath,
+            transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] }
+        }
+    }
     const navItems = [
         {
             label: "Accueil",
@@ -51,8 +68,8 @@ function Aside({ isOpen, onClose }) {
             className='h-full w-1/3 fixed top-0 flex right-0 justify-center items-center z-[2]'
             onClick={handleOverlayClick}
         >
-            <aside ref={contentRef} className='w-full flex h-full z-[2]  items-center pt-40 flex-col relative'>
-            <Curve />
+            <aside ref={contentRef} className='w-full flex h-full items-center pt-40 flex-col'>
+        
                 <div className='w-full border-box ml-40 h-full bg-red-500' >
                     <h1 className='leading-none text-[1.5em]'>Navigation</h1>
                     <nav>
@@ -73,6 +90,7 @@ function Aside({ isOpen, onClose }) {
                     </nav>
                 </div>
             </aside>
+         <Curve />
         </div>
     )
 }

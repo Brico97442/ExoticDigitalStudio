@@ -9,21 +9,21 @@ export default function Curve() {
 
     const curve = {
         initial: {
-            d: initialPath
+            d: initialPath,
         },
         enter: {
             d: targetPath,
-            transition: { duration: 1, ease: [0.76, 0, 0.24, 1] }
+            transition: { duration: 1, ease: [0.76, 0, 0.24, 1] },
         },
         exit: {
             d: initialPath,
-            transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] }
+            transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] },
         }
     }
 
     return (
-        <svg className='svg-curve'  height="100%">
-            <motion.path className='' variants={curve} initial="initial" animate="enter" exit="exit" stroke="black" fill="red"></motion.path>
+        <svg className='svg-curve'>
+            <motion.path className='' variants={curve} initial="initial" animate="enter" exit="exit" ></motion.path>
         </svg>
     )
 }

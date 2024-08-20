@@ -372,3 +372,23 @@ h1 {
   fill: black;
   stroke: firebrick;
 }
+
+#pricing img{
+  width: 50%;
+  height: auto;
+  object-fit: cover;
+}
+
+.card-img-container{
+  width: 100%;
+  display: flex;
+}
+
+/* #pricing img:hover{
+  width: 100%;
+} */
+
+.card-img{
+  display: flex;
+  width: 50%;
+}
