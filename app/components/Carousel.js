@@ -78,7 +78,7 @@ const Carousel = () => {
     const displayItems = (item, index, active) => {
         gsap.to(item.position, {
             x: (index - active) * (planeSettings.width + planeSettings.gap),
-            y: -1.2
+            y: 0
         })
     }
 
