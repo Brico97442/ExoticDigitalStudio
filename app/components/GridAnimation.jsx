@@ -32,13 +32,13 @@ export default function GridAnimation() {
             gsap.to(img, {
                 clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)', // Full reveal
                 ease: 'ease-in-out',
-                duration: 2,
+                duration: 6,
                 scrollTrigger: {
                     trigger: img,
                     start: 'top 50%', // Ajuste le déclencheur pour une meilleure visibilité
                     end: 'bottom 80%',
                     scrub: 1,
-                    markers: true
+                    markers: false
                 }
             })
         })

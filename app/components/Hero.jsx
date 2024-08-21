@@ -5,13 +5,11 @@ import HeroImg from '../../public/media/galerie-item-1.jpg'
 import HeroImg2 from '../../public/media/galerie-item-2.jpg'
 import HeroImg3 from '../../public/media/galerie-item-3.jpg'
 import HeroImg4 from '../../public/media/galerie-item-4.jpg'
-
+import HorizontalScroll from './HorizontalScroll'
 import { useScroll, useTransform, motion } from 'framer-motion'
 import gsap from 'gsap'
-import TextScroll from './TextScroll'
 import { ScrollTrigger } from 'gsap/all';
-import Lines from './Lines'
-import Magnetic from '../utils/Magnetic'
+
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -45,7 +43,7 @@ export default function Hero({ }) {
         visibility: "visible",
         duration: 2,
         stagger: 0.2,
-        delay: 3,
+        delay: 1,
         zIndex: 2
       });
 
@@ -61,7 +59,7 @@ export default function Hero({ }) {
         visibility: "visible",
         duration: 2,
         stagger: 0.2,
-        delay: 3,
+        delay: 2,
         zIndex: 2
       });
 
@@ -124,17 +122,18 @@ export default function Hero({ }) {
   return (
 
     <div id='hero' className='hero flex flex-col justify-center w-full text-black'>
+        <HorizontalScroll/>
       <div className='h-screen flex w-full z-[3] '>
         <div className=' w-full max-w-[85vw] flex justify-end items-center '>
         <h2 className='text-[4em] w-1/2 leading-none text-right' >Créez le Futur du Web Innovation, Design et Magie Numérique</h2>
         </div>
       </div>
-      <div className="flex h-[250vh] z-[3] relative w-full mt-[50vh]" ref={container}>
-        <div className=" parrallaxe flex h-[100vh] w-full top-0 left-0 sticky overflow-hidden">
+      <div className="flex h-[250vh] z-[3] relative w-full" ref={container}>
+        <div className=" parrallaxe flex h-[100vh] w-full top-0 left-0 sticky overflow-hidden ">
           {
             pictures.map(({ src, scale }, index) => {
-              return <motion.div style={{ scale }} transition={{ type: 'inertia', velocity: 500 }} key={index} className="el flex items-center justify-center h-full w-full top-0 absolute">
-                <div className="relative w-[25vw] h-[25vh] image-container">
+              return <motion.div style={{ scale }} transition={{ type: 'inertia', velocity: 200 }} key={index} className="el flex items-center justify-center h-full w-full top-0 absolute grayscale">
+                <div className="relative w-[25vw] h-[25vh] image-container ">
                   <Image
                     src={src}
                     alt="oeuvre photographique d'une femme"

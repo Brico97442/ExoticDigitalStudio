@@ -31,10 +31,10 @@ export default function Pricing() {
     return (
       
         <div className="h-full min-h-screen w-full flex flex-col items-center z-[1] relative">
-            <div className="pricing-text flex flex-col w-full gap-20 w-[85vw]">
+            <div className="pricing-text flex flex-col w-full w-[85vw] m-auto absolute ml-60">
                 <h1 id='price-title' ref={(el) => textRef.current[0] = el} className='text-[12vh] leading-none mt-20 ' >Nos Tarifs</h1>
             </div>
-            <div className='h-screen w-full'>
+            <div className='h-screen w-full fixed z-[2]'>
             <Canvas>
                 <Suspense fallback={null}>
                     <Carousel />

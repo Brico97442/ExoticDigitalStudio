@@ -6,9 +6,8 @@ import Lenis from 'lenis';
 import { useEffect, useRef } from "react";
 import dynamic from "next/dynamic";
 import Lines from './components/Lines'
-
 import ContactForm from './components/ContactForm'
-import TextScroll from "./components/TextScroll";
+// import TextScroll from "./components/TextScroll";
 import GridAnimation from "./components/GridAnimation";
 
 const Scene = dynamic(() => import('./utils/Scene'), {
@@ -35,7 +34,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main id="main" className="flex w-full relative min-h-screen flex-col ">
+    <main id="main" className="flex w-full relative min-h-screen flex-col mt-20">
       {/* <Scene island={island} targetRef={targetRef} /> */}
       {/* {animationComplete && ( */}
       <div className='h-screen flex flex-col justify-center items-start w-full max-w-[85vw] m-auto relative'>
@@ -66,7 +65,7 @@ export default function Home() {
       <Hero target={targetRef} />
       <div className="z-[2] min-h-screen h-full w-full sticky">
           <div className="z-[2] w-[85vw] m-auto">
-              <h1 className="text-[12.5em] ">Nos Prestations</h1>
+              <h1 className="text-[12.5em] mt-[5vh]">Nos Prestations</h1>
               <Button position="absolute right-[6vw] top-[20vh]" />
             <GridAnimation />
           </div>
