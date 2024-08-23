@@ -1,53 +1,60 @@
-"use client"
+import { forwardRef, useState, useEffect } from "react"
 import TransitionLink from "../utils/TransitionLink"
 import Image from "next/image"
-import logo from "../../assets/LogoExoticDigitalStudioWhite.png"
-import { forwardRef, useState } from "react"
+import logo from "../../assets/black.png"
 import Magnetic from '../utils/Magnetic'
 import Aside from './Aside'
 
 const Navbar = forwardRef(function Index(props, ref) {
-
     const [isActive, setIsActive] = useState(false)
+    const [isScrolled, setIsScrolled] = useState(false)
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const scrollPosition = window.scrollY;
+            setIsScrolled(scrollPosition > 0);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     const toggleAside = () => {
         setIsActive(!isActive)
     }
+
     return (
         <header className="flex w-full absolute h-[100px] items-center justify-center z-[5]">
-            <nav className="flex justify-between w-full font-bold items-center uppercase mix-blend-difference">
+            <nav className="flex justify-between w-full font-bold items-center uppercase px-[80px]">
                 <Magnetic>
-                    <TransitionLink href='/' className='' label={<Image src={logo} className="ml-[30px] mt-10 " alt="logo de la compagnie" width={100} height={80} />} />
+                    <TransitionLink href='/' className='' label={<Image objectFit="cover" src={logo} className="" alt="logo de la compagnie" width={40} height={40} />} />
                 </Magnetic>
-                <ul className="flex gap-6 mr-6 items-center transition  text-[#660708] text-lg">
-                    {!isActive&&<div className="flex gap-6 z-[6]">
+                <ul className="flex  items-center transition text-[#660708] text-lg">
+                    <div className={`flex gap-[90px] z-[6] transition-all duration-300 ease-in-out ${isScrolled ? 'opacity-0 max-h-0 overflow-hidden' : 'opacity-100 max-h-[100px]'}`}>
                         <li className="transition ease hover:border-t-2 hover:border-white hover:text-white z-[5]">
                             <Magnetic>
                                 <TransitionLink href="/" label="Accueil" />
                             </Magnetic>
-
-                        </li >
-                        <li className=" transition ease hover:border-t-2 hover:border-white hover:text-white z-[5]">
+                        </li>
+                        <li className="transition ease hover:border-t-2 hover:border-white hover:text-white z-[5]">
                             <Magnetic>
                                 <TransitionLink href="/pricing" label="Tarifs" />
                             </Magnetic>
-
                         </li>
                         <li className="transition ease hover:border-t-2 hover:border-white hover:text-white z-[5]">
                             <Magnetic>
                                 <TransitionLink href="/contact" label="Contact" />
                             </Magnetic>
-
                         </li>
-                    </div>}
-                    <li  onClick={toggleAside} className=" relative transition ease flex justify-center items-center cursor-pointer w-[35px] h-[18px] p-[30px] z-[5]">
+                    </div>
+                    <li onClick={toggleAside} className={`absolute right-[80px] justify-center items-center cursor-pointer w-[35px] h-[18px] p-[30px] z-[5] ${isScrolled ? 'flex opacity-100 max-w-[100px] transition-all ease duration-1000' : 'hidden opacity-0 max-w-0 overflow-hidden  transition-all ease duration-1000'}`}>
                         <div className="fixed flex justify-center w-full items-center z-[5]">
-                        <Magnetic>
-                            <div className={`${isActive ? 'burger-active' : 'burger-menu'} `}>
-                                <div ref={ref} className="bounds">
+                            <Magnetic>
+                                <div className={`${isActive ? 'burger-active' : 'burger-menu'} `}>
+                                    <div ref={ref} className="bounds">
+                                    </div>
                                 </div>
-                            </div>
-                        </Magnetic>
+                            </Magnetic>
                         </div>
                     </li>
                 </ul>

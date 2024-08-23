@@ -39,7 +39,7 @@ export default function Scene({ island }) {
           
           gsap.to(island.current.position, {
             x: 0.4,
-            y: -0.3,
+            y: 0,
             z: -0.8,
             duration: 1,
             ease: 'power4.inOut',

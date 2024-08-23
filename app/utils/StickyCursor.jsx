@@ -31,10 +31,11 @@ export default function StickyCursor({ stickyElement }) {
   const smoothMouseY = useSpring(mouseY, smoothOptions);
 
   useEffect(() => {
+
+    
     const { left, top, width, height } = stickyElement.current.getBoundingClientRect();
     const center = { x: left + width / 2, y: top + height / 2 };
     const distance = { x: x - center.x, y: y - center.y };
-
     // Mettre à jour les valeurs de mouvement pour le curseur
     if (stickyElement.current) {
       if (isHovered) {

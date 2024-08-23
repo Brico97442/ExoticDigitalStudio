@@ -5,7 +5,7 @@ import HeroImg from '../../public/media/galerie-item-1.jpg'
 import HeroImg2 from '../../public/media/galerie-item-2.jpg'
 import HeroImg3 from '../../public/media/galerie-item-3.jpg'
 import HeroImg4 from '../../public/media/galerie-item-4.jpg'
-import HorizontalScroll from './HorizontalScroll'
+import HorizontalScroll from './HorizontalScrollReverse'
 import { useScroll, useTransform, motion } from 'framer-motion'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/all';
@@ -121,9 +121,9 @@ export default function Hero({ }) {
   ]
   return (
 
-    <div id='hero' className='hero flex flex-col justify-center w-full text-black'>
-        <HorizontalScroll/>
-      <div className='h-screen flex w-full z-[3] '>
+    <div id='hero' className='hero flex flex-col justify-center w-full text-white bg-black sticky z-[5]'>
+        {/* <HorizontalScroll/> */}
+      <div className='h-screen flex w-full z-[3]'>
         <div className=' w-full max-w-[85vw] flex justify-end items-center '>
         <h2 className='text-[4em] w-1/2 leading-none text-right' >Créez le Futur du Web Innovation, Design et Magie Numérique</h2>
         </div>

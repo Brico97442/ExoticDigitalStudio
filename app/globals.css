@@ -5,7 +5,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --foreground-rgb: 255, 255, 255;
+    --foreground-rgb: 14, 14, 14;
     color: white;
     font: --font-geist-sans;
   }
@@ -13,6 +13,16 @@
 
 :root {
   --foreground-rgb: 0, 0, 0;
+}
+
+.hidden {
+  opacity: 0;
+  display: none;
+}
+
+.flex {
+  opacity: 1;
+  display: flex;
 }
 
 .no-scroll {
@@ -136,7 +146,7 @@ section span {
   position: relative;
   justify-content: center;
   align-items: center;
-  }
+}
 
 .burger-menu::before,
 .burger-menu::after {
@@ -364,7 +374,7 @@ h1 {
   box-sizing: border-box;
   z-index: 4;
 } */
-.svg-curve{
+.svg-curve {
   position: absolute;
   top: 0;
   left: -99px;
@@ -374,13 +384,13 @@ h1 {
   stroke: firebrick;
 }
 
-#pricing img{
+#pricing img {
   width: 50%;
   height: auto;
   object-fit: cover;
 }
 
-.card-img-container{
+.card-img-container {
   width: 100%;
   display: flex;
 }
@@ -389,7 +399,7 @@ h1 {
   width: 70%;
 } */
 
-.card-img{
+.card-img {
   display: flex;
   width: 50%;
 }

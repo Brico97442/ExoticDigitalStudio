@@ -72,7 +72,7 @@ export default function Model({ mousePosition, island, animationComplete }) {
       const shaderMaterial = new ShaderMaterial({
         uniforms: {
           opacity: {  value: isHovered ? 1 : 0.03 }, // Opacité du modèle
-          color: { value: new Color(isHovered? '#660708' : 'white') }, // Couleur du quadrillage
+          color: { value: new Color(isHovered? '#660708' : 'teal') }, // Couleur du quadrillage
           depthTest: false
 
         },

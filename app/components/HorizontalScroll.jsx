@@ -5,22 +5,67 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
 
 function HorizontalScroll() {
-    const band = useRef(null) // Initialize as an array to store multiple refs
-    const band2 = useRef(null)
+    const text1 = useRef(null)
+    const text2 = useRef(null)
+    const slider = useRef(null)
+    let xPercent = 0;
+
+
 
     useEffect(() => {
-        if (band.current && band2.current) {
 
-            // Animation for band 1
-            gsap.set(band.current, {
-                x: `${100}%`,
+        gsap.set(text2.current, { left: text2.current.getBoundingClientRect().width })
+
+        requestAnimationFrame(animate);
+
+    }, [])
+
+
+    let direction = -1;
+
+    const animate = () => {
+        if (xPercent < -100) {
+            xPercent = 0;
+        }
+        else if (xPercent > 0) {
+            xPercent = -100;
+        }
+        gsap.set(text1.current, { xPercent: xPercent })
+        gsap.set(text2.current, { xPercent: xPercent })
+        requestAnimationFrame(animate);
+        xPercent += 0.01 * direction;
+    }
+    
+
+    useEffect(() => {
+        gsap.registerPlugin(ScrollTrigger);
+        gsap.to(slider.current, {
+            scrollTrigger: {
+                trigger: document.documentElement,
+                scrub: 0.5,
+                start: 0,
+                end: window.innerHeight,
+                onUpdate: e => direction = e.direction * -1
+            },
+            x: "-500px",
+        })
+        requestAnimationFrame(animate);
+    }, [])
+
+    
+  
+
+    useEffect(() => {
+        if (text1.current) {
+            gsap.set(text1.current, {
+                x:xPercent,
             })
-            gsap.to(band.current, {
-                x: `${-100}%`,
+            gsap.to(text1.current, {
+                x: -xPercent,
                 duration: 20,
                 ease: 'linear',
                 scrollTrigger: {
-                    trigger: band.current,
+                    trigger:text1.current,
                     start: 'top 90%',
                     scrub: 15,
                     markers: false,
@@ -28,84 +73,35 @@ function HorizontalScroll() {
 
                 }
             })
-
-
-
-            gsap.set(band2.current, {
-                x: `${-100}%`,
+            gsap.set(text2.current, {
+                x: xPercent,
             })
-            gsap.to(band2.current, {
-                x: `${100}%`,
+            gsap.to(text2.current, {
+                x: -xPercent,
                 duration: 20,
                 ease: 'linear',
                 scrollTrigger: {
-                    trigger: band2.current,
+                    trigger:text2.current,
                     start: 'top 90%',
                     scrub: 15,
                     markers: false,
                     duration: 20,
+
                 }
             })
-
-
-
         }
 
-        // Cleanup on component unmount
         return () => {
             ScrollTrigger.getAll().forEach(trigger => trigger.kill())
         }
     }, [])
 
     return (
-        <div className='h-2/4 w-full z-[2] flex items-center justify-center overflow-hidden'>
-            <div className='w-[120vw] flex flex-col items-center rotate-2 relative bg-gray-200/25 bg-blur-sm uppercase'>
-
-                <div className='w-full flex gap-40 justify-center p-3' ref={band} >
-
-                    <div className='w-full flex gap-20 justify-center p-6'>
-                        <h1 className='text-5xl  w-full whitespace-nowrap flex'>Développement Web</h1>
-                        <h1 className='text-5xl  w-full whitespace-nowrap flex'>Conception Web</h1>
-                        <h1 className='text-5xl  w-full whitespace-nowrap flex'>Réactif</h1>
-                        <h1 className='text-5xl  w-full whitespace-nowrap flex'>Expérience</h1>
-
-                    </div>
-                    <div className='w-full flex gap-20 justify-center p-6'>
-                        <h1 className='text-5xl  w-full whitespace-nowrap flex'>Développement Web</h1>
-                        <h1 className='text-5xl  w-full whitespace-nowrap  flex'>Conception Web</h1>
-                        <h1 className='text-5xl  w-full whitespace-nowrap flex'>Réactif</h1>
-                        <h1 className='text-5xl  w-full whitespace-nowrap flex'>Expérience Web</h1>
-                    </div>
-                    <div className='w-full flex gap-20 justify-center p-6'>
-                        <h1 className='text-5xl  w-full whitespace-nowrap flex'>Développement Web</h1>
-                        <h1 className='text-5xl  w-full whitespace-nowrap  flex'>Conception Web</h1>
-                        <h1 className='text-5xl  w-full whitespace-nowrap flex'>Réactif</h1>
-                        <h1 className='text-5xl  w-full whitespace-nowrap flex'>Expérience Web</h1>
-                    </div>
-                </div>
-
-                <div className='w-full flex gap-40 justify-center p-3' ref={band2}>
-
-                    <div className='w--full flex gap-20 justify-center p-6' >
-                        <h1 className='text-5xl  w-full whitespace-nowrap flex'>Développement Web</h1>
-                        <h1 className='text-5xl  w-full whitespace-nowrap flex'>Conception Web</h1>
-                        <h1 className='text-5xl  w-full whitespace-nowrap flex'>Réactif</h1>
-                        <h1 className='text-5xl  w-full whitespace-nowrap flex'>Expérience</h1>
-
-                    </div>
-                    <div className='w-full flex gap-20 justify-center p-6'>
-                        <h1 className='text-5xl  w-full whitespace-nowrap flex'>Développement Web</h1>
-                        <h1 className='text-5xl  w-full whitespace-nowrap  flex'>Conception Web</h1>
-                        <h1 className='text-5xl  w-full whitespace-nowrap flex'>Réactif</h1>
-                        <h1 className='text-5xl  w-full whitespace-nowrap flex'>Expérience Web</h1>
-                    </div>
-                    <div className='w-full flex gap-20 justify-center p-6'>
-                        <h1 className='text-5xl  w-full whitespace-nowrap flex'>Développement Web</h1>
-                        <h1 className='text-5xl  w-full whitespace-nowrap  flex'>Conception Web</h1>
-                        <h1 className='text-5xl  w-full whitespace-nowrap flex'>Réactif</h1>
-                        <h1 className='text-5xl  w-full whitespace-nowrap flex'>Expérience Web</h1>
-                    </div>
-
+        <div className='h-full w-full z-[2] flex items-center justify-center mb-40 overflow-hidden'>
+            <div className='w-[150vw] flex flex-col items-center relative bg-blur-sm uppercase font-bold'>
+                <div ref={slider} className='w-full flex justify-center relative' >
+                    <h1 ref={text1} className='relative pr-[50px] text-[320px] whitespace-nowrap flex leading-none'>Developpement-Web<span className='bg-clip-text text-transparent bg-gradient-to-r from-teal-700 to-red-600'>_Web-Design</span>_SEO<span className='bg-clip-text text-transparent bg-gradient-to-r from-teal-700 to-red-600'>_UI-UX</span></h1>
+                    <h1 ref={text2} className='absolute left-full text-[320px] whitespace-nowrap flex leading-none '>Developpement-Web<span className='bg-clip-text text-transparent bg-gradient-to-r from-teal-700 to-red-600'>_Web-Design</span>_SEO<span className='bg-clip-text text-transparent bg-gradient-to-r from-teal-700 to-red-600'>_UI-UX</span></h1>
                 </div>
             </div>
         </div >
