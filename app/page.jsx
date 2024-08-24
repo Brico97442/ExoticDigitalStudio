@@ -38,7 +38,7 @@ export default function Home() {
   return (
     <main id="main" className="flex w-full h-full relative min-h-screen flex-col ">
       <Scene island={island} targetRef={targetRef} animationComplete={animationComplete}/>
-      { animationComplete && (
+      {/* { animationComplete && ( */}
         <div>
           <div className=' w-full flex flex-col  items-center relative sticky z-[1] top-0 '>
             <div className='flex flex-col items-start justify-between mt-[40px] w-full h-full relative px-[80px] pt-[80px]'>
@@ -51,7 +51,7 @@ export default function Home() {
             </div>
             <HorizontalScroll />
           </div>
-          <div id="about" className="h-full flex flex-col justify-center items-start w-full  m-auto relative z-[4] sticky bg-red-600 rounded-tl-lg sticky top-0">
+          <div id="about" className="h-full flex flex-col justify-center items-start w-full  m-auto relative z-[4] sticky bg-red-600 rounded-tl-[50px] rounded-tr-[50px] sticky top-0">
             <h1 id='about-title' className='text-[9] z-[3] bg-clip-text text-align-left tracking-tight my-20 bg-gradient-to-r from-black to-neutral-950/80'>Qui somme nous ?</h1>
             <div className='flex justify-end'>
               <Lines strokeColor="stroke-black" />
@@ -83,7 +83,7 @@ export default function Home() {
           </div>
         </div>
 
-      )}
+      {/* )} */}
     </main>
   );
 }
