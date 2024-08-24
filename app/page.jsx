@@ -40,7 +40,7 @@ export default function Home() {
       <Scene island={island} targetRef={targetRef} animationComplete={animationComplete} />
       { animationComplete && (
       <div>
-        <div id='hero' className=' w-full flex flex-col  items-center relative z-[1] top-0 '>
+        <div id='hero' className=' w-full flex flex-col  items-center relative z-[1] top-0 sticky '>
           <div className='flex flex-col items-start justify-between mt-[40px] w-full h-full relative px-[80px] pt-[80px]'>
             <h1 id='hero-title' className=' pointer-events-none  leading-none text-[24px]	tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-black to-neutral-950/80'>Créateur de solutions digitales *</h1>
             <h3 className=' pointer-events-none mt-[45px] leading-none text-[48px]  w-1/3	tracking-tighter z-[3]'>Offrez à vos visiteurs une expérience web captivante, parce que chaque clic mérite sa touche de magie.</h3>

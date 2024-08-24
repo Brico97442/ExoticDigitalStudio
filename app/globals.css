@@ -28,6 +28,9 @@
 .no-scroll {
   overflow: hidden;
 }
+html{
+  overflow-y: hidden;
+}
 
 body {
   color: rgb(var(--foreground-rgb));
