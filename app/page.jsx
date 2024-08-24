@@ -51,7 +51,7 @@ export default function Home() {
           </div>
           <HorizontalScroll />
         </div>
-        <div id="about" className="h-full flex flex-col justify-center items-start w-full relative z-[4] bg-red-600 rounded-tl-[50px] rounded-tr-[50px] sticky top-0">
+        <div id="about" className="h-scren flex flex-col justify-center items-start w-full relative z-[4] bg-red-600 rounded-tl-[50px] rounded-tr-[50px] sticky top-0">
           <div className=" flex flex-col items-start z-[4] h-full w-[90vw] m-auto" >
             <h1 id='about-title' className='text-[150px] z-[3] bg-clip-text text-align-left tracking-tight my-20 bg-gradient-to-r from-black to-neutral-950/80'>Qui somme nous ?</h1>
             <div className='flex justify-center w-full'>
