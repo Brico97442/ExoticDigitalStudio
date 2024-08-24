@@ -1,16 +1,19 @@
-import React, { useEffect } from 'react'
-import { useState } from 'react'
+import React, { useEffect } from 'react';
 
-export default function Bodyscrolllock() {
-    
-    const bodyStyle = document.body.style
-    consst[isLocked, setIsLocked] = useState(
-        bodyStyle.overflowY === 'hidden'
-    )
+export default function Bodyscrolllock({ isLocked }) {
+  useEffect(() => {
+    // Verrouille le scroll si isLocked est true
+    if (isLocked) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
 
-    useEffect(() => {
-        bodyStyle.overflowY == isLocked? 'hidden' : 'auto'
-    }, [ isLocked,bodyStyle])
+    // Nettoyage: Assure que le body revient à l'état normal lors du démontage
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [isLocked]);
 
-    return [isLocked]
+  return null;
 }
