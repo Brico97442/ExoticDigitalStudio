@@ -81,7 +81,7 @@ export default function Scene({ island }) {
   }, [loadingComplete, island]);
 
   return (
-    <div ref={divRef} className={`${animationComplete ? 'absolute' : 'fixed'} bg-black h-screen top-0 flex-col items-center justify-center w-full flex z-[6]`}>
+    <div ref={divRef} className={`${animationComplete ? 'fixed' : 'fixed'} bg-black h-screen top-0 flex-col items-center justify-center w-full flex z-[6]`}>
       <Bodyscrolllock isLocked={!animationComplete} /> {/* Utilisation du composant */}
       <div ref={divRef2} className={`${animationComplete ? 'blur-sm' : 'blur-none'} fixed top-0 text-white left-0 h-screen w-screen transition z-[6]`}>
         <Image src={logo} alt="logo de la compagnie" width={250} height={20} className='ml-8' />
