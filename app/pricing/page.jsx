@@ -30,7 +30,7 @@ export default function Pricing() {
 
     return (
       
-        <div className="h-full min-h-screen w-full flex flex-col items-center z-[1] relative">
+        <div className="h-full min-h-screen w-full flex flex-col items-center z-[1] relative overflow-hidden">
             <div className="pricing-text flex flex-col w-full w-[85vw] m-auto absolute ml-60">
                 <h1 id='price-title' ref={(el) => textRef.current[0] = el} className='text-[12vh] leading-none mt-20 ' >Nos Tarifs</h1>
             </div>
