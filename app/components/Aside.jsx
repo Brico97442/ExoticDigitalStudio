@@ -90,7 +90,7 @@ function Aside({ isOpen, onClose }) {
                     </nav>
                 </div>
             </aside>
-         <Curve />
+         {/* <Curve /> */}
         </div>
     )
 }

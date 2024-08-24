@@ -60,8 +60,8 @@ function Lines({strokeColor}) {
     }
 
     return (
-        <div className='h-[1px] w-full relative mb-20 z-[2]'>
-            <div onMouseEnter={manageMouseEnter} onMouseMove={manageMouseMove} onMouseLeave={manageMouseLeave} className='z-[3] box h-[40px] relative top-[-20px] hover:h-[150px] hover:top-[-75px]'></div>
+        <div className='h-[1px] w-full relative mb-20 z-[4]'>
+            <div onMouseEnter={manageMouseEnter} onMouseMove={manageMouseMove} onMouseLeave={manageMouseLeave} className='z-[5] box h-[40px] relative top-[-20px] hover:h-[150px] hover:top-[-75px]'></div>
             <svg fill='none' className='flex items-center bg-transparent h-[100px] top-[-50px] absolute overflow-visible '>
                 <path className={`stroke-[1px] ${strokeColor}  w-full`} ref={path}>
                 </path>
