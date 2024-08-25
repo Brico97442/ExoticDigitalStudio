@@ -121,10 +121,10 @@ export default function Hero({ }) {
   ]
   return (
 
-    <div id='hero' className='hero flex flex-col justify-center w-full text-white bg-black sticky z-[5]'>
+    <div id='hero' className='hero flex flex-col justify-center w-full text-white bg-black sticky z-[3]'>
         {/* <HorizontalScroll/> */}
       <div className='h-screen flex w-full z-[3]'>
-        <div className=' w-full max-w-[85vw] flex justify-end items-center '>
+        <div className=' w-full flex justify-end items-center '>
         <h2 className='text-[4em] w-1/2 leading-none text-right' >Créez le Futur du Web Innovation, Design et Magie Numérique</h2>
         </div>
       </div>

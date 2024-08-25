@@ -36,7 +36,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main id="main" className="flex w-full h-full relative min-h-screen flex-col overflow-hidden">
+    <main id="main" className="flex w-full h-full relative min-h-screen flex-col overflow-hidden bg-gradient-to-b from-[#F0EAEA] to-[#737373]">
       <Scene island={island} targetRef={targetRef} animationComplete={animationComplete} />
       { animationComplete && (
       <div>
@@ -69,7 +69,7 @@ export default function Home() {
           </div>
 
         </div>
-        {/* <Hero target={targetRef} />
+        <Hero target={targetRef} />
           <div className="z-[6] bg-gray-200 min-h-screen h-full w-full">
             <div className="z-[2] w-[85vw] m-auto">
               <h1 className="text-[12.5em] mt-[5vh]">Nos Prestations</h1>
@@ -83,7 +83,7 @@ export default function Home() {
             <h2 className="absolute right-0 top-[35vh] text-[2em] w-1/4 text-right">"Les grandes histoires commençent souvent par un Hey!"</h2>
             <Lines strokeColor="stroke-black" />
             <ContactForm />
-          </div> */}
+          </div>
       </div>
 
       )}

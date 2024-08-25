@@ -25,11 +25,11 @@ export default function RootLayout({ children }) {
         <head>
         </head>
         <body className={GeistSans.className}>
-        <PreLoader/>
+        {/* <PreLoader/> */}
           <Template>
             <Navbar ref={stickyElement} />
             <StickyCursor stickyElement={stickyElement} />
-            <main className="flex w-full min-h-screen flex-col bg-gradient-to-bl from-zinc-100 to-neutral-100">
+            <main className="flex w-full min-h-screen flex-col ">
               {children}
             </main>
           </Template>

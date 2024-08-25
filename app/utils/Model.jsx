@@ -26,12 +26,12 @@ void main() {
 }
 `;
 
-import React, { useRef, useEffect, useState, isHovered } from 'react';
+import React, { useRef, useEffect, useState} from 'react';
 import { useGLTF, Text } from '@react-three/drei';
 import { useFrame, useLoader, useThree } from '@react-three/fiber';
 import { ShaderMaterial, Color } from 'three';
 
-export default function Model({ mousePosition, island, animationComplete }) {
+export default function Model({ mousePosition, island }) {
   const { nodes } = useGLTF('/media/reunion2.glb');
   const { viewport } = useThree();
   const islandMaterialRef = useRef(null);
@@ -107,17 +107,16 @@ export default function Model({ mousePosition, island, animationComplete }) {
         textRef2.current.rotation.set(0, -rotationY, 0);
       }
     }
-
     if (location.current) {
       location.current.rotation.y += 0.01;
     }
+    
   });
 
   return (
     <group scale={viewport.width / 3}>
       <group >
-        <mesh ref={island} geometry={nodes.reunion.geometry} scale={[0.015, 0.015, 0.015]} fragmentShader vertexShader >
-          <meshStandardMaterial ref={islandMaterialRef} wireframe />
+        <mesh ref={island} geometry={nodes.reunion.geometry} scale={[0.015, 0.015, 0.015]} fragmentShader vertexShader  wireframe >
           <Text
             ref={textRef1}
             position={[20, 2, 16]}

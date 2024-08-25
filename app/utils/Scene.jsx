@@ -20,6 +20,16 @@ export default function Scene({ island }) {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [loadingComplete, setLoadingComplete] = useState(false);
   const [animationComplete, setAnimationComplete] = useState(false);
+  const [isHovered, setIsHovered] = useState(false)
+
+
+
+  const hoverEnter = () => {
+    setIsHovered(true)
+  }
+  const hoverLeave = () => {
+    setIsHovered(false)
+  }
 
   useEffect(() => {
     const handleMouseMove = (event) => {
@@ -59,7 +69,7 @@ export default function Scene({ island }) {
         backgroundColor: 'rgba(0, 0, 0, 0)',
         duration: 1,
         ease: 'power4.inOut',
-        zIndex: 2,
+        zIndex: 1,
       });
       gsap.to(island.current.position, {
         x: 0,
@@ -81,11 +91,11 @@ export default function Scene({ island }) {
   }, [loadingComplete, island]);
 
   return (
-    <div ref={divRef} className={`${animationComplete ? 'fixed' : 'fixed'} bg-black h-screen top-0 flex-col items-center justify-center w-full flex z-[6]`}>
+    <div ref={divRef} className={`${animationComplete ? 'fixed' : 'fixed'} bg-gradient-to-b from-[#F0EAEA] to-[#737373] h-screen top-0 flex-col items-center justify-center w-full flex z-[6]`}>
       <Bodyscrolllock isLocked={!animationComplete} /> {/* Utilisation du composant */}
       <div ref={divRef2} className={`${animationComplete ? 'blur-sm' : 'blur-none'} fixed top-0 text-white left-0 h-screen w-screen transition z-[6]`}>
-        <Image src={logo} alt="logo de la compagnie" width={250} height={20} className='ml-8' />
-        <h1 ref={counterNumberRef} className='ml-20 text-4xl'>0</h1>
+        {/* <Image src={logo} alt="logo de la compagnie" width={250} height={20} className='ml-8' /> */}
+        <h1 ref={counterNumberRef} className='ml-20 mt-20 text-4xl'>0</h1>
         <div>
           <div id='counter-body' className='absolute ml-20 mb-24 bottom-0 h-1 bg-black w-[30vw]'>
             <div ref={counterProgressBar} className='w-0 h-full bg-white'></div>

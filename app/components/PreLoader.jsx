@@ -104,8 +104,7 @@ import gsap from 'gsap';
 function PreLoader() {
     const container = useRef(null);
     const textRef = useRef(null);
-    const progressBarLeft = useRef(null);
-    const progressBarRight = useRef(null);
+    const progressBar = useRef(null);
     const [mounted, setMounted] = useState(false);
     const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ'*ù$/#.?!#.?!#.?!#.?!#.?!#.?!#.?!#.?!";
 
@@ -115,23 +114,45 @@ function PreLoader() {
 
     useEffect(() => {
         if (!mounted || !textRef.current || !container.current) return;
-        if (progressBarLeft.current && progressBarRight.current) {
-            gsap.from(progressBarLeft.current, {
-                width: '100%',
-                duration: 5,
+        if ( progressBar.current) {
+            // gsap.to(progressBarLeft.current, {
+            //     width: '100%',
+            //     duration: 1,
+            //     ease: 'linear',
+            //     delay: 2,
+            //     onComplete: () => {
+            //         gsap.to(progressBarLeft.current, {
+            //             width: '0%',
+            //             duration: 0.4,
+            //             ease: 'linear',
+            //         })
+            //     }
+            // });
+
+            gsap.to(progressBar.current, {
+                scaleX: 0,
+                duration: 1,
                 ease: 'linear',
-                delay:2
-            });
-            gsap.to(progressBarRight.current, {
-                width: '100%',
-                duration: 5,
-                ease: 'linear',
-                delay:2
+                delay: 2,
+                onComplete: () => {
+                    gsap.to(progressBar.current, {
+                        scaleX: 1,
+                        duration: 0.4,
+                        delay:2,
+                        ease: 'linear',
+                        onComplete:()=>{
+                            gsap.to(progressBar.current, {
+                                opacity:0
+                            })
+                        }
+                    })
+                }
             });
         }
 
         gsap.to(textRef.current, {
-            width: 0,
+            x: '-40vw',
+            opacity: 1,
             duration: 1,
             ease: 'linear',
             delay: 6.4,
@@ -139,11 +160,11 @@ function PreLoader() {
 
         gsap.to(container.current, {
             ease: 'power4.inOut',
-            opacity: 0,
-            duration: 5,
-            delay: 6.8,
+            backgroundColor: 'rgba(0, 0, 0, 0)',
+            duration: 1.4,
+            delay: 5.6,
             onComplete: () => {
-                container.current.style.display = 'none'
+                // container.current.style.display = 'none'
             }
         });
 
@@ -167,13 +188,14 @@ function PreLoader() {
                 }
 
                 iteration += 2 / 3;
-            }, 30);
+            }, 40);
         };
 
         // Ajoutez un délai avant d'exécuter l'effet d'itération
         const timeoutId = setTimeout(() => {
             applyIterationEffect();
-        }, 5000); // Délai en millisecondes avant de commencer l'effet d'itération
+
+        }, 10000); // Délai en millisecondes avant de commencer l'effet d'itération
 
         // Nettoyez le timeout si le composant est démonté
         return () => clearTimeout(timeoutId);
@@ -183,22 +205,19 @@ function PreLoader() {
     if (!mounted) return null;
 
     return (
-        <div className='w-full h-full bg-black fixed z-[100] top-0 left-0' ref={container}>
-            <div className='flex flex-col h-full justify-center items-center'>
+        <div className='w-full h-full bg-black flex justify-center items-center fixed z-[100] top-0 left-0' ref={container}>
+            <div className='flex flex-col justify-center items-center gap-[10px] relative'>
                 <h1
                     ref={textRef}
-                    className='w-full text-[120px] text-center text-white uppercase whitespace-nowrap'
+                    className='text-[25px] text-white whitespace-nowrap leading-none '
                     data-value="Exotik Digital Studio"
                 >
-                    WELCOME TO
+                    Bienvenue
                 </h1>
 
-                <div id='progress-bar-body' className='w-[30vw] flex-row-reverse flex justify-between h-[3px]'>
-                    <div className='w-full h-[2px]'>
-                        <div ref={progressBarLeft} className='w-[0%] h-[2px] bg-white'></div>
-                    </div>
-                    <div className='w-full h-[2px] bg-white'>
-                        <div ref={progressBarRight} className='w-[0%] h-[2px] bg-black'></div>
+                <div id='progress-bar-body' className='w-[15vw] flex-row-reverse flex justify-between h-[3px]'>
+                    <div className='w-full h-[2px] '>
+                        <div ref={progressBar} className='w-full h-[2px] bg-white'></div>
                     </div>
                 </div>
             </div>
