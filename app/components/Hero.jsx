@@ -1,10 +1,11 @@
 'use client'
 import React, { useRef, useEffect } from 'react'
 import Image from 'next/image'
-import HeroImg from '../../public/media/galerie-item-1.jpg'
-import HeroImg2 from '../../public/media/galerie-item-2.jpg'
-import HeroImg3 from '../../public/media/galerie-item-3.jpg'
-import HeroImg4 from '../../public/media/galerie-item-4.jpg'
+import HeroImg from '../../public/media/art1.jpg'
+import HeroImg2 from '../../public/media/art2.jpg'
+import HeroImg3 from '../../public/media/art3.jpg'
+import HeroImg4 from '../../public/media/art4.jpg'
+import HeroImg5 from '../../public/media/art5.jpg'
 import HorizontalScroll from './HorizontalScrollReverse'
 import { useScroll, useTransform, motion } from 'framer-motion'
 import gsap from 'gsap'
@@ -25,6 +26,7 @@ export default function Hero({ }) {
   const scale5 = useTransform(scrollYProgress, [0, 1], [0.8, 4]);
   const scale6 = useTransform(scrollYProgress, [0, 1], [0.7, 4]);
   const scale7 = useTransform(scrollYProgress, [0, 1], [0.8, 4]);
+  const scale8 = useTransform(scrollYProgress, [0, 1], [0.8, 4]);
 
   const target = useRef(null)
   const target2 = useRef(null)
@@ -117,22 +119,26 @@ export default function Hero({ }) {
       src: HeroImg4,
       scale: scale7
     },
+    {
+      src: HeroImg5,
+      scale: scale8
+    },
 
   ]
   return (
 
-    <div id='hero' className='hero flex flex-col justify-center w-full text-white z-[1]'>
+    <div id='hero' className='hero flex flex-col justify-center w-full text-white z-[0] bg-[#0E0E0E] rounded-tl-[50px] rounded-tr-[50px] '>
         {/* <HorizontalScroll/> */}
       <div className='h-screen flex w-[85vw] m-auto z-[1]'>
         <div className=' w-full flex justify-end items-center '>
         <h2 className='text-[4em] w-1/2 leading-none text-right' >Créez le Futur du Web Innovation, Design et Magie Numérique</h2>
         </div>
       </div>
-      <div className="h-[160vh] z-[1] relative w-full overflow-hidden" ref={container}>
-        <div className=" parrallaxe flex h-screen w-full top-0 left-0 sticky">
+      <div className="h-[120vh] z-[1] relative w-full overflow-hidden" ref={container}>
+        <div className=" parrallaxe flex h-[100vh] w-full top-0 left-0 sticky">
           {
             pictures.map(({ src, scale }, index) => {
-              return <motion.div style={{ scale }} transition={{ type: 'inertia', velocity: 200 }} key={index} className="el flex items-center justify-center h-screen w-full top-0 absolute grayscale">
+              return <motion.div style={{ scale }} transition={{ type: 'inertia', velocity: 200 }} key={index} className="el flex items-center justify-center h-full w-full top-0 absolute grayscale">
                 <div className="relative w-[25vw] h-[25vh] image-container ">
                   <Image
                     src={src}

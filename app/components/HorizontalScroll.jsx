@@ -47,7 +47,7 @@ function HorizontalScroll() {
                 end: window.innerHeight,
                 onUpdate: e => direction = e.direction * -1
             },
-            x: "500px",
+            x: "-500px",
         })
         requestAnimationFrame(animate);
     }, [])
@@ -97,11 +97,11 @@ function HorizontalScroll() {
     }, [])
 
     return (
-        <div className='h-full w-full z-[2] flex items-center justify-center mb-40 overflow-hidden'>
-            <div className='w-[150vw] flex flex-col items-center relative bg-blur-sm uppercase font-bold'>
-                <div ref={slider} className='w-full flex justify-center relative' >
-                    <h1 ref={text1} className='relative pr-[50px] text-[320px] whitespace-nowrap flex leading-none'>Developpement-Web<span className='bg-clip-text text-transparent bg-gradient-to-r from-teal-700 to-red-600'>_Web-Design</span>_SEO<span className='bg-clip-text text-transparent bg-gradient-to-r from-teal-700 to-red-600'>_UI-UX</span></h1>
-                    <h1 ref={text2} className='absolute left-full text-[320px] whitespace-nowrap flex leading-none '>Developpement-Web<span className='bg-clip-text text-transparent bg-gradient-to-r from-teal-700 to-red-600'>_Web-Design</span>_SEO<span className='bg-clip-text text-transparent bg-gradient-to-r from-teal-700 to-red-600'>_UI-UX</span></h1>
+        <div className='h-full w-full z-[2] flex items-center justify-center overflow-hidden'>
+            <div className='flex flex-col items-center bg-blur-sm uppercase font-bold absolute'>
+                <div ref={slider} className='flex relative whitespace-nowrap' >
+                    <h1 ref={text1} className='absolute left-[100%] text-[320px] flex leading-none'>/Developpement<span className='bg-clip-text text-transparent bg-gradient-to-r from-teal-700 to-red-600'>/Web-Design</span>/SEO<span className='bg-clip-text text-transparent bg-gradient-to-r from-teal-700 to-red-600'>/UI-UX</span></h1>
+                    <h1 ref={text2} className=' m-[0px] text-[320px] flex leading-none'>/Developpement<span className='bg-clip-text text-transparent bg-gradient-to-r from-teal-700 to-red-600'>/Web-Design</span>/SEO<span className='bg-clip-text text-transparent bg-gradient-to-r from-teal-700 to-red-600'>/UI-UX</span></h1>
                 </div>
             </div>
         </div >
