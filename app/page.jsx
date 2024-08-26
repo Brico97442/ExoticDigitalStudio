@@ -52,7 +52,7 @@ export default function Home() {
             </div>
             <HorizontalScroll />
           </div>
-          {/* <div id="about" className=" h-screen flex flex-col justify-center items-start w-full bg-[#ECECEC] rounded-tl-[50px] rounded-tr-[50px] top-0">
+          <div id="about" className=" h-screen flex flex-col justify-center items-start w-full bg-[#ECECEC] rounded-tl-[50px] rounded-tr-[50px] top-0">
 
             <div className=" flex flex-col items-start  h-full w-[85vw] m-auto top-0 sticky">
               <h1 id='about-title' className='text-[120px]  bg-clip-text text-align-left tracking-tight my-20 bg-gradient-to-r from-black to-neutral-950/80'>Qui somme nous ?</h1>
@@ -83,7 +83,7 @@ export default function Home() {
             <h2 className="absolute right-0 top-[35vh] text-[2em] w-1/4 text-right z-[1]">"Les grandes histoires commençent souvent par un Hey!"</h2>
             <Lines strokeColor="stroke-black z-[1]" />
             <ContactForm />
-          </div> */}
+          </div>
 
         </div>
       )}

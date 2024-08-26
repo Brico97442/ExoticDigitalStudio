@@ -22,7 +22,7 @@ export default function Hero({ }) {
     offset: ['start start', 'end end']
   });
 
-  const scale4 = useTransform(scrollYProgress, [0, 1], [0.9, 4]);
+  const scale4 = useTransform(scrollYProgress, [0, 1], [1, 4]);
   const scale5 = useTransform(scrollYProgress, [0, 1], [0.8, 4]);
   const scale6 = useTransform(scrollYProgress, [0, 1], [0.7, 4]);
   const scale7 = useTransform(scrollYProgress, [0, 1], [0.8, 4]);
@@ -127,15 +127,15 @@ export default function Hero({ }) {
   ]
   return (
 
-    <div id='hero' className='hero flex flex-col justify-center w-full text-white z-[0] bg-[#0E0E0E] rounded-tl-[50px] rounded-tr-[50px] '>
+    <div id='hero' className='hero flex flex-col text-white z-[0] bg-[#0E0E0E]'>
         {/* <HorizontalScroll/> */}
       <div className='h-screen flex w-[85vw] m-auto z-[1]'>
         <div className=' w-full flex justify-end items-center '>
         <h2 className='text-[4em] w-1/2 leading-none text-right' >Créez le Futur du Web Innovation, Design et Magie Numérique</h2>
         </div>
       </div>
-      <div className="h-[120vh] z-[1] relative w-full overflow-hidden" ref={container}>
-        <div className=" parrallaxe flex h-[100vh] w-full top-0 left-0 sticky">
+      <div className="h-[300vh] relative" ref={container}>
+        <div className=" parrallaxe h-screen top-0 sticky ">
           {
             pictures.map(({ src, scale }, index) => {
               return <motion.div style={{ scale }} transition={{ type: 'inertia', velocity: 200 }} key={index} className="el flex items-center justify-center h-full w-full top-0 absolute grayscale">
@@ -145,6 +145,7 @@ export default function Hero({ }) {
                     alt="oeuvre photographique d'une femme"
                     fill
                     placeholder="blur"
+                    objectFit='cover'
                   />
                 </div>
               </motion.div>

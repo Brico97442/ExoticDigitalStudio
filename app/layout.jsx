@@ -33,7 +33,7 @@ export default function RootLayout({ children }) {
               {children}
             </main>
           </Template>
-            <Footer/>
+            {/* <Footer/> */}
         </body>
       </html>
     </AnimationProvider>
