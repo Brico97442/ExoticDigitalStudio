@@ -121,18 +121,18 @@ export default function Hero({ }) {
   ]
   return (
 
-    <div id='hero' className='hero flex flex-col justify-center w-full text-white bg-black sticky z-[3]'>
+    <div id='hero' className='hero flex flex-col justify-center w-full text-white z-[1]'>
         {/* <HorizontalScroll/> */}
-      <div className='h-screen flex w-full z-[3]'>
+      <div className='h-screen flex w-[85vw] m-auto z-[1]'>
         <div className=' w-full flex justify-end items-center '>
         <h2 className='text-[4em] w-1/2 leading-none text-right' >Créez le Futur du Web Innovation, Design et Magie Numérique</h2>
         </div>
       </div>
-      <div className="flex h-[250vh] z-[3] relative w-full" ref={container}>
-        <div className=" parrallaxe flex h-[100vh] w-full top-0 left-0 sticky overflow-hidden ">
+      <div className="h-[160vh] z-[1] relative w-full overflow-hidden" ref={container}>
+        <div className=" parrallaxe flex h-screen w-full top-0 left-0 sticky">
           {
             pictures.map(({ src, scale }, index) => {
-              return <motion.div style={{ scale }} transition={{ type: 'inertia', velocity: 200 }} key={index} className="el flex items-center justify-center h-full w-full top-0 absolute grayscale">
+              return <motion.div style={{ scale }} transition={{ type: 'inertia', velocity: 200 }} key={index} className="el flex items-center justify-center h-screen w-full top-0 absolute grayscale">
                 <div className="relative w-[25vw] h-[25vh] image-container ">
                   <Image
                     src={src}

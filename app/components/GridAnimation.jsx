@@ -49,8 +49,10 @@ export default function GridAnimation() {
     }, [])
 
     return (
-        <div id='pricing' className='container h-full min-h-screen w-full flex flex-col items-center justify-center z-[6] m-auto'>
-            <div ref={containerRef} className='w-[85vw]  m-auto mt-60'>
+        <div id='pricing' className='container h-full min-h-screen w-full flex flex-col items-center justify-center m-auto z-[1]' >
+            <div ref={containerRef} className='w-[85vw]  m-auto mt-60 z-[1]'>
+            <h1 className="text-[12.5em] mt-[5vh] z-[1] text-black">Nos Prestations</h1>
+
                 <div className='w-full'>
                     <div className='card-img-container'>
                         <div className='card-img justify-end overflow-hidden'>
