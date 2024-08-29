@@ -40,7 +40,7 @@ export default function Home() {
   return (
     <main id="main" className="flex w-full h-full relative min-h-screen flex-col overflow-hidden ">
       <Scene island={island} targetRef={targetRef} animationComplete={animationComplete} />
-      <Bodyscrolllock isLocked={!animationComplete} />
+      {/* <Bodyscrolllock isLocked={!animationComplete} /> */}
 
       {animationComplete && (
         <div className="z-[1]">
