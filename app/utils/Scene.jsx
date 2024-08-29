@@ -98,7 +98,7 @@ export default function Scene({ island }) {
 
 
   return (
-    <div ref={divRef} className={`${animationComplete ? 'fixed' : 'fixed'} bg-gradient-to-b from-[#F0EAEA] to-[#737373] h-screen top-0 flex-col items-center justify-center w-full flex`}>
+    <div ref={divRef} className={`${animationComplete ? 'absolute' : 'fixed'} bg-blue-600 h-screen top-0 flex-col items-center justify-center w-full flex z-[2]`}>
       <div ref={divRef2} className={`${animationComplete ? 'blur-sm' : 'blur-none'} fixed top-0 text-white left-0 h-screen w-screen transition`}>
         {/* <Image src={logo} alt="logo de la compagnie" width={250} height={20} className='ml-8' /> */}
         <h1 ref={counterNumberRef} className='ml-20 mt-20 text-4xl'>0</h1>
