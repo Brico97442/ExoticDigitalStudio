@@ -6,7 +6,6 @@ import Model from './Model';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
 import logo from '../../assets/LogoExoticDigitalStudioWhite.png';
-import Bodyscrolllock from './Bodyscrolllock'; // Import du composant
 import { animatePageIn, animatePageOut } from "../utils/animation";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -20,9 +19,16 @@ export default function Scene({ island }) {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [loadingComplete, setLoadingComplete] = useState(false);
   const [animationComplete, setAnimationComplete] = useState(false);
-  const [isHovered, setIsHovered] = useState(false)
+  // const [isHovered, setIsHovered] = useState(false)
 
+  const body = document.querySelector('body');
+  if(!animationComplete){
+    body.classList.add('fixed');
 
+  }else{
+    body.classList.remove('fixed');
+
+  }
 
   const hoverEnter = () => {
     setIsHovered(true)
@@ -90,10 +96,10 @@ export default function Scene({ island }) {
     }
   }, [loadingComplete, island]);
 
+
   return (
     <div ref={divRef} className={`${animationComplete ? 'fixed' : 'fixed'} bg-gradient-to-b from-[#F0EAEA] to-[#737373] h-screen top-0 flex-col items-center justify-center w-full flex`}>
-      <Bodyscrolllock isLocked={!animationComplete} /> {/* Utilisation du composant */}
-      <div ref={divRef2} className={`${animationComplete ? 'blur-sm' : 'blur-none'} fixed top-0 text-white left-0 h-screen w-screen transition z-[6]`}>
+      <div ref={divRef2} className={`${animationComplete ? 'blur-sm' : 'blur-none'} fixed top-0 text-white left-0 h-screen w-screen transition`}>
         {/* <Image src={logo} alt="logo de la compagnie" width={250} height={20} className='ml-8' /> */}
         <h1 ref={counterNumberRef} className='ml-20 mt-20 text-4xl'>0</h1>
         <div>
@@ -115,7 +121,7 @@ export default function Scene({ island }) {
         <Suspense fallback={null}>
           <Model mousePosition={mousePosition} island={island} animationComplete={animationComplete} />
         </Suspense>
-        <ambientLight position={[1, 2, -2]} intensity={5} color={'t'} />
+        <ambientLight position={[1, 2, -2]} intensity={5} color={'red'} />
       </Canvas>
     </div>
   );

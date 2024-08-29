@@ -11,6 +11,8 @@ import ContactForm from './components/ContactForm'
 import GridAnimation from "./components/GridAnimation";
 import HorizontalScroll from "./components/HorizontalScroll";
 import PreLoader from "./components/PreLoader";
+import Bodyscrolllock from './utils/Bodyscrolllock'; // Import du composant
+
 const Scene = dynamic(() => import('./utils/Scene'), {
   ssr: false
 });
@@ -37,7 +39,9 @@ export default function Home() {
 
   return (
     <main id="main" className="flex w-full h-full relative min-h-screen flex-col overflow-hidden ">
-      {/* <Scene island={island} targetRef={targetRef} animationComplete={animationComplete} /> */}
+      <Scene island={island} targetRef={targetRef} animationComplete={animationComplete} />
+      <Bodyscrolllock isLocked={!animationComplete} />
+
       {animationComplete && (
         <div className="z-[1]">
 

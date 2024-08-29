@@ -25,10 +25,10 @@ export default function RootLayout({ children }) {
         <head>
         </head>
         <body className={GeistSans.className}>
-        {/* <PreLoader/> */}
+        <PreLoader/>
           <Template>
-            <Navbar ref={stickyElement} />
-            <StickyCursor stickyElement={stickyElement} />
+            {/* <Navbar ref={stickyElement} /> */}
+            {/* <StickyCursor stickyElement={stickyElement} /> */}
             <main className="flex w-full min-h-screen flex-col bg-gradient-to-b from-[#F0EAEA] to-[#737373]">
               {children}
             </main>

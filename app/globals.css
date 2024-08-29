@@ -20,6 +20,10 @@
   display: none;
 }
 
+.fixed {
+  position: fixed;
+}
+
 .flex {
   opacity: 1;
   display: flex;
