@@ -32,7 +32,7 @@ export default function Hero() {
             ease: "linear",  // Courbe d'assouplissement
             scrollTrigger: {
                 trigger: containerRef.current,
-                start: "35% 49%",
+                start: "40% 49%",
                 end: "48% 50%",
                 scrub: 2,
                 markers: true,
@@ -51,9 +51,9 @@ export default function Hero() {
     }, [])
 
     return (
-        <div className='sticky z-[1] h-[250vh] relative flex flex-col justify-center  ' ref={containerRef}>
-            <div className=' top-0  h-[100vh] flex items-center overflow-hidden'>
-                <div className='h-full w-full relative flex items-center justify-center pt-[0vh] ' ref={imagesContainerRef}>
+        <div className='sticky z-[1] h-[200vh] relative flex flex-col justify-center  ' ref={containerRef}>
+            <div className=' top-0  h-[130vh] flex items-center overflow-hidden'>
+                <div className='h-full w-full relative flex items-center justify-center pt-[-20vh] ' ref={imagesContainerRef}>
                     {pictures.map((picture, index) => (
                         <div className='flex items-center justify-center h-full w-full top-0 absolute' key={index} style={{ zIndex: picture.zIndex }} >
                             <div
