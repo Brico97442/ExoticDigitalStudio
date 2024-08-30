@@ -22,10 +22,10 @@ export default function Scene({ island }) {
   // const [isHovered, setIsHovered] = useState(false)
 
   const body = document.querySelector('body');
-  if(!animationComplete){
+  if (!animationComplete) {
     body.classList.add('fixed');
 
-  }else{
+  } else {
     body.classList.remove('fixed');
 
   }
@@ -98,7 +98,9 @@ export default function Scene({ island }) {
 
 
   return (
-    <div ref={divRef} className={`${animationComplete ? 'absolute' : 'fixed'} bg-blue-600 h-screen top-0 flex-col items-center justify-center w-full flex z-[2]`}>
+    <div ref={divRef} className={`${animationComplete ? 'absolute' : 'fixed'} bg-blue-600 h-screen top-0 flex-col items-center justify-center w-full z-[5]`}>
+      {/* {!animationComplete && (
+      )} */}
       <div ref={divRef2} className={`${animationComplete ? 'blur-sm' : 'blur-none'} fixed top-0 text-white left-0 h-screen w-screen transition`}>
         {/* <Image src={logo} alt="logo de la compagnie" width={250} height={20} className='ml-8' /> */}
         <h1 ref={counterNumberRef} className='ml-20 mt-20 text-4xl'>0</h1>

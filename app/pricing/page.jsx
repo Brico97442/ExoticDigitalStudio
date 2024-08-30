@@ -5,6 +5,9 @@ import SplitType from 'split-type';
 import { Suspense } from 'react'
 import { Canvas } from '@react-three/fiber'
 import Carousel from '../components/Carousel'
+
+
+
 export default function Pricing() {
 
 
@@ -41,6 +44,7 @@ export default function Pricing() {
                 </Suspense>
             </Canvas>
             </div>
+
         </div>
     );
 }

@@ -11,6 +11,9 @@
   }
 }
 
+html {
+  overflow-y: hidden;
+}
 :root {
   --foreground-rgb: 0, 0, 0;
 }
@@ -29,13 +32,10 @@
   display: flex;
 }
 
-.no-scroll {
+/* .no-scroll {
   overflow: hidden;
-}
+} */
 
-html {
-  overflow-y: hidden;
-}
 
 body {
   color: rgb(var(--foreground-rgb));
@@ -54,7 +54,7 @@ body {
 
 
 /** Animation Section**/
-section {
+/* section {
   box-sizing: border-box;
   height: 25%;
   display: flex;
@@ -70,10 +70,18 @@ section span {
   opacity: 0;
   font-size: 1.5em;
   mask-image: none;
+} */
+
+.image-container img {
+  object-fit: cover;
+  /* top: 0;
+  left: 0;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  display: flex; */
 }
-
-
-.image-container {
+/* .image-container {
   top: 0;
   left: 0;
   width: 25vh;
@@ -84,16 +92,7 @@ section span {
   z-index: 1;
 }
 
-.image-container img {
-  object-fit: cover;
-  top: 0;
-  left: 0;
-  position: fixed;
-  height: 100%;
-  width: 100%;
-  display: flex;
-  z-index: 1;
-}
+
 
 .el:nth-of-type(1) .image-container {
   object-fit: cover;
@@ -101,7 +100,6 @@ section span {
   left: -15%;
   height: 25vh;
   width: 50vw;
-  z-index: 2;
   display: flex;
   box-sizing: content-box;
 
@@ -114,7 +112,6 @@ section span {
   left: -25%;
   height: 55vh;
   width: 20vw;
-  z-index: 2;
   display: flex;
 }
 
@@ -125,19 +122,17 @@ section span {
   top: 0;
   height: 30vh;
   width: 25vw;
-  z-index: 3;
   display: flex;
   ;
-}
+} */
 
-.el:nth-of-type(4) .image-container {
+/* .el:nth-of-type(4) .image-container {
   box-sizing: content-box;
   object-fit: cover;
   left: 25%;
   top: 17.5%;
   height: 61vh;
   width: 20vw;
-  z-index: 3;
   display: flex;
   ;
 }
@@ -149,10 +144,11 @@ section span {
   top: -30%;
   height: 25vh;
   width: 50vw;
-  z-index: 3;
   display: flex;
   ;
-}
+} */
+
+
 
 /***Burger Menu ***/
 .burger-menu {

@@ -101,7 +101,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import gsap from 'gsap';
 
-function PreLoader() {
+function PreLoader({animationComplete}) {
     const container = useRef(null);
     const textRef = useRef(null);
     const progressBar = useRef(null);
@@ -165,6 +165,7 @@ function PreLoader() {
             delay: 5.6,
             onComplete: () => {
                 // container.current.style.display = 'none'
+
             }
         });
 
@@ -205,11 +206,11 @@ function PreLoader() {
     if (!mounted) return null;
 
     return (
-        <div className='w-full h-full bg-black flex justify-center items-center fixed z-[100] top-0 left-0' ref={container}>
+        <div className={`w-full h-full bg-black flex justify-center items-center fixed z-[7] top-0 left-0`} ref={container}>
             <div className='flex flex-col justify-center items-center gap-[10px] relative'>
                 <h1
                     ref={textRef}
-                    className='text-[25px] text-white whitespace-nowrap leading-none '
+                    className='text-[25px] text-white whitespace-nowrap leading-none'
                     data-value="Exotik Digital Studio"
                 >
                     Bienvenue
