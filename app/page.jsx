@@ -36,12 +36,12 @@ export default function Home() {
   }, []);
 
   return (
-    <main id="main" className="flex w-full h-full relative min-h-screen flex-col  ">
-      {/* <Scene island={island} targetRef={targetRef} animationComplete={animationComplete} /> */}
+    <main id="main" className="flex w-full h-full relative min-h-screen flex-col ">
+      <Scene island={island} targetRef={targetRef} animationComplete={animationComplete} />
       
       {animationComplete && (
         <div className="z-[2] flex w-full h-full relative min-h-screen flex-col ">
-          {/* <div id='hero' className='h-screen w-full flex flex-col  items-center top-0'>
+          <div id='hero' className='h-screen w-full flex flex-col  items-center top-0'>
             <div className='flex flex-col items-start justify-between mt-[40px] w-full h-full px-[80px] pt-[80px]'>
               <h1 id='hero-title' className=' pointer-events-none  leading-none text-[24px]	tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-black to-neutral-950/80'>Créateur de solutions digitales *</h1>
               <h3 className=' pointer-events-none mt-[45px] leading-none text-[48px]  w-1/3	tracking-tighter '>Offrez à vos visiteurs une expérience web captivante, parce que chaque clic mérite sa touche de magie.</h3>
@@ -70,11 +70,11 @@ export default function Home() {
               </div>
             </div>
 
-          </div> */}
+          </div>
           {/* <Hero target={targetRef} /> */}
           <Hero2/>
 
-          {/* <div className=" w-full z-[1]">
+          <div className=" w-full z-[1]">
             <GridAnimation />
           </div>
 
@@ -84,7 +84,7 @@ export default function Home() {
             <h2 className="absolute right-0 top-[35vh] text-[2em] w-1/4 text-right z-[1]">"Les grandes histoires commençent souvent par un Hey!"</h2>
             <Lines strokeColor="stroke-black z-[1]" />
             <ContactForm />
-          </div> */}
+          </div>
 
         </div>
       )}

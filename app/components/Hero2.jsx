@@ -32,14 +32,14 @@ export default function Hero() {
             ease: "linear",  // Courbe d'assouplissement
             scrollTrigger: {
                 trigger: containerRef.current,
-                start: "48% 49%",
-                end: "52% 50%",
+                start: "35% 49%",
+                end: "48% 50%",
                 scrub: 2,
                 markers: true,
             },
         })
         const grayscaleImage = imagesContainerRef.current.children[1] 
-        gsap.to(grayscaleImage, {
+        gsap.to(grayscaleImage.current, {
             filter: 'grayscale(0%)',  // Animer pour faire disparaître le filtre
             scrollTrigger: {
                 trigger: containerRef.current,
@@ -51,9 +51,9 @@ export default function Hero() {
     }, [])
 
     return (
-        <div className='bg-[#0E0E0E] z-[1] h-[250vh] relative flex flex-col justify-center ' ref={containerRef}>
-            <div className='sticky top-0 h-screen flex items-center justify-center overflow-hidden'>
-                <div className='h-full w-full relative flex items-center justify-center  mb-[50vh] mt-[50vh]' ref={imagesContainerRef}>
+        <div className='sticky z-[1] h-[250vh] relative flex flex-col justify-center  ' ref={containerRef}>
+            <div className=' top-0  h-[100vh] flex items-center overflow-hidden'>
+                <div className='h-full w-full relative flex items-center justify-center pt-[0vh] ' ref={imagesContainerRef}>
                     {pictures.map((picture, index) => (
                         <div className='flex items-center justify-center h-full w-full top-0 absolute' key={index} style={{ zIndex: picture.zIndex }} >
                             <div
