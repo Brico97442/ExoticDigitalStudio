@@ -7,6 +7,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
 import logo from '../../assets/LogoExoticDigitalStudioWhite.png';
 import { animatePageIn, animatePageOut } from "../utils/animation";
+import { animateIsland } from './animation';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -85,6 +86,8 @@ export default function Scene({ island }) {
         ease: 'power4.inOut',
         onComplete: () => {
           setAnimationComplete(true);
+          animateIsland(island)
+
         },
       });
       gsap.to(divRef2.current, {
@@ -98,14 +101,14 @@ export default function Scene({ island }) {
 
 
   return (
-    <div ref={divRef} className={`${animationComplete ? 'absolute' : 'fixed'} bg-gray-400 h-screen top-0 flex-col items-center justify-center w-full z-[5]`}>
+    <div id='scene' ref={divRef} className={`${animationComplete ? 'absolute' : 'fixed'} bg-gray-400 h-screen top-0 flex-col items-center justify-center w-full z-[5]`}>
       {/* {!animationComplete && (
       )} */}
-      <div ref={divRef2} className={`${animationComplete ? 'blur-sm' : 'blur-none'} fixed top-0 text-white left-0 h-screen w-screen transition`}>
+      <div ref={divRef2} className={`${animationComplete ? 'blur-sm' : 'blur-none'} fixed top-0 text-white left-0 h-[200vh] w-screen transition`}>
         {/* <Image src={logo} alt="logo de la compagnie" width={250} height={20} className='ml-8' /> */}
         <h1 ref={counterNumberRef} className='ml-20 mt-20 text-4xl'>0</h1>
         <div>
-          <div id='counter-body' className='absolute ml-20 mb-24 bottom-0 h-1 bg-black w-[30vw]'>
+          <div id='counter-body' className='absolute ml-20 mb-24 bottom-[100vh] h-1 bg-black w-[30vw]'>
             <div ref={counterProgressBar} className='w-0 h-full bg-white'></div>
           </div>
           <div className='absolute bottom-0 right-0 mr-20 mb-20 text-sm'>

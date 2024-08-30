@@ -1,5 +1,9 @@
 // animation.js
 import gsap from "gsap";
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
+
 
 export const animatePageIn = () => {
   const bannerOne = document.getElementById('banner-1');
@@ -89,17 +93,93 @@ export const animateOverlayOut = (overlayRef) => {
 }
 export const animateOverlayText = (overlayTextRef) => {
   if (overlayTextRef.current) {
-    console.log(overlayTextRef)
     gsap.fromTo(overlayTextRef.current, {
       x: `${100}%`,
       duration: 0.9,
-      stagger:0.1,
+      stagger: 0.1,
       ease: [0.76, 0, 0.24, 1],
     }, {
       x: `${0}%`,
       duration: 0.9,
-      stagger:0.2,
+      stagger: 0.2,
     })
   }
 }
 
+export const animateArrow = (arrowRef) => {
+  if (arrowRef.current) {
+    gsap.to(arrowRef.current, {
+      rotation: 45,
+      yPercent: -200,
+      ease: "power2.inOut",
+      scrollTrigger: {
+        trigger: "#hero",
+        start: "top top",
+        end: "bottom center",
+        scrub: 1,
+        markers: false,
+      },
+    });
+    gsap.to(["#hero-subtitle", "#hero-title", '#studio-text'], {
+      yPercent: -100,
+      ease: "power4.inOut",
+      duration: 10,
+      scrollTrigger: {
+        trigger: "#hero",
+        start: "top top",
+        end: "bottom center",
+        scrub: 2,
+        markers: false,
+      },
+    });
+    gsap.to('#hero-scroll', {
+      yPercent: 40,
+      ease: "power4.inOut",
+      duration: 10,
+      scrollTrigger: {
+        trigger: "#hero",
+        start: "top top",
+        end: "bottom center",
+        scrub: 2,
+        markers: false,
+      },
+    });
+
+  }
+};
+
+export const animateIsland = (island) => {
+  if (island.current) {
+    gsap.to(island.current.position, {
+      x: 0.5,
+      y: -2.5,
+      z: -2,
+      duration: 10,
+      ease: 'power4.inOut',
+      scrollTrigger: {
+        trigger: '#scene',
+        start: "top top",
+        end: "bottom center",
+        scrub: 1,
+        markers: false,
+      }
+    });
+  }
+}
+// export const animateAbout = (aboutRef) => {
+//   if (aboutRef.current) {
+//     gsap.from(aboutRef.current, {
+//       yPercent:100,
+//       duration: 10,
+//       ease: 'power4.inOut',
+//       scrollTrigger: {
+//         trigger: aboutRef.current,
+//         start: "10% center",
+//         end: "20% center",
+//         scrub: 1,
+//         markers: true,
+//       }
+//     });
+  
+//   }
+// }

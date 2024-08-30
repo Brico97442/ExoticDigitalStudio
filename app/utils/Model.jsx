@@ -95,7 +95,7 @@ export default function Model({ mousePosition, island }) {
   }, [island, isHovered]);
 
   useFrame(() => {
-    if (island.current) {
+    if (island?.current) {
       const rotationFactor = 0.2;
       let rotationX = initialRotation.x - mousePosition.y * rotationFactor;
       let rotationY = initialRotation.y + mousePosition.x * rotationFactor;

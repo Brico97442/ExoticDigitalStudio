@@ -97,7 +97,7 @@ function HorizontalScroll() {
     }, [])
 
     return (
-        <div className='h-full w-full z-[2] flex items-center justify-center overflow-hidden'>
+        <div id='hero-scroll' className='h-full w-full z-[0] flex items-center justify-center overflow-hidden'>
             <div className='flex flex-col items-center bg-blur-sm uppercase font-bold absolute'>
                 <div ref={slider} className='flex relative whitespace-nowrap' >
                     <h1 ref={text1} className='absolute left-[100%] text-[320px] flex leading-none'>/Developpement<span className='bg-clip-text text-transparent bg-gradient-to-r from-teal-700 to-red-600'>/Web-Design</span>/SEO<span className='bg-clip-text text-transparent bg-gradient-to-r from-teal-700 to-red-600'>/UI-UX</span></h1>

@@ -10,6 +10,7 @@ import ContactForm from './components/ContactForm'
 // import TextScroll from "./components/TextScroll";
 import GridAnimation from "./components/GridAnimation";
 import HorizontalScroll from "./components/HorizontalScroll";
+import { animateArrow,animateAbout } from "./utils/animation";
 
 const Scene = dynamic(() => import('./utils/Scene'), {
   ssr: false
@@ -19,7 +20,10 @@ export default function Home() {
   const island = useRef(null);
   const targetRef = useRef(null);
   const target = useRef(null);
+  const arrowRef = useRef(null);
+  const aboutRef = useRef(null);
   const animationComplete = useRef(null);
+
 
   useEffect(() => {
     const lenis = new Lenis();
@@ -29,32 +33,41 @@ export default function Home() {
     }
     requestAnimationFrame(raf);
 
-    // Cleanup function to avoid memory leaks
+    if (arrowRef.current) {
+      animateArrow(arrowRef);
+    }
+    // if (aboutRef.current) {
+    //   animateAbout(aboutRef);
+    // }
+
+
     return () => {
       cancelAnimationFrame(raf);
     };
-  }, []);
+
+  }, [arrowRef]);
+
 
   return (
     <main id="main" className="flex w-full h-full relative min-h-screen flex-col ">
       <Scene island={island} targetRef={targetRef} animationComplete={animationComplete} />
-      
+
       {animationComplete && (
         <div className="z-[2] flex w-full h-full relative min-h-screen flex-col ">
           <div id='hero' className='h-screen w-full flex flex-col  items-center top-0'>
             <div className='flex flex-col items-start justify-between mt-[40px] w-full h-full px-[80px] pt-[80px]'>
               <h1 id='hero-title' className=' pointer-events-none  leading-none text-[24px]	tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-black to-neutral-950/80'>Créateur de solutions digitales *</h1>
-              <h3 className=' pointer-events-none mt-[45px] leading-none text-[48px]  w-1/3	tracking-tighter '>Offrez à vos visiteurs une expérience web captivante, parce que chaque clic mérite sa touche de magie.</h3>
-              <svg className="mt-[85px]" width="47" height="24" viewBox="0 0 47 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <h3 id='hero-subtitle' className=' pointer-events-none mt-[45px] leading-none text-[48px]  w-1/3	tracking-tighter '>Offrez à vos visiteurs une expérience web captivante, parce que chaque clic mérite sa touche de magie.</h3>
+              <svg ref={arrowRef} className="mt-[85px]" width="47" height="24" viewBox="0 0 47 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M46.0607 13.0607C46.6464 12.4749 46.6464 11.5251 46.0607 10.9393L36.5147 1.3934C35.9289 0.807612 34.9792 0.807612 34.3934 1.3934C33.8076 1.97918 33.8076 2.92893 34.3934 3.51472L42.8787 12L34.3934 20.4853C33.8076 21.0711 33.8076 22.0208 34.3934 22.6066C34.9792 23.1924 35.9289 23.1924 36.5147 22.6066L46.0607 13.0607ZM0 13.5H45V10.5H0V13.5Z" fill="black" />
               </svg>
-              <h2 className='mt-[100px] pointer-events-none leading-none text-[16px] tracking-tighter  w-full text-black '>Reunion Island Studio **</h2>
+              <h2 id='studio-text' className='mt-[100px] pointer-events-none leading-none text-[16px] tracking-tighter  w-full text-black '>Reunion Island Studio **</h2>
             </div>
             <HorizontalScroll />
           </div>
-          <div id="about" className=" h-screen flex flex-col justify-center items-start w-full bg-[#ECECEC] rounded-tl-[50px] rounded-tr-[50px] top-0">
+          <div id="about" ref={aboutRef} className=" h-screen flex flex-col justify-center items-start w-full  rounded-tl-[50px] rounded-tr-[50px] top-0  bg-[#ECECEC] z-[2]">
 
-            <div className=" flex flex-col items-start  h-full w-[85vw] m-auto top-0 sticky">
+            <div className=" flex flex-col items-start  h-[120] w-[80vw] m-auto top-0 sticky">
               <h1 id='about-title' className='text-[120px]  bg-clip-text text-align-left tracking-tight my-20 bg-gradient-to-r from-black to-neutral-950/80'>Qui somme nous ?</h1>
               <div className='flex justify-center w-full'>
                 <Lines strokeColor="stroke-black" />
@@ -67,12 +80,13 @@ export default function Home() {
                     Vous cherchez une touche d’exception pour votre site web ? Ne cherchez pas plus loin, nous avons la recette parfaite ! Basés à l’île de la Réunion, au cœur vibrant du Tampon, nous sommes le mélange idéal entre expertise numérique et flair tropical.
                   </p>
                 </div>
+                <div className="absolute bottom-0 left-0 text-[54px] leading-none w-1/2 text-left"> Studio de création digitale et de plateformes web moderne localisée à l’ile de la Réunion</div>
               </div>
             </div>
 
           </div>
           {/* <Hero target={targetRef} /> */}
-          <Hero2/>
+          <Hero2 />
 
           <div className=" w-full z-[1]">
             <GridAnimation />

@@ -65,12 +65,12 @@ function Aside({ isOpen, onClose }) {
         <div
             id='overlay'
             ref={overlayRef}
-            className='h-full w-1/3 fixed top-0 flex right-0 justify-center items-center z-[2] bg-red-500'
+            className='h-full w-1/3 fixed top-0 flex right-0 justify-center items-center z-[2] bg-gray-500'
             onClick={handleOverlayClick}
         >
             <aside ref={contentRef} className='w-full flex h-full items-center pt-40 flex-col'>
         
-                <div className='w-full border-box ml-40 h-full bg-red-500' >
+                <div className='w-full border-box ml-40 h-full ' >
                     <h1 className='leading-none text-[1.5em]'>Navigation</h1>
                     <nav>
                         <hr className='w-[80%] h-[1px] mt-6' />

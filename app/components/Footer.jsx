@@ -20,9 +20,7 @@ function Footer() {
 
     return (
         <footer className='relative h-full text-white w-full bg-black pb-40'>
-            <svg className='w-full z-0' width="100%" height="100%" viewBox="0 0 1920 258" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0 6.10352e-05H1920V422.997C1920 422.997 1353.8 556.877 969.901 250.187C586 -56.5032 0 17.9966 0 17.9966V6.10352e-05Z" fill="#660708" opacity={0.8} />
-            </svg>
+           
             <div className='flex flex-col justify-start w-[85vw] m-auto'>
                 <Image src={logo} alt="logo de l'entreprise Exotik Digital Studio" width={150} height={100} className='z-[4]' />
 
@@ -36,9 +34,8 @@ function Footer() {
                     <div className='z-[4]'>
                         <Magnetic>
                             <button id='copy-text-btn'
-                                className='flex gap-6 leading-none text-[3em] text-white cursor-pointer transition ease-in-out hover:border-r hover:border-t z-[4] p-6' onClick={copyText} value="ExotikDigitalStudio@outlook.com" >  <svg className='ml-6' width="40" height="40" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M216 32H88C85.8783 32 83.8434 32.8429 82.3431 34.3431C80.8429 35.8434 80 37.8783 80 40V80H40C37.8783 80 35.8434 80.8429 34.3431 82.3431C32.8429 83.8434 32 85.8783 32 88V216C32 218.122 32.8429 220.157 34.3431 221.657C35.8434 223.157 37.8783 224 40 224H168C170.122 224 172.157 223.157 173.657 221.657C175.157 220.157 176 218.122 176 216V176H216C218.122 176 220.157 175.157 221.657 173.657C223.157 172.157 224 170.122 224 168V40C224 37.8783 223.157 35.8434 221.657 34.3431C220.157 32.8429 218.122 32 216 32ZM160 208H48V96H160V208ZM208 160H176V88C176 85.8783 175.157 83.8434 173.657 82.3431C172.157 80.8429 170.122 80 168 80H96V48H208V160Z" fill="white" />
-                                </svg> ExotikDigitalStudio@outlook.com
+                                className='flex gap-6 leading-none text-[3em] text-white cursor-pointer transition ease-in-out hover:border-r hover:border-t z-[4] p-6' onClick={copyText} value="ExotikDigitalStudio@outlook.com" >
+                         ExotikDigitalStudio@outlook.com
                             </button>
                         </Magnetic>
 
