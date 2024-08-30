@@ -32,26 +32,29 @@ export default function Hero() {
             ease: "linear",  // Courbe d'assouplissement
             scrollTrigger: {
                 trigger: containerRef.current,
-                start: "40% 49%",
+                start: "38% 49%",
                 end: "48% 50%",
                 scrub: 2,
                 markers: true,
             },
         })
         const grayscaleImage = imagesContainerRef.current.children[1] 
-        gsap.to(grayscaleImage.current, {
-            filter: 'grayscale(0%)',  // Animer pour faire disparaître le filtre
-            scrollTrigger: {
-                trigger: containerRef.current,
-                start: "50% 49%",
-                end: "50% 50%",  // Point de fin de l'animation
-                scrub: 2,          // Synchroniser avec le défilement
-            },
-        })
+        if(grayscaleImage){
+            gsap.to(grayscaleImage, {
+                filter: 'grayscale(0%)',  // Animer pour faire disparaître le filtre
+                scrollTrigger: {
+                    trigger: containerRef.current,
+                    start: "50% 49%",
+                    end: "50% 50%",  // Point de fin de l'animation
+                    scrub: 2,          // Synchroniser avec le défilement
+                },
+            })
+        }
+       
     }, [])
 
     return (
-        <div className='sticky z-[1] h-[200vh] relative flex flex-col justify-center  ' ref={containerRef}>
+        <div className='sticky z-[1] h-[150vh] relative flex flex-col justify-center  ' ref={containerRef}>
             <div className=' top-0  h-[130vh] flex items-center overflow-hidden'>
                 <div className='h-full w-full relative flex items-center justify-center pt-[-20vh] ' ref={imagesContainerRef}>
                     {pictures.map((picture, index) => (

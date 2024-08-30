@@ -98,7 +98,7 @@ export default function Scene({ island }) {
 
 
   return (
-    <div ref={divRef} className={`${animationComplete ? 'absolute' : 'fixed'} bg-blue-600 h-screen top-0 flex-col items-center justify-center w-full z-[5]`}>
+    <div ref={divRef} className={`${animationComplete ? 'absolute' : 'fixed'} bg-gray-400 h-screen top-0 flex-col items-center justify-center w-full z-[5]`}>
       {/* {!animationComplete && (
       )} */}
       <div ref={divRef2} className={`${animationComplete ? 'blur-sm' : 'blur-none'} fixed top-0 text-white left-0 h-screen w-screen transition`}>

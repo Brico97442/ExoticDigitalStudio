@@ -58,7 +58,7 @@ const Navbar = forwardRef(function Index(props, ref) {
                         </div>
                     </li>
                 </ul>
-                {/* <Aside isOpen={isActive} onClose={toggleAside}/> */}
+                <Aside isOpen={isActive} onClose={toggleAside}/>
             </nav>
         </header>
     )
