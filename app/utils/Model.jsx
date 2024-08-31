@@ -26,11 +26,12 @@ void main() {
 }
 `;
 
-import React, { useRef, useEffect, useState} from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { useGLTF, Text } from '@react-three/drei';
 import { useFrame, useLoader, useThree } from '@react-three/fiber';
 import { ShaderMaterial, Color } from 'three';
-
+import { animateTextScene } from './animation';
+import gsap from 'gsap';
 export default function Model({ mousePosition, island }) {
   const { nodes } = useGLTF('/media/reunion2.glb');
   const { viewport } = useThree();
@@ -56,12 +57,14 @@ export default function Model({ mousePosition, island }) {
 
 
   useEffect(() => {
+    if (textRef1.current) textRef1.current.material.transparent = true;
+    if (textRef2.current) textRef2.current.material.transparent = true;
     if (island.current) {
 
 
       //Rotation initiale du Modèle 3D
       const initialRotationX = 5 * (Math.PI / 180);
-      const initialRotationY = -75 * (Math.PI / 180);
+      const initialRotationY = -80 * (Math.PI / 180);
 
       setInitialRotation({ x: initialRotationX, y: initialRotationY });
       island.current.rotation.set(initialRotationX, initialRotationY, 0);
@@ -71,8 +74,8 @@ export default function Model({ mousePosition, island }) {
       // Définir le matériau du shader
       const shaderMaterial = new ShaderMaterial({
         uniforms: {
-          opacity: {  value: isHovered ? 1 : 0.03 }, // Opacité du modèle
-          color: { value: new Color(isHovered? '#660708' : 'teal') }, // Couleur du quadrillage
+          opacity: { value: isHovered ? 1 : 0.03 }, // Opacité du modèle
+          color: { value: new Color(isHovered ? '#660708' : 'teal') }, // Couleur du quadrillage
           depthTest: false
 
         },
@@ -90,12 +93,33 @@ export default function Model({ mousePosition, island }) {
       console.log(island.current.material.opacity)
 
       if (!isHovered) {
-    island.current.material.opacity = 0.01}
+        island.current.material.opacity = 0.01
+      }
     }
+    const tl = gsap.timeline();
+
+    tl.fromTo(
+      [textRef1.current.material, textRef2.current.material],
+      { opacity: 0 },
+      {
+        opacity: 1,
+        duration: 5,
+        yoyo: true,
+        ease: "power2.in",
+        stagger: 4,
+        delay:2, // Décalage entre les animations des deux textes
+      }
+    );
+
+    // Nettoyage
+    return () => {
+      tl.kill();
+    };
+
   }, [island, isHovered]);
 
   useFrame(() => {
-    if (island?.current) {
+    if (island.current) {
       const rotationFactor = 0.2;
       let rotationX = initialRotation.x - mousePosition.y * rotationFactor;
       let rotationY = initialRotation.y + mousePosition.x * rotationFactor;
@@ -110,17 +134,20 @@ export default function Model({ mousePosition, island }) {
     if (location.current) {
       location.current.rotation.y += 0.01;
     }
-    
+    if (textRef1.current) {
+      animateTextScene(textRef1)
+    }
+
   });
 
   return (
     <group scale={viewport.width / 3}>
       <group >
-        <mesh ref={island} geometry={nodes.reunion.geometry} scale={[0.015, 0.015, 0.015]} fragmentShader vertexShader  wireframe >
+        <mesh ref={island} geometry={nodes.reunion.geometry} scale={[0.015, 0.015, 0.015]} position={[0.15, -0.04, -0.1]} fragmentShader vertexShader wireframe >
           <Text
             ref={textRef1}
             position={[20, 2, 16]}
-            fontSize={2}
+            fontSize={2.2}
             color="white"
           >
             Reunion Island

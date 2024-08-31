@@ -2,29 +2,15 @@
 import React, { useEffect, useRef } from 'react'
 import { animateOverlayIn, animateOverlayOut, animateOverlayText } from "../utils/animation"
 import TransitionLink from "../utils/TransitionLink"
-import Curve from "./Curve"
 import { motion } from 'framer-motion';
+import HackHover from './hackHoverEffect'
 
 function Aside({ isOpen, onClose }) {
     const overlayRef = useRef(null);
     const contentRef = useRef(null);
     const overlayTextRef = useRef(null);
-    const initialPath = `M100 0 L100 ${window.innerHeight} Q-100 ${window.innerHeight / 2} 100 0`
-    const targetPath = `M100 0 L100 ${window.innerHeight} Q100 ${window.innerHeight / 2} 100 0`
-
-    // const curve = {
-    //     initial: {
-    //         d: initialPath
-    //     },
-    //     enter: {
-    //         d: targetPath,
-    //         transition: { duration: 1, ease: [0.76, 0, 0.24, 1] }
-    //     },
-    //     exit: {
-    //         d: initialPath,
-    //         transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] }
-    //     }
-    // }
+  
+    
     const navItems = [
         {
             label: "Accueil",
@@ -65,16 +51,17 @@ function Aside({ isOpen, onClose }) {
         <div
             id='overlay'
             ref={overlayRef}
-            className='h-full w-1/3 fixed top-0 flex right-0 justify-center items-center z-[2] bg-gray-500'
+            className='h-full w-1/3 fixed top-0 flex right-0 justify-center items-center z-[2]'
             onClick={handleOverlayClick}
         >
+            <div className='fixed w-full h-screen bg-gray-500/90  blur-[1px] border-l border-[#003049]/20'></div>
             <aside ref={contentRef} className='w-full flex h-full items-center pt-40 flex-col'>
         
                 <div className='w-full border-box ml-40 h-full ' >
-                    <h1 className='leading-none text-[1.5em]'>Navigation</h1>
+                    <h1 className='leading-none text-[1.5em]'></h1>
                     <nav>
                         <hr className='w-[80%] h-[1px] mt-6' />
-                        <ul ref={overlayTextRef} className='flex flex-col gap-4 mt-60 text-2xl'>
+                        <ul ref={overlayTextRef} className='flex flex-col gap-6 mt-40'>
                             {navItems.map((item, index) => (
                                 <li key={index}>
                                     <TransitionLink
@@ -82,7 +69,7 @@ function Aside({ isOpen, onClose }) {
                                         label={item.label}
                                         onClick={handleLinkClick}
                                     >
-                                        {item.label}
+                                     <HackHover data={item.label} iterationTiming='50' classValue='text-[28px] text-white'/>
                                     </TransitionLink>
                                 </li>
                             ))}
@@ -90,7 +77,6 @@ function Aside({ isOpen, onClose }) {
                     </nav>
                 </div>
             </aside>
-         {/* <Curve /> */}
         </div>
     )
 }

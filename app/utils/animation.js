@@ -66,7 +66,7 @@ export const animateOverlayIn = (overlayRef) => {
   if (overlayRef.current) {
     gsap.fromTo(overlayRef.current, {
       x: `${100}%`,
-      duration: 0.8,
+      duration: 0.4,
       visibility: 'hidden',
       opacity: 1,
       ease: [0.76, 0, 0.24, 1],
@@ -74,7 +74,7 @@ export const animateOverlayIn = (overlayRef) => {
       x: 0,
       visibility: 'visible',
       opacity: 1,
-      duration: 0.8,
+      duration: 0.4,
 
     })
   }
@@ -83,11 +83,11 @@ export const animateOverlayOut = (overlayRef) => {
   if (overlayRef.current) {
     gsap.fromTo(overlayRef.current, {
       x: 0,
-      duration: 0.8,
+      duration: 0.4,
       ease: [0.76, 0, 0.24, 1],
     }, {
       x: `${100}%`,
-      duration: 0.8,
+      duration: 0.4,
     })
   }
 }
@@ -106,11 +106,11 @@ export const animateOverlayText = (overlayTextRef) => {
   }
 }
 
-export const animateArrow = (arrowRef) => {
-  if (arrowRef.current) {
+export const animateArrow = (arrowRef,textScroll) => {
+  if (arrowRef.current && textScroll.current) {
     gsap.to(arrowRef.current, {
       rotation: 45,
-      yPercent: -200,
+      xPercent: -200,
       ease: "power2.inOut",
       scrollTrigger: {
         trigger: "#hero",
@@ -121,7 +121,7 @@ export const animateArrow = (arrowRef) => {
       },
     });
     gsap.to(["#hero-subtitle", "#hero-title", '#studio-text'], {
-      yPercent: -100,
+      xPercent: -100,
       ease: "power4.inOut",
       duration: 10,
       scrollTrigger: {
@@ -144,28 +144,46 @@ export const animateArrow = (arrowRef) => {
         markers: false,
       },
     });
-
+    
+    gsap.from(textScroll.current, {
+      opacity:0,
+      ease: "power4.inOut",
+      duration: 4,
+      delay : 3,
+  });
   }
 };
 
 export const animateIsland = (island) => {
   if (island.current) {
     gsap.to(island.current.position, {
-      x: 0.5,
-      y: -2.5,
-      z: -2,
+      x: 4,
+      y: 0,
+      z: 0,
       duration: 10,
       ease: 'power4.inOut',
       scrollTrigger: {
         trigger: '#scene',
         start: "top top",
-        end: "bottom center",
+        end: "bottom 60%",
         scrub: 1,
         markers: false,
       }
     });
   }
 }
+export const animateTextScene = (textRef1) => {
+  if (textRef1.current) {
+    gsap.to(textRef1.current.style, {
+      opacity:0,
+      duration: 5,
+      yoyo:true,
+      ease: 'power4.inOut',
+    }
+   );
+  }
+}
+
 // export const animateAbout = (aboutRef) => {
 //   if (aboutRef.current) {
 //     gsap.from(aboutRef.current, {

@@ -24,7 +24,7 @@ const Navbar = forwardRef(function Index(props, ref) {
     }
 
     return (
-        <header className="flex w-full absolute h-[100px] items-center justify-center z-[5]">
+        <header className="flex w-full absolute h-[100px] items-center justify-center z-[6]">
             <nav className="flex justify-between w-full font-bold items-center uppercase px-[80px]">
                 <Magnetic>
                     <TransitionLink href='/' className='' label={<Image objectFit="cover" src={logo} className="" alt="logo de la compagnie" width={40} height={40} />} />
@@ -47,8 +47,8 @@ const Navbar = forwardRef(function Index(props, ref) {
                             </Magnetic>
                         </li>
                     </div>
-                    <li onClick={toggleAside} className={`absolute right-[80px] justify-center items-center cursor-pointer w-[35px] h-[18px] p-[30px] z-[5] ${isScrolled ? 'flex opacity-100 max-w-[100px] transition-all ease duration-1000' : 'hidden opacity-0 max-w-0 overflow-hidden  transition-all ease duration-1000'}`}>
-                        <div className="fixed flex justify-center w-full items-center z-[5]">
+                    <li onClick={toggleAside} className={`absolute right-[80px] justify-center items-center cursor-pointer w-[35px] h-[18px] p-[30px] z-[6] ${isScrolled ? 'flex opacity-100 max-w-[100px] transition-all ease duration-1000' : 'hidden opacity-0 max-w-0 overflow-hidden  transition-all ease duration-1000'}`}>
+                        <div className="fixed flex justify-center w-full items-center z-[6]">
                             <Magnetic>
                                 <div className={`${isActive ? 'burger-active' : 'burger-menu'} `}>
                                     <div ref={ref} className="bounds">
@@ -60,6 +60,7 @@ const Navbar = forwardRef(function Index(props, ref) {
                 </ul>
                 <Aside isOpen={isActive} onClose={toggleAside}/>
             </nav>
+                {isActive && <div className="h-screen fixed top-0 w-full bg-black/25 blur-[1px] z-[0] border-none transition-all duration-1000 opacity-[1]"/>}
         </header>
     )
 })
