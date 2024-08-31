@@ -106,7 +106,7 @@ export default function Home() {
             <p className="mb-[32px]">Scrollez pour découvrir</p>
           </div>
 
-          <div className="z-[5] h-full max-h-screen absolute right-0 w-full"><Button position="fixed right-[100px] bottom-[32vh]"/></div>
+          <div className="z-[5] h-full max-h-screen absolute right-0 w-full"><Button position="fixed right-[100px] bottom-[34vh]"/></div>
 
           <div className='flex flex-col items-start justify-between mt-[40px] w-full h-full px-[80px] pt-[80px] relative'>
             <h1 id='hero-title' className=' pointer-events-none  leading-none text-[24px]	tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-black to-neutral-950/80'>Créateur de solutions digitales *</h1>

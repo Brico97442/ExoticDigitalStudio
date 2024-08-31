@@ -133,7 +133,7 @@ export const animateArrow = (arrowRef,textScroll) => {
       },
     });
     gsap.to('#hero-scroll', {
-      yPercent: 40,
+      yPercent: 100,
       ease: "power4.inOut",
       duration: 10,
       scrollTrigger: {

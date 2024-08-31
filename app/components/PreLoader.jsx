@@ -104,7 +104,7 @@ function PreLoader({ animationComplete }) {
             <div className='flex flex-col justify-center items-center gap-[10px] relative'>
                 <h1
                     ref={textRef}
-                    className={`text-[36px] bg-clip-text text-transparent bg-gradient-to-r from-teal-800 to-red-700 whitespace-nowrap leading-none top-[45vh] ${animationComplete ? 'fixed' : 'absolute'}`}
+                    className={`text-[36px] bg-clip-text text-transparent bg-gradient-to-r from-white to-white whitespace-nowrap leading-none top-[45vh] ${animationComplete ? 'fixed' : 'absolute'}`}
                     data-value="Exotik Digital Studio"
                 >
                     Bienvenue
