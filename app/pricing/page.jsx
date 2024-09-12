@@ -2,10 +2,8 @@
 import gsap from 'gsap';
 import { useEffect, useRef } from 'react';
 import SplitType from 'split-type';
-import { Suspense } from 'react'
-import { Canvas } from '@react-three/fiber'
-import Carousel from '../components/Carousel'
-
+import HackHover from '../components/hackHoverEffect'
+import PricingCard from '../components/PricingCard'
 
 
 export default function Pricing() {
@@ -20,31 +18,29 @@ export default function Pricing() {
 
         splitTextInstances.forEach((splitText) => {
             gsap.from(splitText.chars, {
-                y: 200,
                 opacity: 0,
                 ease: "power4.inOut",
                 visibility: "visible",
                 duration: .2,
                 stagger: 0.05,
-                delay:2,
+                delay: 2,
             });
         });
     }, []);
 
     return (
-      
-        <div className="h-full min-h-screen w-full flex flex-col items-center z-[1] relative overflow-hidden">
-            <div className="pricing-text flex flex-col w-full w-[85vw] m-auto absolute ml-60">
-                <h1 id='price-title' ref={(el) => textRef.current[0] = el} className='text-[12vh] leading-none mt-20 ' >Nos Tarifs</h1>
-            </div>
-            <div className='h-screen w-full fixed z-[2]'>
-            <Canvas>
-                <Suspense fallback={null}>
-                    <Carousel />
-                </Suspense>
-            </Canvas>
-            </div>
 
+        <div className="h-full min-h-screen w-full flex flex-col z-[1] relative overflow-hidden">
+            <HackHover ref={(el) => textRef.current[0] = el} data='Nos tarifs' classValue='text-[120px] mt-40 ml-40 text-black text-left z-[2]' />
+            <div className='w-[85vw] ml-40 flex flex-col gap-6'>
+                <h2 className='text-[30px] font-bold'> Choisissez l’offre qui vous ressemble</h2>
+                <p className='text-[18px] w-2/3'>Chez nous, la qualité n’est pas optionnelle, et les solutions adaptées à vos besoins ne le sont pas non plus. Vous trouverez ici des offres conçues pour répondre à tous les projets, des plus simples aux plus ambitieux.
+                    Que vous ayez besoin d’une application web performante, d’un site flambant neuf, d’un design qui claque ou d’un référencement qui propulse votre site en haut de Google, nous avons ce qu’il vous faut. Et si vous avez une idée bien précise (ou un peu folle), nos packs sur-mesure sont là pour ça !
+                    Parcourez nos options, choisissez celle qui vous convient le mieux, et laissez-nous transformer vos idées en réalité. </p>
+            </div>
+            <div id='card-wrapper' className='w-[90vw] h-full m-auto mt-20 mb-20'>
+                <PricingCard/>
+            </div>
         </div>
     );
 }

@@ -100,7 +100,7 @@ function PreLoader({ animationComplete }) {
     if (!mounted) return null;
 
     return (
-        <div className={`w-full h-screen bg-black ${animationComplete ? 'hidden' : 'visible'} justify-center items-center z-[6] ${animationComplete ? 'fixed' : 'absolute'} left-0`} ref={container}>
+        <div className={`w-full h-screen bg-black  justify-center items-center z-[10] ${animationComplete ? 'fixed' : 'absolute'} left-0`} ref={container}>
             <div className='flex flex-col justify-center items-center gap-[10px] relative'>
                 <h1
                     ref={textRef}

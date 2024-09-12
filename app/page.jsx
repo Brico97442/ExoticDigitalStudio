@@ -57,6 +57,7 @@ export default function Home() {
           yoyo: true // Décalage entre les animations des deux textes
         }
       );
+
       tl.fromTo(
         textScroll.current,
         { opacity: 1 },
@@ -75,8 +76,6 @@ export default function Home() {
         }
       );
 
-
-      // Nettoyage
       return () => {
         tl.kill();
       };
@@ -154,8 +153,8 @@ export default function Home() {
           </div>
 
         <div id="contact" className="max-w-[85vw] m-auto w-full min-h-screen relative z-[1]">
-        <HackHover data='Commençons'  classValue='text-[120px] text-black text-left pb-[20px]'/>
-        <HackHover data='un projet'  classValue='text-[120px] text-black text-left pb-[20px]'/>
+        <HackHover data='Commençons'  classValue='text-[120px] leading-none text-black text-left pb-[20px]'/>
+        <HackHover data='un projet'  classValue='text-[120px] leading-none text-black text-left pb-[20px]'/>
         <h2 className="absolute right-0 top-[35vh] text-[2em] w-1/4 text-right z-[1]">"Les grandes histoires commençent souvent par un Hey!"</h2>
             <Lines strokeColor="stroke-black z-[1]" />
             <ContactForm />
