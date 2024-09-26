@@ -73,7 +73,7 @@ export default function HackHover({data,classValue,iterationTiming}) {
             <div className='flex flex-col h-full mb-20'>
                 <h1
                     ref={textRef}
-                    className={`h-full ${classValue} leading-none tracking-tighter`}
+                    className={`h-full ${classValue} tracking-tighter`}
                     data-value={data}
                 >
                     {data}

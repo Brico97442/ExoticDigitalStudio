@@ -19,9 +19,9 @@ function Footer() {
 
 
     return (
-        <footer className='relative h-full text-white w-full bg-black pb-40'>
-           
-            <div className='flex flex-col justify-start w-[85vw] m-auto'>
+        <footer className='flex h-full text-white w-full bg-black py-40 z-[2] relative'>
+
+            <div className=' sticky flex flex-col justify-start w-[85vw] m-auto'>
                 <Image src={logo} alt="logo de l'entreprise Exotik Digital Studio" width={150} height={100} className='z-[4]' />
 
                 <div className='z-[4] flex justify-between'>
@@ -35,7 +35,7 @@ function Footer() {
                         <Magnetic>
                             <button id='copy-text-btn'
                                 className='flex gap-6 leading-none text-[3em] text-white cursor-pointer transition ease-in-out hover:border-r hover:border-t z-[4] p-6' onClick={copyText} value="ExotikDigitalStudio@outlook.com" >
-                         ExotikDigitalStudio@outlook.com
+                                ExotikDigitalStudio@outlook.com
                             </button>
                         </Magnetic>
 
@@ -45,7 +45,9 @@ function Footer() {
                     </div>
                 </div>
                 <div className='w-full z-[4] w-full justify-center gap-6 mt-10'>
-                    <Lines strokeColor="stroke-white" />
+                    <div className="div w-full flex justify-center">
+                        <Lines strokeColor="stroke-white" />
+                    </div>
                     <div className='flex z-[4] w-full justify-center items-center gap-6'>
                         <p className='z-[4] border-r border-b pr-2 border-white'>Retrouvez nous sur</p>
 

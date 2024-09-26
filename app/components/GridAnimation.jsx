@@ -51,8 +51,8 @@ export default function GridAnimation() {
 
     return (
         <div id='pricing' className='container h-full min-h-screen w-full flex flex-col items-center justify-center m-auto z-[1]' >
-            <div ref={containerRef} className='w-[80vw]  m-auto  z-[1]'>
-                <HackHover  data='Nos Prestations'  classValue='text-[120px] text-black text-left pb-[20px]'/>
+            <div ref={containerRef} className='w-[80vw] text-white m-auto  z-[1]'>
+                <HackHover  data='Nos Prestations'  classValue='text-[120px] text-white text-left pb-[20px]'/>
                 <div className='w-full'>
                     <div className='card-img-container'>
                         <div className='card-img justify-end overflow-hidden'>
