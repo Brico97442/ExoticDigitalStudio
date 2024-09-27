@@ -57,7 +57,7 @@ export default function Scene({ island }) {
     if (counterProgressBar.current && counterNumberRef.current) {
       gsap.to(counterProgressBar.current, {
         width: '100%',
-        duration: 10,
+        duration: 4,
         ease: 'linear',
         onUpdate: function () {
           const progress = Math.round(this.progress() * 100);
@@ -77,14 +77,16 @@ export default function Scene({ island }) {
         duration: 1,
         ease: 'power4.inOut',
         zIndex: 1,
+        delay:1,
         backgroundImage:"none"
       });
       gsap.to(island.current.position, {
         x: 0.2,
         y: 0.15,
         z: -0.35,
-        duration: 2,
-        ease: 'power4.inOut',
+        duration: 1,
+        delay:1,
+        ease: 'power4.In',
         onComplete: () => {
           setAnimationComplete(true);
           animateIsland(island)

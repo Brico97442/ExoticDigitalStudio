@@ -10,6 +10,7 @@ import ContactForm from './components/ContactForm'
 // import TextScroll from "./components/TextScroll";
 import GridAnimation from "./components/GridAnimation";
 import HorizontalScroll from "./components/HorizontalScroll";
+import StickySection from "./components/SitckySection";
 import Button from "./components/Button";
 import { animateArrow, animateAbout } from "./utils/animation";
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -54,7 +55,7 @@ export default function Home() {
           duration: 1,
           ease: "power2.in",
           delay: 11.5,
-          yoyo: true // Décalage entre les animations des deux textes
+          yoyo: true
         }
       );
 
@@ -80,11 +81,7 @@ export default function Home() {
         tl.kill();
       };
     }
-    // if (aboutRef.current) {
-    //   animateAbout(aboutRef);
-    // }
-
-
+ 
     return () => {
       cancelAnimationFrame(raf);
     };
@@ -97,7 +94,7 @@ export default function Home() {
       <Scene island={island} targetRef={targetRef} animationComplete={animationComplete} />
 
       {animationComplete && (
-        <div className="z-[2] flex w-full h-full relative min-h-screen flex-col ">
+        <div className="z-[2] flex w-full h-full min-h-screen flex-col relative">
           <div id='hero' className='h-screen w-full flex flex-col  items-center top-0'>
             <div ref={textScroll} className="absolute bottom-[20px] scroll-text text-[18px] flex justify-center items-end fixed w-full h-screen pb-[30vh]">
               <span className="w-[1px] bg-gradient-to-b from-black from-10% via-transparent via-30% to-[#666666] to-90% h-[8vh] absolute" >
@@ -105,7 +102,7 @@ export default function Home() {
               <p className="mb-[32px]">Scrollez pour découvrir</p>
             </div>
 
-            <div className="z-[5] h-full max-h-screen absolute right-0 w-full"><Button position="fixed right-[100px] bottom-[34vh]" /></div>
+            <div className="z-[5] h-full max-h-screen absolute right-0 w-full"><Button position="absolute right-[100px] bottom-[34vh]" /></div>
 
             <div className='flex flex-col items-start justify-between mt-[40px] w-full h-full px-[80px] pt-[80px] relative'>
               <h1 id='hero-title' className=' pointer-events-none  leading-none text-[24px]	tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-black to-neutral-950/80'>Créateur de solutions digitales *</h1>
@@ -147,10 +144,11 @@ export default function Home() {
             </div>
 
           </div>
-          {/* <Hero target={targetRef} /> */}
+          <div className="w-full pt-60 bg-black overflow-hidden">
           <Hero2 />
+          </div>
 
-          <div className="bg-black w-full z-[1]">
+          <div className=" w-full bg-black text-white z-[1]">
             <GridAnimation />
           </div>
           <div id="contact" className="max-w-[85vw] h-full m-auto w-full relative z-[1] my-40">

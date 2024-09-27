@@ -61,7 +61,7 @@ function Aside({ isOpen, onClose }) {
                     <h1 className='leading-none text-[1.5em]'></h1>
                     <nav>
                         <hr className='w-[80%] h-[1px] mt-6' />
-                        <ul ref={overlayTextRef} className='flex flex-col gap-6 mt-40'>
+                        <ul ref={overlayTextRef} className='flex flex-col mt-40'>
                             {navItems.map((item, index) => (
                                 <li key={index}>
                                     <TransitionLink
@@ -69,7 +69,7 @@ function Aside({ isOpen, onClose }) {
                                         label={item.label}
                                         onClick={handleLinkClick}
                                     >
-                                     <HackHover data={item.label} iterationTiming='50' classValue='text-[28px] text-white'/>
+                                     <HackHover data={item.label} iterationTiming='50' classValue=' leading-none text-[28px] text-white'/>
                                     </TransitionLink>
                                 </li>
                             ))}

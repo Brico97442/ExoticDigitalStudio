@@ -26,10 +26,10 @@ function ContactForm() {
             );
     };
     return (
-        <div className="flex items-center justify-center flex-col w-full z-[1] py-40">
+        <div className="flex items-center justify-center flex-col w-full z-[1] ">
             <form ref={form} onSubmit={sendEmail} className="flex flex-col items-start gap-6 w-full text-black z-[1]">
 
-                <input className="h-[10vh] p-6 w-full bg-transparent z-[1]"
+                <input className="h-[10vh] py-6 w-full bg-transparent z-[1]"
                     type="text" id="user_name" name="user_name" required placeholder="Nom" />
                 <input
                     type="email"
@@ -37,7 +37,7 @@ function ContactForm() {
                     name="user_email"
                     required
                     placeholder="Email"
-                    className="h-[10vh]  p-6 w-full bg-transparent"
+                    className="h-[10vh]  py-6 w-full bg-transparent"
                 />
                 <input
                     type="text"
@@ -45,10 +45,10 @@ function ContactForm() {
                     name="subject"
                     required
                     placeholder="Sujet"
-                    className="h-[10vh] p-6 w-full bg-transparent text-white z-[1]"
+                    className="h-[10vh] py-6 w-full bg-transparent text-white z-[1]"
 
                 />
-                <textarea className="h-[10vh] p-6 w-full bg-transparent z-[1]"
+                <textarea className="h-[10vh] py-6 w-full bg-transparent z-[1]"
                     id="message" name="message" placeholder="Votre Message" required></textarea>
                 <Magnetic>
                     <button className=" z-[1] w-full h-full min-w-[200px] border hover:scale-x-200 border-black p-2 rounded-full bg-gradient-to-b from-[#D90429]/50 to-[#2B2D42]/50 bg-transparent" type="submit">Envoyer</button>

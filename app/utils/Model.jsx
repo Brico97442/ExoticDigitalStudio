@@ -103,11 +103,12 @@ export default function Model({ mousePosition, island }) {
       { opacity: 0 },
       {
         opacity: 1,
-        duration: 5,
+        duration: 2,
         yoyo: true,
-        ease: "power2.in",
-        stagger: 4,
-        delay:2, // Décalage entre les animations des deux textes
+        ease: "power2.In",
+        stagger: 1,
+        delay:0.4,
+         // Décalage entre les animations des deux textes
       }
     );
 
