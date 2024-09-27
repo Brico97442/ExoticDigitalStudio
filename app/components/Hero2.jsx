@@ -49,7 +49,7 @@ export default function Hero() {
                 trigger: imagesContainerRef.current,
                 start: "center center",
                 end: "bottom 50%",
-                scrub: 3,
+                scrub: 4,
                 markers: false,
             },
         })
