@@ -10,6 +10,7 @@ import ContactForm from './components/ContactForm'
 // import TextScroll from "./components/TextScroll";
 import GridAnimation from "./components/GridAnimation";
 import HorizontalScroll from "./components/HorizontalScroll";
+import HorizontalScrollReverse from "./components/HorizontalScrollReverse";
 import StickySection from "./components/SitckySection";
 import Button from "./components/Button";
 import { animateArrow, animateAbout } from "./utils/animation";
@@ -81,7 +82,7 @@ export default function Home() {
         tl.kill();
       };
     }
- 
+
     return () => {
       cancelAnimationFrame(raf);
     };
@@ -111,7 +112,7 @@ export default function Home() {
                 <path d="M46.0607 13.0607C46.6464 12.4749 46.6464 11.5251 46.0607 10.9393L36.5147 1.3934C35.9289 0.807612 34.9792 0.807612 34.3934 1.3934C33.8076 1.97918 33.8076 2.92893 34.3934 3.51472L42.8787 12L34.3934 20.4853C33.8076 21.0711 33.8076 22.0208 34.3934 22.6066C34.9792 23.1924 35.9289 23.1924 36.5147 22.6066L46.0607 13.0607ZM0 13.5H45V10.5H0V13.5Z" fill="black" />
               </svg>
               <div className=" absolute right-0 h-full flex flex-col items-end justify-center mr-[80px]">
-                <div id="coordinates-gps" className=" text-gray-600 flex flex-col items end text-[16px] mb-[40vh]">
+                <div id="coordinates-gps" className=" text-gray-600 flex flex-col items-end text-[16px] mb-[40vh]">
                   <p>21° 16' 41″ S </p>
                   <p>55° 30' 55″ E</p>
                 </div>
@@ -142,10 +143,10 @@ export default function Home() {
                 </div>
               </div>
             </div>
-
           </div>
+            <HorizontalScrollReverse />
           <div className="w-full pt-60 bg-black overflow-hidden">
-          <Hero2 />
+            <Hero2 />
           </div>
 
           <div className=" w-full bg-black text-white z-[1]">

@@ -58,9 +58,8 @@ function HorizontalScrollReverse() {
     }, [])
 
     return (
-        <div className='h-full w-full z-[2] flex items-center justify-center overflow-hidden mb-20'>
-            <div className='w-[120vw] flex flex-col items-center relative bg-gray-200/25 bg-blur-sm uppercase'>
-
+        <div className='h-full w-full z-[3] flex items-center justify-center'>
+            <div className='w-[120vw] h-full flex flex-col items-center relative bg-gray-200/25 bg-blur-sm font-bold'>
                 <div className='w-full flex gap-40 justify-center p-3' ref={band} >
 
                     <div className='w-full flex gap-20 justify-center p-6'>
