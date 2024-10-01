@@ -13,11 +13,8 @@ function HorizontalScroll() {
 
 
     useEffect(() => {
-
         gsap.set(text2.current, { left: text2.current.getBoundingClientRect().width })
-
         requestAnimationFrame(animate);
-
     }, [])
 
 
