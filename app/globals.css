@@ -44,7 +44,6 @@ html {
 body {
   color: rgb(var(--foreground-rgb));
   scroll-behavior: smooth;
-  position: relative;
   padding: 0;
   margin: 0;
   overflow: hidden;
@@ -388,3 +387,8 @@ background-size: 100% 9px;
 background-repeat: repeat-y;
 animation: pan-overlay 45s infinite linear;
 }
+
+
+#footer{
+  /* clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%); */
+} 

@@ -19,9 +19,10 @@ function Footer() {
 
 
     return (
-        <footer className='flex h-full text-white w-full bg-black py-40 z-[2] relative'>
+        <footer id='footer' className='flex h-[70vh] justify-center items-center text-white w-full bg-black  z-[2] relative ' 
+        style={{clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)"}}>
 
-            <div className=' sticky flex flex-col justify-start w-[85vw] m-auto'>
+            <div className='fixed bottom-0 flex flex-col h-[70vh] text-white justify-start w-[85vw] m-auto text-white py-20'>
                 <Image src={logo} alt="logo de l'entreprise Exotik Digital Studio" width={150} height={100} className='z-[4]' />
 
                 <div className='z-[4] flex justify-between'>
@@ -53,7 +54,6 @@ function Footer() {
 
                         <div className='flex gap-6'>
                             <Magnetic>
-
                                 <svg width="50" className='hover:-rotate-12 transition duration-150 ease-in-out' height="50" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M66.2415 0H6.15213C2.86875 0 0 2.3625 0 5.60732V65.8302C0 69.0927 2.86875 72 6.15213 72H66.2238C69.5249 72 71.9999 69.0734 71.9999 65.8302V5.60732C72.0192 2.3625 69.5249 0 66.2415 0ZM22.3184 60.0155H12.0037V27.945H22.3184V60.0155ZM17.5178 23.0689H17.4439C14.1428 23.0689 12.0053 20.6116 12.0053 17.5355C12.0053 14.4032 14.1991 12.0037 17.5741 12.0037C20.9491 12.0037 23.0142 14.3855 23.0882 17.5355C23.0866 20.6116 20.9491 23.0689 17.5178 23.0689ZM60.0154 60.0155H49.7008V42.48C49.7008 38.2789 48.1997 35.4086 44.468 35.4086C41.6169 35.4086 39.9294 37.3371 39.1789 39.2159C38.8976 39.8909 38.8221 40.8102 38.8221 41.7487V60.0155H28.5075V27.945H38.8221V32.408C40.3232 30.2705 42.668 27.1945 48.1242 27.1945C54.8951 27.1945 60.017 31.6575 60.017 41.2795L60.0154 60.0155Z" fill="white" />
                                 </svg>
