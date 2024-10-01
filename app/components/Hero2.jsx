@@ -62,7 +62,7 @@ export default function Hero() {
 
     return (
         <div className='h-[200vh] relative flex flex-col' ref={containerRef}>
-            <div className='h-[100vh] flex items-center' ref={sectionRef}>
+            <div className='h-[100vh] flex items-center justify-center' ref={sectionRef}>
                 <div className='h-full w-full relative flex items-center justify-center' ref={imagesContainerRef}>
                     {pictures.map((picture, index) => (
                         <div className='flex items-center justify-center h-full w-full top-0 absolute' key={index} style={{ zIndex: picture.zIndex }} >
