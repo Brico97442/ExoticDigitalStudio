@@ -96,7 +96,7 @@ export default function Home() {
 
       {animationComplete && (
         <div className="z-[1] flex w-full h-full min-h-screen flex-col relative">
-          <div id='hero' className='h-screen w-full flex flex-col  items-center top-0 bg-gradient-to-b from-[#F0EAEA] to-[#737373]'>
+          <div id='hero' className='h-screen w-full flex flex-col  items-center top-0 bg-gradient-to-b from-[#F0EAEA]/70 to-[#737373]/70'>
             <div ref={textScroll} className="absolute bottom-[20px] scroll-text text-[18px] flex justify-center items-end fixed w-full h-screen pb-[30vh]">
               <span className="w-[1px] bg-gradient-to-b from-black from-10% via-transparent via-30% to-[#666666] to-90% h-[8vh] absolute" >
               </span>
