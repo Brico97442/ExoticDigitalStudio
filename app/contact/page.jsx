@@ -7,8 +7,8 @@ export default function Contact() {
                 <div className="w-full gap-6 flex flex-col">
                     <h1 className="text-[8vh] leading-none">Dites m'en un peu plus</h1>
                     <h2>sur votre projet</h2>
+                    <ContactForm />
                 </div>
-                <ContactForm />
             </div>
         </section>
     );

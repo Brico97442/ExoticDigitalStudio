@@ -25,11 +25,7 @@ export default function Pricing() {
             features: ['Audit SEO complet', 'Mise en place des recommandations', 'Suivi mensuel'],
             price: "350€"
         },
-        {
-            title: 'Maintenance annuelle',
-            features: ['Mises à jour régulières', 'Support technique', 'Sauvegardes automatiques'],
-            price: "500€"
-        }
+
     ];
 
     return (

@@ -35,7 +35,7 @@ function Footer() {
                     <div className='z-[4]'>
                         <Magnetic>
                             <button id='copy-text-btn'
-                                className='flex gap-6 leading-none text-[3em] text-white cursor-pointer transition ease-in-out hover:border-r hover:border-t z-[4] p-6' onClick={copyText} value="ExotikDigitalStudio@outlook.com" >
+                                className='flex gap-6 leading-none text-[2em] text-white cursor-pointer transition ease-in-out hover:border-r hover:border-t z-[4] p-6' onClick={copyText} value="ExotikDigitalStudio@outlook.com" >
                                 ExotikDigitalStudio@outlook.com
                             </button>
                         </Magnetic>

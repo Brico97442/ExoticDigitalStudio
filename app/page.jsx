@@ -125,7 +125,7 @@ export default function Home() {
           </div>
           <div id="about" ref={aboutRef} className=" h-screen flex flex-col justify-center items-start w-full  rounded-tl-[50px] rounded-tr-[50px] top-0  bg-[#ECECEC] z-[2]">
 
-            <div className=" flex flex-col items-start  h-[120] w-[80vw] m-auto top-0 sticky">
+            <div className=" flex flex-col items-start w-[80vw] m-auto top-0 ">
               <HackHover data='Qui sommes nous ?' classValue='text-[120px] text-black text-left' />
               <div className='flex justify-center w-full'>
                 <Lines strokeColor="stroke-black" />
@@ -153,14 +153,12 @@ export default function Home() {
             <GridAnimation />
           </div>
           <div id="contact" className="max-w-[85vw] h-full m-auto w-full relative z-[1] my-40">
-            <div className="h-[150px]">
-              <HackHover data='Démarrer' classValue='text-[120px] leading-none text-black text-left' />
-              <HackHover data='un projet' classValue='text-[120px] leading-none text-black text-left' />
+            <div>
+              <HackHover data='Démarrer un projet' classValue='text-[120px] leading-none text-black text-left' />
             </div>
             <ContactForm />
             <h2 className="absolute right-0 top-40 text-[2em] w-1/4 text-right z-[1]">"Les grandes histoires commençent souvent par un Hey!"</h2>
           </div>
-
         </div>
       )}
     </main>

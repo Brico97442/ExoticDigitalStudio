@@ -4,7 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
-
+//Animation fondu changement de page 
 export const animatePageIn = () => {
   const bannerOne = document.getElementById('banner-1');
   const bannerTwo = document.getElementById('banner-2');
@@ -61,6 +61,8 @@ export const animatePageOut = (href, router) => {
     });
   }
 };
+
+//Animation menu overlay 
 
 export const animateOverlayIn = (overlayRef) => {
   if (overlayRef.current) {
@@ -120,6 +122,7 @@ export const animateArrow = (arrowRef,textScroll) => {
         markers: false,
       },
     });
+    
     gsap.to(["#hero-subtitle", "#hero-title", '#studio-text'], {
       xPercent: -100,
       ease: "power4.inOut",
@@ -132,6 +135,7 @@ export const animateArrow = (arrowRef,textScroll) => {
         markers: false,
       },
     });
+    
     gsap.to('#hero-scroll', {
       yPercent: 100,
       ease: "power4.inOut",
@@ -153,6 +157,8 @@ export const animateArrow = (arrowRef,textScroll) => {
   });
   }
 };
+
+//Animation objet 3D Island
 
 export const animateIsland = (island) => {
   if (island.current) {
@@ -184,20 +190,3 @@ export const animateTextScene = (textRef1) => {
   }
 }
 
-// export const animateAbout = (aboutRef) => {
-//   if (aboutRef.current) {
-//     gsap.from(aboutRef.current, {
-//       yPercent:100,
-//       duration: 10,
-//       ease: 'power4.inOut',
-//       scrollTrigger: {
-//         trigger: aboutRef.current,
-//         start: "10% center",
-//         end: "20% center",
-//         scrub: 1,
-//         markers: true,
-//       }
-//     });
-  
-//   }
-// }
