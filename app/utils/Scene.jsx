@@ -76,7 +76,7 @@ export default function Scene({ island }) {
         backgroundColor: 'rgba(0, 0, 0, 0)',
         duration: 1,
         ease: 'power4.inOut',
-        zIndex: 1,
+        zIndex: 2,
         delay:1,
         backgroundImage:"none"
       });
