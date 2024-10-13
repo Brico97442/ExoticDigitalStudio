@@ -161,32 +161,34 @@ export const animateArrow = (arrowRef,textScroll) => {
 //Animation objet 3D Island
 
 export const animateIsland = (island) => {
-  if (island.current) {
+  if (island?.current) {
     gsap.to(island.current.position, {
-      x: 4,
+      x: 0,
       y: 0,
-      z: 0,
-      duration: 10,
+      z: -8,
+      duration: 2,
       ease: 'power4.inOut',
       scrollTrigger: {
         trigger: '#scene',
         start: "top top",
         end: "bottom 60%",
         scrub: 1,
-        markers: false,
+        markers: true,
       }
     });
   }
 }
+
 export const animateTextScene = (textRef1) => {
   if (textRef1.current) {
-    gsap.to(textRef1.current.style, {
-      opacity:0,
+    gsap.to(textRef1.current, {
+      opacity: 0,
       duration: 5,
-      yoyo:true,
+      yoyo: true,
       ease: 'power4.inOut',
-    }
-   );
+    });
+  } else {
+    console.warn("L'élément textRef1 n'est pas défini dans animateTextScene");
   }
 }
 

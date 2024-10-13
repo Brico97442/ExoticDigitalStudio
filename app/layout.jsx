@@ -16,7 +16,6 @@ const metadata = {
 };
 
 export default function RootLayout({ children }) {
-
   const stickyElement = useRef(null);
 
   return (
@@ -25,7 +24,7 @@ export default function RootLayout({ children }) {
         <head>
         </head>
         <body className={GeistSans.className}>
-          {/* <PreLoader/> */}
+          <PreLoader/>
           <Template>
             <Navbar ref={stickyElement} />
             <StickyCursor stickyElement={stickyElement} />

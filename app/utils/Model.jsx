@@ -38,7 +38,6 @@ export default function Model({ mousePosition, island }) {
   const islandMaterialRef = useRef(null);
   const textRef1 = useRef(null);
   const textRef2 = useRef(null);
-
   const location = useRef(null);
   const { nodes: locationNodes } = useGLTF('/media/location.glb');
   const locationMaterialRef = useRef(null);
@@ -121,15 +120,18 @@ export default function Model({ mousePosition, island }) {
 
   useFrame(() => {
     if (island.current) {
-      const rotationFactor = 0.2;
+      const rotationFactor = 0.04;
       let rotationX = initialRotation.x - mousePosition.y * rotationFactor;
       let rotationY = initialRotation.y + mousePosition.x * rotationFactor;
 
       island.current.rotation.set(rotationX, rotationY, 0);
-
+    
+    
       if (textRef1.current && textRef2.current) {
         textRef1.current.rotation.set(0, -rotationY, 0);
         textRef2.current.rotation.set(0, -rotationY, 0);
+        animateTextScene(textRef1);
+
       }
     }
     if (location.current) {
@@ -144,7 +146,7 @@ export default function Model({ mousePosition, island }) {
   return (
     <group scale={viewport.width / 3}>
       <group >
-        <mesh ref={island} geometry={nodes.reunion.geometry} scale={[0.015, 0.015, 0.015]} position={[0.15, -0.04, -0.1]} fragmentShader vertexShader wireframe >
+        <mesh ref={island} geometry={nodes.reunion.geometry} scale={[0.015, 0.015, 0.015]} position={[0, 0.08, -0.28]} fragmentShader vertexShader wireframe >
           <Text
             ref={textRef1}
             position={[20, 2, 16]}

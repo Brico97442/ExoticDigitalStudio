@@ -1,7 +1,7 @@
 import { forwardRef, useState, useEffect } from "react"
 import TransitionLink from "../utils/TransitionLink"
 import Image from "next/image"
-import logo from "../../assets/black.png"
+import logo from "../../assets/LogoExoticDigitalStudioVectorised.webp"
 import Magnetic from '../utils/Magnetic'
 import Aside from './Aside'
 
@@ -24,10 +24,10 @@ const Navbar = forwardRef(function Index(props, ref) {
     }
 
     return (
-        <header className="flex w-full absolute h-[100px] items-center justify-center z-[6]">
+        <header className="flex w-full absolute h-[150px] items-center justify-center z-[6]">
             <nav className="flex justify-between w-full font-bold items-center uppercase px-[80px]">
                 <Magnetic>
-                    <TransitionLink href='/' className='' label={<Image objectFit="cover" src={logo} className="" alt="logo de la compagnie" width={40} height={40} />} />
+                    <TransitionLink href='/' className='' label={<Image objectFit="cover" src={logo} className="" alt="logo de la compagnie" width={110} height={80} />} />
                 </Magnetic>
                 <ul className="flex  items-center transition text-[#660708] text-lg">
                     <div className={`flex gap-[90px] z-[6] transition-all duration-300 ease-in-out ${isScrolled ? 'opacity-0 max-h-0 overflow-hidden' : 'opacity-100 max-h-[100px]'}`}>
@@ -38,7 +38,7 @@ const Navbar = forwardRef(function Index(props, ref) {
                         </li>
                         <li className="transition ease hover:border-t-2 hover:border-white hover:text-white z-[5]">
                             <Magnetic>
-                                <TransitionLink href="/pricing" label="Tarifs" />
+                                <TransitionLink href="/pricing" label="Services" />
                             </Magnetic>
                         </li>
                         <li className="transition ease hover:border-t-2 hover:border-white hover:text-white z-[5]">
