@@ -60,6 +60,9 @@ export const animatePageOut = (href, router) => {
       delay: 0.2,
     });
   }
+  return () => {
+    tl.kill();
+  };
 };
 
 //Animation menu overlay 
@@ -161,7 +164,7 @@ export const animateArrow = (arrowRef,textScroll) => {
 //Animation objet 3D Island
 
 export const animateIsland = (island) => {
-  if (island?.current) {
+  if (island.current) {
     gsap.to(island.current.position, {
       x: 0,
       y: 0,
@@ -186,9 +189,7 @@ export const animateTextScene = (textRef1) => {
       duration: 5,
       yoyo: true,
       ease: 'power4.inOut',
-    });
-  } else {
-    console.warn("L'élément textRef1 n'est pas défini dans animateTextScene");
+    })
   }
 }
 

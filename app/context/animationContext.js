@@ -3,9 +3,9 @@ import { createContext, useContext, useState,useEffect } from 'react';
 const AnimationContext = createContext();
 
 export function AnimationProvider({ children }) {
-  const [animationComplete, setAnimationComplete] = useState(false);
+  const [loadingComplete, setLoadingComplete] = useState(false);
   return (
-    <AnimationContext.Provider value={{ animationComplete, setAnimationComplete }}>
+    <AnimationContext.Provider value={{ loadingComplete, setLoadingComplete }}>
       {children}
     </AnimationContext.Provider>
   );

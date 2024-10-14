@@ -13,14 +13,14 @@ function PreLoader() {
     const [mounted, setMounted] = useState(false);
     const [loadingComplete, setLoadingComplete] = useState(false)
     const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ{²}'*ù$/#.?!#";
-    const body = document.querySelector('body');
+        // const body = document.querySelector('body');
 
-    if (loadingComplete) {
-        body.classList.add('fixed');
+    // if (loadingComplete) {
+    //     body.classList.add('fixed');
 
-    } else {
-        body.classList.remove('fixed');
-    }
+    // } else {
+    //     body.classList.remove('fixed');
+    // }
     useEffect(() => {
         
         setMounted(true);

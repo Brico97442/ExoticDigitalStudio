@@ -32,7 +32,7 @@ export default function Home() {
   const arrowRef = useRef(null);
   const aboutRef = useRef(null);
   const textScroll = useRef(null);
-  const [animationComplete, setAnimationComplete] = useState(false);
+  const [loadingComplete, setLoadingComplete] = useState(false);
 
 
   useEffect(() => {
@@ -93,7 +93,7 @@ export default function Home() {
   useEffect(() => {
     // Simuler un délai de chargement
     const timer = setTimeout(() => {
-      setAnimationComplete(true);
+      setLoadingComplete(true);
     }); // Ajustez ce délai selon vos besoins
 
     return () => clearTimeout(timer);
@@ -101,7 +101,7 @@ export default function Home() {
   return (
     <main id="main" className="flex w-full h-full relative min-h-screen flex-col ">
 
-      {animationComplete && (
+      {/* {loadingComplete && ( */}
         <div className="z-[1] flex w-full h-full min-h-screen flex-col relative">
           <div id='hero' className='h-screen sticky w-full flex flex-col  items-center top-0 bg-gradient-to-b from-[#F0EAEA]/70 to-[#737373]/70 '>
           <Scene island={island}/>
@@ -168,7 +168,7 @@ export default function Home() {
             <h2 className="absolute right-0 top-40 text-[2em] w-1/4 text-right z-[1]">"Les grandes histoires commençent souvent par un Hey!"</h2>
           </div>
         </div>
-      )}
+      {/* )} */}
     </main>
   );
 }
