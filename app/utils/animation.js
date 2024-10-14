@@ -164,7 +164,7 @@ export const animateArrow = (arrowRef,textScroll) => {
 //Animation objet 3D Island
 
 export const animateIsland = (island) => {
-  if (island.current) {
+  if (island?.current && textRef1.current) {
     gsap.to(island.current.position, {
       x: 0,
       y: 0,
@@ -185,7 +185,7 @@ export const animateIsland = (island) => {
 export const animateTextScene = (textRef1) => {
   if (textRef1.current) {
     gsap.to(textRef1.current, {
-      opacity: 0,
+      // opacity: 0,
       duration: 5,
       yoyo: true,
       ease: 'power4.inOut',

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, Suspense, useState } from 'react';
 import Image from 'next/image';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Environment } from '@react-three/drei';
+// import { OrbitControls, Environment } from '@react-three/drei';
 import Model from './Model';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
@@ -63,7 +63,8 @@ export default function Scene({ island }) {
       //     animateIsland()
       //   },
       // });
-      animateIsland()
+      animateIsland(island.cu)
+      console.log(island)
     }
 
   }, [island]);

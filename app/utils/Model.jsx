@@ -30,12 +30,12 @@ import React, { useRef, useEffect, useState } from 'react';
 import { useGLTF, Text } from '@react-three/drei';
 import { useFrame, useLoader, useThree } from '@react-three/fiber';
 import { ShaderMaterial, Color } from 'three';
-import { animateTextScene } from './animation';
+import { animateIsland, animateTextScene } from './animation';
 import gsap from 'gsap';
+
 export default function Model({ mousePosition, island }) {
   const { nodes } = useGLTF('/media/reunion2.glb');
   const { viewport } = useThree();
-  const islandMaterialRef = useRef(null);
   const textRef1 = useRef(null);
   const textRef2 = useRef(null);
   const location = useRef(null);
@@ -68,7 +68,7 @@ export default function Model({ mousePosition, island }) {
       setInitialRotation({ x: initialRotationX, y: initialRotationY });
       island.current.rotation.set(initialRotationX, initialRotationY, 0);
 
-
+      animateIsland()
 
       // Définir le matériau du shader
       const shaderMaterial = new ShaderMaterial({
@@ -89,7 +89,6 @@ export default function Model({ mousePosition, island }) {
       // Appliquer le matériau shader à l'île
       island.current.material = shaderMaterial
 
-      console.log(island.current.material.opacity)
 
       if (!isHovered) {
         island.current.material.opacity = 0.01

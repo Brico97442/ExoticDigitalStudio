@@ -16,6 +16,7 @@ import Button from "./components/Button";
 import { animateArrow, animateAbout } from "./utils/animation";
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import HackHover from './components/hackHoverEffect'
+import { animateIsland } from './utils/animation';
 
 
 gsap.registerPlugin(ScrollTrigger)
@@ -98,6 +99,16 @@ export default function Home() {
 
     return () => clearTimeout(timer);
   }, []);
+
+  useEffect(() => {
+    if (island?.current) {
+      console.log("Island object:", island.current);
+      animateIsland(island.current);
+    } else {
+      console.log("Island object is not available");
+    }
+  }, [island]);
+  
   return (
     <main id="main" className="flex w-full h-full relative min-h-screen flex-col ">
 
