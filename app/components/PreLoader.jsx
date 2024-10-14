@@ -14,12 +14,12 @@ function PreLoader() {
     const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ{²}'*ù$/#.?!#";
     const body = document.querySelector('body');
 
-    if (loadingComplete) {
-        body.classList.add('fixed');
+    // if (loadingComplete) {
+    //     body.classList.add('fixed');
 
-    } else {
-        body.classList.remove('fixed');
-    }
+    // } else {
+    //     body.classList.remove('fixed');
+    // }
 
     useEffect(() => {
         setMounted(true);

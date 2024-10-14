@@ -167,12 +167,12 @@ export default function Home() {
           <div className=" w-full bg-black text-white z-[1]">
             <GridAnimation />
           </div>
-          <div id="contact" className="max-w-[85vw] h-full m-auto w-full relative z-[1] my-40">
+          <div id="contact" className="W-full p-[50px] bg-blue-400 h-screen w-full relative z-[1]">
             <div>
               <HackHover data='Démarrer un projet' classValue='text-[120px] leading-none text-black text-left' />
             </div>
             <ContactForm />
-            <h2 className="absolute right-0 top-40 text-[2em] w-1/4 text-right z-[1]">"Les grandes histoires commençent souvent par un Hey!"</h2>
+            <h2 className="absolute right-[50px] top-40 text-[2em] w-1/4 text-right z-[1]">"Les grandes histoires commençent souvent par un Hey!"</h2>
           </div>
         </div>
       {/* )} */}

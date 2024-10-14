@@ -29,7 +29,7 @@ export default function Pricing() {
     ];
 
     return (
-        <div className="h-full min-h-screen w-full flex flex-col z-[1] relative overflow-hidden">
+        <div className="h-full min-h-screen w-full flex flex-col z-[1] relative overflow-hidden ">
             <HackHover ref={(el) => textRef.current[0] = el} data='Nos tarifs' classValue='text-[120px] mt-40 ml-40 text-black text-left z-[2]' />
             <div className='w-[85vw] ml-40 flex flex-col gap-6'>
                 <h2 className='text-[30px] font-bold'>Choisissez l’offre qui vous ressemble</h2>

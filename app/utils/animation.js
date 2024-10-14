@@ -171,7 +171,7 @@ export const animateIsland = (island) => {
         start: "top top",
         end: "bottom 60%",
         scrub: 1,
-        markers: true,
+        markers: false,
       }
     });
   }
