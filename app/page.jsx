@@ -13,7 +13,7 @@ import HorizontalScroll from "./components/HorizontalScroll";
 import HorizontalScrollReverse from "./components/HorizontalScrollReverse";
 import StickySection from "./components/SitckySection";
 import Button from "./components/Button";
-import { animateArrow, animateAbout } from "./utils/animation";
+import { animateHero} from "./utils/animation";
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import HackHover from './components/hackHoverEffect'
 import { animateIsland } from './utils/animation';
@@ -28,7 +28,6 @@ const Scene = dynamic(() => import('./utils/Scene'), {
 
 export default function Home() {
   const island = useRef(null);
-  const targetRef = useRef(null);
   const target = useRef(null);
   const arrowRef = useRef(null);
   const aboutRef = useRef(null);
@@ -44,8 +43,11 @@ export default function Home() {
     }
     requestAnimationFrame(raf);
 
+   
+
+
     if (arrowRef.current && textScroll.current) {
-      animateArrow(arrowRef, textScroll);
+      animateHero(arrowRef, textScroll);
       const tl = gsap.timeline();
 
       tl.fromTo(
@@ -101,17 +103,11 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    if (island?.current) {
-      console.log("Island object:", island.current);
-      animateIsland(island.current);
-    } else {
-      console.log("Island object is not available");
-    }
+    
   }, [island]);
   
   return (
     <main id="main" className="flex w-full h-full relative min-h-screen flex-col ">
-
       {/* {loadingComplete && ( */}
         <div className="z-[1] flex w-full h-full min-h-screen flex-col relative">
           <div id='hero' className='h-screen sticky w-full flex flex-col  items-center top-0 bg-gradient-to-b from-[#F0EAEA]/70 to-[#737373]/70 '>

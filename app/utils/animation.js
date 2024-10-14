@@ -111,7 +111,7 @@ export const animateOverlayText = (overlayTextRef) => {
   }
 }
 
-export const animateArrow = (arrowRef,textScroll) => {
+export const animateHero = (arrowRef,textScroll) => {
   if (arrowRef.current && textScroll.current) {
     gsap.to(arrowRef.current, {
       rotation: 45,
@@ -152,12 +152,7 @@ export const animateArrow = (arrowRef,textScroll) => {
       },
     });
     
-    gsap.from(textScroll.current, {
-      opacity:0,
-      ease: "power4.inOut",
-      duration: 4,
-      delay : 3,
-  });
+    
   }
 };
 
@@ -168,7 +163,7 @@ export const animateIsland = (island) => {
     gsap.to(island.current.position, {
       x: 0,
       y: 0,
-      z: -8,
+      z: -4,
       duration: 2,
       ease: 'power4.inOut',
       scrollTrigger: {
@@ -182,14 +177,5 @@ export const animateIsland = (island) => {
   }
 }
 
-export const animateTextScene = (textRef1) => {
-  if (textRef1.current) {
-    gsap.to(textRef1.current, {
-      // opacity: 0,
-      duration: 5,
-      yoyo: true,
-      ease: 'power4.inOut',
-    })
-  }
-}
+
 

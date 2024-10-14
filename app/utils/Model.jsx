@@ -30,7 +30,6 @@ import React, { useRef, useEffect, useState } from 'react';
 import { useGLTF, Text } from '@react-three/drei';
 import { useFrame, useLoader, useThree } from '@react-three/fiber';
 import { ShaderMaterial, Color } from 'three';
-import { animateIsland, animateTextScene } from './animation';
 import gsap from 'gsap';
 
 export default function Model({ mousePosition, island }) {
@@ -43,24 +42,39 @@ export default function Model({ mousePosition, island }) {
   const locationMaterialRef = useRef(null);
 
   const [initialRotation, setInitialRotation] = useState({ x: 0, y: 0 });
-  const [isHovered, setIsHovered] = useState(false)
 
 
+  useEffect(() => {
+    if (island.current) {
 
-  const hoverEnter = () => {
-    setIsHovered(true)
-  }
-  const hoverLeave = () => {
-    setIsHovered(false)
-  }
+      // Initial setup
+      const initialRotationX = 5 * (Math.PI / 180);
+      const initialRotationY = -80 * (Math.PI / 180);
+      setInitialRotation({ x: initialRotationX, y: initialRotationY });
+      island.current.rotation.set(initialRotationX, initialRotationY, 0);
 
+      // Animation setup
+      gsap.to(island.current.position, {
+        x: 0,
+        y: 0,
+        z: -4,
+        duration: 2,
+        ease: 'power4.inOut',
+        scrollTrigger: {
+          trigger: '#scene',
+          start: "top top",
+          end: "bottom 60%",
+          scrub: 1,
+          markers: true,
+        }
+      });
+    }
+  }, []);
 
   useEffect(() => {
     if (textRef1.current) textRef1.current.material.transparent = true;
     if (textRef2.current) textRef2.current.material.transparent = true;
     if (island.current) {
-
-
       //Rotation initiale du Modèle 3D
       const initialRotationX = 5 * (Math.PI / 180);
       const initialRotationY = -80 * (Math.PI / 180);
@@ -68,15 +82,12 @@ export default function Model({ mousePosition, island }) {
       setInitialRotation({ x: initialRotationX, y: initialRotationY });
       island.current.rotation.set(initialRotationX, initialRotationY, 0);
 
-      animateIsland()
-
       // Définir le matériau du shader
       const shaderMaterial = new ShaderMaterial({
         uniforms: {
-          opacity: { value: isHovered ? 1 : 0.03 }, // Opacité du modèle
-          color: { value: new Color(isHovered ? '#660708' : 'teal') }, // Couleur du quadrillage
+          opacity: { value: 0.03 }, // Opacité du modèle
+          color: { value: new Color('teal') }, // Couleur du quadrillage
           depthTest: false
-
         },
         vertexShader,
         fragmentShader,
@@ -88,12 +99,8 @@ export default function Model({ mousePosition, island }) {
 
       // Appliquer le matériau shader à l'île
       island.current.material = shaderMaterial
-
-
-      if (!isHovered) {
-        island.current.material.opacity = 0.01
-      }
     }
+
     const tl = gsap.timeline();
 
     tl.fromTo(
@@ -115,7 +122,7 @@ export default function Model({ mousePosition, island }) {
       tl.kill();
     };
 
-  }, [island, isHovered]);
+  }, [island]);
 
   useFrame(() => {
     if (island.current) {
@@ -125,21 +132,15 @@ export default function Model({ mousePosition, island }) {
 
       island.current.rotation.set(rotationX, rotationY, 0);
     
-    
       if (textRef1.current && textRef2.current) {
         textRef1.current.rotation.set(0, -rotationY, 0);
         textRef2.current.rotation.set(0, -rotationY, 0);
-        animateTextScene(textRef1);
 
       }
     }
     if (location.current) {
       location.current.rotation.y += 0.01;
     }
-    if (textRef1.current) {
-      animateTextScene(textRef1)
-    }
-
   });
 
   return (

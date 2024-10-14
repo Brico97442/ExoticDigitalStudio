@@ -20,8 +20,8 @@ function PreLoader() {
     // } else {
     //     body.classList.remove('fixed');
     // }
+
     useEffect(() => {
-        
         setMounted(true);
         // Déplacez l'accès au document ici
         const body = document.querySelector('body');
