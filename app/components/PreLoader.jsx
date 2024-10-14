@@ -12,14 +12,14 @@ function PreLoader() {
     const [mounted, setMounted] = useState(false);
     const [loadingComplete, setLoadingComplete] = useState(false)
     const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ{²}'*ù$/#.?!#";
-        // const body = document.querySelector('body');
+    const body = document.querySelector('body');
 
-    // if (loadingComplete) {
-    //     body.classList.add('fixed');
+    if (loadingComplete) {
+        body.classList.add('fixed');
 
-    // } else {
-    //     body.classList.remove('fixed');
-    // }
+    } else {
+        body.classList.remove('fixed');
+    }
 
     useEffect(() => {
         setMounted(true);
@@ -52,7 +52,7 @@ function PreLoader() {
                 })
                 .to(progressBar.current, {
                     opacity: 0,
-                  
+
                 });
         }
 
@@ -89,7 +89,7 @@ function PreLoader() {
             duration: 0.8,
             onComplete: () => {
                 if (typeof loadingComplete === 'function') {
-                    loadingComplete(); 
+                    loadingComplete();
                 }
                 if (container.current && loadingComplete) {
                     container.current.style.display = 'none';
@@ -139,26 +139,26 @@ function PreLoader() {
 export default PreLoader;
 
 // useEffect(() => {
-  //   if (counterProgressBar.current && counterNumberRef.current) {
-  //     gsap.to(counterProgressBar.current, {
-  //       width: '100%',
-  //       duration: 4,
-  //       ease: 'linear',
-  //       onUpdate: function () {
-  //         const progress = Math.round(this.progress() * 100);
-  //         counterNumberRef.current.textContent = progress;
-  //       },
-  //       onComplete: () => {
-  //         setLoadingComplete(true);
-  //       },
-  //     });
-  //   }
-  // }, []);
+//   if (counterProgressBar.current && counterNumberRef.current) {
+//     gsap.to(counterProgressBar.current, {
+//       width: '100%',
+//       duration: 4,
+//       ease: 'linear',
+//       onUpdate: function () {
+//         const progress = Math.round(this.progress() * 100);
+//         counterNumberRef.current.textContent = progress;
+//       },
+//       onComplete: () => {
+//         setLoadingComplete(true);
+//       },
+//     });
+//   }
+// }, []);
 
 
-   {/* <h1 ref={counterNumberRef} className='fixed ml-20 mt-20 text-4xl z-[1]'>0</h1> */}
-        {/* <div className='w-[26vw] h-screen bg-[#003049]/10 bg-gradient-to-t from-[#003049]/65 to-transparent/5 blur-[1px] border border-none absolute left-0 top-0'></div> */}
-        {/* <div id='counter'>
+{/* <h1 ref={counterNumberRef} className='fixed ml-20 mt-20 text-4xl z-[1]'>0</h1> */ }
+{/* <div className='w-[26vw] h-screen bg-[#003049]/10 bg-gradient-to-t from-[#003049]/65 to-transparent/5 blur-[1px] border border-none absolute left-0 top-0'></div> */ }
+{/* <div id='counter'>
           <div id='counter-body' className='absolute ml-20 mb-24 bottom-[100vh] h-1 bg-black w-[20vw]'>
             <div ref={counterProgressBar} className='w-0 h-full bg-white'></div>
           </div>
@@ -167,7 +167,7 @@ export default PreLoader;
           </div>
           <p className='absolute text-xs ml-20 bottom-[100vh] mb-40'>Since 2024</p>
         </div> */}
-        {/* {loadingComplete && (
+{/* {loadingComplete && (
           <p ref={callBtn} className='text-lg w-screen fixed flex justify-center items-center transition-ease-2 bottom-[100vh] mb-20 hover:scale-100 transition ease-out duration-500 hover:opacity-25'>
             Loading complete
           </p>

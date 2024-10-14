@@ -159,12 +159,12 @@ export const animateHero = (arrowRef,textScroll) => {
 //Animation objet 3D Island
 
 export const animateIsland = (island) => {
-  if (island?.current && textRef1.current) {
+  if (island?.current) {
     gsap.to(island.current.position, {
       x: 0,
       y: 0,
-      z: -4,
-      duration: 2,
+      z: 4,
+      duration: 10,
       ease: 'power4.inOut',
       scrollTrigger: {
         trigger: '#scene',

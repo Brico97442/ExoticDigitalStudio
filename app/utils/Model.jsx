@@ -31,6 +31,7 @@ import { useGLTF, Text } from '@react-three/drei';
 import { useFrame, useLoader, useThree } from '@react-three/fiber';
 import { ShaderMaterial, Color } from 'three';
 import gsap from 'gsap';
+import { animateIsland } from './animation';
 
 export default function Model({ mousePosition, island }) {
   const { nodes } = useGLTF('/media/reunion2.glb');
@@ -43,38 +44,14 @@ export default function Model({ mousePosition, island }) {
 
   const [initialRotation, setInitialRotation] = useState({ x: 0, y: 0 });
 
-
-  useEffect(() => {
-    if (island.current) {
-
-      // Initial setup
-      const initialRotationX = 5 * (Math.PI / 180);
-      const initialRotationY = -80 * (Math.PI / 180);
-      setInitialRotation({ x: initialRotationX, y: initialRotationY });
-      island.current.rotation.set(initialRotationX, initialRotationY, 0);
-
-      // Animation setup
-      gsap.to(island.current.position, {
-        x: 0,
-        y: 0,
-        z: -4,
-        duration: 2,
-        ease: 'power4.inOut',
-        scrollTrigger: {
-          trigger: '#scene',
-          start: "top top",
-          end: "bottom 60%",
-          scrub: 1,
-          markers: true,
-        }
-      });
-    }
-  }, []);
-
   useEffect(() => {
     if (textRef1.current) textRef1.current.material.transparent = true;
     if (textRef2.current) textRef2.current.material.transparent = true;
+    
     if (island.current) {
+
+
+
       //Rotation initiale du Modèle 3D
       const initialRotationX = 5 * (Math.PI / 180);
       const initialRotationY = -80 * (Math.PI / 180);
@@ -99,6 +76,8 @@ export default function Model({ mousePosition, island }) {
 
       // Appliquer le matériau shader à l'île
       island.current.material = shaderMaterial
+      animateIsland(island)
+
     }
 
     const tl = gsap.timeline();
