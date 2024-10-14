@@ -15,7 +15,6 @@ gsap.registerPlugin(ScrollTrigger);
 export default function Scene({ island }) {
   const divRef = useRef(null);
   const divRef2 = useRef(null);
-  const callBtn = useRef(null);
  
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   // const [loadingComplete, setLoadingComplete] = useState(false);
@@ -51,7 +50,7 @@ export default function Scene({ island }) {
 
   useEffect(() => {
 
-    if (island.current) {
+    if (island?.current) {
       // gsap.to(island.current.position, {
       //   x: 0.2,
       //   y: 0.15,

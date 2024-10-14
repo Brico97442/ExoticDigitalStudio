@@ -2,7 +2,6 @@
 
 import React, { useRef, useEffect, useState } from 'react';
 import gsap from 'gsap';
-import { animatePageOut } from "../utils/animation"
 
 function PreLoader() {
     const container = useRef(null);
