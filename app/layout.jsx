@@ -5,7 +5,7 @@ import "./globals.css";
 import Navbar from "../app/components/Navbar";
 import StickyCursor from "./utils/StickyCursor";
 import Template from "./utils/template";
-import { AnimationProvider } from './context/animationContext';
+import { LoadingProvider } from './context/animationContext';
 import { useAnimation } from './context/animationContext'; // Importez votre hook personnalisé
 import Footer from "../app/components/Footer";
 import PreLoader from "./components/PreLoader";
@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
   const stickyElement = useRef(null);
 
   return (
-    <AnimationProvider>
+    <LoadingProvider>
       <html lang="fr">
         <head>
         </head>
@@ -35,6 +35,6 @@ export default function RootLayout({ children }) {
           <Footer />
         </body>
       </html>
-    </AnimationProvider>
+    </LoadingProvider>
   );
 }

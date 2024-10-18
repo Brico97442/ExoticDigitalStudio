@@ -111,11 +111,13 @@ export const animateOverlayText = (overlayTextRef) => {
   }
 }
 
+//Hero animation
+
 export const animateHero = (arrowRef,textScroll) => {
   if (arrowRef.current && textScroll.current) {
     gsap.to(arrowRef.current, {
       rotation: 45,
-      xPercent: -200,
+      yPercent: -200,
       ease: "power2.inOut",
       scrollTrigger: {
         trigger: "#hero",
@@ -126,8 +128,8 @@ export const animateHero = (arrowRef,textScroll) => {
       },
     });
     
-    gsap.to(["#hero-subtitle", "#hero-title", '#studio-text'], {
-      xPercent: -100,
+    gsap.to(["#hero-subtitle", "#hero-title",'#coordinates-gps','#studio-text'], {
+      yPercent: -20,
       ease: "power4.inOut",
       duration: 10,
       scrollTrigger: {
@@ -140,9 +142,9 @@ export const animateHero = (arrowRef,textScroll) => {
     });
     
     gsap.to('#hero-scroll', {
-      yPercent: 100,
+      yPercent: -20,
       ease: "power4.inOut",
-      duration: 10,
+      duration: 3,
       scrollTrigger: {
         trigger: "#hero",
         start: "top top",
@@ -163,7 +165,7 @@ export const animateIsland = (island) => {
     gsap.to(island.current.position, {
       x: 0,
       y: 0,
-      z: 4,
+      z: 1.4,
       duration: 10,
       ease: 'power4.inOut',
       scrollTrigger: {
@@ -177,5 +179,22 @@ export const animateIsland = (island) => {
   }
 }
 
+// loader animation 
+
+
+//counter animation
+export const animateCounter = (counterRef) => {
+  if (counterRef.current) {
+    gsap.to(counterRef.current, {
+      innerText: 100,
+      duration: 5,
+      ease: "power1.in",
+      snap: { innerText: 1 },
+      onUpdate: function() {
+        counterRef.current.textContent = Math.round(this.targets()[0].innerText);
+      }
+    });
+  }
+};
 
 

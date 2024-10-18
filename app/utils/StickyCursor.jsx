@@ -10,15 +10,15 @@ export default function StickyCursor({ stickyElement }) {
 
   const cursorRef = useRef(null);
   const cursorRef2 = useRef(null);
-  const curSorSize = isHovered ? 80 : 30;
+  const curSorSize = isHovered ? 80 : 20;
 
   // Définir la valeur de mouvement et les paramètres pour le mouvement fluide
   const mouseX = useMotionValue(x);
   const mouseY = useMotionValue(y);
 
   const smoothOptions = {
-    damping: 20,
-    stiffness: 280,
+    damping: 30,
+    stiffness: 350,
     mass: 0.5,
   };
 

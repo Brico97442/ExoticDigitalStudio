@@ -125,7 +125,7 @@ export default function Model({ mousePosition, island }) {
   return (
     <group scale={viewport.width / 3}>
       <group >
-        <mesh ref={island} geometry={nodes.reunion.geometry} scale={[0.015, 0.015, 0.015]} position={[0, 0.08, -0.28]} fragmentShader vertexShader wireframe >
+        <mesh ref={island} geometry={nodes.reunion.geometry} scale={[0.015, 0.015, 0.015]} position={[-0.08, 0.08, -0.28]} fragmentShader vertexShader wireframe >
           <Text
             ref={textRef1}
             position={[20, 2, 16]}
@@ -147,7 +147,7 @@ export default function Model({ mousePosition, island }) {
           </Text>
         </mesh>
       </group>
-      <pointLight position={[0, 0, 1]} intensity={8} color={'purple'} />
+      <pointLight position={[0, 0, 1]} intensity={8} color={'red'} />
     </group>
   );
 }

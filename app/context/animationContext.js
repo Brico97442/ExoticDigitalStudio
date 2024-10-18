@@ -1,16 +1,16 @@
-import { createContext, useContext, useState,useEffect } from 'react';
+import { createContext, useContext, useState } from 'react';
 
-const AnimationContext = createContext();
+const LoadingContext = createContext();
 
-export function AnimationProvider({ children }) {
+export function LoadingProvider({ children }) {
   const [loadingComplete, setLoadingComplete] = useState(false);
   return (
-    <AnimationContext.Provider value={{ loadingComplete, setLoadingComplete }}>
+    <LoadingContext.Provider value={{ loadingComplete, setLoadingComplete }}>
       {children}
-    </AnimationContext.Provider>
+    </LoadingContext.Provider>
   );
 }
 
-export function useAnimation() {
-  return useContext(AnimationContext);
+export function useLoader() {
+  return useContext(LoadingContext);
 }
