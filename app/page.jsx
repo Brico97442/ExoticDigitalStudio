@@ -11,12 +11,11 @@ import TextReveal from "./components/TextReveal";
 import GridAnimation from "./components/GridAnimation";
 import HorizontalScroll from "./components/HorizontalScroll";
 import HorizontalScrollReverse from "./components/HorizontalScrollReverse";
-import StickySection from "./components/SitckySection";
 import Button from "./components/Button";
 import { animateHero } from "./utils/animation";
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import HackHover from './components/hackHoverEffect'
-import { animateIsland } from './utils/animation';
+import { animateTexteSimple } from './utils/textAnimation';
 import { useLoader } from './context/animationContext';
 
 
@@ -47,7 +46,7 @@ export default function Home() {
 
 
 
-    if (arrowRef.current && textScroll.current) {
+    if (arrowRef.current && textScroll.current && target.current) {
       animateHero(arrowRef, textScroll);
       const tl = gsap.timeline();
 
@@ -87,7 +86,7 @@ export default function Home() {
         tl.kill();
       };
     }
-
+    animateTexteSimple(target)
     return () => {
       cancelAnimationFrame(raf);
     };
@@ -118,14 +117,14 @@ export default function Home() {
                 <p>55° 30' 55″ E</p>
               </div>
             </div>
-            <h2   style={{clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)"}} id='studio-text' className='mt-[50px] pointer-events-none leading-none text-[16px] tracking-tighter text-black '>Reunion Island Studio **</h2>
+            <h2 style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} id='studio-text' className='mt-[50px] pointer-events-none leading-none text-[16px] tracking-tighter text-black '>Reunion Island Studio **</h2>
           </div>
           <HorizontalScroll />
         </div>
-          <TextReveal><h1 className="leading-none">WAouuuuuuuuuHHHHH c'est énorme </h1></TextReveal>
+        {/* <TextReveal><h1 className="leading-none">WAouuuuuuuuuHHHHH c'est énorme </h1></TextReveal> */}
         <div id="about" ref={aboutRef} className=" sticky top-0 h-screen flex flex-col justify-center items-start w-full top-0  bg-[#ECECEC] z-[2]">
-          <div className=" flex flex-col items-start w-[80vw] m-auto top-0 ">
-            <HackHover data='Qui sommes nous ?' classValue='text-[120px] text-black text-left' />
+          <div className=" flex flex-col items-start w-[85vw] m-auto top-0 ">
+            <HackHover data='Qui sommes nous ?' classValue='text-[120px] text-left' />
             <div className='flex justify-center w-full'>
               <Lines strokeColor="stroke-black" />
             </div>
