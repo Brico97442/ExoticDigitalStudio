@@ -165,7 +165,7 @@ export const animateIsland = (island) => {
     gsap.to(island.current.position, {
       x: -0.8,
       y: 0,
-      z: -0.6,
+      z: -0.5,
       duration: 10,
       ease: 'power4.inOut',
       scrollTrigger: {

@@ -125,24 +125,27 @@ export default function Home() {
         <div id="about" ref={aboutRef} className=" top-0 h-screen flex flex-col justify-center items-start w-full bg-[#ECECEC] ">
           <div className=" flex flex-col items-start w-[85vw] m-auto top-0 ">
             <HackHover data='Qui sommes nous ?' classValue='text-[120px] text-left' />
-            <div className='flex justify-center w-full'>
+            {/* <div className='flex justify-center w-full'>
               <Lines strokeColor="stroke-black" />
-            </div>
+            </div> */}
             <div className='h-full w-full flex flex-col justify-between'>
               <div className="w-full flex justify-end">
                 <p ref={target} id='target-text' className='flex w-1/2 h-full justify-center text-[24px] text-right'>
                   Exotik Digital Studio est un studio de design et de création de produits digital
-                  spécialisé dans la création de site internet ,qui place l'utilisateur au cœur d'une expérience unique axée sur l'UI, l'UX et le design moderne.
+                  spécialisé dans la création de site internet, qui place l'utilisateur au cœur d'une expérience unique axée sur l'UI, l'UX et le design moderne.
                 </p>
               </div>
               <div className="bottom-0 left-0 leading-none w-full text-left">
-                <p className="flex w-1/2 h-full justify-center text-[52px] text-left">Studio de création digitale web moderne localisée à l’ile de la Réunion</p>
+                <p className="flex w-1/2 h-full justify-center text-[48px] text-left">Studio de création digitale web moderne localisée à l’ile de la Réunion</p>
               </div>
             </div>
           </div>
         </div>
         {/* <HorizontalScrollReverse /> */}
         <div className="w-full pt-60 bg-black overflow-hidden">
+        <div className="bottom-0 left-0 leading-none w-full text-left">
+                <p className="flex ml-[144px] w-1/2 h-full justify-center text-white text-[148px] text-left">Changer votre vision du web moderne</p>
+              </div>
           <Hero2 />
         </div>
 
