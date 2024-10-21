@@ -4,6 +4,7 @@ import { Canvas } from '@react-three/fiber';
 import Model from './Model';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
+import { animateScene } from './animation';
 
 
 
@@ -21,6 +22,9 @@ export default function Scene({ island }) {
       });
     };
 
+    if(divRef.current){
+      animateScene(divRef)
+    }
     window.addEventListener('mousemove', handleMouseMove);
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
@@ -39,7 +43,6 @@ export default function Scene({ island }) {
           <ambientLight position={[1, 2, -2]} intensity={5} color={'red'} />
         </Canvas>
       </div>
-
     </div>
   );
 }

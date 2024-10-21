@@ -163,9 +163,9 @@ export const animateHero = (arrowRef,textScroll) => {
 export const animateIsland = (island) => {
   if (island?.current) {
     gsap.to(island.current.position, {
-      x: 0,
+      x: -0.8,
       y: 0,
-      z: 1.4,
+      z: -0.6,
       duration: 10,
       ease: 'power4.inOut',
       scrollTrigger: {
@@ -174,6 +174,21 @@ export const animateIsland = (island) => {
         end: "bottom 60%",
         scrub: 1,
         markers: false,
+      }
+    });
+
+    // Ajout de l'animation de rotation
+    gsap.to(island.current.rotation, {
+      y: -50 * (Math.PI / 180), // Demi-rotation autour de l'axe Y (ajustez selon vos besoins)
+      // x: 2 * (Math.PI / 180), // Demi-rotation autour de l'axe Y (ajustez selon vos besoins)
+      duration: 10,
+      ease: 'power4.inOut',
+      scrollTrigger: {
+        trigger: '#scene',
+        start: "top top",
+        end: "bottom 60%",
+        scrub: 1,
+        markers: true,
       }
     });
   }
@@ -196,5 +211,20 @@ export const animateCounter = (counterRef) => {
     });
   }
 };
+
+export const animateScene = (divRef) => {
+    gsap.to(divRef.current, {
+      yPercent: 100,
+      duration: 5,
+      ease: "power1.in",
+      scrollTrigger: {
+        trigger: divRef.current,
+        start: "top top",
+        end: "bottom 60%",
+        scrub: 1,
+        markers: false,
+      }
+    });
+  }
 
 

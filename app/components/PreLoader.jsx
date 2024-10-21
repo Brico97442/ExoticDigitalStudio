@@ -83,7 +83,7 @@ function PreLoader() {
                 </div>
                 <p className='text-xs text-white'>Since 2024</p>
             </div>
-            <h1 ref={counterNumberRef} className='absolute left-[50px] bottom-[50px] text-[240px] text-white z-[1]'>0</h1>
+            <h1 ref={counterNumberRef} className='absolute right-[50px] bottom-[50px] text-[240px] text-white z-[1]'>0</h1>
         </div>
     );
 }

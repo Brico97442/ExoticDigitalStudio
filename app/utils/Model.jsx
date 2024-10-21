@@ -50,10 +50,8 @@ export default function Model({ mousePosition, island }) {
     
     if (island.current) {
 
-
-
       //Rotation initiale du Modèle 3D
-      const initialRotationX = 5 * (Math.PI / 180);
+      const initialRotationX = 8 * (Math.PI / 180);
       const initialRotationY = -80 * (Math.PI / 180);
 
       setInitialRotation({ x: initialRotationX, y: initialRotationY });
@@ -105,11 +103,11 @@ export default function Model({ mousePosition, island }) {
 
   useFrame(() => {
     if (island.current) {
-      const rotationFactor = 0.04;
+      const rotationFactor = -0.04;
       let rotationX = initialRotation.x - mousePosition.y * rotationFactor;
       let rotationY = initialRotation.y + mousePosition.x * rotationFactor;
 
-      island.current.rotation.set(rotationX, rotationY, 0);
+      // island.current.rotation.set(rotationX, rotationY, 0);
     
       if (textRef1.current && textRef2.current) {
         textRef1.current.rotation.set(0, -rotationY, 0);
@@ -132,7 +130,7 @@ export default function Model({ mousePosition, island }) {
             fontSize={2.2}
             color="white"
           >
-            Reunion Island
+            Reunion Island Studio
           </Text>
           <Text
             ref={textRef2}

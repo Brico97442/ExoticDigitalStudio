@@ -15,7 +15,7 @@ import Button from "./components/Button";
 import { animateHero } from "./utils/animation";
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import HackHover from './components/hackHoverEffect'
-import { animateTexteSimple } from './utils/textAnimation';
+import { animateTextSimple } from './utils/textAnimation';
 import { useLoader } from './context/animationContext';
 
 
@@ -86,7 +86,7 @@ export default function Home() {
         tl.kill();
       };
     }
-    animateTexteSimple(target)
+    animateTextSimple(target)
     return () => {
       cancelAnimationFrame(raf);
     };
@@ -122,7 +122,7 @@ export default function Home() {
           <HorizontalScroll />
         </div>
         {/* <TextReveal><h1 className="leading-none">WAouuuuuuuuuHHHHH c'est énorme </h1></TextReveal> */}
-        <div id="about" ref={aboutRef} className=" sticky top-0 h-screen flex flex-col justify-center items-start w-full top-0  bg-[#ECECEC] z-[2]">
+        <div id="about" ref={aboutRef} className=" top-0 h-screen flex flex-col justify-center items-start w-full bg-[#ECECEC] ">
           <div className=" flex flex-col items-start w-[85vw] m-auto top-0 ">
             <HackHover data='Qui sommes nous ?' classValue='text-[120px] text-left' />
             <div className='flex justify-center w-full'>
