@@ -97,9 +97,9 @@ export default function Home() {
 
   return (
     <main id="main" className="flex w-full h-full relative min-h-screen flex-col ">
-      <div className="z-[1] flex w-full h-full min-h-screen flex-col relative">
-        <div id='hero' className='h-screen sticky w-full flex flex-col  items-center top-0 bg-gradient-to-b from-[#F0EAEA]/70 to-[#737373]/70 '>
-          <Scene island={island} />
+      <div className="z-[1] flex w-full h-full min-h-screen flex-col relative  ">
+        <Scene island={island} />
+        <div id='hero' className='h-screen sticky w-full flex flex-col  items-center top-0 '>
           <div ref={textScroll} className="absolute bottom-[20px] scroll-text text-[18px] flex justify-center items-end fixed w-full h-screen pb-[30vh]">
             <span className="w-[1px] bg-gradient-to-b from-black from-10% via-transparent via-30% to-[#666666] to-90% h-[8vh] absolute" >
             </span>
@@ -121,16 +121,15 @@ export default function Home() {
           </div>
           <HorizontalScroll />
         </div>
-        {/* <TextReveal><h1 className="leading-none">WAouuuuuuuuuHHHHH c'est énorme </h1></TextReveal> */}
-        <div id="about" ref={aboutRef} className=" top-0 h-screen flex flex-col justify-center items-start w-full bg-[#ECECEC] ">
-          <div className=" flex flex-col items-start w-[85vw] m-auto top-0 ">
+        <div id="about" ref={aboutRef} className="h-screen w-full flex flex-col justify-center items-start">
+          <div className=" flex flex-col items-start mx-[144px]">
             <HackHover data='Qui sommes nous ?' classValue='text-[120px] text-left' />
             {/* <div className='flex justify-center w-full'>
               <Lines strokeColor="stroke-black" />
             </div> */}
             <div className='h-full w-full flex flex-col justify-between'>
               <div className="w-full flex justify-end">
-                <p ref={target} id='target-text' className='flex w-1/2 h-full justify-center text-[24px] text-right'>
+                <p ref={target} id='target-text' className='flex w-1/2 h-full justify-center pl-20 text-[24px] text-right'>
                   Exotik Digital Studio est un studio de design et de création de produits digital
                   spécialisé dans la création de site internet, qui place l'utilisateur au cœur d'une expérience unique axée sur l'UI, l'UX et le design moderne.
                 </p>
