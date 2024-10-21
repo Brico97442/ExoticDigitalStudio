@@ -144,7 +144,7 @@ export default function Home() {
         {/* <HorizontalScrollReverse /> */}
         <div className="w-full pt-60 bg-black overflow-hidden">
         <div className="bottom-0 left-0 leading-none w-full text-left">
-                <p className="flex ml-[144px] w-1/2 h-full justify-center text-white text-[148px] text-left">Changer votre vision du web moderne</p>
+                <p className="flex ml-[144px] w-1/2 h-full justify-center leading-none text-white text-[148px] text-left">Changer votre vision du web moderne</p>
               </div>
           <Hero2 />
         </div>
