@@ -121,9 +121,9 @@ export default function Home() {
           </div>
           <HorizontalScroll />
         </div>
-        <div id="about" ref={aboutRef} className="h-screen w-full flex flex-col justify-center items-start">
+        <div id="about" ref={aboutRef} className="h-screen w-full flex flex-col justify-center items-start z-[2]">
           <div className=" flex flex-col items-start mx-[144px]">
-            <HackHover data='Qui sommes nous ?' classValue='text-[120px] text-left' />
+            <HackHover data='Qui sommes nous ?' classValue='text-[120px] text-left'/>
             {/* <div className='flex justify-center w-full'>
               <Lines strokeColor="stroke-black" />
             </div> */}
