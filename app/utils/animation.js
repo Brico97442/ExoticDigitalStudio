@@ -113,7 +113,7 @@ export const animateOverlayText = (overlayTextRef) => {
 
 //Hero animation
 
-export const animateHero = (arrowRef,textScroll) => {
+export const animateHero = (arrowRef, textScroll) => {
   if (arrowRef.current && textScroll.current) {
     gsap.to(arrowRef.current, {
       rotation: 45,
@@ -127,8 +127,8 @@ export const animateHero = (arrowRef,textScroll) => {
         markers: false,
       },
     });
-    
-    gsap.to(["#hero-subtitle", "#hero-title",'#coordinates-gps','#studio-text'], {
+
+    gsap.to(["#hero-subtitle", "#hero-title", '#coordinates-gps', '#studio-text'], {
       yPercent: -20,
       ease: "power4.inOut",
       duration: 10,
@@ -140,7 +140,7 @@ export const animateHero = (arrowRef,textScroll) => {
         markers: false,
       },
     });
-    
+
     gsap.to('#hero-scroll', {
       yPercent: -20,
       ease: "power4.inOut",
@@ -153,8 +153,8 @@ export const animateHero = (arrowRef,textScroll) => {
         markers: false,
       },
     });
-    
-    
+
+
   }
 };
 
@@ -162,69 +162,108 @@ export const animateHero = (arrowRef,textScroll) => {
 
 export const animateIsland = (island) => {
   if (island?.current) {
+    
     gsap.to(island.current.rotation, {
-      y: -40 * (Math.PI / 180), // Demi-rotation autour de l'axe Y (ajustez selon vos besoins)
-      x: 45 * (Math.PI / 180), // Demi-rotation autour de l'axe Y (ajustez selon vos besoins)
+      y: -60 * (Math.PI / 180), // Demi-rotation autour de l'axe Y (ajustez selon vos besoins)
+      x: 50 * (Math.PI / 180), // Demi-rotation autour de l'axe Y (ajustez selon vos besoins)
       duration: 1,
       ease: 'power4.inOut',
       scrollTrigger: {
         trigger: '#scene',
-        start:"top top",
+        start: "top top",
         end: "bottom 60%",
-        scrub: 3,
+        scrub: 2,
         markers: false,
       }
     });
 
     gsap.to(island.current.position, {
       x: -0.8,
-      y: 0,
-      z: -0.5,
+      y: 0.1,
+      z: -0.45,
       duration: 2,
       ease: 'power4.inOut',
       scrollTrigger: {
         trigger: '#scene',
-        start: "center top",
+        start: "40% top",
         end: "bottom 60%",
         scrub: 2,
         markers: false,
       }
     });
-    
-    
 
-    // Ajout de l'animation de rotation
-    
   }
 }
 
-// loader animation 
-
-
-//counter animation
-export const animateCounter = (counterRef) => {
-  if (counterRef.current) {
-    gsap.to(counterRef.current, {
-      innerText: 100,
-      duration: 5,
-      scrub:2,
-      ease: "power1.in",
-      snap: { innerText: 1 },
-      onUpdate: function() {
-        counterRef.current.textContent = Math.round(this.targets()[0].innerText);
+export const animateLocation = (location) => {
+  if (location.current) {
+    
+    gsap.to(location.current.rotation, {
+      x: -75 * (Math.PI / 180), 
+      y: 70 * (Math.PI / 180), 
+      scrollTrigger: {
+        trigger: '#scene',
+        start: "top top",
+        end: "80% 60%",
+        scrub: 2,
+        markers: false,
       }
     });
-  }
-};
 
-export const animateScene = (divRef) => {
+    const tl = gsap.timeline();
+    
+    // tl.fromTo(
+    //   [location.current.material],
+    //   { opacity: 0 },
+    //   {
+    //     opacity: 1,
+    //     duration: 2,
+    //     ease: "power2.In",
+    //     scrollTrigger: {
+    //       trigger: '#scene',
+    //       start: "top top",
+    //       end: "bottom 60%",
+    //       scrub: 2,
+    //       markers: false,
+    //     }
+    
+    //   }
+    // );
+
+    // Nettoyage timeline 
+    return () => {
+      tl.kill();
+    };
+  }
+}
+
+  // loader animation 
+
+
+  //counter animation
+  export const animateCounter = (counterRef) => {
+    if (counterRef.current) {
+      gsap.to(counterRef.current, {
+        innerText: 100,
+        duration: 5,
+        scrub: 2,
+        ease: "power1.in",
+        snap: { innerText: 1 },
+        onUpdate: function () {
+          counterRef.current.textContent = Math.round(this.targets()[0].innerText);
+        }
+      });
+    }
+  };
+
+  export const animateScene = (divRef) => {
     gsap.to(divRef.current, {
       yPercent: 100,
       duration: 2,
       ease: "power1.in",
       scrollTrigger: {
         trigger: divRef.current,
-        start: "10% top",
+        start: "20% top",
         end: "bottom 60%",
         scrub: 1,
         markers: false,

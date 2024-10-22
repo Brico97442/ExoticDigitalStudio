@@ -107,7 +107,7 @@ export default function StickyCursor({ stickyElement }) {
           animate={{ rotate: 360 }}
           style={{ left: smoothMouseX, top: smoothMouseY, transform: 'translate(-50%, -50%)' }}
           transition={{ type: 'tween', ease: 'backOut', duration: 0.5 }}
-          className="fixed rounded-full flex justify-center items-center h-[300px] w-[300px]  bg-gradient-to-r from-[#A4161A] to-[#8D99AE]  cursor-auto pointer-events-none mix-blend-difference"
+          className="fixed rounded-full flex justify-center items-center h-[300px] w-[300px]  bg-gradient-to-r from-[#A4161A] to-purple-950  cursor-auto pointer-events-none "
         ></motion.div>
       </div>
     </>

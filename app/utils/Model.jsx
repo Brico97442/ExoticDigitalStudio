@@ -31,7 +31,7 @@ import { useGLTF, Text } from '@react-three/drei';
 import { useFrame, useLoader, useThree } from '@react-three/fiber';
 import { ShaderMaterial, Color } from 'three';
 import gsap from 'gsap';
-import { animateIsland } from './animation';
+import { animateIsland, animateLocation } from './animation';
 
 export default function Model({ mousePosition, island }) {
   const { nodes } = useGLTF('/media/reunion2.glb');
@@ -77,24 +77,27 @@ export default function Model({ mousePosition, island }) {
       animateIsland(island)
 
     }
-
+    if(island.current){
+      animateLocation(location)
+    }
     const tl = gsap.timeline();
+    // breath text animation
+    
+    // tl.fromTo(
+    //   [textRef1.current.material, textRef2.current.material],
+    //   { opacity: 0 },
+    //   {
+    //     opacity: 1,
+    //     duration: 2,
+    //     yoyo: true,
+    //     ease: "power2.In",
+    //     stagger: 1,
+    //     delay:0.4,
+    //      // Décalage entre les animations des deux textes
+    //   }
+    // );
 
-    tl.fromTo(
-      [textRef1.current.material, textRef2.current.material],
-      { opacity: 0 },
-      {
-        opacity: 1,
-        duration: 2,
-        yoyo: true,
-        ease: "power2.In",
-        stagger: 1,
-        delay:0.4,
-         // Décalage entre les animations des deux textes
-      }
-    );
-
-    // Nettoyage
+    // Nettoyage timeline 
     return () => {
       tl.kill();
     };
@@ -123,12 +126,12 @@ export default function Model({ mousePosition, island }) {
   return (
     <group scale={viewport.width / 3}>
       <group >
-        <mesh ref={island} geometry={nodes.reunion.geometry} scale={[0.015, 0.015, 0.015]} position={[-0.08, 0.08, -0.28]} fragmentShader vertexShader wireframe >
-          <Text
+        <mesh ref={island} geometry={nodes.reunion.geometry} scale={[0.015, 0.015, 0.015]} position={[-0.08, 0.1, -0.28]} fragmentShader vertexShader wireframe >
+          {/* <Text
             ref={textRef1}
             position={[20, 2, 16]}
             fontSize={2.2}
-            color="white"
+            color="black"
           >
             Reunion Island Studio
           </Text>
@@ -136,13 +139,13 @@ export default function Model({ mousePosition, island }) {
             ref={textRef2}
             position={[28, 0, 8]}
             fontSize={1.5}
-            color="white"
+            color="black"
           >
             Le Tampon
-            <mesh ref={location} geometry={locationNodes.location.geometry} scale={[0.1, 0.1, 0.1]} position={[0, -2, 3]}>
+            <mesh ref={location} geometry={locationNodes.location.geometry} scale={[0.4, 0.4, 0.4]} position={[0, -2, 3]}>
               <meshStandardMaterial ref={locationMaterialRef} />
             </mesh>
-          </Text>
+          </Text> */}
         </mesh>
       </group>
       <pointLight position={[0, 0, 1]} intensity={8} color={'red'} />

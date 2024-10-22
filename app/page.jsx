@@ -22,13 +22,14 @@ import { useLoader } from './context/animationContext';
 gsap.registerPlugin(ScrollTrigger)
 
 import gsap from "gsap";
+import TextScroll from "./components/TextScroll";
 const Scene = dynamic(() => import('./utils/Scene'), {
   ssr: false
 });
 
 export default function Home() {
   const island = useRef(null);
-  const target = useRef(null);
+  const targetRef = useRef(null);
   const arrowRef = useRef(null);
   const aboutRef = useRef(null);
   const textScroll = useRef(null);
@@ -44,9 +45,11 @@ export default function Home() {
     requestAnimationFrame(raf);
 
 
+    // if (targetRef.current) {
+    //   animateTextSimple(targetRef);
+    // }
 
-
-    if (arrowRef.current && textScroll.current && target.current) {
+    if (arrowRef.current && textScroll.current) {
       animateHero(arrowRef, textScroll);
       const tl = gsap.timeline();
 
@@ -81,12 +84,12 @@ export default function Home() {
           }
         }
       );
-
+      
+  
       return () => {
         tl.kill();
       };
     }
-    animateTextSimple(target)
     return () => {
       cancelAnimationFrame(raf);
     };
@@ -121,15 +124,15 @@ export default function Home() {
           </div>
           <HorizontalScroll />
         </div>
-        <div id="about" ref={aboutRef} className="h-screen w-full flex flex-col justify-center items-start z-[2]">
-          <div className=" flex flex-col items-start mx-[144px]">
-            <HackHover data='Qui sommes nous ?' classValue='text-[120px] text-left'/>
+        <div id="about" ref={aboutRef} className="sticky top-0 h-screen w-full flex flex-col justify-center items-start z-[2]">
+          <div className=" flex flex-col h-full items-start mx-[144px] my-[50px] relative">
+            <HackHover data='Qui sommes nous ?' classValue='text-[120px] text-left absolute top-0' />
             {/* <div className='flex justify-center w-full'>
               <Lines strokeColor="stroke-black" />
             </div> */}
             <div className='h-full w-full flex flex-col justify-between'>
               <div className="w-full flex justify-end">
-                <p ref={target} id='target-text' className='flex w-1/2 h-full justify-center pl-20 text-[24px] text-right'>
+                <p ref={targetRef} id='target-text' style={{clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)"}} className=' overflow-hidden flex w-1/2 h-full justify-center pl-20 text-[24px] text-right'>
                   Exotik Digital Studio est un studio de design et de création de produits digital
                   spécialisé dans la création de site internet, qui place l'utilisateur au cœur d'une expérience unique axée sur l'UI, l'UX et le design moderne.
                 </p>
@@ -142,13 +145,13 @@ export default function Home() {
         </div>
         {/* <HorizontalScrollReverse /> */}
         <div className="w-full pt-60 bg-black overflow-hidden">
-        <div className="bottom-0 left-0 leading-none w-full text-left">
-                <p className="flex ml-[144px] w-1/2 h-full justify-center leading-none text-white text-[148px] text-left">Changer votre vision du web moderne</p>
-              </div>
+          <div className="bottom-0 left-0 leading-none w-full text-left">
+            <TextScroll value="Changer votre vision du web moderne"/>
+          </div>
           <Hero2 />
         </div>
 
-        <div className=" w-full bg-black text-white z-[1]">
+        <div className=" w-full z-[1]">
           <GridAnimation />
         </div>
         <div id="contact" className="W-full p-[50px] bg-blue-400 h-screen w-full relative z-[1]">
