@@ -28,7 +28,7 @@ export default function RootLayout({ children }) {
           <Template>
             <Navbar ref={stickyElement} />
             <StickyCursor stickyElement={stickyElement} />
-            <main className="flex w-full h-full bg-gray-300">
+            <main className="flex w-full h-full bg-gray-100">
               {children}
             </main>
           </Template>

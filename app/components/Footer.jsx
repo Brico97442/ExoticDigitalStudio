@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
-import logo from "../../assets/LogoExoticDigitalStudioWhite.png"
+import logo from "../../assets/LogoExoticDigitalStudioWhiteVectorised.webp"
 // Importez votre SVG comme ReactComponent si vous utilisez un bundler comme webpack ou directement comme source.
 import Lines from './Lines'
 import Magnetic from '../utils/Magnetic'
@@ -23,9 +23,10 @@ function Footer() {
         style={{clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)"}}>
 
             <div className='fixed bottom-0 flex flex-col h-[70vh] text-white justify-start w-[85vw] m-auto text-white py-20'>
+                
                 <Image src={logo} alt="logo de l'entreprise Exotik Digital Studio" width={150} height={100} className='z-[4]' />
 
-                <div className='z-[4] flex justify-between'>
+                <div className='z-[4] flex justify-between mt-6'>
                     <div className='z-[4] w-full'>
                         <p >Ile de la Réunion</p>
                         <p >Le Tampon</p>

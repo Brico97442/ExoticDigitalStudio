@@ -333,7 +333,6 @@ h1 {
   width: 100%;
   height: auto;
   object-fit: cover;
-  margin: 40px;
 }
 
 .card-img-container {
@@ -387,3 +386,12 @@ animation: pan-overlay 45s infinite linear;
 #footer{
   /* clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%); */
 } 
+
+
+#button-cta{
+
+}
+
+#progress-background{
+  
+}

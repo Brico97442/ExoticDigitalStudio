@@ -84,8 +84,8 @@ export default function Home() {
           }
         }
       );
-      
-  
+
+
       return () => {
         tl.kill();
       };
@@ -102,13 +102,13 @@ export default function Home() {
     <main id="main" className="flex w-full h-full relative min-h-screen flex-col ">
       <div className="z-[1] flex w-full h-full min-h-screen flex-col relative  ">
         <Scene island={island} />
-        <div id='hero' className='h-screen sticky w-full flex flex-col  items-center top-0 '>
+        <div id='hero' className='h-screen sticky w-full flex flex-col  items-center top-0 z-[2]'>
           <div ref={textScroll} className="absolute bottom-[20px] scroll-text text-[18px] flex justify-center items-end fixed w-full h-screen pb-[30vh]">
             <span className="w-[1px] bg-gradient-to-b from-black from-10% via-transparent via-30% to-[#666666] to-90% h-[8vh] absolute" >
             </span>
             <p className="mb-[32px]">Scrollez pour découvrir</p>
           </div>
-          <div className='flex flex-col items-start justify-between mt-[50px] w-full h-full px-[50px] pt-[100px] relative'>
+          <div className='flex flex-col items-start justify-between mt-[80px] w-full h-full px-[50px] pt-[100px] relative'>
             <h1 id='hero-title' className='absolute right-[50px] bottom-0 pointer-events-none  leading-none text-[24px]	tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-black to-neutral-950/80'>Créateur de solutions digitales *</h1>
             <h3 id='hero-subtitle' className=' pointer-events-none mt-[80px] leading-none text-[38px]  w-1/3 uppercase	tracking-tighter '>Offrez à vos visiteurs une expérience web captivante, parce que chaque clic mérite sa touche de magie.</h3>
             <svg ref={arrowRef} className="mt-[85px] ml-[10px]" width="30" height="24" viewBox="0 0 47 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -132,7 +132,7 @@ export default function Home() {
             </div> */}
             <div className='h-full w-full flex flex-col justify-between'>
               <div className="w-full flex justify-end">
-                <p ref={targetRef} id='target-text' style={{clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)"}} className=' overflow-hidden flex w-1/2 h-full justify-center pl-20 text-[24px] text-right'>
+                <p ref={targetRef} id='target-text' style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} className=' overflow-hidden flex w-1/2 h-full justify-center pl-20 text-[24px] text-right'>
                   Exotik Digital Studio est un studio de design et de création de produits digital
                   spécialisé dans la création de site internet, qui place l'utilisateur au cœur d'une expérience unique axée sur l'UI, l'UX et le design moderne.
                 </p>
@@ -146,21 +146,21 @@ export default function Home() {
         {/* <HorizontalScrollReverse /> */}
         <div className="w-full pt-60 bg-black overflow-hidden">
           <div className="bottom-0 left-0 leading-none w-full text-left">
-            <TextScroll value="Changer votre vision du web moderne"/>
+            <TextScroll value="Changer votre vision du web moderne" />
           </div>
           <Hero2 />
         </div>
 
-        <div className=" w-full z-[1]">
+        <div className=" w-full z-[1] py-[50px]">
           <GridAnimation />
         </div>
-        <div id="contact" className="W-full p-[50px] bg-blue-400 h-screen w-full relative z-[1]">
+        {/* <div id="contact" className="W-full py-[50px] px-[50px] h-screen w-full relative z-[1]">
           <div>
             <HackHover data='Démarrer un projet' classValue='text-[120px] leading-none text-black text-left' />
           </div>
           <ContactForm />
           <h2 className="absolute right-[50px] top-40 text-[2em] w-1/4 text-right z-[1]">"Les grandes histoires commençent souvent par un Hey!"</h2>
-        </div>
+        </div> */}
       </div>
 
     </main>
