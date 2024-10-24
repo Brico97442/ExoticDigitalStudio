@@ -22,7 +22,7 @@ export default function TextScroll({value}) {
                         start: 'center 90%',
                         end: 'center 60%',
                         scrub: 2,
-                        markers: true,
+                        markers: false,
                     },
                     yPercent: 100,
                     opacity: 1,

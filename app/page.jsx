@@ -103,7 +103,7 @@ export default function Home() {
       <div className="z-[1] flex w-full h-full min-h-screen flex-col relative  ">
         <Scene island={island} />
         <div id='hero' className='h-screen sticky w-full flex flex-col  items-center top-0 z-[2]'>
-          <div ref={textScroll} className="absolute bottom-[20px] scroll-text text-[18px] flex justify-center items-end fixed w-full h-screen pb-[30vh]">
+          <div ref={textScroll} className="absolute text-[18px] flex justify-center items-end fixed w-full h-screen pb-[30vh]">
             <span className="w-[1px] bg-gradient-to-b from-black from-10% via-transparent via-30% to-[#666666] to-90% h-[8vh] absolute" >
             </span>
             <p className="mb-[32px]">Scrollez pour découvrir</p>
@@ -120,7 +120,7 @@ export default function Home() {
                 <p>55° 30' 55″ E</p>
               </div>
             </div>
-            <h2 style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} id='studio-text' className='mt-[50px] pointer-events-none leading-none text-[16px] tracking-tighter text-black '>Reunion Island Studio **</h2>
+            <h2 style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} id='studio-text' className='mt-[50px] pointer-events-none leading-none text-[24px] font-bold-sm tracking-tighter text-black '>Reunion Island Digital Studio *</h2>
           </div>
           <HorizontalScroll />
         </div>
