@@ -31,17 +31,17 @@ const Navbar = forwardRef(function Index(props, ref) {
                 </Magnetic>
                 <ul className="flex  items-center transition text-black text-lg">
                     <div className={`flex gap-[70px] z-[6] transition-all duration-300 ease-in-out ${isScrolled ? 'opacity-0 max-h-0 overflow-hidden' : 'opacity-100 max-h-[100px]'}`}>
-                        <li className="transition ease hover:border-t-2 hover:border-white hover:text-white z-[5]">
+                        <li className="h-full transition ease hover:text-white z-[5]">
                             <Magnetic>
-                                <TransitionLink href="/" label="Accueil" />
+                                <TransitionLink id="navigation-link" href="/" label="Accueil" />
                             </Magnetic>
                         </li>
-                        <li className="transition ease hover:border-t-2 hover:border-white hover:text-white z-[5]">
+                        <li className="transition ease hover:text-white z-[5]">
                             <Magnetic>
-                                <TransitionLink href="/pricing" label="Services" />
+                                <TransitionLink  href="/pricing" label="Services" />
                             </Magnetic>
                         </li>
-                        <li className="transition ease hover:border-t-2 hover:border-white hover:text-white z-[5]">
+                        <li className="transition ease hover:text-white  z-[5]">
                             <Magnetic>
                                 <TransitionLink href="/contact" label="Contact" />
                             </Magnetic>
@@ -58,9 +58,9 @@ const Navbar = forwardRef(function Index(props, ref) {
                         </div>
                     </li>
                 </ul>
-                <Aside isOpen={isActive} onClose={toggleAside}/>
+                <Aside isOpen={isActive} onClose={toggleAside} />
             </nav>
-                {isActive && <div className="h-screen fixed top-0 w-full bg-black/25 blur-[1px] z-[0] border-none transition-all duration-1000 opacity-[1]"/>}
+            {isActive && <div className="h-screen fixed top-0 w-full bg-black/25 blur-[1px] z-[0] border-none transition-all duration-1000 opacity-[1]" />}
         </header>
     )
 })

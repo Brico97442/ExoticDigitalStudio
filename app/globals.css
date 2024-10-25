@@ -395,3 +395,27 @@ animation: pan-overlay 45s infinite linear;
 #progress-background{
   
 }
+
+
+#navigation-link::after{
+width: 0;
+height:2px;
+position: absolute;
+bottom: 0;
+content: '';
+background: #fff;
+}
+
+#navigation-link:hover::after{
+width: 100%;
+left: 0;
+transition: ease-in-out;
+transition-duration: 0.3s;
+}
+
+#navigation-link:not(:hover)::after{
+width: 0;
+right: 0;
+transition: ease-in-out;
+transition-duration: 0.3s;
+}

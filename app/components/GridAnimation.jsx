@@ -55,7 +55,7 @@ export default function GridAnimation() {
             <div ref={containerRef} className='w-full z-[1] flex flex-col justify-center'>
                 <HackHover  data='Nos Prestations'  classValue='text-[120px] text-left'/>
                 <div className=' relative w-full h-full m-auto flex flex-col gap-10'>
-                    <div className='card-img-container h-[80vh] absolute sticky top-0 border-black border-solid border-[1px] rounded-3xl overflow-hidden p-[40px]'>
+                    <div className='card-img-container h-[80vh] absolute sticky top-0 border-black border-solid border-[1px] rounded-3xl overflow-hidden p-[40px] bg-gray-500/70'>
                         <div className='card-img justify-end w-1/2 overflow-hidden'>
                             <Image ref={el => imageRefs.current[0] = el} src={Img} alt='Grid Element' />
                         </div>
