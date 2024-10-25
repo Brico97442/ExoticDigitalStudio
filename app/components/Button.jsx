@@ -2,12 +2,10 @@ import React from 'react'
 import Magnetic from '../utils/Magnetic'
 import TransitionLink from "../utils/TransitionLink"
 import Arrow from "../components/Arrow"
-import Link from 'next/link'
 
 function Button({ position }) {
     return (
         <div className={`${position}`}>
-            <Link href='/contact'>
             <Magnetic>
                     <div
                         id='button-cta'
@@ -30,8 +28,7 @@ function Button({ position }) {
                         </div>
 
                     </div>
-            </Magnetic>
-            </Link>
+          </Magnetic>
         </div>
     )
 }

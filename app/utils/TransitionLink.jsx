@@ -18,9 +18,9 @@ export default function TransitionLink({ label, href, children, onClick }) {
     
     return (
         <div>
-            <button id="navigation-link" className="flex justify-center items-center" onClick={handleClick}>
+            <li id="navigation-link" className="flex justify-center items-center cursor-pointer" onClick={handleClick}>
                 {children || label}
-            </button>
+            </li>
         </div>
     )
 }

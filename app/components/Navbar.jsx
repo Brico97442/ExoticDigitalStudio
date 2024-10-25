@@ -25,23 +25,23 @@ const Navbar = forwardRef(function Index(props, ref) {
 
     return (
         <header className="flex w-full absolute h-[150px] items-center justify-center z-[6]">
-            <nav className="flex justify-between w-full font-bold items-center uppercase px-[50px]">
+            <nav className="flex justify-between w-full font-bold items-center px-[50px]">
                 <Magnetic>
-                    <TransitionLink href='/' className='' label={<Image objectFit="cover" src={logo} className="" alt="logo de la compagnie" width={110} height={80} />} />
+                    <TransitionLink href='/' label={<Image objectFit="cover" src={logo} className="" alt="logo de la compagnie" width={110} height={80} />} />
                 </Magnetic>
-                <ul className="flex  items-center transition text-black text-lg">
+                <ul className="flex items-center transition text-black text-lg">
                     <div className={`flex gap-[70px] z-[6] transition-all duration-300 ease-in-out ${isScrolled ? 'opacity-0 max-h-0 overflow-hidden' : 'opacity-100 max-h-[100px]'}`}>
-                        <li className="h-full transition ease hover:text-white z-[5]">
+                        <li className=" h-full transition ease hover:text-white z-[5]">
                             <Magnetic>
-                                <TransitionLink id="navigation-link" href="/" label="Accueil" />
+                                <TransitionLink href="/" label="Accueil" />
                             </Magnetic>
                         </li>
-                        <li className="transition ease hover:text-white z-[5]">
+                        <li className=" transition ease hover:text-white z-[5]">
                             <Magnetic>
-                                <TransitionLink  href="/pricing" label="Services" />
+                                <TransitionLink href="/pricing" label="Services" />
                             </Magnetic>
                         </li>
-                        <li className="transition ease hover:text-white  z-[5]">
+                        <li className=" transition ease hover:text-white  z-[5]">
                             <Magnetic>
                                 <TransitionLink href="/contact" label="Contact" />
                             </Magnetic>
