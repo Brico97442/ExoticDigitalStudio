@@ -124,12 +124,9 @@ export default function Home() {
           </div>
           <HorizontalScroll />
         </div>
-        <div id="about" ref={aboutRef} className="sticky top-0 h-screen w-full flex flex-col justify-center items-start z-[2]">
-          <div className=" flex flex-col h-full items-start mx-[144px] my-[50px] relative">
-            <HackHover data='Qui sommes nous ?' classValue='text-[120px] text-left absolute top-0' />
-            {/* <div className='flex justify-center w-full'>
-              <Lines strokeColor="stroke-black" />
-            </div> */}
+        <div id="about" ref={aboutRef} className="sticky top-0 h-screen flex flex-col justify-center z-[2]">
+          <div className=" flex flex-col w-full relative h-full">
+            <HackHover data='Qui sommes nous ?' classValue='text-[120px] absolute top-0'/>
             <div className='h-full w-full flex flex-col justify-between'>
               <div className="w-full flex justify-end">
                 <p ref={targetRef} id='target-text' style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} className=' overflow-hidden flex w-1/2 h-full justify-center pl-20 text-[24px] text-right'>

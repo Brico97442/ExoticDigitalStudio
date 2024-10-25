@@ -51,10 +51,10 @@ function Aside({ isOpen, onClose }) {
         <div
             id='overlay'
             ref={overlayRef}
-            className='h-full w-1/3 fixed top-0 flex right-0 justify-center items-center z-[2]'
+            className='h-full w-1/3 fixed top-0 flex right-0 justify-center items-center z-[7]'
             onClick={handleOverlayClick}
         >
-            <div className='fixed w-full h-screen bg-gray-500/90  blur-[1px] border-l border-[#003049]/20'></div>
+            <div className='fixed w-full h-screen bg-gray-500  blur-[1px] border-l border-[#003049]'></div>
             <aside ref={contentRef} className='w-full flex h-full items-center pt-40 flex-col'>
         
                 <div className='w-full border-box ml-40 h-full ' >

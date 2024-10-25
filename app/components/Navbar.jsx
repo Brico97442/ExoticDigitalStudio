@@ -48,7 +48,7 @@ const Navbar = forwardRef(function Index(props, ref) {
                         </li>
                     </div>
                     <li onClick={toggleAside} className={`absolute right-[50px] justify-center items-center cursor-pointer w-[35px] h-[18px] p-[30px] z-[6] ${isScrolled ? 'flex opacity-100 max-w-[100px] transition-all ease duration-1000' : 'hidden opacity-0 max-w-0 overflow-hidden  transition-all ease duration-1000'}`}>
-                        <div className="fixed flex justify-center w-full items-center z-[6]">
+                        <div className="fixed flex justify-center w-full items-center z-[10]">
                             <Magnetic>
                                 <div className={`${isActive ? 'burger-active' : 'burger-menu'} `}>
                                     <div ref={ref} className="bounds">

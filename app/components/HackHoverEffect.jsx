@@ -69,17 +69,16 @@ export default function HackHover({data,classValue,iterationTiming}) {
     if (!mounted) return null;
 
     return (
-        <div className='h-full top-0 left-0'>
-            <div className='flex flex-col h-full mb-20'>
+
+            <div>
                 <h1
                     ref={textRef}
-                    className={`h-full ${classValue} tracking-tighter`}
+                    className={`${classValue} tracking-tighter`}
                     data-value={data}
                 >
                     {data}
                 </h1>
             </div>
-        </div>
     );
 }
 
