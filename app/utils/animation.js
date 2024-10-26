@@ -302,8 +302,26 @@ export const animateAbout = () => {
 export const animateAboutText = () => {
   gsap.to(["#about-title", "#target-text", "#target-text-2"], {
     color: "#fff",
+    duration: 1,
+    ease: "power1.in",
+    scrollTrigger: {
+      trigger: "#about",
+      start: "top bottom",
+      end: "bottom bottom",
+      scrub: 2,
+      markers: false,
+    }
+  });
+  gsap.fromTo(["#about-title", "#target-text", "#target-text-2"], {
+    yPercent:100,
     duration: 3,
     ease: "power1.in",
+    opacity:0,
+  },{
+    yPercent:0,
+    duration: 3,
+    ease: "power1.in",
+    opacity:1,
     scrollTrigger: {
       trigger: "#about",
       start: "top bottom",

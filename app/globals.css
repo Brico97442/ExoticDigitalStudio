@@ -379,3 +379,16 @@ right: 0;
 transition: ease-in-out;
 transition-duration: 0.3s;
 }
+
+/* #about #about-title{
+  line-height: 10vh;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+}
+#about #target-text-2{
+  line-height: 3vh;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+}
+#about #target-text-1{
+  line-height: 3vh;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+} */

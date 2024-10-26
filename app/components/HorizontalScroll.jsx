@@ -97,7 +97,7 @@ function HorizontalScroll() {
         return (
 
            
-                <div className='w-10 h-10 rounded-full border-black border-[1px]'></div>
+                <div className='w-10 h-10 rounded-full border-black border-[1px] bg-black'></div>
          
         )
     }

@@ -35,7 +35,7 @@ export default function TextReveal({ children }) {
     }, []);
 
     return (
-        <div className='text-scroll w-full flex items-center justify-center z-60 '>
+        <div className='text-scroll w-full flex items-center justify-center z-60'>
             <div ref={textRef} className="h-full leading-none overflow-hidden"  style={{clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)"} }>
                 {children}
             </div>

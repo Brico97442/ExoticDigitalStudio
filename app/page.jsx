@@ -1,7 +1,6 @@
 'use client'
 
 import Hero2 from "./components/Hero2";
-import Hero from "./components/Hero";
 import Lenis from 'lenis';
 import { useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
@@ -104,7 +103,7 @@ export default function Home() {
         <Scene island={island} />
         <div id='hero' className='h-screen sticky w-full flex flex-col  items-center top-0 z-[2]'>
           <div className='flex flex-col items-start justify-between mt-[20px] w-full h-full px-[50px] pt-[100px] relative'>
-            <h1 className="text-[140px] uppercase tracking-tighter left-0">Studio Web Creatif</h1>
+            <h1 className="text-[140px] uppercase tracking-tighter left-0">Studio Web</h1>
             <h2 id='hero-subtitle' className=' pointer-events-none mt-[40px] leading-none text-[31px]  w-1/4 tracking-tighter '>Offrez à vos visiteurs une expérience web captivante, parce que chaque clic mérite sa touche de magie.</h2>
             <h1 id='hero-title' className='absolute right-[50px] bottom-0 pointer-events-none leading-none text-[24px] font-bold-sm tracking-tighter'>Reunion Island Digital Studio </h1>
             <svg ref={arrowRef} className="mt-[80px] ml-[10px]" width="30" height="24" viewBox="0 0 47 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -116,7 +115,7 @@ export default function Home() {
               <p className="mb-[32px]">Scrollez pour découvrir</p>
             </div>
             <div className=" absolute right-0 h-full flex flex-col items-end justify-center mr-[50px]">
-              <div id="coordinates-gps" className=" text-gray-600 flex flex-col items-end text-[16px] ">
+              <div id="coordinates-gps" className="flex flex-col items-end text-[16px] ">
                 <p>21° 16' 41″ S </p>
                 <p>55° 30' 55″ E</p>
               </div>
@@ -131,7 +130,7 @@ export default function Home() {
               {/* <HackHover data='Qui sommes nous ?' classValue='text-[120px] uppercase' /> */}
               <h1 id="about-title" className="text-[120px] uppercase tracking-tighter">Qui sommes nous ?</h1>
               <div className="w-full flex justify-end">
-                <p ref={targetRef} id='target-text' style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} className='pointer-events-none overflow-hidden tracking-tighter w-1/2 h-full pl-20 text-[31px] text-right'>
+                <p ref={targetRef} id='target-text' className='pointer-events-none overflow-hidden tracking-tighter w-1/2 h-full pl-20 text-[31px] text-right'>
                   Exotik Digital Studio est un studio de design et de création de produits digital
                   spécialisé dans la création de site internet, qui place l'utilisateur au cœur d'une expérience unique axée sur l'UI, l'UX et le design moderne.
                 </p>
@@ -143,7 +142,7 @@ export default function Home() {
           </div>
         </div>
         {/* <HorizontalScrollReverse /> */}
-        <div className="w-full pt-60 bg-black overflow-hidden">
+        <div className="w-full pt-20 bg-black overflow-hidden">
           <div className="bottom-0 left-0 leading-none w-full text-left">
             <TextScroll value="Changer votre vision du web moderne" />
           </div>
