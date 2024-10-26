@@ -142,9 +142,9 @@ export const animateHero = (arrowRef, textScroll) => {
     });
 
     gsap.to('#hero-scroll', {
-      yPercent: -20,
+      yPercent: -10,
       ease: "power4.inOut",
-      duration: 3,
+      duration: 7,
       scrollTrigger: {
         trigger: "#hero",
         start: "top top",
@@ -162,7 +162,7 @@ export const animateHero = (arrowRef, textScroll) => {
 
 export const animateIsland = (island) => {
   if (island?.current) {
-    
+
     gsap.to(island.current.rotation, {
       y: -60 * (Math.PI / 180), // Demi-rotation autour de l'axe Y (ajustez selon vos besoins)
       x: 50 * (Math.PI / 180), // Demi-rotation autour de l'axe Y (ajustez selon vos besoins)
@@ -179,8 +179,8 @@ export const animateIsland = (island) => {
 
     gsap.to(island.current.position, {
       x: -0.8,
-      y: 0.1,
-      z: -0.45,
+      y: 0.12,
+      z: -0.25,
       duration: 2,
       ease: 'power4.inOut',
       scrollTrigger: {
@@ -192,26 +192,41 @@ export const animateIsland = (island) => {
       }
     });
 
+    //changer la couleur du shader material
+    gsap.to(island.current.material.uniforms.color.value, {
+      r: 1,
+      g: 0,
+      b: 0,
+      duration: 5,
+      ease: 'power4.inOut',
+      scrollTrigger: {
+        trigger: '#scene',
+        start: "40% top",
+        end: "bottom 60%",
+        scrub: 5,
+        markers: false,
+      }
+    });
+
   }
 }
 
 export const animateLocation = (location) => {
   if (location.current) {
-    
-    gsap.to(location.current.rotation, {
-      x: -75 * (Math.PI / 180), 
-      y: 70 * (Math.PI / 180), 
-      scrollTrigger: {
-        trigger: '#scene',
-        start: "top top",
-        end: "80% 60%",
-        scrub: 2,
-        markers: false,
-      }
-    });
+
+    // gsap.to(location.current.rotation, {
+    //   y: 20 * (Math.PI / 180), 
+    //   scrollTrigger: {
+    //     trigger: '#scene',
+    //     start: "top top",
+    //     end: "80% 60%",
+    //     scrub: 2,
+    //     markers: false,
+    //   }
+    // });
 
     const tl = gsap.timeline();
-    
+
     // tl.fromTo(
     //   [location.current.material],
     //   { opacity: 0 },
@@ -226,7 +241,7 @@ export const animateLocation = (location) => {
     //       scrub: 2,
     //       markers: false,
     //     }
-    
+
     //   }
     // );
 
@@ -237,38 +252,66 @@ export const animateLocation = (location) => {
   }
 }
 
-  // loader animation 
+// loader animation 
 
 
-  //counter animation
-  export const animateCounter = (counterRef) => {
-    if (counterRef.current) {
-      gsap.to(counterRef.current, {
-        innerText: 100,
-        duration: 5,
-        scrub: 2,
-        ease: "power1.in",
-        snap: { innerText: 1 },
-        onUpdate: function () {
-          counterRef.current.textContent = Math.round(this.targets()[0].innerText);
-        }
-      });
-    }
-  };
-
-  export const animateScene = (divRef) => {
-    gsap.to(divRef.current, {
-      yPercent: 100,
-      duration: 2,
+//counter animation
+export const animateCounter = (counterRef) => {
+  if (counterRef.current) {
+    gsap.to(counterRef.current, {
+      innerText: 100,
+      duration: 5,
+      scrub: 2,
       ease: "power1.in",
-      scrollTrigger: {
-        trigger: divRef.current,
-        start: "20% top",
-        end: "bottom 60%",
-        scrub: 1,
-        markers: false,
+      snap: { innerText: 1 },
+      onUpdate: function () {
+        counterRef.current.textContent = Math.round(this.targets()[0].innerText);
       }
     });
   }
+};
+
+export const animateScene = (divRef) => {
+  gsap.to(divRef.current, {
+    yPercent: 100,
+    duration: 2,
+    ease: "power1.in",
+    scrollTrigger: {
+      trigger: divRef.current,
+      start: "20% top",
+      end: "bottom 60%",
+      scrub: 1,
+      markers: false,
+    }
+  });
+}
+export const animateAbout = () => {
+  gsap.to("#about", {
+    backgroundColor: "#000",
+    duration: 5,
+    ease: "power1.in",
+    scrollTrigger: {
+      trigger: "#about",
+      start: "top bottom",
+      end: "bottom bottom",
+      scrub: 1,
+      markers: false,
+    }
+  });
+}
+export const animateAboutText = () => {
+  gsap.to(["#about-title", "#target-text", "#target-text-2"], {
+    color: "#fff",
+    duration: 3,
+    ease: "power1.in",
+    scrollTrigger: {
+      trigger: "#about",
+      start: "top bottom",
+      end: "bottom bottom",
+      scrub: 1,
+      markers: false,
+    }
+  });
+}
 
 

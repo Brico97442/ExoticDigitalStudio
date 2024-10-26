@@ -97,17 +97,17 @@ function HorizontalScroll() {
         return (
 
            
-                <div className='w-10 h-10 rounded-full border-black border-[1px] bg-blue-600'></div>
+                <div className='w-10 h-10 rounded-full border-black border-[1px]'></div>
          
         )
     }
 
     return (
         <div className='h-full w-full z-[0] flex items-center justify-center overflow-hidden'>
-            <div id='hero-scroll' className='flex flex-col items-center bg-blur-sm uppercase font-bold absolute'>
+            <div id='hero-scroll' className='flex flex-col items-center bg-blur-sm uppercase tracking-tighter font-bold absolute'>
                 <div ref={slider} className='flex relative whitespace-nowrap' >
-                    <h1 ref={text1} className='absolute left-[100%] text-[270px] flex items-center leading-none'><Dot/>SiteWeb<Dot />Design<Dot />SEO<Dot />UI-UX</h1>
-                    <h1 ref={text2} className=' text-[270px] flex items-center leading-none'><Dot />SiteWeb<Dot />Design<Dot />Seo<Dot />UI-UX</h1>
+                    <h1 ref={text1} className='absolute left-[100%] text-[270px] flex items-center leading-none'>SiteWeb<Dot />Design<Dot />Seo<Dot />Ui-Ux<Dot/></h1>
+                    <h1 ref={text2} className=' text-[270px] flex items-center leading-none'>SiteWeb<Dot />Design<Dot />Seo<Dot />Ui-Ux<Dot /></h1>
                 </div>
             </div>
         </div >

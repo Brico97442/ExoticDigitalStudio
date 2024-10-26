@@ -1,36 +1,13 @@
 'use client'
 
-import React, { useRef, useEffect, useState } from 'react'
+import React, { useRef, useEffect} from 'react'
 import gsap from 'gsap';
 
 export default function HackHover({data,classValue,iterationTiming}) {
     const textRef = useRef(null);
-    const progressBarLeft = useRef(null);
-    const progressBarRight = useRef(null);
-    const [mounted, setMounted] = useState(false);
-    const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ'*ù$/#.?!#.?!#.?!#.?!#.?!#.?!#.?!#.?!";
+    const letters = "abcdefghijklmnopqrstuvwxyz";
 
     useEffect(() => {
-        setMounted(true);
-    }, []);
-
-
-
-    useEffect(() => {
-        if (!mounted) return;
-
-        if (progressBarLeft.current && progressBarRight.current) {
-            gsap.from(progressBarRight.current, {
-                width: `${100}%`,
-                duration: 5,
-                ease: 'linear',
-            });
-            gsap.to(progressBarLeft.current, {
-                width: `${100}%`,
-                duration: 5,
-                ease: 'linear',
-            });
-        }
 
         const handleMouseOver = (event) => {
             let iteration = 0;
@@ -64,16 +41,15 @@ export default function HackHover({data,classValue,iterationTiming}) {
                 textElement.removeEventListener("mouseover", handleMouseOver);
             }
         };
-    }, [mounted]);
+    }, []);
 
-    if (!mounted) return null;
 
     return (
 
             <div>
                 <h1
                     ref={textRef}
-                    className={`${classValue} tracking-tighter`}
+                    className={`${classValue} tracking-tighter border-box `}
                     data-value={data}
                 >
                     {data}
