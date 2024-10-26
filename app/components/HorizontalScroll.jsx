@@ -32,7 +32,7 @@ function HorizontalScroll() {
         requestAnimationFrame(animate);
         xPercent += 0.01 * direction;
     }
-    
+
 
     useEffect(() => {
         gsap.registerPlugin(ScrollTrigger);
@@ -49,20 +49,20 @@ function HorizontalScroll() {
         requestAnimationFrame(animate);
     }, [])
 
-    
-  
+
+
 
     useEffect(() => {
         if (text1.current) {
             gsap.set(text1.current, {
-                x:xPercent,
+                x: xPercent,
             })
             gsap.to(text1.current, {
                 x: -xPercent,
                 duration: 20,
                 ease: 'linear',
                 scrollTrigger: {
-                    trigger:text1.current,
+                    trigger: text1.current,
                     start: 'top 90%',
                     scrub: 15,
                     markers: false,
@@ -78,7 +78,7 @@ function HorizontalScroll() {
                 duration: 20,
                 ease: 'linear',
                 scrollTrigger: {
-                    trigger:text2.current,
+                    trigger: text2.current,
                     start: 'top 90%',
                     scrub: 15,
                     markers: false,
@@ -93,12 +93,21 @@ function HorizontalScroll() {
         }
     }, [])
 
+    const Dot = () => {
+        return (
+
+           
+                <div className='w-10 h-10 rounded-full border-black border-[1px] bg-blue-600'></div>
+         
+        )
+    }
+
     return (
-        <div  className='h-full w-full z-[0] flex items-center justify-center overflow-hidden'>
+        <div className='h-full w-full z-[0] flex items-center justify-center overflow-hidden'>
             <div id='hero-scroll' className='flex flex-col items-center bg-blur-sm uppercase font-bold absolute'>
                 <div ref={slider} className='flex relative whitespace-nowrap' >
-                    <h1 ref={text1} className='absolute left-[100%] text-[180px] flex items-center leading-none'><div className=' w-6 h-6 rounded-full border-black border-[1px]'></div> /Site<span className='bg-clip-text text-transparent bg-gradient-to-r from-teal-700 to-red-600'>/Web-Design</span>/SEO<span className='bg-clip-text text-transparent bg-gradient-to-r from-teal-700 to-red-600'>/UI-UX</span></h1>
-                    <h1 ref={text2} className=' text-[180px] flex leading-none'>/Site<span className='bg-clip-text text-transparent bg-gradient-to-r from-teal-700 to-red-600'>/Web-Design</span>/SEO<span className='bg-clip-text text-transparent bg-gradient-to-r from-teal-700 to-red-600'>/UI-UX</span></h1>
+                    <h1 ref={text1} className='absolute left-[100%] text-[270px] flex items-center leading-none'><Dot/>SiteWeb<Dot />Design<Dot />SEO<Dot />UI-UX</h1>
+                    <h1 ref={text2} className=' text-[270px] flex items-center leading-none'><Dot />SiteWeb<Dot />Design<Dot />Seo<Dot />UI-UX</h1>
                 </div>
             </div>
         </div >

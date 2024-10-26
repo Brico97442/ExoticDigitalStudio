@@ -29,8 +29,9 @@ export default function Pricing() {
     ];
 
     return (
-        <div className="h-full  w-full flex flex-col z-[1] relative overflow-hidden ">
-            <HackHover ref={(el) => textRef.current[0] = el} data='Nos tarifs' classValue='text-[120px] mt-40 ml-40 text-black text-left z-[2]' />
+        <div className="h-full w-full flex flex-col z-[2] relative">
+            <div  className='my-20'>
+            <HackHover data='Nos tarifs' classValue='text-[120px] ml-40 text-black text-left z-[2]' />
             <div className='w-[85vw] ml-40 flex flex-col gap-6'>
                 <h2 className='text-[30px] font-bold'>Choisissez l’offre qui vous ressemble</h2>
                 <p className='text-[18px] w-2/3'>
@@ -39,7 +40,7 @@ export default function Pricing() {
                     Parcourez nos options, choisissez celle qui vous convient le mieux, et laissez-nous transformer vos idées en réalité.
                 </p>
             </div>
-            <div id='card-wrapper' className='w-[90vw] flex gap-6 flex-wrap justify-center h-full m-auto mt-20 mb-20'>
+            <div id='card-wrapper' className='w-[90vw] flex gap-6 flex-wrap justify-center'>
                 {offers.map((offer, index) => (
                     <PricingCard
                         key={index}
@@ -49,6 +50,8 @@ export default function Pricing() {
                     />
                 ))}
             </div>
+            </div>
+            
         </div>
     );
 }
