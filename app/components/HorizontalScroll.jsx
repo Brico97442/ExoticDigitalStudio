@@ -106,8 +106,8 @@ function HorizontalScroll() {
         <div className='h-full w-full z-[0] flex items-center justify-center overflow-hidden'>
             <div id='hero-scroll' className='flex flex-col items-center bg-blur-sm uppercase tracking-tighter font-bold absolute'>
                 <div ref={slider} className='flex relative whitespace-nowrap' >
-                    <h1 ref={text1} className='absolute left-[100%] text-[270px] flex items-center leading-none'>SiteWeb<Dot />Design<Dot />Seo<Dot />Ui-Ux<Dot/></h1>
-                    <h1 ref={text2} className=' text-[270px] flex items-center leading-none'>SiteWeb<Dot />Design<Dot />Seo<Dot />Ui-Ux<Dot /></h1>
+                    <h1 ref={text1} className='absolute left-[100%] text-[270px] mix-blend-difference flex items-center leading-none'>SiteWeb<Dot />Design<Dot />Seo<Dot />Ui-Ux<Dot/></h1>
+                    <h1 ref={text2} className=' text-[270px] flex items-center mix-blend-difference leading-none'>SiteWeb<Dot />Design<Dot />Seo<Dot />Ui-Ux<Dot /></h1>
                 </div>
             </div>
         </div >

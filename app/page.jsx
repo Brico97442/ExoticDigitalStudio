@@ -32,7 +32,7 @@ export default function Home() {
   const arrowRef = useRef(null);
   const aboutRef = useRef(null);
   const textScroll = useRef(null);
-  console.log(island)
+  const heroSection = useRef(null)
 
 
   useEffect(() => {
@@ -101,7 +101,7 @@ export default function Home() {
     <main id="main" className="flex w-full h-full relative min-h-screen flex-col ">
       <div className="z-[1] flex w-full h-full min-h-screen flex-col relative  ">
         <Scene island={island} />
-        <div id='hero' className='h-screen sticky w-full flex flex-col  items-center top-0 z-[2]'>
+        <div ref ={heroSection} id='hero' className='h-screen sticky w-full flex flex-col  items-center top-0 z-[6]'>
           <div className='flex flex-col items-start justify-between mt-[20px] w-full h-full px-[50px] pt-[100px] relative'>
             <h1 className="text-[140px] uppercase tracking-tighter left-0">Studio Web</h1>
             <h2 id='hero-subtitle' className=' pointer-events-none mt-[40px] leading-none text-[31px]  w-1/4 tracking-tighter '>Offrez à vos visiteurs une expérience web captivante, parce que chaque clic mérite sa touche de magie.</h2>
@@ -136,7 +136,7 @@ export default function Home() {
                 </p>
               </div>
               <div className="bottom-0 left-0 leading-none w-full text-left">
-                <p id="target-text-2" className="flex w-1/2 h-full justify-center text-[48px] text-left pointer-events-none">Studio de création digitale web moderne localisée à l’ile de la Réunion</p>
+                <p id="target-text-2" className="flex w-1/2 h-full justify-center text-[48px] text-left pointer-events-none">Studio de création digitale web moderne basée à l’ile de la Réunion</p>
               </div>
             </div>
           </div>

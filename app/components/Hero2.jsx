@@ -43,7 +43,7 @@ export default function Hero() {
         //Créer une animation pour que toutes les images changent de taille simultanément
         gsap.to(imagesContainerRef.current.children, {
             scale: (index, target) => pictures[index].scale,  // Appliquer la valeur de scale spécifique à chaque image
-            duration: 1,  
+            duration: 2,  
             ease: "linear",  // Courbe d'assouplissement
             scrollTrigger: {
                 trigger: imagesContainerRef.current,
