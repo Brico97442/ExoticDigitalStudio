@@ -109,11 +109,11 @@ export default function Home() {
             <svg ref={arrowRef} className="mt-[80px] ml-[10px]" width="30" height="24" viewBox="0 0 47 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M46.0607 13.0607C46.6464 12.4749 46.6464 11.5251 46.0607 10.9393L36.5147 1.3934C35.9289 0.807612 34.9792 0.807612 34.3934 1.3934C33.8076 1.97918 33.8076 2.92893 34.3934 3.51472L42.8787 12L34.3934 20.4853C33.8076 21.0711 33.8076 22.0208 34.3934 22.6066C34.9792 23.1924 35.9289 23.1924 36.5147 22.6066L46.0607 13.0607ZM0 13.5H45V10.5H0V13.5Z" fill="black" />
             </svg>
-            <div ref={textScroll} className="absolute text-[18px] bottom-0 flex justify-center items-end fixed w-full h-screen ">
+            {/* <div ref={textScroll} className="absolute text-[18px] bottom-0 flex justify-center items-end fixed w-full h-screen ">
               <span className="w-[1px] bg-gradient-to-b from-black from-10% via-transparent via-30% to-[#666666] to-90% h-[8vh] absolute" >
               </span>
               <p className="mb-[32px]">Scrollez pour découvrir</p>
-            </div>
+            </div> */}
             <div className=" absolute right-0 h-full flex flex-col items-end justify-center mr-[50px]">
               <div id="coordinates-gps" className="flex flex-col items-end text-[16px] ">
                 <p>21° 16' 41″ S </p>

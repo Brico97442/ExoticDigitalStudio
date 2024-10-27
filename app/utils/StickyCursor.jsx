@@ -6,12 +6,12 @@ export default function StickyCursor({ stickyElement, heroSection }) {
   const { x, y } = UseMousePosition();
   const [isHovered, setIsHovered] = useState(false);
   const [isHeroHovered, setIsHeroHovered] = useState(false);
+  const [cursorText, setCursorText] = useState("");
 
   const cursorRef = useRef(null);
   const cursorRef2 = useRef(null);
   const curSorSize = isHovered ? 80 : 20;
-  const curSorSize2 = isHeroHovered ? 100 : 20;
-
+  const curSorSize2 = isHeroHovered ? 120 : 20;
   const mouseX = useMotionValue(x);
   const mouseY = useMotionValue(y);
 
@@ -29,19 +29,18 @@ export default function StickyCursor({ stickyElement, heroSection }) {
   const smoothMouseX = useSpring(mouseX, smoothOptions);
   const smoothMouseY = useSpring(mouseY, smoothOptions);
 
+  const currentCursorSize = isHeroHovered ? curSorSize2 : curSorSize;
   useEffect(() => {
     const { left, top, width, height } = stickyElement.current.getBoundingClientRect();
     const center = { x: left + width / 2, y: top + height / 2 };
     const distance = { x: x - center.x, y: y - center.y };
 
     // Déterminer quelle taille de curseur utiliser
-    const currentCursorSize = isHeroHovered ? curSorSize2 : curSorSize;
 
     if (stickyElement.current) {
       if (isHovered) {
         const angle = Math.atan2(distance.y, distance.x);
         animate(cursorRef.current, { rotate: `${angle}rad` }, { duration: 0 });
-
         const absDistance = Math.max(Math.abs(distance.x), Math.abs(distance.y));
         const newScaleX = transform(absDistance, [0, width / 2], [1, 1.3]);
         const newScaleY = transform(absDistance, [0, height / 2], [1, 0.8]);
@@ -53,6 +52,7 @@ export default function StickyCursor({ stickyElement, heroSection }) {
       } else {
         mouseX.set(x - currentCursorSize / 2);
         mouseY.set(y - currentCursorSize / 2);
+        animate(cursorRef.current, { rotate: 0 }, { duration: 0 });
       }
     }
 
@@ -71,17 +71,20 @@ export default function StickyCursor({ stickyElement, heroSection }) {
   const heroMouseOver = () => {
     setIsHeroHovered(true);
     setIsHovered(false); // S'assurer que le hover du sticky element est désactivé
+    setCursorText("Scrollez"); // Définis le texte lors du survol du hero
+
   };
 
   const heroMouseLeave = () => {
     setIsHeroHovered(false);
-    animate(cursorRef.current, { scaleX: 1, scaleY: 1 }, { duration: 0.1 });
+    setCursorText("");
+    animate(cursorRef.current, { scaleX: 1, scaleY: 1}, { duration: 0.1 });
   };
 
   useEffect(() => {
     const navBarElement = stickyElement.current;
     const heroElement = document.querySelector('#hero'); // Utiliser querySelector au lieu de .current
-
+    
     if (navBarElement) {
       navBarElement.addEventListener("mouseenter", handleMouseOver);
       navBarElement.addEventListener("mouseleave", handleMouseLeave);
@@ -116,8 +119,11 @@ export default function StickyCursor({ stickyElement, heroSection }) {
         style={{ left: smoothMouseX, top: smoothMouseY, scaleX: scale.x, scaleY: scale.y }}
         animate={{ width: isHeroHovered ? curSorSize2 : curSorSize, height: isHeroHovered ? curSorSize2 : curSorSize }}
         transition={{ type: 'tween', ease: 'backOut', duration: 0.5 }}
-        className="z-[6] fixed rounded-full flex justify-center items-center pointer-events-none bg-teal-500 cursor-auto mix-blend-difference"
-      />
+        className={`z-[6] fixed rounded-full flex justify-center ${isHeroHovered? 'backdrop-blur-sm': ''} items-center pointer-events-none bg-teal-500 cursor-auto mix-blend-difference`}
+      >
+        <span className="text-black text-xl mix-blend-normal text-center flex justify-center items-center ">
+          {cursorText}
+        </span></motion.div>
       <div>
         <div className="fixed w-full h-[300vh] top-0 backdrop-blur-[130px] z-[1]" />
         <motion.div
