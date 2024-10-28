@@ -60,10 +60,10 @@ function Lines({strokeColor}) {
     }
 
     return (
-        <div className='h-[1px] w-full relative mb-20 z-[4]'>
+        <div className='h-[1px] relative mb-20 z-[4]'>
             <div onMouseEnter={manageMouseEnter} onMouseMove={manageMouseMove} onMouseLeave={manageMouseLeave} className=' w-full z-[5] box h-[40px] relative top-[-20px] hover:h-[150px] hover:top-[-75px]'></div>
             <svg fill='none' className='flex bg-transparent h-[100px] w-full top-[-50px] absolute justify-center items-center m-auto'>
-                <path className={`stroke-[1px] ${strokeColor} w-screen`} ref={path}>
+                <path className={`stroke-[1px] ${strokeColor} w-full`} ref={path}>
                 </path>
             </svg>
         </div>

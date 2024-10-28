@@ -133,7 +133,7 @@ export default function Home() {
               <div className="w-full flex justify-end">
                 <p ref={targetRef} id='target-text' className='pointer-events-none overflow-hidden tracking-tighter w-1/2 h-full pl-20 text-[31px] text-right'>
                   Exotik Digital Studio est un studio de design et de création de produits digital
-                  spécialisé dans la création de site internet, qui place l'utilisateur au cœur d'une expérience unique axée sur l'UI, l'UX et le design moderne.
+                  spécialisé dans la création de site internet moderne, qui place l'utilisateur au cœur d'une expérience unique axée sur l'UI, l'UX.
                 </p>
               </div>
               <div className="bottom-0 left-0 leading-none w-full text-left">

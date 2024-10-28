@@ -428,3 +428,7 @@ transition-duration: 0.3s;
   mix-blend-mode: overlay; /* Superpose la couleur par-dessus le grain */
   opacity: 0.5;
 }
+
+footer svg {
+  width: 100%;
+}

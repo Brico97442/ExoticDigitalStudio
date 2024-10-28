@@ -22,7 +22,7 @@ function Footer() {
         <footer id='footer' className='flex h-[70vh] justify-center items-center text-white w-full bg-black  z-[2] relative ' 
         style={{clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)"}}>
 
-            <div className='fixed bottom-0 flex flex-col h-[70vh] text-white justify-start w-[85vw] m-auto text-white py-20'>
+            <div className='fixed bottom-0 flex flex-col h-[70vh] text-white justify-start w-[95vw] m-auto text-white py-20'>
                 
                 <Image src={logo} alt="logo de l'entreprise Exotik Digital Studio" width={150} height={100} className='z-[4]' />
 
@@ -36,7 +36,7 @@ function Footer() {
                     <div className='z-[4]'>
                         <Magnetic>
                             <button id='copy-text-btn'
-                                className='flex gap-6 leading-none text-[2em] text-white cursor-pointer transition ease-in-out hover:border-r hover:border-t z-[4] p-6' onClick={copyText} value="ExotikDigitalStudio@outlook.com" >
+                                className='flex gap-6 leading-none text-[2em] text-white cursor-pointer transition ease-in-out hover:border-r hover:border-t z-[4] ' onClick={copyText} value="ExotikDigitalStudio@outlook.com" >
                                 ExotikDigitalStudio@outlook.com
                             </button>
                         </Magnetic>
@@ -47,8 +47,8 @@ function Footer() {
                     </div>
                 </div>
                 <div className='w-full z-[4] w-full justify-center gap-6 mt-10'>
-                    <div className="div w-full flex justify-center">
-                        <Lines strokeColor="stroke-white" />
+                    <div className=" w-full flex flex-col justify-center" >
+                        <Lines strokeColor="stroke-white"/>
                     </div>
                     <div className='flex z-[4] w-full justify-center items-center gap-6'>
                         <p className='z-[4] border-r border-b pr-2 border-white'>Retrouvez nous sur</p>
