@@ -1,12 +1,15 @@
 import React, { useState, useEffect, useRef } from "react";
 import { animate, motion, transform, useMotionValue, useSpring } from "framer-motion";
 import UseMousePosition from "./CursorTest";
+import { usePathname } from 'next/navigation';
 
 export default function StickyCursor({ stickyElement, heroSection }) {
+    const pathname = usePathname();
   const { x, y } = UseMousePosition();
   const [isHovered, setIsHovered] = useState(false);
   const [isHeroHovered, setIsHeroHovered] = useState(false);
   const [cursorText, setCursorText] = useState("");
+  const [isHomePage, setIsHomePage] = useState(false);
 
   const cursorRef = useRef(null);
   const cursorRef2 = useRef(null);
@@ -15,21 +18,29 @@ export default function StickyCursor({ stickyElement, heroSection }) {
   const mouseX = useMotionValue(x);
   const mouseY = useMotionValue(y);
 
+  
   const smoothOptions = {
     damping: 30,
     stiffness: 350,
     mass: 0.5,
   };
-
+  
   const scale = {
     x: useMotionValue(1),
     y: useMotionValue(1),
   };
-
+  
   const smoothMouseX = useSpring(mouseX, smoothOptions);
   const smoothMouseY = useSpring(mouseY, smoothOptions);
-
+  
   const currentCursorSize = isHeroHovered ? curSorSize2 : curSorSize;
+
+
+  //   // Vérifier si nous sommes sur la page d'accueil
+  useEffect(() => {
+    setIsHomePage(pathname === '/');
+  }, [pathname]);
+
   useEffect(() => {
     const { left, top, width, height } = stickyElement.current.getBoundingClientRect();
     const center = { x: left + width / 2, y: top + height / 2 };
@@ -69,10 +80,10 @@ export default function StickyCursor({ stickyElement, heroSection }) {
   };
 
   const heroMouseOver = () => {
-    setIsHeroHovered(true);
-    setIsHovered(false); // S'assurer que le hover du sticky element est désactivé
-    setCursorText("Scrollez"); // Définis le texte lors du survol du hero
-
+      setIsHeroHovered(true);
+      setIsHovered(false); // S'assurer que le hover du sticky element est désactivé
+      setCursorText("Scrollez"); // Définis le texte lors du survol du hero
+ 
   };
 
   const heroMouseLeave = () => {
@@ -90,7 +101,7 @@ export default function StickyCursor({ stickyElement, heroSection }) {
       navBarElement.addEventListener("mouseleave", handleMouseLeave);
     }
 
-    if (heroElement) {
+    if (heroElement && isHomePage) {
       heroElement.addEventListener("mouseenter", heroMouseOver);
       heroElement.addEventListener("mouseleave", heroMouseLeave);
     }
@@ -100,12 +111,12 @@ export default function StickyCursor({ stickyElement, heroSection }) {
         navBarElement.removeEventListener("mouseenter", handleMouseOver);
         navBarElement.removeEventListener("mouseleave", handleMouseLeave);
       }
-      if (heroElement) {
+      if (heroElement && isHomePage) {
         heroElement.removeEventListener("mouseenter", heroMouseOver);
         heroElement.removeEventListener("mouseleave", heroMouseLeave);
       }
     };
-  }, [stickyElement]);
+  }, [stickyElement,isHomePage]);
 
   const template = ({ rotate, scaleX, scaleY }) => {
     return `rotate(${rotate}) scaleX(${scaleX}) scaleY(${scaleY})`;
@@ -138,3 +149,206 @@ export default function StickyCursor({ stickyElement, heroSection }) {
     </>
   );
 }
+
+//Version fonctionnelle mais beugué
+// import React, { useState, useEffect, useRef } from "react";
+// import { animate, motion, transform, useMotionValue, useSpring } from "framer-motion";
+// import UseMousePosition from "./CursorTest";
+// import { usePathname } from 'next/navigation';
+
+// export default function StickyCursor({ stickyElement, heroSection }) {
+//   const pathname = usePathname();
+//   const { x, y } = UseMousePosition();
+//   const [isHovered, setIsHovered] = useState(false);
+//   const [isHeroHovered, setIsHeroHovered] = useState(false);
+//   const [cursorText, setCursorText] = useState("");
+//   const [isHomePage, setIsHomePage] = useState(false);
+
+//   const cursorRef = useRef(null);
+//   const cursorRef2 = useRef(null);
+//   const curSorSize = isHovered ? 80 : 20;
+//   const curSorSize2 = isHeroHovered ? 120 : 20;
+//   const mouseX = useMotionValue(x);
+//   const mouseY = useMotionValue(y);
+
+//   const smoothOptions = {
+//     damping: 30,
+//     stiffness: 350,
+//     mass: 0.5,
+//   };
+
+//   const scale = {
+//     x: useMotionValue(1),
+//     y: useMotionValue(1),
+//   };
+
+//   const smoothMouseX = useSpring(mouseX, smoothOptions);
+//   const smoothMouseY = useSpring(mouseY, smoothOptions);
+
+//   const currentCursorSize = isHeroHovered ? curSorSize2 : (isHovered ? curSorSize : 20);
+
+//   // Vérifier si nous sommes sur la page d'accueil
+//   useEffect(() => {
+//     setIsHomePage(pathname === '/');
+//   }, [pathname]);
+
+//   // Mise à jour de la position de base du curseur
+//   useEffect(() => {
+//     if (!isHovered) {
+//       mouseX.set(x - currentCursorSize / 2);
+//       mouseY.set(y - currentCursorSize / 2);
+//     }
+//   }, [x, y, isHovered, currentCursorSize, mouseX, mouseY]);
+
+//   // Gestion du sticky element (navbar)
+//   useEffect(() => {
+//     if (!stickyElement?.current || !isHovered) return;
+  
+//     const updateCursorPosition = () => {
+//       const { left, top, width, height } = stickyElement.current.getBoundingClientRect();
+//       const center = { x: left + width / 2, y: top + height / 2 };
+//       const distance = { x: x - center.x, y: y - center.y };
+  
+//       // Appliquer une rotation seulement lors du survol de stickyElement
+//       const angle = Math.atan2(distance.y, distance.x);
+//       if (cursorRef.current) {
+//         animate(cursorRef.current, { rotate: `${angle}rad` }, { duration: 0 });
+//       }
+  
+//       // Échelle du curseur pour effet sticky
+//       const absDistance = Math.sqrt(distance.x ** 2 + distance.y ** 2);
+//       const newScaleX = transform(absDistance, [0, width / 2], [1, 1.3]);
+//       const newScaleY = transform(absDistance, [0, height / 2], [1, 0.8]);
+  
+//       scale.x.set(newScaleX);
+//       scale.y.set(newScaleY);
+  
+//       // Positionnement magnétique plus stable
+//       mouseX.set(center.x + distance.x * 0.1 - curSorSize / 2);
+//       mouseY.set(center.y + distance.y * 0.1 - curSorSize / 2);
+//     };
+  
+//     updateCursorPosition();
+  
+//     window.addEventListener('mousemove', updateCursorPosition);
+//     return () => window.removeEventListener('mousemove', updateCursorPosition);
+//   }, [x, y, isHovered, stickyElement, scale, mouseX, mouseY, curSorSize]);
+  
+//   // Gestion des event listeners
+//   useEffect(() => {
+//     const navBarElement = stickyElement?.current;
+//     const heroElement = document.querySelector('#hero');
+  
+//     const handleNavMouseOver = () => {
+//       setIsHovered(true);
+//       setIsHeroHovered(false);
+//       setCursorText("");
+//       if (cursorRef.current) {
+//         animate(cursorRef.current, { scaleX: 1, scaleY: 1, rotate: 0 }, { duration: 0.1 });
+//       }
+//     };
+  
+//     const handleNavMouseLeave = () => {
+//       setIsHovered(false);
+//       if (cursorRef.current) {
+//         animate(cursorRef.current, { rotate: 0, scaleX: 1, scaleY: 1 }, { duration: 0.1 });
+//       }
+//       scale.x.set(1);
+//       scale.y.set(1);
+//     };
+  
+//     const handleHeroMouseOver = () => {
+//       if (isHomePage) {
+//         setIsHeroHovered(true);
+//         setIsHovered(false);
+//         setCursorText("Scrollez");
+  
+//         // Réinitialiser la rotation et l'échelle pour #hero
+//         if (cursorRef.current) {
+//           animate(cursorRef.current, { rotate: 0, scaleX: 1, scaleY: 1 }, { duration: 0.1 });
+//         }
+//         scale.x.set(1);
+//         scale.y.set(1);
+//       }
+//     };
+  
+//     const handleHeroMouseLeave = () => {
+//       setIsHeroHovered(false);
+//       setCursorText("");
+//       if (cursorRef.current) {
+//         animate(cursorRef.current, { scaleX: 1, scaleY: 1 }, { duration: 0.1 });
+//       }
+//     };
+  
+//     if (navBarElement) {
+//       navBarElement.addEventListener("mouseenter", handleNavMouseOver);
+//       navBarElement.addEventListener("mouseleave", handleNavMouseLeave);
+//     }
+  
+//     if (heroElement) {
+//       heroElement.addEventListener("mouseenter", handleHeroMouseOver);
+//       heroElement.addEventListener("mouseleave", handleHeroMouseLeave);
+//     }
+  
+//     return () => {
+//       if (navBarElement) {
+//         navBarElement.removeEventListener("mouseenter", handleNavMouseOver);
+//         navBarElement.removeEventListener("mouseleave", handleNavMouseLeave);
+//       }
+//       if (heroElement) {
+//         heroElement.removeEventListener("mouseenter", handleHeroMouseOver);
+//         heroElement.removeEventListener("mouseleave", handleHeroMouseLeave);
+//       }
+//     };
+//   }, [isHomePage, stickyElement, cursorRef, scale]);
+
+//   const template = ({ rotate, scaleX, scaleY }) => {
+//     return `rotate(${rotate}) scaleX(${scaleX}) scaleY(${scaleY})`;
+//   };
+
+//   return (
+//     <>
+//       <motion.div
+//         transformTemplate={template}
+//         ref={cursorRef}
+//         style={{
+//           left: smoothMouseX,
+//           top: smoothMouseY,
+//           scaleX: scale.x,
+//           scaleY: scale.y,
+//           pointerEvents: 'none',
+//           position: 'fixed'
+//         }}
+//         animate={{
+//           width: currentCursorSize,
+//           height: currentCursorSize
+//         }}
+//         transition={{ type: 'tween', ease: 'backOut', duration: 0.5 }}
+//         className={`z-[6] rounded-full flex justify-center ${isHeroHovered ? 'backdrop-blur-sm' : ''} items-center bg-teal-500 mix-blend-difference`}
+//       >
+//         <span className="text-black text-xl mix-blend-normal text-center flex justify-center items-center">
+//           {isHomePage ? cursorText : ''}
+//         </span>
+//       </motion.div>
+//       {isHomePage && (
+//         <div>
+//           <div className="fixed w-full h-[300vh] top-0 backdrop-blur-[130px] z-[1]" />
+//           <motion.div
+//             id="blob"
+//             ref={cursorRef2}
+//             animate={{ rotate: 360 }}
+//             style={{
+//               left: smoothMouseX,
+//               top: smoothMouseY,
+//               transform: 'translate(-50%, -50%)',
+//               pointerEvents: 'none',
+//               position: 'fixed'
+//             }}
+//             transition={{ type: 'tween', ease: 'backOut', duration: 0.5 }}
+//             className="rounded-full flex justify-center items-center h-[180px] w-[180px] bg-gradient-to-r from-teal-950 to-purple-950"
+//           />
+//         </div>
+//       )}
+//     </>
+//   );
+// }

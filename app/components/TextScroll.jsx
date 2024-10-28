@@ -44,7 +44,7 @@ export default function TextScroll({value}) {
     return (
         <div className='text-scroll w-screen flex items-center justify-center overflow-hidden z-60'>
             <div>
-                <h1 ref={el => textRefs.current[0] = el} className="ml-[50px] text-target text-[148px] w-1/2 leading-none overflow-hidden text-white" >{value}</h1>
+                <h1 ref={el => textRefs.current[0] = el} className="ml-[50px] text-target text-[148px] w-3/4 leading-none overflow-hidden text-white" >{value}</h1>
             </div >
         </div>
     );

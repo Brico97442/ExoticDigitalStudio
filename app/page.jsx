@@ -22,6 +22,7 @@ gsap.registerPlugin(ScrollTrigger)
 
 import gsap from "gsap";
 import TextScroll from "./components/TextScroll";
+import Link from "next/link";
 const Scene = dynamic(() => import('./utils/Scene'), {
   ssr: false
 });
@@ -103,7 +104,7 @@ export default function Home() {
         <Scene island={island} />
         <div ref ={heroSection} id='hero' className='h-screen sticky w-full flex flex-col  items-center top-0 z-[6]'>
           <div className='flex flex-col items-start justify-between mt-[20px] w-full h-full px-[50px] pt-[100px] relative'>
-            <h1 className="text-[140px] uppercase tracking-tighter left-0">Studio Web</h1>
+            <h1 className="text-[210px] uppercase tracking-tighter left-0">Web Studio</h1>
             <h2 id='hero-subtitle' className=' pointer-events-none mt-[40px] leading-none text-[31px]  w-1/4 tracking-tighter '>Offrez à vos visiteurs une expérience web captivante, parce que chaque clic mérite sa touche de magie.</h2>
             <h1 id='hero-title' className='absolute right-[50px] bottom-0 pointer-events-none leading-none text-[24px] font-bold-sm tracking-tighter'>Reunion Island Digital Studio </h1>
             <svg ref={arrowRef} className="mt-[80px] ml-[10px]" width="30" height="24" viewBox="0 0 47 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -126,9 +127,9 @@ export default function Home() {
         </div>
         <div id="about" ref={aboutRef} className="sticky top-0 h-screen px-[50px] py-[50px] flex flex-col justify-center z-[2]">
           <div className=" flex flex-col w-full h-full">
-            <div className='h-full flex flex-col justify-between'>
+            <div className='h-full flex flex-col justify-between z-[4]'>
               {/* <HackHover data='Qui sommes nous ?' classValue='text-[120px] uppercase' /> */}
-              <h1 id="about-title" className="text-[120px] uppercase tracking-tighter">Qui sommes nous ?</h1>
+              <h1 id="about-title" className="text-[210px] uppercase tracking-tighter ">Qui sommes <br/>nous ?</h1>
               <div className="w-full flex justify-end">
                 <p ref={targetRef} id='target-text' className='pointer-events-none overflow-hidden tracking-tighter w-1/2 h-full pl-20 text-[31px] text-right'>
                   Exotik Digital Studio est un studio de design et de création de produits digital
@@ -148,17 +149,15 @@ export default function Home() {
           </div>
           <Hero2 />
         </div>
-
-        <div className=" w-full z-[1] py-[50px]">
+        <div className="z-[1] flex justify-center py-[50px] px-[50px]">
           <GridAnimation />
         </div>
-        {/* <div id="contact" className="W-full py-[50px] px-[50px] h-screen w-full relative z-[1]">
-          <div>
-            <HackHover data='Démarrer un projet' classValue='text-[120px] leading-none text-black text-left' />
-          </div>
-          <ContactForm />
-          <h2 className="absolute right-[50px] top-40 text-[2em] w-1/4 text-right z-[1]">"Les grandes histoires commençent souvent par un Hey!"</h2>
-        </div> */}
+        <div id="contact" className="W-full py-[50px] px-[50px] h-screen w-full relative z-[1]">
+          <Link href="/contact">
+            <HackHover data='CONTACT' classValue='text-[210px] underline leading-none text-black text-left' />
+          </Link>
+          <h2 className="absolute right-[50px] top-80 text-[1em] w-1/4 text-right z-[1]">"Les grandes histoires commençent souvent par un Hey!"</h2>
+        </div>
       </div>
 
     </main>
