@@ -71,20 +71,19 @@ export default function Model({ mousePosition, island }) {
 
   }, [island]);
 
-  useFrame(() => {
-    if (island.current) {
-      const rotationFactor = -0.04;
-      let rotationX = initialRotation.x - mousePosition.y * rotationFactor;
-      let rotationY = initialRotation.y + mousePosition.x * rotationFactor;
-    }
+  // useFrame(() => {
+  //   if (island.current) {
+  //     const rotationFactor = -0.04;
+  //     let rotationX = initialRotation.x - mousePosition.y * rotationFactor;
+  //     let rotationY = initialRotation.y + mousePosition.x * rotationFactor;
+  //   }
    
-  });
+  // });
 
   return (
     <group scale={viewport.width / 3}>
       <group >
         <mesh ref={island} geometry={nodes.reunion.geometry} scale={[0.015, 0.015, 0.015]} position={[-0.08, 0.08, -0.3]} fragmentShader vertexShader wireframe >
-         
         </mesh>
       </group>
       <pointLight position={[0, 0, 1]} intensity={8} color={'red'} />

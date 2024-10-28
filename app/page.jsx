@@ -129,7 +129,7 @@ export default function Home() {
           <div className=" flex flex-col w-full h-full">
             <div className='h-full flex flex-col justify-between z-[4]'>
               {/* <HackHover data='Qui sommes nous ?' classValue='text-[120px] uppercase' /> */}
-              <h1 id="about-title" className="text-[210px] uppercase tracking-tighter ">Qui sommes <br/>nous ?</h1>
+              <h1 id="about-title" className="text-[210px] uppercase tracking-tighter z-[4]">Qui sommes <br/>nous ?</h1>
               <div className="w-full flex justify-end">
                 <p ref={targetRef} id='target-text' className='pointer-events-none overflow-hidden tracking-tighter w-1/2 h-full pl-20 text-[31px] text-right'>
                   Exotik Digital Studio est un studio de design et de création de produits digital

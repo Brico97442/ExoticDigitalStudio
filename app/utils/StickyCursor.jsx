@@ -14,7 +14,7 @@ export default function StickyCursor({ stickyElement, heroSection }) {
   const cursorRef = useRef(null);
   const cursorRef2 = useRef(null);
   const curSorSize = isHovered ? 80 : 20;
-  const curSorSize2 = isHeroHovered ? 120 : 20;
+  const curSorSize2 = isHeroHovered ? 130 : 20;
   const mouseX = useMotionValue(x);
   const mouseY = useMotionValue(y);
 
@@ -67,7 +67,7 @@ export default function StickyCursor({ stickyElement, heroSection }) {
       }
     }
 
-  }, [x, y, curSorSize, curSorSize2, isHovered, isHeroHovered, stickyElement, scale, mouseX, mouseY]);
+  }, [x, y, curSorSize, curSorSize2, isHovered, isHeroHovered, stickyElement, scale, mouseX, mouseY,currentCursorSize]);
 
   const handleMouseOver = () => {
     setIsHovered(true);
@@ -82,7 +82,7 @@ export default function StickyCursor({ stickyElement, heroSection }) {
   const heroMouseOver = () => {
       setIsHeroHovered(true);
       setIsHovered(false); // S'assurer que le hover du sticky element est désactivé
-      setCursorText("Scrollez"); // Définis le texte lors du survol du hero
+      setCursorText("Scrollez pour découvrir"); // Définis le texte lors du survol du hero
  
   };
 
@@ -132,7 +132,7 @@ export default function StickyCursor({ stickyElement, heroSection }) {
         transition={{ type: 'tween', ease: 'backOut', duration: 0.5 }}
         className={`z-[6] fixed rounded-full flex justify-center ${isHeroHovered? 'backdrop-blur-sm': ''} items-center pointer-events-none bg-teal-500 cursor-auto mix-blend-difference`}
       >
-        <span className="text-black text-xl mix-blend-normal text-center flex justify-center items-center ">
+        <span className="text-black text-lg mix-blend-normal text-center flex justify-center items-center tracking-tighter">
           {cursorText}
         </span></motion.div>
       <div>
