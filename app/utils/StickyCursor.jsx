@@ -14,7 +14,7 @@ export default function StickyCursor({ stickyElement, heroSection }) {
   const cursorRef = useRef(null);
   const cursorRef2 = useRef(null);
   const curSorSize = isHovered ? 80 : 20;
-  const curSorSize2 = isHeroHovered ? 130 : 20;
+  const curSorSize2 = isHeroHovered ? 120 : 20;
   const mouseX = useMotionValue(x);
   const mouseY = useMotionValue(y);
 
@@ -130,7 +130,7 @@ export default function StickyCursor({ stickyElement, heroSection }) {
         style={{ left: smoothMouseX, top: smoothMouseY, scaleX: scale.x, scaleY: scale.y }}
         animate={{ width: isHeroHovered ? curSorSize2 : curSorSize, height: isHeroHovered ? curSorSize2 : curSorSize }}
         transition={{ type: 'tween', ease: 'backOut', duration: 0.5 }}
-        className={`z-[6] fixed rounded-full flex justify-center ${isHeroHovered? 'backdrop-blur-sm': ''} items-center pointer-events-none bg-teal-500 cursor-auto mix-blend-difference`}
+        className={`z-[6] fixed rounded-full flex justify-center ${isHeroHovered? 'backdrop-blur-sm': ''} items-center border-black border-2 pointer-events-none bg-teal-500 cursor-auto mix-blend-difference`}
       >
         <span className="text-black text-lg mix-blend-normal text-center flex justify-center items-center tracking-tighter">
           {cursorText}

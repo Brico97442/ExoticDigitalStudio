@@ -42,15 +42,16 @@ function Footer() {
                         </Magnetic>
 
                         {isCopied && (
-                            <span className=' ml-20 text-[1em] z-[4]'>L'email à bien été copié !</span>
+                            <span className=' ml-20 text-[1em] z-[4] tracking-tighter'>L'email à bien été copié !</span>
                         )}
                     </div>
                 </div>
                 <div className='w-full z-[4] w-full justify-center gap-6 mt-10'>
-                    <div className=" w-full flex flex-col justify-center" >
+                    <div className=" w-full flex flex-col justify-center mb-20" >
                         <Lines strokeColor="stroke-white"/>
+                        <hr/>
                     </div>
-                    <div className='flex z-[4] w-full justify-center items-center gap-6'>
+                    <div className='flex z-[4] w-full justify-center items-center gap-6 '>
                         <p className='z-[4] border-r border-b pr-2 border-white'>Retrouvez nous sur</p>
 
                         <div className='flex gap-6'>

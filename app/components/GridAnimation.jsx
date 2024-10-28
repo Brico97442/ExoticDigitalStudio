@@ -39,7 +39,7 @@ export default function GridAnimation() {
             gsap.to(img, {
                 clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)', // Full reveal
                 ease: 'ease-in-out',
-                duration: 6,
+                duration: 4,
                 scrollTrigger: {
                     trigger: img,
                     start: 'top 50%', // Ajuste le déclencheur pour une meilleure visibilité
@@ -55,9 +55,9 @@ export default function GridAnimation() {
         }
     }, [])
 
-    const Tag = ({text}) => {
+    const Tag = ({ text }) => {
         return (
-            <div className='flex justify-center items-center min-w-[200px] h-10 rounded-full border-black border-[2px] p-2'>
+            <div className='flex justify-center tracking-tighter items-center min-w-[200px] h-10 rounded-full border-black border-[2px] p-2'>
                 {text}
             </div>
         )
@@ -75,14 +75,14 @@ export default function GridAnimation() {
                         <div className='card-img overflow-hidden'>
                             <Image ref={el => imageRefs.current[0] = el} src={Img} alt='Grid Element' />
                         </div>
-                        <div className=" flex flex-col items-start justify-center w-1/2">
-                            <h2 className='text-6xl mb-6 text-left w-full uppercase'>Web</h2>
+                        <div className=" flex flex-col items-start gap-6 justify-center w-1/2">
+                            <h2 className='text-6xl text-left w-full uppercase'>Web</h2>
                             <div className='flex gap-4'>
                                 {tagsWeb.map((tag, index) => (
-                                <Tag key={index} text={tag} />
-                            ))}      
-                            </div>                   
-                            <p className='flex text-wrap text-[20px]'>Nous transformons vos idées en applications web sur-mesure, performantes et adaptées à vos besoins. Nous utilisons les dernières technologies pour garantir une expérience utilisateur fluide, sécurisée et accessible sur tous les supports.</p>
+                                    <Tag key={index} text={tag} />
+                                ))}
+                            </div>
+                            <p className='flex text-wrap tracking-tighter text-[20px]'>Nous transformons vos idées en applications web sur-mesure, performantes et adaptées à vos besoins. Nous utilisons les dernières technologies pour garantir une expérience utilisateur fluide, sécurisée et accessible sur tous les supports.</p>
                         </div>
                     </div>
 
@@ -90,14 +90,14 @@ export default function GridAnimation() {
                         <div className='card-img  overflow-hidden'>
                             <Image ref={el => imageRefs.current[1] = el} src={Img2} alt='Grid Element' />
                         </div>
-                        <div className=" flex flex-col items-start justify-center w-1/2">
-                            <h2 className='text-6xl mb-6 uppercase'>Motion</h2>
+                        <div className=" flex flex-col items-start gap-6 justify-center w-1/2">
+                            <h2 className='text-6xl uppercase'>Motion</h2>
                             <div className='flex gap-4'>
                                 {tagsMotion.map((tag, index) => (
-                                <Tag key={index} text={tag} />
-                            ))}      
+                                    <Tag key={index} text={tag} />
+                                ))}
                             </div>
-                            <p className='flex text-wrap text-left text-[20px]'>Nous transformons vos idées en applications web sur-mesure, performantes et adaptées à vos besoins. Nous utilisons les dernières technologies pour garantir une expérience utilisateur fluide, sécurisée et accessible sur tous les supports.</p>
+                            <p className='flex text-wrap text-left tracking-tighter text-[20px]'>Nous transformons vos idées en applications web sur-mesure, performantes et adaptées à vos besoins. Nous utilisons les dernières technologies pour garantir une expérience utilisateur fluide, sécurisée et accessible sur tous les supports.</p>
                         </div>
                     </div>
 
@@ -105,14 +105,14 @@ export default function GridAnimation() {
                         <div className='card-img overflow-hidden'>
                             <Image ref={el => imageRefs.current[2] = el} src={Img3} alt='Grid Element' />
                         </div>
-                        <div className=" flex flex-col items-start justify-center w-1/2">
-                            <h2 className='text-6xl mb-6 uppercase'>SEO</h2>
+                        <div className=" flex flex-col items-start gap-6 justify-center w-1/2">
+                            <h2 className='text-6xl uppercase'>SEO</h2>
                             <div className='flex gap-4'>
                                 {tagsSEO.map((tag, index) => (
-                                <Tag key={index} text={tag} />
-                            ))}      
+                                    <Tag key={index} text={tag} />
+                                ))}
                             </div>
-                            <p className='flex text-wrap text-left text-[20px]'>Augmentez votre visibilité sur les moteurs de recherche grâce à notre service de référencement web. Nos experts en SEO optimisent votre site pour qu'il se positionne en tête des résultats de recherche, attirant ainsi plus de visiteurs qualifiés.</p>
+                            <p className='flex text-wrap text-left tracking-tighter text-[20px]'>Augmentez votre visibilité sur les moteurs de recherche grâce à notre service de référencement web. Nos experts en SEO optimisent votre site pour qu'il se positionne en tête des résultats de recherche, attirant ainsi plus de visiteurs qualifiés.</p>
                         </div>
                     </div>
 
@@ -120,14 +120,14 @@ export default function GridAnimation() {
                         <div className='card-img overflow-hidden'>
                             <Image ref={el => imageRefs.current[3] = el} src={Img4} alt='Grid Element' />
                         </div>
-                        <div className=" flex flex-col items-start justify-center w-1/2">
-                            <h2 className='text-6xl mb-6 uppercase'>Design</h2>
+                        <div className=" flex flex-col items-start gap-6 justify-center w-1/2">
+                            <h2 className='text-6xl uppercase'>Design</h2>
                             <div className='flex gap-4'>
                                 {tagsDesign.map((tag, index) => (
-                                <Tag key={index} text={tag} />
-                            ))}      
+                                    <Tag key={index} text={tag} />
+                                ))}
                             </div>
-                            <p className='flex text-wrap text-left text-[20px]'>On mélange créativité, et une touche de magie pour que chaque pixel ait du style et chaque clic, du sens</p>
+                            <p className='flex text-wrap text-left text-[20px] tracking-tighter'>On mélange créativité, et une touche de magie pour que chaque pixel ait du style et chaque clic, du sens</p>
                         </div>
                     </div>
 

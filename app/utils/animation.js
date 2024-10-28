@@ -288,7 +288,7 @@ export const animateScene = (divRef) => {
 export const animateAbout = () => {
   gsap.to(["#about","#hero"] , {
     backgroundColor: "#000",
-    duration: 5,
+    duration: 3,
     ease: "power1.in",
     scrollTrigger: {
       trigger: "#about",
