@@ -266,6 +266,14 @@ export const animateCounter = (counterRef) => {
       snap: { innerText: 1 },
       onUpdate: function () {
         counterRef.current.textContent = Math.round(this.targets()[0].innerText);
+      },
+      onComplete:()=>{
+        gsap.to(counterRef.current,{
+          yPercent: -100,
+          duration: 1,
+          scrub:1,
+          ease: "power4.out",
+        })
       }
     });
   }
@@ -288,7 +296,7 @@ export const animateScene = (divRef) => {
 export const animateAbout = () => {
   gsap.to(["#about","#hero"] , {
     backgroundColor: "#000",
-    duration: 3,
+    duration: 0.4,
     ease: "power1.in",
     scrollTrigger: {
       trigger: "#about",

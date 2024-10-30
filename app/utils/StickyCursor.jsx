@@ -82,7 +82,7 @@ export default function StickyCursor({ stickyElement, heroSection }) {
   const heroMouseOver = () => {
       setIsHeroHovered(true);
       setIsHovered(false); // S'assurer que le hover du sticky element est désactivé
-      setCursorText("Scrollez pour découvrir"); // Définis le texte lors du survol du hero
+      setCursorText("Scrollez"); // Définis le texte lors du survol du hero
  
   };
 
@@ -130,9 +130,9 @@ export default function StickyCursor({ stickyElement, heroSection }) {
         style={{ left: smoothMouseX, top: smoothMouseY, scaleX: scale.x, scaleY: scale.y }}
         animate={{ width: isHeroHovered ? curSorSize2 : curSorSize, height: isHeroHovered ? curSorSize2 : curSorSize }}
         transition={{ type: 'tween', ease: 'backOut', duration: 0.5 }}
-        className={`z-[6] fixed rounded-full flex justify-center ${isHeroHovered? 'backdrop-blur-sm': ''} items-center border-black border-2 pointer-events-none bg-teal-500 cursor-auto mix-blend-difference`}
+        className={`z-[6] fixed rounded-full flex justify-center ${isHeroHovered? 'backdrop-blur-sm': ''} items-center pointer-events-none bg-teal-500 cursor-auto mix-blend-difference`}
       >
-        <span className="text-black text-lg mix-blend-normal text-center flex justify-center items-center tracking-tighter">
+        <span className="text-black text-lg underline mix-blend-normal text-center flex justify-center items-center tracking-tighter">
           {cursorText}
         </span></motion.div>
       <div>

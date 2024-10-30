@@ -100,9 +100,9 @@ export default function Home() {
 
   return (
     <main id="main" className="flex w-full h-full relative min-h-screen flex-col ">
-      <div className="z-[1] flex w-full h-full min-h-screen flex-col relative  ">
+      <div className="z-[1] flex w-full h-full min-h-screen flex-col relative">
         <Scene island={island} />
-        <div ref={heroSection} id='hero' className='h-screen sticky w-full flex flex-col  items-center top-0 z-[6]'>
+        <div ref={heroSection} id='hero' className='h-screen sticky w-full flex flex-col  items-center top-0 z-[6] '>
           <div className='flex flex-col items-start justify-between mt-[20px] w-full h-full px-[50px] pt-[100px] relative'>
             <h1 className="text-[210px] uppercase tracking-tighter left-0">Web Studio</h1>
             <h2 id='hero-subtitle' className=' pointer-events-none mt-[40px] leading-none text-[31px] w-1/4 tracking-tighter '>Offrez à vos visiteurs une expérience web captivante, parce que chaque clic mérite sa touche de magie.</h2>
@@ -145,18 +145,25 @@ export default function Home() {
         {/* <HorizontalScrollReverse /> */}
         <div className="w-full pt-20 bg-black overflow-hidden">
           <div className="bottom-0 left-0 leading-none w-full text-left">
-            <TextScroll value="Changer votre vision du web moderne"/>
+            <TextScroll value="Changer votre vision du web moderne" />
           </div>
           <Hero2 />
         </div>
         <div className="z-[1] flex justify-center py-[50px] px-[50px]">
           <GridAnimation />
         </div>
-        <div id="contact" className="W-full py-[50px] px-[50px] h-screen w-full relative z-[1]">
-          <Link href="/contact">
-            <HackHover data='CONTACT' classValue='text-[210px] underline leading-none text-black text-left' />
+        <div id="contact" className="W-full py-[50px] px-[50px] h-screen w-full relative ">
+          <Link href="/contact" className="flex items-center w-full relative group" style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }}>
+            <svg width="164" height="165" viewBox="0 0 164 165" fill="none" xmlns="http://www.w3.org/2000/svg" id="left-arrow" className="absolute left-0 -translate-x-full group-hover:translate-x-[0px] transition-all duration-500 ">
+              <path d="M0.741753 91.6101L1.04884 71.0174L124.605 72.86L68.8197 15.3855L83.6586 0.982649L163.99 83.7459L81.2264 164.077L66.8236 149.238L124.298 93.4527L0.741753 91.6101Z" fill="black" />
+            </svg>
+            <HackHover data='CONTACT' classValue='text-[210px] leading-none text-black text-left group-hover:translate-x-[170px] transition-all duration-500' />
+            <svg width="164" height="165" viewBox="0 0 164 165" fill="none" xmlns="http://www.w3.org/2000/svg" id="right-arrow" className="absolute right-0 group-hover:translate-x-full transition-all duration-500 ">
+              <path d="M0.741753 91.6101L1.04884 71.0174L124.605 72.86L68.8197 15.3855L83.6586 0.982649L163.99 83.7459L81.2264 164.077L66.8236 149.238L124.298 93.4527L0.741753 91.6101Z" fill="black" />
+            </svg>
           </Link>
-          <h2 className="absolute right-[50px] top-80 text-[1em] w-1/4 text-right z-[1]">"Les grandes histoires commençent souvent par un Hey!"</h2>
+          
+          <h2 className="absolute right-[50px] top-80 text-[2em] w-1/4 text-right z-[1]">"Les grandes histoires commençent souvent par un Hey!"</h2>
         </div>
       </div>
 

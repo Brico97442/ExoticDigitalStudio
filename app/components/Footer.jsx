@@ -23,8 +23,7 @@ function Footer() {
         style={{clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)"}}>
 
             <div className='fixed bottom-0 flex flex-col h-[70vh] text-white justify-start w-[95vw] m-auto text-white py-20'>
-                
-                <Image src={logo} alt="logo de l'entreprise Exotik Digital Studio" width={150} height={100} className='z-[4]' />
+                <Image src={logo} alt="logo de l'entreprise Exotik Digital Studio" width={100} height={80} className='z-[4]' />
 
                 <div className='z-[4] flex justify-between mt-6'>
                     <div className='z-[4] w-full'>
@@ -48,7 +47,7 @@ function Footer() {
                 </div>
                 <div className='w-full z-[4] w-full justify-center gap-6 mt-10'>
                     <div className=" w-full flex flex-col justify-center mb-20" >
-                        <Lines strokeColor="stroke-white"/>
+                        {/* <Lines strokeColor="stroke-white"/> */}
                         <hr/>
                     </div>
                     <div className='flex z-[4] w-full justify-center items-center gap-6 '>

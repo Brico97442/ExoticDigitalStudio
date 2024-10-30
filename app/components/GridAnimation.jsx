@@ -68,7 +68,7 @@ export default function GridAnimation() {
 
             <div ref={containerRef} className='w-full z-[1] flex flex-col justify-center h-full'>
 
-                <HackHover data='Services' classValue='text-[210px] uppercase tracking-tighter subpixel-antialiased' />
+                <HackHover data='Nos Services' classValue='text-[210px] tracking-tighter subpixel-antialiased' />
 
                 <div className='relative w-full h-full flex flex-col mt-[50px]'>
                     <div className='card-img-container flex gap-10 h-[50vh] overflow-hidden my-4'>
