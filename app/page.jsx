@@ -137,7 +137,7 @@ export default function Home() {
                 </p>
               </div>
               <div className="bottom-0 left-0 leading-none w-full text-left">
-                <p id="target-text-2" className="flex w-1/2 h-full justify-center text-[48px] text-left pointer-events-none">Nous accompagnons ceux et celles qui oses asssumer leur différence</p>
+                <p id="target-text-2" className="flex w-1/2 h-full justify-center text-[48px] text-left pointer-events-none">Nous accompagnons ceux et celles qui veulent se démarquer et qui oses asssumer leur différence</p>
               </div>
             </div>
           </div>
