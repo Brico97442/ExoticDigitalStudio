@@ -47,24 +47,13 @@ body {
 }
 
 
-/** Animation Section**/
-/* section {
-  box-sizing: border-box;
-  height: 25%;
-  display: flex;
-  justify-content: flex-start;
-  overflow: hidden;
-  padding: 8em;
-}
-
-
-section span {
+/* section span {
   display: block;
   transform: translateX(-100px);
   opacity: 0;
   font-size: 1.5em;
   mask-image: none;
-} */
+} */ */
 
 .image-container img {
   object-fit: cover;

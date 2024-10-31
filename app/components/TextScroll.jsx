@@ -23,8 +23,8 @@ export default function TextScroll({value}) {
                         end: 'center 60%',
                         scrub: 2,
                         markers: false,
-                        once: true,
-                        toggleActions:"play none none none"
+                        // once: true,
+                        // toggleActions:"play none none none"
                     },
                     yPercent: 100,
                     opacity: 1,

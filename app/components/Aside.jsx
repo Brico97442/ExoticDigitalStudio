@@ -51,7 +51,7 @@ function Aside({ isOpen, onClose }) {
         <div
             id='overlay'
             ref={overlayRef}
-            className='h-full w-1/3 fixed top-0 flex right-0 justify-center items-center z-[7]'
+            className='h-full w-2/3 fixed top-0 flex right-0 justify-center items-center z-[7]'
             onClick={handleOverlayClick}
         >
             <div className='fixed w-full h-screen bg-gray-500  blur-[1px] border-l border-[#003049]'></div>
@@ -60,8 +60,7 @@ function Aside({ isOpen, onClose }) {
                 <div className='w-full border-box ml-40 h-full ' >
                     <h1 className='leading-none text-[1.5em]'></h1>
                     <nav>
-                        <hr className='w-[80%] h-[1px] mt-6' />
-                        <ul ref={overlayTextRef} className='flex flex-col mt-40'>
+                        <ul ref={overlayTextRef} className='flex flex-col gap-20 mt-40'>
                             {navItems.map((item, index) => (
                                 <li key={index}>
                                     <TransitionLink

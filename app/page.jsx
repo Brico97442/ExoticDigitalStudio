@@ -104,7 +104,7 @@ export default function Home() {
         <Scene island={island} />
         <div ref={heroSection} id='hero' className='h-screen sticky w-full flex flex-col  items-center top-0 z-[6] '>
           <div className='flex flex-col items-start justify-between mt-[20px] w-full h-full px-[50px] pt-[100px] relative'>
-            <h1 className="text-[210px] uppercase tracking-tighter left-0">Web Studio</h1>
+            <h1 className="text-[150px] uppercase tracking-tighter left-0">Web Studio</h1>
             <h2 id='hero-subtitle' className=' pointer-events-none mt-[40px] leading-none text-[31px] w-1/4 tracking-tighter '>Offrez à vos visiteurs une expérience web captivante, parce que chaque clic mérite sa touche de magie.</h2>
             <h1 id='hero-title' className='absolute right-[50px] bottom-0 pointer-events-none leading-none text-[24px] font-bold-sm tracking-tighter'>Reunion Island Digital Studio </h1>
             <svg ref={arrowRef} className="mt-[80px] ml-[10px]" width="30" height="24" viewBox="0 0 47 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -132,12 +132,12 @@ export default function Home() {
               <h1 id="about-title" className="text-[210px] uppercase tracking-tighter z-[4]">Qui sommes <br />nous ?</h1>
               <div className="w-full flex justify-end">
                 <p ref={targetRef} id='target-text' className='pointer-events-none overflow-hidden tracking-tighter w-1/2 h-full pl-20 text-[31px] text-right'>
-                  Exotik Digital Studio est un studio de design et de création de produits digital
+                  Exotik Digital Studio est un studio de design et de création de produits digital basée à l'ile de la Réunion
                   spécialisé dans la création de site internet moderne, qui place l'utilisateur au cœur d'une expérience unique axée sur l'UI, l'UX.
                 </p>
               </div>
               <div className="bottom-0 left-0 leading-none w-full text-left">
-                <p id="target-text-2" className="flex w-1/2 h-full justify-center text-[48px] text-left pointer-events-none">Studio de création digitale web moderne basée à l’ile de la Réunion</p>
+                <p id="target-text-2" className="flex w-1/2 h-full justify-center text-[48px] text-left pointer-events-none">Nous accompagnons ceux et celles qui oses asssumer leur différence</p>
               </div>
             </div>
           </div>
@@ -149,10 +149,10 @@ export default function Home() {
           </div>
           <Hero2 />
         </div>
-        <div className="z-[1] flex justify-center py-[50px] px-[50px]">
+        <div className="z-[1] flex justify-center py-[80px] px-[50px]">
           <GridAnimation />
         </div>
-        <div id="contact" className="W-full py-[50px] px-[50px] h-screen w-full relative ">
+        <div id="contact" className="W-full py-[50px] px-[50px] flex items-center h-screen w-full relative ">
           <Link href="/contact" className="flex items-center w-full relative group" style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }}>
             <svg width="164" height="165" viewBox="0 0 164 165" fill="none" xmlns="http://www.w3.org/2000/svg" id="left-arrow" className="absolute left-0 -translate-x-full group-hover:translate-x-[0px] transition-all duration-500 ">
               <path d="M0.741753 91.6101L1.04884 71.0174L124.605 72.86L68.8197 15.3855L83.6586 0.982649L163.99 83.7459L81.2264 164.077L66.8236 149.238L124.298 93.4527L0.741753 91.6101Z" fill="black" />
@@ -162,8 +162,7 @@ export default function Home() {
               <path d="M0.741753 91.6101L1.04884 71.0174L124.605 72.86L68.8197 15.3855L83.6586 0.982649L163.99 83.7459L81.2264 164.077L66.8236 149.238L124.298 93.4527L0.741753 91.6101Z" fill="black" />
             </svg>
           </Link>
-          
-          <h2 className="absolute right-[50px] top-80 text-[2em] w-1/4 text-right z-[1]">"Les grandes histoires commençent souvent par un Hey!"</h2>
+          <h2 className="absolute right-[50px] top-40 text-[2em] w-1/4 text-right z-[1] tracking-tighter">"Les grandes histoires commençent souvent par un Hey!"</h2>
         </div>
       </div>
 

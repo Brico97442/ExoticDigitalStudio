@@ -194,16 +194,16 @@ export const animateIsland = (island) => {
 
     //changer la couleur du shader material
     gsap.to(island.current.material.uniforms.color.value, {
-      r: 1,
-      g: 0,
-      b: 0,
-      duration: 5,
+      r: 254,
+      g: 254,
+      b: 254,
+      duration: 2,
       ease: 'power4.inOut',
       scrollTrigger: {
         trigger: '#scene',
         start: "40% top",
         end: "bottom 60%",
-        scrub: 5,
+        scrub: 3,
         markers: false,
       }
     });
@@ -293,6 +293,7 @@ export const animateScene = (divRef) => {
     }
   });
 }
+
 export const animateAbout = () => {
   gsap.to(["#about","#hero"] , {
     backgroundColor: "#000",
@@ -301,12 +302,13 @@ export const animateAbout = () => {
     scrollTrigger: {
       trigger: "#about",
       start: "top bottom",
-      end: "bottom bottom",
+      end: "center bottom",
       scrub: 1,
       markers: false,
     }
   });
 }
+
 export const animateAboutText = () => {
   gsap.to(["#about-title", "#target-text", "#target-text-2"], {
     color: "#fff",
@@ -320,6 +322,7 @@ export const animateAboutText = () => {
       markers: false,
     }
   });
+
   gsap.fromTo(["#about-title", "#target-text", "#target-text-2"], {
     yPercent:100,
     duration: 3,

@@ -22,7 +22,7 @@ function Footer() {
         <footer id='footer' className='flex h-[70vh] justify-center items-center text-white w-full bg-black  z-[2] relative ' 
         style={{clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)"}}>
 
-            <div className='fixed bottom-0 flex flex-col h-[70vh] text-white justify-start w-[95vw] m-auto text-white py-20'>
+            <div className='fixed bottom-0 flex flex-col h-[70vh] text-white justify-start w-[90vw] m-auto text-white py-20'>
                 <Image src={logo} alt="logo de l'entreprise Exotik Digital Studio" width={100} height={80} className='z-[4]' />
 
                 <div className='z-[4] flex justify-between mt-6'>
