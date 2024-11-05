@@ -38,7 +38,12 @@ const Navbar = forwardRef(function Index(props, ref) {
                         </li>
                         <li className=" transition ease hover:text-white z-[5]">
                             <Magnetic>
-                                <TransitionLink href="/pricing" label="Services" />
+                                <TransitionLink href="/pricing" label="Le Processus" />
+                            </Magnetic>
+                        </li>
+                        <li className=" transition ease hover:text-white z-[5]">
+                            <Magnetic>
+                                <TransitionLink href="/works" label="Nos réalisations" />
                             </Magnetic>
                         </li>
                         <li className=" transition ease hover:text-white  z-[5]">

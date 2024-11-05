@@ -17,8 +17,12 @@ function Aside({ isOpen, onClose }) {
             href: "/",
         },
         {
-            label: "Nos Tarifs",
+            label: "Le processus",
             href: "/pricing",
+        },
+        {
+            label: "Nos réalisations",
+            href: "/works",
         },
         {
             label: "Nous Contactez",
