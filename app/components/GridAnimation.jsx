@@ -4,7 +4,7 @@ import React, { useEffect, useRef } from 'react'
 import Image from 'next/image'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import Img from '../../public/media/galerie-item-2.jpg'
+import Img from '../../assets/mockup_test_1.png'
 import Img2 from '../../public/media/galerie-item-3.jpg'
 import Img3 from '../../public/media/galerie-item-4.jpg'
 import Img4 from '../../public/media/galerie-item-5.jpg'
@@ -91,8 +91,8 @@ export default function GridAnimation() {
                             <Image ref={el => imageRefs.current[1] = el} src={Img2} alt='Grid Element' />
                         </div>
                         <div className=" flex flex-col items-start gap-6 justify-center w-1/2">
-                            <h2 className='text-6xl uppercase'>Motion</h2>
-                            <p className='flex text-wrap text-left tracking-tighter text-[20px]'>Donnez vies à vos support grâce au à l'art du Motion Design</p>
+                            <h2 className='text-6xl uppercase'>Motion Design</h2>
+                            <p className='flex text-wrap text-left tracking-tighter text-[20px]'>Donnez vies à vos support grâce à l'art du Motion Design</p>
                             <div className='flex gap-4'>
                                 {tagsMotion.map((tag, index) => (
                                     <Tag key={index} text={tag} />
@@ -107,7 +107,7 @@ export default function GridAnimation() {
                         </div>
                         <div className=" flex flex-col items-start gap-6 justify-center w-1/2">
                             <h2 className='text-6xl uppercase'>SEO</h2>
-                            <p className='flex text-wrap text-left tracking-tighter text-[20px]'>Augmentez votre visibilité sur les moteurs de recherche grâce à notre service de référencement web. Nos experts en SEO optimisent votre site pour qu'il se positionne en tête des résultats de recherche, attirant ainsi plus de visiteurs qualifiés.</p>
+                            <p className='flex text-wrap text-left tracking-tighter text-[20px]'>Augmentez votre visibilité sur les moteurs de recherche grâce à notre service de référencement web. Nous optimisons votre site pour qu'il se positionne en tête des résultats de recherche, attirant ainsi plus de visiteurs qualifiés.</p>
                             <div className='flex gap-4'>
                                 {tagsSEO.map((tag, index) => (
                                     <Tag key={index} text={tag} />
