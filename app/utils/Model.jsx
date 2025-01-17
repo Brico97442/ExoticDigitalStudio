@@ -81,7 +81,7 @@ export default function Model({ mousePosition, island }) {
   // });
 
   return (
-    <group scale={viewport.width / 3}>
+    <group scale={viewport.width/2.4}>
       <group >
         <mesh ref={island} geometry={nodes.reunion.geometry} scale={[0.015, 0.015, 0.015]} position={[-0.08, 0.08, -0.3]} fragmentShader vertexShader wireframe >
         </mesh>

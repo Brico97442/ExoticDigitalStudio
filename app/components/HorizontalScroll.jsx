@@ -95,19 +95,16 @@ function HorizontalScroll() {
 
     const Dot = () => {
         return (
-
-           
-                <div className='w-10 h-10 rounded-full border-black border-[1px] bg-black'></div>
-         
+                <div className='w-4 h-4 lg:w-10 lg:h-10 rounded-full border-black border-[2px]'></div>
         )
     }
 
     return (
-        <div className='h-full w-full z-[0] flex items-center justify-center overflow-hidden'>
-            <div id='hero-scroll' className='flex flex-col items-center bg-blur-sm uppercase tracking-tighter font-bold absolute'>
-                <div ref={slider} className='flex relative whitespace-nowrap' >
-                    <h1 ref={text1} className='absolute left-[100%] text-[270px] mix-blend-difference flex items-center leading-none'>SiteWeb<Dot />Design<Dot />Seo<Dot />Ui-Ux<Dot/></h1>
-                    <h1 ref={text2} className=' text-[270px] flex items-center mix-blend-difference leading-none'>SiteWeb<Dot />Design<Dot />Seo<Dot />Ui-Ux<Dot /></h1>
+        <div className='absolute h-full w-full z-[0] flex items-center justify-center overflow-hidden'>
+            <div id='hero-scroll' className='flex flex-col items-center bg-transparent uppercase tracking-tighter font-bold absolute bottom-[30vh] lg:bottom-[18vh]'>
+                <div ref={slider} className='flex relative whitespace-nowrap pointer-events-none' >
+                    <h1 ref={text1} className='absolute left-[100%] text-[80px] lg:text-[250px] mix-blend-difference flex items-center leading-none pointer-events-none'>Studio<Dot />Creativ<Dot />Web<Dot /></h1>
+                    <h1 ref={text2} className=' text-[80px] lg:text-[250px] flex items-center mix-blend-difference leading-none pointer-events-none'>Studio<Dot />Creativ<Dot />Web<Dot /></h1>
                 </div>
             </div>
         </div >

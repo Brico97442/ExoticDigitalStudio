@@ -30,7 +30,7 @@ export default function TextScroll({value}) {
                     opacity: 1,
                     ease: "power4.inOut",
                     visibility: "visible",
-                    scrub: 8,
+                    scrub: 5,
                     duration: 7,
                     stagger: 0.09,
                     delay: 0.7
@@ -46,7 +46,7 @@ export default function TextScroll({value}) {
     return (
         <div className='text-scroll w-3/4 flex overflow-hidden z-60'>
             <div>
-                <h1 ref={el => textRefs.current[0] = el} className="mr-[50px] text-target text-[148px] tracking-tighter leading-none overflow-hidden text-white" >{value}</h1>
+                <h1 ref={el => textRefs.current[0] = el} className="mr-[50px] text-target text-[36px] lg:text-[148px] tracking-tighter leading-none overflow-hidden text-white" >{value}</h1>
             </div >
         </div>
     );

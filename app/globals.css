@@ -184,6 +184,10 @@ body {
   transition: transform .5s;
 }
 
+.text-scroll .char{
+  height: 100%;
+}
+
 .text-scroll p {
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
   line-height: 10.6vh;
@@ -215,9 +219,9 @@ h1 {
 }
 
 .text-target .word{
-    line-height: 18.6vh;
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
 }
+
 
 @keyframes rotate {
   0% {
@@ -323,6 +327,13 @@ h1 {
   display: flex;
   width: 50%;
 }
+@media screen and (max-width: 425px) {
+  .card-img {
+    display: flex;
+    width: 100%;
+    height: 100%; /* Ajustement pour occuper toute la largeur disponible */
+  }
+}
 
 
 @keyframes pan-overlay {
@@ -381,7 +392,8 @@ transition-duration: 0.3s;
   line-height: 3vh;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
 } */
-.grain-background {
+
+/* .grain-background {
   position: relative;
   padding: 20px;
   background-color: #ffffff;
@@ -391,9 +403,9 @@ transition-duration: 0.3s;
   text-align: center;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-}
+} */
 
-.grain-background::before {
+/* .grain-background::before {
   content: "";
   position: absolute;
   top: 0;
@@ -403,21 +415,28 @@ transition-duration: 0.3s;
   background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGXRFWHRTb2Z0d2FyZQBNYWNudW1QYWludCByYjEwMP0xMC+gAAAADUlEQVQoU2Nk+M+ACAAA/QB/AxEv3AAAAABJRU5ErkJggg==");
   background-size: 100px 100px;
   opacity: 0.3;
-  mix-blend-mode: multiply; /* Permet la fusion des couleurs */
-}
+  mix-blend-mode: multiply;
+} */
 
-.grain-background::after {
+/* .grain-background::after {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(255, 0, 0, 0.3); /* Couleur du grain (ex: rouge) */
-  mix-blend-mode: overlay; /* Superpose la couleur par-dessus le grain */
-  opacity: 0.5;
-}
+  background-color: rgba(255, 0, 0, 0.3); 
+  mix-blend-mode: overlay;
+} 
+*/
 
 footer svg {
   width: 100%;
+}
+
+.text-outline {
+  -webkit-text-stroke: 2px black;
+}
+#contact img{
+  height: 100%;
 }
