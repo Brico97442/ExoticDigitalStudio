@@ -25,13 +25,13 @@ export default function RootLayout({ children }) {
         </head>
         <body className={GeistSans.className}>
           <PreLoader />
-          <Template>
+          {/* <Template>
             <Navbar ref={stickyElement} />
             <main className="flex w-full h-full bg-slate-200">
             <StickyCursor stickyElement={stickyElement} heroSection='#hero' />
               {children}
             </main>
-          </Template>
+          </Template> */}
           <Footer />
           {/* <CookieConsent /> */}
         </body>

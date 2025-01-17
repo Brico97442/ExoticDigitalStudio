@@ -81,6 +81,8 @@ export default function GridAnimation() {
                                 muted
                                 playsInline
                                 className='w-full h-full object-cover'
+                                loading="lazy"
+
                             />
                         </div>
                         <div className="flex flex-col items-start gap-6 justify-center w-full lg:w-1/2">
@@ -103,6 +105,8 @@ export default function GridAnimation() {
                                 muted
                                 playsInline
                                 className='w-full h-full object-cover'
+                                loading="lazy"
+
                             />
                         </div>
                         <div className="flex flex-col items-start gap-6 justify-center w-full lg:w-1/2">
@@ -125,6 +129,8 @@ export default function GridAnimation() {
                                 muted
                                 playsInline
                                 className='w-full h-full object-cover'
+                                loading="lazy"
+
                             />
                         </div>
                         <div className="flex flex-col items-start gap-6 justify-center w-full lg:w-1/2">
@@ -147,6 +153,8 @@ export default function GridAnimation() {
                                 muted
                                 playsInline
                                 className='w-full h-full object-cover'
+                                loading="lazy"
+
                             />
                         </div>
                         <div className="flex flex-col items-start gap-6 justify-center w-full lg:w-1/2">
