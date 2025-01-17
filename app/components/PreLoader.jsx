@@ -33,21 +33,21 @@ function PreLoader() {
         const tl = gsap.timeline();
 
         // Fade out and hide the PreLoader
-        // tl.to(container.current, {
-        //     yPercent: -100,
-        //     ease: "power4.out",
-        //     // delay: 5.4,
-        //     delay: 7,
-        //     duration: 0.8,
-        //     onComplete: () => {
-        //         if (typeof loadingComplete === 'function') {
-        //             loadingComplete(true);
-        //         }
-        //         if (container.current && loadingComplete) {
-        //             container.current.style.display = 'none';
-        //         }
-        //     }
-        // });
+        tl.to(container.current, {
+            yPercent: -100,
+            ease: "power4.out",
+            // delay: 5.4,
+            delay: 7,
+            duration: 0.8,
+            onComplete: () => {
+                if (typeof loadingComplete === 'function') {
+                    loadingComplete(true);
+                }
+                if (container.current && loadingComplete) {
+                    container.current.style.display = 'none';
+                }
+            }
+        });
 
         if (!mounted || !counterNumberRef.current) return;
         animateCounter(counterNumberRef);
