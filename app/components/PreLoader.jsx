@@ -86,7 +86,7 @@ function PreLoader() {
                     <p className='absolute left-0 bottom-[20px] lg:bottom-[50vh] text-xs text-white'>Since 2024</p>
                 </div>
                 <div className='absolute w-full bottom-[20px] lg:bottom-[50px]'>
-                    <div style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} className='h-[14vh] lg:h-[20vh] flex items-center relative bottom-[0px] lg:bottom-[0px]'>
+                    <div style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} className='h-[13vh] lg:h-[20vh] flex items-center relative bottom-[0px] lg:bottom-[0px]'>
                         <h1 ref={counterNumberRef} className='absolute right-[20px] lg:right-[50px] text-[100px] lg:text-[240px] text-white z-[1] leading-none'>0</h1>
                     </div>
                 </div>
