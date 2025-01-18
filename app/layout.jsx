@@ -26,9 +26,9 @@ export default function RootLayout({ children }) {
         <body className={GeistSans.className}>
           {/* <PreLoader /> */}
           <Template>
-            {/* <Navbar ref={stickyElement} /> */}
+            <Navbar ref={stickyElement} />
             <main className="flex w-full h-full bg-slate-200">
-            {/* <StickyCursor stickyElement={stickyElement} heroSection='#hero' /> */}
+            <StickyCursor stickyElement={stickyElement} heroSection='#hero' />
               {children}
             </main>
           </Template>

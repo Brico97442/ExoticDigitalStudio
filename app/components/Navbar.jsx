@@ -25,12 +25,14 @@ const Navbar = forwardRef(function Index(props, ref) {
 
     return (
         <header className="flex w-full absolute h-[50px] lg:h-[150px] items-center justify-center z-[6]">
-            <nav className="flex justify-between w-full font-bold items-center px-[50px]">
+            <nav className="flex justify-between w-full font-bold items-center px-[10px] lg:px-[50px]">
                 <Magnetic>
-                    <TransitionLink href='/' label= {<Image src={logo}  alt="logo de la compagnie" width={100} height={80} />} />
+                    <div className="w-[80px] lg:h-full lg:w-full mt-[10px] flex">
+                        <TransitionLink href='/' label={<Image src={logo} alt="logo de la compagnie" width={100} height={80} />} />
+                    </div>
                 </Magnetic>
-                <ul className="lg:visible invisible items-center transition text-black text-lg">
-                    <div className={`flex gap-[70px] z-[6] transition-all duration-300 ease-in-out text-[14px] lg:text-[18px] ${isScrolled ? 'opacity-0 max-h-0 overflow-hidden' : 'opacity-100 max-h-[100px]'}`}>
+                <ul className="flex items-center transition text-black text-lg">
+                    <div id='navlink' className={`flex gap-[70px] lg:visible z-[6] transition-all duration-300 ease-in-out text-[14px] lg:text-[18px] ${isScrolled ? 'opacity-0 max-h-0 overflow-hidden' : 'opacity-100 max-h-[100px]'}`}>
                         <li className=" h-full transition ease hover:text-white hover:mix-blend-difference z-[5]">
                             <Magnetic>
                                 <TransitionLink href="/" label="Accueil" />

@@ -16,6 +16,7 @@
 
 html {
   overflow-y: hidden;
+  box-sizing: border-box;
 }
 
 :root {
@@ -67,7 +68,16 @@ body {
 
 
 
+/***Navlink*****/
+
+@media screen and (max-width: 460px) {
+  #navlink {
+    display: none;
+  }
+}
+
 /***Burger Menu ***/
+
 .burger-menu {
   display: flex;
   flex-direction: column;
@@ -327,7 +337,7 @@ h1 {
   display: flex;
   width: 50%;
 }
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 460px) {
   .card-img {
     display: flex;
     width: 100%;
