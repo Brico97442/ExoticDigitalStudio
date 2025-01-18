@@ -27,11 +27,11 @@ void main() {
 `;
 
 import React, { useRef, useEffect, useState } from 'react';
+import gsap from 'gsap';
 import { useGLTF, Text } from '@react-three/drei';
 import { useFrame, useLoader, useThree } from '@react-three/fiber';
 import { ShaderMaterial, Color } from 'three';
-import gsap from 'gsap';
-import { animateIsland, animateLocation } from './animation';
+import { animateIsland} from './animation';
 
 export default function Model({ mousePosition, island }) {
   const { nodes } = useGLTF('/media/reunion2.glb');
