@@ -103,14 +103,21 @@ export default function Home() {
   return (
     <main id="main" className="flex w-full h-full relative min-h-screen flex-col ">
       <div className="z-[1] flex w-full h-full min-h-screen flex-col relative">
-        {/* <Scene island={island} /> */}
+        <Scene island={island} />
         <div ref={heroSection} id='hero' className='h-screen sticky w-full flex flex-col  items-center top-0 z-[6]'>
-          <div className='h-screen flex flex-col items-start justify-between w-full px-[20px] lg:px-[50px] pt-[0px] lg:pt-[100px] relative bg-violet-500'>
+          <div className='h-screen flex flex-col items-start justify-between w-full px-[20px] lg:px-[50px] pt-[0px] lg:pt-[100px] relative'>
             <h2 id='hero-subtitle' className=' pointer-events-none mt-[20px] leading-none text-[1.4rem] w-full tracking-tighter lg:w-1/4 lg:text-[31px] mt-[40px] '>Offrez à vos visiteurs une expérience web captivante, parce que chaque clic mérite sa touche de magie.</h2>
             <h1 id='hero-title' className='absolute right-[20px] bottom-[20px] pointer-events-none leading-none text-[1rem] font-bold-sm tracking-tighter lg:bottom-[20px] lg:right-[50px] bg-red-500 p-1'>Reunion Island Digital Studio </h1>
-            <svg ref={arrowRef} className="ml-[10px] mb-[20vh]" width="30" height="24" viewBox="0 0 47 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            {/* <svg ref={arrowRef} className="ml-[10px] mb-[20vh]" width="30" height="24" viewBox="0 0 47 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M46.0607 13.0607C46.6464 12.4749 46.6464 11.5251 46.0607 10.9393L36.5147 1.3934C35.9289 0.807612 34.9792 0.807612 34.3934 1.3934C33.8076 1.97918 33.8076 2.92893 34.3934 3.51472L42.8787 12L34.3934 20.4853C33.8076 21.0711 33.8076 22.0208 34.3934 22.6066C34.9792 23.1924 35.9289 23.1924 36.5147 22.6066L46.0607 13.0607ZM0 13.5H45V10.5H0V13.5Z" fill="black" />
-            </svg>
+            </svg> */}
+             <Image
+                src={Arrow}
+                alt='flèche directionnelle indiquant le lien contact'
+                style={{ objectFit: 'contain' }}
+                placeholder="blur"
+                className="h-[5vh] w-auto"
+              />
             {/* <div ref={textScroll} className="absolute text-[18px] bottom-0 flex justify-center items-end fixed w-full h-screen ">
               <span className="w-[1px] bg-gradient-to-b from-black from-10% via-transparent via-30% to-[#666666] to-90% h-[8vh] absolute" >
               </span>

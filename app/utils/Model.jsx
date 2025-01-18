@@ -35,8 +35,10 @@ import { animateIsland, animateLocation } from './animation';
 
 export default function Model({ mousePosition, island }) {
   const { nodes } = useGLTF('/media/reunion2.glb');
-  const { viewport } = useThree();
+  const { viewport, size } = useThree(); // Récupère les dimensions du viewport et de l'écran
   const [initialRotation, setInitialRotation] = useState({ x: 0, y: 0 });
+  const scaleFactor = size.width < 768 ? 1.5 : 1; // Exemple : réduire pour mobile
+  const groupScale = viewport.width / 2.4 * scaleFactor;
 
   useEffect(() => {
     if (island.current) {
@@ -81,7 +83,7 @@ export default function Model({ mousePosition, island }) {
   // });
 
   return (
-    <group scale={viewport.width/2.4}>
+    <group scale={groupScale}>
       <group >
         <mesh ref={island} geometry={nodes.reunion.geometry} scale={[0.015, 0.015, 0.015]} position={[-0.08, 0.08, -0.3]} fragmentShader vertexShader wireframe >
         </mesh>
