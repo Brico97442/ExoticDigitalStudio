@@ -19,23 +19,23 @@ export default function RootLayout({ children }) {
   const stickyElement = useRef(null);
 
   return (
-    <LoadingProvider>
+    // <LoadingProvider>
       <html lang="fr">
         <head>
         </head>
         <body className={GeistSans.className}>
-          <PreLoader />
+          {/* <PreLoader /> */}
           <Template>
-            <Navbar ref={stickyElement} />
+            {/* <Navbar ref={stickyElement} /> */}
             <main className="flex w-full h-full bg-slate-200">
-            <StickyCursor stickyElement={stickyElement} heroSection='#hero' />
+            {/* <StickyCursor stickyElement={stickyElement} heroSection='#hero' /> */}
               {children}
             </main>
           </Template>
-          <Footer />
+          {/* <Footer /> */}
           {/* <CookieConsent /> */}
         </body>
       </html>
-    </LoadingProvider>
+    // </LoadingProvider>
   );
 }

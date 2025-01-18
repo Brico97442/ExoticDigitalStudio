@@ -68,10 +68,10 @@ export default function GridAnimation() {
 
     return (
         <div id='pricing' className='h-full w-full min-h-screen flex flex-col items-center justify-center z-[6]' >
-            <div ref={containerRef} className='w-full z-[1] flex flex-col justify-center h-full bg-red-600'>
+            <div ref={containerRef} className='w-full z-[1] flex flex-col justify-center h-full'>
                 <HackHover data='Nos Services' classValue='text-[32px] lg:text-[210px] tracking-tighter subpixel-antialiased' />
 
-                <div className='relative w-full h-full flex flex-col mt-[50px] bg-gray-700'>
+                <div className='relative w-full h-full flex flex-col mt-[50px]'>
                     <div className='card-img-container flex flex-col lg:flex-row gap-10 h-full my-4 bg-blue-400'>
                         <div ref={el => videoRefs.current[0] = el} className='card-img overflow-hidden'>
                             <video
@@ -144,7 +144,7 @@ export default function GridAnimation() {
                         </div>
                     </div>
                     <hr />
-                    <div className='card-img-container flex flex-col lg:flex-row gap-10 justify-end h-full overflow-hidden my-4 bg-blue-700'>
+                    <div className='card-img-container flex flex-col lg:flex-row gap-10 justify-end h-full overflow-hidden my-4'>
                         <div ref={el => videoRefs.current[3] = el} className='card-img overflow-hidden'>
                             <video
                                 src="/media/design.mp4"
