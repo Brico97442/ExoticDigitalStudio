@@ -37,14 +37,14 @@ export default function Model({ mousePosition, island }) {
   const { nodes } = useGLTF('/media/reunion2.glb');
   const { viewport, size } = useThree(); // Récupère les dimensions du viewport et de l'écran
   const [initialRotation, setInitialRotation] = useState({ x: 0, y: 0 });
-  const scaleFactor = size.width < 768 ? 1.5 : 1; // Exemple : réduire pour mobile
+  const scaleFactor = size.width < 768 ? 1.6 : 1; // Exemple : réduire pour mobile
   const groupScale = viewport.width / 2.4 * scaleFactor;
 
   useEffect(() => {
     if (island.current) {
 
       //Rotation initiale du Modèle 3D
-      const initialRotationX = 8 * (Math.PI / 180);
+      const initialRotationX = 25 * (Math.PI / 180);
       const initialRotationY = -80 * (Math.PI / 180);
 
       setInitialRotation({ x: initialRotationX, y: initialRotationY });

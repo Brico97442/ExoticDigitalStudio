@@ -117,7 +117,7 @@ export const animateHero = (arrowRef, textScroll) => {
   if (arrowRef.current && textScroll.current) {
     gsap.to(arrowRef.current, {
       rotation: 45,
-      yPercent: -200,
+      // yPercent: -200,
       ease: "power2.inOut",
       scrollTrigger: {
         trigger: "#hero",
@@ -166,14 +166,14 @@ export const animateIsland = (island) => {
     gsap.to(island.current.rotation, {
       y: -60 * (Math.PI / 180), // Demi-rotation autour de l'axe Y (ajustez selon vos besoins)
       x: 50 * (Math.PI / 180), // Demi-rotation autour de l'axe Y (ajustez selon vos besoins)
-      duration: 1,
+      duration: 4,
       ease: 'power4.inOut',
       scrollTrigger: {
         trigger: '#scene',
         start: "top top",
         end: "bottom 60%",
         scrub: 2,
-        markers: false,
+        markers: true,
       }
     });
 
@@ -181,7 +181,7 @@ export const animateIsland = (island) => {
       x: -0.8,
       y: 0.12,
       z: -0.25,
-      duration: 2,
+      duration: 4,
       ease: 'power4.inOut',
       scrollTrigger: {
         trigger: '#scene',
@@ -282,7 +282,7 @@ export const animateCounter = (counterRef) => {
 export const animateScene = (divRef) => {
   gsap.to(divRef.current, {
     yPercent: 100,
-    duration: 2,
+    duration: 4,
     ease: "power1.in",
     scrollTrigger: {
       trigger: divRef.current,

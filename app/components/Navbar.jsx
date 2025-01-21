@@ -27,7 +27,7 @@ const Navbar = forwardRef(function Index(props, ref) {
         <header className="flex w-full absolute h-[50px] lg:h-[150px] items-center justify-center z-[6]">
             <nav className="flex justify-between w-full font-bold items-center px-[10px] lg:px-[50px]">
                 <Magnetic>
-                    <div className="w-[80px] lg:h-full lg:w-full mt-[10px] flex">
+                    <div className="w-[70px] lg:h-full lg:w-full mt-[10px] flex">
                         <TransitionLink href='/' label={<Image src={logo} alt="logo de la compagnie" width={100} height={80} />} />
                     </div>
                 </Magnetic>
@@ -54,7 +54,7 @@ const Navbar = forwardRef(function Index(props, ref) {
                             </Magnetic>
                         </li>
                     </div>
-                    <li onClick={toggleAside} className={`absolute right-[50px] justify-center items-center cursor-pointer w-[35px] h-[18px] p-[30px] z-[6] ${isScrolled ? 'flex opacity-100 max-w-[100px] transition-all ease duration-1000' : 'hidden opacity-0 max-w-0 overflow-hidden  transition-all ease duration-1000'}`}>
+                    <li onClick={toggleAside} className={`absolute right-[15px] lg:right-[50px] justify-center items-center cursor-pointer w-[35px] h-[18px] p-[30px] z-[6] ${isScrolled ? 'flex opacity-100 max-w-[100px] transition-all ease duration-1000' : 'hidden opacity-0 max-w-0 overflow-hidden  transition-all ease duration-1000'}`}>
                         <div className="fixed flex justify-center w-full items-center z-[10]">
                             <Magnetic>
                                 <div className={`${isActive ? 'burger-active' : 'burger-menu'} `}>

@@ -101,10 +101,10 @@ function HorizontalScroll() {
 
     return (
         <div className='absolute h-full w-full z-[0] flex items-center justify-center overflow-hidden'>
-            <div id='hero-scroll' className='flex flex-col items-center bg-transparent uppercase tracking-tighter font-bold absolute bottom-[30vh] lg:bottom-[18vh]'>
+            <div id='hero-scroll' className='flex flex-col items-center bg-transparent uppercase tracking-tighter font-bold absolute bottom-[40vh] lg:bottom-[18vh]'>
                 <div ref={slider} className='flex relative whitespace-nowrap pointer-events-none' >
-                    <h1 ref={text1} className='absolute left-[100%] text-[14vh] lg:text-[250px] mix-blend-difference flex items-center leading-none pointer-events-none'>Studio<Dot />Creativ<Dot />Web<Dot /></h1>
-                    <h1 ref={text2} className=' text-[14vh] lg:text-[250px] flex items-center mix-blend-difference leading-none pointer-events-none'>Studio<Dot />Creativ<Dot />Web<Dot /></h1>
+                    <h1 ref={text1} className='absolute left-[100%] text-[10vh] lg:text-[250px] mix-blend-difference flex items-center leading-none pointer-events-none'>Studio<Dot />Creativ<Dot />Web<Dot /></h1>
+                    <h1 ref={text2} className=' text-[10vh] lg:text-[250px] flex items-center mix-blend-difference leading-none pointer-events-none'>Studio<Dot />Creativ<Dot />Web<Dot /></h1>
                 </div>
             </div>
         </div >
