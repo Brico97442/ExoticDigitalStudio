@@ -28,7 +28,7 @@ export default function RootLayout({ children }) {
           <Template>
             <Navbar ref={stickyElement} />
             <main className="flex w-full h-full bg-slate-200">
-            <StickyCursor stickyElement={stickyElement} heroSection='#hero' />
+            {/* <StickyCursor stickyElement={stickyElement} heroSection='#hero' /> */}
               {children}
             </main>
           </Template>

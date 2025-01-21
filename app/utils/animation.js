@@ -162,54 +162,99 @@ export const animateHero = (arrowRef, textScroll) => {
 
 export const animateIsland = (island) => {
   if (island?.current) {
-
-    gsap.to(island.current.rotation, {
-      y: -60 * (Math.PI / 180), // Demi-rotation autour de l'axe Y (ajustez selon vos besoins)
-      x: 50 * (Math.PI / 180), // Demi-rotation autour de l'axe Y (ajustez selon vos besoins)
-      duration: 2,
-      ease: 'power4.inOut',
+    // Timeline pour contrôler précisément le mouvement de l'île
+    const positionTL = gsap.timeline({
       scrollTrigger: {
-        trigger: '#scene',
-        start: "top top",
-        end: "bottom 60%",
+        trigger: "#hero",
+        endTrigger: "#about",
+        start: "center center",
+        end: "center center",
         scrub: 2,
         markers: false,
+        smoothChildTiming: true,
       }
     });
 
-    gsap.to(island.current.position, {
-      x: -0.8,
-      y: 0.12,
-      z: -0.25,
-      duration: 10,
-      ease: 'power4.inOut',
-      scrollTrigger: {
-        trigger: '#scene',
-        start: "40% top",
-        end: "bottom 60%",
-        scrub: 2,
-        markers: false,
-      }
-    });
+    // Animation de position progressive avec des points intermédiaires
+    positionTL
+      .fromTo(island.current.position,
+        {
+          x: -0.08,
+          y: 0.08,
+          z: -0.3,
+        },
+        {
+          x: -0.08,  // Premier point intermédiaire
+          y: 0.08,
+          z: -0.6,
+          duration: 0.4,
+          ease: "power1.inOut",
+        }
+      )
+      .to(island.current.position, {
+        x: -0.08,
+        y: 0.08,
+        z: -0.65,
+        duration: 0.25,
+        ease: "power1.inOut",
+      })
+      // .to(island.current.position, {
+      //   x: -0.6,  // Troisième point intermédiaire
+      //   y: 0.11,
+      //   z: -0.26,
+      //   duration: 0.25,
+      //   ease: "power1.inOut",
+      // })
+      .to(island.current.position, {
+        x: -0.8,  // Position finale
+        y: 0.12,
+        z: -0.25,
+        duration: 0.25,
+        ease: "power1.inOut",
+      });
 
-    //changer la couleur du shader material
-    gsap.to(island.current.material.uniforms.color.value, {
-      r: 254,
-      g: 254,
-      b: 254,
-      duration: 2,
-      ease: 'power4.inOut',
-      scrollTrigger: {
-        trigger: '#scene',
-        start: "40% top",
-        end: "bottom 60%",
-        scrub: 3,
-        markers: false,
-      }
-    });
 
+    gsap.fromTo(island.current.rotation,
+      {
+        y: -440 * (Math.PI / 180),
+        x: 25 * (Math.PI / 180),
+      },
+      {
+        y: -60 * (Math.PI / 180),
+        x: 50 * (Math.PI / 180),
+        ease: "power1.inOut",
+        scrollTrigger: {
+          trigger: "#hero",
+          endTrigger: "#about",
+          start: "center center",
+          end: "center center",
+          scrub: 2,
+        }
+      }
+    );
+
+    gsap.to(island.current.material.uniforms.color.value,
+      {
+        r: 254,
+        g: 254,
+        b: 254,
+        ease: "power1.inOut",
+        duration: 4,
+        delay:5,
+        scrollTrigger: {
+          trigger: "#hero",
+          endTrigger: "#about",
+          start: "center center",
+          end: "center center",
+          scrub: 2,
+          markers:false,
+          smoothChildTiming: true,
+        }
+      }
+    );
   }
-}
+};
+
 
 export const animateLocation = (location) => {
   if (location.current) {
@@ -280,19 +325,35 @@ export const animateCounter = (counterRef) => {
 };
 
 export const animateScene = (divRef) => {
-  gsap.to(divRef.current, {
-    yPercent: 100,
-    duration: 4,
-    ease: "power1.in",
+  // Timeline principale pour la scène
+  const tl = gsap.timeline({
     scrollTrigger: {
-      trigger: divRef.current,
-      start: "20% top",
-      end: "bottom 60%",
-      scrub: 1,
+      trigger: "#hero", // Commence depuis la section hero
+      endTrigger: "#about", // Termine dans la section about
+      start: "center center", // Commence au milieu de hero
+      end: "center center", // Termine au milieu de about
+      scrub: 2, // Valeur plus élevée pour une animation plus progressive
       markers: false,
+      smooth: true, // Lissage de l'animation
     }
   });
-}
+
+  // Animation progressive de la position Y
+  tl.fromTo(divRef.current, 
+    {
+      yPercent: 0,
+      opacity: 1,
+    },
+    {
+      yPercent: 100,
+      opacity: 1,
+      ease: "power1.inOut", // Courbe d'animation plus douce
+      immediateRender: true,
+    }
+  );
+};
+
+
 
 export const animateAbout = () => {
   gsap.to(["#about","#hero"] , {
@@ -303,7 +364,7 @@ export const animateAbout = () => {
       trigger: "#about",
       start: "top bottom",
       end: "center bottom",
-      scrub: 1,
+      scrub: 2,
       markers: false,
     }
   });
