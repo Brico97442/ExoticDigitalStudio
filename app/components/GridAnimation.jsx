@@ -68,7 +68,7 @@ export default function GridAnimation() {
     }
 
     return (
-        <div id='pricing' className='h-full w-full min-h-screen flex flex-col items-center justify-center z-[6]' >
+        <div id='pricing' className='h-full w-full min-h-screen flex flex-col items-center justify-center z-[6] bg-gry-200' >
             <div ref={containerRef} className='w-full z-[1] flex flex-col justify-center h-full'>
                 <HackHover data='Nos Services' classValue='text-[32px] lg:text-[210px] tracking-tighter subpixel-antialiased' />
 
@@ -87,7 +87,7 @@ export default function GridAnimation() {
                             />
                         </div>
                         <div className="flex flex-col items-start gap-6 justify-center w-full lg:w-1/2">
-                            <h2 className=' text-xl lg:text-6xl text-left w-full uppercase'>Web</h2>
+                            <h2 className=' text-xl lg:text-6xl text-left w-full uppercase tracking-tighter'>Web</h2>
                             {/* <p className='flex text-wrap tracking-tighter text-[14px] lg:text-[32px]'>Nous transformons vos idées en applications web sur mesure, performantes et adaptées à vos besoins. Nous utilisons les dernières technologies pour garantir une expérience utilisateur fluide, sécurisée et accessible sur tous les supports.</p> */}
                             <TextScroll classValue="text-black text-[14px] lg:text-[32px]" value="Nous transformons vos idées en applications web sur mesure, performantes et adaptées à vos besoins. Nous utilisons les dernières technologies pour garantir une expérience utilisateur fluide, sécurisée et accessible sur tous les supports."/>
                             <div className='flex gap-2 lg:gap-4 flex-wrap'>
@@ -112,7 +112,7 @@ export default function GridAnimation() {
                             />
                         </div>
                         <div className="flex flex-col items-start gap-6 justify-center w-full lg:w-1/2">
-                            <h2 className='text-xl lg:text-6xl uppercase'>Motion Design</h2>
+                            <h2 className='text-xl lg:text-6xl uppercase tracking-tighter'>Motion Design</h2>
                             {/* <p className='flex text-wrap text-left tracking-tighter text-[14px] lg:text-[32px]'>Donnez vie à vos support grâce à l'art du Motion Design</p> */}
                             <TextScroll classValue="text-black text-[14px] lg:text-[32px]" value="Donnez vie à vos support grâce à l'art du Motion Design"/>
                             <div className='flex gap-2 lg:gap-4 flex-wrap'>
@@ -137,7 +137,7 @@ export default function GridAnimation() {
                             />
                         </div>
                         <div className="flex flex-col items-start gap-6 justify-center w-full lg:w-1/2">
-                            <h2 className='text-xl lg:text-6xl uppercase'>SEO</h2>
+                            <h2 className='text-xl lg:text-6xl uppercase tracking-tighter'>SEO</h2>
                             {/* <p className='flex text-wrap text-left tracking-tighter text-[14px] lg:text-[32px]'>Augmentez votre visibilité sur les moteurs de recherche grâce à notre service de référencement web. Nous optimisons votre site pour qu'il se positionne en tête des résultats de recherche, attirant ainsi plus de visiteurs qualifiés.</p> */}
                             <TextScroll classValue="text-black text-[14px] lg:text-[32px]" value="Augmentez votre visibilité sur les moteurs de recherche grâce à notre service de référencement web. Nous optimisons votre site pour qu'il se positionne en tête des résultats de recherche, attirant ainsi plus de visiteurs qualifiés."/>
                             <div className='flex gap-2 lg:gap-4 flex-wrap'>
@@ -162,7 +162,7 @@ export default function GridAnimation() {
                             />
                         </div>
                         <div className="flex flex-col items-start gap-6 justify-center w-full lg:w-1/2">
-                            <h2 className='text-xl lg:text-6xl uppercase'>Design</h2>
+                            <h2 className='text-xl lg:text-6xl uppercase tracking-tighter'>Design</h2>
                             {/* <p className='flex text-wrap text-left text-[14px] lg:text-[32px] tracking-tighter'>On mélange créativité, et une touche de magie pour que chaque pixel ait du style et chaque clic, du sens</p> */}
                             <TextScroll classValue="text-black text-[14px] lg:text-[32px]" value="On mélange créativité, et une touche de magie pour que chaque pixel ait du style et chaque clic, du sens"/>
                             <div className='flex gap-2 lg:gap-4 flex-wrap'>

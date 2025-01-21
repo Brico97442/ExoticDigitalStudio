@@ -184,8 +184,10 @@ export default function Home() {
               />
             </div>
           </Link>
-          <TextScroll classValue="mx-[10px] text-[32px]" value="Vous avez des questions ou vous souhaitez collaborer avec nous ?"></TextScroll>
-              <h2 className="mx-[10px] top-40 text-[14px] lg:text-[1rem] lg:text-[2rem] z-[1] tracking-tighter">Les grandes histoires commençent souvent par un Hey !</h2>
+          <TextScroll  style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} classValue="mx-[10px] text-[32px]" value="Vous avez des questions ou vous souhaitez collaborer avec nous ?"></TextScroll>
+              <TextReveal classValue="absolute top-[20px] left-0 w-full mx-[10px] text-[14px] lg:text-[1rem] lg:text-[2rem] z-[1] tracking-tighter"> 
+                <h2  style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} className="tracking-tighter">Les grandes histoires commençent souvent par un Hey !</h2>
+              </TextReveal>
         </div>
       </div>
 

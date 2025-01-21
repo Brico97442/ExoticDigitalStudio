@@ -6,7 +6,7 @@ import SplitType from 'split-type';
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function TextReveal({ children }) {
+export default function TextReveal({ children, classValue }) {
     const textRef = useRef(null);
 
     useEffect(() => {
@@ -23,20 +23,21 @@ export default function TextReveal({ children }) {
                     scrub: true,
                     markers: false,
                 },
-                y: `${100}vh`,
+                yPercent: 100,
+                duration: 10,
+                stagger: 0.09,
+                delay: 1,
                 opacity: 0,
                 ease: "power4.inOut",
                 visibility: "visible",
-                duration: .4,
-                stagger: 0.05,  // Adjust the stagger for smoother animation
-                delay: 0.6
+
             });
         }
     }, []);
 
     return (
-        <div className='text-scroll w-full flex items-center justify-center z-60'>
-            <div ref={textRef} className="h-full leading-none overflow-hidden"  style={{clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)"} }>
+        <div className='text-scroll w-full flex items-center justify-center tracking-tighter z-60'>
+            <div ref={textRef} className={`${classValue}h-full leading-none overflow-hidden`} style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }}>
                 {children}
             </div>
         </div>
