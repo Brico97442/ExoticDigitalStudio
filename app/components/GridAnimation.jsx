@@ -4,6 +4,7 @@ import React, { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import HackHover from './hackHoverEffect';
+import TextScroll from './TextScroll';
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -72,7 +73,7 @@ export default function GridAnimation() {
                 <HackHover data='Nos Services' classValue='text-[32px] lg:text-[210px] tracking-tighter subpixel-antialiased' />
 
                 <div className='relative w-full h-full flex flex-col mt-[10px] lg:mt-[50px]'>
-                    <div className='card-img-container flex flex-col lg:flex-row gap-10 h-full my-4 bg-blue-400'>
+                    <div className='card-img-container flex flex-col lg:flex-row gap-10 h-full my-4 '>
                         <div ref={el => videoRefs.current[0] = el} className='card-img overflow-hidden'>
                             <video
                                 src="/media/web.mp4"
@@ -87,7 +88,8 @@ export default function GridAnimation() {
                         </div>
                         <div className="flex flex-col items-start gap-6 justify-center w-full lg:w-1/2">
                             <h2 className=' text-xl lg:text-6xl text-left w-full uppercase'>Web</h2>
-                            <p className='flex text-wrap tracking-tighter text-[14px] lg:text-[20px]'>Nous transformons vos idées en applications web sur-mesure, performantes et adaptées à vos besoins. Nous utilisons les dernières technologies pour garantir une expérience utilisateur fluide, sécurisée et accessible sur tous les supports.</p>
+                            {/* <p className='flex text-wrap tracking-tighter text-[14px] lg:text-[32px]'>Nous transformons vos idées en applications web sur mesure, performantes et adaptées à vos besoins. Nous utilisons les dernières technologies pour garantir une expérience utilisateur fluide, sécurisée et accessible sur tous les supports.</p> */}
+                            <TextScroll classValue="text-black text-[14px] lg:text-[32px]" value="Nous transformons vos idées en applications web sur mesure, performantes et adaptées à vos besoins. Nous utilisons les dernières technologies pour garantir une expérience utilisateur fluide, sécurisée et accessible sur tous les supports."/>
                             <div className='flex gap-2 lg:gap-4 flex-wrap'>
                                 {tagsWeb.map((tag, index) => (
                                     <Tag key={index} text={tag} />
@@ -96,7 +98,7 @@ export default function GridAnimation() {
                         </div>
                     </div>
                     <hr />
-                    <div className='card-img-container flex flex-col lg:flex-row gap-10 h-full overflow-hidden my-4 bg-blue-500'>
+                    <div className='card-img-container flex flex-col lg:flex-row gap-10 h-full overflow-hidden my-4 '>
                         <div ref={el => videoRefs.current[1] = el} className='card-img overflow-hidden'>
                             <video
                                 src="/media/motion_design.mp4"
@@ -111,7 +113,8 @@ export default function GridAnimation() {
                         </div>
                         <div className="flex flex-col items-start gap-6 justify-center w-full lg:w-1/2">
                             <h2 className='text-xl lg:text-6xl uppercase'>Motion Design</h2>
-                            <p className='flex text-wrap text-left tracking-tighter text-[14px] lg:text-[20px]'>Donnez vie à vos support grâce à l'art du Motion Design</p>
+                            {/* <p className='flex text-wrap text-left tracking-tighter text-[14px] lg:text-[32px]'>Donnez vie à vos support grâce à l'art du Motion Design</p> */}
+                            <TextScroll classValue="text-black text-[14px] lg:text-[32px]" value="Donnez vie à vos support grâce à l'art du Motion Design"/>
                             <div className='flex gap-2 lg:gap-4 flex-wrap'>
                                 {tagsMotion.map((tag, index) => (
                                     <Tag key={index} text={tag} />
@@ -120,7 +123,7 @@ export default function GridAnimation() {
                         </div>
                     </div>
                     <hr />
-                    <div className='card-img-container flex flex-col lg:flex-row gap-10 h-full overflow-hidden my-4 bg-blue-600'>
+                    <div className='card-img-container flex flex-col lg:flex-row gap-10 h-full overflow-hidden my-4'>
                         <div ref={el => videoRefs.current[2] = el} className='card-img overflow-hidden'>
                             <video
                                 src="/media/seo.mp4"
@@ -135,7 +138,8 @@ export default function GridAnimation() {
                         </div>
                         <div className="flex flex-col items-start gap-6 justify-center w-full lg:w-1/2">
                             <h2 className='text-xl lg:text-6xl uppercase'>SEO</h2>
-                            <p className='flex text-wrap text-left tracking-tighter text-[14px] lg:text-[20px]'>Augmentez votre visibilité sur les moteurs de recherche grâce à notre service de référencement web. Nous optimisons votre site pour qu'il se positionne en tête des résultats de recherche, attirant ainsi plus de visiteurs qualifiés.</p>
+                            {/* <p className='flex text-wrap text-left tracking-tighter text-[14px] lg:text-[32px]'>Augmentez votre visibilité sur les moteurs de recherche grâce à notre service de référencement web. Nous optimisons votre site pour qu'il se positionne en tête des résultats de recherche, attirant ainsi plus de visiteurs qualifiés.</p> */}
+                            <TextScroll classValue="text-black text-[14px] lg:text-[32px]" value="Augmentez votre visibilité sur les moteurs de recherche grâce à notre service de référencement web. Nous optimisons votre site pour qu'il se positionne en tête des résultats de recherche, attirant ainsi plus de visiteurs qualifiés."/>
                             <div className='flex gap-2 lg:gap-4 flex-wrap'>
                                 {tagsSEO.map((tag, index) => (
                                     <Tag key={index} text={tag} />
@@ -159,7 +163,8 @@ export default function GridAnimation() {
                         </div>
                         <div className="flex flex-col items-start gap-6 justify-center w-full lg:w-1/2">
                             <h2 className='text-xl lg:text-6xl uppercase'>Design</h2>
-                            <p className='flex text-wrap text-left text-[14px] lg:text-[20px] tracking-tighter'>On mélange créativité, et une touche de magie pour que chaque pixel ait du style et chaque clic, du sens</p>
+                            {/* <p className='flex text-wrap text-left text-[14px] lg:text-[32px] tracking-tighter'>On mélange créativité, et une touche de magie pour que chaque pixel ait du style et chaque clic, du sens</p> */}
+                            <TextScroll classValue="text-black text-[14px] lg:text-[32px]" value="On mélange créativité, et une touche de magie pour que chaque pixel ait du style et chaque clic, du sens"/>
                             <div className='flex gap-2 lg:gap-4 flex-wrap'>
                                 {tagsDesign.map((tag, index) => (
                                     <Tag key={index} text={tag} />

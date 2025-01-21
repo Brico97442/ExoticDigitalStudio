@@ -54,10 +54,10 @@ const Navbar = forwardRef(function Index(props, ref) {
                             </Magnetic>
                         </li>
                     </div>
-                    <li onClick={toggleAside} className={`absolute right-[15px] lg:right-[50px] justify-center items-center cursor-pointer w-[35px] h-[18px] p-[30px] z-[6] ${isScrolled ? 'flex opacity-100 max-w-[100px] transition-all ease duration-1000' : 'hidden opacity-0 max-w-0 overflow-hidden  transition-all ease duration-1000'}`}>
-                        <div className="fixed flex justify-center w-full items-center z-[10]">
+                    <li onClick={toggleAside} className={`absolute right-[15px] lg:right-[50px] justify-center items-center cursor-pointer w-[35px] h-[18px] p-[30px] z-[6] mix-blend-difference ${isScrolled ? 'flex opacity-100 max-w-[100px] transition-all ease duration-1000' : 'hidden opacity-0 max-w-0 overflow-hidden  transition-all ease duration-1000'}`}>
+                        <div className="fixed flex justify-center w-full items-center z-[10] mix-blend-difference">
                             <Magnetic>
-                                <div className={`${isActive ? 'burger-active' : 'burger-menu'} `}>
+                                <div className={`${isActive ? 'burger-active' : 'burger-menu'} mix-blend-difference `}>
                                     <div ref={ref} className="bounds">
                                     </div>
                                 </div>
@@ -67,7 +67,7 @@ const Navbar = forwardRef(function Index(props, ref) {
                 </ul>
                 <Aside isOpen={isActive} onClose={toggleAside} />
             </nav>
-            {isActive && <div className="h-screen fixed top-0 w-full bg-black/25 blur-[1px] z-[0] border-none transition-all duration-1000 opacity-[1]" />}
+            {isActive && <div className="h-screen fixed top-0 w-full bg-black/25 blur-[1px] z-[0] border-none transition-all duration-1000 opacity-[1] mix-blend-difference" />}
         </header>
     )
 })

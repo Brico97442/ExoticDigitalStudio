@@ -95,16 +95,16 @@ function HorizontalScroll() {
 
     const Dot = () => {
         return (
-                <div className='w-4 h-4 lg:w-10 lg:h-10 rounded-full border-white border-[2px]'></div>
+                <div className='w-4 h-4 lg:w-10 lg:h-10 rounded-full border-black border-[2px]'></div>
         )
     }
 
     return (
-        <div className=' absolute h-full w-full z-[6] flex items-center justify-center overflow-hidden'>
+        <div className='absolute h-full w-full z-[6] flex items-center justify-center overflow-hidden'>
             <div id='hero-scroll' className='flex flex-col items-center bg-transparent uppercase tracking-tighter font-bold absolute bottom-[40vh] lg:bottom-[18vh]'>
                 <div ref={slider} className='flex relative whitespace-nowrap pointer-events-none' >
-                    <h1 ref={text1} className='z-[6] absolute left-[100%] text-[10vh] lg:text-[250px] mix-blend-difference flex items-center leading-none pointer-events-none'>Studio<Dot />Creativ<Dot />Web<Dot /></h1>
-                    <h1 ref={text2} className='z-[6] text-[10vh] lg:text-[250px] flex items-center mix-blend-difference leading-none pointer-events-none'>Studio<Dot />Creativ<Dot />Web<Dot /></h1>
+                    <h1 ref={text1} className='absolute left-[100%] text-[10vh] lg:text-[250px] mix-blend-difference flex items-center leading-none pointer-events-none'>Studio<Dot />Creativ<Dot />Web<Dot /></h1>
+                    <h1 ref={text2} className=' text-[10vh] lg:text-[250px] flex items-center mix-blend-difference leading-none pointer-events-none'>Studio<Dot />Creativ<Dot />Web<Dot /></h1>
                 </div>
             </div>
         </div >

@@ -6,7 +6,7 @@ import SplitType from 'split-type';
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function TextScroll({value}) {
+export default function TextScroll({ value , classValue}) {
     const textRefs = useRef([]);
 
     useEffect(() => {
@@ -44,9 +44,9 @@ export default function TextScroll({value}) {
     }, []);
 
     return (
-        <div className='text-scroll w-3/4 flex overflow-hidden z-60'>
+        <div className='text-scroll flex overflow-hidden z-60'>
             <div>
-                <h1 ref={el => textRefs.current[0] = el} className=" mr-[10px] lg:mr-[50px] text-target text-[36px] lg:text-[148px] tracking-tighter leading-none overflow-hidden text-white" >{value}</h1>
+                <h1 ref={el => textRefs.current[0] = el} className={`${classValue} mr-[10px] lg:mr-[50px] text-target tracking-tighter leading-none overflow-hidden`} >{value}</h1>
             </div >
         </div>
     );

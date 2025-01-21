@@ -198,13 +198,7 @@ export const animateIsland = (island) => {
         duration: 0.25,
         ease: "power1.inOut",
       })
-      // .to(island.current.position, {
-      //   x: -0.6,  // Troisième point intermédiaire
-      //   y: 0.11,
-      //   z: -0.26,
-      //   duration: 0.25,
-      //   ease: "power1.inOut",
-      // })
+
       .to(island.current.position, {
         x: -0.8,  // Position finale
         y: 0.12,
@@ -228,7 +222,7 @@ export const animateIsland = (island) => {
           endTrigger: "#about",
           start: "center center",
           end: "center center",
-          scrub: 2,
+          scrub: 2.5,
         }
       }
     );
@@ -244,7 +238,7 @@ export const animateIsland = (island) => {
         scrollTrigger: {
           trigger: "#hero",
           endTrigger: "#about",
-          start: "center center",
+          start: "bottom center",
           end: "center center",
           scrub: 2,
           markers:false,
@@ -351,6 +345,18 @@ export const animateScene = (divRef) => {
       immediateRender: true,
     }
   );
+  // gsap.to("#scene" , {
+  //   backgroundColor: "#000",
+  //   duration: 0.2,
+  //   ease: "power1.in",
+  //   scrollTrigger: {
+  //     trigger: "#about",
+  //     start: "top bottom",
+  //     end: "center bottom",
+  //     scrub: 1,
+  //     markers: true,
+  //   }
+  // });
 };
 
 
@@ -358,13 +364,13 @@ export const animateScene = (divRef) => {
 export const animateAbout = () => {
   gsap.to(["#about","#hero"] , {
     backgroundColor: "#000",
-    duration: 0.4,
+    duration: 0.2,
     ease: "power1.in",
     scrollTrigger: {
       trigger: "#about",
       start: "top bottom",
       end: "center bottom",
-      scrub: 2,
+      scrub: 1,
       markers: false,
     }
   });

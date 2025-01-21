@@ -103,7 +103,7 @@ export default function Home() {
   return (
     <main id="main" className="flex w-full h-full relative min-h-screen flex-col ">
       <div className="z-[1] flex w-full h-full min-h-screen flex-col relative">
-        <div ref={heroSection} id='hero' className='h-screen text-white sticky w-full flex flex-col bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-[#B5B0B0]/50 to-[#535353]/50 items-center top-0 z-[6]'>
+        <div ref={heroSection} id='hero' className='h-screen sticky w-full flex flex-col items-center top-0 z-[6]'>
           <Scene island={island} />
           <div className='h-screen flex flex-col items-start justify-between w-full px-[10px] lg:px-[50px] pt-[20px] lg:pt-[100px] relative'>
             <h2 id='hero-subtitle' className=' pointer-events-none mt-[98px] leading-none text-[24px] w-5/6 tracking-tighter lg:w-1/4 lg:text-[31px] lg:mt-[83px] '>Offrez à vos visiteurs une expérience web captivante, parce que chaque clic mérite sa touche de magie.</h2>
@@ -116,7 +116,7 @@ export default function Home() {
               alt='flèche directionnelle indiquant le lien contact'
               style={{ objectFit: 'contain' }}
               placeholder="blur"
-              className="h-[5vh] w-auto mt-[180px]"
+              className="absolute bottom-[10vh] h-[5vh] w-auto mt-[0px]"
             />
             {/* <div ref={textScroll} className="absolute text-[18px] bottom-0 flex justify-center items-end fixed w-full h-screen ">
               <span className="w-[1px] bg-gradient-to-b from-black from-10% via-transparent via-30% to-[#666666] to-90% h-[8vh] absolute" >
@@ -133,15 +133,15 @@ export default function Home() {
           </div>
           <HorizontalScroll />
         </div>
-        <div id="about" ref={aboutRef} className="sticky top-0 h-screen px-[10px] py-[50px] lg:px-[50px] lg:py-[50px] flex flex-col justify-center z-[2] ">
-          <div className=" flex flex-col w-full h-full">
-            <div className='h-full flex flex-col justify-between z-[4]'>
-              {/* <HackHover data='Qui sommes nous ?' classValue='text-[120px] uppercase' /> */}
-              <h1 id="about-title" className="text-[48px] leading-none tracking-tighter  z-[4] lg:text-[210px] ">Qui sommes <br />nous ?</h1>
+        <div id="about" ref={aboutRef} className="sticky top-0 h-[100vh] px-[10px] py-[50px] lg:px-[50px] lg:py-[50px] flex flex-col justify-center z-[5] ">
+          <div className=" flex flex-col w-full h-full z-[6]">
+            <div className='h-full flex flex-col justify-between z-[6]'>
+              <HackHover id="about-title" data='Qui sommes nous ?' classValue='absolute top-[10px] lg:top-[50px] z-[7] text-white text-[48px] lg:text-[180px]'/>
+              {/* <h1  className="text-[48px] leading-none tracking-tighter  z-[4] lg:text-[210px] ">Qui sommes <br />nous ?</h1> */}
               <div className="w-full flex justify-end">
                 <p ref={targetRef} id='target-text' className='pointer-events-none overflow-hidden tracking-tighter w-4/6 h-full  text-[16px] lg:text-[31px] lg:w-1/2 text-right'>
-                  Exotik Digital Studio est un studio de design et de création de produits digital basée à l'ile de la Réunion
-                  spécialisé dans la création de site internet moderne, qui place l'utilisateur au cœur d'une expérience unique axée sur l'UI, l'UX.
+                  Exotik Digital Studio est une agence web basée à l'ile de la Réunion
+                  spécialisé dans la  <strong> création de site internet moderne</strong>, qui place l'utilisateur au cœur d'une expérience unique.
                 </p>
               </div>
               <div className="bottom-0 left-0 leading-none w-full text-left">
@@ -153,38 +153,39 @@ export default function Home() {
         {/* <HorizontalScrollReverse /> */}
         <div className="w-full pt-20 bg-black overflow-hidden">
           <div className="flex justify-end leading-none w-full text-right">
-            <TextScroll value="Changer votre vision du web moderne" />
+            <TextScroll className='flex w-3/4' value="Changer votre vision du web moderne" />
           </div>
           <Hero2 />
         </div>
         <div className="z-[1] flex justify-center py-[20px] lg:py-[80px] px-[20px] lg:px-[50px]">
           <GridAnimation />
         </div>
-        <div id="contact" className="W-full py-[50px] px-[50px] flex items-center h-screen w-full relative ">
-          <Link href="/contact" className="flex justify-between items-center w-full relative group" style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }}>
-            {/* <svg width="164" height="165" viewBox="0 0 164 165" fill="none" xmlns="http://www.w3.org/2000/svg" id="left-arrow" className="absolute left-0 -translate-x-full group-hover:translate-x-[0px] transition-all duration-500 ">
-              <path d="M0.741753 91.6101L1.04884 71.0174L124.605 72.86L68.8197 15.3855L83.6586 0.982649L163.99 83.7459L81.2264 164.077L66.8236 149.238L124.298 93.4527L0.741753 91.6101Z" fill="black" />
-            </svg> */}
-            {/* <Image
+        <div id="contact" className="W-full y-[10px] lg:py-[50px] px-[0px] flex flex-col items-left
+          h-[70vh] justify-between w-full relative bg-purple-500">
+          <Link href="/contact" className="flex justify-between mt-[10px] items-center w-full relative group" style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }}>
+            <div className="flex justify-between items-center w-full relative group">
+              <Image
                 src={Arrow}
                 alt='flèche directionnelle indiquant le lien contact'
                 style={{ objectFit: 'contain' }}
                 placeholder="blur"
                 className="absolute right-0 group-hover:translate-x-full transition-all duration-500"
-              /> */}
-            {/* <HackHover data='CONTACT' classValue='text-[28px] lg:text-[210px] leading-none text-black text-left group-hover:translate-x-[170px] transition-all duration-500' /> */}
-            {/* <svg width="164" height="165" viewBox="0 0 164 165" fill="none" xmlns="http://www.w3.org/2000/svg" id="right-arrow" className="absolute right-0 group-hover:translate-x-full transition-all duration-500 ">
+              />
+              <HackHover data='CONTACT' classValue='text-[32px] mx-[10px] lg:text-[210px] leading-none text-black text-left group-hover:translate-x-[170px] transition-all duration-500' />
+              {/* <svg width="164" height="165" viewBox="0 0 164 165" fill="none" xmlns="http://www.w3.org/2000/svg" id="right-arrow" className="absolute right-0 group-hover:translate-x-full transition-all duration-500 ">
               <path d="M0.741753 91.6101L1.04884 71.0174L124.605 72.86L68.8197 15.3855L83.6586 0.982649L163.99 83.7459L81.2264 164.077L66.8236 149.238L124.298 93.4527L0.741753 91.6101Z" fill="black" />
-            </svg> */}
-            {/* <Image
+              </svg> */}
+              <Image
                 src={Arrow}
                 alt='flèche directionnelle indiquant le lien contact'
                 style={{ objectFit: 'contain' }}
                 placeholder="blur"
                 className="absolute -left-[170px] group-hover:translate-x-[170px] transition-all duration-500 "
-              /> */}
+              />
+            </div>
           </Link>
-          {/* <h2 className="absolute right-[50px] top-40 text-[0.5em] lg:text-[2em] w-1/4 text-right z-[1] tracking-tighter">"Les grandes histoires commençent souvent par un Hey!"</h2> */}
+              <h3 className="mx-[10px] text-[20px] lg:text-[1.2rem]">Vous avez des questions ou vous souhaitez collaborer avec nous ?</h3>
+              <h2 className=" mx-[10px] top-40 text-[14px] lg:text-[1rem] lg:text-[2rem] z-[1] tracking-tighter">Les grandes histoires commençent souvent par un Hey !</h2>
         </div>
       </div>
 
