@@ -184,8 +184,8 @@ export default function Home() {
               />
             </div>
           </Link>
-              <h3 className="mx-[10px] text-[20px] lg:text-[1.2rem]">Vous avez des questions ou vous souhaitez collaborer avec nous ?</h3>
-              <h2 className=" mx-[10px] top-40 text-[14px] lg:text-[1rem] lg:text-[2rem] z-[1] tracking-tighter">Les grandes histoires commençent souvent par un Hey !</h2>
+          <TextScroll classValue="mx-[10px] text-[32px]" value="Vous avez des questions ou vous souhaitez collaborer avec nous ?"></TextScroll>
+              <h2 className="mx-[10px] top-40 text-[14px] lg:text-[1rem] lg:text-[2rem] z-[1] tracking-tighter">Les grandes histoires commençent souvent par un Hey !</h2>
         </div>
       </div>
 

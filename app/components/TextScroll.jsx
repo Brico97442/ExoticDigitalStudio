@@ -33,7 +33,7 @@ export default function TextScroll({ value , classValue}) {
                     scrub: 5,
                     duration: 10,
                     stagger: 0.09,
-                    delay: 0.7
+                    delay: 1
                 });
             }
         });
