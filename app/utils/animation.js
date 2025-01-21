@@ -166,14 +166,14 @@ export const animateIsland = (island) => {
     gsap.to(island.current.rotation, {
       y: -60 * (Math.PI / 180), // Demi-rotation autour de l'axe Y (ajustez selon vos besoins)
       x: 50 * (Math.PI / 180), // Demi-rotation autour de l'axe Y (ajustez selon vos besoins)
-      duration: 4,
+      duration: 2,
       ease: 'power4.inOut',
       scrollTrigger: {
         trigger: '#scene',
         start: "top top",
         end: "bottom 60%",
         scrub: 2,
-        markers: true,
+        markers: false,
       }
     });
 
@@ -181,7 +181,7 @@ export const animateIsland = (island) => {
       x: -0.8,
       y: 0.12,
       z: -0.25,
-      duration: 4,
+      duration: 10,
       ease: 'power4.inOut',
       scrollTrigger: {
         trigger: '#scene',

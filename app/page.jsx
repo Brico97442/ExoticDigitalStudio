@@ -107,7 +107,7 @@ export default function Home() {
         <div ref={heroSection} id='hero' className='h-screen sticky w-full flex flex-col  items-center top-0 z-[6]'>
           <div className='h-screen flex flex-col items-start justify-between w-full px-[10px] lg:px-[50px] pt-[20px] lg:pt-[100px] relative'>
             <h2 id='hero-subtitle' className=' pointer-events-none mt-[98px] leading-none text-[24px] w-5/6 tracking-tighter lg:w-1/4 lg:text-[31px] lg:mt-[40px] '>Offrez à vos visiteurs une expérience web captivante, parce que chaque clic mérite sa touche de magie.</h2>
-            <h1 id='hero-title' className='absolute right-0 bottom-[148px] pointer-events-none leading-none text-[16px] font-bold-sm tracking-tighter lg:bottom-[20px] lg:right-[50px] bg-red-500 p-1'>Reunion Island Digital Studio </h1>
+            <h1 id='hero-title' className='absolute right-[10px] bottom-[148px] pointer-events-none leading-none text-[16px] font-bold-sm tracking-tighter lg:bottom-[20px] lg:right-[50px] bg-red-500 '>Reunion Island Digital Studio </h1>
             {/* <svg ref={arrowRef} className="ml-[10px] mb-[20vh]" width="30" height="24" viewBox="0 0 47 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M46.0607 13.0607C46.6464 12.4749 46.6464 11.5251 46.0607 10.9393L36.5147 1.3934C35.9289 0.807612 34.9792 0.807612 34.3934 1.3934C33.8076 1.97918 33.8076 2.92893 34.3934 3.51472L42.8787 12L34.3934 20.4853C33.8076 21.0711 33.8076 22.0208 34.3934 22.6066C34.9792 23.1924 35.9289 23.1924 36.5147 22.6066L46.0607 13.0607ZM0 13.5H45V10.5H0V13.5Z" fill="black" />
             </svg> */}
@@ -145,44 +145,44 @@ export default function Home() {
                 </p>
               </div>
               <div className="bottom-0 left-0 leading-none w-full text-left">
-                <p id="target-text-2" className="flex w-3/4 lg:w-1/2 h-full justify-center text-[18px] lg:text-[48px] text-left pointer-events-none">Nous accompagnons ceux et celles qui veulent se démarquer et qui oses asssumer leur différence</p>
+                <p id="target-text-2" className="flex w-3/4 lg:w-3/4 h-full justify-center text-[24px] lg:text-[48px] text-left pointer-events-none">Nous accompagnons ceux et celles qui veulent se démarquer et qui oses asssumer leur différence</p>
               </div>
             </div>
           </div>
         </div>
         {/* <HorizontalScrollReverse /> */}
-        {/* <div className="w-full pt-20 bg-black overflow-hidden">
+        <div className="w-full pt-20 bg-black overflow-hidden">
           <div className="flex justify-end leading-none w-full text-right">
             <TextScroll value="Changer votre vision du web moderne" />
           </div>
           <Hero2 />
-        </div> */}
-        {/* <div className="z-[1] flex justify-center py-[20px] lg:py-[80px] px-[20px] lg:px-[50px]">
+        </div>
+        <div className="z-[1] flex justify-center py-[20px] lg:py-[80px] px-[20px] lg:px-[50px]">
           <GridAnimation />
-        </div> */}
+        </div>
         <div id="contact" className="W-full py-[50px] px-[50px] flex items-center h-screen w-full relative ">
           <Link href="/contact" className="flex justify-between items-center w-full relative group" style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }}>
             {/* <svg width="164" height="165" viewBox="0 0 164 165" fill="none" xmlns="http://www.w3.org/2000/svg" id="left-arrow" className="absolute left-0 -translate-x-full group-hover:translate-x-[0px] transition-all duration-500 ">
               <path d="M0.741753 91.6101L1.04884 71.0174L124.605 72.86L68.8197 15.3855L83.6586 0.982649L163.99 83.7459L81.2264 164.077L66.8236 149.238L124.298 93.4527L0.741753 91.6101Z" fill="black" />
             </svg> */}
-            {/* <Image
+            <Image
                 src={Arrow}
                 alt='flèche directionnelle indiquant le lien contact'
                 style={{ objectFit: 'contain' }}
                 placeholder="blur"
                 className="absolute right-0 group-hover:translate-x-full transition-all duration-500"
-              /> */}
-            {/* <HackHover data='CONTACT' classValue='text-[28px] lg:text-[210px] leading-none text-black text-left group-hover:translate-x-[170px] transition-all duration-500' /> */}
+              />
+            <HackHover data='CONTACT' classValue='text-[28px] lg:text-[210px] leading-none text-black text-left group-hover:translate-x-[170px] transition-all duration-500' />
             {/* <svg width="164" height="165" viewBox="0 0 164 165" fill="none" xmlns="http://www.w3.org/2000/svg" id="right-arrow" className="absolute right-0 group-hover:translate-x-full transition-all duration-500 ">
               <path d="M0.741753 91.6101L1.04884 71.0174L124.605 72.86L68.8197 15.3855L83.6586 0.982649L163.99 83.7459L81.2264 164.077L66.8236 149.238L124.298 93.4527L0.741753 91.6101Z" fill="black" />
             </svg> */}
-            {/* <Image
+            <Image
                 src={Arrow}
                 alt='flèche directionnelle indiquant le lien contact'
                 style={{ objectFit: 'contain' }}
                 placeholder="blur"
                 className="absolute -left-[170px] group-hover:translate-x-[170px] transition-all duration-500 "
-              /> */}
+              />
           </Link>
           {/* <h2 className="absolute right-[50px] top-40 text-[0.5em] lg:text-[2em] w-1/4 text-right z-[1] tracking-tighter">"Les grandes histoires commençent souvent par un Hey!"</h2> */}
         </div>

@@ -219,6 +219,7 @@ body {
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
 }
 
+
 .hero p {
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
 }
@@ -228,6 +229,12 @@ h1 {
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
 }
 
+@media screen and (max-width: 460px) {
+  h1 {
+    line-height: 8vh;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  }
+}
 .text-target .word{
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
 }
