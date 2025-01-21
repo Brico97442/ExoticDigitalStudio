@@ -19,9 +19,9 @@ export default function TextScroll({ value , classValue}) {
                 gsap.from(splitText.chars, {
                     scrollTrigger: {
                         trigger: textRef,
-                        start: 'center 90%',
+                        start: 'center 80%',
                         end: 'center 60%',
-                        scrub: 2,
+                        scrub: 3,
                         markers: false,
                         // once: true,
                         // toggleActions:"play none none none"
@@ -31,7 +31,7 @@ export default function TextScroll({ value , classValue}) {
                     ease: "power4.inOut",
                     visibility: "visible",
                     scrub: 5,
-                    duration: 7,
+                    duration: 10,
                     stagger: 0.09,
                     delay: 0.7
                 });
