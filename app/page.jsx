@@ -39,6 +39,7 @@ export default function Home() {
 
 
   useEffect(() => {
+    
     const lenis = new Lenis();
     function raf(time) {
       lenis.raf(time);
@@ -47,7 +48,7 @@ export default function Home() {
     requestAnimationFrame(raf);
 
     animateAbout()
-    animateAboutText()
+    // animateAboutText()
 
 
 
@@ -103,10 +104,10 @@ export default function Home() {
   return (
     <main id="main" className="flex w-full h-full relative min-h-screen flex-col ">
       <div className="z-[1] flex w-full h-full min-h-screen flex-col relative">
-        <div ref={heroSection} id='hero' className='h-screen sticky w-full flex flex-col items-center top-0 z-[6]'>
+        <div ref={heroSection} id='hero' className='h-screen sticky w-full flex flex-col items-center top-0'>
           <Scene island={island} />
           <div className='h-screen flex flex-col items-start justify-between w-full px-[10px] lg:px-[50px] pt-[20px] lg:pt-[100px] relative'>
-            <TextReveal classValue="h-full w-full flex">
+            <TextReveal classValue="h-full w-full flex z-[10]">
               <h2 id='hero-subtitle' className='pointer-events-none mt-[98px] leading-none text-[24px] tracking-tighter lg:w-1/4 lg:text-[31px] lg:mt-[83px] '>Offrez à vos visiteurs une expérience web captivante, parce que chaque clic mérite sa touche de magie.</h2>
             </TextReveal>
             <h1 id='hero-title' className='absolute right-[10px] bottom-[148px] pointer-events-none leading-none text-[16px] font-bold-sm tracking-tighter lg:bottom-[20px] lg:right-[50px] bg-red-500 '>Reunion Island Digital Studio </h1>
@@ -141,12 +142,12 @@ export default function Home() {
           <div className=" flex flex-col w-full h-full z-[6]">
             <div className='h-full flex flex-col justify-between z-[6]'>
               {/* <TextReveal staggerValue={"0.08"} classValue="z-[7] text-white text-left"> */}
-                <HackHover id="about-title" data='Qui sommes nous ?' classValue='z-[7] text-[48px] lg:text-[180px]' />
+                <HackHover id="about-title" data='Qui sommes nous ?' classValue='w-full h-full text-[48px] lg:text-[180px]'/>
               {/* </TextReveal> */}
               {/* <h1  className="text-[48px] leading-none tracking-tighter  z-[4] lg:text-[210px] ">Qui sommes <br />nous ?</h1> */}
               <div className="w-full flex justify-end">
                 <TextReveal staggerValue={"0"} classValue="flex w-full justify-end text-right">
-                  <p ref={targetRef} className='p-6 w-full absolute pointer-events-none overflow-hidden text-right lg:text-left tracking-tighter h-full  text-[16px] lg:text-[31px] lg:w-1/2 '>
+                  <p ref={targetRef} className='w-full h-full absolute pointer-events-none overflow-hidden text-right lg:text-left tracking-tighter h-full text-[16px] lg:text-[31px] lg:w-1/2 '>
                     Exotik Digital Studio est une agence web basée à l'ile de la Réunion
                     spécialisé dans la  <strong> création de site internet moderne</strong>, qui place l'utilisateur au cœur d'une expérience unique.
                   </p>

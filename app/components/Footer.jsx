@@ -26,14 +26,14 @@ function Footer() {
             <div className='fixed bottom-0 flex flex-col h-[50vh] text-white justify-between w-full m-auto text-white px-[10px] lg:px-[50px]'>
                 <Image src={logo} alt="logo de l'entreprise Exotik Digital Studio" width={100} height={80} className='z-[4] mt-[10px] lg:mt-[50px] mb-[10px] lg:mb-[20px]' />
 
-                <div className='z-[4] w-full flex flex-col-reverse lg:flex-row relative'>
-                    <div className='z-[4] w-full text-[1rem] lg:text-[20px]'>
+                <div className='z-[4] w-full flex justify-center flex-col-reverse lg:flex-row relative'>
+                    <div className='flex flex-col z-[4] w-full text-[1rem] lg:text-[20px] gap-[5px]'>
                         <p >Ile de la Réunion</p>
                         <p >Le Tampon</p>
                         <h2 >Politique de confidentialité</h2>
                         <h2>Mention Légales</h2>
                     </div>
-                    <div className='z-[4] flex flex-col gap-10 '>
+                    <div className='z-[4] flex flex-col gap-[5px] '>
                         <Magnetic>
                             <button id='copy-text-btn'
                                 className='flex gap-6 leading-none text-[1rem] lg:text-[20px] text-white cursor-pointer transition ease-in-out hover:border-r hover:border-t z-[4] ' onClick={copyText} value="ExotikDigitalStudio@outlook.com" >
