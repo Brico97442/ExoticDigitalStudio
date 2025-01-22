@@ -106,7 +106,9 @@ export default function Home() {
         <div ref={heroSection} id='hero' className='h-screen sticky w-full flex flex-col items-center top-0 z-[6]'>
           <Scene island={island} />
           <div className='h-screen flex flex-col items-start justify-between w-full px-[10px] lg:px-[50px] pt-[20px] lg:pt-[100px] relative'>
-            <h2 id='hero-subtitle' className=' pointer-events-none mt-[98px] leading-none text-[24px] w-5/6 tracking-tighter lg:w-1/4 lg:text-[31px] lg:mt-[83px] '>Offrez à vos visiteurs une expérience web captivante, parce que chaque clic mérite sa touche de magie.</h2>
+            <TextReveal classValue="h-full w-full flex">
+              <h2 id='hero-subtitle' className='pointer-events-none mt-[98px] leading-none text-[24px] tracking-tighter lg:w-1/4 lg:text-[31px] lg:mt-[83px] '>Offrez à vos visiteurs une expérience web captivante, parce que chaque clic mérite sa touche de magie.</h2>
+            </TextReveal>
             <h1 id='hero-title' className='absolute right-[10px] bottom-[148px] pointer-events-none leading-none text-[16px] font-bold-sm tracking-tighter lg:bottom-[20px] lg:right-[50px] bg-red-500 '>Reunion Island Digital Studio </h1>
             {/* <svg ref={arrowRef} className="ml-[10px] mb-[20vh]" width="30" height="24" viewBox="0 0 47 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M46.0607 13.0607C46.6464 12.4749 46.6464 11.5251 46.0607 10.9393L36.5147 1.3934C35.9289 0.807612 34.9792 0.807612 34.3934 1.3934C33.8076 1.97918 33.8076 2.92893 34.3934 3.51472L42.8787 12L34.3934 20.4853C33.8076 21.0711 33.8076 22.0208 34.3934 22.6066C34.9792 23.1924 35.9289 23.1924 36.5147 22.6066L46.0607 13.0607ZM0 13.5H45V10.5H0V13.5Z" fill="black" />
@@ -133,16 +135,22 @@ export default function Home() {
           </div>
           <HorizontalScroll />
         </div>
-        <div id="about" ref={aboutRef} className="sticky top-0 h-[100vh] px-[10px] py-[50px] lg:px-[50px] lg:py-[50px] flex flex-col justify-center z-[5] ">
+
+        
+        <div id="about" ref={aboutRef} className="sticky top-0 h-[100vh] px-[10px] py-[50px] lg:px-[50px] lg:py-[50px] flex flex-col justify-center z-[5] text-white">
           <div className=" flex flex-col w-full h-full z-[6]">
             <div className='h-full flex flex-col justify-between z-[6]'>
-              <HackHover id="about-title" data='Qui sommes nous ?' classValue='absolute top-[10px] lg:top-[50px] z-[7] text-white text-[48px] lg:text-[180px]'/>
+              {/* <TextReveal staggerValue={"0.08"} classValue="z-[7] text-white text-left"> */}
+                <HackHover id="about-title" data='Qui sommes nous ?' classValue='z-[7] text-[48px] lg:text-[180px]' />
+              {/* </TextReveal> */}
               {/* <h1  className="text-[48px] leading-none tracking-tighter  z-[4] lg:text-[210px] ">Qui sommes <br />nous ?</h1> */}
               <div className="w-full flex justify-end">
-                <p ref={targetRef} id='target-text' className='pointer-events-none overflow-hidden tracking-tighter w-4/6 h-full  text-[16px] lg:text-[31px] lg:w-1/2 text-right'>
-                  Exotik Digital Studio est une agence web basée à l'ile de la Réunion
-                  spécialisé dans la  <strong> création de site internet moderne</strong>, qui place l'utilisateur au cœur d'une expérience unique.
-                </p>
+                <TextReveal staggerValue={"0"} classValue="flex w-full justify-end text-right">
+                  <p ref={targetRef} className='p-6 w-full absolute pointer-events-none overflow-hidden text-right lg:text-left tracking-tighter h-full  text-[16px] lg:text-[31px] lg:w-1/2 '>
+                    Exotik Digital Studio est une agence web basée à l'ile de la Réunion
+                    spécialisé dans la  <strong> création de site internet moderne</strong>, qui place l'utilisateur au cœur d'une expérience unique.
+                  </p>
+                </TextReveal>
               </div>
               <div className="bottom-0 left-0 leading-none w-full text-left">
                 <p id="target-text-2" className="flex w-3/4 lg:w-3/4 h-full justify-center text-[24px] lg:text-[48px] text-left pointer-events-none">Nous accompagnons ceux et celles qui veulent se démarquer et qui oses asssumer leur différence</p>
@@ -158,7 +166,7 @@ export default function Home() {
           <Hero2 />
         </div>
         <div className="z-[1] flex justify-center py-[20px] lg:py-[80px] px-[20px] lg:px-[50px]">
-          <GridAnimation />
+          {/* <GridAnimation /> */}
         </div>
         <div id="contact" className="W-full y-[10px] lg:py-[50px] px-[0px] flex flex-col items-left
           h-[70vh] justify-between w-full relative bg-purple-500">
@@ -184,10 +192,10 @@ export default function Home() {
               />
             </div>
           </Link>
-          <TextScroll  style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} classValue="mx-[10px] text-[32px]" value="Vous avez des questions ou vous souhaitez collaborer avec nous ?"></TextScroll>
-              <TextReveal classValue="absolute top-[20px] left-0 w-full mx-[10px] text-[14px] lg:text-[1rem] lg:text-[2rem] z-[1] tracking-tighter"> 
-                <h2  style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} className="tracking-tighter">Les grandes histoires commençent souvent par un Hey !</h2>
-              </TextReveal>
+          <TextScroll style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} classValue="cursor-pointer mx-[10px] text-[32px]" value="Vous avez des questions ou vous souhaitez collaborer avec nous ?"></TextScroll>
+          <TextReveal classValue="w-full mx-[10px] text-[14px] lg:text-[1rem] lg:text-[2rem] z-[1] tracking-tighter">
+            <h2 style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} className="tracking-tighter">Les grandes histoires commençent souvent par un Hey !</h2>
+          </TextReveal>
         </div>
       </div>
 

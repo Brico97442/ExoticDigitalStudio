@@ -5,6 +5,7 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import HackHover from './hackHoverEffect';
 import TextScroll from './TextScroll';
+import TextReveal from './TextReveal';
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -70,7 +71,9 @@ export default function GridAnimation() {
     return (
         <div id='pricing' className='h-full w-full min-h-screen flex flex-col items-center justify-center z-[6] bg-gry-200' >
             <div ref={containerRef} className='w-full z-[1] flex flex-col justify-center h-full'>
+                <TextReveal classValue="w-full mx-[10px] text-[14px] lg:text-[1rem] lg:text-[2rem] z-[0] tracking-tighter">
                 <HackHover data='Nos Services' classValue='text-[32px] lg:text-[210px] tracking-tighter subpixel-antialiased' />
+                </TextReveal>
 
                 <div className='relative w-full h-full flex flex-col mt-[10px] lg:mt-[50px]'>
                     <div className='card-img-container flex flex-col lg:flex-row gap-10 h-full my-4 '>

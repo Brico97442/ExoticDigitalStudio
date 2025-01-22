@@ -2,6 +2,7 @@
 
 import React, { useRef, useEffect} from 'react'
 import gsap from 'gsap';
+import TextReveal from './TextReveal';
 
 export default function HackHover({data,classValue,iterationTiming}) {
     const textRef = useRef(null);
@@ -47,6 +48,7 @@ export default function HackHover({data,classValue,iterationTiming}) {
     return (
 
             <div>
+                <TextReveal staggerValue={"0.08"} classValue="flex w-full justify-end text-right">
                 <h1
                     ref={textRef}
                     className={`${classValue} tracking-tighter border-box `}
@@ -54,6 +56,8 @@ export default function HackHover({data,classValue,iterationTiming}) {
                 >
                     {data}
                 </h1>
+                </TextReveal>
+               
             </div>
     );
 }

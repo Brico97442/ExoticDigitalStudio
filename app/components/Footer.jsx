@@ -4,6 +4,7 @@ import logo from "../../assets/LogoExoticDigitalStudioWhiteVectorised.webp"
 // Importez votre SVG comme ReactComponent si vous utilisez un bundler comme webpack ou directement comme source.
 import Lines from './Lines'
 import Magnetic from '../utils/Magnetic'
+import TextReveal from './TextReveal'
 
 function Footer() {
     const [isCopied, setIsCopied] = useState(false);
@@ -19,23 +20,23 @@ function Footer() {
 
 
     return (
-        <footer id='footer' className='flex h-[70vh] justify-center items-center text-white w-full bg-black  z-[2] relative '
+        <footer id='footer' className='flex h-[50vh]  justify-center items-center text-white w-full bg-black  z-[2] relative '
             style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }}>
 
-            <div className='fixed bottom-0 flex flex-col h-[70vh] text-white justify-start w-[90vw] m-auto text-white py-20'>
-                <Image src={logo} alt="logo de l'entreprise Exotik Digital Studio" width={100} height={80} className='z-[4]' />
+            <div className='fixed bottom-0 flex flex-col h-[50vh] text-white justify-between w-full m-auto text-white px-[10px] lg:px-[50px]'>
+                <Image src={logo} alt="logo de l'entreprise Exotik Digital Studio" width={100} height={80} className='z-[4] mt-[10px] lg:mt-[50px] mb-[10px] lg:mb-[20px]' />
 
-                <div className='z-[4] flex justify-between mt-6 relative'>
-                    <div className='z-[4] w-full text-[1.1rem] lg:text-[2em]'>
+                <div className='z-[4] w-full flex flex-col-reverse lg:flex-row relative'>
+                    <div className='z-[4] w-full text-[1rem] lg:text-[20px]'>
                         <p >Ile de la Réunion</p>
                         <p >Le Tampon</p>
-                        <h2 className='mt-16'>Politique de confidentialité</h2>
-                        <h2 className='z-[4]'>Mention Légales</h2>
+                        <h2 >Politique de confidentialité</h2>
+                        <h2>Mention Légales</h2>
                     </div>
-                    <div className='z-[4] flex flex-col gap-10'>
+                    <div className='z-[4] flex flex-col gap-10 '>
                         <Magnetic>
                             <button id='copy-text-btn'
-                                className='flex gap-6 leading-none text-[1.1rem] lg:text-[2em] text-white cursor-pointer transition ease-in-out hover:border-r hover:border-t z-[4] ' onClick={copyText} value="ExotikDigitalStudio@outlook.com" >
+                                className='flex gap-6 leading-none text-[1rem] lg:text-[20px] text-white cursor-pointer transition ease-in-out hover:border-r hover:border-t z-[4] ' onClick={copyText} value="ExotikDigitalStudio@outlook.com" >
                                 ExotikDigitalStudio@outlook.com
                             </button>
                         </Magnetic>
@@ -45,17 +46,13 @@ function Footer() {
                         )}
                         <Magnetic>
                             <div className='w-full'>
-                                <p className='flex text-[14px] lg:text-[2em] w-full cursor-pointer'>+ 262 692 58 59 99</p>
+                                <p className='flex text-[1rem] lg:text-[20px] w-full cursor-pointer'>+ 262 692 58 59 99</p>
                             </div>
                         </Magnetic>
                     </div>
 
                 </div>
-                <div className='w-full z-[4] w-full justify-center gap-6 mt-10'>
-                    <div className=" w-full flex flex-col justify-center mb-20" >
-                        {/* <Lines strokeColor="stroke-white"/> */}
-                        <hr />
-                    </div>
+                <div className='w-full z-[4] w-full justify-center gap-6 mt-10 mb-[20px] lg:bm-[50px]'>
                     <div className='flex z-[4] w-full justify-center items-center gap-6 '>
                         <p className='z-[4] border-r border-b pr-2 border-white'>Retrouvez nous sur</p>
                         <div className='flex gap-6'>

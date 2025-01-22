@@ -6,7 +6,7 @@ import SplitType from 'split-type';
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function TextReveal({ children, classValue }) {
+export default function TextReveal({ children, classValue, staggerValue}) {
     const textRef = useRef(null);
 
     useEffect(() => {
@@ -18,25 +18,25 @@ export default function TextReveal({ children, classValue }) {
             gsap.from(splitText.chars, {
                 scrollTrigger: {
                     trigger: textRef.current,
-                    start: 'top 80%',
-                    end: 'top 25%',
-                    scrub: true,
+                    start: 'center 70%',
+                    end: 'top 40%',
+                    scrub: 3,
                     markers: false,
+                    once:true,
                 },
                 yPercent: 100,
+                stagger: staggerValue,
                 duration: 10,
-                stagger: 0.09,
-                delay: 1,
-                opacity: 0,
+                delay: 1,               
+                 opacity: 0,
                 ease: "power4.inOut",
                 visibility: "visible",
-
             });
         }
     }, []);
 
     return (
-        <div className='text-scroll w-full flex items-center justify-center tracking-tighter z-60'>
+        <div className='text-scroll w-full flex items-center tracking-tighter z-[5]'>
             <div ref={textRef} className={`${classValue}h-full leading-none overflow-hidden`} style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }}>
                 {children}
             </div>

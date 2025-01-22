@@ -250,51 +250,6 @@ export const animateIsland = (island) => {
   }
 };
 
-
-export const animateLocation = (location) => {
-  if (location.current) {
-
-    // gsap.to(location.current.rotation, {
-    //   y: 20 * (Math.PI / 180), 
-    //   scrollTrigger: {
-    //     trigger: '#scene',
-    //     start: "top top",
-    //     end: "80% 60%",
-    //     scrub: 2,
-    //     markers: false,
-    //   }
-    // });
-
-    const tl = gsap.timeline();
-
-    // tl.fromTo(
-    //   [location.current.material],
-    //   { opacity: 0 },
-    //   {
-    //     opacity: 1,
-    //     duration: 2,
-    //     ease: "power2.In",
-    //     scrollTrigger: {
-    //       trigger: '#scene',
-    //       start: "top top",
-    //       end: "bottom 60%",
-    //       scrub: 2,
-    //       markers: false,
-    //     }
-
-    //   }
-    // );
-
-    // Nettoyage timeline 
-    return () => {
-      tl.kill();
-    };
-  }
-}
-
-// loader animation 
-
-
 //counter animation
 export const animateCounter = (counterRef) => {
   if (counterRef.current) {
@@ -378,37 +333,37 @@ export const animateAbout = () => {
 }
 
 export const animateAboutText = () => {
-  gsap.to(["#about-title", "#target-text", "#target-text-2"], {
-    color: "#fff",
-    duration: 1,
-    ease: "power1.in",
-    scrollTrigger: {
-      trigger: "#about",
-      start: "top bottom",
-      end: "bottom bottom",
-      scrub: 2,
-      markers: false,
-    }
-  });
+  // gsap.to(["#about-title", "#target-text", "#target-text-2"], {
+  //   color: "#fff",
+  //   duration: 1,
+  //   ease: "power1.in",
+  //   scrollTrigger: {
+  //     trigger: "#about",
+  //     start: "top bottom",
+  //     end: "bottom bottom",
+  //     scrub: 2,
+  //     markers: false,
+  //   }
+  // });
 
-  gsap.fromTo(["#about-title", "#target-text", "#target-text-2"], {
-    yPercent:100,
-    duration: 3,
-    ease: "power1.in",
-    opacity:0,
-  },{
-    yPercent:0,
-    duration: 3,
-    ease: "power1.in",
-    opacity:1,
-    scrollTrigger: {
-      trigger: "#about",
-      start: "top bottom",
-      end: "bottom bottom",
-      scrub: 1,
-      markers: false,
-    }
-  });
+  // gsap.fromTo(["#about-title", "#target-text", "#target-text-2"], {
+  //   yPercent:100,
+  //   duration: 3,
+  //   ease: "power1.in",
+  //   opacity:0,
+  // },{
+  //   yPercent:0,
+  //   duration: 3,
+  //   ease: "power1.in",
+  //   opacity:1,
+  //   scrollTrigger: {
+  //     trigger: "#about",
+  //     start: "top bottom",
+  //     end: "bottom bottom",
+  //     scrub: 1,
+  //     markers: false,
+  //   }
+  // });
 }
 
 

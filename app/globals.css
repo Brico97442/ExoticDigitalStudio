@@ -200,7 +200,6 @@ body {
 
 .text-scroll p {
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-  line-height: 10.6vh;
 }
 
 .pricing h1 {
@@ -213,10 +212,15 @@ body {
   line-height: 3vh;
 
 }
+
 p {
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
   line-height: 3vh;
+}
 
+p .word {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  line-height: 3vh;
 }
 
 .hero h1 {
@@ -246,7 +250,9 @@ h2 {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
   }
 }
-.text-target .word{
+
+#text-target .word{
+  line-height: 2vh;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
 }
 
