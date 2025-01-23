@@ -107,8 +107,8 @@ export default function Home() {
         <Scene island={island} />
         <div ref={heroSection} id='hero' className='h-screen sticky w-full flex flex-col items-center top-0'>
           <div className='h-screen flex flex-col items-start justify-between w-full px-[10px] lg:px-[50px] pt-[20px] lg:pt-[100px] relative'>
-            <TextReveal classValue="h-full w-full flex z-[10]">
-              <h2 id='hero-subtitle' className='pointer-events-none mt-[98px] leading-none text-[24px] tracking-tighter lg:w-1/4 lg:text-[31px] lg:mt-[83px] '>Offrez à vos visiteurs une expérience web captivante, parce que chaque clic mérite sa touche de magie.</h2>
+            <TextReveal classValue="h-full w-full flex z-[10] lg:w-1/4">
+              <h2 id='hero-subtitle' className='pointer-events-none mt-[98px] leading-none text-[24px] tracking-tighter  lg:text-[31px] lg:mt-[83px] '>Offrez à vos visiteurs une expérience web captivante, parce que chaque clic mérite sa touche de magie.</h2>
             </TextReveal>
             <h1 id='hero-title' className='absolute right-[10px] bottom-[148px] pointer-events-none leading-none text-[16px] font-bold-sm tracking-tighter lg:bottom-[20px] lg:right-[50px] bg-red-500 '>Reunion Island Digital Studio </h1>
             {/* <svg ref={arrowRef} className="ml-[10px] mb-[20vh]" width="30" height="24" viewBox="0 0 47 24" fill="none" xmlns="http://www.w3.org/2000/svg">
