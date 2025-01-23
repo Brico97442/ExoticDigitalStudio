@@ -52,7 +52,7 @@ function Footer() {
                         )}
                     </div>
                 </div>
-                    <div className='flex relative lg:absolute bottom-[0px] lg:bottom-[0px] z-[4] justify-center gap-6 bg-yellow-500'>
+                    <div className='flex relative lg:absolute bottom-[0px] lg:bottom-[50px] z-[4] justify-center gap-6 bg-yellow-500'>
                         <div className='flex z-[4] w-full justify-center items-center gap-6 '>
                             {/* <p className='z-[4] border-r border-b pr-2 border-white'>Retrouvez nous sur</p> */}
                             <div className='flex gap-6'>
