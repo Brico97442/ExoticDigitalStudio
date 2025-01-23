@@ -48,15 +48,15 @@ export default function HackHover({data,classValue,iterationTiming}) {
     return (
 
             <div>
-                <TextReveal staggerValue={"0.08"} classValue="flex w-full justify-end text-right">
+                {/* <TextReveal staggerValue={"0.08"} classValue="flex w-full justify-end text-right"> */}
                 <h1
                     ref={textRef}
-                    className={`${classValue} tracking-tighter border-box `}
+                    className={`${classValue} z-[15] tracking-tighter border-box`}
                     data-value={data}
                 >
                     {data}
                 </h1>
-                </TextReveal>
+                {/* </TextReveal> */}
                
             </div>
     );

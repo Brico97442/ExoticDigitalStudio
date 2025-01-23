@@ -235,7 +235,17 @@ p .word {
 
 
 h1 {
-  line-height: 20vh;
+  line-height: 22vh;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+}
+
+h1 .word {
+  line-height: 16vh;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+}
+
+h2 .word {
+  line-height: 16vh;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
 }
 
@@ -247,6 +257,15 @@ h2 {
 @media screen and (max-width: 460px) {
   h1 {
     line-height: 8vh;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  }
+
+  h1 .word {
+    line-height: 8vh;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  }
+  h2 .word {
+    line-height: 5vh;
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
   }
 }
@@ -471,6 +490,7 @@ footer svg {
 .text-outline {
   -webkit-text-stroke: 2px black;
 }
+
 #contact img{
   height: 100%;
 }

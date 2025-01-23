@@ -18,11 +18,11 @@ export default function TextReveal({ children, classValue, staggerValue}) {
             gsap.from(splitText.chars, {
                 scrollTrigger: {
                     trigger: textRef.current,
-                    start: 'center 70%',
-                    end: 'top 40%',
+                    start: 'top 80%',
+                    end: 'top 65%',
                     scrub: 3,
                     markers: false,
-                    once:true,
+                    // once:true,
                 },
                 yPercent: 100,
                 stagger: staggerValue,

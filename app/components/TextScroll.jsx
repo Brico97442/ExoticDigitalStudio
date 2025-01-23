@@ -46,7 +46,7 @@ export default function TextScroll({ value , classValue}) {
     return (
         <div className='text-scroll flex overflow-hidden z-60'>
             <div>
-                <h1 ref={el => textRefs.current[0] = el} className={`${classValue} mr-[10px] lg:mr-[50px] text-target tracking-tighter leading-none overflow-hidden`} >{value}</h1>
+                <p ref={el => textRefs.current[0] = el} className={`${classValue} mr-[10px] lg:mr-[50px] text-target tracking-tighter leading-none overflow-hidden`} >{value}</p>
             </div >
         </div>
     );

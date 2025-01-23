@@ -39,7 +39,7 @@ export default function Home() {
 
 
   useEffect(() => {
-    
+
     const lenis = new Lenis();
     function raf(time) {
       lenis.raf(time);
@@ -104,8 +104,8 @@ export default function Home() {
   return (
     <main id="main" className="flex w-full h-full relative min-h-screen flex-col ">
       <div className="z-[1] flex w-full h-full min-h-screen flex-col relative">
+        <Scene island={island} />
         <div ref={heroSection} id='hero' className='h-screen sticky w-full flex flex-col items-center top-0'>
-          <Scene island={island} />
           <div className='h-screen flex flex-col items-start justify-between w-full px-[10px] lg:px-[50px] pt-[20px] lg:pt-[100px] relative'>
             <TextReveal classValue="h-full w-full flex z-[10]">
               <h2 id='hero-subtitle' className='pointer-events-none mt-[98px] leading-none text-[24px] tracking-tighter lg:w-1/4 lg:text-[31px] lg:mt-[83px] '>Offrez à vos visiteurs une expérience web captivante, parce que chaque clic mérite sa touche de magie.</h2>
@@ -136,51 +136,58 @@ export default function Home() {
           </div>
           <HorizontalScroll />
         </div>
-
-        
-        <div id="about" ref={aboutRef} className="sticky top-0 h-[100vh] px-[10px] py-[50px] lg:px-[50px] lg:py-[50px] flex flex-col justify-center z-[5] text-white">
-          <div className=" flex flex-col w-full h-full z-[6]">
-            <div className='h-full flex flex-col justify-between z-[6]'>
-              {/* <TextReveal staggerValue={"0.08"} classValue="z-[7] text-white text-left"> */}
-                <HackHover id="about-title" data='Qui sommes nous ?' classValue='w-full h-full text-[48px] lg:text-[180px]'/>
-              {/* </TextReveal> */}
-              {/* <h1  className="text-[48px] leading-none tracking-tighter  z-[4] lg:text-[210px] ">Qui sommes <br />nous ?</h1> */}
+        <div id="about" ref={aboutRef} className="sticky top-0 h-[100vh] px-[10px] py-[50px] lg:px-[50px] lg:py-[50px] flex flex-col justify-center text-white">
+          <div className=" flex flex-col w-full h-full">
+            <div className='h-full flex flex-col justify-between'>
+              <TextReveal staggerValue={"0.1"} classValue="z-[7] text-white text-left text-[48px] z-[3] lg:text-[180px] leading-none">
+                {/* <HackHover id="about-title" data='Qui sommes nous ?' classValue='z-[3] w-full h-full text-[48px] z-[3] lg:text-[180px]'/> */}
+                <h1 className=" leading-none tracking-tighter z-[4] text-[48px] z-[3] lg:text-[180px]">Qui sommes <br />nous ?</h1>
+              </TextReveal>
               <div className="w-full flex justify-end">
                 <TextReveal staggerValue={"0"} classValue="flex w-full justify-end text-right">
-                  <p ref={targetRef} className='w-full h-full absolute pointer-events-none overflow-hidden text-right lg:text-left tracking-tighter h-full text-[16px] lg:text-[31px] lg:w-1/2 '>
+                  <p ref={targetRef} className='w-full h-full absolute pointer-events-none overflow-hidden text-right lg:text-left tracking-tighter h-full text-[16px] lg:text-[26px] lg:w-2/6 leading-none'>
                     Exotik Digital Studio est une agence web basée à l'ile de la Réunion
                     spécialisé dans la  <strong> création de site internet moderne</strong>, qui place l'utilisateur au cœur d'une expérience unique.
                   </p>
                 </TextReveal>
               </div>
-              <div className="bottom-0 left-0 leading-none w-full text-left">
-                <p id="target-text-2" className="flex w-3/4 lg:w-3/4 h-full justify-center text-[24px] lg:text-[48px] text-left pointer-events-none">Nous accompagnons ceux et celles qui veulent se démarquer et qui oses asssumer leur différence</p>
+              <div className="w-full text-left">
+                <TextReveal staggerValue={"0"} classValue="flex w-full justify-start text-right">
+                  <p id="target-text-2" className=" leading-none flex w-3/4 lg:w-2/4 h-full justify-center text-[24px] lg:text-[32px] text-left pointer-events-none">Nous accompagnons ceux et celles qui veulent se démarquer et qui oses asssumer leur différence</p>
+                </TextReveal>
+
               </div>
             </div>
           </div>
         </div>
         {/* <HorizontalScrollReverse /> */}
-        <div className="w-full pt-20 bg-black overflow-hidden">
+        <div className="w-full lg:p-[50px] bg-black overflow-hidden">
           <div className="flex justify-end leading-none w-full text-right">
-            <TextScroll className='flex w-3/4' value="Changer votre vision du web moderne" />
+            <TextReveal staggerValue={"0.1"} classValue="z-[7] w-full text-white text-right z-[3]">
+              <h2 className=" leading-none tracking-tighter z-[4] text-[32px] z-[3] lg:text-[180px]">Changer votre vision du web moderne</h2>
+            </TextReveal>
           </div>
-          <Hero2 />
+          {/* <Hero2 /> */}
         </div>
-        <div className="z-[1] flex justify-center py-[20px] lg:py-[80px] px-[20px] lg:px-[50px]">
-          {/* <GridAnimation /> */}
-        </div>
-        <div id="contact" className="W-full y-[10px] lg:py-[50px] px-[0px] flex flex-col items-left
-          h-[70vh] justify-between w-full relative bg-purple-500">
-          <Link href="/contact" className="flex justify-between mt-[10px] items-center w-full relative group" style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }}>
-            <div className="flex justify-between items-center w-full relative group">
+        {/* <div className="z-[1] flex justify-center py-[20px] lg:py-[80px] px-[20px] lg:px-[50px]">
+          <GridAnimation />
+        </div> */}
+        <div id="contact" className="w-full lg:my-[50px] mx-[10px] flex flex-col items-left
+          h-[70vh] justify-between w-full relative">
+          <TextScroll style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} classValue="cursor-pointer mx-[10px] lg:mx-[50px] text-[32px]" value="Vous avez des questions ou vous souhaitez collaborer avec nous ?"></TextScroll>
+          <TextReveal classValue="w-full mx-[10px] lg:mx-[50px] text-[14px] lg:text-[1rem] lg:text-[2rem] z-[1] tracking-tighter">
+            <h2 style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} className="tracking-tighter">Les grandes histoires commençent souvent par un Hey !</h2>
+          </TextReveal>
+          <Link href="/contact" className="flex justify-between items-center w-full relative group" style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }}>
+            <div className="flex justify-between items-center w-full relative group z-[10]">
               <Image
                 src={Arrow}
                 alt='flèche directionnelle indiquant le lien contact'
                 style={{ objectFit: 'contain' }}
                 placeholder="blur"
-                className="absolute right-0 group-hover:translate-x-full transition-all duration-500"
+                className="absolute right-0 lg:right-[50px] lg:group-hover:right-0 group-hover:translate-x-full transition-all duration-500"
               />
-              <HackHover data='CONTACT' classValue='text-[32px] mx-[10px] lg:text-[210px] leading-none text-black text-left group-hover:translate-x-[170px] transition-all duration-500' />
+              <HackHover data='CONTACT' classValue='z-[3] text-[32px] mx-[10px] lg:mx-[50px] lg:text-[210px] leading-none text-black text-left group-hover:ml-[220px] transition-all duration-500' />
               {/* <svg width="164" height="165" viewBox="0 0 164 165" fill="none" xmlns="http://www.w3.org/2000/svg" id="right-arrow" className="absolute right-0 group-hover:translate-x-full transition-all duration-500 ">
               <path d="M0.741753 91.6101L1.04884 71.0174L124.605 72.86L68.8197 15.3855L83.6586 0.982649L163.99 83.7459L81.2264 164.077L66.8236 149.238L124.298 93.4527L0.741753 91.6101Z" fill="black" />
               </svg> */}
@@ -189,14 +196,10 @@ export default function Home() {
                 alt='flèche directionnelle indiquant le lien contact'
                 style={{ objectFit: 'contain' }}
                 placeholder="blur"
-                className="absolute -left-[170px] group-hover:translate-x-[170px] transition-all duration-500 "
+                className="absolute -left-[170px] group-hover:translate-x-[210px] transition-all duration-500 "
               />
             </div>
           </Link>
-          <TextScroll style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} classValue="cursor-pointer mx-[10px] text-[32px]" value="Vous avez des questions ou vous souhaitez collaborer avec nous ?"></TextScroll>
-          <TextReveal classValue="w-full mx-[10px] text-[14px] lg:text-[1rem] lg:text-[2rem] z-[1] tracking-tighter">
-            <h2 style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} className="tracking-tighter">Les grandes histoires commençent souvent par un Hey !</h2>
-          </TextReveal>
         </div>
       </div>
 
