@@ -108,7 +108,7 @@ export default function Home() {
         <div ref={heroSection} id='hero' className='h-screen sticky w-full flex flex-col items-center top-0'>
           <div className='h-screen flex flex-col items-start justify-between w-full px-[10px] lg:px-[50px] pt-[20px] lg:pt-[100px] relative'>
             <TextReveal classValue="h-full w-full flex z-[10] lg:w-1/4">
-              <h2 id='hero-subtitle' className='pointer-events-none mt-[98px] leading-none text-[24px] tracking-tighter  lg:text-[31px] lg:mt-[83px] '>Offrez à vos visiteurs une expérience web captivante, parce que chaque clic mérite sa touche de magie.</h2>
+              <h2 id='hero-subtitle' className='lg:w-1/4 pointer-events-none mt-[98px] leading-none text-[24px] tracking-tighter lg:text-[31px] lg:mt-[83px] '>Offrez à vos visiteurs une expérience web captivante, parce que chaque clic mérite sa touche de magie.</h2>
             </TextReveal>
             <h1 id='hero-title' className='absolute right-[10px] bottom-[148px] pointer-events-none leading-none text-[16px] font-bold-sm tracking-tighter lg:bottom-[20px] lg:right-[50px] bg-red-500 '>Reunion Island Digital Studio </h1>
             {/* <svg ref={arrowRef} className="ml-[10px] mb-[20vh]" width="30" height="24" viewBox="0 0 47 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -141,12 +141,12 @@ export default function Home() {
             <div className='h-full flex flex-col justify-between'>
               <TextReveal staggerValue={"0.1"} classValue="z-[7] text-white text-left text-[48px] z-[3] lg:text-[180px] leading-none">
                 {/* <HackHover id="about-title" data='Qui sommes nous ?' classValue='z-[3] w-full h-full text-[48px] z-[3] lg:text-[180px]'/> */}
-                <h1 className=" leading-none tracking-tighter z-[4] text-[48px] z-[3] lg:text-[180px]">Qui sommes <br />nous ?</h1>
+                <h1 className=" leading-none tracking-tighter z-[4] text-[48px] z-[3] lg:text-[180px]">Qui sommes nous ?</h1>
               </TextReveal>
               <div className="w-full flex justify-end">
                 <TextReveal staggerValue={"0"} classValue="flex w-full justify-end text-right">
                   <p ref={targetRef} className='w-full h-full absolute pointer-events-none overflow-hidden text-right lg:text-left tracking-tighter h-full text-[16px] lg:text-[26px] lg:w-2/6 leading-none'>
-                    Exotik Digital Studio est une agence web basée à l'ile de la Réunion
+                    Une agence web basée à l'ile de la Réunion
                     spécialisé dans la  <strong> création de site internet moderne</strong>, qui place l'utilisateur au cœur d'une expérience unique.
                   </p>
                 </TextReveal>
@@ -164,14 +164,14 @@ export default function Home() {
         <div className="w-full lg:p-[50px] bg-black overflow-hidden">
           <div className="flex justify-end leading-none w-full text-right">
             <TextReveal staggerValue={"0.1"} classValue="z-[7] w-full text-white text-right z-[3]">
-              <h2 className=" leading-none tracking-tighter z-[4] text-[32px] z-[3] lg:text-[180px]">Changer votre vision du web moderne</h2>
+              <h3 className=" leading-none tracking-tighter z-[4] text-[32px] z-[3] lg:text-[38px]">Changer votre vision du web moderne</h3>
             </TextReveal>
           </div>
-          {/* <Hero2 /> */}
+          <Hero2 />
         </div>
-        {/* <div className="z-[1] flex justify-center py-[20px] lg:py-[80px] px-[20px] lg:px-[50px]">
+        <div className="z-[1] flex justify-center py-[20px] lg:py-[80px] px-[20px] lg:px-[50px]">
           <GridAnimation />
-        </div> */}
+        </div>
         <div id="contact" className="w-full lg:my-[50px] mx-[10px] flex flex-col items-left
           h-[70vh] justify-between w-full relative">
           <TextScroll style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} classValue="cursor-pointer mx-[10px] lg:mx-[50px] text-[32px]" value="Vous avez des questions ou vous souhaitez collaborer avec nous ?"></TextScroll>

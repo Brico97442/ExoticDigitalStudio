@@ -9,6 +9,7 @@ import { LoadingProvider } from './context/animationContext';
 import { useAnimation } from './context/animationContext'; // Importez votre hook personnalisé
 import Footer from "../app/components/Footer";
 import PreLoader from "./components/PreLoader";
+import CookieConsent from "./components/CookieConsent"
 // import CookieConsent from './components/CookieConsent'
 const metadata = {
   title: "Create Next App",
@@ -26,6 +27,7 @@ export default function RootLayout({ children }) {
         <body className={GeistSans.className}>
           {/* <PreLoader /> */}
           <Template>
+          <CookieConsent/>
             <Navbar ref={stickyElement} />
             <main className="flex w-full h-full bg-slate-200">
             {/* <StickyCursor stickyElement={stickyElement} heroSection='#hero' /> */}

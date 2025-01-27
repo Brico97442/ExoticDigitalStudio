@@ -245,7 +245,7 @@ h1 .word {
 }
 
 h2 .word {
-  line-height: 5vh;
+  line-height: 4vh;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
 }
 
