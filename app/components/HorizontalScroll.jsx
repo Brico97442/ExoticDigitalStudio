@@ -1,8 +1,14 @@
 import React, { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import localFont from 'next/font/local'
 
 gsap.registerPlugin(ScrollTrigger)
+
+const Guisol = localFont({
+    src: '../font/Guisol.otf',// Vous pouvez ajouter des options supplémentaires ici
+    variable: '--font-guisol', // Pour utiliser la police en tant que variable CSS
+  })
 
 function HorizontalScroll() {
     const text1 = useRef(null)
@@ -100,11 +106,11 @@ function HorizontalScroll() {
     }
 
     return (
-        <div className='absolute h-full w-full z-[6] flex items-center justify-center overflow-hidden'>
-            <div id='hero-scroll' className='flex flex-col items-center bg-transparent uppercase tracking-tighter font-bold absolute bottom-[40vh] lg:bottom-[18vh]'>
+        <div className={`${Guisol.className} absolute h-full w-full z-[6] flex items-center justify-center overflow-hidden`}>
+            <div id='hero-scroll' className='flex flex-col items-center bg-transparent uppercase font-bold absolute bottom-[35vh] lg:bottom-[15vh]'>
                 <div ref={slider} className='flex relative whitespace-nowrap pointer-events-none' >
-                    <h1 ref={text1} className='absolute left-[100%] text-[10vh] lg:text-[250px] mix-blend-difference flex items-center leading-none pointer-events-none'>Studio<Dot />Creativ<Dot />Web<Dot /></h1>
-                    <h1 ref={text2} className=' text-[10vh] lg:text-[250px] flex items-center mix-blend-difference leading-none pointer-events-none'>Studio<Dot />Creativ<Dot />Web<Dot /></h1>
+                    <h1 ref={text1} className='absolute left-[100%] text-[10vh] lg:text-[300px] mix-blend-difference flex items-center pointer-events-none tracking-wide leading-none'>Studio<Dot />Creativ<Dot />Web<Dot /></h1>
+                    <h1 ref={text2} className=' text-[10vh]  lg:text-[300px] flex items-center mix-blend-difference pointer-events-none tracking-wide leading-none'>Studio<Dot />Creativ<Dot />Web<Dot /></h1>
                 </div>
             </div>
         </div >
