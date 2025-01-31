@@ -114,8 +114,8 @@ export const animateOverlayText = (overlayTextRef) => {
 
 //Hero animation
 
-export const animateHero = (arrowRef, textScroll) => {
-  if (arrowRef.current && textScroll.current) {
+export const animateHero = (arrowRef) => {
+  if (arrowRef.current) {
     gsap.to(arrowRef.current, {
       rotation: 45,
       // yPercent: -200,
@@ -129,34 +129,43 @@ export const animateHero = (arrowRef, textScroll) => {
       },
     });
 
-    gsap.to(["#hero-subtitle", "#hero-title", '#coordinates-gps', '#studio-text'], {
-      yPercent: -20,
-      ease: "power4.inOut",
-      duration: 10,
-      scrollTrigger: {
-        trigger: "#hero",
-        start: "top top",
-        end: "bottom center",
-        scrub: 2,
-        markers: false,
-      },
-    });
-
-    gsap.to('#hero-scroll', {
-      yPercent: -10,
-      ease: "power4.inOut",
-      duration: 7,
-      scrollTrigger: {
-        trigger: "#hero",
-        start: "top top",
-        end: "bottom center",
-        scrub: 2,
-        markers: false,
-      },
-    });
-
-
+    
+    
   }
+  gsap.fromTo("#hero-subtitle", {
+    yPercent: -100,
+    ease: "power4.inOut",
+    duration: 4,
+  },{
+    yPercent: 0,
+    ease: "power4.inOut",
+    duration: 4,
+  });
+
+  
+  // gsap.to('#hero-scroll', {
+  //   yPercent: 100,
+  //   ease: "power4.inOut",
+  //   duration: 5,
+  //   scrollTrigger: {
+  //     trigger: "#hero",
+  //     start: "top top",
+  //     end: "bottom center",
+  //     scrub: 2,
+  //     markers: true,
+  //   },
+  // });
+  gsap.fromTo('#hero-scroll', {
+    yPercent: 100,
+    ease: "power4.inOut",
+    duration: 3
+  }
+  ,{
+    yPercent: 0,
+    ease: "power4.inOut",
+    duration: 3
+  }
+  );
 };
 
 //Animation objet 3D Island
@@ -230,11 +239,11 @@ export const animateIsland = (island) => {
 
     gsap.to(island.current.material.uniforms.color.value,
       {
-        r: 254,
-        g: 254,
-        b: 254,
+        r: 0.5,   // Valeurs normalisées entre 0 et 1
+        g: 0.1,
+        b: 0.4,
         ease: "power1.inOut",
-        duration: 4,
+        duration: 6,
         delay:5,
         scrollTrigger: {
           trigger: "#hero",
@@ -318,8 +327,8 @@ export const animateScene = (divRef) => {
 
 
 export const animateAbout = () => {
-  gsap.to(["#about","#hero"] , {
-    backgroundColor: "#000",
+  gsap.to(["#hero-container"] , {
+    backgroundColor: "#0E0E0E",
     duration: 0.2,
     ease: "power1.in",
     scrollTrigger: {

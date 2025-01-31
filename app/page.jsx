@@ -15,10 +15,9 @@ import Button from "./components/Button";
 import { animateAbout, animateAboutText, animateHero } from "./utils/animation";
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import HackHover from './components/hackHoverEffect'
-import { animateTextSimple } from './utils/textAnimation';
-import { useLoader } from './context/animationContext';
-import Arrow from '../assets/arrow.png'
+import Arrow from '../assets/VectorWhite.png'
 import CookieConsent from "./components/CookieConsent"
+import localFont from 'next/font/local'
 
 
 gsap.registerPlugin(ScrollTrigger)
@@ -30,7 +29,10 @@ const Scene = dynamic(() => import('./utils/Scene'), {
   ssr: false
 });
 
-
+const Guisol = localFont({
+  src: './font/Guisol.woff',// Vous pouvez ajouter des options supplémentaires ici
+  variable: '--font-guisol', // Pour utiliser la police en tant que variable CSS
+})
 
 export default function Home() {
   const island = useRef(null);
@@ -40,7 +42,7 @@ export default function Home() {
   const textScroll = useRef(null);
   const heroSection = useRef(null)
 
-
+ 
   useEffect(() => {
 
     const lenis = new Lenis();
@@ -55,8 +57,8 @@ export default function Home() {
 
 
 
-    // if (arrowRef.current && textScroll.current) {
-    //   animateHero(arrowRef, textScroll);
+      animateHero(textScroll);
+
     //   const tl = gsap.timeline();
 
     //   tl.fromTo(
@@ -88,14 +90,13 @@ export default function Home() {
     //         scrub: 1,
     //         markers: false,
     //       }
-    //     }
+        // }
     //   );
 
 
     //   return () => {
     //     tl.kill();
     //   };
-    // }
     return () => {
       cancelAnimationFrame(raf);
     };
@@ -107,15 +108,12 @@ export default function Home() {
   return (
     <main id="main" className={"flex w-full h-full relative min-h-screen flex-col "}>
       {/* <CookieConsent/> */}
-      <div className="z-[1] flex w-full h-full min-h-screen flex-col relative">
+      <div id="hero-container"  className="z-[1] flex w-full h-full min-h-screen flex-col relative">
         <Scene island={island} />
-        <div ref={heroSection} id='hero' className='h-screen sticky w-full flex flex-col items-center top-0'>
-          <div className='h-screen flex flex-col items-start justify-between w-full px-[10px] lg:px-[50px] pt-[20px] lg:pt-[100px] relative'>
-              <h2 id='hero-subtitle' className='lg:w-3/6 pointer-events-none mt-[98px] leading-none text-[24px] tracking-tighter lg:text-[36px] lg:mt-[83px] '>Offrez à vos visiteurs une expérience web captivante,<br/> parce que chaque clic mérite sa touche de magie.</h2>
-            <h1 id='hero-title' className='absolute right-[10px] bottom-[148px] pointer-events-none leading-none text-[16px] lg:text-[28px] font-bold-sm tracking-tighter lg:bottom-[20px] lg:right-[50px] bg-red-500 '>Reunion Island Digital Studio </h1>
-            {/* <svg ref={arrowRef} className="ml-[10px] mb-[20vh]" width="30" height="24" viewBox="0 0 47 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M46.0607 13.0607C46.6464 12.4749 46.6464 11.5251 46.0607 10.9393L36.5147 1.3934C35.9289 0.807612 34.9792 0.807612 34.3934 1.3934C33.8076 1.97918 33.8076 2.92893 34.3934 3.51472L42.8787 12L34.3934 20.4853C33.8076 21.0711 33.8076 22.0208 34.3934 22.6066C34.9792 23.1924 35.9289 23.1924 36.5147 22.6066L46.0607 13.0607ZM0 13.5H45V10.5H0V13.5Z" fill="black" />
-            </svg> */}
+        <div ref={heroSection} id="hero" className='h-screen sticky w-full flex flex-col items-center top-0 z-[3]'>
+          <div className='h-screen flex flex-col items-start justify-between w-full px-[10px] lg:px-[50px] pt-[20px] lg:pt-[100px] relative z-[3]'>
+            <h2 id='hero-subtitle' className='lg:w-3/6 pointer-events-none mt-[98px]  text-[24px] tracking-tighter lg:text-[36px] lg:mt-[7vh] '>Offrez à vos visiteurs une expérience web captivante<br /> parce que chaque clic mérite sa touche de magie.</h2>
+            <h1 id='hero-title' className='fixed right-[10px] bottom-[148px] pointer-events-none text-[#ECECEC]  text-[16px] lg:text-[28px] font-bold-sm tracking-tighter lg:bottom-[50px] lg:right-[50px]'>Reunion Island Digital Studio </h1>
             <Image
               src={Arrow}
               alt='flèche directionnelle indiquant le lien contact'
@@ -128,60 +126,61 @@ export default function Home() {
               </span>
               <p className="mb-[32px]">Scrollez pour découvrir</p>
             </div> */}
-            <div className=" absolute right-[0px] bottom-[50vh] flex flex-col items-end justify-center mr-[10px] lg:mr-[50px]  ">
-              <div id="coordinates-gps" className="flex flex-col items-end text-[0.8rem] tracking-tighter leading-none">
+            <div className=" absolute right-[0px] bottom-[50vh] flex flex-col items-end justify-center mr-[10px] lg:mr-[50px]">
+              <div id="coordinates-gps" className="flex flex-col items-end text-[8px]  lg:text-[16px] tracking-tighter leading-none">
                 <p>21° 16' 41″ S </p>
                 <p>55° 30' 55″ E</p>
               </div>
             </div>
-            <h2 style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} id='studio-text' className='pointer-events-none leading-none text-[24px] lg:text-[36px] font-bold-sm tracking-tighter text-black mb-[10px] lg:mr-[50px] lg:mb-[50px]'>Créateur de solutions digitales</h2>
+            <h2 style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} id='studio-text' className=' text-[#ECECEC] pointer-events-none leading-none text-[24px] lg:text-[36px] font-bold-sm tracking-tighter mb-[10px] lg:mr-[50px] lg:mb-[50px]'>Créateur de solutions digitales</h2>
+            <HorizontalScroll />
           </div>
-          <HorizontalScroll />
         </div>
         <div id="about" ref={aboutRef} className="sticky top-0 h-[100vh] px-[10px] py-[50px] lg:px-[50px] lg:py-[50px] flex flex-col justify-center text-white">
           <div className=" flex flex-col w-full h-full">
             <div className='h-full flex flex-col justify-between'>
               <TextReveal staggerValue={"0.1"} classValue="z-[7] text-white text-left text-[48px] z-[3] lg:text-[180px] leading-none">
                 {/* <HackHover id="about-title" data='Qui sommes nous ?' classValue='z-[3] w-full h-full text-[48px] z-[3] lg:text-[180px]'/> */}
-                <h1 className=" leading-none tracking-tighter z-[4] text-[48px] z-[3] lg:text-[150px]">Qui sommes nous ?</h1>
+                <h1 className=" leading-none tracking-tighter z-[4] text-[48px] lg:text-[150px]">Qui sommes nous ?</h1>
               </TextReveal>
               <div className="w-full flex justify-end">
                 <TextReveal staggerValue={"0"} classValue="flex w-full justify-end text-right">
-                  <p ref={targetRef} className='w-full h-full absolute pointer-events-none overflow-hidden text-right lg:text-left tracking-tighter h-full text-[16px] lg:text-[26px] lg:w-2/6 leading-none'>
-                    Une agence web basée à l'ile de la Réunion
+                  <p ref={targetRef} className='w-full h-full absolute pointer-events-none overflow-hidden text-right lg:text-left tracking-tighter text-[16px] lg:text-[28px] lg:w-3/6 leading-none'>
+                    Une agence web basée à l'ile de la Réunion <br />
                     spécialisé dans la  <strong> création de site internet moderne</strong>, qui place l'utilisateur au cœur d'une expérience unique.
                   </p>
                 </TextReveal>
               </div>
               <div className="w-full text-left">
                 <TextReveal staggerValue={"0"} classValue="flex w-full justify-start text-right">
-                  <p id="target-text-2" className=" leading-none flex w-3/4 lg:w-2/4 h-full justify-center text-[24px] lg:text-[32px] text-left pointer-events-none">Nous accompagnons ceux et celles qui veulent se démarquer et qui oses asssumer leur différence</p>
+                  <h3 id="target-text-2" className=" leading-none flex w-3/4 lg:w-2/4 h-full justify-center text-[24px] lg:text-[48px] text-left pointer-events-none">Nous accompagnons ceux et celles qui veulent se démarquer et qui oses asssumer leur différence</h3>
                 </TextReveal>
-
               </div>
             </div>
           </div>
         </div>
         {/* <HorizontalScrollReverse /> */}
-        <div className="w-full lg:p-[50px] bg-black overflow-hidden">
-          <div className="flex justify-end leading-none w-full text-right">
+        <div className="w-full lg:p-[50px] bg-[#0E0E0E] overflow-hidden">
+          <div className="flex justify-end leading-none w-full">
             <TextReveal staggerValue={"0.1"} classValue="z-[7] w-full text-white text-right z-[3]">
-              <h3 className=" leading-none tracking-tighter z-[4] text-[32px] z-[3] lg:text-[38px]">Changer votre vision du web moderne</h3>
+              <h3 className=" leading-none w-full tracking-tighter z-[4] text-[32px] lg:text-[64px]">Changer votre vision du web moderne</h3>
             </TextReveal>
           </div>
           <Hero2 />
         </div>
-        {/* <div className="z-[1] flex justify-center py-[20px] lg:py-[80px] px-[20px] lg:px-[50px]">
-          <GridAnimation />
-        </div> */}
-        <div id="contact" className="w-full lg:my-[50px] mx-[10px] flex flex-col items-left
-          h-[70vh] justify-between w-full relative">
-          <TextScroll style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} classValue="cursor-pointer mx-[10px] lg:mx-[50px] text-[32px]" value="Vous avez des questions ou vous souhaitez collaborer avec nous ?"></TextScroll>
-          <TextReveal classValue="w-full mx-[10px] lg:mx-[50px] text-[14px] lg:text-[1rem] lg:text-[2rem] z-[1] tracking-tighter">
+        <div className="z-[1] flex justify-center py-[20px] lg:py-[80px] px-[20px] lg:px-[50px]">
+          {/* <GridAnimation /> */}
+        </div>
+        <div id="contact" className="w-full mx-[10px] lg:mx-[0px] flex flex-col items-left text-[#ECECEC]
+          h-[70vh] justify-between relative">
+          <TextScroll style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} classValue="cursor-pointer lg:mt-[50px] mx-[10px] lg:mx-[50px] text-[36px]" 
+          value="Vous avez des questions ou vous souhaitez collaborer avec nous ?">
+          </TextScroll>
+          <TextReveal classValue="w-full mx-[10px] lg:mx-[50px] text-[14px] lg:text-[1rem] lg:text-[28px] z-[1] tracking-tighter">
             <h2 style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} className="tracking-tighter">Les grandes histoires commençent souvent par un Hey !</h2>
           </TextReveal>
-          <Link href="/contact" className="flex justify-between items-center w-full relative group" style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }}>
-            <div className="flex justify-between items-center w-full relative group z-[10]">
+          <Link href="/contact" className="flex lg:bottom-[0px] justify-between items-center w-full relative group z-[6]" style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }}>
+            <div className={`${Guisol.className} flex justify-between items-center w-full relative group`}>
               <Image
                 src={Arrow}
                 alt='flèche directionnelle indiquant le lien contact'
@@ -189,7 +188,7 @@ export default function Home() {
                 placeholder="blur"
                 className="absolute right-0 lg:right-[50px] lg:group-hover:right-0 group-hover:translate-x-full transition-all duration-500"
               />
-              <HackHover data='CONTACT' classValue='z-[3] text-[32px] mx-[10px] lg:mx-[50px] lg:text-[210px] leading-none text-black text-left group-hover:ml-[220px] transition-all duration-500' />
+              <HackHover data='CONTACT' classValue='z-[3] text-[32px] tracking-wide mx-[10px] lg:mx-[50px] lg:text-[300px] leading-none text-[#ECECEC] text-left group-hover:ml-[290px] transition-all duration-500' />
               {/* <svg width="164" height="165" viewBox="0 0 164 165" fill="none" xmlns="http://www.w3.org/2000/svg" id="right-arrow" className="absolute right-0 group-hover:translate-x-full transition-all duration-500 ">
               <path d="M0.741753 91.6101L1.04884 71.0174L124.605 72.86L68.8197 15.3855L83.6586 0.982649L163.99 83.7459L81.2264 164.077L66.8236 149.238L124.298 93.4527L0.741753 91.6101Z" fill="black" />
               </svg> */}
@@ -198,7 +197,7 @@ export default function Home() {
                 alt='flèche directionnelle indiquant le lien contact'
                 style={{ objectFit: 'contain' }}
                 placeholder="blur"
-                className="absolute -left-[170px] group-hover:translate-x-[210px] transition-all duration-500 "
+                className="absolute -left-[210px] group-hover:translate-x-[260px] transition-all duration-500 "
               />
             </div>
           </Link>

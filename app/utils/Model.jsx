@@ -21,7 +21,8 @@ varying vec2 vUv;
 void main() {
   float grid = abs(sin(vUv.x * gridScale) * sin(vUv.y * gridScale));
 
-  vec3 gridColor = mix(color, vec3(1.0), grid);
+  // Assurer que le mélange de couleur reste cohérent
+  vec3 gridColor = mix(color, vec3(0.8), min(grid, 0.5));
   gl_FragColor = vec4(gridColor, opacity);
 }
 `;
@@ -37,7 +38,7 @@ export default function Model({ mousePosition, island }) {
   const { nodes } = useGLTF('/media/reunion2.glb');
   const { viewport, size } = useThree(); // Récupère les dimensions du viewport et de l'écran
   const [initialRotation, setInitialRotation] = useState({ x: 0, y: 0 });
-  const scaleFactor = size.width < 768 ? 1.6 : 1; // Exemple : réduire pour mobile
+  const scaleFactor = size.width < 768 ? 1.6 : 0.95; 
   const groupScale = viewport.width / 2.4 * scaleFactor;
 
   useEffect(() => {
@@ -53,8 +54,10 @@ export default function Model({ mousePosition, island }) {
       // Définition du matériau du shader
       const shaderMaterial = new ShaderMaterial({
         uniforms: {
-          opacity: { value: 0.03 }, // Opacité du modèle
-          color: { value: new Color('teal') }, // Couleur du quadrillage
+          opacity: { value: 0.04 }, // Opacité du modèle
+          color: { // Couleur du quadrillage
+            value: new Color(0, 48/255, 73/255) 
+          }, 
           depthTest: false
         },
         vertexShader,
@@ -88,7 +91,7 @@ export default function Model({ mousePosition, island }) {
         <mesh ref={island} geometry={nodes.reunion.geometry} scale={[0.015, 0.015, 0.015]} position={[-0.08, 0.08, -0.3]} fragmentShader vertexShader wireframe >
         </mesh>
       </group>
-      <pointLight position={[0, 0, 1]} intensity={8} color={'red'} />
+      {/* <pointLight position={[0, 0, 1]} intensity={8} color={'red'} /> */}
     </group>
   );
 }

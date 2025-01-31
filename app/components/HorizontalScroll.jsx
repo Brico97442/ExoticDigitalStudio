@@ -6,9 +6,9 @@ import localFont from 'next/font/local'
 gsap.registerPlugin(ScrollTrigger)
 
 const Guisol = localFont({
-    src: '../font/Guisol.otf',// Vous pouvez ajouter des options supplémentaires ici
+    src: '../font/Guisol.woff',// Vous pouvez ajouter des options supplémentaires ici
     variable: '--font-guisol', // Pour utiliser la police en tant que variable CSS
-  })
+})
 
 function HorizontalScroll() {
     const text1 = useRef(null)
@@ -101,16 +101,16 @@ function HorizontalScroll() {
 
     const Dot = () => {
         return (
-                <div className='w-4 h-4 lg:w-10 lg:h-10 rounded-full border-black border-[2px]'></div>
+            <div className='w-4 h-4 lg:w-10 lg:h-10 rounded-full border-[#ECECEC] border-[2px] mx-[10px]'></div>
         )
     }
 
     return (
-        <div className={`${Guisol.className} absolute h-full w-full z-[6] flex items-center justify-center overflow-hidden`}>
-            <div id='hero-scroll' className='flex flex-col items-center bg-transparent uppercase font-bold absolute bottom-[35vh] lg:bottom-[15vh]'>
-                <div ref={slider} className='flex relative whitespace-nowrap pointer-events-none' >
-                    <h1 ref={text1} className='absolute left-[100%] text-[10vh] lg:text-[300px] mix-blend-difference flex items-center pointer-events-none tracking-wide leading-none'>Studio<Dot />Creativ<Dot />Web<Dot /></h1>
-                    <h1 ref={text2} className=' text-[10vh]  lg:text-[300px] flex items-center mix-blend-difference pointer-events-none tracking-wide leading-none'>Studio<Dot />Creativ<Dot />Web<Dot /></h1>
+        <div className={`${Guisol.className} absolute text-[#ECECEC] bottom-[37vh] lg:bottom-[17vh] h-[7vh] lg:h-[25vh] left-0 w-full z-[6] flex items-center justify-center overflow-hidden`} >
+            <div id='hero-scroll' className='flex flex-col items-center uppercase font-bold absolute z-[6]' >
+                <div id='slider'ref={slider} className='flex relative whitespace-nowrap z-[6] pointer-events-none' >
+                    <h1 ref={text1} className='absolute  z-[6] left-[100%] text-[10vh] lg:text-[250px] flex items-center pointer-events-none tracking-wide drop-shadow-lg leading-none'>studio<Dot />Creativ<Dot />Web<Dot /></h1>
+                    <h1 ref={text2} className=' text-[10vh]  z-[6]  lg:text-[250px] flex items-center pointer-events-none tracking-wide drop-shadow-lg leading-none'>studio<Dot />Creativ<Dot />Web<Dot /></h1>
                 </div>
             </div>
         </div >

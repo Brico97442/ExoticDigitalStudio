@@ -34,13 +34,13 @@ export default function Scene({ island }) {
   }, [island]);
 
   return (
-    <div id='scene' ref={divRef} className={`w-[100%] z-[1] absolute h-[100vh] top-0 flex-col items-center justify-center lg:w-full`}>
+    <div id='scene' ref={divRef} className={`w-[100%] z-[2] absolute h-[100vh] top-0 flex-col items-center justify-center lg:w-full`}>
       <div className='w-full h-full'>
         <Canvas camera={{ position: [0, 0, 6] }}>
           <Suspense fallback={null}>
             <Model mousePosition={mousePosition} island={island} />
           </Suspense>
-          <ambientLight position={[1, 2, -2]} intensity={5} color={'red'} />
+          {/* <ambientLight position={[1, 2, -2]} intensity={5} color={'red'} /> */}
         </Canvas>
       </div>
     </div>

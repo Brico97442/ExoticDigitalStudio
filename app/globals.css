@@ -224,14 +224,14 @@ p .word {
 }
 
 .hero h1 {
-  line-height: 19vh;
+  line-height: 10vh;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
 }
 
-
-.hero p {
+/* #hero-scroll h1{
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-}
+  line-height: 15vh;
+} */
 
 
 h1 {
