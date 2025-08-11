@@ -1,3 +1,4 @@
+"use client";
 import React, { useState, useEffect, useRef } from "react";
 import { animate, motion, transform, useMotionValue, useSpring } from "framer-motion";
 import UseMousePosition from "./CursorTest";
@@ -42,6 +43,8 @@ export default function StickyCursor({ stickyElement, heroSection }) {
   }, [pathname]);
 
   useEffect(() => {
+    if (!stickyElement || !stickyElement.current) return;
+
     const { left, top, width, height } = stickyElement.current.getBoundingClientRect();
     const center = { x: left + width / 2, y: top + height / 2 };
     const distance = { x: x - center.x, y: y - center.y };

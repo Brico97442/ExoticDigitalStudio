@@ -23,10 +23,10 @@ function Footer() {
         <footer id='footer' className='flex h-[50vh]  justify-center items-center text-white w-full bg-black  z-[2] relative' style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }}>
 
             <div className='fixed bottom-0 flex flex-col lg:flex-row justify-between h-[50vh] text-white items-start lg:items-center w-full px-[10px] lg:px-[50px] py-[10px] lg:py-[50px] bg-violet-500'>
-                <div className='w-1/3  flex justify-start bg-green-500'>
+                <div className='relative lg:absolute lg:top-[50px] lg:left-[50px] bg-green-500'>
                     <Image src={logo} alt="logo de l'entreprise Exotik Digital Studio" width={100} height={80} className='z-[4]' />
                 </div>
-                <div className='z-[4] w-2/3 flex justify-between flex-col-reverse lg:flex-row relative bg-red-500'>
+                <div className='z-[4] w-full h-full flex justify-between lg:justify-center flex-col-reverse lg:flex-row relative'>
                     <div className='bg-blue-400 z-[4] items-start justify-start flex flex-col gap-[5px]'>
                         <Magnetic>
                             <div>

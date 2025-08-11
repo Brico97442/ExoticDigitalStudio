@@ -42,7 +42,7 @@ export default function Home() {
   const textScroll = useRef(null);
   const heroSection = useRef(null)
 
- 
+
   useEffect(() => {
 
     const lenis = new Lenis();
@@ -54,49 +54,7 @@ export default function Home() {
 
     animateAbout()
     // animateAboutText()
-
-
-
-      animateHero(textScroll);
-
-    //   const tl = gsap.timeline();
-
-    //   tl.fromTo(
-    //     textScroll.current,
-    //     {
-    //       opacity: 0,
-    //     },
-    //     {
-    //       opacity: 1,
-    //       duration: 1,
-    //       ease: "power2.in",
-    //       delay: 11.5,
-    //       yoyo: true
-    //     }
-    //   );
-
-    //   tl.fromTo(
-    //     textScroll.current,
-    //     { opacity: 1 },
-    //     {
-    //       opacity: 0,
-    //       duration: 2,
-    //       ease: "power2.in",
-    //       delay: 0.4,
-    //       scrollTrigger: {
-    //         trigger: '#hero',
-    //         start: "top top",
-    //         end: "45% 40%",
-    //         scrub: 1,
-    //         markers: false,
-    //       }
-        // }
-    //   );
-
-
-    //   return () => {
-    //     tl.kill();
-    //   };
+    animateHero(textScroll);
     return () => {
       cancelAnimationFrame(raf);
     };
@@ -108,12 +66,17 @@ export default function Home() {
   return (
     <main id="main" className={"flex w-full h-full relative min-h-screen flex-col "}>
       {/* <CookieConsent/> */}
-      <div id="hero-container"  className="z-[1] flex w-full h-full min-h-screen flex-col relative">
+      <div id="hero-container" className="z-[1] flex w-full h-full min-h-screen flex-col relative">
         <Scene island={island} />
         <div ref={heroSection} id="hero" className='h-screen sticky w-full flex flex-col items-center top-0 z-[3]'>
           <div className='h-screen flex flex-col items-start justify-between w-full px-[10px] lg:px-[50px] pt-[20px] lg:pt-[100px] relative z-[3]'>
-            <h2 id='hero-subtitle' className='lg:w-3/6 pointer-events-none mt-[98px]  text-[24px] tracking-tighter lg:text-[36px] lg:mt-[7vh] '>Offrez à vos visiteurs une expérience web captivante<br /> parce que chaque clic mérite sa touche de magie.</h2>
-            <h1 id='hero-title' className='fixed right-[10px] bottom-[148px] pointer-events-none text-[#ECECEC]  text-[16px] lg:text-[28px] font-bold-sm tracking-tighter lg:bottom-[50px] lg:right-[50px]'>Reunion Island Digital Studio </h1>
+            <TextReveal staggerValue={"0.1"} classValue="leading-none lg:w-3/6 ">
+              <h2 id='hero-subtitle' style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} className='lg:w-full pointer-events-none mt-[98px] overflow-hidden text-[24px] tracking-tighter lg:text-[36px] lg:mt-[7vh] '>Offrez à vos visiteurs une expérience web captivante<br /> parce que chaque clic mérite sa touche de magie.</h2>
+            </TextReveal>
+
+            <div style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} className="overflow-hidden absolute right-[10px] bottom-[148px] lg:bottom-[50px] lg:right-[50px]" >
+            <h3 id='hero-title'  className=' bg-slate-900 pointer-events-none text-[#ECECEC] text-[16px] lg:text-[28px] font-bold-sm tracking-tighter py-2 px-6 rounded-lg'>Reunion Island Digital Studio </h3>
+            </div>
             <Image
               src={Arrow}
               alt='flèche directionnelle indiquant le lien contact'
@@ -121,60 +84,67 @@ export default function Home() {
               placeholder="blur"
               className="absolute bottom-[50vh] h-[5vh] w-auto mt-[0px]"
             />
-            {/* <div ref={textScroll} className="absolute text-[18px] bottom-0 flex justify-center items-end fixed w-full h-screen ">
-              <span className="w-[1px] bg-gradient-to-b from-black from-10% via-transparent via-30% to-[#666666] to-90% h-[8vh] absolute" >
-              </span>
-              <p className="mb-[32px]">Scrollez pour découvrir</p>
-            </div> */}
-            <div className=" absolute right-[0px] bottom-[50vh] flex flex-col items-end justify-center mr-[10px] lg:mr-[50px]">
+
+            <div className="absolute right-[0px] bottom-[50vh] flex flex-col items-end justify-center mr-[10px] lg:mr-[50px]">
               <div id="coordinates-gps" className="flex flex-col items-end text-[8px]  lg:text-[16px] tracking-tighter leading-none">
-                <p>21° 16' 41″ S </p>
-                <p>55° 30' 55″ E</p>
+                <TextReveal staggerValue={"0.1"} classValue="leading-none">
+                  <p>21° 16' 41″ S </p>
+                </TextReveal>
+                <TextReveal staggerValue={"0.1"} classValue="leading-none">
+                  <p>55° 30' 55″ E</p>
+                </TextReveal>
               </div>
             </div>
-            <h2 style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} id='studio-text' className=' text-[#ECECEC] pointer-events-none leading-none text-[24px] lg:text-[36px] font-bold-sm tracking-tighter mb-[10px] lg:mr-[50px] lg:mb-[50px]'>Créateur de solutions digitales</h2>
+            
+            <div className="overflow-hidden mb-[10px] lg:mr-[50px] lg:mb-[50px]" style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }}>
+              <h2 id='studio-text' className='overflow-hidden text-[#003049] pointer-events-none leading-none text-[24px] lg:text-[36px] font-bold-sm tracking-tighter '>Créateur de solutions digitales</h2>
+            </div>
+
             <HorizontalScroll />
           </div>
         </div>
-        <div id="about" ref={aboutRef} className="sticky top-0 h-[100vh] px-[10px] py-[50px] lg:px-[50px] lg:py-[50px] flex flex-col justify-center text-white">
+
+        <div id="about" ref={aboutRef} className="sticky top-0 h-[200svh] px-[10px] py-[50px] lg:px-[50px] lg:pb-[80px] lg:pt-[30svh] flex flex-col justify-center text-white">
           <div className=" flex flex-col w-full h-full">
             <div className='h-full flex flex-col justify-between'>
-              <TextReveal staggerValue={"0.1"} classValue="z-[7] text-white text-left text-[48px] z-[3] lg:text-[180px] leading-none">
+              <TextReveal staggerValue={"0"} classValue="z-[7] text-white text-left text-[48px] z-[3] lg:text-[180px] leading-none">
                 {/* <HackHover id="about-title" data='Qui sommes nous ?' classValue='z-[3] w-full h-full text-[48px] z-[3] lg:text-[180px]'/> */}
-                <h1 className=" leading-none tracking-tighter z-[4] text-[48px] lg:text-[150px]">Qui sommes nous ?</h1>
+                <h1 className=" leading-none tracking-tighter z-[4] text-[48px] lg:text-[150px]">Qui sommes nous?</h1>
               </TextReveal>
               <div className="w-full flex justify-end">
-                <TextReveal staggerValue={"0"} classValue="flex w-full justify-end text-right">
-                  <p ref={targetRef} className='w-full h-full absolute pointer-events-none overflow-hidden text-right lg:text-left tracking-tighter text-[16px] lg:text-[28px] lg:w-3/6 leading-none'>
+                <TextReveal classValue="flex w-full justify-end text-right">
+                  <p ref={targetRef} className='w-full h-full absolute pointer-events-none overflow-hidden text-right lg:text-right tracking-tighter text-[16px] lg:text-[32px] lg:w-3/6 leading-none'>
                     Une agence web basée à l'ile de la Réunion <br />
                     spécialisé dans la  <strong> création de site internet moderne</strong>, qui place l'utilisateur au cœur d'une expérience unique.
                   </p>
                 </TextReveal>
               </div>
               <div className="w-full text-left">
-                <TextReveal staggerValue={"0"} classValue="flex w-full justify-start text-right">
-                  <h3 id="target-text-2" className=" leading-none flex w-3/4 lg:w-2/4 h-full justify-center text-[24px] lg:text-[48px] text-left pointer-events-none">Nous accompagnons ceux et celles qui veulent se démarquer et qui oses asssumer leur différence</h3>
+                <TextReveal staggerValue={"0"} classValue="flex w-full justify-start text-right leading-none">
+                  <h3  className=" leading-none flex w-3/4 lg:w-2/4 h-full justify-center text-[24px] lg:text-[48px] text-left pointer-events-none">Nous accompagnons ceux et celles qui veulent se démarquer et qui oses assumer leur différence</h3>
                 </TextReveal>
               </div>
             </div>
           </div>
         </div>
+
         {/* <HorizontalScrollReverse /> */}
-        <div className="w-full lg:p-[50px] bg-[#0E0E0E] overflow-hidden">
-          <div className="flex justify-end leading-none w-full">
+        <div className="w-full lg:p-[50px] bg-[#0E0E0E] overflow-hidden" id="gallery-section">
+          <div className="flex justify-end leading-none w-full h-[100svh]">
             <TextReveal staggerValue={"0.1"} classValue="z-[7] w-full text-white text-right z-[3]">
               <h3 className=" leading-none w-full tracking-tighter z-[4] text-[32px] lg:text-[64px]">Changer votre vision du web moderne</h3>
             </TextReveal>
           </div>
           <Hero2 />
         </div>
+        {/* Section services */}
         <div className="z-[1] flex justify-center py-[20px] lg:py-[80px] px-[20px] lg:px-[50px]">
           {/* <GridAnimation /> */}
         </div>
         <div id="contact" className="w-full mx-[10px] lg:mx-[0px] flex flex-col items-left text-[#ECECEC]
           h-[70vh] justify-between relative">
-          <TextScroll style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} classValue="cursor-pointer lg:mt-[50px] mx-[10px] lg:mx-[50px] text-[36px]" 
-          value="Vous avez des questions ou vous souhaitez collaborer avec nous ?">
+          <TextScroll style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} classValue="cursor-pointer lg:mt-[50px] mx-[10px] lg:mx-[50px] text-[36px]"
+            value="Vous avez des questions ou vous souhaitez collaborer avec nous ?">
           </TextScroll>
           <TextReveal classValue="w-full mx-[10px] lg:mx-[50px] text-[14px] lg:text-[1rem] lg:text-[28px] z-[1] tracking-tighter">
             <h2 style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} className="tracking-tighter">Les grandes histoires commençent souvent par un Hey !</h2>

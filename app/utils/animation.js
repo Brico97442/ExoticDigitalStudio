@@ -132,40 +132,43 @@ export const animateHero = (arrowRef) => {
     
     
   }
-  gsap.fromTo("#hero-subtitle", {
-    yPercent: -100,
+
+  // gsap.fromTo("#hero-subtitle", {
+  //   yPercent: -100,
+  //   ease: "power4.inOut",
+  //   duration: 4,
+  // },{
+  //   yPercent: 0,
+  //   ease: "power4.inOut",
+  //   duration: 4,
+  // });
+
+  
+  gsap.to(['#hero-scroll , #hero-subtitle ,#hero-title , #studio-text ,#coordinates-gps p'], {
+    yPercent: 100,
     ease: "power4.inOut",
-    duration: 4,
-  },{
-    yPercent: 0,
-    ease: "power4.inOut",
-    duration: 4,
+    duration: 5,
+    scrollTrigger: {
+      trigger: "#hero",
+      start: "top top",
+      end: "bottom center",
+      scrub: 2,
+      markers: false,
+    },
   });
 
   
-  // gsap.to('#hero-scroll', {
+  // gsap.fromTo('#hero-scroll-container', {
   //   yPercent: 100,
   //   ease: "power4.inOut",
-  //   duration: 5,
-  //   scrollTrigger: {
-  //     trigger: "#hero",
-  //     start: "top top",
-  //     end: "bottom center",
-  //     scrub: 2,
-  //     markers: true,
-  //   },
-  // });
-  gsap.fromTo('#hero-scroll', {
-    yPercent: 100,
-    ease: "power4.inOut",
-    duration: 3
-  }
-  ,{
-    yPercent: 0,
-    ease: "power4.inOut",
-    duration: 3
-  }
-  );
+  //   duration: 3
+  // }
+  // ,{
+  //   yPercent: 0,
+  //   ease: "power4.inOut",
+  //   duration: 3
+  // }
+  // );
 };
 
 //Animation objet 3D Island
@@ -196,7 +199,7 @@ export const animateIsland = (island) => {
         {
           x: -0.08,  // Premier point intermédiaire
           y: 0.08,
-          z: -0.6,
+          z: -0.5,
           duration: 0.4,
           ease: "power1.inOut",
         }
@@ -215,7 +218,7 @@ export const animateIsland = (island) => {
         z: -0.25,
         duration: 0.25,
         ease: "power1.inOut",
-      });
+      })
 
 
     gsap.fromTo(island.current.rotation,
@@ -224,7 +227,7 @@ export const animateIsland = (island) => {
         x: 25 * (Math.PI / 180),
       },
       {
-        y: -60 * (Math.PI / 180),
+        y: -400 * (Math.PI / 180),
         x: 50 * (Math.PI / 180),
         ease: "power1.inOut",
         scrollTrigger: {
@@ -256,6 +259,7 @@ export const animateIsland = (island) => {
         }
       }
     );
+    
   }
 };
 
@@ -287,9 +291,9 @@ export const animateScene = (divRef) => {
   // Timeline principale pour la scène
   const tl = gsap.timeline({
     scrollTrigger: {
-      trigger: "#hero", // Commence depuis la section hero
-      endTrigger: "#about", // Termine dans la section about
-      start: "center center", // Commence au milieu de hero
+      trigger: "#about", // Commence depuis la section hero
+      endTrigger: "#gallery-section", // Termine dans la section about
+      start: "bottom center", // Commence au milieu de hero
       end: "center center", // Termine au milieu de about
       scrub: 2, // Valeur plus élevée pour une animation plus progressive
       markers: false,
@@ -297,19 +301,19 @@ export const animateScene = (divRef) => {
     }
   });
 
-  // Animation progressive de la position Y
   tl.fromTo(divRef.current, 
     {
-      yPercent: 0,
+      xPercent: 0,
       opacity: 1,
     },
     {
-      yPercent: 100,
-      opacity: 1,
+      xPercent: -100,
+      opacity: 0,
       ease: "power1.inOut", // Courbe d'animation plus douce
       immediateRender: true,
     }
   );
+
   // gsap.to("#scene" , {
   //   backgroundColor: "#000",
   //   duration: 0.2,
@@ -339,40 +343,6 @@ export const animateAbout = () => {
       markers: false,
     }
   });
-}
-
-export const animateAboutText = () => {
-  // gsap.to(["#about-title", "#target-text", "#target-text-2"], {
-  //   color: "#fff",
-  //   duration: 1,
-  //   ease: "power1.in",
-  //   scrollTrigger: {
-  //     trigger: "#about",
-  //     start: "top bottom",
-  //     end: "bottom bottom",
-  //     scrub: 2,
-  //     markers: false,
-  //   }
-  // });
-
-  // gsap.fromTo(["#about-title", "#target-text", "#target-text-2"], {
-  //   yPercent:100,
-  //   duration: 3,
-  //   ease: "power1.in",
-  //   opacity:0,
-  // },{
-  //   yPercent:0,
-  //   duration: 3,
-  //   ease: "power1.in",
-  //   opacity:1,
-  //   scrollTrigger: {
-  //     trigger: "#about",
-  //     start: "top bottom",
-  //     end: "bottom bottom",
-  //     scrub: 1,
-  //     markers: false,
-  //   }
-  // });
 }
 
 

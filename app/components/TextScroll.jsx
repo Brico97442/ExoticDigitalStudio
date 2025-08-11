@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -21,7 +21,7 @@ export default function TextScroll({ value , classValue}) {
                         trigger: textRef,
                         start: 'center 80%',
                         end: 'center 60%',
-                        scrub: 3,
+                        scrub: 1,
                         markers: false,
                         // once: true,
                         // toggleActions:"play none none none"
@@ -30,7 +30,7 @@ export default function TextScroll({ value , classValue}) {
                     opacity: 1,
                     ease: "power4.inOut",
                     visibility: "visible",
-                    scrub: 5,
+                    scrub: 1,
                     duration: 10,
                     stagger: 0.09,
                     delay: 1

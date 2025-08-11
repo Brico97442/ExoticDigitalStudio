@@ -101,12 +101,12 @@ function HorizontalScroll() {
 
     const Dot = () => {
         return (
-            <div className='w-4 h-4 lg:w-10 lg:h-10 rounded-full border-[#ECECEC] border-[2px] mx-[10px]'></div>
+            <div className='w-4 h-4 lg:w-10 lg:h-10 rounded-full border-[#003049] border-[2px] mx-[10px]'></div>
         )
     }
 
     return (
-        <div className={`${Guisol.className} absolute text-[#ECECEC] bottom-[37vh] lg:bottom-[17vh] h-[7vh] lg:h-[25vh] left-0 w-full z-[6] flex items-center justify-center overflow-hidden`} >
+        <div id='hero-scroll-container' className={`${Guisol.className} absolute text-[#003049] bottom-[37vh] lg:bottom-[17vh] h-[7vh] lg:h-[25vh] left-0 w-full z-[6] flex items-center justify-center overflow-hidden`} >
             <div id='hero-scroll' className='flex flex-col items-center uppercase font-bold absolute z-[6]' >
                 <div id='slider'ref={slider} className='flex relative whitespace-nowrap z-[6] pointer-events-none' >
                     <h1 ref={text1} className='absolute  z-[6] left-[100%] text-[10vh] lg:text-[250px] flex items-center pointer-events-none tracking-wide drop-shadow-lg leading-none'>studio<Dot />Creativ<Dot />Web<Dot /></h1>

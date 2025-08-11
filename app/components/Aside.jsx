@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from 'react'
 import { animateOverlayIn, animateOverlayOut, animateOverlayText } from "../utils/animation"
 import TransitionLink from "../utils/TransitionLink"
 import { motion } from 'framer-motion';
-import HackHover from './hackHoverEffect'
+import HackHover from './HackHoverEffect'
 
 function Aside({ isOpen, onClose }) {
     const overlayRef = useRef(null);

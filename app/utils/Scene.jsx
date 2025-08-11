@@ -34,9 +34,9 @@ export default function Scene({ island }) {
   }, [island]);
 
   return (
-    <div id='scene' ref={divRef} className={`w-[100%] z-[2] absolute h-[100vh] top-0 flex-col items-center justify-center lg:w-full`}>
+    <div id='scene' ref={divRef} className={`w-[100%] fixed h-[100vh] top-0 flex-col items-center justify-center lg:w-full`}>
       <div className='w-full h-full'>
-        <Canvas camera={{ position: [0, 0, 6] }}>
+        <Canvas camera={{ position: [0, 0, 6] }} style={{zIndex:1000}}>
           <Suspense fallback={null}>
             <Model mousePosition={mousePosition} island={island} />
           </Suspense>
