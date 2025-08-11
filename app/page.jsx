@@ -114,7 +114,7 @@ export default function Home() {
               <div className="w-full flex justify-end">
                 <TextReveal classValue="flex w-full justify-end text-right">
                   <p ref={targetRef} className='w-full h-full absolute pointer-events-none overflow-hidden text-right lg:text-right tracking-tighter text-[16px] lg:text-[32px] lg:w-3/6 leading-none'>
-                    Une agence web basée à l'ile de la Réunion <br />
+                    Développeur freelance basée à l'ile de la Réunion <br />
                     spécialisé dans la  <strong> création de site internet moderne</strong>, qui place l'utilisateur au cœur d'une expérience unique.
                   </p>
                 </TextReveal>
