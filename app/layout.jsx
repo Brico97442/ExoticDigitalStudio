@@ -15,9 +15,11 @@ import PreLoader from "./components/PreLoader";
 export default function RootLayout({ children }) {
   const stickyElement = useRef(null);
   useEffect(() => {
-    // Prépare l'état initial des éléments du hero pour éviter le flash
-    prepareHeroIntro();
-  }, []);
+    // Re-prépare l'état initial seulement si on est sur la home (éléments présents)
+    // pour éviter de rendre visibles les éléments quand on revient.
+    const prepared = prepareHeroIntro();
+    if (!prepared) return;
+  });
 
   return (
     <html lang="fr">

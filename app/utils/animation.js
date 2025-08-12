@@ -20,7 +20,7 @@ export const animatePageIn = () => {
       zIndex: 10,
     }).to([bannerOne, bannerTwo, bannerThree, bannerFour], {
       yPercent: -100,
-      duration: 0.8,
+      duration: 0.4,
       ease: "power4.inOut",
       zIndex: 10,
 
@@ -191,12 +191,12 @@ export const animateHeroIntro = () => {
   if (typeof window !== 'undefined') {
     window.__heroIntroTl = tl;
   }
-  tl.set(targets, { y: -100, opacity: 0, visibility: 'hidden', willChange: 'transform, opacity' })
+  tl.set(targets, { y: 100, opacity: 0, visibility: 'hidden', willChange: 'transform, opacity' })
     .to(targets, {
       y: 0,
       opacity: 1,
       visibility: 'visible',
-      duration: 0.8,
+      duration: 0.6,
       ease: 'power3.out',
       stagger: 0.08,
       clearProps: 'transform,opacity,willChange',
@@ -211,7 +211,10 @@ export const animateHeroIntro = () => {
 };
 
 export const prepareHeroIntro = () => {
-  if (typeof window !== 'undefined' && window.__heroIntroDone) return; // ne pas réinitialiser après lecture
+  if (typeof window !== 'undefined') {
+    // Réinitialise le flag pour permettre une relecture quand on revient sur la home
+    window.__heroIntroDone = false;
+  }
   const selectors = [
     '#hero-title',
     '#hero-subtitle',
@@ -222,8 +225,9 @@ export const prepareHeroIntro = () => {
   const targets = selectors
     .map((s) => document.querySelectorAll(s))
     .flat?.() || [];
-  if (!targets || targets.length === 0) return;
-  gsap.set(targets, { y: -100, opacity: 0, visibility: 'hidden' });
+  if (!targets || targets.length === 0) return false;
+  gsap.set(targets, { y: 100, opacity: 0, visibility: 'hidden' });
+  return true;
 };
 
 //Animation objet 3D Island
@@ -345,6 +349,23 @@ export const animateIsland = (island) => {
   }
 };
 
+export const animateIslandIntro = (island) => {
+  if (!island?.current) return;
+  // Position/rotation/opacité de départ
+  const startPosition = { x: -0.08, y: -0.2, z: -0.6 };
+  const endPosition = { x: -0.08, y: 0.08, z: -0.3 };
+  const startRotation = { x: 15 * (Math.PI / 180), y: -100 * (Math.PI / 180) };
+  const endRotation = { x: 25 * (Math.PI / 180), y: -80 * (Math.PI / 180) };
+
+  const tl = gsap.timeline();
+  tl.set(island.current, { visible: true })
+    .set(island.current.position, startPosition)
+    .set(island.current.rotation, startRotation)
+    .fromTo(island.current.material.uniforms.opacity, { value: 0 }, { value: 0.04, duration: 0.8, ease: 'power2.out' }, 0)
+    .to(island.current.position, { ...endPosition, duration: 1.2, ease: 'power3.out' }, 0)
+    .to(island.current.rotation, { ...endRotation, duration: 1.2, ease: 'power3.out' }, 0);
+};
+
 //counter animation
 export const animateCounter = (counterRef, onFinish) => {
   if (counterRef.current) {
@@ -352,7 +373,7 @@ export const animateCounter = (counterRef, onFinish) => {
       innerText: 100,
       duration: 5,
       scrub: 2,
-      ease: "power1.in",
+      ease: "power1.inOut",
       snap: { innerText: 1 },
       onUpdate: function () {
         counterRef.current.textContent = Math.round(this.targets()[0].innerText);
@@ -362,7 +383,7 @@ export const animateCounter = (counterRef, onFinish) => {
           yPercent: -100,
           duration: 1,
           scrub: 1,
-          ease: "power4.out",
+          ease: "power1.inOut",
         });
         if (typeof onFinish === 'function') {
           onFinish();

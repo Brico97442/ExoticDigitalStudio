@@ -32,7 +32,7 @@ import gsap from 'gsap';
 import { useGLTF, Text } from '@react-three/drei';
 import { useFrame, useLoader, useThree } from '@react-three/fiber';
 import { ShaderMaterial, Color } from 'three';
-import { animateIsland} from './animation';
+import { animateIsland, animateIslandIntro } from './animation';
 
 export default function Model({ mousePosition, island }) {
   const { nodes } = useGLTF('/media/reunion2.glb');
@@ -42,38 +42,51 @@ export default function Model({ mousePosition, island }) {
   const groupScale = viewport.width / 2.4 * scaleFactor;
 
   useEffect(() => {
-    if (island.current) {
+    if (!island.current) return;
 
-      //Rotation initiale du Modèle 3D
-      const initialRotationX = 25 * (Math.PI / 180);
-      const initialRotationY = -80 * (Math.PI / 180);
+    // Rotation initiale du Modèle 3D
+    const initialRotationX = 25 * (Math.PI / 180);
+    const initialRotationY = -80 * (Math.PI / 180);
 
-      setInitialRotation({ x: initialRotationX, y: initialRotationY });
-      island.current.rotation.set(initialRotationX, initialRotationY, 0);
+    setInitialRotation({ x: initialRotationX, y: initialRotationY });
+    island.current.rotation.set(initialRotationX, initialRotationY, 0);
 
-      // Définition du matériau du shader
-      const shaderMaterial = new ShaderMaterial({
-        uniforms: {
-          opacity: { value: 0.04 }, // Opacité du modèle
-          color: { // Couleur du quadrillage
-            value: new Color(0, 48/255, 73/255) 
-          }, 
-          depthTest: false
-        },
-        vertexShader,
-        fragmentShader,
-        wireframe: true, // Activation du wireframe
-        transparent: true,
-        depthTest: false,
-        alphaTest: true
-      });
+    // Définition du matériau du shader
+    const shaderMaterial = new ShaderMaterial({
+      uniforms: {
+        opacity: { value: 0.0 }, // Départ invisible, animé à l'intro
+        color: { // Couleur du quadrillage
+          value: new Color(0, 48/255, 73/255) 
+        }, 
+        depthTest: false
+      },
+      vertexShader,
+      fragmentShader,
+      wireframe: true, // Activation du wireframe
+      transparent: true,
+      depthTest: false,
+      alphaTest: true
+    });
 
-      // Appliquer le matériau shader à l'île
-      island.current.material = shaderMaterial
-      animateIsland(island)
-      console.log(island)
+    // Appliquer le matériau shader à l'île
+    island.current.material = shaderMaterial;
+    // Masquer l'île à l'arrivée, évite tout flash
+    island.current.visible = false;
+
+    // Intro page d'accueil: si le preloader est déjà passé, on lance tout de suite.
+    const runIntro = () => animateIslandIntro(island);
+    if (typeof window !== 'undefined' && window.__preloaderDone) {
+      runIntro();
+    } else {
+      window.addEventListener('preloaderDone', runIntro, { once: true });
     }
 
+    // Scroll/scene animations ensuite
+    animateIsland(island);
+
+    return () => {
+      window.removeEventListener('preloaderDone', runIntro);
+    };
   }, [island]);
 
   // useFrame(() => {

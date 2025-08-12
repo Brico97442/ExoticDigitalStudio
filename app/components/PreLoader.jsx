@@ -82,7 +82,8 @@ function PreLoader() {
                     if (container.current) {
                         container.current.style.display = 'none';
                     }
-                    // Déclenche l'intro du hero juste après la disparition du preloader
+                    // Signale la fin du preloader et déclenche l'intro du hero
+                    try { window.__preloaderDone = true; window.dispatchEvent(new Event('preloaderDone')); } catch {}
                     requestAnimationFrame(() => animateHeroIntro());
                 }
             });
