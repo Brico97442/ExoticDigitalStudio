@@ -2,7 +2,7 @@
 
 import React, { useRef, useEffect, useState } from 'react';
 import gsap from 'gsap';
-import { animateCounter } from '../utils/animation'; // Assurez-vous que le chemin est correct
+import { animateCounter, animateHeroIntro } from '../utils/animation';
 import Image from 'next/image';
 import logo from "../../assets/LogoExoticDigitalStudioWhiteVectorised.webp"
 
@@ -82,6 +82,8 @@ function PreLoader() {
                     if (container.current) {
                         container.current.style.display = 'none';
                     }
+                    // Déclenche l'intro du hero juste après la disparition du preloader
+                    requestAnimationFrame(() => animateHeroIntro());
                 }
             });
         });

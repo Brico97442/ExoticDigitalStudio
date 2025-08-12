@@ -4,6 +4,8 @@ import { useRef } from "react";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import StickyCursor from "./utils/StickyCursor";
+import { useEffect } from 'react';
+import { prepareHeroIntro } from './utils/animation';
 import Template from "./utils/template";
 import Footer from "./components/Footer";
 import PreLoader from "./components/PreLoader";
@@ -12,6 +14,10 @@ import PreLoader from "./components/PreLoader";
 
 export default function RootLayout({ children }) {
   const stickyElement = useRef(null);
+  useEffect(() => {
+    // Prépare l'état initial des éléments du hero pour éviter le flash
+    prepareHeroIntro();
+  }, []);
 
   return (
     <html lang="fr">

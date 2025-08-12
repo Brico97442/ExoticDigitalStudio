@@ -162,6 +162,70 @@ export const animateHero = (arrowRef) => {
 
 };
 
+// Intro sur la page d'accueil après disparition du préloader
+export const animateHeroIntro = () => {
+  if (typeof window !== 'undefined') {
+    if (window.__heroIntroDone) return; // déjà joué
+    if (window.__heroIntroTl) {
+      try { window.__heroIntroTl.kill(); } catch {}
+      window.__heroIntroTl = null;
+    }
+  }
+  const selectors = [
+    '#hero-title',
+    '#hero-subtitle',
+    '#hero-scroll',
+    '#studio-text',
+    '#coordinates-gps p'
+  ];
+
+  const targets = selectors
+    .map((s) => document.querySelectorAll(s))
+    .flat?.() || [];
+
+  if (!targets || targets.length === 0) {
+    return;
+  }
+
+  const tl = gsap.timeline();
+  if (typeof window !== 'undefined') {
+    window.__heroIntroTl = tl;
+  }
+  tl.set(targets, { y: -100, opacity: 0, visibility: 'hidden', willChange: 'transform, opacity' })
+    .to(targets, {
+      y: 0,
+      opacity: 1,
+      visibility: 'visible',
+      duration: 0.8,
+      ease: 'power3.out',
+      stagger: 0.08,
+      clearProps: 'transform,opacity,willChange',
+      onComplete: () => {
+        try {
+          window.__heroIntroDone = true;
+          window.dispatchEvent(new Event('heroIntroDone'));
+          window.__heroIntroTl = null;
+        } catch {}
+      }
+    });
+};
+
+export const prepareHeroIntro = () => {
+  if (typeof window !== 'undefined' && window.__heroIntroDone) return; // ne pas réinitialiser après lecture
+  const selectors = [
+    '#hero-title',
+    '#hero-subtitle',
+    '#hero-scroll',
+    '#studio-text',
+    '#coordinates-gps p'
+  ];
+  const targets = selectors
+    .map((s) => document.querySelectorAll(s))
+    .flat?.() || [];
+  if (!targets || targets.length === 0) return;
+  gsap.set(targets, { y: -100, opacity: 0, visibility: 'hidden' });
+};
+
 //Animation objet 3D Island
 
 export const animateIsland = (island) => {
