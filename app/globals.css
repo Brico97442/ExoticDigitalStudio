@@ -80,56 +80,49 @@ body {
 
 .burger-menu {
   display: flex;
-  flex-direction: column;
-  gap: 8px;
   padding: 30px;
   cursor: pointer;
   pointer-events: none;
   position: relative;
   justify-content: center;
   align-items: center;
+  width: 40px;   /* largeur des barres */
+  height: 24px;  /* hauteur du bouton */
 }
 
 .burger-menu::before,
 .burger-menu::after {
-  display: block;
   content: "";
+  position: absolute;
+  left: 50%;
   width: 40px;
   height: 3px;
-  mix-blend-mode: difference;
+  /* pas de blend pour éviter le point au centre */
+  mix-blend-mode: normal;
   background-color: #660708;
   box-sizing: border-box;
-  transition: all 0.3s;
+  transform-origin: center;
+  transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
-.burger-active::after {
-  top: -1px;
-  background-color: #660708;
-  display: block;
-  content: "";
-  width: 40px;
-  height: 3px;
-  position: relative;
-  left: 0;
-  top: 0;
-  transform: rotate(405deg);
-  box-sizing: border-box;
-  transition: all 0.6s;
+.burger-menu::before {
+  top: calc(50% - 6px);           /* barre du haut */
+  transform: translateX(-50%) rotate(0deg);
+}
 
+.burger-menu::after {
+  top: calc(50% + 6px);           /* barre du bas */
+  transform: translateX(-50%) rotate(0deg);
 }
 
 .burger-active::before {
-  display: block;
-  content: "";
-  transform: rotate(-405deg);
-  top: 0;
-  position: absolute;
-  width: 40px;
-  height: 3px;
-  background-color: #660708;
-  box-sizing: border-box;
-  transition: all 0.7s;
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
 
+.burger-active::after {
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
 }
 
 .bounds {
@@ -410,7 +403,8 @@ background-repeat: repeat-y;
 animation: pan-overlay 45s infinite linear;
 }
 
-#navigation-link::after{
+#navlink #navigation-link::after,
+#navlink-menu #navigation-link::after{
 width: 0;
 height:2px;
 position: absolute;
@@ -419,19 +413,34 @@ content: '';
 background: #fff;
 }
 
-#navigation-link:hover::after{
+#navlink #navigation-link,
+#navlink-menu #navigation-link{
+  position: relative;          /* chaque lien devient le conteneur du ::after */
+  display: inline-block;       /* pour que width: 100% du ::after suive le lien */
+}
+
+#navlink #navigation-link:hover::after,
+#navlink-menu #navigation-link:hover::after{
 width: 100%;
 left: 0;
 transition: ease-in-out;
 transition-duration: 0.3s;
 }
 
-#navigation-link:not(:hover)::after{
+#navlink #navigation-link:not(:hover)::after,
+#navlink-menu #navigation-link:not(:hover)::after{
 width: 0;
 right: 0;
 transition: ease-in-out;
 transition-duration: 0.3s;
 }
+
+::selection {
+  background: #e49366;
+  color: #0e0e0e;
+}
+
+/* supprimé le ciblage du conteneur seul: on cible les liens via #navigation-link ci-dessus */
 
 /* #about #about-title{
   line-height: 10vh;

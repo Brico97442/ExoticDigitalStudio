@@ -15,14 +15,14 @@ export const animatePageIn = () => {
     const tl = gsap.timeline();
     tl.set([bannerOne, bannerTwo, bannerThree, bannerFour], {
       yPercent: 0,
-      duration: 1,
+      duration: 0,
       ease: "power4.inOut",
       zIndex: 10,
     }).to([bannerOne, bannerTwo, bannerThree, bannerFour], {
       yPercent: -100,
+      duration: 0.8,
       ease: "power4.inOut",
       zIndex: 10,
-      delay: 1,
 
     });
   }
@@ -50,15 +50,10 @@ export const animatePageOut = (href, router) => {
       scrub: 1,
       zIndex: 10,
       onComplete: () => {
+        // Navigue lorsque le voile couvre totalement l'écran.
+        // La sortie (retrait du voile) sera animée par animatePageIn dans la nouvelle page.
         router.push(href);
       },
-    }).to([bannerOne, bannerTwo, bannerThree, bannerFour], {
-      yPercent: 100,
-      duration: 0.8,
-      scrub: 1,
-      ease: "power4.inOut",
-      zIndex: 10,
-      delay: 0.2,
     });
   }
   return () => {
@@ -79,6 +74,7 @@ export const animateOverlayIn = (overlayRef) => {
     }, {
       x: 0,
       visibility: 'visible',
+      pointerEvents: 'auto',
       opacity: 1,
       duration: 0.4,
 
@@ -94,6 +90,9 @@ export const animateOverlayOut = (overlayRef) => {
     }, {
       x: `${100}%`,
       duration: 0.4,
+      onComplete: () => {
+        gsap.set(overlayRef.current, { visibility: 'hidden', pointerEvents: 'none' })
+      }
     })
   }
 }
@@ -283,7 +282,7 @@ export const animateIsland = (island) => {
 };
 
 //counter animation
-export const animateCounter = (counterRef) => {
+export const animateCounter = (counterRef, onFinish) => {
   if (counterRef.current) {
     gsap.to(counterRef.current, {
       innerText: 100,
@@ -300,7 +299,10 @@ export const animateCounter = (counterRef) => {
           duration: 1,
           scrub: 1,
           ease: "power4.out",
-        })
+        });
+        if (typeof onFinish === 'function') {
+          onFinish();
+        }
       }
     });
   }

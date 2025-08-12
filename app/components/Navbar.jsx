@@ -1,5 +1,5 @@
 'use client'
-import { forwardRef, useState, useEffect } from "react"
+import { forwardRef, useState, useEffect, useRef } from "react"
 import TransitionLink from "../utils/TransitionLink"
 import Image from "next/image"
 import logo from "../../assets/LogoExoticDigitalStudioVectorised.webp"
@@ -8,6 +8,8 @@ import Aside from './Aside'
 
 const Navbar = forwardRef(function Index(props, ref) {
     const [isActive, setIsActive] = useState(false);
+    const [showAside, setShowAside] = useState(false);
+    const hideTimerRef = useRef(null);
     const [isScrolled, setIsScrolled] = useState(false);
 
     useEffect(() => {
@@ -21,7 +23,25 @@ const Navbar = forwardRef(function Index(props, ref) {
     }, []);
 
     const toggleAside = () => {
-        setIsActive(!isActive)
+        // Annule un éventuel timer de fermeture si on ré-ouvre rapidement
+        if (hideTimerRef.current) {
+            clearTimeout(hideTimerRef.current)
+            hideTimerRef.current = null
+        }
+
+        if (!isActive) {
+            // Ouverture: on monte l'aside puis on active l'animation d'entrée
+            setShowAside(true)
+            // Laisse React monter le composant avant de passer isActive à true
+            requestAnimationFrame(() => setIsActive(true))
+        } else {
+            // Fermeture: lance l'animation de sortie puis démonte après la durée GSAP (~400ms)
+            setIsActive(false)
+            hideTimerRef.current = setTimeout(() => {
+                setShowAside(false)
+                hideTimerRef.current = null
+            }, 420)
+        }
     }
 
     return (
@@ -34,11 +54,6 @@ const Navbar = forwardRef(function Index(props, ref) {
                 </Magnetic>
                 <ul className="flex items-center transition text-black text-lg">
                     <div id='navlink' className={`flex gap-[50px] lg:visible z-[6] transition-all duration-300 ease-in-out text-[14px] lg:text-[22px] ${isScrolled ? 'opacity-0 max-h-0 overflow-hidden' : 'opacity-100 max-h-[100px]'}`}>
-                        <li className=" h-full transition ease hover:text-white hover:mix-blend-difference z-[5]">
-                            <Magnetic>
-                                <TransitionLink href="/" label="Accueil" />
-                            </Magnetic>
-                        </li>
                         <li className=" transition ease hover:text-white z-[5]">
                             <Magnetic>
                                 <TransitionLink href="/pricing" label="Processus" />
@@ -55,10 +70,10 @@ const Navbar = forwardRef(function Index(props, ref) {
                             </Magnetic>
                         </li>
                     </div>
-                    <li onClick={toggleAside} className={`absolute right-[15px] lg:right-[50px] justify-center items-center cursor-pointer w-[35px] h-[18px] p-[30px] z-[6] mix-blend-difference ${isScrolled ? 'flex opacity-100 max-w-[100px] transition-all ease duration-1000' : 'hidden opacity-0 max-w-0 overflow-hidden  transition-all ease duration-1000'}`}>
-                        <div className="fixed flex justify-center w-full items-center z-[10] mix-blend-difference">
+                    <li onClick={toggleAside} className={`absolute right-[15px] lg:right-[50px] justify-center items-center cursor-pointer w-[35px] h-[18px] p-[30px] z-[20] ${(isScrolled || isActive) ? 'flex opacity-100 max-w-[100px] transition-all ease duration-1000' : 'hidden opacity-0 max-w-0 overflow-hidden  transition-all ease duration-1000'}`}>
+                        <div className="fixed flex justify-center w-full items-center z-[30]">
                             <Magnetic>
-                                <div className={`${isActive ? 'burger-active' : 'burger-menu'} mix-blend-difference `}>
+                                <div className={`burger-menu ${isActive ? 'burger-active' : ''}`}>
                                     <div ref={ref} className="bounds">
                                     </div>
                                 </div>
@@ -66,9 +81,9 @@ const Navbar = forwardRef(function Index(props, ref) {
                         </div>
                     </li>
                 </ul>
-                {/* <Aside isOpen={isActive} onClose={toggleAside} /> */}
+                {showAside && <Aside isOpen={isActive} onClose={toggleAside} />}
             </nav>
-            {isActive && <div className="h-screen fixed top-0 w-full bg-black/25 blur-[1px] z-[0] border-none transition-all duration-1000 opacity-[1] mix-blend-difference" />}
+            {showAside && <div className="h-screen fixed top-0 w-full bg-black/25 blur-[1px] z-[0] border-none transition-all duration-1000 opacity-[1] mix-blend-difference" />}
         </header>
     )
 })

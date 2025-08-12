@@ -14,43 +14,77 @@ function PreLoader() {
     const [mounted, setMounted] = useState(false);
     const [loadingComplete, setLoadingComplete] = useState(false)
     const videoRef = useRef(null);
+    const scrollLockYRef = useRef(0);
 
 
     useEffect(() => {
         setMounted(true);
-        // Déplacez l'accès au document ici
-        const body = document.querySelector('body');
-        if (loadingComplete) {
-            body.classList.add('fixed');
+        const body = document.body;
+        const html = document.documentElement;
+
+        const lockScroll = () => {
+            scrollLockYRef.current = window.scrollY || window.pageYOffset || 0;
+            // Assure-toi de démarrer en haut
+            if (scrollLockYRef.current !== 0) {
+                window.scrollTo(0, 0);
+                scrollLockYRef.current = 0;
+            }
+            body.style.position = 'fixed';
+            body.style.top = `-${scrollLockYRef.current}px`;
+            body.style.left = '0';
+            body.style.right = '0';
+            body.style.width = '100%';
+            body.style.overflow = 'hidden';
+            html.style.overflow = 'hidden';
+            html.style.overscrollBehavior = 'none';
+        };
+
+        const unlockScroll = () => {
+            const y = Math.abs(parseInt(body.style.top || '0', 10)) || 0;
+            body.style.position = '';
+            body.style.top = '';
+            body.style.left = '';
+            body.style.right = '';
+            body.style.width = '';
+            body.style.overflow = '';
+            html.style.overflow = '';
+            html.style.overscrollBehavior = '';
+            window.scrollTo(0, y);
+        };
+
+        if (!loadingComplete) {
+            lockScroll();
         } else {
-            body.classList.remove('fixed');
+            unlockScroll();
         }
+
+        return () => {
+            // Toujours déverrouiller au démontage par sécurité
+            if (!loadingComplete) {
+                unlockScroll();
+            }
+        };
     }, [loadingComplete]);
 
     useEffect(() => {
         if (!mounted || !container.current) return;
 
-        const tl = gsap.timeline();
-
-        // Fade out and hide the PreLoader
-        tl.to(container.current, {
-            yPercent: -100,
-            ease: "power4.out",
-            // delay: 5.4,
-            delay: 7,
-            duration: 0.8,
-            onComplete: () => {
-                if (typeof loadingComplete === 'function') {
-                    loadingComplete(true);
-                }
-                if (container.current && loadingComplete) {
-                    container.current.style.display = 'none';
-                }
-            }
-        });
-
         if (!mounted || !counterNumberRef.current) return;
-        animateCounter(counterNumberRef);
+        // Lance le compteur et, lorsqu'il termine, joue la sortie du preloader puis libère le scroll
+        animateCounter(counterNumberRef, () => {
+            if (!container.current) return;
+            gsap.to(container.current, {
+                yPercent: -100,
+                ease: "power4.out",
+                duration: 0.8,
+                onComplete: () => {
+                    setLoadingComplete(true);
+                    if (container.current) {
+                        container.current.style.display = 'none';
+                    }
+                }
+            });
+        });
 
         if (videoRef.current) {
             videoRef.current.play();

@@ -13,10 +13,6 @@ function Aside({ isOpen, onClose }) {
     
     const navItems = [
         {
-            label: "Accueil",
-            href: "/",
-        },
-        {
             label: "Le processus",
             href: "/pricing",
         },
@@ -40,9 +36,8 @@ function Aside({ isOpen, onClose }) {
     }, [isOpen]);
 
     const handleOverlayClick = (e) => {
-        if (isOpen && !contentRef.current.contains(e.target)) {
-            onClose();
-        }
+        // Désactivé: on ne ferme plus via le clic hors contenu pour garder le contrôle sur le bouton burger
+        return;
     };
 
     const handleLinkClick = () => {
@@ -59,12 +54,12 @@ function Aside({ isOpen, onClose }) {
             onClick={handleOverlayClick}
         >
             <div className='fixed w-full h-screen bg-gray-500  blur-[1px] border-l border-[#003049]'></div>
-            <aside ref={contentRef} className='w-full flex h-full items-center pt-40 flex-col'>
+            <aside ref={contentRef} className='w-full flex h-full justify-center items-start flex-col'>
         
-                <div className='w-full border-box ml-40 h-full ' >
+                <div className='border-box ml-40' >
                     <h1 className='leading-none text-[1.5em]'></h1>
-                    <nav>
-                        <ul ref={overlayTextRef} className='flex flex-col gap-20 mt-40'>
+                    <nav className='w-auto' id='navlink-menu'>
+                        <ul ref={overlayTextRef} className='flex flex-col gap-20'>
                             {navItems.map((item, index) => (
                                 <li key={index}>
                                     <TransitionLink
