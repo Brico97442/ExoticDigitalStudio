@@ -7,8 +7,8 @@ import Magnetic from '../utils/Magnetic'
 import Aside from './Aside'
 
 const Navbar = forwardRef(function Index(props, ref) {
-    const [isActive, setIsActive] = useState(false)
-    const [isScrolled, setIsScrolled] = useState(false)
+    const [isActive, setIsActive] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -66,7 +66,7 @@ const Navbar = forwardRef(function Index(props, ref) {
                         </div>
                     </li>
                 </ul>
-                <Aside isOpen={isActive} onClose={toggleAside} />
+                {/* <Aside isOpen={isActive} onClose={toggleAside} /> */}
             </nav>
             {isActive && <div className="h-screen fixed top-0 w-full bg-black/25 blur-[1px] z-[0] border-none transition-all duration-1000 opacity-[1] mix-blend-difference" />}
         </header>

@@ -19,10 +19,12 @@ export default function TextReveal({ children, classValue, staggerValue}) {
                 scrollTrigger: {
                     trigger: textRef.current,
                     start: 'top 80%',
-                    end: 'top 65%',
+                    end: 'top 40%',
                     scrub: 3,
                     markers: false,
                     // once:true,
+                    visibility: "hidden",
+
                 },
                 yPercent: 100,
                 stagger: staggerValue,

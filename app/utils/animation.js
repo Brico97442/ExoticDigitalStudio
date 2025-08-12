@@ -118,7 +118,6 @@ export const animateHero = (arrowRef) => {
   if (arrowRef.current) {
     gsap.to(arrowRef.current, {
       rotation: 45,
-      // yPercent: -200,
       ease: "power2.inOut",
       scrollTrigger: {
         trigger: "#hero",
@@ -128,23 +127,28 @@ export const animateHero = (arrowRef) => {
         markers: false,
       },
     });
-
-    
-    
   }
 
-  // gsap.fromTo("#hero-subtitle", {
-  //   yPercent: -100,
-  //   ease: "power4.inOut",
-  //   duration: 4,
-  // },{
-  //   yPercent: 0,
-  //   ease: "power4.inOut",
-  //   duration: 4,
-  // });
+  gsap.fromTo(
+    '#about-title',
+    { yPercent: 100 }, // valeurs de départ
+    {
+      yPercent: 0, // valeurs d’arrivée
+      ease: "power4.inOut",
+      duration: 10,
+      scrollTrigger: {
+        trigger: "#about",
+        start: "top center",
+        end: "30% 50%",
+        scrub: 2,
+        markers: false,
+      },
+    }
+  );
 
-  
-  gsap.to(['#hero-scroll , #hero-subtitle ,#hero-title , #studio-text ,#coordinates-gps p'], {
+
+
+  gsap.to(['#hero-scroll , #hero-subtitle , #hero-title , #studio-text ,#coordinates-gps p'], {
     yPercent: 100,
     ease: "power4.inOut",
     duration: 5,
@@ -157,23 +161,37 @@ export const animateHero = (arrowRef) => {
     },
   });
 
-  
-  // gsap.fromTo('#hero-scroll-container', {
-  //   yPercent: 100,
-  //   ease: "power4.inOut",
-  //   duration: 3
-  // }
-  // ,{
-  //   yPercent: 0,
-  //   ease: "power4.inOut",
-  //   duration: 3
-  // }
-  // );
 };
 
 //Animation objet 3D Island
 
 export const animateIsland = (island) => {
+  gsap.timeline({
+    scrollTrigger: {
+      trigger: "#about",
+      endTrigger: "#gallery-section",
+      start: "60% center",
+      end: "top 20%",
+      scrub: 1,
+      markers: false,
+    }
+  })
+  .fromTo("#location-info",
+    { opacity: 0, visibility: "hidden" },
+    { opacity: 1, visibility: "visible", ease: "power3.inOut", duration: 1 }
+  )
+  .to("#location-info",
+    { 
+      opacity: 0,
+      ease: "power3.inOut",
+      duration: 1,
+      onComplete: () => gsap.set("#location-info", { visibility: "hidden" })
+    }
+  );
+  
+  
+  
+
   if (island?.current) {
     // Timeline pour contrôler précisément le mouvement de l'île
     const positionTL = gsap.timeline({
@@ -198,28 +216,28 @@ export const animateIsland = (island) => {
         },
         {
           x: -0.08,  // Premier point intermédiaire
-          y: 0.08,
-          z: -0.5,
+          y: 0.2,
+          z: -0.15,
           duration: 0.4,
           ease: "power1.inOut",
         }
       )
+
       .to(island.current.position, {
         x: -0.08,
-        y: 0.08,
-        z: -0.65,
+        y: 0.1,
+        z: -0.2,
         duration: 0.25,
         ease: "power1.inOut",
       })
 
       .to(island.current.position, {
-        x: -0.8,  // Position finale
+        x: -0.1,  // Position finale
         y: 0.12,
         z: -0.25,
         duration: 0.25,
         ease: "power1.inOut",
       })
-
 
     gsap.fromTo(island.current.rotation,
       {
@@ -227,39 +245,40 @@ export const animateIsland = (island) => {
         x: 25 * (Math.PI / 180),
       },
       {
-        y: -400 * (Math.PI / 180),
-        x: 50 * (Math.PI / 180),
+        y: -415 * (Math.PI / 180),
+        x: 30 * (Math.PI / 180),
         ease: "power1.inOut",
         scrollTrigger: {
           trigger: "#hero",
           endTrigger: "#about",
           start: "center center",
           end: "center center",
-          scrub: 2.5,
+          scrub: 3,
         }
       }
     );
 
+
     gsap.to(island.current.material.uniforms.color.value,
       {
-        r: 0.5,   // Valeurs normalisées entre 0 et 1
+        r: 0.5,
         g: 0.1,
         b: 0.4,
         ease: "power1.inOut",
         duration: 6,
-        delay:5,
+        delay: 5,
         scrollTrigger: {
           trigger: "#hero",
           endTrigger: "#about",
           start: "bottom center",
           end: "center center",
-          scrub: 2,
-          markers:false,
+          scrub: 1,
+          markers: false,
           smoothChildTiming: true,
         }
       }
     );
-    
+
   }
 };
 
@@ -275,11 +294,11 @@ export const animateCounter = (counterRef) => {
       onUpdate: function () {
         counterRef.current.textContent = Math.round(this.targets()[0].innerText);
       },
-      onComplete:()=>{
-        gsap.to(counterRef.current,{
+      onComplete: () => {
+        gsap.to(counterRef.current, {
           yPercent: -100,
           duration: 1,
-          scrub:1,
+          scrub: 1,
           ease: "power4.out",
         })
       }
@@ -291,55 +310,43 @@ export const animateScene = (divRef) => {
   // Timeline principale pour la scène
   const tl = gsap.timeline({
     scrollTrigger: {
-      trigger: "#about", // Commence depuis la section hero
-      endTrigger: "#gallery-section", // Termine dans la section about
+      trigger: "#about", // Commence depuis la section about
+      endTrigger: "#gallery-section", // Termine dans la section gallery-section
       start: "bottom center", // Commence au milieu de hero
-      end: "center center", // Termine au milieu de about
-      scrub: 2, // Valeur plus élevée pour une animation plus progressive
+      end: "top 5%", // Termine au milieu de about
+      scrub: 1, // Valeur plus élevée pour une animation plus progressive
       markers: false,
       smooth: true, // Lissage de l'animation
     }
   });
 
-  tl.fromTo(divRef.current, 
+  tl.fromTo(divRef.current,
     {
       xPercent: 0,
       opacity: 1,
     },
     {
-      xPercent: -100,
+      xPercent: 0,
       opacity: 0,
-      ease: "power1.inOut", // Courbe d'animation plus douce
+      ease: "power3.inOut", // Courbe d'animation plus douce
       immediateRender: true,
     }
   );
 
-  // gsap.to("#scene" , {
-  //   backgroundColor: "#000",
-  //   duration: 0.2,
-  //   ease: "power1.in",
-  //   scrollTrigger: {
-  //     trigger: "#about",
-  //     start: "top bottom",
-  //     end: "center bottom",
-  //     scrub: 1,
-  //     markers: true,
-  //   }
-  // });
 };
 
 
 
 export const animateAbout = () => {
-  gsap.to(["#hero-container"] , {
+  gsap.to(["#hero-container"], {
     backgroundColor: "#0E0E0E",
-    duration: 0.2,
+    // duration: 0.2,
     ease: "power1.in",
     scrollTrigger: {
       trigger: "#about",
       start: "top bottom",
       end: "center bottom",
-      scrub: 1,
+      scrub: 2,
       markers: false,
     }
   });

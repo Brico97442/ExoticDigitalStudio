@@ -17,13 +17,13 @@ export default function RootLayout({ children }) {
     <html lang="fr">
       <body className={GeistSans.className}>
         {/* <PreLoader /> */}
-        <Template>
+        {/* <Template> */}
           <Navbar ref={stickyElement} />
           <main className="flex w-full h-full bg-gradient-to-b from-[#F0EAEA] to-[#737373]">
             <StickyCursor stickyElement={stickyElement} heroSection="#hero" />
             {children}
           </main>
-        </Template>
+        {/* </Template> */}
         <Footer />
       </body>
     </html>

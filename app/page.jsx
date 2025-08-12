@@ -41,6 +41,7 @@ export default function Home() {
   const aboutRef = useRef(null);
   const textScroll = useRef(null);
   const heroSection = useRef(null)
+  const locationRef = useRef(null)
 
 
   useEffect(() => {
@@ -75,7 +76,7 @@ export default function Home() {
             </TextReveal>
 
             <div style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} className="overflow-hidden absolute right-[10px] bottom-[148px] lg:bottom-[50px] lg:right-[50px]" >
-            <h3 id='hero-title'  className=' bg-slate-900 pointer-events-none text-[#ECECEC] text-[16px] lg:text-[28px] font-bold-sm tracking-tighter py-2 px-6 rounded-lg'>Reunion Island Digital Studio </h3>
+              <h3 id='hero-title' className=' bg-slate-900 pointer-events-none text-[#ECECEC] text-[16px] lg:text-[28px] font-bold-sm tracking-tighter py-2 px-6 rounded-lg'>Reunion Island Digital Studio </h3>
             </div>
             <Image
               src={Arrow}
@@ -95,7 +96,7 @@ export default function Home() {
                 </TextReveal>
               </div>
             </div>
-            
+
             <div className="overflow-hidden mb-[10px] lg:mr-[50px] lg:mb-[50px]" style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }}>
               <h2 id='studio-text' className='overflow-hidden text-[#003049] pointer-events-none leading-none text-[24px] lg:text-[36px] font-bold-sm tracking-tighter '>Créateur de solutions digitales</h2>
             </div>
@@ -104,24 +105,32 @@ export default function Home() {
           </div>
         </div>
 
-        <div id="about" ref={aboutRef} className="sticky top-0 h-[200svh] px-[10px] py-[50px] lg:px-[50px] lg:pb-[80px] lg:pt-[30svh] flex flex-col justify-center text-white">
+        <div className="w-full h-full flex items-center justify-center fixed top-0 left-0 z-[10000] opacity-0" id="location-info">
+        <HackHover data='Située au Tampon' classValue='z-[0] ml-[20vw] mt-[5vh] w-full h-full text-[14px] z-[3] lg:text-[20px] text-white cursor-default leading-none' />
+        </div>
+
+        <div id="about" ref={aboutRef} className="sticky top-0 h-[250svh] px-[10px] py-[50px] lg:px-[50px] lg:pb-[80px] lg:pt-[50svh] flex flex-col justify-center">
           <div className=" flex flex-col w-full h-full">
             <div className='h-full flex flex-col justify-between'>
-              <TextReveal staggerValue={"0"} classValue="z-[7] text-white text-left text-[48px] z-[3] lg:text-[180px] leading-none">
-                {/* <HackHover id="about-title" data='Qui sommes nous ?' classValue='z-[3] w-full h-full text-[48px] z-[3] lg:text-[180px]'/> */}
-                <h1 className=" leading-none tracking-tighter z-[4] text-[48px] lg:text-[150px]">Qui sommes nous?</h1>
-              </TextReveal>
+              <div style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }}>
+                <div id="about-title">
+                  <HackHover data='Qui sommes nous ?' classValue='z-[0] w-full h-full text-[48px] z-[3] lg:text-[180px] text-white cursor-default' />
+                </div>
+              </div>
+              {/* <TextReveal staggerValue={"0.01"} classValue="z-[7] text-left text-[48px] z-[3] lg:text-[180px] leading-none">
+                <h1 className=" leading-none tracking-tighter z-[4] text-[48px] lg:text-[150px] text-white">Besoin d'un site internet?</h1>
+              </TextReveal> */}
               <div className="w-full flex justify-end">
                 <TextReveal classValue="flex w-full justify-end text-right">
-                  <p ref={targetRef} className='w-full h-full absolute pointer-events-none overflow-hidden text-right lg:text-right tracking-tighter text-[16px] lg:text-[32px] lg:w-3/6 leading-none'>
+                  <p ref={targetRef} className='w-full h-full absolute pointer-events-none overflow-hidden text-right lg:text-right tracking-tighter text-[16px] lg:text-[32px] lg:w-3/6 leading-normal text-white'>
                     Développeur freelance basée à l'ile de la Réunion <br />
-                    spécialisé dans la  <strong> création de site internet moderne</strong>, qui place l'utilisateur au cœur d'une expérience unique.
+                    je suis spécialisé dans la <strong> création de site internet moderne</strong>, qui place l'utilisateur au cœur d'une expérience unique.
                   </p>
                 </TextReveal>
               </div>
               <div className="w-full text-left">
                 <TextReveal staggerValue={"0"} classValue="flex w-full justify-start text-right leading-none">
-                  <h3  className=" leading-none flex w-3/4 lg:w-2/4 h-full justify-center text-[24px] lg:text-[48px] text-left pointer-events-none">Nous accompagnons ceux et celles qui veulent se démarquer et qui oses assumer leur différence</h3>
+                  <h3 className=" leading-none flex w-3/4 lg:w-2/4 h-full justify-center text-[24px] lg:text-[48px] text-left pointer-events-none text-white">" J'accompagne ceux et celles qui veulent se démarquer et qui oses assumer fièrement leurs différences. "</h3>
                 </TextReveal>
               </div>
             </div>

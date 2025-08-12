@@ -21,9 +21,9 @@ export default function StickyCursor({ stickyElement, heroSection }) {
 
   
   const smoothOptions = {
-    damping: 30,
+    damping: 20,
     stiffness: 350,
-    mass: 0.5,
+    mass: 0.4,
   };
   
   const scale = {
