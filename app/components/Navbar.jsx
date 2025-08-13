@@ -48,7 +48,7 @@ const Navbar = forwardRef(function Index(props, ref) {
         <header className="flex w-full absolute h-[50px] lg:h-[150px] items-center justify-center z-[6]">
             <nav className="flex justify-between w-full items-center px-[10px] lg:px-[50px]">
                 <Magnetic>
-                    <div className="w-[70px] lg:h-full lg:w-full flex">
+                    <div id="logo-link" className="w-[70px] lg:h-full lg:w/full flex">
                         <TransitionLink href='/' label={<Image src={logo} alt="logo de la compagnie" width={95} height={66.5} />} />
                     </div>
                 </Magnetic>

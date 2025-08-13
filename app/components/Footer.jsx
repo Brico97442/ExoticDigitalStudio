@@ -20,14 +20,24 @@ function Footer() {
 
 
     return (
-        <footer id='footer' className='flex h-[50vh]  justify-center items-center text-white w-full bg-black  z-[2] relative' style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }}>
+        <footer id='footer' className='flex h-[50vh]  justify-center items-center border-none text-white w-full bg-black  z-[2] relative' style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }}>
 
-            <div className='fixed bottom-0 flex flex-col lg:flex-row justify-between h-[50vh] text-white items-start lg:items-center w-full px-[10px] lg:px-[50px] py-[10px] lg:py-[50px] bg-violet-500'>
-                <div className='relative lg:absolute lg:top-[50px] lg:left-[50px] bg-green-500'>
+            <div className='fixed bottom-0 flex flex-col lg:flex-row justify-between h-[50vh] text-white items-start lg:items-center w-full px-[10px] lg:px-[50px] py-[10px] lg:py-[50px]'>
+                <div className='relative lg:h-full'>
                     <Image src={logo} alt="logo de l'entreprise Exotik Digital Studio" width={100} height={80} className='z-[4]' />
                 </div>
-                <div className='z-[4] w-full h-full flex justify-between lg:justify-center flex-col-reverse lg:flex-row relative'>
-                    <div className='bg-blue-400 z-[4] items-start justify-start flex flex-col gap-[5px]'>
+                <div className='z-[4] w-full flex justify-between lg:justify-center flex-col-reverse lg:flex-row relative lg:gap-[50px] px-60'>
+                    <div className='z-[4] flex flex-col w-full'>
+                        <h1 className='text-[1.2rem] lg:text-[26px] leading-none lg:mb-[50px] underline'>Naviguation</h1>
+                        <ul id='footer-navigation' className='text-[1rem] lg:text-[22px]'>
+                            <li >Réalisations</li>
+                            <li>Contact</li>
+                            <li>Le processus</li>
+                        </ul>
+                    </div>
+                    <div className='z-[4] items-start justify-start flex flex-col gap-[5px] w-full'>
+                    <h1 className='text-[1.2rem] lg:text-[26px] leading-none lg:mb-[50px] underline'>Contact</h1>
+
                         <Magnetic>
                             <div>
                                 <p className='flex text-[1rem] lg:text-[22px] w-full cursor-pointer'>+ 262 692 58 59 99</p>
@@ -35,7 +45,7 @@ function Footer() {
                         </Magnetic>
                         <Magnetic>
                             <button id='copy-text-btn'
-                                className='flex gap-6 leading-none text-[1rem] lg:text-[22px] text-white cursor-pointer transition ease-in-out hover:border-r hover:border-t z-[4] ' onClick={copyText} value="ExotikDigitalStudio@outlook.com" >
+                                className='flex gap-6 leading-none text-[1rem] lg:text-[22px] text-white cursor-pointer transition ease-in-out hover:border-t z-[4] ' onClick={copyText} value="ExotikDigitalStudio@outlook.com" >
                                 ExotikDigitalStudio@outlook.com
                             </button>
                         </Magnetic>
@@ -44,14 +54,17 @@ function Footer() {
                             <span className='text-[1em] z-[4] tracking-tighter'>L'email à bien été copié !</span>
                         )}
                     </div>
-                    <div className='bg-orange-500 flex flex-col z-[4] w-full lg:w-1/3 text-[1rem] lg:text-[22px] gap-[5px] mt-[5px] lg:mt-[0px]'>
-                        {/* <p >Ile de la Réunion</p>
-                        <p >Le Tampon</p> */}
-                        <h2 >Politique de confidentialité</h2>
-                        <h2>Mention Légales</h2>
+                    <div className=' flex flex-col z-[4] w-full lg:w-auto text-[1rem] lg:text-[22px] gap-[5px] mt-[5px] lg:mt-[0px]'>
+                    <h1 className='text-[1.2rem] lg:text-[26px] leading-none lg:mb-[50px] underline'>Liens utiles</h1>
+                        <Magnetic>
+                        <h2 className='text-nowrap cursor-pointer leading-none'>Politique de confidentialité</h2>
+                        </Magnetic>
+                        <Magnetic>
+                        <h2 className='text-nowrap cursor-pointer  leading-none'>Mention Légales</h2>
+                        </Magnetic>
                     </div>
                 </div>
-                <div className='flex w-full relative lg:absolute bottom-[0px] lg:bottom-[50px] z-[4] justify-center gap-6 bg-yellow-500'>
+                <div className='flex w-full relative lg:absolute bottom-[0px] lg:bottom-[50px] z-[4] justify-center gap-6'>
                     <div className='flex z-[4] w-full justify-center items-center gap-6 '>
                         {/* <p className='z-[4] border-r border-b pr-2 border-white'>Retrouvez nous sur</p> */}
                         <div className='flex gap-6'>

@@ -2,7 +2,7 @@
 
 import React, { useRef, useEffect, useState } from 'react';
 import gsap from 'gsap';
-import { animateCounter, animateHeroIntro } from '../utils/animation';
+import { animateCounter, animateHeroIntro, animateNavLinksIntro, prepareNavLinksIntro } from '../utils/animation';
 import Image from 'next/image';
 import logo from "../../assets/LogoExoticDigitalStudioWhiteVectorised.webp"
 
@@ -53,8 +53,11 @@ function PreLoader() {
         };
 
         if (!loadingComplete) {
+            // Masquer les liens pendant le préchargement pour éviter tout flash
+            try { body.classList.add('preloading-active'); } catch {}
             lockScroll();
         } else {
+            try { body.classList.remove('preloading-active'); } catch {}
             unlockScroll();
         }
 
@@ -69,6 +72,9 @@ function PreLoader() {
     useEffect(() => {
         if (!mounted || !container.current) return;
 
+        // Prépare l'intro des liens (navbar/logo/aside) pour éviter tout flash à l'arrivée
+        try { prepareNavLinksIntro(); } catch {}
+
         if (!mounted || !counterNumberRef.current) return;
         // Lance le compteur et, lorsqu'il termine, joue la sortie du preloader puis libère le scroll
         animateCounter(counterNumberRef, () => {
@@ -78,13 +84,26 @@ function PreLoader() {
                 ease: "power4.out",
                 duration: 0.8,
                 onComplete: () => {
+                    // Dernier filet: garder les liens masqués jusqu'au déclenchement effectif des intros
+                    try { document.body.classList.add('preloading-active'); } catch {}
+                    // S'assurer que les liens sont encore masqués juste avant l'apparition
+                    try { prepareNavLinksIntro(); } catch {}
                     setLoadingComplete(true);
                     if (container.current) {
                         container.current.style.display = 'none';
                     }
                     // Signale la fin du preloader et déclenche l'intro du hero
                     try { window.__preloaderDone = true; window.dispatchEvent(new Event('preloaderDone')); } catch {}
-                    requestAnimationFrame(() => animateHeroIntro());
+                    requestAnimationFrame(() => {
+                        animateHeroIntro();
+                        try {
+                            animateNavLinksIntro();
+                            // Marque cette route comme animée pour éviter un deuxième déclenchement immédiat
+                            window.__navLinksIntroPlayedForPath = window.location?.pathname || '/';
+                        } catch {}
+                        // Retire la classe de masquage une fois les intros parties
+                        try { document.body.classList.remove('preloading-active'); } catch {}
+                    });
                 }
             });
         });

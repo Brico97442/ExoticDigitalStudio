@@ -419,6 +419,15 @@ background: #fff;
   display: inline-block;       /* pour que width: 100% du ::after suive le lien */
 }
 
+/* Masque tous les liens de nav pendant le préloader (évite le flash) */
+body.preloading-active #navlink #navigation-link,
+body.preloading-active #navlink-menu #navigation-link,
+body.preloading-active #logo-link #navigation-link{
+  visibility: hidden !important;
+  opacity: 0 !important;
+  transform: translateY(-100px) !important;
+}
+
 #navlink #navigation-link:hover::after,
 #navlink-menu #navigation-link:hover::after{
 width: 100%;

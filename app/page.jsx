@@ -25,6 +25,7 @@ gsap.registerPlugin(ScrollTrigger)
 import gsap from "gsap";
 import TextScroll from "./components/TextScroll";
 import Link from "next/link";
+import Services from "./components/Services";
 const Scene = dynamic(() => import('./utils/Scene'), {
   ssr: false
 });
@@ -147,11 +148,12 @@ export default function Home() {
           <Hero2 />
         </div>
         {/* Section services */}
+        <Services/>
         <div className="z-[1] flex justify-center py-[20px] lg:py-[80px] px-[20px] lg:px-[50px]">
           {/* <GridAnimation /> */}
         </div>
-        <div id="contact" className="w-full mx-[10px] lg:mx-[0px] flex flex-col items-left text-[#ECECEC]
-          h-[70vh] justify-between relative">
+        <div id="contact" className="w-full lg:h-screen mx-[10px] lg:mx-[0px] flex flex-col items-left text-[#ECECEC]
+          h-[70vh] justify-between relative border-none">
           <TextScroll style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} classValue="cursor-pointer lg:mt-[50px] mx-[10px] lg:mx-[50px] text-[36px]"
             value="Vous avez des questions ou vous souhaitez collaborer avec nous ?">
           </TextScroll>

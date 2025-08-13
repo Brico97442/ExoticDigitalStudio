@@ -5,6 +5,46 @@ import SplitType from 'split-type';
 
 gsap.registerPlugin(ScrollTrigger)
 
+// ------- Scroll lock helpers (pour transitions de pages) -------
+const lockTransitionScroll = () => {
+  if (typeof window === 'undefined') return;
+  if (window.__transitionScrollLocked) return;
+  const body = document.body;
+  const html = document.documentElement;
+  const y = window.scrollY || window.pageYOffset || 0;
+  window.__transitionScrollLocked = true;
+  window.__transitionScrollLockY = y;
+  body.style.position = 'fixed';
+  body.style.top = `-${y}px`;
+  body.style.left = '0';
+  body.style.right = '0';
+  body.style.width = '100%';
+  body.style.overflow = 'hidden';
+  html.style.overflow = 'hidden';
+  html.style.overscrollBehavior = 'none';
+};
+
+const unlockTransitionScroll = () => {
+  if (typeof window === 'undefined') return;
+  if (!window.__transitionScrollLocked) return;
+  // Ne pas déverrouiller si le preloader est encore actif
+  if (window.__preloaderDone === false) return;
+  const body = document.body;
+  const html = document.documentElement;
+  const y = Math.abs(parseInt(body.style.top || '0', 10)) || 0;
+  body.style.position = '';
+  body.style.top = '';
+  body.style.left = '';
+  body.style.right = '';
+  body.style.width = '';
+  body.style.overflow = '';
+  html.style.overflow = '';
+  html.style.overscrollBehavior = '';
+  window.scrollTo(0, y);
+  window.__transitionScrollLocked = false;
+  window.__transitionScrollLockY = 0;
+};
+
 //Animation fondu changement de page 
 export const animatePageIn = () => {
   const bannerOne = document.getElementById('banner-1');
@@ -13,6 +53,12 @@ export const animatePageIn = () => {
   const bannerFour = document.getElementById('banner-4');
   if (bannerOne && bannerTwo && bannerThree && bannerFour) {
     const tl = gsap.timeline();
+    // Préparer l'intro des liens sur la page d'arrivée uniquement si aucun préloader actif
+    const preloadingActive = typeof document !== 'undefined' && document.body?.classList?.contains('preloading-active');
+    const alreadyPlayedForPath = typeof window !== 'undefined' && window.__navLinksIntroPlayedForPath === window.location?.pathname;
+    if (!preloadingActive && !alreadyPlayedForPath) {
+      try { prepareNavLinksIntro(); } catch {}
+    }
     tl.set([bannerOne, bannerTwo, bannerThree, bannerFour], {
       yPercent: 0,
       duration: 0,
@@ -20,9 +66,22 @@ export const animatePageIn = () => {
       zIndex: 10,
     }).to([bannerOne, bannerTwo, bannerThree, bannerFour], {
       yPercent: -100,
-      duration: 0.4,
+      duration: 0.6,
       ease: "power4.inOut",
       zIndex: 10,
+      onComplete: () => {
+        // Une fois le voile retiré, on autorise le scroll
+        unlockTransitionScroll();
+        // Joue l'intro des navlinks à l'arrivée seulement sans préloader
+        const stillPreloading = typeof document !== 'undefined' && document.body?.classList?.contains('preloading-active');
+        const alreadyPlayedForPathNow = typeof window !== 'undefined' && window.__navLinksIntroPlayedForPath === window.location?.pathname;
+        if (!stillPreloading && !alreadyPlayedForPathNow) {
+          try { animateNavLinksIntro(); } catch {}
+          if (typeof window !== 'undefined') {
+            window.__navLinksIntroPlayedForPath = window.location?.pathname;
+          }
+        }
+      }
 
     });
   }
@@ -35,6 +94,10 @@ export const animatePageOut = (href, router) => {
   const bannerThree = document.getElementById('banner-3');
   const bannerFour = document.getElementById('banner-4');
   if (bannerOne && bannerTwo && bannerThree && bannerFour) {
+    // Verrouille le scroll dès le début de la transition
+    lockTransitionScroll();
+    // Prépare les liens (navbar/logo/aside) pour éviter qu'ils soient visibles par défaut sur la page d'arrivée
+    try { prepareNavLinksIntro(); } catch {}
     const tl = gsap.timeline();
 
     tl.set([bannerOne, bannerTwo, bannerThree, bannerFour], {
@@ -228,6 +291,41 @@ export const prepareHeroIntro = () => {
   if (!targets || targets.length === 0) return false;
   gsap.set(targets, { y: 100, opacity: 0, visibility: 'hidden' });
   return true;
+};
+
+// -------- NavLinks intro (Navbar + Aside) --------
+export const prepareNavLinksIntro = () => {
+  const targets = [
+    ...document.querySelectorAll('#navlink #navigation-link'),
+    ...document.querySelectorAll('#navlink-menu #navigation-link'),
+    ...document.querySelectorAll('#logo-link #navigation-link'),
+  ];
+  if (!targets || targets.length === 0) return false;
+  if (typeof window !== 'undefined') {
+    window.__navLinksIntroDone = false;
+  }
+  gsap.set(targets, { y: 100, opacity: 0, visibility: 'hidden' });
+  return true;
+};
+
+export const animateNavLinksIntro = () => {
+  const targets = [
+    ...document.querySelectorAll('#navlink #navigation-link'),
+    ...document.querySelectorAll('#navlink-menu #navigation-link'),
+    ...document.querySelectorAll('#logo-link #navigation-link'),
+  ];
+  if (!targets || targets.length === 0) return;
+  if (typeof window !== 'undefined' && window.__navLinksIntroDone) return;
+  gsap.to(targets, {
+    y: 0,
+    opacity: 1,
+    visibility: 'visible',
+    duration: 0.6,
+    ease: 'power3.out',
+    onComplete: () => {
+      if (typeof window !== 'undefined') window.__navLinksIntroDone = true;
+    }
+  });
 };
 
 //Animation objet 3D Island
