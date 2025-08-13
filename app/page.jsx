@@ -12,8 +12,9 @@ import GridAnimation from "./components/GridAnimation";
 import HorizontalScroll from "./components/HorizontalScroll";
 import HorizontalScrollReverse from "./components/HorizontalScrollReverse";
 import Button from "./components/Button";
-import { animateAbout, animateAboutText, animateHero } from "./utils/animation";
+import gsap from "gsap";
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { animateAbout, animateAboutText, animateHero } from "./utils/animation";
 import HackHover from './components/hackHoverEffect'
 import Arrow from '../assets/VectorWhite.png'
 import CookieConsent from "./components/CookieConsent"
@@ -21,8 +22,6 @@ import localFont from 'next/font/local'
 
 
 gsap.registerPlugin(ScrollTrigger)
-
-import gsap from "gsap";
 import TextScroll from "./components/TextScroll";
 import Link from "next/link";
 import Services from "./components/Services";
@@ -48,17 +47,33 @@ export default function Home() {
   useEffect(() => {
 
     const lenis = new Lenis();
+
+    // Synchronise Lenis et ScrollTrigger
+    lenis.on('scroll', () => {
+      ScrollTrigger.update();
+    });
+
     function raf(time) {
       lenis.raf(time);
       requestAnimationFrame(raf);
     }
     requestAnimationFrame(raf);
 
+    // Rafraîchir les triggers à l'init, après chargement et après le préloader / intro héros
+    const doRefresh = () => ScrollTrigger.refresh();
+    ScrollTrigger.refresh();
+    window.addEventListener('load', doRefresh);
+    window.addEventListener('preloaderDone', doRefresh);
+    window.addEventListener('heroIntroDone', doRefresh);
+
     animateAbout()
     // animateAboutText()
     animateHero(textScroll);
     return () => {
       cancelAnimationFrame(raf);
+      window.removeEventListener('load', doRefresh);
+      window.removeEventListener('preloaderDone', doRefresh);
+      window.removeEventListener('heroIntroDone', doRefresh);
     };
 
   }, [arrowRef, textScroll]);
@@ -152,8 +167,7 @@ export default function Home() {
         <div className="z-[1] flex justify-center py-[20px] lg:py-[80px] px-[20px] lg:px-[50px]">
           {/* <GridAnimation /> */}
         </div>
-        <div id="contact" className="w-full lg:h-screen mx-[10px] lg:mx-[0px] flex flex-col items-left text-[#ECECEC]
-          h-[70vh] justify-between relative border-none">
+        <div id="contact" className="w-full lg:h-screen mx-[10px] lg:mx-[0px] flex flex-col items-left text-[#ECECEC] h-[70vh] justify-between relative border-none">
           <TextScroll style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} classValue="cursor-pointer lg:mt-[50px] mx-[10px] lg:mx-[50px] text-[36px]"
             value="Vous avez des questions ou vous souhaitez collaborer avec nous ?">
           </TextScroll>
