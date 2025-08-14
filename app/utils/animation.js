@@ -537,4 +537,32 @@ export const animateAbout = () => {
   });
 }
 
+// Fonction pour forcer la réinitialisation des animations hero
+export const forceHeroReset = () => {
+  const heroElements = [
+    '#hero-title',
+    '#hero-subtitle', 
+    '#hero-scroll',
+    '#studio-text',
+    '#coordinates-gps p'
+  ];
+  
+  heroElements.forEach(selector => {
+    const elements = document.querySelectorAll(selector);
+    elements.forEach(el => {
+      gsap.set(el, { 
+        y: 0, 
+        opacity: 1, 
+        visibility: 'visible',
+        clearProps: 'transform,opacity,visibility'
+      });
+    });
+  });
+  
+  // Relancer les animations après réinitialisation
+  setTimeout(() => {
+    ScrollTrigger.refresh();
+  }, 200);
+};
+
 

@@ -42,6 +42,36 @@ export default function Home() {
   const textScroll = useRef(null);
   const heroSection = useRef(null)
   const locationRef = useRef(null)
+  
+  // Réinitialiser les animations hero quand on revient sur la page
+  useEffect(() => {
+    const resetHeroElements = () => {
+      const heroElements = [
+        '#hero-title',
+        '#hero-subtitle', 
+        '#hero-scroll',
+        '#studio-text',
+        '#coordinates-gps p'
+      ];
+      
+      heroElements.forEach(selector => {
+        const elements = document.querySelectorAll(selector);
+        elements.forEach(el => {
+          gsap.set(el, { 
+            y: 0, 
+            opacity: 1, 
+            visibility: 'visible',
+            clearProps: 'transform,opacity,visibility'
+          });
+        });
+      });
+    };
+
+    // Réinitialiser après un court délai pour s'assurer que le DOM est prêt
+    const timer = setTimeout(resetHeroElements, 100);
+    
+    return () => clearTimeout(timer);
+  }, []);
 
 
   useEffect(() => {
@@ -59,8 +89,41 @@ export default function Home() {
     }
     requestAnimationFrame(raf);
 
+    // Réinitialiser les animations hero quand on revient sur la page
+    const resetHeroAnimations = () => {
+      // Réinitialiser les éléments hero
+      const heroElements = [
+        '#hero-title',
+        '#hero-subtitle', 
+        '#hero-scroll',
+        '#studio-text',
+        '#coordinates-gps p'
+      ];
+      
+      heroElements.forEach(selector => {
+        const elements = document.querySelectorAll(selector);
+        elements.forEach(el => {
+          gsap.set(el, { 
+            y: 0, 
+            opacity: 1, 
+            visibility: 'visible',
+            clearProps: 'transform,opacity,visibility'
+          });
+        });
+      });
+      
+      // Relancer les animations
+      setTimeout(() => {
+        animateHero(textScroll);
+      }, 100);
+    };
+
     // Rafraîchir les triggers à l'init, après chargement et après le préloader / intro héros
-    const doRefresh = () => ScrollTrigger.refresh();
+    const doRefresh = () => {
+      ScrollTrigger.refresh();
+      resetHeroAnimations();
+    };
+    
     ScrollTrigger.refresh();
     window.addEventListener('load', doRefresh);
     window.addEventListener('preloaderDone', doRefresh);
@@ -69,6 +132,7 @@ export default function Home() {
     animateAbout()
     // animateAboutText()
     animateHero(textScroll);
+    
     return () => {
       cancelAnimationFrame(raf);
       window.removeEventListener('load', doRefresh);
