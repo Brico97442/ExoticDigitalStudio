@@ -3,7 +3,7 @@
 import React, { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import HackHover from './hackHoverEffect';
+import HackHover from './HackHoverEffect';
 import TextScroll from './TextScroll';
 import TextReveal from './TextReveal';
 

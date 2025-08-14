@@ -154,7 +154,7 @@ function Services() {
                 <span className="bg-white/10 text-white text-xs px-4 py-1 rounded-full font-mono tracking-widest uppercase border border-white/20 w-fit">Identité</span>
               </div>
               <p className="text-white/80 text-lg leading-relaxed">
-                Création d'identités visuelles uniques, maquettes web et expériences utilisateurs sur-mesure. Un design moderne, immersif et centré sur l'utilisateur pour sublimer votre marque.
+                Création d&apos;identités visuelles uniques, maquettes web et expériences utilisateurs sur-mesure. Un design moderne, immersif et centré sur l&apos;utilisateur pour sublimer votre marque.
               </p>
             </section>
 

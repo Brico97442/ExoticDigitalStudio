@@ -15,7 +15,7 @@ import Button from "./components/Button";
 import gsap from "gsap";
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { animateAbout, animateAboutText, animateHero } from "./utils/animation";
-import HackHover from './components/hackHoverEffect'
+import HackHover from './components/HackHoverEffect'
 import Arrow from '../assets/VectorWhite.png'
 import CookieConsent from "./components/CookieConsent"
 import localFont from 'next/font/local'
@@ -105,10 +105,10 @@ export default function Home() {
             <div className="absolute right-[0px] bottom-[50vh] flex flex-col items-end justify-center mr-[10px] lg:mr-[50px]">
               <div id="coordinates-gps" className="flex flex-col items-end text-[8px]  lg:text-[16px] tracking-tighter leading-none">
                 <TextReveal staggerValue={"0.1"} classValue="leading-none">
-                  <p>21° 16' 41″ S </p>
+                  <p>21° 16&apos; 41″ S </p>
                 </TextReveal>
                 <TextReveal staggerValue={"0.1"} classValue="leading-none">
-                  <p>55° 30' 55″ E</p>
+                  <p>55° 30&apos; 55″ E</p>
                 </TextReveal>
               </div>
             </div>
@@ -139,14 +139,14 @@ export default function Home() {
               <div className="w-full flex justify-end">
                 <TextReveal classValue="flex w-full justify-end text-right">
                   <p ref={targetRef} className='w-full h-full absolute pointer-events-none overflow-hidden text-right lg:text-right tracking-tighter text-[16px] lg:text-[32px] lg:w-3/6 leading-normal text-white'>
-                    Développeur freelance basée à l'ile de la Réunion <br />
-                    je suis spécialisé dans la <strong> création de site internet moderne</strong>, qui place l'utilisateur au cœur d'une expérience unique.
+                    Développeur freelance basée à l&apos;ile de la Réunion <br />
+                    je suis spécialisé dans la <strong> création de site internet moderne</strong>, qui place l&apos;utilisateur au cœur d&apos;une expérience unique.
                   </p>
                 </TextReveal>
               </div>
               <div className="w-full text-left">
                 <TextReveal staggerValue={"0"} classValue="flex w-full justify-start text-right leading-none">
-                  <h3 className=" leading-none flex w-3/4 lg:w-2/4 h-full justify-center text-[24px] lg:text-[48px] text-left pointer-events-none text-white">" J'accompagne ceux et celles qui veulent se démarquer et qui oses assumer fièrement leurs différences. "</h3>
+                  <h3 className=" leading-none flex w-3/4 lg:w-2/4 h-full justify-center text-[24px] lg:text-[48px] text-left pointer-events-none text-white">&quot; J&apos;accompagne ceux et celles qui veulent se démarquer et qui oses assumer fièrement leurs différences. &quot;</h3>
                 </TextReveal>
               </div>
             </div>

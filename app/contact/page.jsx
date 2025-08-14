@@ -7,7 +7,7 @@ export default function Contact() {
             <h1 className="text-[210px] leading-none">Contact</h1>
                 <div className="w-full gap-6 flex flex-col px-[50px]">
                     <h2 className="tracking-tighter text-[38px]">Vous souhaitez être contacter et nous parler de votre projet ?</h2>
-                    <p className="tracking-tighter text-[24px]">Remplissez le formulaire ci dessous, notre équipe s'engage à vous contacter sous 48h</p>
+                    <p className="tracking-tighter text-[24px]">Remplissez le formulaire ci dessous, notre équipe s&apos;engage à vous contacter sous 48h</p>
                     <ContactForm />
                 </div>
             </div>

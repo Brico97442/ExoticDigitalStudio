@@ -7,9 +7,9 @@ export default function NotFound() {
 
       <h1 className="text-[15vh]">404</h1>
 
-      <p className="text-2xl">Cet page n'existe pas</p>
+      <p className="text-2xl">Cet page n&apos;existe pas</p>
 
-      <Link className='text-2xl text-blue-500 cursor-pointer' href='/'>retourner à la page d'accueil </Link>
+      <Link className='text-2xl text-blue-500 cursor-pointer' href='/'>retourner à la page d&apos;accueil </Link>
     </div>   
       </section>
   )

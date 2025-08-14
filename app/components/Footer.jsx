@@ -51,7 +51,7 @@ function Footer() {
                         </Magnetic>
 
                         {isCopied && (
-                            <span className='text-[1em] z-[4] tracking-tighter'>L'email à bien été copié !</span>
+                            <span className='text-[1em] z-[4] tracking-tighter'>L&apos;email à bien été copié !</span>
                         )}
                     </div>
                     <div className=' flex flex-col z-[4] w-full lg:w-auto text-[1rem] lg:text-[22px] gap-[5px] mt-[5px] lg:mt-[0px]'>

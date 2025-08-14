@@ -2,7 +2,7 @@
 import gsap from 'gsap';
 import { useEffect, useRef } from 'react';
 import SplitType from 'split-type';
-import HackHover from '../components/hackHoverEffect';
+import HackHover from '../components/HackHoverEffect';
 import PricingCard from '../components/PricingCard';
 
 export default function Pricing() {
