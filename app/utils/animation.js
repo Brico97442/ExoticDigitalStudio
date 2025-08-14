@@ -539,6 +539,16 @@ export const animateAbout = () => {
 
 // Fonction pour forcer la réinitialisation des animations hero
 export const forceHeroReset = () => {
+  // Vérifier si le préloader est actif
+  const isPreloaderActive = typeof document !== 'undefined' && 
+                           (document.body?.classList?.contains('preloading-active') || 
+                            window.__preloaderDone === false);
+  
+  if (isPreloaderActive) {
+    console.log('Préloader actif, réinitialisation différée');
+    return;
+  }
+
   const heroElements = [
     '#hero-title',
     '#hero-subtitle', 

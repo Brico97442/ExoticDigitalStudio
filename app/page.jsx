@@ -14,11 +14,12 @@ import HorizontalScrollReverse from "./components/HorizontalScrollReverse";
 import Button from "./components/Button";
 import gsap from "gsap";
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { animateAbout, animateAboutText, animateHero } from "./utils/animation";
+import { animateAbout, animateAboutText, animateHero, animateHeroIntro } from "./utils/animation";
 import HackHover from './components/HackHoverEffect'
 import Arrow from '../assets/VectorWhite.png'
 import CookieConsent from "./components/CookieConsent"
 import localFont from 'next/font/local'
+import { useRouter } from 'next/navigation'
 
 
 gsap.registerPlugin(ScrollTrigger)
@@ -35,6 +36,7 @@ const Guisol = localFont({
 })
 
 export default function Home() {
+  const router = useRouter();
   const island = useRef(null);
   const targetRef = useRef(null);
   const arrowRef = useRef(null);
@@ -43,9 +45,13 @@ export default function Home() {
   const heroSection = useRef(null)
   const locationRef = useRef(null)
   
-  // Réinitialiser les animations hero quand on revient sur la page
+    // Réinitialiser les animations hero quand on revient sur la page
   useEffect(() => {
+    let preloaderDone = false;
+    
     const resetHeroElements = () => {
+      console.log('Resetting hero elements...');
+
       const heroElements = [
         '#hero-title',
         '#hero-subtitle', 
@@ -54,23 +60,72 @@ export default function Home() {
         '#coordinates-gps p'
       ];
       
+      // D'abord masquer les éléments
       heroElements.forEach(selector => {
         const elements = document.querySelectorAll(selector);
         elements.forEach(el => {
           gsap.set(el, { 
-            y: 0, 
-            opacity: 1, 
-            visibility: 'visible',
-            clearProps: 'transform,opacity,visibility'
+            y: 100, 
+            opacity: 0, 
+            visibility: 'hidden'
           });
         });
       });
+      
+      console.log('Elements masked, launching animation...');
+      
+      // Puis relancer l'animation hero après un court délai
+      setTimeout(() => {
+        // Réinitialiser le flag pour permettre une nouvelle animation
+        if (typeof window !== 'undefined') {
+          window.__heroIntroDone = false;
+        }
+        
+        console.log('Calling animateHeroIntro...');
+        // Relancer l'animation hero
+        animateHeroIntro();
+      }, 100);
     };
 
-    // Réinitialiser après un court délai pour s'assurer que le DOM est prêt
-    const timer = setTimeout(resetHeroElements, 100);
-    
-    return () => clearTimeout(timer);
+    // Marquer que le préloader est terminé
+    const handlePreloaderDone = () => {
+      preloaderDone = true;
+    };
+
+    // Réinitialiser quand on revient sur la page
+    const handleRouteChange = () => {
+      console.log('Route change detected, preloaderDone:', preloaderDone);
+      if (preloaderDone) {
+        console.log('Triggering hero reset...');
+        // Réinitialiser immédiatement sans délai
+        resetHeroElements();
+      }
+    };
+
+    // Ajouter les écouteurs d'événements
+    if (typeof window !== 'undefined') {
+      // Écouter la fin du préloader
+      window.addEventListener('preloaderDone', handlePreloaderDone);
+      
+      // Écouter les changements de route
+      window.addEventListener('popstate', handleRouteChange);
+      
+      // Écouter les événements de navigation Next.js
+      const originalPushState = history.pushState;
+      history.pushState = function(...args) {
+        originalPushState.apply(history, args);
+        handleRouteChange();
+      };
+    }
+
+    return () => {
+      if (typeof window !== 'undefined') {
+        window.removeEventListener('preloaderDone', handlePreloaderDone);
+        window.removeEventListener('popstate', handleRouteChange);
+        // Restaurer la fonction originale
+        history.pushState = history.pushState;
+      }
+    };
   }, []);
 
 
@@ -121,7 +176,6 @@ export default function Home() {
     // Rafraîchir les triggers à l'init, après chargement et après le préloader / intro héros
     const doRefresh = () => {
       ScrollTrigger.refresh();
-      resetHeroAnimations();
     };
     
     ScrollTrigger.refresh();
@@ -129,6 +183,31 @@ export default function Home() {
     window.addEventListener('preloaderDone', doRefresh);
     window.addEventListener('heroIntroDone', doRefresh);
 
+    // Préparer les éléments hero pour l'animation
+    const prepareHeroElements = () => {
+      const heroElements = [
+        '#hero-title',
+        '#hero-subtitle', 
+        '#hero-scroll',
+        '#studio-text',
+        '#coordinates-gps p'
+      ];
+      
+      heroElements.forEach(selector => {
+        const elements = document.querySelectorAll(selector);
+        elements.forEach(el => {
+          gsap.set(el, { 
+            y: 100, 
+            opacity: 0, 
+            visibility: 'hidden'
+          });
+        });
+      });
+    };
+
+    // Préparer les éléments au chargement
+    prepareHeroElements();
+    
     animateAbout()
     // animateAboutText()
     animateHero(textScroll);
