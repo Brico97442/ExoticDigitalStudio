@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef } from 'react'
 import Image from 'next/image'
-import HeroImg from '../../public/media/art1.jpg'
+import HeroImg from '../../public/media/asset1.jpg'
 import HeroImg2 from '../../public/media/art2.jpg'
 import HeroImg3 from '../../public/media/art3.jpg'
 import HeroImg4 from '../../public/media/art4.jpg'

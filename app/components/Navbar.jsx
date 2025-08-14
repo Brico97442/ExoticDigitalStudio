@@ -83,7 +83,7 @@ const Navbar = forwardRef(function Index(props, ref) {
                 </ul>
                 {showAside && <Aside isOpen={isActive} onClose={toggleAside} />}
             </nav>
-            {showAside && <div className="h-screen fixed top-0 w-full bg-black/25 blur-[1px] z-[0] border-none transition-all duration-1000 opacity-[1] mix-blend-difference" />}
+            {/* {showAside && <div className="h-screen fixed top-0 w-full bg-black/25 blur-[1px] z-[0] border-none transition-all duration-1000 opacity-[1] mix-blend-difference" />} */}
         </header>
     )
 })

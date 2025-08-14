@@ -56,7 +56,7 @@ function Aside({ isOpen, onClose }) {
             <div className='fixed w-full h-screen bg-gray-500  blur-[1px] border-l border-[#003049]'></div>
             <aside ref={contentRef} className='w-full flex h-full justify-center items-start flex-col'>
         
-                <div className='border-box ml-40' >
+                <div className='border-box ml-40'>
                     <h1 className='leading-none text-[1.5em]'></h1>
                     <nav className='w-auto' id='navlink-menu'>
                         <ul ref={overlayTextRef} className='flex flex-col gap-20'>
