@@ -50,8 +50,6 @@ export default function Home() {
     let preloaderDone = false;
     
     const resetHeroElements = () => {
-      console.log('Resetting hero elements...');
-
       const heroElements = [
         '#hero-title',
         '#hero-subtitle', 
@@ -72,8 +70,6 @@ export default function Home() {
         });
       });
       
-      console.log('Elements masked, launching animation...');
-      
       // Puis relancer l'animation hero après un court délai
       setTimeout(() => {
         // Réinitialiser le flag pour permettre une nouvelle animation
@@ -81,7 +77,6 @@ export default function Home() {
           window.__heroIntroDone = false;
         }
         
-        console.log('Calling animateHeroIntro...');
         // Relancer l'animation hero
         animateHeroIntro();
       }, 100);
@@ -94,9 +89,7 @@ export default function Home() {
 
     // Réinitialiser quand on revient sur la page
     const handleRouteChange = () => {
-      console.log('Route change detected, preloaderDone:', preloaderDone);
       if (preloaderDone) {
-        console.log('Triggering hero reset...');
         // Réinitialiser immédiatement sans délai
         resetHeroElements();
       }
