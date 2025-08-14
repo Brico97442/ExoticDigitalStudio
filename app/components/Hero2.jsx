@@ -27,28 +27,28 @@ export default function Hero() {
 
     useEffect(() => {
         gsap.to('#text-right', {
-            xPercent: 200,
+            xPercent: 100,
             ease: "power4.inOut",
-            duration: 5,
+            duration: 10,
             scrollTrigger: {
-                trigger: sectionRef.current,
-                start: "top top",
-                end: "bottom center",
-                scrub: 2,
-                markers: true,
+                trigger: containerRef.current,
+                start: "15% top",
+                end: "80% center",
+                scrub: 3,
+                markers: false,
             },
         });
 
         gsap.to('#text-left', {
-            xPercent: -200,
+            xPercent: -100,
             ease: "power4.inOut",
-            duration: 5,
+            duration: 10,
             scrollTrigger: {
-                trigger: sectionRef.current,
-                start: "top top",
-                end: "bottom center",
-                scrub: 2,
-                markers: true,
+                trigger: containerRef.current,
+                start: "15% top",
+                end: "80% center",
+                scrub: 3,
+                markers: false,
             },
         });
 
@@ -75,7 +75,7 @@ export default function Hero() {
                 trigger: imagesContainerRef.current,
                 start: "center center",
                 end: "bottom 50%",
-                scrub: 2,
+                scrub: 1,
                 markers: false,
             },
         })
@@ -92,9 +92,9 @@ export default function Hero() {
         <div className='h-[200vh] relative flex flex-col ' ref={containerRef}>
 
             <div className='h-[100vh] flex items-center justify-center' ref={sectionRef}>
-                <div className='h-[100vh] w-full flex items-center justify-center absolute bg-blue-600 overflow-hidden'>
-                    <p id='text-left' className='text-8xl absolute left-full  z-50'>Etre différent</p>
-                    <p id='text-right' className='text-8xl absolute right-full z-50'>Oser</p>
+                <div className='h-[100vh] w-full flex items-center justify-center absolute overflow-hidden'>
+                    <p id='text-left' className='text-8xl absolute left-full text-nowrap z-50 uppercase'>Votre Différence</p>
+                    <p id='text-right' className='text-8xl absolute right-full z-50 uppercase'>Assumer</p>
                 </div>
                 <div className='h-full w-full relative flex items-center justify-center' ref={imagesContainerRef}>
                     {pictures.map((picture, index) => (
