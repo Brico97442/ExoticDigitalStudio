@@ -124,12 +124,61 @@ export default function Home() {
 
   useEffect(() => {
 
-    const lenis = new Lenis();
+    // Détecter si on est sur mobile
+    const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+    
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      smoothWheel: true,
+      smoothTouch: false, // Désactiver le smooth scroll sur mobile
+      touchMultiplier: 2,
+      infinite: false,
+      // Désactiver complètement sur mobile si nécessaire
+      enabled: !isMobile,
+    });
 
     // Synchronise Lenis et ScrollTrigger
     lenis.on('scroll', () => {
       ScrollTrigger.update();
     });
+
+    // Fonction pour déverrouiller le scroll seulement après le préloader
+    const forceUnlockScroll = () => {
+      // Vérifier si le préloader est terminé
+      if (typeof window !== 'undefined' && window.__preloaderDone === true) {
+        const body = document.body;
+        const html = document.documentElement;
+        
+        // Supprimer tous les styles qui pourraient bloquer le scroll
+        body.style.position = '';
+        body.style.top = '';
+        body.style.left = '';
+        body.style.right = '';
+        body.style.width = '';
+        body.style.overflow = '';
+        html.style.overflow = '';
+        html.style.overscrollBehavior = '';
+        
+        // Supprimer les classes qui pourraient bloquer le scroll
+        body.classList.remove('preloading-active');
+        
+        // Forcer le scroll à être activé
+        body.style.overflow = 'auto';
+        html.style.overflow = 'auto';
+      }
+    };
+
+    // Écouter la fin du préloader pour déverrouiller le scroll
+    const handlePreloaderDone = () => {
+      setTimeout(forceUnlockScroll, 100);
+    };
+
+    if (typeof window !== 'undefined') {
+      window.addEventListener('preloaderDone', handlePreloaderDone);
+    }
 
     function raf(time) {
       lenis.raf(time);
@@ -210,6 +259,7 @@ export default function Home() {
       window.removeEventListener('load', doRefresh);
       window.removeEventListener('preloaderDone', doRefresh);
       window.removeEventListener('heroIntroDone', doRefresh);
+      window.removeEventListener('preloaderDone', handlePreloaderDone);
     };
 
   }, [arrowRef, textScroll]);
