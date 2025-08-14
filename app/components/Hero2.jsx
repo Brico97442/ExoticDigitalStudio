@@ -19,13 +19,39 @@ export default function Hero() {
 
     const pictures = [
         { src: HeroImg, width: '12.5vw', height: '12.5vh', top: '0vh', left: '0vw', scale: 8, zIndex: 10, filter: 'grayscale(20%)' },
-        { src: HeroImg2, width: '20vw', height: '32vh', top: '-9.5vh', left: '-20vw', scale: 6, zIndex: 1 , filter: 'grayscale(100%)'},
-        { src: HeroImg3, width: '20vw', height: '32vh', top: '9.5vh', left: '20vw', scale: 6, zIndex: 1 , filter: 'grayscale(100%)'},
-        { src: HeroImg4, width: '40vw', height: '15vh', top: '-18vh', left: '14vw', scale: 6.2, zIndex: 1 , filter: 'grayscale(100%)'},
-        { src: HeroImg5, width: '40vw', height: '15vh', top: '18vh', left: '-14vw', scale: 6.2, zIndex: 1, filter: 'grayscale(100%)'},
+        { src: HeroImg2, width: '20vw', height: '32vh', top: '-9.5vh', left: '-20vw', scale: 6, zIndex: 1, filter: 'grayscale(100%)' },
+        { src: HeroImg3, width: '20vw', height: '32vh', top: '9.5vh', left: '20vw', scale: 6, zIndex: 1, filter: 'grayscale(100%)' },
+        { src: HeroImg4, width: '40vw', height: '15vh', top: '-18vh', left: '14vw', scale: 6.2, zIndex: 1, filter: 'grayscale(100%)' },
+        { src: HeroImg5, width: '40vw', height: '15vh', top: '18vh', left: '-14vw', scale: 6.2, zIndex: 1, filter: 'grayscale(100%)' },
     ]
 
     useEffect(() => {
+        gsap.to('#text-right', {
+            xPercent: 200,
+            ease: "power4.inOut",
+            duration: 5,
+            scrollTrigger: {
+                trigger: sectionRef.current,
+                start: "top top",
+                end: "bottom center",
+                scrub: 2,
+                markers: true,
+            },
+        });
+
+        gsap.to('#text-left', {
+            xPercent: -200,
+            ease: "power4.inOut",
+            duration: 5,
+            scrollTrigger: {
+                trigger: sectionRef.current,
+                start: "top top",
+                end: "bottom center",
+                scrub: 2,
+                markers: true,
+            },
+        });
+
         const pin = gsap.fromTo(sectionRef.current, {
         }, {
             ease: 'none',
@@ -39,11 +65,11 @@ export default function Hero() {
             }
         });
 
-        
+
         //Créer une animation pour que toutes les images changent de taille simultanément
         gsap.to(imagesContainerRef.current.children, {
             scale: (index, target) => pictures[index].scale,  // Appliquer la valeur de scale spécifique à chaque image
-            duration: 2,  
+            duration: 2,
             ease: "linear",  // Courbe d'assouplissement
             scrollTrigger: {
                 trigger: imagesContainerRef.current,
@@ -53,27 +79,34 @@ export default function Hero() {
                 markers: false,
             },
         })
-        
+
+
         return () => {
             pin.kill();
         };
-       
+
+
     }, [])
 
     return (
-        <div className='h-[200vh] relative flex flex-col' ref={containerRef}>
+        <div className='h-[200vh] relative flex flex-col ' ref={containerRef}>
+
             <div className='h-[100vh] flex items-center justify-center' ref={sectionRef}>
+                <div className='h-[100vh] w-full flex items-center justify-center absolute bg-blue-600 overflow-hidden'>
+                    <p id='text-left' className='text-8xl absolute left-full  z-50'>Etre différent</p>
+                    <p id='text-right' className='text-8xl absolute right-full z-50'>Oser</p>
+                </div>
                 <div className='h-full w-full relative flex items-center justify-center' ref={imagesContainerRef}>
                     {pictures.map((picture, index) => (
                         <div className='flex items-center justify-center h-full w-full top-0 absolute' key={index} style={{ zIndex: picture.zIndex }} >
                             <div
-                                className='image-container relative'
+                                className='image-container relative '
                                 style={{
                                     width: picture.width,
                                     height: picture.height,
                                     top: picture.top,
                                     left: picture.left,
-                                    filter: picture.filter || 'none'  // Appliquer le filtre si défini, sinon aucun filtre
+                                    filter: picture.filter || 'none'
 
                                 }}
                             >
@@ -81,7 +114,7 @@ export default function Hero() {
                                     src={picture.src}
                                     alt={`oeuvre photographique ${index + 1}`}
                                     fill
-                                    style={{ objectFit: 'cover'}}
+                                    style={{ objectFit: 'cover' }}
                                     placeholder="blur"
                                 />
                             </div>
