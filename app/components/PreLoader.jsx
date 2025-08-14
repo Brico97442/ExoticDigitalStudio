@@ -118,7 +118,7 @@ function PreLoader() {
 
 
     return (
-        <div className="w-screen h-screen bg-black justify-center items-center z-[11] fixed flex left-0 " ref={container}>
+        <div className="w-screen h-[100dvh] bg-black justify-center items-center z-[11] fixed flex left-0 " ref={container}>
             <div className='w-full h-full flex justify-center '>
                 <div className='relative mx-[20px] lg:mx-[50px] flex justify-center lg:justify-between items-center w-full'>
                     <h2 className='absolute left-0 lg:right-0 top-[20px] lg:top-[50vh] text-white text-sm'>

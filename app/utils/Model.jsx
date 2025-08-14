@@ -35,7 +35,7 @@ import { ShaderMaterial, Color } from 'three';
 import { animateIsland, animateIslandIntro } from './animation';
 
 export default function Model({ mousePosition, island }) {
-  const { nodes } = useGLTF('/media/reunion.glb');
+  const { nodes } = useGLTF('/media/reunion2.glb');
   const { viewport, size } = useThree(); // Récupère les dimensions du viewport et de l'écran
   const [initialRotation, setInitialRotation] = useState({ x: 0, y: 0 });
   const scaleFactor = size.width < 768 ? 1.6 : 0.95; 
