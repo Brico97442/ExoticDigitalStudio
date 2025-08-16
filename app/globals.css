@@ -382,14 +382,6 @@ h2 {
   }
 }
 
-#banner-wrapper::before{
-content: "";
-position: absolute;
-width: 100dvw;
-height: 100dvh;
-backdrop-filter: blur(100px);
-z-index: 0;
-}
 
 @keyframes pan-overlay {
   from {

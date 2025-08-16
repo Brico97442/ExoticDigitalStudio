@@ -163,7 +163,7 @@ export default function StickyCursor({ stickyElement, heroSection }) {
         style={{ left: smoothMouseX, top: smoothMouseY, scaleX: scale.x, scaleY: scale.y }}
         animate={{ width: effectiveCursorSize, height: effectiveCursorSize }}
         transition={{ type: 'tween', ease: 'backOut', duration: 0.5 }}
-        className={`z-[6] fixed rounded-full invisible lg:visible flex justify-center ${isHeroHovered? 'backdrop-blur-sm': 'backdrop-blur-sm'} items-center pointer-events-none bg-purple-500 cursor-auto mix-blend-difference`}
+        className={`z-[6] fixed rounded-full invisible lg:visible flex justify-center ${isHeroHovered? 'backdrop-blur-sm': ''} items-center pointer-events-none bg-purple-500 cursor-auto mix-blend-difference`}
       >
         <span className="text-black text-lg mix-blend-normal text-center flex justify-center items-center tracking-tighter">
           {cursorText}
