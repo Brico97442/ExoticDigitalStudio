@@ -307,7 +307,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="w-full h-full flex items-center justify-center fixed top-0 left-0 z-[10000] opacity-0" id="location-info">
+        <div className=" flex items-center justify-center fixed top-[50%] left-[30%] z-[10000] opacity-0" id="location-info">
         <HackHover data='Située au Tampon' classValue='z-[0] ml-[20vw] mt-[5vh] w-full h-full text-[14px] z-[3] lg:text-[20px] text-white cursor-default leading-none' />
         </div>
 

@@ -7,86 +7,128 @@ function Services() {
   const servicesRef = useRef(null);
   const sectionRefs = useRef([]);
   const [currentTitle, setCurrentTitle] = useState('');
-  const lastScrollYRef = useRef(0);
-  const [showFloating, setShowFloating] = useState(false);
   const floatingRef = useRef(null);
+  const [floatingStyle, setFloatingStyle] = useState({});
 
-  // (Mémo sens de scroll au besoin)
+  // Gestion du titre flottant selon la section dont le haut est le plus proche du haut du viewport
   useEffect(() => {
-    const onScroll = () => {
-      lastScrollYRef.current = window.scrollY || window.pageYOffset;
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
-
-  // Afficher/Cacher + contraindre la balise flottante dans la section orange
-  useEffect(() => {
-    const onScrollVisibility = () => {
-      if (!servicesRef.current) return;
-      const rect = servicesRef.current.getBoundingClientRect();
-      const viewportH = window.innerHeight || document.documentElement.clientHeight;
-      // Visible seulement quand le haut de la section a atteint le viewport et tant qu'on est dedans
-      const engaged = rect.top <= 0 && rect.bottom > 0;
-      setShowFloating(engaged);
-
-      // Contraindre la position verticale pour ne jamais sortir de l'orange
-      if (floatingRef.current) {
-        const floatHeight = floatingRef.current.offsetHeight || 0;
-        let topPx = 0; // par défaut collé en haut
-        // Si on approche du bas de la section, on colle la balise au bas interne
-        if (rect.bottom < floatHeight) {
-          topPx = Math.max(0, rect.bottom - floatHeight);
-        } else {
-          topPx = 0;
+    const handleScroll = () => {
+      const sections = sectionRefs.current.filter(Boolean);
+      if (!sections.length) return;
+      let minDist = Infinity;
+      let closestTitle = '';
+      sections.forEach(section => {
+        const rect = section.getBoundingClientRect();
+        // On ne prend que les sections dont le haut est visible dans le viewport
+        if (rect.top >= 0 && rect.top < window.innerHeight) {
+          const dist = Math.abs(rect.top);
+          if (dist < minDist) {
+            minDist = dist;
+            closestTitle = section.getAttribute('data-title') || section.querySelector('h2')?.textContent || '';
+          }
         }
-        floatingRef.current.style.top = `${topPx}px`;
+      });
+      // Si aucune section n'est visible, on prend la dernière visible en bas
+      if (!closestTitle) {
+        let maxTop = -Infinity;
+        sections.forEach(section => {
+          const rect = section.getBoundingClientRect();
+          if (rect.top < window.innerHeight && rect.top > maxTop) {
+            maxTop = rect.top;
+            closestTitle = section.getAttribute('data-title') || section.querySelector('h2')?.textContent || '';
+          }
+        });
+      }
+      setCurrentTitle(closestTitle);
+    };
+    let ticking = false;
+    const onScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
       }
     };
-    window.addEventListener('scroll', onScrollVisibility, { passive: true });
-    window.addEventListener('resize', onScrollVisibility);
-    onScrollVisibility();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    // Initial call
+    handleScroll();
     return () => {
-      window.removeEventListener('scroll', onScrollVisibility);
-      window.removeEventListener('resize', onScrollVisibility);
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
     };
   }, []);
 
-  // Observer pour connaître la section active et mettre à jour le titre flottant
+  // Gestion du pin flottant (fixed/absolute)
   useEffect(() => {
-    if (!servicesRef.current) return;
-
-    const sections = sectionRefs.current.filter(Boolean);
-    if (!sections.length) return;
-
-    const getEntryScore = (entry) => {
-      // Distance du centre de la section au centre du viewport
-      const rect = entry.target.getBoundingClientRect();
-      const viewportCenter = window.innerHeight / 2;
-      const sectionCenter = rect.top + rect.height / 2;
-      return Math.abs(sectionCenter - viewportCenter);
+    const handleFloating = () => {
+      if (!servicesRef.current || !floatingRef.current) return;
+      const sectionRect = servicesRef.current.getBoundingClientRect();
+      const floatHeight = floatingRef.current.offsetHeight;
+      // Si le haut de la section est au-dessus du viewport et le bas en-dessous du float
+      if (sectionRect.top <= 0 && sectionRect.bottom >= floatHeight) {
+        setFloatingStyle({
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '50vw',
+          maxWidth: '50vw',
+          zIndex: 20,
+          paddingLeft: '1.5rem',
+          paddingRight: '1.5rem',
+          paddingTop: '2rem',
+          paddingBottom: '2rem',
+        });
+      } else if (sectionRect.bottom < floatHeight) {
+        // Coller en bas de la section
+        setFloatingStyle({
+          position: 'absolute',
+          bottom: 0,
+          left: 0,
+          width: '50vw',
+          maxWidth: '50vw',
+          zIndex: 20,
+          paddingLeft: '1.5rem',
+          paddingRight: '1.5rem',
+          paddingTop: '2rem',
+          paddingBottom: '2rem',
+        });
+      } else {
+        // Coller en haut de la section
+        setFloatingStyle({
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '50vw',
+          maxWidth: '50vw',
+          zIndex: 20,
+          paddingLeft: '1.5rem',
+          paddingRight: '1.5rem',
+          paddingTop: '2rem',
+          paddingBottom: '2rem',
+        });
+      }
     };
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => getEntryScore(a) - getEntryScore(b));
-
-        if (visible.length > 0) {
-          const target = visible[0].target;
-          const title = target.getAttribute('data-title') || target.querySelector('h2')?.textContent || '';
-          setCurrentTitle(title);
-        } else {
-          // Si aucune section n'est suffisamment visible, vider le titre
-          setCurrentTitle('');
-        }
-      },
-      { root: null, rootMargin: '0px', threshold: [0.25, 0.5, 0.75] }
-    );
-
-    sections.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
+    let ticking = false;
+    const onScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          handleFloating();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    // Initial call
+    handleFloating();
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+    };
   }, []);
 
   return (
@@ -94,29 +136,18 @@ function Services() {
       className="min-h-screen h-full w-full bg-orange-500 relative overflow-hidden z-[7]"
       id="services"
       ref={servicesRef}
+      style={{ position: 'relative' }}
     >
-        <HackHover data='Services' classValue='z-[7] lg:ml-[50px] lg:mt-[50px] w-full h-full text-[14px] lg:text-[120px] text-white leading-none' />
-        <div className="w-full mx-auto">
+      <HackHover data='Services' classValue='z-[7] lg:ml-[50px] lg:mt-[50px] w-full h-full text-[14px] lg:text-[120px] text-white leading-none' />
+      <div className="w-full mx-auto">
         <div className="flex flex-col md:flex-row w-full">
           {/* Colonne gauche sticky */}
-          <div className="block w-full md:w-[50vw] relative">
-            {/* Calque flottant borné à la section (fixe dans le viewport, masqué hors section) */}
+          <div className="block w-full md:w-[50vw] relative" style={{ minHeight: '100%' }}>
+            {/* Calque flottant qui suit le scroll et se pin en bas */}
             <div
-              className={`pointer-events-none select-none transition-opacity duration-300`}
-              style={{
-                position: 'fixed',
-                left: 0,
-                top: 0,
-                width: '100%',
-                maxWidth: '50vw',
-                opacity: showFloating ? 1 : 0,
-                zIndex: 20,
-                paddingLeft: '1.5rem',
-                paddingRight: '1.5rem',
-                paddingTop: '2rem',
-                paddingBottom: '2rem',
-              }}
               ref={floatingRef}
+              className="pointer-events-none select-none transition-opacity duration-300"
+              style={floatingStyle}
             >
               <h1 className="text-white text-[5vw] md:text-[3.5vw] font-bold tracking-tighter drop-shadow-lg uppercase opacity-80 text-left">
                 {currentTitle}
@@ -131,21 +162,6 @@ function Services() {
               className="service-section flex flex-col items-start gap-6 group"
               data-title="Design"
               ref={(el) => (sectionRefs.current[0] = el)}
-              onMouseEnter={() => setCurrentTitle('Design')}
-              onMouseLeave={() => {
-                // Revenir au titre de la section visible au scroll si on quitte le hover
-                const visibleSection = sectionRefs.current.find(section => {
-                  if (!section) return false;
-                  const rect = section.getBoundingClientRect();
-                  return rect.top < window.innerHeight / 2 && rect.bottom > window.innerHeight / 2;
-                });
-                if (visibleSection) {
-                  const title = visibleSection.getAttribute('data-title') || visibleSection.querySelector('h2')?.textContent || '';
-                  setCurrentTitle(title);
-                } else {
-                  setCurrentTitle('');
-                }
-              }}
             >
               <h2 className="text-white text-4xl font-bold tracking-tight mb-2">Design</h2>
               <div className="flex flex-row gap-3 flex-wrap mb-2">
@@ -166,21 +182,6 @@ function Services() {
               className="service-section flex flex-col items-start gap-6 group"
               data-title="Développement web"
               ref={(el) => (sectionRefs.current[1] = el)}
-              onMouseEnter={() => setCurrentTitle('Développement web')}
-              onMouseLeave={() => {
-                // Revenir au titre de la section visible au scroll si on quitte le hover
-                const visibleSection = sectionRefs.current.find(section => {
-                  if (!section) return false;
-                  const rect = section.getBoundingClientRect();
-                  return rect.top < window.innerHeight / 2 && rect.bottom > window.innerHeight / 2;
-                });
-                if (visibleSection) {
-                  const title = visibleSection.getAttribute('data-title') || visibleSection.querySelector('h2')?.textContent || '';
-                  setCurrentTitle(title);
-                } else {
-                  setCurrentTitle('');
-                }
-              }}
             >
               <h2 className="text-white text-4xl font-bold tracking-tight mb-2">Développement web</h2>
               <div className="flex flex-row gap-3 flex-wrap mb-2">
@@ -201,21 +202,6 @@ function Services() {
               className="service-section flex flex-col items-start gap-6 group"
               data-title="Animation de logo"
               ref={(el) => (sectionRefs.current[2] = el)}
-              onMouseEnter={() => setCurrentTitle('Animation de logo')}
-              onMouseLeave={() => {
-                // Revenir au titre de la section visible au scroll si on quitte le hover
-                const visibleSection = sectionRefs.current.find(section => {
-                  if (!section) return false;
-                  const rect = section.getBoundingClientRect();
-                  return rect.top < window.innerHeight / 2 && rect.bottom > window.innerHeight / 2;
-                });
-                if (visibleSection) {
-                  const title = visibleSection.getAttribute('data-title') || visibleSection.querySelector('h2')?.textContent || '';
-                  setCurrentTitle(title);
-                } else {
-                  setCurrentTitle('');
-                }
-              }}
             >
               <h2 className="text-white text-4xl font-bold tracking-tight mb-2">Animation de logo</h2>
               <div className="flex flex-row gap-3 flex-wrap mb-2">
