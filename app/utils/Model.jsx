@@ -1,31 +1,4 @@
-const vertexShader = `
-varying vec3 vPosition;
-varying vec2 vUv;
 
-void main() {
-  vPosition = position;
-  vUv = uv;
-
-  gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-}
-`;
-
-const fragmentShader = `
-uniform float opacity;
-uniform vec3 color;
-uniform float gridScale;
-
-varying vec3 vPosition;
-varying vec2 vUv;
-
-void main() {
-  float grid = abs(sin(vUv.x * gridScale) * sin(vUv.y * gridScale));
-
-  // Assurer que le mélange de couleur reste cohérent
-  vec3 gridColor = mix(color, vec3(0.8), min(grid, 0.5));
-  gl_FragColor = vec4(gridColor, opacity);
-}
-`;
 
 import React, { useRef, useEffect, useState } from 'react';
 import gsap from 'gsap';
@@ -103,7 +76,7 @@ export default function Model({ mousePosition, island }) {
   return (
     <group scale={groupScale}>
       <group >
-        <mesh ref={island} geometry={nodes.reunion.geometry} scale={[0.015, 0.015, 0.015]} position={[-0.08, 0.08, -0.3]} fragmentShader vertexShader wireframe >
+        <mesh ref={island} geometry={nodes.reunion.geometry} scale={[0.015, 0.015, 0.015]} position={[-0.08, 0.08, -0.3]} wireframe >
         </mesh>
       </group>
       {/* <pointLight position={[0, 0, 1]} intensity={8} color={'red'} /> */}

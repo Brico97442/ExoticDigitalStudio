@@ -38,7 +38,7 @@ export default function Scene({ island }) {
       <div className='w-full h-full'>
         <Canvas camera={{ position: [0, 0, 6] }} style={{zIndex:1000}} >
           <Suspense fallback={null}>
-            {/* <Model mousePosition={mousePosition} island={island} /> */}
+            <Model mousePosition={mousePosition} island={island} />
           </Suspense>
           {/* <ambientLight position={[1, 2, -2]} intensity={5} color={'red'} /> */}
         </Canvas>
