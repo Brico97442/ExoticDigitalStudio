@@ -1,4 +1,31 @@
+// const vertexShader = `
+// varying vec3 vPosition;
+// varying vec2 vUv;
 
+// void main() {
+//   vPosition = position;
+//   vUv = uv;
+
+//   gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+// }
+// `;
+
+// const fragmentShader = `
+// uniform float opacity;
+// uniform vec3 color;
+// uniform float gridScale;
+
+// varying vec3 vPosition;
+// varying vec2 vUv;
+
+// void main() {
+//   float grid = abs(sin(vUv.x * gridScale) * sin(vUv.y * gridScale));
+
+//   // Assurer que le mélange de couleur reste cohérent
+//   vec3 gridColor = mix(color, vec3(0.8), min(grid, 0.5));
+//   gl_FragColor = vec4(gridColor, opacity);
+// }
+// `;
 
 import React, { useRef, useEffect, useState } from 'react';
 import gsap from 'gsap';
@@ -35,8 +62,8 @@ export default function Model({ mousePosition, island }) {
         }, 
         depthTest: false
       },
-      vertexShader,
-      fragmentShader,
+      // vertexShader,
+      // fragmentShader,
       wireframe: true, // Activation du wireframe
       transparent: true,
       depthTest: false,
