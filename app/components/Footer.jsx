@@ -5,6 +5,7 @@ import logo from "../../assets/LogoExoticDigitalStudioWhiteVectorised.webp"
 import Lines from './Lines'
 import Magnetic from '../utils/Magnetic'
 import TextReveal from './TextReveal'
+import TransitionLink from '../utils/TransitionLink'
 
 function Footer() {
     const [isCopied, setIsCopied] = useState(false);
@@ -30,13 +31,23 @@ function Footer() {
                     <div className='z-[4] flex flex-col w-full'>
                         <h1 className='text-[1.2rem] lg:text-[26px] leading-none lg:mb-[50px] underline'>Naviguation</h1>
                         <ul id='footer-navigation' className='text-[1rem] lg:text-[22px]'>
-                            <li >Réalisations</li>
-                            <li>Contact</li>
-                            <li>Le processus</li>
+
+                            <Magnetic>
+                                <li >Réalisations</li>
+                            </Magnetic>
+
+                            <Magnetic>
+                                <li>Contact</li>
+                            </Magnetic>
+
+                            <Magnetic>
+                                <li>Le processus</li>
+                            </Magnetic>
+
                         </ul>
                     </div>
                     <div className='z-[4] items-start justify-start flex flex-col gap-[5px] w-full'>
-                    <h1 className='text-[1.2rem] lg:text-[26px] leading-none lg:mb-[50px] underline'>Contact</h1>
+                        <h1 className='text-[1.2rem] lg:text-[26px] leading-none lg:mb-[50px] underline'>Contact</h1>
 
                         <Magnetic>
                             <div>
@@ -55,12 +66,17 @@ function Footer() {
                         )}
                     </div>
                     <div className=' flex flex-col z-[4] w-full lg:w-auto text-[1rem] lg:text-[22px] gap-[5px] mt-[5px] lg:mt-[0px]'>
-                    <h1 className='text-[1.2rem] lg:text-[26px] leading-none lg:mb-[50px] underline'>Liens utiles</h1>
+                        <h1 className='text-[1.2rem] lg:text-[26px] leading-none lg:mb-[50px] underline'>Liens utiles</h1>
                         <Magnetic>
-                        <h2 className='text-nowrap cursor-pointer leading-none'>Politique de confidentialité</h2>
+                            <TransitionLink href="/politique-de-confidentialite">
+                                <h2 className='text-nowrap cursor-pointer leading-none'>Politique de confidentialité</h2>
+                            </TransitionLink>
+
                         </Magnetic>
                         <Magnetic>
-                        <h2 className='text-nowrap cursor-pointer  leading-none'>Mention Légales</h2>
+                            <TransitionLink href="/mentions-legales">
+                                <h2 className='text-nowrap cursor-pointer  leading-none'>Mention Légales</h2>
+                            </TransitionLink>
                         </Magnetic>
                     </div>
                 </div>

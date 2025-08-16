@@ -1,13 +1,12 @@
 'use client'
 
 import React, { useRef, useEffect} from 'react'
-import gsap from 'gsap';
-import TextReveal from './TextReveal';
+
+
 
 export default function HackHover({data,classValue,iterationTiming}) {
     const textRef = useRef(null);
     const letters = "abcdefghijklmnopqrstuvwxyz";
-
     useEffect(() => {
 
         const handleMouseOver = (event) => {
@@ -50,7 +49,7 @@ export default function HackHover({data,classValue,iterationTiming}) {
             <div>
                 <h1
                     ref={textRef}
-                    className={`${classValue} z-[15] tracking-tighter border-box`}
+                    className={`${classValue} z-[15] -tracking-widest border-box outline-none border-none`}
                     data-value={data}
                 >
                     {data}

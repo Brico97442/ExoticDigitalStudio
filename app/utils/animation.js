@@ -530,9 +530,9 @@ export const animateAbout = () => {
     scrollTrigger: {
       trigger: "#about",
       start: "top bottom",
-      end: "center bottom",
-      scrub: 2,
-      markers: false,
+      end: "30% center",
+      scrub: 1,
+      markers: true,
     }
   });
 }

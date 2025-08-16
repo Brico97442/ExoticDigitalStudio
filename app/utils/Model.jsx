@@ -33,9 +33,11 @@ import { useGLTF, Text } from '@react-three/drei';
 import { useFrame, useLoader, useThree } from '@react-three/fiber';
 import { ShaderMaterial, Color } from 'three';
 import { animateIsland, animateIslandIntro } from './animation';
-
+import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader'
 export default function Model({ mousePosition, island }) {
-  const { nodes } = useGLTF('/media/reunion2.glb');
+  const { nodes } = useGLTF('/media/reunion2.glb', true, true, (loader) => {
+    loader.setDRACOLoader(new DRACOLoader().setDecoderPath('/draco/'))
+  })  
   const { viewport, size } = useThree(); // Récupère les dimensions du viewport et de l'écran
   const [initialRotation, setInitialRotation] = useState({ x: 0, y: 0 });
   const scaleFactor = size.width < 768 ? 1.6 : 0.95; 
