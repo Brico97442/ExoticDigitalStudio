@@ -57,7 +57,7 @@ function Services() {
 
   return (
     <div
-      className="min-h-screen h-full w-full bg-orange-300 relative overflow-hidden z-[7]"
+      className="min-h-screen h-full w-full bg-[#C1121F] relative overflow-hidden z-[7]"
       id="services"
       ref={servicesRef}
     >
