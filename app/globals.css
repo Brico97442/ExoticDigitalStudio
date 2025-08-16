@@ -38,7 +38,7 @@ body {
   scroll-behavior: smooth;
   padding: 0;
   margin: 0;
-  overflow: hidden;
+  overflow: hidden!important;
 }
 
 @layer utilities {
