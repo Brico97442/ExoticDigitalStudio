@@ -1,31 +1,31 @@
-// const vertexShader = `
-// varying vec3 vPosition;
-// varying vec2 vUv;
+const vertexShader = `
+varying vec3 vPosition;
+varying vec2 vUv;
 
-// void main() {
-//   vPosition = position;
-//   vUv = uv;
+void main() {
+  vPosition = position;
+  vUv = uv;
 
-//   gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-// }
-// `;
+  gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+}
+`;
 
-// const fragmentShader = `
-// uniform float opacity;
-// uniform vec3 color;
-// uniform float gridScale;
+const fragmentShader = `
+uniform float opacity;
+uniform vec3 color;
+uniform float gridScale;
 
-// varying vec3 vPosition;
-// varying vec2 vUv;
+varying vec3 vPosition;
+varying vec2 vUv;
 
-// void main() {
-//   float grid = abs(sin(vUv.x * gridScale) * sin(vUv.y * gridScale));
+void main() {
+  float grid = abs(sin(vUv.x * gridScale) * sin(vUv.y * gridScale));
 
-//   // Assurer que le mélange de couleur reste cohérent
-//   vec3 gridColor = mix(color, vec3(0.8), min(grid, 0.5));
-//   gl_FragColor = vec4(gridColor, opacity);
-// }
-// `;
+  // Assurer que le mélange de couleur reste cohérent
+  vec3 gridColor = mix(color, vec3(0.8), min(grid, 0.5));
+  gl_FragColor = vec4(gridColor, opacity);
+}
+`;
 
 import React, { useRef, useEffect, useState } from 'react';
 import gsap from 'gsap';
@@ -34,6 +34,7 @@ import { useFrame, useLoader, useThree } from '@react-three/fiber';
 import { ShaderMaterial, Color } from 'three';
 import { animateIsland, animateIslandIntro } from './animation';
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader'
+
 export default function Model({ mousePosition, island }) {
   const { nodes } = useGLTF('/media/reunion2.glb', true, true, (loader) => {
     loader.setDRACOLoader(new DRACOLoader().setDecoderPath('/draco/'))
@@ -62,8 +63,8 @@ export default function Model({ mousePosition, island }) {
         }, 
         depthTest: false
       },
-      // vertexShader,
-      // fragmentShader,
+      vertexShader,
+      fragmentShader,
       wireframe: true, // Activation du wireframe
       transparent: true,
       depthTest: false,
@@ -91,14 +92,6 @@ export default function Model({ mousePosition, island }) {
     };
   }, [island]);
 
-  // useFrame(() => {
-  //   if (island.current) {
-  //     const rotationFactor = -0.04;
-  //     let rotationX = initialRotation.x - mousePosition.y * rotationFactor;
-  //     let rotationY = initialRotation.y + mousePosition.x * rotationFactor;
-  //   }
-   
-  // });
 
   return (
     <group scale={groupScale}>
