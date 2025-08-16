@@ -532,7 +532,7 @@ export const animateAbout = () => {
       start: "top bottom",
       end: "30% center",
       scrub: 1,
-      markers: true,
+      markers: false,
     }
   });
 }
