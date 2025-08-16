@@ -10,31 +10,31 @@ export default function TextReveal({ children, classValue, staggerValue}) {
     const textRef = useRef(null);
 
     useEffect(() => {
-        if (textRef.current) {
-            // Split the text into characters and words
-            const splitText = new SplitType(textRef.current, { types: 'chars, words' });
+        // if (textRef.current) {
+        //     // Split the text into characters and words
+        //     const splitText = new SplitType(textRef.current, { types: 'chars, words' });
 
-            // Create the animation
-            gsap.from(splitText.chars, {
-                scrollTrigger: {
-                    trigger: textRef.current,
-                    start: 'top 80%',
-                    end: 'top 40%',
-                    scrub: 3,
-                    markers: false,
-                    // once:true,
-                    visibility: "hidden",
+        //     // Create the animation
+        //     gsap.from(splitText.chars, {
+        //         scrollTrigger: {
+        //             trigger: textRef.current,
+        //             start: 'top 80%',
+        //             end: 'top 40%',
+        //             scrub: 3,
+        //             markers: false,
+        //             // once:true,
+        //             visibility: "hidden",
 
-                },
-                yPercent: 100,
-                stagger: staggerValue,
-                duration: 10,
-                delay: 1,               
-                 opacity: 0,
-                ease: "power4.inOut",
-                visibility: "visible",
-            });
-        }
+        //         },
+        //         yPercent: 100,
+        //         stagger: staggerValue,
+        //         duration: 10,
+        //         delay: 1,               
+        //          opacity: 0,
+        //         ease: "power4.inOut",
+        //         visibility: "visible",
+        //     });
+        // }
     }, []);
 
     return (
