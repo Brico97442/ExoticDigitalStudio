@@ -53,7 +53,7 @@ function Aside({ isOpen, onClose }) {
             className='h-full w-full fixed top-0 flex right-0 justify-center items-center z-[7]'
             onClick={handleOverlayClick}
         >
-            <div className='fixed w-full h-screen bg-[#C1121F] blur-[1px]'></div>
+            <div className='fixed w-full h-screen border-l border-[#003049]'></div>
             <aside ref={contentRef} className='w-full flex h-full justify-center items-start flex-col'>
         
                 <div className='border-box ml-40'>
