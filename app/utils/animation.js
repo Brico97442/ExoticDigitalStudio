@@ -213,7 +213,7 @@ export const animateHero = (arrowRef) => {
   gsap.to(['#hero-scroll , #hero-subtitle , #hero-title , #studio-text ,#coordinates-gps p'], {
     yPercent: 100,
     ease: "power4.inOut",
-    duration: 5,
+    duration: 7,
     scrollTrigger: {
       trigger: "#hero",
       start: "top top",
@@ -501,7 +501,7 @@ export const animateScene = (divRef) => {
       end: "top 5%", // Termine au milieu de about
       scrub: 1, // Valeur plus élevée pour une animation plus progressive
       markers: false,
-      smooth: true, // Lissage de l'animation
+      smooth: false, // Lissage de l'animation
     }
   });
 
@@ -540,9 +540,7 @@ export const animateAbout = () => {
 // Fonction pour forcer la réinitialisation des animations hero
 export const forceHeroReset = () => {
   // Vérifier si le préloader est actif
-  const isPreloaderActive = typeof document !== 'undefined' && 
-                           (document.body?.classList?.contains('preloading-active') || 
-                            window.__preloaderDone === false);
+  const isPreloaderActive = typeof document !== 'undefined' && (document.body?.classList?.contains('preloading-active') ||  window.__preloaderDone === false);
   
   if (isPreloaderActive) {
     console.log('Préloader actif, réinitialisation différée');
