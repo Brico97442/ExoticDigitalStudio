@@ -40,7 +40,7 @@ const Navbar = forwardRef(function Index(props, ref) {
             hideTimerRef.current = setTimeout(() => {
                 setShowAside(false)
                 hideTimerRef.current = null
-            }, 420)
+            }, 400)
         }
     }
 
@@ -48,8 +48,8 @@ const Navbar = forwardRef(function Index(props, ref) {
         <header className="flex w-full absolute h-[50px] lg:h-[150px] items-center justify-center z-[6]">
             <nav className="flex justify-between w-full items-center px-[10px] lg:px-[50px]">
                 <Magnetic>
-                    <div id="logo-link" className="w-[70px] lg:h-full lg:w/full flex">
-                        <TransitionLink href='/' label={<Image src={logo} alt="logo de la compagnie" width={95} height={66.5} />} />
+                    <div id="logo-link" className=" flex">
+                        <TransitionLink href='/' label={<Image src={logo} alt="logo de la compagnie" width={80} height={55.83} />} />
                     </div>
                 </Magnetic>
                 <ul className="flex items-center transition text-black text-lg">

@@ -373,6 +373,7 @@ h2 {
   display: flex;
   width: 50%;
 }
+
 @media screen and (max-width: 460px) {
   .card-img {
     display: flex;
@@ -433,7 +434,7 @@ body.preloading-active #logo-link #navigation-link{
 width: 100%;
 left: 0;
 transition: ease-in-out;
-transition-duration: 0.3s;
+transition-duration: 0.4s;
 }
 
 #navlink #navigation-link:not(:hover)::after,
@@ -441,7 +442,7 @@ transition-duration: 0.3s;
 width: 0;
 right: 0;
 transition: ease-in-out;
-transition-duration: 0.3s;
+transition-duration: 0.4s;
 }
 
 ::selection {
