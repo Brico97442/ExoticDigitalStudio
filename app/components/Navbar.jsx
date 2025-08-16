@@ -30,10 +30,9 @@ const Navbar = forwardRef(function Index(props, ref) {
         }
 
         if (!isActive) {
-            // Ouverture: on monte l'aside puis on active l'animation d'entrée
+            // Ouverture: on monte l'aside ET on active l'animation en même temps
             setShowAside(true)
-            // Laisse React monter le composant avant de passer isActive à true
-            requestAnimationFrame(() => setIsActive(true))
+            setIsActive(true) // Suppression du requestAnimationFrame
         } else {
             // Fermeture: lance l'animation de sortie puis démonte après la durée GSAP (~400ms)
             setIsActive(false)
@@ -83,7 +82,6 @@ const Navbar = forwardRef(function Index(props, ref) {
                 </ul>
                 {showAside && <Aside isOpen={isActive} onClose={toggleAside} />}
             </nav>
-            {/* {showAside && <div className="h-screen fixed top-0 w-full bg-black/25 blur-[1px] z-[0] border-none transition-all duration-1000 opacity-[1] mix-blend-difference" />} */}
         </header>
     )
 })

@@ -187,33 +187,33 @@ export default function Home() {
     requestAnimationFrame(raf);
 
     // Réinitialiser les animations hero quand on revient sur la page
-    const resetHeroAnimations = () => {
-      // Réinitialiser les éléments hero
-      const heroElements = [
-        '#hero-title',
-        '#hero-subtitle', 
-        '#hero-scroll',
-        '#studio-text',
-        '#coordinates-gps p'
-      ];
+    // const resetHeroAnimations = () => {
+    //   // Réinitialiser les éléments hero
+    //   const heroElements = [
+    //     '#hero-title',
+    //     '#hero-subtitle', 
+    //     '#hero-scroll',
+    //     '#studio-text',
+    //     '#coordinates-gps p'
+    //   ];
       
-      heroElements.forEach(selector => {
-        const elements = document.querySelectorAll(selector);
-        elements.forEach(el => {
-          gsap.set(el, { 
-            y: 0, 
-            opacity: 1, 
-            visibility: 'visible',
-            clearProps: 'transform,opacity,visibility'
-          });
-        });
-      });
+    //   heroElements.forEach(selector => {
+    //     const elements = document.querySelectorAll(selector);
+    //     elements.forEach(el => {
+    //       gsap.set(el, { 
+    //         y: 0, 
+    //         opacity: 1, 
+    //         visibility: 'visible',
+    //         clearProps: 'transform,opacity,visibility'
+    //       });
+    //     });
+    //   });
       
-      // Relancer les animations
-      setTimeout(() => {
-        animateHero(textScroll);
-      }, 100);
-    };
+    //   // Relancer les animations
+    //   setTimeout(() => {
+    //     animateHero(textScroll);
+    //   }, 100);
+    // };
 
     // Rafraîchir les triggers à l'init, après chargement et après le préloader / intro héros
     const doRefresh = () => {
@@ -273,9 +273,9 @@ export default function Home() {
         <Scene island={island} />
         <div ref={heroSection} id="hero" className='h-screen sticky w-full flex flex-col items-center top-0 z-[3]'>
           <div className='h-screen flex flex-col items-start justify-between w-full px-[10px] lg:px-[50px] pt-[20px] lg:pt-[100px] relative z-[3]'>
-            <TextReveal staggerValue={"0.1"} classValue="leading-none lg:w-3/6 ">
+            {/* <TextReveal staggerValue={"0.1"} classValue="leading-none lg:w-3/6 "> */}
               <h2 id='hero-subtitle' style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} className='lg:w-full pointer-events-none mt-[98px] overflow-hidden text-[24px] tracking-tighter lg:text-[36px] lg:mt-[7vh] '>Offrez à vos visiteurs une expérience web captivante<br /> parce que chaque clic mérite sa touche de magie.</h2>
-            </TextReveal>
+            {/* </TextReveal> */}
 
             <div style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} className="overflow-hidden absolute right-[10px] bottom-[148px] lg:bottom-[50px] lg:right-[50px]" >
               <h3 id='hero-title' className=' bg-slate-900 pointer-events-none text-[#ECECEC] text-[16px] lg:text-[28px] font-bold-sm tracking-tighter py-2 px-6 rounded-lg'>Reunion Island Digital Studio </h3>
@@ -323,12 +323,12 @@ export default function Home() {
                 <h1 className=" leading-none tracking-tighter z-[4] text-[48px] lg:text-[150px] text-white">Besoin d'un site internet?</h1>
               </TextReveal> */}
               <div className="w-full flex justify-end">
-                <TextReveal classValue="flex w-full justify-end text-right">
-                  <p ref={targetRef} className='w-full h-full absolute pointer-events-none overflow-hidden text-right lg:text-right tracking-tighter text-[16px] lg:text-[32px] lg:w-3/6 leading-normal text-white'>
+                {/* <TextReveal classValue="flex w-full justify-end text-right"> */}
+                  <p id="about_target-ref" ref={targetRef} style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} className=' w-full absolute pointer-events-none overflow-hidden text-right lg:text-right tracking-tighter text-[16px] lg:text-[32px] lg:w-3/6 leading-none text-white'>
                     Développeur freelance basée à l&apos;ile de la Réunion <br />
                     je suis spécialisé dans la <strong> création de site internet moderne</strong>, qui place l&apos;utilisateur au cœur d&apos;une expérience unique.
                   </p>
-                </TextReveal>
+                {/* </TextReveal> */}
               </div>
               <div className="w-full text-left">
                 <TextReveal staggerValue={"0"} classValue="flex w-full justify-start text-right leading-none">

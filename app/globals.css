@@ -197,27 +197,27 @@ body {
 
 .pricing h1 {
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-  line-height: 9vh;
+  line-height: 1;
 }
 
 .pricing p {
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-  line-height: 3vh;
+  line-height: 1;
 
 }
 
 p {
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-  line-height: 3vh;
+  line-height: 1;
 }
 
 p .word {
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-  line-height: 3vh;
+  line-height: 1;
 }
 
 .hero h1 {
-  line-height: 10vh;
+  line-height: 1;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
 }
 
@@ -228,43 +228,49 @@ p .word {
 
 
 h1 {
-  line-height: 22vh;
+  line-height: 1;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
 }
 
 h1 .word {
-  line-height: 16vh;
+  line-height: 1;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+}
+
+#about_target-ref {
+  line-height: 1;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
 }
 
 h2 .word {
-  line-height: 4vh;
+  line-height: 1;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
 }
 
 h2 {
-  line-height: 4vh;
+  line-height: 1;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
 }
 
 @media screen and (max-width: 460px) {
   h1 {
-    line-height: 8vh;
+    line-height: 1;
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
   }
 
   h1 .word {
-    line-height: 8vh;
+    line-height: 1;
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
   }
+
   h2 .word {
-    line-height: 5vh;
+    line-height: 1;
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
   }
 }
 
 #text-target .word{
-  line-height: 2vh;
+  line-height: 1;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
 }
 

@@ -9,6 +9,7 @@ function Aside({ isOpen, onClose }) {
     const overlayRef = useRef(null);
     const contentRef = useRef(null);
     const overlayTextRef = useRef(null);
+
   
     
     const navItems = [
@@ -18,7 +19,7 @@ function Aside({ isOpen, onClose }) {
         },
         {
             label: "Nos réalisations",
-            href: "/works",
+            href: "/realisations",
         },
         {
             label: "Nous Contactez",
@@ -50,16 +51,16 @@ function Aside({ isOpen, onClose }) {
         <div
             id='overlay'
             ref={overlayRef}
-            className='h-full w-full fixed top-0 flex right-0 justify-center items-center z-[7]'
+            className='h-full w-full fixed top-0 flex right-0 justify-center items-center z-[7] bg-[#771A66]'
             onClick={handleOverlayClick}
         >
-            <div className='fixed w-full h-screen border-l border-[#003049]'></div>
+            <div className='fixed w-full h-screen'></div>
             <aside ref={contentRef} className='w-full flex h-full justify-center items-start flex-col'>
         
-                <div className='border-box ml-40'>
+                <div className='border-box w-full'>
                     <h1 className='leading-none text-[1.5em]'></h1>
-                    <nav className='w-auto' id='navlink-menu'>
-                        <ul ref={overlayTextRef} className='flex flex-col gap-20'>
+                    <nav className='' id='navlink-menu'>
+                        <ul ref={overlayTextRef} className='flex flex-col gap-20 items-center'>
                             {navItems.map((item, index) => (
                                 <li key={index}>
                                     <TransitionLink
@@ -67,7 +68,7 @@ function Aside({ isOpen, onClose }) {
                                         label={item.label}
                                         onClick={handleLinkClick}
                                     >
-                                     <HackHover data={item.label} iterationTiming='50' classValue=' leading-none text-[28px] text-white'/>
+                                     <HackHover data={item.label} iterationTiming='50' classValue=' leading-none text-[28px] text-white w-auto'/>
                                     </TransitionLink>
                                 </li>
                             ))}

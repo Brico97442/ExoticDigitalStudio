@@ -40,7 +40,7 @@ export default function Scene({ island }) {
           <Suspense fallback={null}>
             <Model mousePosition={mousePosition} island={island} />
           </Suspense>
-          {/* <ambientLight position={[1, 2, -2]} intensity={5} color={'red'} /> */}
+          <ambientLight position={[0, 0, 6]} intensity={5} color={'red'} />
         </Canvas>
       </div>
     </div>

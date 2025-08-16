@@ -129,13 +129,13 @@ export const animatePageOut = (href, router) => {
 export const animateOverlayIn = (overlayRef) => {
   if (overlayRef.current) {
     gsap.fromTo(overlayRef.current, {
-      x: `${100}%`,
+      y: `${100}%`,
       duration: 0.4,
       visibility: 'hidden',
       opacity: 1,
       ease: [0.76, 0, 0.24, 1],
     }, {
-      x: 0,
+      y: 0,
       visibility: 'visible',
       pointerEvents: 'auto',
       opacity: 1,
@@ -147,11 +147,11 @@ export const animateOverlayIn = (overlayRef) => {
 export const animateOverlayOut = (overlayRef) => {
   if (overlayRef.current) {
     gsap.fromTo(overlayRef.current, {
-      x: 0,
+      y: 0,
       duration: 0.4,
       ease: [0.76, 0, 0.24, 1],
     }, {
-      x: `${100}%`,
+      y: `${100}%`,
       duration: 0.4,
       onComplete: () => {
         gsap.set(overlayRef.current, { visibility: 'hidden', pointerEvents: 'none' })
@@ -162,13 +162,13 @@ export const animateOverlayOut = (overlayRef) => {
 export const animateOverlayText = (overlayTextRef) => {
   if (overlayTextRef.current) {
     gsap.fromTo(overlayTextRef.current, {
-      x: `${100}%`,
-      duration: 0.9,
+      y: `${100}%`,
+      duration: 0.4,
       stagger: 0.1,
       ease: [0.76, 0, 0.24, 1],
     }, {
-      x: `${0}%`,
-      duration: 0.9,
+      y: `${0}%`,
+      duration: 0.4,
       stagger: 0.2,
     })
   }
