@@ -11,7 +11,19 @@ const Navbar = forwardRef(function Index(props, ref) {
     const [showAside, setShowAside] = useState(false);
     const hideTimerRef = useRef(null);
     const [isScrolled, setIsScrolled] = useState(false);
-
+    useEffect(() => {
+        if (isActive) {
+            document.body.classList.add('no-scroll');
+        } else {
+            document.body.classList.remove('no-scroll');
+        }
+        
+        // Cleanup au démontage
+        return () => {
+            document.body.classList.remove('no-scroll');
+        };
+    }, [isActive]);
+    
     useEffect(() => {
         const handleScroll = () => {
             const scrollPosition = window.scrollY;

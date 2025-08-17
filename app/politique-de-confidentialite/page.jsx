@@ -6,7 +6,7 @@ export default function ConfidentialPolitic() {
     return (
         <div className="h-full w-full min-h-screen flex flex-col z-[2] relative text-6xl">
            <h1 className="tracking-tighter text-[210px] leadind-none mt-40">Politique de confidentialité</h1>
-           <div id="works_container" className=" w-full h-full bg-blue-500 px-[50px] z-[2]">
+           <div className=" w-full h-full bg-blue-500 px-[50px] z-[2]">
             <div className="bg-white text-black rounded-lg p-12 text-xl leading-relaxed shadow-lg max-w-4xl mx-auto my-20">
                 <h2 className="text-4xl font-bold mb-8">Politique de confidentialité</h2>
                 <p>

@@ -9,11 +9,17 @@ export default function TransitionLink({ label, href, children, onClick }) {
     const pathname = usePathname()
 
     const handleClick = (e) => {
+        e.preventDefault()
+
         if(onClick) {
           onClick();
-      }
+        }
 
         if (pathname !== href) {
+            // Scroll to top AVANT l'animation avec behavior: 'instant'
+            
+            window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+            // Puis lancer l'animation de page
             animatePageOut(href, router)
         }
     }

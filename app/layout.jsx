@@ -13,6 +13,9 @@ import PreLoader from "./components/PreLoader";
 // Note: `metadata` n'est pas supporté dans un layout marqué "use client".
 
 export default function RootLayout({ children }) {
+
+ 
+
   const stickyElement = useRef(null);
   useEffect(() => {
     // Re-prépare l'état initial seulement si on est sur la home (éléments présents)

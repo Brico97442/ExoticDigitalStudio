@@ -39,8 +39,8 @@ export default function Scene({ island }) {
         <Canvas camera={{ position: [0, 0, 6] }} style={{zIndex:1000}} >
           <Suspense fallback={null}>
             <Model mousePosition={mousePosition} island={island} />
+          {/* <directionalLight position={[2, 2, 2]} intensity={15} color={'red'} /> */}
           </Suspense>
-          <ambientLight position={[0, 0, 6]} intensity={5} color={'red'} />
         </Canvas>
       </div>
     </div>

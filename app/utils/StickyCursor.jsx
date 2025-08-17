@@ -169,7 +169,7 @@ export default function StickyCursor({ stickyElement, heroSection }) {
           {cursorText}
         </span></motion.div>
       <div>
-        <div className="fixed w-full h-[300vh] top-0 backdrop-blur-[130px] z-[1]" />
+        <div className="fixed w-full h-full top-0 backdrop-blur-[130px] z-[1]" />
         <motion.div
           id="blob"
           ref={cursorRef2}
