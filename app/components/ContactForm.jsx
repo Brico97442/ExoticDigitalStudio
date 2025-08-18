@@ -36,7 +36,7 @@ function ContactForm() {
       
     return (
         <div className="flex items-center justify-center flex-col w-1/2 z-[1] ">
-            <form ref={form} onSubmit={sendEmail} className="flex flex-col items-start gap-8 w-full text-black z-[1]">
+            <form ref={form} onSubmit={sendEmail} className="flex flex-col items-start gap-8 w-full text-black z-[1] text-[18px]">
 
                 <input className="min-h-[5vh] p-4 w-full z-[1]"
                     type="text" id="user_name" name="user_name" required placeholder="Nom complet"/>
