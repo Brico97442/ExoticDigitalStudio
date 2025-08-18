@@ -57,7 +57,7 @@ function Services() {
 
   return (
     <div
-      className="min-h-screen h-full w-full bg-[#C1121F] relative overflow-hidden z-[7]"
+      className="min-h-screen h-full w-full bg-[#771A66] relative overflow-hidden z-[7] rounded-t-4xl"
       id="services"
       ref={servicesRef}
     >
@@ -73,21 +73,21 @@ function Services() {
             ref={floatingRef}
             className="pointer-events-none select-none pl-[50px] pt-[50px]"
           >
-            <h1 className=" text-[5vw] md:text-[3.5vw] font-bold tracking-tighter drop-shadow-lg uppercase opacity-80 text-left">
+            <h1 className=" text-[58px] md:text-[58px] font-bold tracking-tighter drop-shadow-lg uppercase opacity-100 text-left">
               {currentTitle}
             </h1>
           </div>
         </div>
 
         {/* Colonne droite avec les services */}
-        <div className="w-full md:w-[50vw] md:ml-auto md:pr-8 md:pl-6 py-[120px] flex flex-col gap-[120px] relative z-10">
+        <div className="w-full md:w-[50vw] md:ml-auto md:pr-8 md:pl-6 py-[120px] flex flex-col gap-[80px] relative z-10">
           {/* Service 1 */}
           <section
             className="service-section flex flex-col items-start gap-6"
             data-title="Design"
             ref={(el) => (sectionRefs.current[0] = el)}
           >
-            <h2 className=" text-4xl font-bold">Design</h2>
+            <h2 className=" text-[58px] font-bold">Design</h2>
             <div className="flex flex-wrap gap-2">
               <span className="bg-white/30 text-black px-3 py-1 rounded-full text-sm font-semibold shadow">Identité visuelle</span>
               <span className="bg-white/30 text-black px-3 py-1 rounded-full text-sm font-semibold shadow">UI/UX</span>
@@ -108,7 +108,7 @@ function Services() {
             data-title="Développement web"
             ref={(el) => (sectionRefs.current[1] = el)}
           >
-            <h2 className= "text-4xl font-bold">Développement web</h2>
+            <h2 className= "text-[58px] font-bold">Développement web</h2>
             <div className="flex flex-wrap gap-2">
               <span className="bg-white/30 text-black px-3 py-1 rounded-full text-sm font-semibold shadow">Identité visuelle</span>
               <span className="bg-white/30 text-black px-3 py-1 rounded-full text-sm font-semibold shadow">UI/UX</span>
@@ -129,7 +129,7 @@ function Services() {
             data-title="Animation de logo"
             ref={(el) => (sectionRefs.current[2] = el)}
           >
-            <h2 className= "text-4xl font-bold">Animation de logo</h2>
+            <h2 className= "text-[58px] font-bold">Animation de logo</h2>
             <div className="flex flex-wrap gap-2">
               <span className="bg-white/30 text-black px-3 py-1 rounded-full text-sm font-semibold shadow">Identité visuelle</span>
               <span className="bg-white/30 text-black px-3 py-1 rounded-full text-sm font-semibold shadow">UI/UX</span>

@@ -290,12 +290,12 @@ export default function Home() {
 
             <div className="absolute right-[0px] bottom-[50vh] flex flex-col items-end justify-center mr-[10px] lg:mr-[50px]">
               <div id="coordinates-gps" className="flex flex-col items-end text-[8px]  lg:text-[16px] tracking-tighter leading-none">
-                <TextReveal staggerValue={"0.1"} classValue="leading-none">
+                {/* <TextReveal staggerValue={"0.1"} classValue="leading-none"> */}
                   <p>21° 16&apos; 41″ S </p>
-                </TextReveal>
-                <TextReveal staggerValue={"0.1"} classValue="leading-none">
+                {/* </TextReveal> */}
+                {/* <TextReveal staggerValue={"0.1"} classValue="leading-none"> */}
                   <p>55° 30&apos; 55″ E</p>
-                </TextReveal>
+                {/* </TextReveal> */}
               </div>
             </div>
 
@@ -331,9 +331,9 @@ export default function Home() {
                 {/* </TextReveal> */}
               </div>
               <div className="w-full text-left">
-                <TextReveal staggerValue={"0"} classValue="flex w-full justify-start text-right leading-none">
+                {/* <TextReveal staggerValue={"0"} classValue="flex w-full justify-start text-right leading-none"> */}
                   <h3 className=" leading-none flex w-3/4 lg:w-2/4 h-full justify-center text-[24px] lg:text-[48px] text-left pointer-events-none text-white">&quot; J&apos;accompagne ceux et celles qui veulent se démarquer et qui oses assumer fièrement leurs différences. &quot;</h3>
-                </TextReveal>
+                {/* </TextReveal> */}
               </div>
             </div>
           </div>
@@ -342,24 +342,23 @@ export default function Home() {
         {/* <HorizontalScrollReverse /> */}
         <div className="w-full lg:p-[50px] bg-[#0E0E0E] overflow-hidden" id="gallery-section">
           <div className="flex justify-end leading-none w-full h-[100svh]">
-            <TextReveal staggerValue={"0.1"} classValue="z-[7] w-full text-white text-right z-[3]">
+            {/* <TextReveal staggerValue={"0.1"} classValue="z-[7] w-full text-white text-right z-[3]"> */}
               <h3 className=" leading-none w-full tracking-tighter z-[4] text-[32px] lg:text-[64px]">Changer votre vision du web moderne</h3>
-            </TextReveal>
+            {/* </TextReveal> */}
           </div>
-          <Hero2 />
         </div>
+          <Hero2 />
         {/* Section services */}
         <Services/>
         <div className="z-[1] flex justify-center py-[20px] lg:py-[80px] px-[20px] lg:px-[50px]">
           {/* <GridAnimation /> */}
         </div>
         <div id="contact" className="w-full lg:h-screen mx-[10px] lg:mx-[0px] flex flex-col items-left text-[#ECECEC] h-[70vh] justify-between relative border-none">
-          <TextScroll style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} classValue="cursor-pointer lg:mt-[50px] mx-[10px] lg:mx-[50px] text-[36px]"
-            value="Vous avez des questions ou vous souhaitez collaborer avec nous ?">
-          </TextScroll>
-          <TextReveal classValue="w-full mx-[10px] lg:mx-[50px] text-[14px] lg:text-[1rem] lg:text-[28px] z-[1] tracking-tighter">
+          {/* <TextScroll style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} classValue="cursor-pointer lg:mt-[50px] mx-[10px] lg:mx-[50px] text-[36px]" value="Vous avez des questions ou vous souhaitez collaborer avec nous ?">
+          </TextScroll> */}
+          {/* <TextReveal classValue="w-full mx-[10px] lg:mx-[50px] text-[14px] lg:text-[1rem] lg:text-[28px] z-[1] tracking-tighter"> */}
             <h2 style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} className="tracking-tighter">Les grandes histoires commençent souvent par un Hey !</h2>
-          </TextReveal>
+          {/* </TextReveal> */}
           <Link href="/contact" className="flex lg:bottom-[0px] justify-between items-center w-full relative group z-[6]" style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }}>
             <div className={`${Guisol.className} flex justify-between items-center w-full relative group`}>
               <Image

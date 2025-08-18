@@ -29,7 +29,7 @@ function Footer() {
                 </div>
                 <div className='z-[4] w-full flex justify-between lg:justify-center flex-col-reverse lg:flex-row relative lg:gap-[50px] px-60'>
                     <div className='z-[4] flex flex-col w-full'>
-                        <h1 className='text-[1.2rem] lg:text-[26px] leading-none lg:mb-[50px] underline'>Naviguation</h1>
+                        <h1 className='text-[1.2rem] lg:text-[26px] leading-none lg:mb-[50px] underline'>Navigation</h1>
                         <ul id='footer-navigation' className='text-[1rem] lg:text-[22px]'>
 
                             <Magnetic>

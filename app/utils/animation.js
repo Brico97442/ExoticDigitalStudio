@@ -41,66 +41,47 @@ const unlockTransitionScroll = () => {
   body.style.overflow = '';
   html.style.overflow = '';
   html.style.overscrollBehavior = '';
-  window.scrollTo(0, y);
+  // window.scrollTo(0, y);
   window.__transitionScrollLocked = false;
   window.__transitionScrollLockY = 0;
 };
 
 //Animation fondu changement de page 
-export const animatePageIn = () => {
-  const bannerOne = document.getElementById('banner-1');
-  const bannerTwo = document.getElementById('banner-2');
-  const bannerThree = document.getElementById('banner-3');
-  const bannerFour = document.getElementById('banner-4');
-  if (bannerOne && bannerTwo && bannerThree && bannerFour) {
-    const tl = gsap.timeline();
-    // Préparer l'intro des liens sur la page d'arrivée uniquement si aucun préloader actif
-    const preloadingActive = typeof document !== 'undefined' && document.body?.classList?.contains('preloading-active');
-    const alreadyPlayedForPath = typeof window !== 'undefined' && window.__navLinksIntroPlayedForPath === window.location?.pathname;
-    if (!preloadingActive && !alreadyPlayedForPath) {
-      try { prepareNavLinksIntro(); } catch {}
-    }
-    tl.set([bannerOne, bannerTwo, bannerThree, bannerFour], {
-      yPercent: 0,
-      duration: 0,
-      ease: "power4.inOut",
-      zIndex: 10,
-    }).to([bannerOne, bannerTwo, bannerThree, bannerFour], {
-      yPercent: -100,
-      duration: 0.6,
-      ease: "power4.inOut",
-      zIndex: 10,
-      onComplete: () => {
-        // Une fois le voile retiré, on autorise le scroll
-        unlockTransitionScroll();
-        // Joue l'intro des navlinks à l'arrivée seulement sans préloader
-        const stillPreloading = typeof document !== 'undefined' && document.body?.classList?.contains('preloading-active');
-        const alreadyPlayedForPathNow = typeof window !== 'undefined' && window.__navLinksIntroPlayedForPath === window.location?.pathname;
-        if (!stillPreloading && !alreadyPlayedForPathNow) {
-          try { animateNavLinksIntro(); } catch {}
-          if (typeof window !== 'undefined') {
-            window.__navLinksIntroPlayedForPath = window.location?.pathname;
-          }
-        }
-      }
-
-    });
-  }
-};
-
 export const animatePageOut = (href, router) => {
-
   const bannerOne = document.getElementById('banner-1');
   const bannerTwo = document.getElementById('banner-2');
   const bannerThree = document.getElementById('banner-3');
   const bannerFour = document.getElementById('banner-4');
+  const mainEl = document.querySelector('main');
+
   if (bannerOne && bannerTwo && bannerThree && bannerFour) {
-    // Verrouille le scroll dès le début de la transition
     lockTransitionScroll();
-    // Prépare les liens (navbar/logo/aside) pour éviter qu'ils soient visibles par défaut sur la page d'arrivée
     try { prepareNavLinksIntro(); } catch {}
+
     const tl = gsap.timeline();
 
+    // 0️⃣ Slide-out de tous les éléments de la page
+    if (mainEl) {
+      const pageElements = mainEl.querySelectorAll('*');
+      tl.to(pageElements, {
+        y: 100,        // tous les éléments se déplacent vers le bas
+        opacity: 0,    // facultatif pour un fade en même temps
+        duration: 0.5,
+        ease: "power1.inOut",
+        stagger: 0.02, // légère différence pour un effet plus fluide
+      });
+    }
+
+    // 1️⃣ Fade-out du main (si nécessaire)
+    if (mainEl) {
+      tl.to(mainEl, {
+        opacity: 0,
+        duration: 0.3,
+        ease: "power1.inOut",
+      }, "<"); // "<" pour lancer en parallèle avec le slide
+    }
+
+    // 2️⃣ Animation des voiles
     tl.set([bannerOne, bannerTwo, bannerThree, bannerFour], {
       yPercent: 100,
       duration: 1,
@@ -113,17 +94,62 @@ export const animatePageOut = (href, router) => {
       stagger: 0.2,
       scrub: 1,
       zIndex: 10,
+      onChange:() => {
+        window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      },
       onComplete: () => {
-        // Navigue lorsque le voile couvre totalement l'écran.
-        // La sortie (retrait du voile) sera animée par animatePageIn dans la nouvelle page.
         router.push(href);
       },
     });
+
+    return () => {
+      tl.kill();
+    };
   }
-  return () => {
-    tl.kill();
-  };
+  // window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
 };
+
+
+export const animatePageIn = () => {
+  const bannerOne = document.getElementById('banner-1');
+  const bannerTwo = document.getElementById('banner-2');
+  const bannerThree = document.getElementById('banner-3');
+  const bannerFour = document.getElementById('banner-4');
+  const mainEl = document.querySelector('main');
+
+  if (bannerOne && bannerTwo && bannerThree && bannerFour) {
+    const tl = gsap.timeline();
+
+    // 1️⃣ Animation des voiles qui se retirent
+    tl.set([bannerOne, bannerTwo, bannerThree, bannerFour], {
+      yPercent: 0,
+      duration: 0.6,
+      ease: "power4.inOut",
+      zIndex: 10,
+    }).to([bannerOne, bannerTwo, bannerThree, bannerFour], {
+      yPercent: -100,
+      duration: 0.6,
+      ease: "power4.inOut",
+      zIndex: 10,
+      onComplete: () => {
+        unlockTransitionScroll();
+        try { animateNavLinksIntro(); } catch {}
+      },
+    });
+
+    // 2️⃣ Fade-in du main après le retrait des voiles
+    if (mainEl) {
+      tl.fromTo(
+        mainEl,
+        { opacity: 0 },
+        { opacity: 1, duration: 0.3, ease: "power4.inOut" },
+        ">0.1" // légèrement après le début du retrait des voiles
+      );
+    }
+  }
+};
+
+
 
 //Animation menu overlay 
 

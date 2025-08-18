@@ -53,10 +53,10 @@ import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader'
 export default function Model({ mousePosition, island }) {
   const { nodes } = useGLTF('/media/reunion2.glb', true, true, (loader) => {
     loader.setDRACOLoader(new DRACOLoader().setDecoderPath('/draco/'))
-  })  
+  })
   const { viewport, size } = useThree();
   const [initialRotation, setInitialRotation] = useState({ x: 0, y: 0 });
-  const scaleFactor = size.width < 768 ? 1.6 : 0.95; 
+  const scaleFactor = size.width < 768 ? 1.6 : 0.95;
   const groupScale = viewport.width / 2.4 * scaleFactor;
 
   useEffect(() => {
@@ -72,7 +72,7 @@ export default function Model({ mousePosition, island }) {
     const shaderMaterial = new ShaderMaterial({
       uniforms: {
         opacity: { value: 0.0 },
-        color: { value: new Color(0, 48/255, 83/255) },
+        color: { value: new Color(0, 48 / 255, 83 / 255) },
         gridScale: { value: 150.0 },
         lightPosition: { value: new Vector3(5, 5, -5) }, // Position de la lumière
         lightColor: { value: new Color(1, 0.2, 0.2) },   // Couleur rouge
@@ -110,7 +110,7 @@ export default function Model({ mousePosition, island }) {
       island.current.material.uniforms.lightPosition.value.set(
         mousePosition.x * 10,
         mousePosition.y * 10,
-        
+
       );
     }
   });
@@ -118,14 +118,13 @@ export default function Model({ mousePosition, island }) {
   return (
     <group scale={groupScale}>
       <group>
-        <mesh 
-          ref={island} 
-          geometry={nodes.reunion.geometry} 
-          scale={[0.015, 0.015, 0.015]} 
+        <mesh
+          ref={island}
+          geometry={nodes.reunion.geometry}
+          scale={[0.015, 0.015, 0.015]}
           position={[-0.08, 0.08, -0.3]}
         />
         {/* Cette lumière ne sera visible que si vous avez d'autres objets avec matériaux standard */}
-        <pointLight position={[1, 1, 1]} intensity={160} color={'green'} />
       </group>
     </group>
   );
