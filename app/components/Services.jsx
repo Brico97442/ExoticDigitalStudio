@@ -73,7 +73,7 @@ function Services() {
             ref={floatingRef}
             className="pointer-events-none select-none pl-[50px] pt-[50px]"
           >
-            <h1 className=" text-[58px] md:text-[58px] font-bold tracking-tighter drop-shadow-lg uppercase opacity-100 text-left">
+            <h1 className=" text-[58px] md:text-[58px] font-semibold tracking-tighter opacity-100 text-left">
               {currentTitle}
             </h1>
           </div>
@@ -87,7 +87,7 @@ function Services() {
             data-title="Design"
             ref={(el) => (sectionRefs.current[0] = el)}
           >
-            <h2 className=" text-[58px] font-bold">Design</h2>
+            <h2 className=" text-[58px] font-semibold tracking-tighter">Design</h2>
             <div className="flex flex-wrap gap-2">
               <span className="bg-white/30 text-black px-3 py-1 rounded-full text-sm font-semibold shadow">Identité visuelle</span>
               <span className="bg-white/30 text-black px-3 py-1 rounded-full text-sm font-semibold shadow">UI/UX</span>
@@ -108,8 +108,8 @@ function Services() {
             data-title="Développement web"
             ref={(el) => (sectionRefs.current[1] = el)}
           >
-            <h2 className= "text-[58px] font-bold">Développement web</h2>
-            <div className="flex flex-wrap gap-2">
+            <h2 className= "text-[58px] font-semibold tracking-tighter">Développement web</h2>
+            <div className="flex flex-wrap gap-2 ">
               <span className="bg-white/30 text-black px-3 py-1 rounded-full text-sm font-semibold shadow">Identité visuelle</span>
               <span className="bg-white/30 text-black px-3 py-1 rounded-full text-sm font-semibold shadow">UI/UX</span>
               <span className="bg-white/30 text-black px-3 py-1 rounded-full text-sm font-semibold shadow">Maquette web</span>
@@ -129,8 +129,8 @@ function Services() {
             data-title="Animation de logo"
             ref={(el) => (sectionRefs.current[2] = el)}
           >
-            <h2 className= "text-[58px] font-bold">Animation de logo</h2>
-            <div className="flex flex-wrap gap-2">
+            <h2 className= "text-[58px] font-semibold">Animation de logo</h2>
+            <div className="flex flex-wrap gap-2 tracking-tighter">
               <span className="bg-white/30 text-black px-3 py-1 rounded-full text-sm font-semibold shadow">Identité visuelle</span>
               <span className="bg-white/30 text-black px-3 py-1 rounded-full text-sm font-semibold shadow">UI/UX</span>
               <span className="bg-white/30 text-black px-3 py-1 rounded-full text-sm font-semibold shadow">Maquette web</span>
