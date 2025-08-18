@@ -66,7 +66,7 @@ export const animatePageOut = (href, router) => {
       tl.to(pageElements, {
         y: 100,        // tous les éléments se déplacent vers le bas
         opacity: 0,    // facultatif pour un fade en même temps
-        duration: 0.5,
+        duration: 0.6,
         ease: "power1.inOut",
         stagger: 0.02, // légère différence pour un effet plus fluide
       });
@@ -84,12 +84,12 @@ export const animatePageOut = (href, router) => {
     // 2️⃣ Animation des voiles
     tl.set([bannerOne, bannerTwo, bannerThree, bannerFour], {
       yPercent: 100,
-      duration: 1,
+      duration: 0.6,
       ease: "power4.inOut",
       zIndex: 10,
     }).to([bannerOne, bannerTwo, bannerThree, bannerFour], {
       yPercent: 0,
-      duration: 1,
+      duration: 0.6,
       ease: "power4.inOut",
       stagger: 0.2,
       scrub: 1,
@@ -142,7 +142,7 @@ export const animatePageIn = () => {
       tl.fromTo(
         mainEl,
         { opacity: 0 },
-        { opacity: 1, duration: 0.3, ease: "power4.inOut" },
+        { opacity: 1, duration: 0.6, ease: "power4.inOut" },
         ">0.1" // légèrement après le début du retrait des voiles
       );
     }

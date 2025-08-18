@@ -30,7 +30,7 @@ export default function RootLayout({ children }) {
         <PreLoader />
         <Template>
           <Navbar ref={stickyElement} />
-          <main className="flex w-full h-full bg-gradient-to-b from-[#F0EAEA] to-[#737373]" id='main'>
+          <main className="flex w-full h-full bg-gradient-to-b from-[#F0EAEA] to-[#737373] opacity-0" id='main'>
             <StickyCursor stickyElement={stickyElement} heroSection="#hero" />
             {children}
           </main>
