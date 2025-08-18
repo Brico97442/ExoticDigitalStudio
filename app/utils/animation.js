@@ -487,8 +487,8 @@ export const animateIslandIntro = (island) => {
     .set(island.current.position, startPosition)
     .set(island.current.rotation, startRotation)
     .fromTo(island.current.material.uniforms.opacity, { value: 0 }, { value: 0.04, duration: 0.8, ease: 'power2.out' }, 0)
-    .to(island.current.position, { ...endPosition, duration: 1.2, ease: 'power3.out' }, 0)
-    .to(island.current.rotation, { ...endRotation, duration: 1.2, ease: 'power3.out' }, 0);
+    .to(island.current.position, { ...endPosition, duration: 2, ease: 'power3.out' }, 0)
+    .to(island.current.rotation, { ...endRotation, duration: 2, ease: 'power3.out' }, 0);
 };
 
 //counter animation
