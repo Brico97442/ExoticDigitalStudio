@@ -28,7 +28,7 @@ varying vec3 vNormal;
 void main() {
   // Calcul de l'éclairage
   vec3 lightDirection = normalize(lightPosition - vPosition);
-  float lightFactor = max(dot(vNormal, lightDirection), 0.3) * lightIntensity;
+  float lightFactor = max(dot(vNormal, lightDirection), 0.4) * lightIntensity;
   
   // Grid pattern
   float grid = abs(sin(vUv.x * gridScale) * sin(vUv.y * gridScale));
@@ -87,8 +87,8 @@ export default function Model({ mousePosition, island }) {
         opacity: { value: 0.0 },
         color: { value: new Color(0, 48 / 255, 83 / 255) },
         gridScale: { value: 150.0 },
-        lightPosition: { value: new Vector3(5, 5, -5) }, // Position de la lumière
-        lightColor: { value: new Color(1, 0.2, 0.2) },   // Couleur rouge
+        lightPosition: { value: new Vector3(-5, -5, -5) }, // Position de la lumière
+        lightColor: { value: new Color(1, 1, 1) }, // blanc intense
         lightIntensity: { value: 5.0 }   // Intensité
       },
       vertexShader,

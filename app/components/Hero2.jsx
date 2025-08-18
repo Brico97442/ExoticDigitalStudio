@@ -33,6 +33,7 @@ export default function Hero() {
       // Textes latéraux
       gsap.to('#text-right', {
         xPercent: 100,
+        x: 50, // décalage supplémentaire en pixels
         ease: 'power4.inOut',
         duration: 10,
         scrollTrigger: {
@@ -41,10 +42,12 @@ export default function Hero() {
           end: '80% center',
           scrub: 3,
         },
-      })
+      });
+      
 
       gsap.to('#text-left', {
         xPercent: -100,
+        x:-50,
         ease: 'power4.inOut',
         duration: 10,
         scrollTrigger: {
@@ -136,7 +139,7 @@ export default function Hero() {
   }, [])
 
   return (
-    <div ref={containerRef} className='relative flex flex-col h-[400vh] '>
+    <div ref={containerRef} className='relative flex flex-col h-[400vh]'>
       <div ref={sectionRef} className='sticky flex items-center justify-center h-[100vh] overflow-hidden rounded-none'>
         {/* === SVG Overlay avec masques animés === */}
         <svg className='absolute inset-0 w-full h-full z-[60] pointer-events-none'>
@@ -178,13 +181,13 @@ export default function Hero() {
               </g>
             </mask>
           </defs>
-          <rect x='0' y='0' width='100%' height='100%' fill='currentColor' mask='url(#mask-transition)' />
+          <rect x='0' y='0' width='100%' height='100%' fill='#0E0E0E' mask='url(#mask-transition)' />
         </svg>
 
         {/* Textes latéraux */}
-        <div className='absolute z-[61] flex items-end justify-center w-full h-[100vh] overflow-hidden'>
-          <p id='text-left' className='absolute left-full text-nowrap uppercase mix-blend-difference text-6xl md:text-8xl text-white'>Votre Différence</p>
-          <p id='text-right' className='absolute right-full uppercase mix-blend-difference text-6xl md:text-8xl text-white'>Assumer</p>
+        <div className='absolute z-[61] flex items-end justify-center w-full h-[100vh] overflow-hidden py-[50px] mx-[50px]'>
+          <p id='text-left' className='absolute left-full text-nowrap uppercase mix-blend-difference text-6xl md:text-8xl text-white'>L'attention</p>
+          <p id='text-right' className='absolute right-full uppercase mix-blend-difference text-6xl md:text-8xl text-white'>Capter</p>
         </div>
 
         {/* Contenu animé (images) */}

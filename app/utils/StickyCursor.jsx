@@ -89,7 +89,7 @@ export default function StickyCursor({ stickyElement, heroSection }) {
   const heroMouseOver = () => {
       setIsHeroHovered(true);
       setIsHovered(false); // S'assurer que le hover du sticky element est désactivé
-      setCursorText("Scrollez"); // Définis le texte lors du survol du hero
+      // setCursorText("Scrollez"); // Définis le texte lors du survol du hero
  
   };
 
@@ -173,7 +173,7 @@ export default function StickyCursor({ stickyElement, heroSection }) {
                   src={CursorImg}
                   alt={`curseur`}
                   fill
-                  style={{ objectFit: 'cover', zIndex:'70' }}
+                  style={{ objectFit: 'cover', zIndex:'70',mixBlendMode:'normal' }}
                   placeholder='blur'
 
                 />
