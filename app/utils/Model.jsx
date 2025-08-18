@@ -139,7 +139,6 @@ export default function Model({ mousePosition, island }) {
       // onPointerOver={() => setHovered(true)}
       // onPointerOut={() => setHovered(false)}
     />
-        {/* Cette lumière ne sera visible que si vous avez d'autres objets avec matériaux standard */}
       </group>
     </group>
   );
