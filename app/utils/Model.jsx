@@ -50,7 +50,12 @@ import { ShaderMaterial, Color, Vector3 } from 'three';
 import { animateIsland, animateIslandIntro } from './animation';
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader'
 
+
+
 export default function Model({ mousePosition, island }) {
+
+  // const [hovered, setHovered] = useState(false)
+
   const { nodes } = useGLTF('/media/reunion2.glb', true, true, (loader) => {
     loader.setDRACOLoader(new DRACOLoader().setDecoderPath('/draco/'))
   })
@@ -58,7 +63,15 @@ export default function Model({ mousePosition, island }) {
   const [initialRotation, setInitialRotation] = useState({ x: 0, y: 0 });
   const scaleFactor = size.width < 768 ? 1.6 : 0.95;
   const groupScale = viewport.width / 2.4 * scaleFactor;
-
+  // useFrame(() => {
+  //   if (island.current) {
+  //     const targetScale = hovered ? 0.02 : 0.015
+  //     // interpolation lissée → super fluide
+  //     island.current.scale.x += (targetScale - island.current.scale.x) * 0.1
+  //     island.current.scale.y += (targetScale - island.current.scale.y) * 0.1
+  //     island.current.scale.z += (targetScale - island.current.scale.z) * 0.1
+  //   }
+  // })
   useEffect(() => {
     if (!island.current) return;
 
@@ -118,12 +131,14 @@ export default function Model({ mousePosition, island }) {
   return (
     <group scale={groupScale}>
       <group>
-        <mesh
-          ref={island}
-          geometry={nodes.reunion.geometry}
-          scale={[0.015, 0.015, 0.015]}
-          position={[-0.08, 0.08, -0.3]}
-        />
+      <mesh
+      ref={island}
+      geometry={nodes.reunion.geometry}
+      scale={[0.015, 0.015, 0.015]}
+      position={[-0.08, 0.08, -0.3]}
+      // onPointerOver={() => setHovered(true)}
+      // onPointerOut={() => setHovered(false)}
+    />
         {/* Cette lumière ne sera visible que si vous avez d'autres objets avec matériaux standard */}
       </group>
     </group>

@@ -3,6 +3,8 @@ import React, { useState, useEffect, useRef } from "react";
 import { animate, motion, transform, useMotionValue, useSpring } from "framer-motion";
 import UseMousePosition from "./CursorTest";
 import { usePathname } from 'next/navigation';
+import CursorImg from '../../public/media/butonScroll.png'
+import Image from "next/image";
 
 export default function StickyCursor({ stickyElement, heroSection }) {
     const pathname = usePathname();
@@ -165,8 +167,16 @@ export default function StickyCursor({ stickyElement, heroSection }) {
         transition={{ type: 'tween', ease: 'backOut', duration: 0.5 }}
         className={`z-[6] fixed rounded-full invisible lg:visible flex justify-center ${isHeroHovered? 'backdrop-blur-sm': ''} items-center pointer-events-none bg-purple-500 cursor-auto mix-blend-difference`}
       >
-        <span className="text-black text-lg mix-blend-normal text-center flex justify-center items-center tracking-tighter">
+        <span className="text-black text-lg mix-blend-normal text-center flex justify-center items-center tracking-tighter ">
           {cursorText}
+          <Image
+                  src={CursorImg}
+                  alt={`curseur`}
+                  fill
+                  style={{ objectFit: 'cover', zIndex:'70' }}
+                  placeholder='blur'
+
+                />
         </span></motion.div>
       <div>
         <div className="fixed w-full h-full top-0 backdrop-blur-[130px] z-[1]" />
@@ -176,7 +186,7 @@ export default function StickyCursor({ stickyElement, heroSection }) {
           animate={{ rotate: 360 }}
           style={{ left: smoothMouseX, top: smoothMouseY, transform: 'translate(-50%, -50%)' }}
           transition={{ type: 'tween', ease: 'backOut', duration: 0.5 }}
-          className="fixed rounded-full flex justify-center items-center h-[180px] w-[180px] bg-gradient-to-r from-teal-950 to-purple-950 cursor-auto pointer-events-none"
+          className="fixed rounded-full flex justify-center items-center h-[180px] w-[180px] bg-gradient-to-r from-teal-950 to-purple-950 cursor-auto pointer-events-none mix-blend-difference"
         />
       </div>
     </>

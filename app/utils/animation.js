@@ -20,9 +20,9 @@ const lockTransitionScroll = () => {
   body.style.left = '0';
   body.style.right = '0';
   body.style.width = '100%';
-  body.style.overflow = 'hidden';
+  // body.style.overflow = 'hidden';
   html.style.overflow = 'hidden';
-  html.style.overscrollBehavior = 'none';
+  // html.style.overscrollBehavior = 'none';
 };
 
 const unlockTransitionScroll = () => {
@@ -38,7 +38,7 @@ const unlockTransitionScroll = () => {
   body.style.left = '';
   body.style.right = '';
   body.style.width = '';
-  body.style.overflow = '';
+  // body.style.overflow = '';
   html.style.overflow = '';
   html.style.overscrollBehavior = '';
   // window.scrollTo(0, y);
@@ -62,14 +62,14 @@ export const animatePageOut = (href, router) => {
 
     // 0️⃣ Slide-out de tous les éléments de la page
     if (mainEl) {
-      const pageElements = mainEl.querySelectorAll('*');
-      tl.to(pageElements, {
-        y: 100,        // tous les éléments se déplacent vers le bas
-        opacity: 0,    // facultatif pour un fade en même temps
-        duration: 0.6,
-        ease: "power1.inOut",
-        stagger: 0.02, // légère différence pour un effet plus fluide
-      });
+      // const pageElements = mainEl.querySelectorAll('*');
+      // tl.to(pageElements, {
+      //   y: 100,        // tous les éléments se déplacent vers le bas
+      //   opacity: 0,    // facultatif pour un fade en même temps
+      //   duration: 0.6,
+      //   ease: "power1.inOut",
+      //   stagger: 0.02, // légère différence pour un effet plus fluide
+      // });
     }
 
     // 1️⃣ Fade-out du main (si nécessaire)
@@ -89,13 +89,13 @@ export const animatePageOut = (href, router) => {
       zIndex: 10,
     }).to([bannerOne, bannerTwo, bannerThree, bannerFour], {
       yPercent: 0,
-      duration: 0.6,
+      duration: 0.8,
       ease: "power4.inOut",
       stagger: 0.2,
       scrub: 1,
       zIndex: 10,
       onChange:() => {
-        window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+        // window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
       },
       onComplete: () => {
         router.push(href);
@@ -142,8 +142,8 @@ export const animatePageIn = () => {
       tl.fromTo(
         mainEl,
         { opacity: 0 },
-        { opacity: 1, duration: 0.6, ease: "power4.inOut" },
-        ">0.1" // légèrement après le début du retrait des voiles
+        { opacity: 1, duration: 0.3, ease: "power4.inOut" },
+         // légèrement après le début du retrait des voiles
       );
     }
   }
@@ -347,11 +347,8 @@ export const animateNavLinksIntro = () => {
     y: 0,
     opacity: 1,
     visibility: 'visible',
-    duration: 0.6,
-    ease: 'power3.out',
-    onComplete: () => {
-      if (typeof window !== 'undefined') window.__navLinksIntroDone = true;
-    }
+    duration: 0.3,
+    ease: 'power4.inOut',
   });
 };
 
@@ -595,9 +592,9 @@ export const forceHeroReset = () => {
   });
   
   // Relancer les animations après réinitialisation
-  setTimeout(() => {
-    ScrollTrigger.refresh();
-  }, 200);
+  // setTimeout(() => {
+  //   ScrollTrigger.refresh();
+  // }, 200);
 };
 
 
