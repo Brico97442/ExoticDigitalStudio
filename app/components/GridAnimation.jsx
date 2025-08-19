@@ -43,10 +43,13 @@ export default function GridAnimation() {
                     scrub: 2,
                     markers: false,
                     onEnter: () => {
-                        video.play().catch(() => {
+                        if (video) {
+                          video.play().catch(() => {
                             console.log('Video autoplay prevented');
-                        });
-                    },
+                          });
+                        }
+                      },
+                      
                 }
             })
         })
@@ -54,7 +57,7 @@ export default function GridAnimation() {
         return () => {
             ScrollTrigger.getAll().forEach(trigger => trigger.kill())
         }
-    }, [])
+    }, [videoRefs])
 
     const Tag = ({ text }) => {
         return (

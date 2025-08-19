@@ -35,7 +35,7 @@ html {
 
 body {
   color: rgb(var(--foreground-rgb));
-  scroll-behavior: smooth;
+  /* scroll-behavior: smooth; */
   padding: 0;
   margin: 0;
   overflow: hidden!important;

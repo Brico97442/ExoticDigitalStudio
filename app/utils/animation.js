@@ -29,7 +29,7 @@ const unlockTransitionScroll = () => {
   if (typeof window === 'undefined') return;
   if (!window.__transitionScrollLocked) return;
   // Ne pas déverrouiller si le preloader est encore actif
-  if (window.__preloaderDone === false) return;
+  // if (window.__preloaderDone === false) return;
   const body = document.body;
   const html = document.documentElement;
   const y = Math.abs(parseInt(body.style.top || '0', 10)) || 0;
