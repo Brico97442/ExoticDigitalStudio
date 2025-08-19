@@ -358,7 +358,9 @@ export default function Home(stickyElement) {
             <h2 style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} className="tracking-tighter">Les grandes histoires commençent souvent par un Hey !</h2>
           </TextReveal>
           <Link href="/contact" className="flex lg:bottom-[0px] justify-between items-center w-full relative group z-[6]" style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }}>
-            <div className={`${Guisol.className} flex justify-between items-center w-full relative group`}>
+            <div className={`
+               
+              flex justify-between items-center w-full relative group`}>
               <Image
                 src={Arrow}
                 alt='flèche directionnelle indiquant le lien contact'

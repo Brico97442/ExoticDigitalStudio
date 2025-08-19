@@ -93,7 +93,7 @@ export default function Hero() {
           start: 'top top',
           end: 'center bottom',
           scrub: 2,
-          markers:true,
+          markers:false,
         },
       })
 

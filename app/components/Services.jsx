@@ -63,7 +63,7 @@ function Services() {
     >
       <HackHover
         data="Services"
-        classValue="z-[7] lg:ml-[50px] lg:mt-[50px] w-full h-full text-[14px] lg:text-[120px] leading-none"
+        classValue="z-[7] lg:ml-[50px] lg:mt-[50px] w-full h-full text-[14px] lg:text-[180px] leading-none"
       />
 
       <div className="flex flex-col md:flex-row w-full">
