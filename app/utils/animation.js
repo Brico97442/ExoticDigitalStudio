@@ -123,12 +123,12 @@ export const animatePageIn = () => {
     // 1️⃣ Animation des voiles qui se retirent
     tl.set([bannerOne, bannerTwo, bannerThree, bannerFour], {
       yPercent: 0,
-      duration: 0.6,
+      duration: 0.4,
       ease: "power4.inOut",
       zIndex: 10,
     }).to([bannerOne, bannerTwo, bannerThree, bannerFour], {
       yPercent: -100,
-      duration: 0.6,
+      duration: 0.4,
       ease: "power4.inOut",
       zIndex: 10,
       onComplete: () => {
