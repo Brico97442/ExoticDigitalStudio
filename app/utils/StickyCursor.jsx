@@ -3,8 +3,8 @@ import React, { useState, useEffect, useRef } from "react";
 import { animate, motion, transform, useMotionValue, useSpring } from "framer-motion";
 import UseMousePosition from "./CursorTest";
 import { usePathname } from 'next/navigation';
-import CursorImg from '../../public/media/butonScroll.png'
-import CursorImgArrow from '../../public/media/butonScroll-Arrow.png'
+import CursorImg from '../../public/media/butonScroll.png';
+import CursorImgArrow from '../../public/media/butonScroll-Arrow.png';
 import Image from "next/image";
 
 export default function StickyCursor({ stickyElement, heroSection }) {
@@ -16,6 +16,8 @@ export default function StickyCursor({ stickyElement, heroSection }) {
   const [isLinkHovered, setIsLinkHovered] = useState(false);
   const [isHomePage, setIsHomePage] = useState(false);
 
+  const [isStickyHovered, setIsStickyHovered] = useState(false); // 👈 Nouveau state
+
   const cursorRef = useRef(null);
   const cursorRef2 = useRef(null);
   const curSorSize = isHovered ? 80 : 20;
@@ -23,30 +25,19 @@ export default function StickyCursor({ stickyElement, heroSection }) {
   const mouseX = useMotionValue(x);
   const mouseY = useMotionValue(y);
 
-
-  const smoothOptions = {
-    damping: 20,
-    stiffness: 350,
-    mass: 0.4,
-  };
-
-  const scale = {
-    x: useMotionValue(1),
-    y: useMotionValue(1),
-  };
-
+  const smoothOptions = { damping: 20, stiffness: 350, mass: 0.4 };
+  const scale = { x: useMotionValue(1), y: useMotionValue(1) };
   const smoothMouseX = useSpring(mouseX, smoothOptions);
   const smoothMouseY = useSpring(mouseY, smoothOptions);
-
   const currentCursorSize = isHeroHovered ? curSorSize2 : curSorSize;
   const effectiveCursorSize = isLinkHovered ? 0 : currentCursorSize;
 
-
-  //   // Vérifier si nous sommes sur la page d'accueil
+  // Vérifier si nous sommes sur la page d'accueil
   useEffect(() => {
     setIsHomePage(pathname === '/');
   }, [pathname]);
 
+  // Animation du curseur en fonction de stickyElement et hero
   useEffect(() => {
     if (!stickyElement || !stickyElement.current) return;
 
@@ -54,18 +45,13 @@ export default function StickyCursor({ stickyElement, heroSection }) {
     const center = { x: left + width / 2, y: top + height / 2 };
     const distance = { x: x - center.x, y: y - center.y };
 
-    // Déterminer quelle taille de curseur utiliser
-
     if (stickyElement.current) {
       if (isHovered) {
         const angle = Math.atan2(distance.y, distance.x);
         animate(cursorRef.current, { rotate: `${angle}rad` }, { duration: 0 });
         const absDistance = Math.max(Math.abs(distance.x), Math.abs(distance.y));
-        const newScaleX = transform(absDistance, [0, width / 2], [1, 1.3]);
-        const newScaleY = transform(absDistance, [0, height / 2], [1, 0.8]);
-        scale.x.set(newScaleX);
-        scale.y.set(newScaleY);
-
+        scale.x.set(transform(absDistance, [0, width / 2], [1, 1.3]));
+        scale.y.set(transform(absDistance, [0, height / 2], [1, 0.8]));
         mouseX.set(center.x + distance.x * 0.1 - effectiveCursorSize / 2);
         mouseY.set(center.y + distance.y * 0.1 - effectiveCursorSize / 2);
       } else {
@@ -74,39 +60,40 @@ export default function StickyCursor({ stickyElement, heroSection }) {
         animate(cursorRef.current, { rotate: 0 }, { duration: 0 });
       }
     }
-
   }, [x, y, curSorSize, curSorSize2, isHovered, isHeroHovered, isLinkHovered, stickyElement, scale, mouseX, mouseY, effectiveCursorSize]);
 
   const handleMouseOver = () => {
     setIsHovered(true);
     setIsHeroHovered(false);
   };
-
   const handleMouseLeave = () => {
     setIsHovered(false);
     animate(cursorRef.current, { scaleX: 1, scaleY: 1 }, { duration: 0.1 });
   };
-
   const heroMouseOver = () => {
     setIsHeroHovered(true);
-    setIsHovered(false); // S'assurer que le hover du sticky element est désactivé
-    // setCursorText("Scrollez"); // Définis le texte lors du survol du hero
-
+    setIsHovered(false);
   };
-
   const heroMouseLeave = () => {
     setIsHeroHovered(false);
     setCursorText("");
     animate(cursorRef.current, { scaleX: 1, scaleY: 1 }, { duration: 0.1 });
   };
 
+  // Gestion des listeners sur stickyElement et hero
   useEffect(() => {
     const navBarElement = stickyElement.current;
-    const heroElement = document.querySelector('#hero'); // Utiliser querySelector au lieu de .current
+    const heroElement = document.querySelector('#hero');
 
     if (navBarElement) {
-      navBarElement.addEventListener("mouseenter", handleMouseOver);
-      navBarElement.addEventListener("mouseleave", handleMouseLeave);
+      navBarElement.addEventListener("mouseenter", () => {
+        handleMouseOver();
+        setIsStickyHovered(true);   // 👈 active le fade
+      });
+      navBarElement.addEventListener("mouseleave", () => {
+        handleMouseLeave();
+        setIsStickyHovered(false);  // 👈 remet les images
+      });
     }
 
     if (heroElement && isHomePage) {
@@ -126,37 +113,29 @@ export default function StickyCursor({ stickyElement, heroSection }) {
     };
   }, [stickyElement, isHomePage]);
 
-  // Réduire le curseur à 0 lors du hover sur n'importe quel lien TransitionLink (#navigation-link)
+  // Réduire le curseur lors du hover sur liens
   useEffect(() => {
     const handleOver = (event) => {
       const linkAncestor = event.target && event.target.closest ? event.target.closest('#navigation-link') : null;
-      if (linkAncestor) {
-        setIsLinkHovered(true);
-      }
+      if (linkAncestor) setIsLinkHovered(true);
     };
     const handleOut = (event) => {
       const fromLink = event.target && event.target.closest ? event.target.closest('#navigation-link') : null;
       if (fromLink) {
         const toElement = event.relatedTarget;
         const stillInsideLink = toElement && toElement.closest && toElement.closest('#navigation-link') === fromLink;
-        if (!stillInsideLink) {
-          setIsLinkHovered(false);
-        }
+        if (!stillInsideLink) setIsLinkHovered(false);
       }
     };
-
     document.addEventListener('mouseover', handleOver, true);
     document.addEventListener('mouseout', handleOut, true);
-
     return () => {
       document.removeEventListener('mouseover', handleOver, true);
       document.removeEventListener('mouseout', handleOut, true);
     };
   }, [pathname]);
 
-  const template = ({ rotate, scaleX, scaleY }) => {
-    return `rotate(${rotate}) scaleX(${scaleX}) scaleY(${scaleY})`;
-  };
+  const template = ({ rotate, scaleX, scaleY }) => `rotate(${rotate}) scaleX(${scaleX}) scaleY(${scaleY})`;
 
   return (
     <>
@@ -170,7 +149,11 @@ export default function StickyCursor({ stickyElement, heroSection }) {
       >
         <span className="text-black text-lg mix-blend-normal text-center flex justify-center items-center tracking-tighter overflow-hidden">
           {cursorText}
-          <div className="flex items-center justify-center relative w-[104px] h-[104px] z-[70]">
+          <motion.div
+            animate={{ opacity: isStickyHovered ? 0 : 1 }} // 👈 fade out si stickyElement hover
+            transition={{ duration: 0.1 }}
+            className="flex items-center justify-center relative w-[104px] h-[104px] z-[70]"
+          >
             <Image
               src={CursorImgArrow}
               alt="curseur"
@@ -182,13 +165,13 @@ export default function StickyCursor({ stickyElement, heroSection }) {
             <Image
               src={CursorImg}
               alt="curseur"
-
               placeholder="blur"
-              className="spin   top-0 left-0  object-cover z-[80]"
+              className="spin top-0 left-0 object-cover z-[80]"
             />
-          </div>
+          </motion.div>
+        </span>
+      </motion.div>
 
-        </span></motion.div>
       <div>
         <div className="fixed w-full h-full top-0 backdrop-blur-[130px] z-[1]" />
         <motion.div

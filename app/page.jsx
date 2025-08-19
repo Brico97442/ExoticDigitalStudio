@@ -7,7 +7,8 @@ import dynamic from "next/dynamic";
 import Image from 'next/image'
 import TextReveal from "./components/TextReveal";
 import HorizontalScroll from "./components/HorizontalScroll";
-import Button from "./components/Button";
+// import HorizontalScroll3D from "./components/HorizontalScroll3d";
+// import Button from "./components/Button";
 import gsap from "gsap";
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { animateAbout, animateAboutText, animateHero, animateHeroIntro } from "./utils/animation";
@@ -261,34 +262,32 @@ export default function Home(stickyElement) {
 
   }, [arrowRef, textScroll]);
 
-
-
   return (
     <main id="main" className={"flex w-full h-full relative min-h-screen flex-col "}>
       {/* <CookieConsent/> */}
       <div id="hero-container" className="z-[1] flex w-full h-full min-h-screen flex-col relative">
         <Scene island={island} />
         <div ref={heroSection} id="hero" className='h-screen sticky w-full flex flex-col items-center top-0 z-[3]'>
-          <div className='h-screen flex flex-col items-start justify-between w-full px-[10px] lg:px-[50px] pt-[20px] lg:pt-[100px] relative z-[3]'>
+          <div className='h-screen flex flex-col items-start justify-between w-full px-[10px] lg:px-[80px] pt-[20px] lg:pt-[100px] relative z-[3]'>
             {/* <TextReveal staggerValue={"0.1"} classValue="leading-none lg:w-3/6 "> */}
               <h2 id='hero-subtitle' style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} className='lg:w-full pointer-events-none mt-[98px] overflow-hidden text-[24px] tracking-tighter lg:text-[36px] lg:mt-[7vh] '>Offrez à vos visiteurs une expérience web captivante<br /> parce que chaque clic mérite sa touche de magie.</h2>
             {/* </TextReveal> */}
 
-            <div style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} className="overflow-hidden absolute right-[10px] bottom-[148px] lg:bottom-[50px] lg:right-[50px]" >
-              <h3 id='hero-title' className=' bg-slate-900 pointer-events-none text-[#ECECEC] text-[16px] lg:text-[28px] font-bold-sm tracking-tighter py-2 px-6 rounded-lg'>Reunion Island Digital Studio </h3>
+            <div style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} className="overflow-hidden absolute right-[10px] bottom-[148px] lg:bottom-[52px] lg:right-[80px]" >
+              <h3 id='hero-title' className=' bg-slate-900 pointer-events-none text-[#ECECEC] text-[16px] lg:text-[28px] font-bold-sm tracking-tighter py-2 px-6 rounded-lg '>Reunion Island Digital Studio </h3>
             </div>
-            <Image
+            {/* <Image
               src={Arrow2}
               alt='flèche directionnelle indiquant le lien contact'
               style={{ objectFit: 'contain' }}
               placeholder="blur"
               className="absolute bottom-[50vh] h-[5vh] w-auto mt-[0px]"
-            />
+            /> */}
 
-            <div className="absolute right-[0px] bottom-[50vh] flex flex-col items-end justify-center mr-[10px] lg:mr-[50px]">
-              <div id="coordinates-gps" className="flex flex-col items-end text-[8px]  lg:text-[16px] tracking-tighter leading-none">
-                <TextReveal staggerValue={"0.1"} classValue="leading-none">
-                  <p>21° 16&apos; 41″ S </p>
+            <div className="absolute right-[0px] bottom-[50vh] flex flex-col items-end justify-center mr-[10px] lg:mr-[80px]">
+              <div id="coordinates-gps" className="flex flex-col items-end text-[8px] w-full lg:text-[16px] tracking-tighter leading-none ">
+                <TextReveal staggerValue={"0.1"} classValue="leading-none text-right w-full">
+                  <p>21° 16&apos; 41″ S</p>
                 </TextReveal>
                 <TextReveal staggerValue={"0.1"} classValue="leading-none">
                   <p>55° 30&apos; 55″ E</p>
@@ -296,11 +295,11 @@ export default function Home(stickyElement) {
               </div>
             </div>
 
-            <div className="overflow-hidden mb-[10px] lg:mr-[50px] lg:mb-[50px]" style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }}>
+            <div className="overflow-hidden mb-[10px] lg:mr-[50px] lg:mb-[80px]" style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }}>
               <h2 id='studio-text' className='overflow-hidden text-[#003049] pointer-events-none leading-none text-[24px] lg:text-[36px] font-bold-sm tracking-tighter '>Créateur de solutions digitales</h2>
             </div>
 
-            <HorizontalScroll />
+            <HorizontalScroll/>
           </div>
         </div>
 
@@ -308,7 +307,7 @@ export default function Home(stickyElement) {
         <HackHover data='Située au Tampon' classValue='z-[0] ml-[20vw] mt-[5vh] w-full h-full text-[14px] z-[3] lg:text-[20px] text-white cursor-default leading-none' />
         </div>
 
-        <div id="about" ref={aboutRef} className="sticky top-0 h-[250svh] px-[10px] py-[50px] lg:px-[80px] lg:pb-[80px] lg:pt-[50svh] flex flex-col justify-center">
+        <div id="about" ref={aboutRef} className="rounded-2xl sticky top-0 h-[250svh] px-[10px] py-[80px] lg:px-[80px] lg:pb-[80px] lg:pt-[50svh] flex flex-col justify-center">
           <div className=" flex flex-col w-full h-full">
             <div className='h-full flex flex-col justify-between'>
               <div style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }}>
@@ -347,14 +346,14 @@ export default function Home(stickyElement) {
           <Hero2 />
         {/* Section services */}
         <Services/>
-        <div className="z-[1] flex justify-center py-[20px] lg:py-[80px] px-[20px] lg:px-[50px]">
+        {/* <div className="z-[1] flex justify-center py-[20px] lg:py-[80px] px-[20px] lg:px-[50px]"> */}
           {/* <GridAnimation /> */}
-        </div>
+        {/* </div> */}
         <div id="contact" className="w-full lg:h-screen mx-[10px] lg:mx-[0px] flex flex-col items-left text-[#ECECEC] h-[70vh] justify-between relative border-none">
-          <TextScroll style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} classValue="cursor-pointer lg:mt-[50px] mx-[10px] lg:mx-[50px] text-[36px]"
+          <TextScroll style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} classValue="cursor-pointer lg:mt-[50px] mx-[10px] lg:mx-[80px] text-[36px]"
             value="Vous avez des questions ou vous souhaitez collaborer avec nous ?">
           </TextScroll>
-          <TextReveal classValue="w-full mx-[10px] lg:mx-[50px] text-[14px] lg:text-[1rem] lg:text-[28px] z-[1] tracking-tighter">
+          <TextReveal classValue="w-full mx-[10px] lg:mx-[80px] text-[14px] lg:text-[1rem] lg:text-[28px] z-[1] tracking-tighter">
             <h2 style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} className="tracking-tighter">Les grandes histoires commençent souvent par un Hey !</h2>
           </TextReveal>
           <Link href="/contact" className="flex lg:bottom-[0px] justify-between items-center w-full relative group z-[6]" style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }}>
@@ -366,9 +365,9 @@ export default function Home(stickyElement) {
                 alt='flèche directionnelle indiquant le lien contact'
                 style={{ objectFit: 'contain' }}
                 placeholder="blur"
-                className="absolute right-0 lg:right-[50px] lg:group-hover:right-0 group-hover:translate-x-full transition-all duration-500"
+                className="absolute right-0 lg:right-[80px] lg:group-hover:right-0 group-hover:translate-x-full transition-all duration-500"
               />
-              <HackHover data='CONTACT' classValue='z-[3] text-[32px] tracking-wide mx-[10px] lg:mx-[50px] lg:text-[300px] leading-none text-[#ECECEC] text-left group-hover:ml-[290px] transition-all duration-500' />
+              <HackHover data='CONTACT' classValue=' z-[3] text-[32px] tracking-tight mx-[10px] lg:mx-[58px] lg:text-[300px] leading-none text-[#ECECEC] text-left group-hover:ml-[290px] transition-all duration-500' />
               {/* <svg width="164" height="165" viewBox="0 0 164 165" fill="none" xmlns="http://www.w3.org/2000/svg" id="right-arrow" className="absolute right-0 group-hover:translate-x-full transition-all duration-500 ">
               <path d="M0.741753 91.6101L1.04884 71.0174L124.605 72.86L68.8197 15.3855L83.6586 0.982649L163.99 83.7459L81.2264 164.077L66.8236 149.238L124.298 93.4527L0.741753 91.6101Z" fill="black" />
               </svg> */}

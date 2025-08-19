@@ -204,51 +204,51 @@ export const animateOverlayText = (overlayTextRef) => {
 //Hero animation
 
 export const animateHero = (arrowRef) => {
-  if (arrowRef.current) {
-    gsap.to(arrowRef.current, {
-      rotation: 45,
-      ease: "power2.inOut",
-      scrollTrigger: {
-        trigger: "#hero",
-        start: "top top",
-        end: "bottom center",
-        scrub: 1,
-        markers: false,
-      },
-    });
-  }
+  // if (arrowRef.current) {
+  //   gsap.to(arrowRef.current, {
+  //     rotation: 45,
+  //     ease: "power2.inOut",
+  //     scrollTrigger: {
+  //       trigger: "#hero",
+  //       start: "top top",
+  //       end: "bottom center",
+  //       scrub: 1,
+  //       markers: false,
+  //     },
+  //   });
+  // }
 
-  gsap.fromTo(
-    '#about-title',
-    { yPercent: 100 }, // valeurs de départ
-    {
-      yPercent: 0, // valeurs d’arrivée
-      ease: "power4.inOut",
-      duration: 10,
-      scrollTrigger: {
-        trigger: "#about",
-        start: "top center",
-        end: "30% 50%",
-        scrub: 2,
-        markers: false,
-      },
-    }
-  );
+  // gsap.fromTo(
+  //   '#about-title',
+  //   { yPercent: 100 }, // valeurs de départ
+  //   {
+  //     yPercent: 0, // valeurs d’arrivée
+  //     ease: "power4.inOut",
+  //     duration: 10,
+  //     scrollTrigger: {
+  //       trigger: "#about",
+  //       start: "top center",
+  //       end: "30% 50%",
+  //       scrub: 2,
+  //       markers: false,
+  //     },
+  //   }
+  // );
 
 
 
-  gsap.to(['#hero-scroll , #hero-subtitle , #hero-title , #studio-text ,#coordinates-gps p'], {
-    yPercent: 100,
-    ease: "power4.inOut",
-    duration: 7,
-    scrollTrigger: {
-      trigger: "#hero",
-      start: "top top",
-      end: "bottom center",
-      scrub: 2,
-      markers: false,
-    },
-  });
+  // gsap.to(['#hero-scroll , #hero-subtitle , #hero-title , #studio-text ,#coordinates-gps p'], {
+  //   yPercent: 100,
+  //   ease: "power4.inOut",
+  //   duration: 7,
+  //   scrollTrigger: {
+  //     trigger: "#hero",
+  //     start: "top top",
+  //     end: "bottom center",
+  //     scrub: 2,
+  //     markers: false,
+  //   },
+  // });
 
 };
 
@@ -322,34 +322,34 @@ export const prepareHeroIntro = () => {
 
 // -------- NavLinks intro (Navbar + Aside) --------
 export const prepareNavLinksIntro = () => {
-  const targets = [
-    ...document.querySelectorAll('#navlink #navigation-link'),
-    ...document.querySelectorAll('#navlink-menu #navigation-link'),
-    ...document.querySelectorAll('#logo-link #navigation-link'),
-  ];
-  if (!targets || targets.length === 0) return false;
-  if (typeof window !== 'undefined') {
-    window.__navLinksIntroDone = false;
-  }
-  gsap.set(targets, { y: 100, opacity: 0, visibility: 'hidden' });
-  return true;
+  // const targets = [
+  //   ...document.querySelectorAll('#navlink #navigation-link'),
+  //   ...document.querySelectorAll('#navlink-menu #navigation-link'),
+  //   ...document.querySelectorAll('#logo-link #navigation-link'),
+  // ];
+  // if (!targets || targets.length === 0) return false;
+  // if (typeof window !== 'undefined') {
+  //   window.__navLinksIntroDone = false;
+  // }
+  // gsap.set(targets, { y: 100, opacity: 0, visibility: 'hidden' });
+  // return true;
 };
 
 export const animateNavLinksIntro = () => {
-  const targets = [
-    ...document.querySelectorAll('#navlink #navigation-link'),
-    ...document.querySelectorAll('#navlink-menu #navigation-link'),
-    ...document.querySelectorAll('#logo-link #navigation-link'),
-  ];
-  if (!targets || targets.length === 0) return;
-  if (typeof window !== 'undefined' && window.__navLinksIntroDone) return;
-  gsap.to(targets, {
-    y: 0,
-    opacity: 1,
-    visibility: 'visible',
-    duration: 0.3,
-    ease: 'power4.inOut',
-  });
+  // const targets = [
+  //   ...document.querySelectorAll('#navlink #navigation-link'),
+  //   ...document.querySelectorAll('#navlink-menu #navigation-link'),
+  //   ...document.querySelectorAll('#logo-link #navigation-link'),
+  // ];
+  // if (!targets || targets.length === 0) return;
+  // if (typeof window !== 'undefined' && window.__navLinksIntroDone) return;
+  // gsap.to(targets, {
+  //   y: 0,
+  //   opacity: 1,
+  //   visibility: 'visible',
+  //   duration: 0.3,
+  //   ease: 'power4.inOut',
+  // });
 };
 
 //Animation objet 3D Island
@@ -483,7 +483,7 @@ export const animateIslandIntro = (island) => {
   tl.set(island.current, { visible: true })
     .set(island.current.position, startPosition)
     .set(island.current.rotation, startRotation)
-    .fromTo(island.current.material.uniforms.opacity, { value: 0 }, { value: 0.04, duration: 0.8, ease: 'power2.out' }, 0)
+    .fromTo(island.current.material.uniforms.opacity, { value: 0 }, { value: 0.04, duration: 0.6, ease: 'power2.out' }, 0)
     .to(island.current.position, { ...endPosition, duration: 2, ease: 'power3.out' }, 0)
     .to(island.current.rotation, { ...endRotation, duration: 2, ease: 'power3.out' }, 0);
 };

@@ -11,7 +11,7 @@ export default function LegalMentions() {
     }, []);
     return (
         <div className=" w-full h-full min-h-screen flex flex-col z-[2] relative text-6xl ">
-           <h1 className="tracking-tighter text-[210px] leadind-none pt-40 pb-8">Mentions Légales</h1>
+           <h1 className="tracking-tighter text-[180px] leadind-none pt-40 pb-8">Mentions Légales</h1>
            <div  className=" w-full h-full px-[50px] z-[2]">
             <div className="bg-white text-black rounded-lg p-16 text-xl leading-relaxed shadow-lg max-w-[70%] mx-auto py-20 flex flex-col gap-8">
                 <h2 className="text-4xl font-bold mb-8">Mentions légales</h2>

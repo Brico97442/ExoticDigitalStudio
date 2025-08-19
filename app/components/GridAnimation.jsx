@@ -79,7 +79,7 @@ export default function GridAnimation() {
                         <Image src={d2semImg} alt="logo de l'entreprise Exotik Digital Studio" className='z-[4]' />
 
                         </div>
-                        <div className="flex flex-col items-start gap-6 justify-center w-full lg:w-1/2">
+                        <div className="flex flex-col items-start gap-6 justify-center w-full lg:w-1/2 border-b-white border-b">
                             <h2 className=' text-xl lg:text-6xl text-left w-full uppercase tracking-tighter'>D2SEM</h2>
                             {/* <p className='flex text-wrap tracking-tighter text-[14px] lg:text-[32px]'>Nous transformons vos idées en applications web sur mesure, performantes et adaptées à vos besoins. Nous utilisons les dernières technologies pour garantir une expérience utilisateur fluide, sécurisée et accessible sur tous les supports.</p> */}
                             <TextScroll classValue="text-black text-[14px] lg:text-[32px]" value="Nous transformons vos idées en applications web sur mesure, performantes et adaptées à vos besoins. Nous utilisons les dernières technologies pour garantir une expérience utilisateur fluide, sécurisée et accessible sur tous les supports."/>
@@ -90,7 +90,7 @@ export default function GridAnimation() {
                             </div>
                         </div>
                     </div>
-                    <hr />
+                    {/* <hr /> */}
                     <div className='card-img-container flex flex-col lg:flex-row gap-10 h-full overflow-hidden my-4 '>
                         <div ref={el => videoRefs.current[1] = el} className='card-img overflow-hidden'>
                             <video
@@ -104,7 +104,7 @@ export default function GridAnimation() {
 
                             />
                         </div>
-                        <div className="flex flex-col items-start gap-6 justify-center w-full lg:w-1/2">
+                        <div className="flex flex-col items-start gap-6 justify-center w-full lg:w-1/2 border-b-white border-b">
                             <h2 className='text-xl lg:text-6xl tracking-tighter'>Le bon plan réunion</h2>
                             {/* <p className='flex text-wrap text-left tracking-tighter text-[14px] lg:text-[32px]'>Donnez vie à vos support grâce à l'art du Motion Design</p> */}
                             <TextScroll classValue="text-black text-[14px] lg:text-[32px]" value="Donnez vie à vos support grâce à l'art du Motion Design"/>
@@ -115,7 +115,7 @@ export default function GridAnimation() {
                             </div>
                         </div>
                     </div>
-                    <hr />
+                    {/* <hr /> */}
                     
                 </div>
             </div>

@@ -38,8 +38,8 @@ export default function TextReveal({ children, classValue, staggerValue}) {
     }, []);
 
     return (
-        <div className='text-scroll w-full flex items-center tracking-tighter z-[3]'>
-            <div ref={textRef} className={`${classValue}h-full leading-none overflow-hidden`} style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }}>
+        <div className='text-scroll flex items-center tracking-tighter z-[3]'>
+            <div ref={textRef} className={`${classValue} h-full leading-none overflow-hidden`} style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }}>
                 {children}
             </div>
         </div>

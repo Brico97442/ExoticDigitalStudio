@@ -57,13 +57,13 @@ function Services() {
 
   return (
     <div
-      className="min-h-screen h-full w-full bg-[#771A66] relative overflow-hidden z-[7] rounded-t-4xl"
+      className="min-h-screen h-full w-full bg-[#771A66] relative overflow-hidden z-[7] rounded-t-4xl text-white"
       id="services"
       ref={servicesRef}
     >
       <HackHover
         data="Services"
-        classValue="z-[7] lg:ml-[50px] lg:mt-[50px] w-full h-full text-[14px] lg:text-[180px] leading-none"
+        classValue="z-[7] lg:ml-[70px] lg:mt-[80px] w-full h-full text-[14px] lg:text-[180px] leading-none"
       />
 
       <div className="flex flex-col md:flex-row w-full">
@@ -71,7 +71,7 @@ function Services() {
         <div className="block w-full md:w-[50vw] relative">
           <div
             ref={floatingRef}
-            className="pointer-events-none select-none pl-[50px] pt-[50px]"
+            className="pointer-events-none select-none pl-[80px] pt-[80px]"
           >
             <h1 className=" text-[58px] md:text-[58px] font-semibold tracking-tighter opacity-100 text-left">
               {currentTitle}
@@ -80,7 +80,7 @@ function Services() {
         </div>
 
         {/* Colonne droite avec les services */}
-        <div className="w-full md:w-[50vw] md:ml-auto md:pr-8 md:pl-6 py-[120px] flex flex-col gap-[80px] relative z-10">
+        <div className="w-full md:w-[50vw] md:ml-auto md:pr-8 md:pl-6 py-[80px] flex flex-col gap-[80px] relative z-10">
           {/* Service 1 */}
           <section
             className="service-section flex flex-col items-start gap-6"
@@ -89,10 +89,10 @@ function Services() {
           >
             <h2 className=" text-[58px] font-semibold tracking-tighter">Design</h2>
             <div className="flex flex-wrap gap-2">
-              <span className="bg-white/30 text-black px-3 py-1 rounded-full text-sm font-semibold shadow">Identité visuelle</span>
-              <span className="bg-white/30 text-black px-3 py-1 rounded-full text-sm font-semibold shadow">UI/UX</span>
-              <span className="bg-white/30 text-black px-3 py-1 rounded-full text-sm font-semibold shadow">Maquette web</span>
-              <span className="bg-white/30 text-black px-3 py-1 rounded-full text-sm font-semibold shadow">Direction artistique</span>
+              <span className="bg-white/30 text-white px-3 py-1 rounded-full text-sm font-semibold shadow">Identité visuelle</span>
+              <span className="bg-white/30 text-white px-3 py-1 rounded-full text-sm font-semibold shadow">UI/UX</span>
+              <span className="bg-white/30 text-white px-3 py-1 rounded-full text-sm font-semibold shadow">Maquette web</span>
+              <span className="bg-white/30 text-white px-3 py-1 rounded-full text-sm font-semibold shadow">Direction artistique</span>
             </div>
             <p className=" text-lg">
               Création d&apos;identités visuelles uniques, maquettes web et
@@ -110,10 +110,10 @@ function Services() {
           >
             <h2 className= "text-[58px] font-semibold tracking-tighter">Développement web</h2>
             <div className="flex flex-wrap gap-2 ">
-              <span className="bg-white/30 text-black px-3 py-1 rounded-full text-sm font-semibold shadow">Identité visuelle</span>
-              <span className="bg-white/30 text-black px-3 py-1 rounded-full text-sm font-semibold shadow">UI/UX</span>
-              <span className="bg-white/30 text-black px-3 py-1 rounded-full text-sm font-semibold shadow">Maquette web</span>
-              <span className="bg-white/30 text-black px-3 py-1 rounded-full text-sm font-semibold shadow">Direction artistique</span>
+              <span className="bg-white/30 text-white px-3 py-1 rounded-full text-sm font-semibold shadow">Identité visuelle</span>
+              <span className="bg-white/30 text-white px-3 py-1 rounded-full text-sm font-semibold shadow">UI/UX</span>
+              <span className="bg-white/30 text-white px-3 py-1 rounded-full text-sm font-semibold shadow">Maquette web</span>
+              <span className="bg-white/30 text-white px-3 py-1 rounded-full text-sm font-semibold shadow">Direction artistique</span>
             </div>
             <p className="text-lg">
               Sites vitrines, e-commerce, applications interactives performantes
@@ -131,10 +131,10 @@ function Services() {
           >
             <h2 className= "text-[58px] font-semibold">Animation de logo</h2>
             <div className="flex flex-wrap gap-2 tracking-tighter">
-              <span className="bg-white/30 text-black px-3 py-1 rounded-full text-sm font-semibold shadow">Identité visuelle</span>
-              <span className="bg-white/30 text-black px-3 py-1 rounded-full text-sm font-semibold shadow">UI/UX</span>
-              <span className="bg-white/30 text-black px-3 py-1 rounded-full text-sm font-semibold shadow">Maquette web</span>
-              <span className="bg-white/30 text-black px-3 py-1 rounded-full text-sm font-semibold shadow">Direction artistique</span>
+              <span className="bg-white/30 text-white px-3 py-1 rounded-full text-sm font-semibold shadow">Identité visuelle</span>
+              <span className="bg-white/30 text-white px-3 py-1 rounded-full text-sm font-semibold shadow">UI/UX</span>
+              <span className="bg-white/30 text-white px-3 py-1 rounded-full text-sm font-semibold shadow">Maquette web</span>
+              <span className="bg-white/30 text-white px-3 py-1 rounded-full text-sm font-semibold shadow">Direction artistique</span>
             </div>
             <p className= "text-lg">
               Donnez vie à votre identité avec des animations de logo élégantes

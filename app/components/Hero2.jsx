@@ -33,7 +33,7 @@ export default function Hero() {
       // Textes latéraux
       gsap.to('#text-right', {
         xPercent: 100,
-        x: 50, // décalage supplémentaire en pixels
+        x: 80, // décalage supplémentaire en pixels
         ease: 'power4.inOut',
         duration: 10,
         scrollTrigger: {
@@ -47,7 +47,7 @@ export default function Hero() {
 
       gsap.to('#text-left', {
         xPercent: -100,
-        x:-50,
+        x:-80,
         ease: 'power4.inOut',
         duration: 10,
         scrollTrigger: {
