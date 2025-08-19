@@ -6,42 +6,48 @@ import SplitType from 'split-type';
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function TextReveal({ children, classValue, staggerValue}) {
-    const textRef = useRef(null);
+export default function TextReveal({ children, classValue, staggerValue }) {
+  const textRef2 = useRef(null);
 
-    useEffect(() => {
-        if (textRef.current) {
-            // Split the text into characters and words
-            const splitText = new SplitType(textRef.current, { types: 'chars, words' });
+  useEffect(() => {
+    let splitText;
+    if (textRef2.current) {
+      splitText = new SplitType(textRef2.current, { types: 'words' });
+  
+      const tl = gsap.timeline({ paused: true });
+      tl.from(splitText.words, {
+        yPercent: 100,
+        opacity: 0,
+        stagger: staggerValue,
+        duration: 0.8,
+        ease: "power4.out",
+      });
+  
+      ScrollTrigger.create({
+        trigger: textRef2.current,
+        start: "top 85%",
+        onEnter: () => tl.play(),
+        onLeaveBack: () => tl.reverse(),
+      });
+    }
+  
+    return () => {
+      // Nettoyage
+      splitText?.revert();
+      ScrollTrigger.getAll().forEach(st => st.kill());
+    };
+  }, [staggerValue]);
+  
 
-            // Create the animation
-            gsap.from(splitText.chars, {
-                scrollTrigger: {
-                    trigger: textRef.current,
-                    start: 'top 80%',
-                    end: 'top 40%',
-                    scrub: 3,
-                    markers: false,
-                    // once:true,
-                    visibility: "hidden",
-
-                },
-                yPercent: 100,
-                stagger: staggerValue,
-                duration: 10,
-                delay: 1,               
-                 opacity: 0,
-                ease: "power4.inOut",
-                visibility: "visible",
-            });
-        }
-    }, []);
-
-    return (
-        <div className='text-scroll flex items-center tracking-tighter z-[3]'>
-            <div ref={textRef} className={`${classValue} h-full leading-none overflow-hidden`} style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }}>
-                {children}
-            </div>
-        </div>
-    );
+  return (
+    <div className="text-scroll flex items-center tracking-tighter z-[3]">
+      <div
+        ref={textRef2}
+        className={`${classValue} h-full leading-none overflow-hidden`}
+        style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }}
+      >
+        {children}
+      </div>
+    </div>
+  );
 }

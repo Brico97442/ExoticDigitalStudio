@@ -49,7 +49,7 @@ export default function HackHover({data,classValue,iterationTiming}) {
             <div>
                 <h1
                     ref={textRef}
-                    className={`${classValue} z-[15] -tracking-widest border-box outline-none border-none`}
+                    className={`${classValue} z-[15] border-box outline-none border-none`}
                     data-value={data}
                 >
                     {data}

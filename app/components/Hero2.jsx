@@ -162,9 +162,9 @@ export default function Hero() {
                   x='10%' y='40%'
                   textAnchor='start'
                   dominantBaseline='middle'
-                  fontSize='8vw'
+                  fontSize='150px'
                   fill='black'
-                  fontWeight='bold'
+                  fontWeight='semi-bold'
                 >
                   OSER
                 </text>
@@ -172,9 +172,9 @@ export default function Hero() {
                   x='10%' y='55%'
                   textAnchor='start'
                   dominantBaseline='middle'
-                  fontSize='8vw'
+                  fontSize='150px'
                   fill='black'
-                  fontWeight='bold'
+                  fontWeight='semi-bold'
                 >
                   LA DIFFÉRENCE
                 </text>
@@ -186,8 +186,8 @@ export default function Hero() {
 
         {/* Textes latéraux */}
         <div className='absolute z-[61] flex items-end justify-center w-full h-[100vh] overflow-hidden py-[50px] mx-[50px]'>
-          <p id='text-left' className='absolute left-full text-nowrap uppercase mix-blend-difference text-6xl md:text-8xl text-white'>L&apos;attention</p>
-          <p id='text-right' className='absolute right-full uppercase mix-blend-difference text-6xl md:text-8xl text-white'>Capter</p>
+          <p id='text-left' className='absolute left-full text-nowrap uppercase mix-blend-difference text-6xl md:text-[38px] text-white'>L&apos;attention</p>
+          <p id='text-right' className='absolute right-full uppercase mix-blend-difference text-6xl md:text-[38px] text-white'>Capter</p>
         </div>
 
         {/* Contenu animé (images) */}

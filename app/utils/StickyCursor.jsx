@@ -140,37 +140,39 @@ export default function StickyCursor({ stickyElement, heroSection }) {
   return (
     <>
       <motion.div
-        transformTemplate={template}
-        ref={cursorRef}
-        style={{ left: smoothMouseX, top: smoothMouseY, scaleX: scale.x, scaleY: scale.y }}
-        animate={{ width: effectiveCursorSize, height: effectiveCursorSize }}
-        transition={{ type: 'tween', ease: 'backOut', duration: 0.5 }}
-        className={`z-[6] fixed rounded-full invisible lg:visible flex justify-center ${isHeroHovered ? 'backdrop-blur-sm' : ''} bg-[#771A66]/50 items-center pointer-events-none bg-blend-difference cursor-auto `}
-      >
-        <span className="text-black text-lg mix-blend-normal text-center flex justify-center items-center tracking-tighter overflow-hidden">
-          {cursorText}
-          <motion.div
-            animate={{ opacity: isStickyHovered ? 0 : 1 }} // 👈 fade out si stickyElement hover
-            transition={{ duration: 0.1 }}
-            className="flex items-center justify-center relative w-[104px] h-[104px] z-[70]"
-          >
-            <Image
-              src={CursorImgArrow}
-              alt="curseur"
-              placeholder="blur"
-              className="absolute w-[40px] h-[40px] object-contain z-[81]"
-              width={40}
-              height={40}
-            />
-            <Image
-              src={CursorImg}
-              alt="curseur"
-              placeholder="blur"
-              className="spin top-0 left-0 object-cover z-[80]"
-            />
-          </motion.div>
-        </span>
-      </motion.div>
+  transformTemplate={template}
+  ref={cursorRef}
+  style={{ left: smoothMouseX, top: smoothMouseY, scaleX: scale.x, scaleY: scale.y }}
+  animate={{ width: effectiveCursorSize, height: effectiveCursorSize }}
+  transition={{ type: 'tween', ease: 'backOut', duration: 0.5 }}
+  className={`z-[6] fixed rounded-full invisible lg:visible flex justify-center ${isHeroHovered ? 'backdrop-blur-sm' : ''} bg-[#771A66]/50 items-center pointer-events-none bg-blend-difference cursor-auto `}
+>
+  <span className="text-black text-lg mix-blend-normal text-center flex justify-center items-center tracking-tighter overflow-hidden">
+    {cursorText}
+    {/* Ici je gère l’opacité */}
+    <motion.div
+      animate={{ opacity: isHeroHovered ? 1 : 0 }}
+      transition={{ duration: 0.6, ease: "easeInOut" }}
+      className="flex items-center justify-center relative w-[104px] h-[104px] z-[70]"
+    >
+      <Image
+        src={CursorImgArrow}
+        alt="curseur"
+        placeholder="blur"
+        className="absolute w-[40px] h-[40px] object-contain z-[81]"
+        width={40}
+        height={40}
+      />
+      <Image
+        src={CursorImg}
+        alt="curseur"
+        placeholder="blur"
+        className="spin top-0 left-0 object-cover z-[80]"
+      />
+    </motion.div>
+  </span>
+</motion.div>
+
 
       <div>
         <div className="fixed w-full h-full top-0 backdrop-blur-[130px] z-[1]" />

@@ -389,7 +389,7 @@ export const animateIsland = (island) => {
         endTrigger: "#about",
         start: "center center",
         end: "center center",
-        scrub: 2,
+        scrub: true,
         markers: false,
         smoothChildTiming: true,
       }
@@ -474,7 +474,7 @@ export const animateIsland = (island) => {
 export const animateIslandIntro = (island) => {
   if (!island?.current) return;
   // Position/rotation/opacité de départ
-  const startPosition = { x: -0.08, y: -0.2, z: -0.6 };
+  const startPosition = { x: -0.08, y: -0.2, z: -0.8 };
   const endPosition = { x: -0.08, y: 0.08, z: -0.3 };
   const startRotation = { x: 15 * (Math.PI / 180), y: -100 * (Math.PI / 180) };
   const endRotation = { x: 25 * (Math.PI / 180), y: -80 * (Math.PI / 180) };

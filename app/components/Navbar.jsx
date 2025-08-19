@@ -59,8 +59,8 @@ const Navbar = forwardRef(function Index(props, ref) {
         <header className="flex w-full absolute h-[80px] lg:h-[180px] items-center justify-center z-[6]">
             <nav className="flex justify-between w-full items-center px-[10px] lg:px-[80px]">
                 <Magnetic>
-                    <div id="logo-link" className="flex">
-                        <TransitionLink href='/' label={<Image src={logo} alt="logo de la compagnie" className="mix-blend-difference" width={80} height={55.83} />} />
+                    <div id="logo-link" className="flex z-[900]">
+                        <TransitionLink href='/' label={<Image src={logo} alt="logo de la compagnie" className="z-[100] " width={80} height={55.83} />} />
                     </div>
                 </Magnetic>
                 <ul className="flex items-center transition text-black text-lg">

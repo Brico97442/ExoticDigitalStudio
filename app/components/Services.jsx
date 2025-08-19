@@ -57,7 +57,7 @@ function Services() {
 
   return (
     <div
-      className="min-h-screen h-full w-full bg-[#771A66] relative overflow-hidden z-[7] rounded-t-4xl text-white"
+      className="min-h-screen h-full w-full bg-[#ECECEC] relative overflow-hidden z-[7] rounded-t-4xl"
       id="services"
       ref={servicesRef}
     >
@@ -89,10 +89,10 @@ function Services() {
           >
             <h2 className=" text-[58px] font-semibold tracking-tighter">Design</h2>
             <div className="flex flex-wrap gap-2">
-              <span className="bg-white/30 text-white px-3 py-1 rounded-full text-sm font-semibold shadow">Identité visuelle</span>
-              <span className="bg-white/30 text-white px-3 py-1 rounded-full text-sm font-semibold shadow">UI/UX</span>
-              <span className="bg-white/30 text-white px-3 py-1 rounded-full text-sm font-semibold shadow">Maquette web</span>
-              <span className="bg-white/30 text-white px-3 py-1 rounded-full text-sm font-semibold shadow">Direction artistique</span>
+              <span className="bg-[#ECECEC]/70 px-3 py-1 rounded-full text-sm font-semibold shadow">Identité visuelle</span>
+              <span className="bg-[#ECECEC]/70 px-3 py-1 rounded-full text-sm font-semibold shadow">UI/UX</span>
+              <span className="bg-[#ECECEC]/70 px-3 py-1 rounded-full text-sm font-semibold shadow">Maquette web</span>
+              <span className="bg-[#ECECEC]/70 px-3 py-1 rounded-full text-sm font-semibold shadow">Direction artistique</span>
             </div>
             <p className=" text-lg">
               Création d&apos;identités visuelles uniques, maquettes web et
@@ -110,10 +110,10 @@ function Services() {
           >
             <h2 className= "text-[58px] font-semibold tracking-tighter">Développement web</h2>
             <div className="flex flex-wrap gap-2 ">
-              <span className="bg-white/30 text-white px-3 py-1 rounded-full text-sm font-semibold shadow">Identité visuelle</span>
-              <span className="bg-white/30 text-white px-3 py-1 rounded-full text-sm font-semibold shadow">UI/UX</span>
-              <span className="bg-white/30 text-white px-3 py-1 rounded-full text-sm font-semibold shadow">Maquette web</span>
-              <span className="bg-white/30 text-white px-3 py-1 rounded-full text-sm font-semibold shadow">Direction artistique</span>
+              <span className="bg-[#ECECEC]/70 px-3 py-1 rounded-full text-sm font-semibold shadow">Identité visuelle</span>
+              <span className="bg-[#ECECEC]/70 px-3 py-1 rounded-full text-sm font-semibold shadow">UI/UX</span>
+              <span className="bg-[#ECECEC]/70 px-3 py-1 rounded-full text-sm font-semibold shadow">Maquette web</span>
+              <span className="bg-[#ECECEC]/70 px-3 py-1 rounded-full text-sm font-semibold shadow">Direction artistique</span>
             </div>
             <p className="text-lg">
               Sites vitrines, e-commerce, applications interactives performantes
@@ -131,10 +131,10 @@ function Services() {
           >
             <h2 className= "text-[58px] font-semibold">Animation de logo</h2>
             <div className="flex flex-wrap gap-2 tracking-tighter">
-              <span className="bg-white/30 text-white px-3 py-1 rounded-full text-sm font-semibold shadow">Identité visuelle</span>
-              <span className="bg-white/30 text-white px-3 py-1 rounded-full text-sm font-semibold shadow">UI/UX</span>
-              <span className="bg-white/30 text-white px-3 py-1 rounded-full text-sm font-semibold shadow">Maquette web</span>
-              <span className="bg-white/30 text-white px-3 py-1 rounded-full text-sm font-semibold shadow">Direction artistique</span>
+              <span className="bg-[#ECECEC]/70 px-3 py-1 rounded-full text-sm font-semibold shadow">Identité visuelle</span>
+              <span className="bg-[#ECECEC]/70 px-3 py-1 rounded-full text-sm font-semibold shadow">UI/UX</span>
+              <span className="bg-[#ECECEC]/70 px-3 py-1 rounded-full text-sm font-semibold shadow">Maquette web</span>
+              <span className="bg-[#ECECEC]/70 px-3 py-1 rounded-full text-sm font-semibold shadow">Direction artistique</span>
             </div>
             <p className= "text-lg">
               Donnez vie à votre identité avec des animations de logo élégantes

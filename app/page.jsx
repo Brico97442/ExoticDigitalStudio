@@ -270,7 +270,7 @@ export default function Home(stickyElement) {
         <div ref={heroSection} id="hero" className='h-screen sticky w-full flex flex-col items-center top-0 z-[3]'>
           <div className='h-screen flex flex-col items-start justify-between w-full px-[10px] lg:px-[80px] pt-[20px] lg:pt-[100px] relative z-[3]'>
             {/* <TextReveal staggerValue={"0.1"} classValue="leading-none lg:w-3/6 "> */}
-              <h2 id='hero-subtitle' style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} className='lg:w-full pointer-events-none mt-[98px] overflow-hidden text-[24px] tracking-tighter lg:text-[36px] lg:mt-[7vh] '>Offrez à vos visiteurs une expérience web captivante<br /> parce que chaque clic mérite sa touche de magie.</h2>
+              <h2 id='hero-subtitle' style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} className='lg:w-full pointer-events-none mt-[98px] overflow-hidden text-[24px] tracking-tighter lg:text-[36px] lg:mt-[10vh] '>Offrez à vos visiteurs une expérience web captivante<br /> parce que chaque clic mérite sa touche de magie.</h2>
             {/* </TextReveal> */}
 
             <div style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} className="overflow-hidden absolute right-[10px] bottom-[148px] lg:bottom-[52px] lg:right-[80px]" >
@@ -307,12 +307,12 @@ export default function Home(stickyElement) {
         <HackHover data='Située au Tampon' classValue='z-[0] ml-[20vw] mt-[5vh] w-full h-full text-[14px] z-[3] lg:text-[20px] text-white cursor-default leading-none' />
         </div>
 
-        <div id="about" ref={aboutRef} className="rounded-2xl sticky top-0 h-[250svh] px-[10px] py-[80px] lg:px-[80px] lg:pb-[80px] lg:pt-[50svh] flex flex-col justify-center">
+        <div id="about" ref={aboutRef} className="rounded-2xl sticky top-0 h-[250svh] px-[10px] py-[80px] lg:px-[80px] lg:pb-[80px] lg:pt-[30svh] flex flex-col justify-center">
           <div className=" flex flex-col w-full h-full">
             <div className='h-full flex flex-col justify-between'>
               <div style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }}>
                 <div id="about-title">
-                  <HackHover data='Qui sommes nous ?' classValue='z-[0] w-full h-full text-[48px] z-[3] lg:text-[180px] text-white cursor-default' />
+                  <HackHover data='Qui sommes nous ?' classValue='z-[0] w-full h-full text-[48px] z-[3] lg:text-[180px] text-white cursor-default tracking-tighter' />
                 </div>
               </div>
               {/* <TextReveal staggerValue={"0.01"} classValue="z-[7] text-left text-[48px] z-[3] lg:text-[180px] leading-none">
@@ -320,7 +320,7 @@ export default function Home(stickyElement) {
               </TextReveal> */}
               <div className="w-full flex justify-end">
                 {/* <TextReveal classValue="flex w-full justify-end text-right"> */}
-                  <p id="about_target-ref" ref={targetRef} style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} className=' w-full absolute pointer-events-none overflow-hidden text-right lg:text-right tracking-tighter text-[16px] lg:text-[32px] lg:w-3/6 leading-none text-white'>
+                  <p id="about_target-ref" ref={targetRef} style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} className=' w-full absolute pointer-events-none overflow-hidden text-right lg:text-right tracking-tight text-[16px] lg:text-[32px] lg:w-3/6 leading-normal text-white'>
                     Développeur freelance basée à l&apos;ile de la Réunion <br />
                     je suis spécialisé dans la <strong> création de site internet moderne</strong>, qui place l&apos;utilisateur au cœur d&apos;une expérience unique.
                   </p>
@@ -336,9 +336,9 @@ export default function Home(stickyElement) {
         </div>
 
         {/* <HorizontalScrollReverse /> */}
-        <div className="w-full lg:p-[80px] bg-[#0E0E0E] overflow-hidden" id="gallery-section">
-          <div className="flex justify-end leading-none w-full h-[100svh]">
-            <TextReveal staggerValue={"0.1"} classValue="z-[7] w-full text-white text-right z-[3]">
+        <div className="w-full lg:px-[80px] lg:pt-[80vh] bg-[#0E0E0E] overflow-hidden" id="gallery-section">
+          <div className="flex justify-end w-full h-[100svh]">
+            <TextReveal staggerValue={"0.1"} classValue="z-[7] w-full text-white text-right z-[3] ">
               <h3 className=" leading-none w-full tracking-tighter z-[4] text-[32px] lg:text-[64px]">Changer votre vision du web moderne</h3>
             </TextReveal>
           </div>
