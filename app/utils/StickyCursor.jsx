@@ -168,14 +168,14 @@ export default function StickyCursor({ stickyElement, heroSection }) {
         transition={{ type: 'tween', ease: 'backOut', duration: 0.5 }}
         className={`z-[6] fixed rounded-full invisible lg:visible flex justify-center ${isHeroHovered ? 'backdrop-blur-sm' : ''} bg-[#771A66]/50 items-center pointer-events-none bg-blend-difference cursor-auto `}
       >
-        <span className="text-black text-lg mix-blend-normal text-center flex justify-center items-center tracking-tighter ">
+        <span className="text-black text-lg mix-blend-normal text-center flex justify-center items-center tracking-tighter overflow-hidden">
           {cursorText}
           <div className="flex items-center justify-center relative w-[104px] h-[104px] z-[70]">
             <Image
               src={CursorImgArrow}
               alt="curseur"
               placeholder="blur"
-              className="absolute top-0 left-0 w-[40px] h-[40px] object-cover z-[81]"
+              className="absolute w-[40px] h-[40px] object-contain z-[81]"
               width={40}
               height={40}
             />
