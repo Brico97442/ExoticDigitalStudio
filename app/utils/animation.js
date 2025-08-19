@@ -547,7 +547,7 @@ export const animateScene = (divRef) => {
 
 
 export const animateAbout = () => {
-  gsap.to(["#hero-container"], {
+  gsap.to(["#main"], {
     backgroundColor: "#0E0E0E",
     // duration: 0.2,
     ease: "power1.in",

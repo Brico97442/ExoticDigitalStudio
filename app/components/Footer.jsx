@@ -21,31 +21,40 @@ function Footer() {
 
 
     return (
-        <footer id='footer' className='flex h-[50vh]  justify-center items-center border-none text-white w-full bg-black  z-[2] relative' style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }}>
+        <footer id='footer' className='flex h-[60vh]  justify-center items-center border-none text-white w-full bg-[#003049]  z-[2] relative' style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }}>
 
-            <div className='fixed bottom-0 flex flex-col lg:flex-row justify-between h-[50vh] text-white items-start lg:items-center w-full px-[10px] lg:px-[50px] py-[10px] lg:py-[50px]'>
-                <div className='relative '>
-                    <Image src={logo} alt="logo de l'entreprise Exotik Digital Studio" width={100} height={80} className='z-[4]' />
-                </div>
-                <div className='z-[4] w-full flex justify-between lg:justify-center flex-col-reverse lg:flex-row relative lg:gap-[50px] px-60'>
-                    <div className='z-[4] flex flex-col w-full'>
-                        <h1 className='text-[1.2rem] lg:text-[26px] leading-none lg:mb-[50px] underline'>Navigation</h1>
-                        <ul id='footer-navigation' className='text-[1rem] lg:text-[22px]'>
-
-                            <Magnetic>
-                                <li >Réalisations</li>
-                            </Magnetic>
-
-                            <Magnetic>
-                                <li>Contact</li>
-                            </Magnetic>
-
-                            <Magnetic>
-                                <li>Le processus</li>
-                            </Magnetic>
-
-                        </ul>
+            <div className='fixed bottom-0 flex flex-col lg:flex-row h-[60vh] text-white items-start lg:items-center w-full px-[10px] lg:px-[50px] py-[10px] lg:py-[50px]'>
+                <div className='z-[4] w-full flex justify-between lg:justify-center flex-col-reverse lg:flex-row relative lg:gap-[150px] px-[80px]'>
+                    <div className='relative h-full w-full'>
+                        <Image src={logo} alt="logo de l'entreprise Exotik Digital Studio" width={100} height={80} className='z-[4]' />
                     </div>
+                    <div className='min-w-fit'>
+                        <div className='z-[4] flex flex-col w-auto'>
+                            <h1 className='text-[1.2rem] lg:text-[26px] leading-none lg:pb-[50px] underline'>Navigation</h1>
+                            <ul id='footer-navigation' className='text-[1rem] lg:text-[22px]'>
+
+                                <Magnetic>
+                                    <li className='footer-link  transition ease hover:text-[#771A66]' >
+                                        <TransitionLink href="/contact" label="Contact"/>
+                                    </li>
+                                </Magnetic>
+
+                                <Magnetic>
+                                    <li className='footer-link  transition ease hover:text-[#771A66] w-contain'>
+                                        <TransitionLink href="/pricing" label="Nos tarifs" />
+                                    </li>
+                                </Magnetic>
+
+                                <Magnetic>
+                                    <li className='footer-link  transition ease hover:text-[#771A66] text-nowrap min-w-fit'>
+                                        <TransitionLink href="/realisations" label="Nos réalisations" />
+                                    </li>
+                                </Magnetic>
+
+                            </ul>
+                        </div>
+                    </div>
+
                     <div className='z-[4] items-start justify-start flex flex-col gap-[5px] w-full'>
                         <h1 className='text-[1.2rem] lg:text-[26px] leading-none lg:mb-[50px] underline'>Contact</h1>
 

@@ -4,10 +4,11 @@ import { animate, motion, transform, useMotionValue, useSpring } from "framer-mo
 import UseMousePosition from "./CursorTest";
 import { usePathname } from 'next/navigation';
 import CursorImg from '../../public/media/butonScroll.png'
+import CursorImgArrow from '../../public/media/butonScroll-Arrow.png'
 import Image from "next/image";
 
 export default function StickyCursor({ stickyElement, heroSection }) {
-    const pathname = usePathname();
+  const pathname = usePathname();
   const { x, y } = UseMousePosition();
   const [isHovered, setIsHovered] = useState(false);
   const [isHeroHovered, setIsHeroHovered] = useState(false);
@@ -22,21 +23,21 @@ export default function StickyCursor({ stickyElement, heroSection }) {
   const mouseX = useMotionValue(x);
   const mouseY = useMotionValue(y);
 
-  
+
   const smoothOptions = {
     damping: 20,
     stiffness: 350,
     mass: 0.4,
   };
-  
+
   const scale = {
     x: useMotionValue(1),
     y: useMotionValue(1),
   };
-  
+
   const smoothMouseX = useSpring(mouseX, smoothOptions);
   const smoothMouseY = useSpring(mouseY, smoothOptions);
-  
+
   const currentCursorSize = isHeroHovered ? curSorSize2 : curSorSize;
   const effectiveCursorSize = isLinkHovered ? 0 : currentCursorSize;
 
@@ -87,22 +88,22 @@ export default function StickyCursor({ stickyElement, heroSection }) {
   };
 
   const heroMouseOver = () => {
-      setIsHeroHovered(true);
-      setIsHovered(false); // S'assurer que le hover du sticky element est désactivé
-      // setCursorText("Scrollez"); // Définis le texte lors du survol du hero
- 
+    setIsHeroHovered(true);
+    setIsHovered(false); // S'assurer que le hover du sticky element est désactivé
+    // setCursorText("Scrollez"); // Définis le texte lors du survol du hero
+
   };
 
   const heroMouseLeave = () => {
     setIsHeroHovered(false);
     setCursorText("");
-    animate(cursorRef.current, { scaleX: 1, scaleY: 1}, { duration: 0.1 });
+    animate(cursorRef.current, { scaleX: 1, scaleY: 1 }, { duration: 0.1 });
   };
 
   useEffect(() => {
     const navBarElement = stickyElement.current;
     const heroElement = document.querySelector('#hero'); // Utiliser querySelector au lieu de .current
-    
+
     if (navBarElement) {
       navBarElement.addEventListener("mouseenter", handleMouseOver);
       navBarElement.addEventListener("mouseleave", handleMouseLeave);
@@ -123,7 +124,7 @@ export default function StickyCursor({ stickyElement, heroSection }) {
         heroElement.removeEventListener("mouseleave", heroMouseLeave);
       }
     };
-  }, [stickyElement,isHomePage]);
+  }, [stickyElement, isHomePage]);
 
   // Réduire le curseur à 0 lors du hover sur n'importe quel lien TransitionLink (#navigation-link)
   useEffect(() => {
@@ -165,18 +166,28 @@ export default function StickyCursor({ stickyElement, heroSection }) {
         style={{ left: smoothMouseX, top: smoothMouseY, scaleX: scale.x, scaleY: scale.y }}
         animate={{ width: effectiveCursorSize, height: effectiveCursorSize }}
         transition={{ type: 'tween', ease: 'backOut', duration: 0.5 }}
-        className={`z-[6] fixed rounded-full invisible lg:visible flex justify-center ${isHeroHovered? 'backdrop-blur-sm': ''} items-center pointer-events-none bg-purple-500 cursor-auto mix-blend-difference`}
+        className={`z-[6] fixed rounded-full invisible lg:visible flex justify-center ${isHeroHovered ? 'backdrop-blur-sm' : ''} bg-[#771A66]/50 items-center pointer-events-none bg-blend-difference cursor-auto `}
       >
         <span className="text-black text-lg mix-blend-normal text-center flex justify-center items-center tracking-tighter ">
           {cursorText}
-          <Image
-                  src={CursorImg}
-                  alt={`curseur`}
-                  fill
-                  style={{ objectFit: 'cover', zIndex:'70',mixBlendMode:'normal' }}
-                  placeholder='blur'
+          <div className="flex items-center justify-center relative w-[104px] h-[104px] z-[70]">
+            <Image
+              src={CursorImgArrow}
+              alt="curseur"
+              placeholder="blur"
+              className="absolute top-0 left-0 w-[40px] h-[40px] object-cover z-[81]"
+              width={40}
+              height={40}
+            />
+            <Image
+              src={CursorImg}
+              alt="curseur"
 
-                />
+              placeholder="blur"
+              className="spin   top-0 left-0  object-cover z-[80]"
+            />
+          </div>
+
         </span></motion.div>
       <div>
         <div className="fixed w-full h-full top-0 backdrop-blur-[130px] z-[1]" />

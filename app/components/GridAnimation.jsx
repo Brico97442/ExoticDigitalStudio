@@ -1,5 +1,6 @@
 'use client';
-
+import Image from 'next/image'
+import d2semImg from '../../public/media/d2sem.png'
 import React, { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -67,21 +68,13 @@ export default function GridAnimation() {
     }
 
     return (
-        <div id='pricing' className='h-full w-full min-h-screen flex flex-col items-center justify-center z-[6] bg-gry-200 pt-24' >
+        <div id='pricing' className='h-full w-full flex flex-col items-center justify-center z-[6] pt-24' >
             <div ref={containerRef} className='w-full z-[1] flex flex-col justify-center h-full'>
                 <div className='relative w-full h-full flex flex-col mt-[10px] lg:mt-[50px]'>
                     <div className='card-img-container flex flex-col lg:flex-row gap-10 h-full my-4 '>
                         <div ref={el => videoRefs.current[0] = el} className='card-img overflow-hidden'>
-                            <video
-                                src="/media/web.mp4"
-                                preload="metadata"
-                                autoPlay
-                                muted
-                                playsInline
-                                className='w-full h-full object-cover'
-                                loading="lazy"
+                        <Image src={d2semImg} alt="logo de l'entreprise Exotik Digital Studio" className='z-[4]' />
 
-                            />
                         </div>
                         <div className="flex flex-col items-start gap-6 justify-center w-full lg:w-1/2">
                             <h2 className=' text-xl lg:text-6xl text-left w-full uppercase tracking-tighter'>D2SEM</h2>

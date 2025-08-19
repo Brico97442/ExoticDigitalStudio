@@ -411,13 +411,13 @@ animation: pan-overlay 45s infinite linear;
 }
 
 #navlink #navigation-link::after,
-#navlink-menu #navigation-link::after{
+#navlink-menu #navigation-link::after, .footer-link:after{
 width: 0;
 height:2px;
 position: absolute;
 bottom: 0;
 content: '';
-background: #fff;
+background: #771A66;
 }
 
 #navlink #navigation-link,
@@ -429,14 +429,16 @@ background: #fff;
 /* Masque tous les liens de nav pendant le préloader (évite le flash) */
 body.preloading-active #navlink #navigation-link,
 body.preloading-active #navlink-menu #navigation-link,
-body.preloading-active #logo-link #navigation-link{
+body.preloading-active #logo-link #navigation-link
+{
   visibility: hidden !important;
   opacity: 0 !important;
   transform: translateY(-100px) !important;
 }
 
 #navlink #navigation-link:hover::after,
-#navlink-menu #navigation-link:hover::after{
+#navlink-menu #navigation-link:hover::after,
+.footer-link:hover::after{
 width: 100%;
 left: 0;
 transition: ease-in-out;
@@ -444,7 +446,8 @@ transition-duration: 0.4s;
 }
 
 #navlink #navigation-link:not(:hover)::after,
-#navlink-menu #navigation-link:not(:hover)::after{
+#navlink-menu #navigation-link:not(:hover)::after,
+.footer-link:not(:hover)::after{
 width: 0;
 right: 0;
 transition: ease-in-out;
@@ -457,6 +460,18 @@ transition-duration: 0.4s;
 }
 
 
+.spin {
+  animation: spin 15s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 
 
 /* supprimé le ciblage du conteneur seul: on cible les liens via #navigation-link ci-dessus */

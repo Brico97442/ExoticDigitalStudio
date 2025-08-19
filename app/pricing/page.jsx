@@ -29,10 +29,10 @@ export default function Pricing() {
     ];
 
     return (
-        <div className="h-full w-full flex flex-col z-[2] relative min-h-screen">
-            <div  className='my-20'>
-            <HackHover data='Nos tarifs' classValue='text-[120px] ml-40 text-black text-left z-[2]' />
-            <div className='w-[85vw] ml-40 flex flex-col gap-6'>
+        <div className="w-full flex flex-col z-[2] relative">
+            <div  className=''>
+            <HackHover data='Nos tarifs' classValue='text-[120px] pl-40 text-black text-left z-[2]' />
+            <div className='w-[85vw] pl-40 flex flex-col gap-6'>
                 <h2 className='text-[30px] font-bold'>Choisissez l’offre qui vous ressemble</h2>
                 <p className='text-[18px] w-2/3'>
                     Chez nous, la qualité n’est pas optionnelle, et les solutions adaptées à vos besoins ne le sont pas non plus.

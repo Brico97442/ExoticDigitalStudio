@@ -5,18 +5,15 @@ import Lenis from 'lenis';
 import { useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import Image from 'next/image'
-import Lines from './components/Lines'
-import ContactForm from './components/ContactForm'
 import TextReveal from "./components/TextReveal";
-import GridAnimation from "./components/GridAnimation";
 import HorizontalScroll from "./components/HorizontalScroll";
-import HorizontalScrollReverse from "./components/HorizontalScrollReverse";
 import Button from "./components/Button";
 import gsap from "gsap";
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { animateAbout, animateAboutText, animateHero, animateHeroIntro } from "./utils/animation";
 import HackHover from './components/HackHoverEffect'
 import Arrow from '../assets/VectorWhite.png'
+import Arrow2 from '../public/media/arrow2.png'
 import CookieConsent from "./components/CookieConsent"
 import localFont from 'next/font/local'
 import { useRouter } from 'next/navigation'
@@ -35,7 +32,7 @@ const Guisol = localFont({
   variable: '--font-guisol', // Pour utiliser la police en tant que variable CSS
 })
 
-export default function Home() {
+export default function Home(stickyElement) {
   const router = useRouter();
   const island = useRef(null);
   const targetRef = useRef(null);
@@ -44,7 +41,7 @@ export default function Home() {
   const textScroll = useRef(null);
   const heroSection = useRef(null)
   const locationRef = useRef(null)
-  
+  // const stickyElement = useRef(null);
     // Réinitialiser les animations hero quand on revient sur la page
   useEffect(() => {
     let preloaderDone = false;
@@ -281,7 +278,7 @@ export default function Home() {
               <h3 id='hero-title' className=' bg-slate-900 pointer-events-none text-[#ECECEC] text-[16px] lg:text-[28px] font-bold-sm tracking-tighter py-2 px-6 rounded-lg'>Reunion Island Digital Studio </h3>
             </div>
             <Image
-              src={Arrow}
+              src={Arrow2}
               alt='flèche directionnelle indiquant le lien contact'
               style={{ objectFit: 'contain' }}
               placeholder="blur"
@@ -340,7 +337,7 @@ export default function Home() {
         </div>
 
         {/* <HorizontalScrollReverse /> */}
-        <div className="w-full lg:p-[50px] bg-[#0E0E0E] overflow-hidden" id="gallery-section">
+        <div className="w-full lg:p-[80px] bg-[#0E0E0E] overflow-hidden" id="gallery-section">
           <div className="flex justify-end leading-none w-full h-[100svh]">
             <TextReveal staggerValue={"0.1"} classValue="z-[7] w-full text-white text-right z-[3]">
               <h3 className=" leading-none w-full tracking-tighter z-[4] text-[32px] lg:text-[64px]">Changer votre vision du web moderne</h3>

@@ -1,77 +1,101 @@
-// Version 1: Shader avec éclairage simple intégré
+"use client"
+import React, { useRef, useEffect, useState } from 'react';
+import gsap from 'gsap';
+import { useGLTF } from '@react-three/drei';
+import { useFrame, useThree } from '@react-three/fiber';
+import {
+  ShaderMaterial,
+  Color,
+  Vector3,
+  PointLight,
+  PointLightHelper,
+  DirectionalLight
+} from 'three';
+import { animateIsland, animateIslandIntro } from './animation';
+import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader';
+
+// ========================
+// Shaders
+// ========================
 const vertexShader = `
-varying vec3 vPosition;
-varying vec2 vUv;
-varying vec3 vNormal;
+  varying vec3 vPosition;
+  varying vec2 vUv;
+  varying vec3 vNormal;
 
-void main() {
-  vPosition = position;
-  vUv = uv;
-  vNormal = normalize(normalMatrix * normal);
+  void main() {
+    vPosition = position;
+    vUv = uv;
+    vNormal = normalize(normalMatrix * normal);
 
-  gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-}
+    gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+  }
 `;
 
 const fragmentShader = `
-uniform float opacity;
-uniform vec3 color;
-uniform float gridScale;
-uniform vec3 lightPosition;
-uniform vec3 lightColor;
-uniform float lightIntensity;
+  uniform float opacity;
+  uniform vec3 color;
+  uniform float gridScale;
+  uniform vec3 lightPosition;
+  uniform vec3 lightColor;
+  uniform float lightIntensity;
 
-varying vec3 vPosition;
-varying vec2 vUv;
-varying vec3 vNormal;
+  varying vec3 vPosition;
+  varying vec2 vUv;
+  varying vec3 vNormal;
 
-void main() {
-  // Calcul de l'éclairage
-  vec3 lightDirection = normalize(lightPosition - vPosition);
-  float lightFactor = max(dot(vNormal, lightDirection), 0.4) * lightIntensity;
-  
-  // Grid pattern
-  float grid = abs(sin(vUv.x * gridScale) * sin(vUv.y * gridScale));
-  
-  // Mélange couleur + éclairage
-  vec3 gridColor = mix(color, vec3(0.8), min(grid, 0.5));
-  vec3 finalColor = gridColor * lightColor * lightFactor;
-  
-  gl_FragColor = vec4(finalColor, opacity);
-}
+  void main() {
+    // Calcul de l'éclairage
+    vec3 lightDirection = normalize(lightPosition - vPosition);
+    float lightFactor = max(dot(vNormal, lightDirection), 0.4) * lightIntensity;
+    
+    // Grid pattern
+    float grid = abs(sin(vUv.x * gridScale) * sin(vUv.y * gridScale));
+    
+    // Mélange couleur + éclairage
+    vec3 gridColor = mix(color, vec3(0.8), min(grid, 0.5));
+    vec3 finalColor = gridColor * lightColor * lightFactor;
+    
+    gl_FragColor = vec4(finalColor, opacity);
+  }
 `;
 
-// Version 2: Modèle corrigé avec shader éclairé
-import React, { useRef, useEffect, useState } from 'react';
-import gsap from 'gsap';
-import { useGLTF, Text } from '@react-three/drei';
-import { useFrame, useLoader, useThree } from '@react-three/fiber';
-import { ShaderMaterial, Color, Vector3 } from 'three';
-import { animateIsland, animateIslandIntro } from './animation';
-import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader'
-
-
-
 export default function Model({ mousePosition, island }) {
-
-  // const [hovered, setHovered] = useState(false)
-
   const { nodes } = useGLTF('/media/reunion2.glb', true, true, (loader) => {
     loader.setDRACOLoader(new DRACOLoader().setDecoderPath('/draco/'))
-  })
-  const { viewport, size } = useThree();
+  });
+  const { viewport, size, scene } = useThree();
   const [initialRotation, setInitialRotation] = useState({ x: 0, y: 0 });
   const scaleFactor = size.width < 768 ? 1.6 : 0.95;
-  const groupScale = viewport.width / 2.4 * scaleFactor;
-  // useFrame(() => {
-  //   if (island.current) {
-  //     const targetScale = hovered ? 0.02 : 0.015
-  //     // interpolation lissée → super fluide
-  //     island.current.scale.x += (targetScale - island.current.scale.x) * 0.1
-  //     island.current.scale.y += (targetScale - island.current.scale.y) * 0.1
-  //     island.current.scale.z += (targetScale - island.current.scale.z) * 0.1
-  //   }
-  // })
+  const groupScale = (viewport.width / 2.4) * scaleFactor;
+
+  const pointLightRef = useRef();
+
+  // ========================
+  // Ajout du helper
+  // ========================
+  useEffect(() => {
+    if (!scene) return;
+
+    // Crée une vraie lumière pour visualiser la position
+    const pointLight = new DirectionalLight(0xffffff, 1, 100);
+    pointLight.position.set(-5, -5, 5);
+    scene.add(pointLight);
+
+    // Ajoute un helper visible
+    // const helper = new PointLightHelper(pointLight, 0.3, 0xff0000);
+    // scene.add(helper);
+
+    // pointLightRef.current = pointLight;
+
+    // return () => {
+    //   scene.remove(pointLight);
+    //   scene.remove(helper);
+    // };
+  }, [scene]);
+
+  // ========================
+  // Initialisation du shader
+  // ========================
   useEffect(() => {
     if (!island.current) return;
 
@@ -81,15 +105,14 @@ export default function Model({ mousePosition, island }) {
     setInitialRotation({ x: initialRotationX, y: initialRotationY });
     island.current.rotation.set(initialRotationX, initialRotationY, 0);
 
-    // Shader avec éclairage intégré
     const shaderMaterial = new ShaderMaterial({
       uniforms: {
         opacity: { value: 0.0 },
         color: { value: new Color(0, 48 / 255, 83 / 255) },
         gridScale: { value: 150.0 },
-        lightPosition: { value: new Vector3(-5, -5, -5) }, // Position de la lumière
-        lightColor: { value: new Color(1, 1, 1) }, // blanc intense
-        lightIntensity: { value: 5.0 }   // Intensité
+        lightPosition: { value: new Vector3(-0.2, -0.2, 20) },
+        lightColor: { value: new Color(1, 1, 1) },
+        lightIntensity: { value: 8 }
       },
       vertexShader,
       fragmentShader,
@@ -116,29 +139,34 @@ export default function Model({ mousePosition, island }) {
     };
   }, [island]);
 
-  // Animation en temps réel de la position de la lumière
+  // ========================
+  // Animation lumière + helper
+  // ========================
   useFrame(() => {
     if (island.current?.material?.uniforms) {
-      // Faire bouger la lumière avec la souris
-      island.current.material.uniforms.lightPosition.value.set(
-        mousePosition.x * 10,
-        mousePosition.y * 10,
+      const newPos = new Vector3(mousePosition.x * 10, mousePosition.y * 10, -5);
 
-      );
+      // Mets à jour la position dans le shader
+      island.current.material.uniforms.lightPosition.value.copy(newPos);
+
+      // Mets à jour la vraie light (pour le helper)
+      if (pointLightRef.current) {
+        pointLightRef.current.position.copy(newPos);
+      }
     }
   });
 
   return (
     <group scale={groupScale}>
       <group>
-      <mesh
-      ref={island}
-      geometry={nodes.reunion.geometry}
-      scale={[0.015, 0.015, 0.015]}
-      position={[-0.08, 0.08, -0.3]}
-      // onPointerOver={() => setHovered(true)}
-      // onPointerOut={() => setHovered(false)}
-    />
+        <mesh
+          ref={island}
+          geometry={nodes.reunion.geometry}
+          scale={[0.015, 0.015, 0.015]}
+          position={[-0.08, 0.08, -0.3]}
+          castShadow
+          receiveShadow
+        />
       </group>
     </group>
   );
