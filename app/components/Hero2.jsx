@@ -186,7 +186,7 @@ export default function Hero() {
 
         {/* Textes latéraux */}
         <div className='absolute z-[61] flex items-end justify-center w-full h-[100vh] overflow-hidden py-[50px] mx-[50px]'>
-          <p id='text-left' className='absolute left-full text-nowrap uppercase mix-blend-difference text-6xl md:text-8xl text-white'>L'attention</p>
+          <p id='text-left' className='absolute left-full text-nowrap uppercase mix-blend-difference text-6xl md:text-8xl text-white'>L&apos;attention</p>
           <p id='text-right' className='absolute right-full uppercase mix-blend-difference text-6xl md:text-8xl text-white'>Capter</p>
         </div>
 
