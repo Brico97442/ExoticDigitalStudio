@@ -171,6 +171,7 @@ export const animateOverlayIn = (overlayRef) => {
     })
   }
 }
+
 export const animateOverlayOut = (overlayRef) => {
   if (overlayRef.current) {
     gsap.fromTo(overlayRef.current, {
@@ -187,25 +188,37 @@ export const animateOverlayOut = (overlayRef) => {
   }
 }
 
-// export const animateOverlayText = (overlayTextRef) => {
-//   if (overlayTextRef.current) {
-//     gsap.fromTo(overlayTextRef.current, {
-//       y: `${100}%`,
-//       duration: 0.4,
-//       stagger: 0.1,
-//       ease: [0.76, 0, 0.24, 1],
-//     }, {
-//       y: `${0}%`,
-//       duration: 0.4,
-//       stagger: 0.2,
-//     })
-//   }
-// }
+export const animateOverlayText = (overlayTextRef) => {
+  if (overlayTextRef.current) {
+    gsap.fromTo(overlayTextRef.current, {
+      y: `${100}%`,
+      duration: 0.4,
+      stagger: 0.1,
+      ease: [0.76, 0, 0.24, 1],
+    }, {
+      y: `${0}%`,
+      duration: 0.4,
+      stagger: 0.2,
+    })
+  }
+}
 
 //Hero animation
 
 export const animateHero = (arrowRef) => {
-  
+  // if (arrowRef.current) {
+  //   gsap.to(arrowRef.current, {
+  //     rotation: 45,
+  //     ease: "power2.inOut",
+  //     scrollTrigger: {
+  //       trigger: "#hero",
+  //       start: "top top",
+  //       end: "bottom center",
+  //       scrub: 1,
+  //       markers: false,
+  //     },
+  //   });
+  // }
 
   gsap.fromTo(
     '#about-title',
