@@ -1,5 +1,6 @@
+// Model.jsx optimisé pour mobile
 "use client"
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState, useMemo } from 'react';
 import gsap from 'gsap';
 import { useGLTF } from '@react-three/drei';
 import { useFrame, useThree } from '@react-three/fiber';
@@ -7,17 +8,38 @@ import {
   ShaderMaterial,
   Color,
   Vector3,
-  PointLight,
-  PointLightHelper,
   DirectionalLight
 } from 'three';
 import { animateIsland, animateIslandIntro } from './animation';
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader';
 
-// ========================
-// Shaders
-// ========================
-const vertexShader = `
+// Détection mobile
+const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+
+// Version simplifiée du shader pour mobile
+const mobileVertexShader = `
+  varying vec3 vNormal;
+  void main() {
+    vNormal = normalize(normalMatrix * normal);
+    gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+  }
+`;
+
+const mobileFragmentShader = `
+  uniform float opacity;
+  uniform vec3 color;
+  varying vec3 vNormal;
+  
+  void main() {
+    // Éclairage simple pour mobile
+    float lightFactor = max(dot(vNormal, vec3(0.0, 0.0, 1.0)), 0.5);
+    vec3 finalColor = color * lightFactor;
+    gl_FragColor = vec4(finalColor, opacity);
+  }
+`;
+
+// Shader desktop plus complexe
+const desktopVertexShader = `
   varying vec3 vPosition;
   varying vec2 vUv;
   varying vec3 vNormal;
@@ -26,12 +48,11 @@ const vertexShader = `
     vPosition = position;
     vUv = uv;
     vNormal = normalize(normalMatrix * normal);
-
     gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
   }
 `;
 
-const fragmentShader = `
+const desktopFragmentShader = `
   uniform float opacity;
   uniform vec3 color;
   uniform float gridScale;
@@ -44,15 +65,12 @@ const fragmentShader = `
   varying vec3 vNormal;
 
   void main() {
-    // Calcul de l'éclairage
     vec3 lightDirection = normalize(lightPosition - vPosition);
     float lightFactor = max(dot(vNormal, lightDirection), 0.4) * lightIntensity;
     
-    // Grid pattern
-    float grid = abs(sin(vUv.x * gridScale) * sin(vUv.y * gridScale));
-    
-    // Mélange couleur + éclairage
-    vec3 gridColor = mix(color, vec3(0.8), min(grid, 0.5));
+    // Grid pattern réduit pour mobile
+    float grid = abs(sin(vUv.x * gridScale * 0.5) * sin(vUv.y * gridScale * 0.5));
+    vec3 gridColor = mix(color, vec3(0.8), min(grid, 0.3));
     vec3 finalColor = gridColor * lightColor * lightFactor;
     
     gl_FragColor = vec4(finalColor, opacity);
@@ -63,39 +81,51 @@ export default function Model({ mousePosition, island }) {
   const { nodes } = useGLTF('/media/reunion2.glb', true, true, (loader) => {
     loader.setDRACOLoader(new DRACOLoader().setDecoderPath('/draco/'))
   });
+  
   const { viewport, size, scene } = useThree();
   const [initialRotation, setInitialRotation] = useState({ x: 0, y: 0 });
   const scaleFactor = size.width < 768 ? 1.6 : 0.95;
   const groupScale = (viewport.width / 2.4) * scaleFactor;
 
-  const pointLightRef = useRef();
+  // Créer le matériau une seule fois avec useMemo
+  const shaderMaterial = useMemo(() => {
+    const material = new ShaderMaterial({
+      uniforms: isMobile ? {
+        opacity: { value: 0.0 },
+        color: { value: new Color(0, 48 / 255, 83 / 255) }
+      } : {
+        opacity: { value: 0.0 },
+        color: { value: new Color(0, 48 / 255, 83 / 255) },
+        gridScale: { value: isMobile ? 75.0 : 150.0 }, // Grille moins dense sur mobile
+        lightPosition: { value: new Vector3(-0.2, -0.2, 20) },
+        lightColor: { value: new Color(1, 1, 1) },
+        lightIntensity: { value: isMobile ? 4 : 8 } // Intensité réduite sur mobile
+      },
+      vertexShader: isMobile ? mobileVertexShader : desktopVertexShader,
+      fragmentShader: isMobile ? mobileFragmentShader : desktopFragmentShader,
+      wireframe: true,
+      transparent: true,
+      depthTest: false,
+      alphaTest: true
+    });
 
-  // ========================
-  // Ajout du helper
-  // ========================
+    return material;
+  }, []);
+
+  // Ajout de lumière plus simple
   useEffect(() => {
-    if (!scene) return;
+    if (!scene || isMobile) return; // Pas de lumière supplémentaire sur mobile
 
-    // Crée une vraie lumière pour visualiser la position
-    const pointLight = new DirectionalLight(0xffffff, 1, 100);
-    pointLight.position.set(-5, -5, 5);
-    scene.add(pointLight);
+    const directionalLight = new DirectionalLight(0xffffff, 0.5, 100);
+    directionalLight.position.set(-5, -5, 5);
+    scene.add(directionalLight);
 
-    // Ajoute un helper visible
-    // const helper = new PointLightHelper(pointLight, 0.3, 0xff0000);
-    // scene.add(helper);
-
-    // pointLightRef.current = pointLight;
-
-    // return () => {
-    //   scene.remove(pointLight);
-    //   scene.remove(helper);
-    // };
+    return () => {
+      scene.remove(directionalLight);
+    };
   }, [scene]);
 
-  // ========================
-  // Initialisation du shader
-  // ========================
+  // Initialisation optimisée
   useEffect(() => {
     if (!island.current) return;
 
@@ -104,24 +134,6 @@ export default function Model({ mousePosition, island }) {
 
     setInitialRotation({ x: initialRotationX, y: initialRotationY });
     island.current.rotation.set(initialRotationX, initialRotationY, 0);
-
-    const shaderMaterial = new ShaderMaterial({
-      uniforms: {
-        opacity: { value: 0.0 },
-        color: { value: new Color(0, 48 / 255, 83 / 255) },
-        gridScale: { value: 150.0 },
-        lightPosition: { value: new Vector3(-0.2, -0.2, 20) },
-        lightColor: { value: new Color(1, 1, 1) },
-        lightIntensity: { value: 8 }
-      },
-      vertexShader,
-      fragmentShader,
-      wireframe: true,
-      transparent: true,
-      depthTest: false,
-      alphaTest: true
-    });
-
     island.current.material = shaderMaterial;
     island.current.visible = false;
 
@@ -137,23 +149,19 @@ export default function Model({ mousePosition, island }) {
     return () => {
       window.removeEventListener('preloaderDone', runIntro);
     };
-  }, [island]);
+  }, [island, shaderMaterial]);
 
-  // ========================
-  // Animation lumière + helper
-  // ========================
+  // Animation frame optimisée
   useFrame(() => {
-    if (island.current?.material?.uniforms) {
-      const newPos = new Vector3(mousePosition.x * 10, mousePosition.y * 10, -5);
+    if (!island.current?.material?.uniforms || isMobile) return; // Pas d'animation de lumière sur mobile
 
-      // Mets à jour la position dans le shader
-      island.current.material.uniforms.lightPosition.value.copy(newPos);
+    const newPos = new Vector3(
+      mousePosition.x * 5, // Réduire l'amplitude
+      mousePosition.y * 5,
+      -5
+    );
 
-      // Mets à jour la vraie light (pour le helper)
-      if (pointLightRef.current) {
-        pointLightRef.current.position.copy(newPos);
-      }
-    }
+    island.current.material.uniforms.lightPosition.value.copy(newPos);
   });
 
   return (
@@ -164,8 +172,8 @@ export default function Model({ mousePosition, island }) {
           geometry={nodes.reunion.geometry}
           scale={[0.015, 0.015, 0.015]}
           position={[-0.08, 0.08, -0.3]}
-          castShadow
-          receiveShadow
+          castShadow={!isMobile} // Pas d'ombres sur mobile
+          receiveShadow={!isMobile}
         />
       </group>
     </group>

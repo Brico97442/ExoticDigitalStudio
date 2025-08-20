@@ -1,10 +1,11 @@
-// animation.js
+// animation.js - Version complète avec tous les exports
 import gsap from "gsap";
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-
-// Enregistrer le plugin
 gsap.registerPlugin(ScrollTrigger);
+
+// Détection mobile
+const isMobile = () => typeof window !== 'undefined' && window.innerWidth < 768;
 
 // ------- Scroll lock helpers (pour transitions de pages) -------
 const lockTransitionScroll = () => {
@@ -20,16 +21,12 @@ const lockTransitionScroll = () => {
   body.style.left = '0';
   body.style.right = '0';
   body.style.width = '100%';
-  // body.style.overflow = 'hidden';
   html.style.overflow = 'hidden';
-  // html.style.overscrollBehavior = 'none';
 };
 
 const unlockTransitionScroll = () => {
   if (typeof window === 'undefined') return;
   if (!window.__transitionScrollLocked) return;
-  // Ne pas déverrouiller si le preloader est encore actif
-  // if (window.__preloaderDone === false) return;
   const body = document.body;
   const html = document.documentElement;
   const y = Math.abs(parseInt(body.style.top || '0', 10)) || 0;
@@ -38,15 +35,13 @@ const unlockTransitionScroll = () => {
   body.style.left = '';
   body.style.right = '';
   body.style.width = '';
-  // body.style.overflow = '';
   html.style.overflow = '';
   html.style.overscrollBehavior = '';
-  // window.scrollTo(0, y);
   window.__transitionScrollLocked = false;
   window.__transitionScrollLockY = 0;
 };
 
-//Animation fondu changement de page 
+// Animation fondu changement de page 
 export const animatePageOut = (href, router) => {
   const bannerOne = document.getElementById('banner-1');
   const bannerTwo = document.getElementById('banner-2');
@@ -60,28 +55,16 @@ export const animatePageOut = (href, router) => {
 
     const tl = gsap.timeline();
 
-    // 0️⃣ Slide-out de tous les éléments de la page
-    if (mainEl) {
-      // const pageElements = mainEl.querySelectorAll('*');
-      // tl.to(pageElements, {
-      //   y: 100,        // tous les éléments se déplacent vers le bas
-      //   opacity: 0,    // facultatif pour un fade en même temps
-      //   duration: 0.6,
-      //   ease: "power1.inOut",
-      //   stagger: 0.02, // légère différence pour un effet plus fluide
-      // });
-    }
-
-    // 1️⃣ Fade-out du main (si nécessaire)
+    // Fade-out du main
     if (mainEl) {
       tl.to(mainEl, {
         opacity: 0,
         duration: 0.3,
         ease: "power1.inOut",
-      }, "<"); // "<" pour lancer en parallèle avec le slide
+      }, "<");
     }
 
-    // 2️⃣ Animation des voiles
+    // Animation des voiles
     tl.set([bannerOne, bannerTwo, bannerThree, bannerFour], {
       yPercent: 100,
       duration: 0.6,
@@ -94,9 +77,6 @@ export const animatePageOut = (href, router) => {
       stagger: 0.2,
       scrub: 1,
       zIndex: 10,
-      onChange:() => {
-        // window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-      },
       onComplete: () => {
         router.push(href);
       },
@@ -106,10 +86,9 @@ export const animatePageOut = (href, router) => {
       tl.kill();
     };
   }
-  // window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
 };
 
-
+// ⚠️ FONCTION MANQUANTE - À EXPORTER
 export const animatePageIn = () => {
   const bannerOne = document.getElementById('banner-1');
   const bannerTwo = document.getElementById('banner-2');
@@ -120,7 +99,7 @@ export const animatePageIn = () => {
   if (bannerOne && bannerTwo && bannerThree && bannerFour) {
     const tl = gsap.timeline();
 
-    // 1️⃣ Animation des voiles qui se retirent
+    // Animation des voiles qui se retirent
     tl.set([bannerOne, bannerTwo, bannerThree, bannerFour], {
       yPercent: 0,
       duration: 0.4,
@@ -137,22 +116,18 @@ export const animatePageIn = () => {
       },
     });
 
-    // 2️⃣ Fade-in du main après le retrait des voiles
+    // Fade-in du main après le retrait des voiles
     if (mainEl) {
       tl.fromTo(
         mainEl,
         { opacity: 0 },
         { opacity: 1, duration: 0.3, ease: "power4.inOut" },
-         // légèrement après le début du retrait des voiles
       );
     }
   }
 };
 
-
-
-//Animation menu overlay 
-
+// Animation menu overlay 
 export const animateOverlayIn = (overlayRef) => {
   if (overlayRef.current) {
     gsap.fromTo(overlayRef.current, {
@@ -167,7 +142,6 @@ export const animateOverlayIn = (overlayRef) => {
       pointerEvents: 'auto',
       opacity: 1,
       duration: 0.4,
-
     })
   }
 }
@@ -203,66 +177,40 @@ export const animateOverlayText = (overlayTextRef) => {
   }
 }
 
-//Hero animation
-
+// Hero animation
 export const animateHero = (arrowRef) => {
-  // if (arrowRef.current) {
-  //   gsap.to(arrowRef.current, {
-  //     rotation: 45,
-  //     ease: "power2.inOut",
-  //     scrollTrigger: {
-  //       trigger: "#hero",
-  //       start: "top top",
-  //       end: "bottom center",
-  //       scrub: 1,
-  //       markers: false,
-  //     },
-  //   });
-  // }
+  const config = isMobile() ? 
+    { ease: "power2.inOut", duration: 5, scrub: 1 } : 
+    { ease: "power4.inOut", duration: 10, scrub: 2 };
 
   gsap.fromTo(
     '#about-title',
-    { yPercent: 100 }, // valeurs de départ
+    { yPercent: 100 },
     {
-      yPercent: 0, // valeurs d’arrivée
-      ease: "power4.inOut",
-      duration: 10,
+      yPercent: 0,
+      ease: config.ease,
+      duration: config.duration,
       scrollTrigger: {
         trigger: "#about",
         start: "top center",
         end: "30% 50%",
-        scrub: 2,
+        scrub: config.scrub,
         markers: false,
       },
     }
   );
-
-
-
-  // gsap.to(['#hero-scroll , #hero-subtitle , #hero-title , #studio-text ,#coordinates-gps p'], {
-  //   yPercent: 100,
-  //   ease: "power4.inOut",
-  //   duration: 7,
-  //   scrollTrigger: {
-  //     trigger: "#hero",
-  //     start: "top top",
-  //     end: "bottom center",
-  //     scrub: 2,
-  //     markers: false,
-  //   },
-  // });
-
 };
 
 // Intro sur la page d'accueil après disparition du préloader
 export const animateHeroIntro = () => {
   if (typeof window !== 'undefined') {
-    if (window.__heroIntroDone) return; // déjà joué
+    if (window.__heroIntroDone) return;
     if (window.__heroIntroTl) {
       try { window.__heroIntroTl.kill(); } catch {}
       window.__heroIntroTl = null;
     }
   }
+  
   const selectors = [
     '#hero-title',
     '#hero-subtitle',
@@ -283,14 +231,15 @@ export const animateHeroIntro = () => {
   if (typeof window !== 'undefined') {
     window.__heroIntroTl = tl;
   }
+  
   tl.set(targets, { y: 100, opacity: 0, visibility: 'hidden', willChange: 'transform, opacity' })
     .to(targets, {
       y: 0,
       opacity: 1,
       visibility: 'visible',
-      duration: 0.6,
+      duration: isMobile() ? 0.4 : 0.6,
       ease: 'power3.out',
-      stagger: 0.08,
+      stagger: isMobile() ? 0.05 : 0.08,
       clearProps: 'transform,opacity,willChange',
       onComplete: () => {
         try {
@@ -304,7 +253,6 @@ export const animateHeroIntro = () => {
 
 export const prepareHeroIntro = () => {
   if (typeof window !== 'undefined') {
-    // Réinitialise le flag pour permettre une relecture quand on revient sur la home
     window.__heroIntroDone = false;
   }
   const selectors = [
@@ -322,48 +270,26 @@ export const prepareHeroIntro = () => {
   return true;
 };
 
-// -------- NavLinks intro (Navbar + Aside) --------
+// NavLinks intro
 export const prepareNavLinksIntro = () => {
-  // const targets = [
-  //   ...document.querySelectorAll('#navlink #navigation-link'),
-  //   ...document.querySelectorAll('#navlink-menu #navigation-link'),
-  //   ...document.querySelectorAll('#logo-link #navigation-link'),
-  // ];
-  // if (!targets || targets.length === 0) return false;
-  // if (typeof window !== 'undefined') {
-  //   window.__navLinksIntroDone = false;
-  // }
-  // gsap.set(targets, { y: 100, opacity: 0, visibility: 'hidden' });
-  // return true;
+  // Fonction vide pour éviter les erreurs
 };
 
 export const animateNavLinksIntro = () => {
-  // const targets = [
-  //   ...document.querySelectorAll('#navlink #navigation-link'),
-  //   ...document.querySelectorAll('#navlink-menu #navigation-link'),
-  //   ...document.querySelectorAll('#logo-link #navigation-link'),
-  // ];
-  // if (!targets || targets.length === 0) return;
-  // if (typeof window !== 'undefined' && window.__navLinksIntroDone) return;
-  // gsap.to(targets, {
-  //   y: 0,
-  //   opacity: 1,
-  //   visibility: 'visible',
-  //   duration: 0.3,
-  //   ease: 'power4.inOut',
-  // });
+  // Fonction vide pour éviter les erreurs
 };
 
-//Animation objet 3D Island
-
+// Animation objet 3D Island
 export const animateIsland = (island) => {
+  if (!island?.current) return;
+
   gsap.timeline({
     scrollTrigger: {
       trigger: "#about",
       endTrigger: "#gallery-section",
       start: "60% center",
       end: "top 20%",
-      scrub: 1,
+      scrub: isMobile() ? 0.5 : 1,
       markers: false,
     }
   })
@@ -379,103 +305,85 @@ export const animateIsland = (island) => {
       onComplete: () => gsap.set("#location-info", { visibility: "hidden" })
     }
   );
-  
-  
-  
 
-  if (island?.current) {
-    // Timeline pour contrôler précisément le mouvement de l'île
-    const positionTL = gsap.timeline({
+  // Animation de position optimisée pour mobile
+  const positionTL = gsap.timeline({
+    scrollTrigger: {
+      trigger: "#hero",
+      endTrigger: "#about",
+      start: "center center",
+      end: "center center",
+      scrub: isMobile() ? 0.5 : true,
+      markers: false,
+      smoothChildTiming: !isMobile(),
+    }
+  });
+
+  if (isMobile()) {
+    // Version simplifiée pour mobile
+    positionTL.fromTo(island.current.position,
+      { x: -0.08, y: 0.08, z: -0.3 },
+      { x: -0.1, y: 0.12, z: -0.25, duration: 1, ease: "power1.inOut" }
+    );
+  } else {
+    // Version complète pour desktop
+    positionTL
+      .fromTo(island.current.position,
+        { x: -0.08, y: 0.08, z: -0.3 },
+        { x: -0.08, y: 0.2, z: -0.15, duration: 0.4, ease: "power1.inOut" }
+      )
+      .to(island.current.position, {
+        x: -0.08, y: 0.1, z: -0.2, duration: 0.25, ease: "power1.inOut"
+      })
+      .to(island.current.position, {
+        x: -0.1, y: 0.12, z: -0.25, duration: 0.25, ease: "power1.inOut"
+      });
+  }
+
+  // Animation rotation
+  gsap.fromTo(island.current.rotation,
+    {
+      y: -440 * (Math.PI / 180),
+      x: 25 * (Math.PI / 180),
+    },
+    {
+      y: -415 * (Math.PI / 180),
+      x: 30 * (Math.PI / 180),
+      ease: "power1.inOut",
       scrollTrigger: {
         trigger: "#hero",
         endTrigger: "#about",
         start: "center center",
         end: "center center",
-        scrub: true,
+        scrub: isMobile() ? 1 : 3,
+      }
+    }
+  );
+
+  // Animation couleur (désactivée sur mobile)
+  if (!isMobile() && island.current.material?.uniforms?.color?.value) {
+    gsap.to(island.current.material.uniforms.color.value, {
+      r: 0.5,
+      g: 0.1,
+      b: 0.4,
+      ease: "power1.inOut",
+      duration: 6,
+      delay: 5,
+      scrollTrigger: {
+        trigger: "#hero",
+        endTrigger: "#about",
+        start: "bottom center",
+        end: "center center",
+        scrub: 1,
         markers: false,
-        smoothChildTiming: true,
       }
     });
-
-    // Animation de position progressive avec des points intermédiaires
-    positionTL
-      .fromTo(island.current.position,
-        {
-          x: -0.08,
-          y: 0.08,
-          z: -0.3,
-        },
-        {
-          x: -0.08,  // Premier point intermédiaire
-          y: 0.2,
-          z: -0.15,
-          duration: 0.4,
-          ease: "power1.inOut",
-        }
-      )
-
-      .to(island.current.position, {
-        x: -0.08,
-        y: 0.1,
-        z: -0.2,
-        duration: 0.25,
-        ease: "power1.inOut",
-      })
-
-      .to(island.current.position, {
-        x: -0.1,  // Position finale
-        y: 0.12,
-        z: -0.25,
-        duration: 0.25,
-        ease: "power1.inOut",
-      })
-
-    gsap.fromTo(island.current.rotation,
-      {
-        y: -440 * (Math.PI / 180),
-        x: 25 * (Math.PI / 180),
-      },
-      {
-        y: -415 * (Math.PI / 180),
-        x: 30 * (Math.PI / 180),
-        ease: "power1.inOut",
-        scrollTrigger: {
-          trigger: "#hero",
-          endTrigger: "#about",
-          start: "center center",
-          end: "center center",
-          scrub: 3,
-        }
-      }
-    );
-
-
-    gsap.to(island.current.material.uniforms.color.value,
-      {
-        r: 0.5,
-        g: 0.1,
-        b: 0.4,
-        ease: "power1.inOut",
-        duration: 6,
-        delay: 5,
-        scrollTrigger: {
-          trigger: "#hero",
-          endTrigger: "#about",
-          start: "bottom center",
-          end: "center center",
-          scrub: 1,
-          markers: false,
-          smoothChildTiming: true,
-        }
-      }
-    );
-
   }
 };
 
 export const animateIslandIntro = (island) => {
   if (!island?.current) return;
-  // Position/rotation/opacité de départ
+  
   const startPosition = { x: -0.08, y: -0.2, z: -0.8 };
   const endPosition = { x: -0.08, y: 0.08, z: -0.3 };
   const startRotation = { x: 15 * (Math.PI / 180), y: -100 * (Math.PI / 180) };
@@ -485,12 +393,25 @@ export const animateIslandIntro = (island) => {
   tl.set(island.current, { visible: true })
     .set(island.current.position, startPosition)
     .set(island.current.rotation, startRotation)
-    .fromTo(island.current.material.uniforms.opacity, { value: 0 }, { value: 0.04, duration: 0.6, ease: 'power2.out' }, 0)
-    .to(island.current.position, { ...endPosition, duration: 2, ease: 'power3.out' }, 0)
-    .to(island.current.rotation, { ...endRotation, duration: 2, ease: 'power3.out' }, 0);
+    .fromTo(
+      island.current.material.uniforms.opacity, 
+      { value: 0 }, 
+      { value: 0.04, duration: isMobile() ? 0.4 : 0.6, ease: 'power2.out' }, 
+      0
+    )
+    .to(island.current.position, { 
+      ...endPosition, 
+      duration: isMobile() ? 1 : 2, 
+      ease: 'power3.out' 
+    }, 0)
+    .to(island.current.rotation, { 
+      ...endRotation, 
+      duration: isMobile() ? 1 : 2, 
+      ease: 'power3.out' 
+    }, 0);
 };
 
-//counter animation
+// Counter animation
 export const animateCounter = (counterRef, onFinish) => {
   if (counterRef.current) {
     gsap.to(counterRef.current, {
@@ -518,46 +439,40 @@ export const animateCounter = (counterRef, onFinish) => {
 };
 
 export const animateScene = (divRef) => {
-  // Timeline principale pour la scène
+  if (!divRef.current) return;
+
   const tl = gsap.timeline({
     scrollTrigger: {
-      trigger: "#about", // Commence depuis la section about
-      endTrigger: "#gallery-section", // Termine dans la section gallery-section
-      start: "bottom center", // Commence au milieu de hero
-      end: "top 5%", // Termine au milieu de about
-      scrub: 1, // Valeur plus élevée pour une animation plus progressive
+      trigger: "#about",
+      endTrigger: "#gallery-section",
+      start: "bottom center",
+      end: "top 5%",
+      scrub: isMobile() ? 0.5 : 1,
       markers: false,
-      smooth: false, // Lissage de l'animation
+      smooth: !isMobile(),
     }
   });
 
   tl.fromTo(divRef.current,
-    {
-      xPercent: 0,
-      opacity: 1,
-    },
-    {
-      xPercent: 0,
-      opacity: 0,
-      ease: "power3.inOut", // Courbe d'animation plus douce
+    { xPercent: 0, opacity: 1 },
+    { 
+      xPercent: 0, 
+      opacity: 0, 
+      ease: isMobile() ? "power2.inOut" : "power3.inOut",
       immediateRender: true,
     }
   );
-
 };
-
-
 
 export const animateAbout = () => {
   gsap.to(["#main"], {
     backgroundColor: "#0E0E0E",
-    // duration: 0.2,
     ease: "power1.in",
     scrollTrigger: {
       trigger: "#about",
       start: "top bottom",
       end: "30% center",
-      scrub: 1,
+      scrub: isMobile() ? 0.5 : 1,
       markers: false,
     }
   });
@@ -565,8 +480,7 @@ export const animateAbout = () => {
 
 // Fonction pour forcer la réinitialisation des animations hero
 export const forceHeroReset = () => {
-  // Vérifier si le préloader est actif
-  const isPreloaderActive = typeof document !== 'undefined' && (document.body?.classList?.contains('preloading-active') ||  window.__preloaderDone === false);
+  const isPreloaderActive = typeof document !== 'undefined' && (document.body?.classList?.contains('preloading-active') || window.__preloaderDone === false);
   
   if (isPreloaderActive) {
     console.log('Préloader actif, réinitialisation différée');
@@ -592,11 +506,4 @@ export const forceHeroReset = () => {
       });
     });
   });
-  
-  // Relancer les animations après réinitialisation
-  // setTimeout(() => {
-  //   ScrollTrigger.refresh();
-  // }, 200);
 };
-
-
