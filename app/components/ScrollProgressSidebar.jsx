@@ -39,7 +39,7 @@ const sidebarContainerStyle = {
   position:"fixed",
   right: 40,
   width: "6px",
-  height: "20vh",
+  height: "20svh",
   backgroundColor: "#ECECEC",
   borderRadius: "6px",
   overflow: "hidden",
