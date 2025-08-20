@@ -51,7 +51,7 @@ body {
   display: none;
 } */
 
-.cky-consent-bar :nth-child(1) {
+.cky-consent-bar :nth-child(3) {
  display: none;
 }
 
