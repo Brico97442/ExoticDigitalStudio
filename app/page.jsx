@@ -271,7 +271,7 @@ export default function Home(stickyElement) {
 
       {/* <CookieConsent/> */}
       <div id="hero-container" className="z-[1] flex w-full h-full min-h-screen flex-col relative">
-        {/* <Scene island={island} /> */}
+        <Scene island={island} />
         <div ref={heroSection} id="hero" className='h-screen sticky w-full flex flex-col items-center top-0 z-[3]'>
           <div className='h-screen flex flex-col items-start justify-between w-full px-[10px] lg:px-[80px] pt-[20px] lg:pt-[100px] relative z-[3]'>
             {/* <TextReveal staggerValue={"0.1"} classValue="leading-none lg:w-3/6 "> */}
