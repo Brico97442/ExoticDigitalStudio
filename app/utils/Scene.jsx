@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, Suspense, useState, useCallback } from 'react';
 import { Canvas } from '@react-three/fiber';
+// import { OrbitControls, Environment } from '@react-three/drei';
 import Model from './Model';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
@@ -9,18 +10,18 @@ import { Stats } from '@react-three/drei';
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Scene({ island }) {
-  const divRef = useRef(null);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const divRef = useRef(null); 
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 }); 
   const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
 
   // Throttle la fonction de mouvement de souris pour mobile
   const throttledMouseMove = useCallback(
     throttle((event) => {
       if (!isMobile) { // Désactiver le suivi de souris sur mobile
-        setMousePosition({
-          x: (event.clientX / window.innerWidth) * 2 - 1,
-          y: -(event.clientY / window.innerHeight) * 2 + 1,
-        });
+      setMousePosition({
+        x: (event.clientX / window.innerWidth) * 2 - 1,
+        y: -(event.clientY / window.innerHeight) * 2 + 1,
+      });
       }
     }, 16), // ~60fps max
     [isMobile]
@@ -73,6 +74,7 @@ export default function Scene({ island }) {
         <Stats />
           <Suspense fallback={null}>
             <Model mousePosition={mousePosition} island={island} />
+          {/* <directionalLight position={[2, 2, 2]} intensity={15} color={'red'} /> */}
           </Suspense>
         </Canvas>
       </div>
