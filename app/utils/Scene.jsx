@@ -70,7 +70,7 @@ export default function Scene({ island }) {
       className={`w-[100%] fixed h-[100vh] top-0 flex-col items-center justify-center lg:w-full`}
     >
       <div className='w-full h-full'>
-        <Canvas {...canvasConfig}>
+        <Canvas {...canvasConfig} frameloop='always'>
         <Stats />
           <Suspense fallback={null}>
             <Model mousePosition={mousePosition} island={island} />
