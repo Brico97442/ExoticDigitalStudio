@@ -324,7 +324,7 @@ export default function Home(stickyElement) {
                 <h1 className=" leading-none tracking-tighter z-[4] text-[48px] lg:text-[150px] text-white">Besoin d'un site internet?</h1>
               </TextReveal> */}
               <div className="w-full flex justify-end">
-                <TextReveal classValue="flex w-full justify-end text-right" staggerValue={"0.11"} >
+                <TextReveal classValue="flex w-full justify-end text-right" staggerValue={"0"} >
                 <p id="about_target-ref" ref={targetRef} className=' w-full pointer-events-none text-right tracking-tight text-[16px] lg:text-[32px] lg:w-2/3  leading-none text-white'>
                   Développeur freelance basée à l&apos;ile de la Réunion <br />
                   je suis spécialisé dans la <strong> création de site internet moderne</strong>, qui place l&apos;utilisateur au cœur d&apos;une expérience unique.
