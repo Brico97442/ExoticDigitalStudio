@@ -35,7 +35,7 @@ export default function TextReveal({ children, classValue, staggerValue }) {
           }
         });
       },
-      { threshold: 0.15, rootMargin: '0px 0px -50% 0px'}
+      { threshold: 0.15, rootMargin: '0px 0px -25% 0px'}
     );
 
     observer.observe(textRef.current);
