@@ -51,6 +51,10 @@ body {
   display: none;
 } */
 
+.cky-consent-container{
+  z-index: 10!important;
+}
+
 .cky-consent-bar :nth-child(3) {
  display: none;
 }
