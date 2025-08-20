@@ -71,7 +71,6 @@ export default function Scene({ island }) {
       <div className='w-full h-full'>
         <Canvas {...canvasConfig}>
         <Stats />
-
           <Suspense fallback={null}>
             <Model mousePosition={mousePosition} island={island} />
           </Suspense>
