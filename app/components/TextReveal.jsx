@@ -1,51 +1,54 @@
 'use client';
 import React, { useEffect, useRef } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import SplitType from 'split-type';
 
-gsap.registerPlugin(ScrollTrigger);
-
 export default function TextReveal({ children, classValue, staggerValue }) {
-  const textRef2 = useRef(null);
+  const textRef = useRef(null);
 
   useEffect(() => {
-    let splitText;
-    if (textRef2.current) {
-      splitText = new SplitType(textRef2.current, { types: 'words' });
-  
-      const tl = gsap.timeline({ paused: true });
-      tl.from(splitText.words, {
-        yPercent: 100,
-        opacity: 0,
-        stagger: staggerValue,
-        duration: 0.8,
-        ease: "power4.out",
-      });
-  
-      ScrollTrigger.create({
-        trigger: textRef2.current,
-        start: "top 85%",
-        onEnter: () => tl.play(),
-        onLeaveBack: () => tl.reverse(),
-      });
-    }
-  
+    if (!textRef.current) return;
+
+    // Découpage des mots
+    const split = new SplitType(textRef.current, { types: 'words' });
+
+    // Wrap chaque mot dans un span avec overflow: hidden
+    split.words.forEach((word) => {
+      const wrapper = document.createElement('span');
+      wrapper.className = 'word-wrapper inline-block overflow-hidden';
+      word.parentNode.insertBefore(wrapper, word);
+      wrapper.appendChild(word);
+    });
+
+    // Ajout du stagger via transition-delay
+    split.words.forEach((word, i) => {
+      word.style.transitionDelay = `${i * staggerValue}s`;
+    });
+
+    // Observer pour déclencher l'animation
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.querySelectorAll('.word').forEach(w => w.classList.add('is-visible'));
+          } else {
+            entry.target.querySelectorAll('.word').forEach(w => w.classList.remove('is-visible'));
+          }
+        });
+      },
+      { threshold: 0.15, rootMargin: '0px 0px -5% 0px' }
+    );
+
+    observer.observe(textRef.current);
+
     return () => {
-      // Nettoyage
-      splitText?.revert();
-      ScrollTrigger.getAll().forEach(st => st.kill());
+      observer.disconnect();
+      split.revert();
     };
   }, [staggerValue]);
-  
 
   return (
-    <div className="text-scroll flex items-center tracking-tighter z-[3]">
-      <div
-        ref={textRef2}
-        className={`${classValue} h-full leading-none overflow-hidden`}
-        style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }}
-      >
+    <div className="overflow-hidden flex items-center z-[3]">
+      <div ref={textRef} className={`${classValue} h-full leading-none`}>
         {children}
       </div>
     </div>

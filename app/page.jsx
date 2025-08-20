@@ -18,6 +18,7 @@ import Arrow2 from '../public/media/arrow2.png'
 import CookieConsent from "./components/CookieConsent"
 import localFont from 'next/font/local'
 import { useRouter } from 'next/navigation'
+import ScrollProgressSidebar from "./components/ScrollProgressSidebar";
 
 
 gsap.registerPlugin(ScrollTrigger)
@@ -43,38 +44,38 @@ export default function Home(stickyElement) {
   const heroSection = useRef(null)
   const locationRef = useRef(null)
   // const stickyElement = useRef(null);
-    // Réinitialiser les animations hero quand on revient sur la page
+  // Réinitialiser les animations hero quand on revient sur la page
   useEffect(() => {
     let preloaderDone = false;
-    
+
     const resetHeroElements = () => {
       const heroElements = [
         '#hero-title',
-        '#hero-subtitle', 
+        '#hero-subtitle',
         '#hero-scroll',
         '#studio-text',
         '#coordinates-gps p'
       ];
-      
+
       // D'abord masquer les éléments
       heroElements.forEach(selector => {
         const elements = document.querySelectorAll(selector);
         elements.forEach(el => {
-          gsap.set(el, { 
-            y: 100, 
-            opacity: 0, 
+          gsap.set(el, {
+            y: 100,
+            opacity: 0,
             visibility: 'hidden'
           });
         });
       });
-      
+
       // Puis relancer l'animation hero après un court délai
       setTimeout(() => {
         // Réinitialiser le flag pour permettre une nouvelle animation
         if (typeof window !== 'undefined') {
           window.__heroIntroDone = false;
         }
-        
+
         // Relancer l'animation hero
         animateHeroIntro();
       }, 100);
@@ -97,13 +98,13 @@ export default function Home(stickyElement) {
     if (typeof window !== 'undefined') {
       // Écouter la fin du préloader
       window.addEventListener('preloaderDone', handlePreloaderDone);
-      
+
       // Écouter les changements de route
       window.addEventListener('popstate', handleRouteChange);
-      
+
       // Écouter les événements de navigation Next.js
       const originalPushState = history.pushState;
-      history.pushState = function(...args) {
+      history.pushState = function (...args) {
         originalPushState.apply(history, args);
         handleRouteChange();
       };
@@ -124,7 +125,7 @@ export default function Home(stickyElement) {
 
     // Détecter si on est sur mobile
     const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
-    
+
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -149,7 +150,7 @@ export default function Home(stickyElement) {
       if (typeof window !== 'undefined' && window.__preloaderDone === true) {
         const body = document.body;
         const html = document.documentElement;
-        
+
         // Supprimer tous les styles qui pourraient bloquer le scroll
         body.style.position = '';
         body.style.top = '';
@@ -159,10 +160,10 @@ export default function Home(stickyElement) {
         body.style.overflow = '';
         html.style.overflow = '';
         html.style.overscrollBehavior = '';
-        
+
         // Supprimer les classes qui pourraient bloquer le scroll
         body.classList.remove('preloading-active');
-        
+
         // Forcer le scroll à être activé
         body.style.overflow = 'auto';
         html.style.overflow = 'auto';
@@ -194,7 +195,7 @@ export default function Home(stickyElement) {
     //     '#studio-text',
     //     '#coordinates-gps p'
     //   ];
-      
+
     //   heroElements.forEach(selector => {
     //     const elements = document.querySelectorAll(selector);
     //     elements.forEach(el => {
@@ -206,7 +207,7 @@ export default function Home(stickyElement) {
     //       });
     //     });
     //   });
-      
+
     //   // Relancer les animations
     //   setTimeout(() => {
     //     animateHero(textScroll);
@@ -217,7 +218,7 @@ export default function Home(stickyElement) {
     const doRefresh = () => {
       ScrollTrigger.refresh();
     };
-    
+
     ScrollTrigger.refresh();
     window.addEventListener('load', doRefresh);
     window.addEventListener('preloaderDone', doRefresh);
@@ -227,18 +228,18 @@ export default function Home(stickyElement) {
     const prepareHeroElements = () => {
       const heroElements = [
         '#hero-title',
-        '#hero-subtitle', 
+        '#hero-subtitle',
         '#hero-scroll',
         '#studio-text',
         '#coordinates-gps p'
       ];
-      
+
       heroElements.forEach(selector => {
         const elements = document.querySelectorAll(selector);
         elements.forEach(el => {
-          gsap.set(el, { 
-            y: 100, 
-            opacity: 0, 
+          gsap.set(el, {
+            y: 100,
+            opacity: 0,
             visibility: 'hidden'
           });
         });
@@ -247,11 +248,11 @@ export default function Home(stickyElement) {
 
     // Préparer les éléments au chargement
     prepareHeroElements();
-    
+
     animateAbout()
     // animateAboutText()
     animateHero(textScroll);
-    
+
     return () => {
       cancelAnimationFrame(raf);
       window.removeEventListener('load', doRefresh);
@@ -264,13 +265,17 @@ export default function Home(stickyElement) {
 
   return (
     <main id="main" className={"flex w-full h-full relative min-h-screen flex-col "}>
+      <div id="progress" className="flex justify-center items-center fixed my-auto h-full w-[6px] z-[1]">
+        <ScrollProgressSidebar />
+      </div>
+
       {/* <CookieConsent/> */}
       <div id="hero-container" className="z-[1] flex w-full h-full min-h-screen flex-col relative">
         <Scene island={island} />
         <div ref={heroSection} id="hero" className='h-screen sticky w-full flex flex-col items-center top-0 z-[3]'>
           <div className='h-screen flex flex-col items-start justify-between w-full px-[10px] lg:px-[80px] pt-[20px] lg:pt-[100px] relative z-[3]'>
             {/* <TextReveal staggerValue={"0.1"} classValue="leading-none lg:w-3/6 "> */}
-              <h2 id='hero-subtitle' style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} className='lg:w-full pointer-events-none mt-[98px] overflow-hidden text-[24px] tracking-tighter lg:text-[36px] lg:mt-[10vh] '>Offrez à vos visiteurs une expérience web captivante<br /> parce que chaque clic mérite sa touche de magie.</h2>
+            <h2 id='hero-subtitle' style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} className='lg:w-full pointer-events-none mt-[98px] overflow-hidden text-[#003049] text-[24px] tracking-tighter lg:text-[36px] lg:mt-[10vh] '>Offrez à vos visiteurs une expérience web captivante<br /> parce que chaque clic mérite sa touche de magie.</h2>
             {/* </TextReveal> */}
 
             <div style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} className="overflow-hidden absolute right-[10px] bottom-[148px] lg:bottom-[52px] lg:right-[80px]" >
@@ -299,12 +304,12 @@ export default function Home(stickyElement) {
               <h2 id='studio-text' className='overflow-hidden text-[#003049] pointer-events-none leading-none text-[24px] lg:text-[36px] font-bold-sm tracking-tighter '>Créateur de solutions digitales</h2>
             </div>
 
-            <HorizontalScroll/>
+            {/* <HorizontalScroll /> */}
           </div>
         </div>
 
         <div className=" flex items-center justify-center fixed top-[50%] left-[30%] z-[10000] opacity-0" id="location-info">
-        <HackHover data='Située au Tampon' classValue='z-[0] ml-[20vw] mt-[5vh] w-full h-full text-[14px] z-[3] lg:text-[20px] text-white cursor-default leading-none' />
+          <HackHover data='Située au Tampon' classValue='z-[0] ml-[20vw] mt-[5vh] w-full h-full text-[14px] z-[3] lg:text-[20px] text-white cursor-default leading-none' />
         </div>
 
         <div id="about" ref={aboutRef} className="rounded-2xl sticky top-0 h-[250svh] px-[10px] py-[80px] lg:px-[80px] lg:pb-[80px] lg:pt-[30svh] flex flex-col justify-center">
@@ -319,12 +324,12 @@ export default function Home(stickyElement) {
                 <h1 className=" leading-none tracking-tighter z-[4] text-[48px] lg:text-[150px] text-white">Besoin d'un site internet?</h1>
               </TextReveal> */}
               <div className="w-full flex justify-end">
-                {/* <TextReveal classValue="flex w-full justify-end text-right"> */}
-                  <p id="about_target-ref" ref={targetRef} style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} className=' w-full absolute pointer-events-none overflow-hidden text-right lg:text-right tracking-tight text-[16px] lg:text-[32px] lg:w-3/6 leading-normal text-white'>
-                    Développeur freelance basée à l&apos;ile de la Réunion <br />
-                    je suis spécialisé dans la <strong> création de site internet moderne</strong>, qui place l&apos;utilisateur au cœur d&apos;une expérience unique.
-                  </p>
-                {/* </TextReveal> */}
+                <TextReveal classValue="flex w-full justify-end text-right" staggerValue={"0.11"} >
+                <p id="about_target-ref" ref={targetRef} className=' w-full pointer-events-none text-right tracking-tight text-[16px] lg:text-[32px] lg:w-2/3  leading-none text-white'>
+                  Développeur freelance basée à l&apos;ile de la Réunion <br />
+                  je suis spécialisé dans la <strong> création de site internet moderne</strong>, qui place l&apos;utilisateur au cœur d&apos;une expérience unique.
+                </p>
+                </TextReveal>
               </div>
               <div className="w-full text-left">
                 <TextReveal staggerValue={"0"} classValue="flex w-full justify-start text-right leading-none">
@@ -338,21 +343,21 @@ export default function Home(stickyElement) {
         {/* <HorizontalScrollReverse /> */}
         <div className="w-full lg:px-[80px] lg:pt-[80vh] bg-[#0E0E0E] overflow-hidden" id="gallery-section">
           <div className="flex justify-end w-full h-[100svh]">
-            <TextReveal staggerValue={"0.1"} classValue="z-[7] w-full text-white text-right z-[3] ">
-              <h3 className=" leading-none w-full tracking-tighter z-[4] text-[32px] lg:text-[64px]">Changer votre vision du web moderne</h3>
+            <TextReveal staggerValue={"0"} classValue="z-[7] w-full text-white text-right z-[3] ">
+              <h3  className=" leading-none w-full tracking-tighter z-[4] text-[32px] lg:text-[64px]" style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }}>Changer votre vision du web moderne</h3>
             </TextReveal>
           </div>
         </div>
-          <Hero2 />
+        <Hero2 />
         {/* Section services */}
-        <Services/>
+        <Services />
         {/* <div className="z-[1] flex justify-center py-[20px] lg:py-[80px] px-[20px] lg:px-[50px]"> */}
-          {/* <GridAnimation /> */}
+        {/* <GridAnimation /> */}
         {/* </div> */}
         <div id="contact" className="w-full lg:h-screen mx-[10px] lg:mx-[0px] flex flex-col items-left text-[#ECECEC] h-[70vh] justify-between relative border-none">
-          <TextScroll style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} classValue="cursor-pointer lg:mt-[50px] mx-[10px] lg:mx-[80px] text-[36px]"
+          <TextReveal style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} classValue="cursor-pointer lg:mt-[50px] mx-[10px] lg:mx-[80px] text-[36px]"
             value="Vous avez des questions ou vous souhaitez collaborer avec nous ?">
-          </TextScroll>
+          </TextReveal>
           <TextReveal classValue="w-full mx-[10px] lg:mx-[80px] text-[14px] lg:text-[1rem] lg:text-[28px] z-[1] tracking-tighter">
             <h2 style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} className="tracking-tighter">Les grandes histoires commençent souvent par un Hey !</h2>
           </TextReveal>

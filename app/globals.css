@@ -13,6 +13,15 @@
 
   }
 }
+/* Cache la scrollbar pour tous les navigateurs */
+body {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
 
 html {
   overflow-y: hidden;
@@ -140,6 +149,56 @@ body {
   transform: translate(-50%, -50%) rotate(45deg);
 }
 
+h1 .word,
+h2 .word,
+h3 .word,
+p .word,
+#about_target-ref .word {
+  display: inline-block;
+  overflow: hidden; /* c'est ça qui masque */
+  vertical-align: bottom;
+}
+
+.word-wrapper {
+  display: inline-block;
+  overflow: hidden; /* masque le mot */
+  vertical-align: bottom;
+}
+
+.word {
+  display: inline-block;
+  transform: translateY(100%);
+  transition: transform 0.6s cubic-bezier(0.23,1,0.32,1);
+}
+
+.word.is-visible {
+  transform: translateY(0);
+}
+
+
+
+@keyframes revealUp {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+/* Respecte l’accessibilité */
+@media (prefers-reduced-motion: reduce) {
+  .word { transition: none !important; transform: none !important; opacity: 1 !important; }
+}
+
+
+/* (Optionnel) SplitType ajoute aussi .whitespace : on ne l’anime pas */
+.whitespace { display: inline; }
+
+
+
 .bounds {
   /* border: 1px solid red; */
   display: flex;
@@ -206,89 +265,15 @@ body {
   height: 100%;
 }
 
-.text-scroll p {
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-}
-
-.pricing h1 {
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-  line-height: 1;
-}
-
-.pricing p {
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-  line-height: 1;
-
-}
-
-p {
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-  line-height: 1;
-}
-
-p .word {
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-  line-height: 1;
-}
-
-.hero h1 {
-  line-height: 1;
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-}
-
 /* #hero-scroll h1{
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
   line-height: 15vh;
 } */
 
 
-h1 {
-  line-height: 1;
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-}
-
-h1 .word {
-  line-height: 1;
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-}
-
-#about_target-ref {
-  line-height: 1;
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-}
-
-h2 .word {
-  line-height: 1;
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-}
-
-h2 {
-  line-height: 1;
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-}
-
 @media screen and (max-width: 460px) {
-  h1 {
-    line-height: 1;
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-  }
-
-  h1 .word {
-    line-height: 1;
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-  }
-
-  h2 .word {
-    line-height: 1;
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-  }
+  
 }
-
-#text-target .word{
-  line-height: 1;
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-}
-
 
 @keyframes rotate {
   0% {
