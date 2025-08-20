@@ -304,7 +304,7 @@ export default function Home(stickyElement) {
               <h2 id='studio-text' className='overflow-hidden text-[#003049] pointer-events-none leading-none text-[24px] lg:text-[36px] font-bold-sm tracking-tighter '>Créateur de solutions digitales</h2>
             </div>
 
-            {/* <HorizontalScroll /> */}
+            <HorizontalScroll />
           </div>
         </div>
 
