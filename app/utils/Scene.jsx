@@ -4,6 +4,7 @@ import Model from './Model';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
 import { animateScene } from './animation';
+import { Stats } from '@react-three/drei';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -69,6 +70,8 @@ export default function Scene({ island }) {
     >
       <div className='w-full h-full'>
         <Canvas {...canvasConfig}>
+        <Stats />
+
           <Suspense fallback={null}>
             <Model mousePosition={mousePosition} island={island} />
           </Suspense>
