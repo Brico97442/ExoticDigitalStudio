@@ -18,86 +18,86 @@ function HorizontalScroll() {
 
 
 
-    // useEffect(() => {
-    //     gsap.set(text2.current, { left: text2.current.getBoundingClientRect().width })
-    //     requestAnimationFrame(animate);
-    // }, [])
+    useEffect(() => {
+        gsap.set(text2.current, { left: text2.current.getBoundingClientRect().width })
+        requestAnimationFrame(animate);
+    }, [])
 
 
     let direction = -1;
 
-    // const animate = () => {
-    //     if (xPercent < -100) {
-    //         xPercent = 0;
-    //     }
-    //     else if (xPercent > 0) {
-    //         xPercent = -100;
-    //     }
-    //     gsap.set(text1.current, { xPercent: xPercent })
-    //     gsap.set(text2.current, { xPercent: xPercent })
-    //     requestAnimationFrame(animate);
-    //     xPercent += 0.01 * direction;
-    // }
+    const animate = () => {
+        if (xPercent < -100) {
+            xPercent = 0;
+        }
+        else if (xPercent > 0) {
+            xPercent = -100;
+        }
+        gsap.set(text1.current, { xPercent: xPercent })
+        gsap.set(text2.current, { xPercent: xPercent })
+        requestAnimationFrame(animate);
+        xPercent += 0.01 * direction;
+    }
 
 
-    // useEffect(() => {
-    //     gsap.registerPlugin(ScrollTrigger);
-    //     gsap.to(slider.current, {
-    //         scrollTrigger: {
-    //             trigger: document.documentElement,
-    //             scrub: 0.5,
-    //             start: 0,
-    //             end: window.innerHeight,
-    //             onUpdate: e => direction = e.direction * -1
-    //         },
-    //         x: "-500px",
-    //     })
-    //     requestAnimationFrame(animate);
-    // }, [])
+    useEffect(() => {
+        gsap.registerPlugin(ScrollTrigger);
+        gsap.to(slider.current, {
+            scrollTrigger: {
+                trigger: document.documentElement,
+                scrub: 0.5,
+                start: 0,
+                end: window.innerHeight,
+                onUpdate: e => direction = e.direction * -1
+            },
+            x: "-500px",
+        })
+        requestAnimationFrame(animate);
+    }, [])
 
 
 
 
-    // useEffect(() => {
-    //     if (text1.current) {
-    //         gsap.set(text1.current, {
-    //             x: xPercent,
-    //         })
-    //         gsap.to(text1.current, {
-    //             x: -xPercent,
-    //             duration: 20,
-    //             ease: 'linear',
-    //             scrollTrigger: {
-    //                 trigger: text1.current,
-    //                 start: 'top 90%',
-    //                 scrub: 15,
-    //                 markers: false,
-    //                 duration: 20,
+    useEffect(() => {
+        if (text1.current) {
+            gsap.set(text1.current, {
+                x: xPercent,
+            })
+            gsap.to(text1.current, {
+                x: -xPercent,
+                duration: 20,
+                ease: 'linear',
+                scrollTrigger: {
+                    trigger: text1.current,
+                    start: 'top 90%',
+                    scrub: 15,
+                    markers: false,
+                    duration: 20,
 
-    //             }
-    //         })
-    //         gsap.set(text2.current, {
-    //             x: xPercent,
-    //         })
-    //         gsap.to(text2.current, {
-    //             x: -xPercent,
-    //             duration: 20,
-    //             ease: 'linear',
-    //             scrollTrigger: {
-    //                 trigger: text2.current,
-    //                 start: 'top 90%',
-    //                 scrub: 15,
-    //                 markers: false,
-    //                 duration: 20,
+                }
+            })
+            gsap.set(text2.current, {
+                x: xPercent,
+            })
+            gsap.to(text2.current, {
+                x: -xPercent,
+                duration: 20,
+                ease: 'linear',
+                scrollTrigger: {
+                    trigger: text2.current,
+                    start: 'top 90%',
+                    scrub: 15,
+                    markers: false,
+                    duration: 20,
 
-    //             }
-    //         })
-    //     }
+                }
+            })
+        }
 
-    //     // return () => {
-    //     //     ScrollTrigger.getAll().forEach(trigger => trigger.kill())
-    //     // }
-    // }, [])
+        return () => {
+            ScrollTrigger.getAll().forEach(trigger => trigger.kill())
+        }
+    }, [])
 
     const Dot = () => {
         return (
@@ -107,12 +107,12 @@ function HorizontalScroll() {
 
     return (
         <div id='hero-scroll-container' className={`${Guisol.className} absolute text-[#771A66] bottom-[37vh] lg:bottom-[17vh] h-[7vh] lg:h-[25vh] left-0 w-full z-[6] flex items-center justify-center overflow-hidden`} >
-            {/* <div id='hero-scroll' className='flex flex-col items-center uppercase font-bold absolute z-[6]' >
+            <div id='hero-scroll' className='flex flex-col items-center uppercase font-bold absolute z-[6]' >
                 <div id='slider'ref={slider} className='flex relative whitespace-nowrap z-[6] pointer-events-none' >
                     <h1 ref={text1} className='absolute  z-[6] left-[100%] text-[10vh] lg:text-[200px] flex items-center pointer-events-none tracking-wide drop-shadow-lg leading-none'>studio<Dot />Creativ<Dot />Web<Dot /></h1>
                     <h1 ref={text2} className=' text-[10vh]  z-[6]  lg:text-[200px] flex items-center pointer-events-none tracking-wide drop-shadow-lg leading-none'>studio<Dot />Creativ<Dot />Web<Dot /></h1>
                 </div>
-            </div> */}
+            </div>
         </div >
     )
 }
