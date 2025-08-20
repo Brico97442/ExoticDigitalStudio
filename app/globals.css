@@ -54,6 +54,9 @@ body {
 .cky-consent-container{
   z-index: 10!important;
 }
+.cky-powered-by {
+  display: none !important;
+}
 
 /* .cky-consent-bar > div:nth-child(2) {
  display: none!important;
