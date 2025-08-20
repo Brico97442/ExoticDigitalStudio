@@ -361,8 +361,8 @@ export const animateIsland = (island) => {
   );
 
   // Animation couleur (désactivée sur mobile)
-  if (!isMobile() && island.current.material?.color) {
-    gsap.to(island.current.material.color, {
+  if (!isMobile() && island.current.material?.uniforms?.color?.value) {
+    gsap.to(island.current.material.uniforms.color.value, {
       r: 0.5,
       g: 0.1,
       b: 0.4,
@@ -394,9 +394,9 @@ export const animateIslandIntro = (island) => {
     .set(island.current.position, startPosition)
     .set(island.current.rotation, startRotation)
     .fromTo(
-      island.current.material, 
-      { opacity: 0 }, 
-      { opacity: 0.04, duration: isMobile() ? 0.4 : 0.6, ease: 'power2.out' }, 
+      island.current.material.uniforms.opacity, 
+      { value: 0 }, 
+      { value: 0.04, duration: isMobile() ? 0.4 : 0.6, ease: 'power2.out' }, 
       0
     )
     .to(island.current.position, { 
