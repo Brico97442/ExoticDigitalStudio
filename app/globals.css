@@ -56,7 +56,7 @@ body {
 }
 
 .cky-consent-bar :nth-child(1) {
- display: none;
+ display: none!important;
 }
 
 
