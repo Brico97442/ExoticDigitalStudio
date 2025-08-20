@@ -47,6 +47,14 @@ body {
   }
 }
 
+/* .cky-btn-revisit-wrapper{
+  display: none;
+} */
+
+.cky-consent-bar :nth-child(2) {
+ display: none;
+}
+
 
 /* section span {
   display: block;
