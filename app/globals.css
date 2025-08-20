@@ -55,7 +55,7 @@ body {
   z-index: 10!important;
 }
 
-.cky-consent-bar :nth-child(3) {
+.cky-consent-bar :nth-child(1) {
  display: none;
 }
 
