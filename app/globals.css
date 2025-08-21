@@ -305,10 +305,10 @@ p .word,
   z-index: 4;
 }
 
-.slider,
+/* .slider,
 .slide {
   z-index: 4;
-}
+} */
 
 .slider .slide img {
   display: flex;

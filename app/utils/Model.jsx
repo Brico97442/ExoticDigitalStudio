@@ -15,18 +15,22 @@ import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader';
 const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
 
 // Shader super simple pour mobile
+// Vertex shader mobile
 const mobileVertexShader = `
   void main() {
     gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
   }
 `;
 
+// Fragment shader mobile
 const mobileFragmentShader = `
   uniform vec3 color;
+  uniform float opacity;
   void main() {
-    gl_FragColor = vec4(color, 1.0);
+    gl_FragColor = vec4(color, opacity);
   }
 `;
+
 
 // Shader desktop (plus complexe, inchangé)
 const desktopVertexShader = `
@@ -80,24 +84,26 @@ export default function Model({ mousePosition, island }) {
   const shaderMaterial = useMemo(() => {
     const material = new ShaderMaterial({
       uniforms: isMobile ? {
-        color: { value: new Color(0, 48 / 255, 83 / 255) }
+        color: { value: new Color(0, 48 / 255, 83 / 255) }, // bleu foncé
+        opacity: { value: 1.0 } // opaque
       } : {
         opacity: { value: 0.0 },
         color: { value: new Color(0, 48 / 255, 83 / 255) },
-        gridScale: { value: 50.0 },
+        gridScale: { value: 150.0 },
         lightPosition: { value: new Vector3(-0.2, -0.2, 20) },
         lightColor: { value: new Color(1, 1, 1) },
         lightIntensity: { value: 8 }
       },
       vertexShader: isMobile ? mobileVertexShader : desktopVertexShader,
       fragmentShader: isMobile ? mobileFragmentShader : desktopFragmentShader,
-      wireframe: !isMobile, // ❌ pas de wireframe sur mobile
-      transparent: true,
-      depthTest: false,
-      alphaTest: true
+      wireframe: !isMobile,
+      transparent: true,   // ✅ sur mobile pas besoin de transparent
+      depthTest: true,          // ✅ important pour ne pas voir à travers
+      alphaTest: false
     });
     return material;
   }, []);
+  
 
   // Lumière uniquement desktop
   useEffect(() => {

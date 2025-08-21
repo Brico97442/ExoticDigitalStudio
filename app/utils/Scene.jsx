@@ -46,7 +46,7 @@ export default function Scene({ island }) {
   // Configuration Canvas optimisée pour mobile
   const canvasConfig = {
     camera: { position: [0, 0, 6] },
-    style: { zIndex: 1000 },
+    style: { zIndex: 0 },
     // Paramètres de performance pour mobile
     dpr: isMobile ? Math.min(window.devicePixelRatio, 2) : undefined, // Limite la résolution sur mobile
     performance: {
@@ -70,7 +70,7 @@ export default function Scene({ island }) {
       className={`w-[100%] fixed h-[100vh] top-0 flex-col items-center justify-center lg:w-full`}
     >
       <div className='w-full h-full'>
-        <Canvas {...canvasConfig} frameloop='always'>
+        <Canvas {...canvasConfig} >
         <Stats />
           <Suspense fallback={null}>
             <Model mousePosition={mousePosition} island={island} />
