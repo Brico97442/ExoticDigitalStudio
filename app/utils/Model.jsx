@@ -163,8 +163,8 @@ export default function Model({ mousePosition, island }) {
         geometry={nodes.reunion.geometry}
         scale={[0.015, 0.015, 0.015]}
         position={[-0.08, 0.08, -0.3]}
-        castShadow
-        receiveShadow
+        castShadow={!isMobile}
+        receiveShadow={!isMobile}
       />
     </group>
   );
