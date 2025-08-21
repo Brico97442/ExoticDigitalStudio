@@ -91,7 +91,7 @@ export default function Model({ mousePosition, island }) {
   const shaderMaterial = useMemo(() => {
     const material = new ShaderMaterial({
       uniforms: isMobile ? {
-        opacity: { value: 0.0 },
+        opacity: { value: 1.0 },
         color: { value: new Color(0, 48 / 255, 83 / 255) }
       } : {
         opacity: { value: 0.0 },
@@ -103,7 +103,7 @@ export default function Model({ mousePosition, island }) {
       },
       vertexShader: isMobile ? mobileVertexShader : desktopVertexShader,
       fragmentShader: isMobile ? mobileFragmentShader : desktopFragmentShader,
-      wireframe: true,
+      wireframe: false,
       transparent: true,
       depthTest: false,
       alphaTest: true
