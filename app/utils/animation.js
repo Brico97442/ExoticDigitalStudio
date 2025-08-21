@@ -361,7 +361,7 @@ export const animateIsland = (island) => {
   );
 
   // Animation couleur (désactivée sur mobile)
-  if (!isMobile() && island.current.material?.uniforms?.color?.value) {
+  if ( island.current.material?.uniforms?.color?.value) {
     gsap.to(island.current.material.uniforms.color.value, {
       r: 0.5,
       g: 0.1,
