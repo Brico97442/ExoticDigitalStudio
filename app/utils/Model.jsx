@@ -89,10 +89,10 @@ export default function Model({ mousePosition, island }) {
       } : {
         opacity: { value: 0.0 },
         color: { value: new Color(0, 48 / 255, 83 / 255) },
-        gridScale: { value: 150.0 },
+        gridScale: { value: 50.0 },
         lightPosition: { value: new Vector3(-0.2, -0.2, 20) },
         lightColor: { value: new Color(1, 1, 1) },
-        lightIntensity: { value: 8 }
+        lightIntensity: { value: 1 }
       },
       vertexShader: isMobile ? mobileVertexShader : desktopVertexShader,
       fragmentShader: isMobile ? mobileFragmentShader : desktopFragmentShader,
