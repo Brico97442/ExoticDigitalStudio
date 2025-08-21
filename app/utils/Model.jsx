@@ -85,7 +85,7 @@ export default function Model({ mousePosition, island }) {
     const material = new ShaderMaterial({
       uniforms: isMobile ? {
         color: { value: new Color(0, 48 / 255, 83 / 255) }, // bleu foncé
-        opacity: { value: 0.6 } // opaque
+        opacity: { value: 1.0 } // opaque
       } : {
         opacity: { value: 0.0 },
         color: { value: new Color(0, 48 / 255, 83 / 255) },
@@ -97,7 +97,7 @@ export default function Model({ mousePosition, island }) {
       vertexShader: isMobile ? mobileVertexShader : desktopVertexShader,
       fragmentShader: isMobile ? mobileFragmentShader : desktopFragmentShader,
       wireframe: !isMobile,
-      transparent: true,   // ✅ sur mobile pas besoin de transparent
+      transparent: !isMobile,   // ✅ sur mobile pas besoin de transparent
       depthTest: true,          // ✅ important pour ne pas voir à travers
       alphaTest: false
     });
