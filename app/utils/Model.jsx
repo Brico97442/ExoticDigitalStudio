@@ -84,25 +84,27 @@ export default function Model({ mousePosition, island }) {
   const shaderMaterial = useMemo(() => {
     const material = new ShaderMaterial({
       uniforms: isMobile ? {
-        color: { value: new Color(0, 48 / 255, 83 / 255) }, // bleu foncé
+        color: { value: new Color("#003049") }, // bleu plus profond
         opacity: { value: 1.0 } // opaque
       } : {
         opacity: { value: 0.0 },
-        color: { value: new Color(0, 48 / 255, 83 / 255) },
-        gridScale: { value: 50.0 },
+        color: { value: new Color("#003049") },
+        gridScale: { value: 150.0 },
         lightPosition: { value: new Vector3(-0.2, -0.2, 20) },
         lightColor: { value: new Color(1, 1, 1) },
-        lightIntensity: { value: 1 }
+        lightIntensity: { value: 8 }
       },
       vertexShader: isMobile ? mobileVertexShader : desktopVertexShader,
       fragmentShader: isMobile ? mobileFragmentShader : desktopFragmentShader,
       wireframe: !isMobile,
-      transparent: !isMobile,   // ✅ sur mobile pas besoin de transparent
-      depthTest: true,          // ✅ important pour ne pas voir à travers
+      transparent: !isMobile,   // ❌ désactivé sur mobile
+      depthTest: true,          // ✅ garde l’opacité solide
       alphaTest: false
     });
     return material;
   }, []);
+  
+
   
 
   // Lumière uniquement desktop
@@ -156,8 +158,8 @@ export default function Model({ mousePosition, island }) {
         geometry={nodes.reunion.geometry}
         scale={[0.015, 0.015, 0.015]}
         position={[-0.08, 0.08, -0.3]}
-        castShadow={!isMobile}
-        receiveShadow={!isMobile}
+        castShadow
+        receiveShadow
       />
     </group>
   );
