@@ -70,11 +70,11 @@ export default function Scene({ island }) {
       className={`w-[100%] fixed h-[100vh] top-0 flex-col items-center justify-center lg:w-full`}
     >
       <div className='w-full h-full'>
-        <Canvas {...canvasConfig} id="three-canvas">
+        <Canvas {...canvasConfig} id="three-canvas" className=''>
         <Stats />
           <Suspense fallback={null}>
             <Model mousePosition={mousePosition} island={island} />
-          {/* <directionalLight position={[2, 2, 2]} intensity={15} color={'red'} /> */}
+          <ambientLight position={[-0.08, 0.08, -0.3]} intensity={15} color={'green'} />
           </Suspense>
         </Canvas>
       </div>
