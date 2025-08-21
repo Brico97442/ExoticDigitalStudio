@@ -273,7 +273,7 @@ export default function Home(stickyElement) {
       <div id="hero-container" className="z-[1] flex w-full h-full min-h-screen flex-col relative">
         <Scene island={island} />
         <div ref={heroSection} id="hero" className='h-screen sticky w-full flex flex-col items-center top-0 z-[3]'>
-          <div className='h-screen flex flex-col items-start justify-between w-full px-[10px] lg:px-[80px] pt-[20px] lg:pt-[100px] relative z-[6]'>
+          <div className='h-screen flex flex-col items-start justify-between w-full px-[10px] lg:px-[80px] pt-[20px] lg:pt-[100px] relative z-[3]'>
             {/* <TextReveal staggerValue={"0.1"} classValue="leading-none lg:w-3/6 "> */}
             <h2 id='hero-subtitle' style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} className='lg:w-full pointer-events-none mt-[98px] overflow-hidden text-[#003049] text-[24px] tracking-tighter lg:text-[36px] lg:mt-[10vh] '>Offrez à vos visiteurs une expérience web captivante<br /> parce que chaque clic mérite sa touche de magie.</h2>
             {/* </TextReveal> */}

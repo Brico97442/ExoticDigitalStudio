@@ -214,7 +214,7 @@ export const animateHeroIntro = () => {
   const selectors = [
     '#hero-title',
     '#hero-subtitle',
-    // '#hero-scroll',
+    '#hero-scroll',
     '#studio-text',
     '#coordinates-gps p'
   ];
@@ -258,7 +258,7 @@ export const prepareHeroIntro = () => {
   const selectors = [
     '#hero-title',
     '#hero-subtitle',
-    // '#hero-scroll',
+    '#hero-scroll',
     '#studio-text',
     '#coordinates-gps p'
   ];
