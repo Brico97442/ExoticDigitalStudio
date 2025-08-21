@@ -24,11 +24,16 @@ const mobileVertexShader = `
 
 // Fragment shader mobile
 const mobileFragmentShader = `
-  uniform vec3 color;
-  uniform float opacity;
-  void main() {
-    gl_FragColor = vec4(color, opacity);
-  }
+ uniform vec3 color;
+uniform float opacity;
+varying vec3 vNormal;
+
+void main() {
+  float lightFactor = max(dot(normalize(vNormal), vec3(0.0, 0.0, 1.0)), 0.4);
+  vec3 finalColor = color * lightFactor;
+  gl_FragColor = vec4(finalColor, opacity);
+}
+
 `;
 
 
