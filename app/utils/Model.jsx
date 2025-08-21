@@ -85,7 +85,7 @@ export default function Model({ mousePosition, island }) {
     const material = new ShaderMaterial({
       uniforms: isMobile ? {
         color: { value: new Color(0, 48 / 255, 83 / 255) }, // bleu foncé
-        opacity: { value: 1.0 } // opaque
+        opacity: { value: 0.6 } // opaque
       } : {
         opacity: { value: 0.0 },
         color: { value: new Color(0, 48 / 255, 83 / 255) },
