@@ -98,8 +98,8 @@ export default function Model({ mousePosition, island }) {
       vertexShader: isMobile ? mobileVertexShader : desktopVertexShader,
       fragmentShader: isMobile ? mobileFragmentShader : desktopFragmentShader,
       wireframe: !isMobile,
-      transparent: !isMobile,   // ✅ sur mobile pas besoin de transparent
-      depthTest: false,          // ✅ important pour ne pas voir à travers
+      transparent: false,   // ✅ sur mobile pas besoin de transparent
+      depthTest: true,          // ✅ important pour ne pas voir à travers
       alphaTest: false
     });
     return material;

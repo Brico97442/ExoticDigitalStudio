@@ -76,16 +76,9 @@ export default function Scene({ island }) {
           <Suspense fallback={null}>
             <group  position={[0, 0, 0]}>
             <Model mousePosition={mousePosition} island={island} />
-          <ambientLight position={[-0.08, 0.08, -0.3]} intensity={15} color={'green'} />
+          {/* <ambientLight position={[-0.08, 0.08, -0.3]} intensity={1} color={'green'} /> */}
           <CurvedText3d 
-          words={["CREATIVE", "WEB", "STUDIO"]}
-        fontSize={7}
-        radius={15}
-        verticalArc={0}
-        letterSpacing={0.8}
-        wordSpacing={2}
-        baseSpeed={1}
-        flipText={false} />
+          />
 
           
             </group>

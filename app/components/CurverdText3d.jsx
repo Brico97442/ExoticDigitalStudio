@@ -4,7 +4,7 @@ import { Text } from "@react-three/drei";
 import { useControls } from "leva";
 
 const CurvedText3dFinal = ({
-  content = "CREATIVE WEB STUDIO",
+  content = "STUDIO • CREATIV • WEB •",
   baseSpeed = 1,
 }) => {
   const groupRef = useRef();
@@ -27,32 +27,55 @@ const CurvedText3dFinal = ({
   } = useControls("Curved Text 3D", {
     positionX: { value: 0, min: -50, max: 50, step: 0.1 },
     positionY: { value: 0, min: -50, max: 50, step: 0.1 },
-    positionZ: { value: 6, min: -50, max: 50, step: 0.1 },
+    positionZ: { value: 11.6, min: -50, max: 50, step: 0.1 },
 
-    fontSize: { value: 1.2, min: 0.1, max: 10, step: 0.05 },
+    fontSize: { value:2.55, min: 0.1, max: 10, step: 0.05 },
     radius: { value: 15, min: 5, max: 50, step: 0.1 },
-    curveHeight: { value: 3, min: 0, max: 10, step: 0.1 },
-    arcAngle: { value: Math.PI * 1.5, min: 0.1, max: Math.PI * 2, step: 0.01 },
-    letterSpacing: { value: 0.8, min: 0, max: 5, step: 0.05 },
-    wordSpacing: { value: 2, min: 0, max: 10, step: 0.1 },
+    curveHeight: { value: 0.2, min: 0, max: 10, step: 0.1 },
+    arcAngle: { value: 6.28, min: 0.1, max: Math.PI * 2, step: 0.01 },
+    letterSpacing: { value:1.55, min: 0, max: 5, step: 0.05 },
+    wordSpacing: { value: 0.2, min: 0, max: 10, step: 0.1 },
 
     animationSpeed: { value: 1, min: -10, max: 10, step: 0.1 },
-    showDots: true,
+    showDots: false,
     textColor: "#771A66",
   });
 
-  // --- Préparer les lettres avec espacement mots et lettres ---
+  // --- Génération des lettres avec répétitions automatiques ---
   const letters = useMemo(() => {
-    const arr = [];
-    const words = content.split(" ");
-    words.forEach((word, wi) => {
-      word.split("").forEach((char) => arr.push({ char, weight: letterSpacing }));
-      if (wi < words.length - 1 && showDots) arr.push({ char: "•", weight: wordSpacing });
-    });
-    return arr;
-  }, [content, letterSpacing, wordSpacing, showDots]);
+    // Construire la séquence de base (un cycle du texte)
+    const makeCycle = () => {
+      const arr = [];
+      const words = content.split(" ");
+      words.forEach((word, wi) => {
+        word.split("").forEach((char) =>
+          arr.push({ char, weight: letterSpacing })
+        );
+        if (wi < words.length - 1 && showDots)
+          arr.push({ char: "•", weight: wordSpacing });
+      });
+      // petit espace après chaque cycle
+      arr.push({ char: " ", weight: wordSpacing });
+      return arr;
+    };
 
-  const totalWeight = useMemo(() => letters.reduce((a, l) => a + l.weight, 0), [letters]);
+    const baseLetters = makeCycle();
+    const baseWeight = baseLetters.reduce((a, l) => a + l.weight, 0);
+
+    // calcul de combien de fois répéter pour couvrir l'arc
+    const neededRepeats = Math.ceil((arcAngle * radius) / baseWeight);
+
+    let arr = [];
+    for (let r = 0; r < neededRepeats; r++) {
+      arr = arr.concat(makeCycle());
+    }
+    return arr;
+  }, [content, letterSpacing, wordSpacing, showDots, arcAngle, radius]);
+
+  const totalWeight = useMemo(
+    () => letters.reduce((a, l) => a + l.weight, 0),
+    [letters]
+  );
 
   // --- Scroll inversé ---
   useEffect(() => {
@@ -66,30 +89,27 @@ const CurvedText3dFinal = ({
 
   // --- Animation ---
   useFrame((_, delta) => {
-    animRef.current.offset = (animRef.current.offset + animRef.current.speed * delta) % totalWeight;
+    animRef.current.offset += animRef.current.speed * delta; // pas de modulo
+
     const anglePerUnit = arcAngle / totalWeight;
 
     letters.forEach((_, idx) => {
       const cumulative = letters.slice(0, idx).reduce((a, l) => a + l.weight, 0);
 
-      // Angle horizontal pour placer sur l'arc
       const angle = ((totalWeight - cumulative) - animRef.current.offset) * anglePerUnit;
 
-      // Position 3D
       const x = Math.sin(angle) * radius;
       const z = Math.cos(angle) * radius - radius;
 
-      // Courbure verticale centrée
       const y = Math.sin(angle - arcAngle / 2) * curveHeight;
 
       const letter = groupRef.current.children[idx];
       if (letter) {
         letter.position.set(x, y, z);
-        letter.rotation.set(0, 0, 0); // lettres droites
+        letter.rotation.set(0, 0, 0);
       }
     });
 
-    // Déplacer le groupe entier
     groupRef.current.position.set(positionX, positionY, positionZ);
   });
 
@@ -102,6 +122,7 @@ const CurvedText3dFinal = ({
           anchorX="center"
           anchorY="middle"
           color={textColor}
+          
         >
           {l.char}
         </Text>

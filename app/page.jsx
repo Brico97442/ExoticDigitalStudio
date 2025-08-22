@@ -127,7 +127,7 @@ export default function Home(stickyElement) {
     const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
 
     const lenis = new Lenis({
-      duration: 1.2,
+      duration: 2.5,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: 'vertical',
       gestureOrientation: 'vertical',
@@ -274,9 +274,9 @@ export default function Home(stickyElement) {
         <Scene island={island} />
         <div ref={heroSection} id="hero" className='h-screen sticky w-full flex flex-col items-center top-0 z-[3]'>
           <div className='h-screen flex flex-col items-start justify-between w-full px-[10px] lg:px-[80px] pt-[20px] lg:pt-[100px] relative z-[3]'>
-            {/* <TextReveal staggerValue={"0.1"} classValue="leading-none lg:w-3/6 "> */}
-            <h2 id='hero-subtitle' style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} className='lg:w-full pointer-events-none mt-[98px] overflow-hidden text-[#003049] text-[24px] tracking-tighter lg:text-[36px] lg:mt-[10vh] '>Offrez à vos visiteurs une expérience web captivante<br /> parce que chaque clic mérite sa touche de magie.</h2>
-            {/* </TextReveal> */}
+            <TextReveal staggerValue={"0.03"} classValue="leading-none lg:w-full ">
+            <h2 id='hero-subtitle' className='lg:w-full pointer-events-none mt-[98px] overflow-hidden text-[#003049] text-[24px] tracking-tighter leading-none lg:text-[36px] lg:mt-[10vh] '>Offrez à vos visiteurs une expérience web captivante<br /> parce que chaque clic mérite sa touche de magie.</h2>
+            </TextReveal>
 
             <div style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} className="overflow-hidden absolute right-[10px] bottom-[148px] lg:bottom-[52px] lg:right-[80px]" >
               <h3 id='hero-title' className=' bg-slate-900 pointer-events-none text-[#ECECEC] text-[16px] lg:text-[28px] font-bold-sm tracking-tighter py-2 px-6 rounded-lg '>Reunion Island Digital Studio </h3>
@@ -300,10 +300,14 @@ export default function Home(stickyElement) {
               </div>
             </div>
 
-            <div className="overflow-hidden mb-[10px] lg:mr-[50px] lg:mb-[80px]" style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }}>
+            <div className="overflow-hidden mb-[10px] lg:mr-[50px] lg:mb-[80px]">
+            <TextReveal staggerValue={"0.03"} classValue="leading-none h-auto lg:w-full ">
+
               <h2 id='studio-text' className='overflow-hidden text-[#003049] pointer-events-none leading-none text-[24px] lg:text-[36px] font-bold-sm tracking-tighter '>Créateur de solutions digitales</h2>
+                          </TextReveal>
+
             </div>
-            {/* <HorizontalScroll /> */}
+            <HorizontalScroll />
           </div>
         </div>
 
@@ -323,7 +327,7 @@ export default function Home(stickyElement) {
                 <h1 className=" leading-none tracking-tighter z-[4] text-[48px] lg:text-[150px] text-white">Besoin d'un site internet?</h1>
               </TextReveal> */}
               <div className="w-full flex justify-end">
-                <TextReveal classValue="flex w-full justify-end text-right" staggerValue={"0"} >
+                <TextReveal classValue="flex w-full justify-end text-right" staggerValue={"0.03"} >
                 <p id="about_target-ref" ref={targetRef} className=' w-full pointer-events-none text-right tracking-tight text-[16px] lg:text-[32px] lg:w-2/3  leading-none text-white'>
                   Développeur freelance basée à l&apos;ile de la Réunion <br />
                   je suis spécialisé dans la <strong> création de site internet moderne</strong>, qui place l&apos;utilisateur au cœur d&apos;une expérience unique.
@@ -331,7 +335,7 @@ export default function Home(stickyElement) {
                 </TextReveal>
               </div>
               <div className="w-full text-left">
-                <TextReveal staggerValue={"0"} classValue="flex w-full justify-start text-right leading-none">
+                <TextReveal staggerValue={"0.03"} classValue="flex w-full justify-start text-right leading-none">
                   <h3 className=" leading-none flex w-3/4 lg:w-2/4 h-full justify-center text-[24px] lg:text-[48px] text-left pointer-events-none text-white">&quot; J&apos;accompagne ceux et celles qui veulent se démarquer et qui oses assumer fièrement leurs différences. &quot;</h3>
                 </TextReveal>
               </div>
@@ -342,7 +346,7 @@ export default function Home(stickyElement) {
         {/* <HorizontalScrollReverse /> */}
         <div className="w-full lg:px-[80px] lg:pt-[80vh] bg-[#0E0E0E] overflow-hidden" id="gallery-section">
           <div className="flex justify-end w-full h-[100svh]">
-            <TextReveal staggerValue={"0"} classValue="z-[7] w-full text-white text-right z-[3] ">
+            <TextReveal staggerValue={"0.03"} classValue="z-[7] w-full text-white text-right z-[3] ">
               <h3  className=" leading-none w-full tracking-tighter z-[4] text-[32px] lg:text-[64px]" style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }}>Changer votre vision du web moderne</h3>
             </TextReveal>
           </div>
@@ -354,7 +358,7 @@ export default function Home(stickyElement) {
         {/* <GridAnimation /> */}
         {/* </div> */}
         <div id="contact" className="w-full lg:h-screen mx-[10px] lg:mx-[0px] flex flex-col items-left text-[#ECECEC] h-[70vh] justify-between relative border-none">
-          <TextReveal style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} classValue="cursor-pointer lg:mt-[50px] mx-[10px] lg:mx-[80px] text-[36px]"
+          <TextReveal staggerValue={"0.03"} style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} classValue="cursor-pointer lg:mt-[50px] mx-[10px] lg:mx-[80px] text-[36px]"
             value="Vous avez des questions ou vous souhaitez collaborer avec nous ?">
           </TextReveal>
           <TextReveal classValue="w-full mx-[10px] lg:mx-[80px] text-[14px] lg:text-[1rem] lg:text-[28px] z-[1] tracking-tighter">

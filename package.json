@@ -28,7 +28,8 @@
     "react-use": "^17.5.1",
     "slick-carousel": "^1.8.1",
     "split-type": "^0.3.4",
-    "three": "^0.166.1"
+    "three": "^0.166.1",
+    "troika-three-text": "^0.52.4"
   },
   "devDependencies": {
     "@types/node": "20.14.11",
