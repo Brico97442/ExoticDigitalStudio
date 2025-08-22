@@ -214,7 +214,7 @@ export const animateHeroIntro = () => {
   const selectors = [
     '#hero-title',
     '#hero-subtitle',
-    '#hero-scroll',
+    // '#hero-scroll',
     '#studio-text',
     '#coordinates-gps p'
   ];
@@ -258,7 +258,7 @@ export const prepareHeroIntro = () => {
   const selectors = [
     '#hero-title',
     '#hero-subtitle',
-    '#hero-scroll',
+    // '#hero-scroll',
     '#studio-text',
     '#coordinates-gps p'
   ];
@@ -396,7 +396,7 @@ export const animateIslandIntro = (island) => {
     .fromTo(
       island.current.material.uniforms.opacity, 
       { value: 0 }, 
-      { value: 0.08, duration: isMobile() ? 0.4 : 0.6, ease: 'power2.out' }, 
+      { value: 0.04, duration: isMobile() ? 0.4 : 0.6, ease: 'power2.out' }, 
       0
     )
     .to(island.current.position, { 

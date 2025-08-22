@@ -303,7 +303,7 @@ export default function Home(stickyElement) {
             <div className="overflow-hidden mb-[10px] lg:mr-[50px] lg:mb-[80px]" style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }}>
               <h2 id='studio-text' className='overflow-hidden text-[#003049] pointer-events-none leading-none text-[24px] lg:text-[36px] font-bold-sm tracking-tighter '>Créateur de solutions digitales</h2>
             </div>
-            <HorizontalScroll />
+            {/* <HorizontalScroll /> */}
           </div>
         </div>
 

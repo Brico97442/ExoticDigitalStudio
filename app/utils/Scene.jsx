@@ -5,6 +5,7 @@ import Model from './Model';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
 import { animateScene } from './animation';
+import  CurvedText3d from '../components/CurverdText3d';
 import { Stats } from '@react-three/drei';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -73,8 +74,13 @@ export default function Scene({ island }) {
         <Canvas {...canvasConfig} id="three-canvas" className=''>
         <Stats />
           <Suspense fallback={null}>
+            <group  position={[0, 0, 0]}>
             <Model mousePosition={mousePosition} island={island} />
           <ambientLight position={[-0.08, 0.08, -0.3]} intensity={15} color={'green'} />
+          <CurvedText3d  />
+
+          
+            </group>
           </Suspense>
         </Canvas>
       </div>
