@@ -104,7 +104,6 @@ const CurvedText3d = ({ words = ["CREATIVE", "WEB", "STUDIO","CREATIVE", "WEB", 
           color={textColor}
           anchorX="center"
           anchorY="middle"
-          // font="/font/mapolice.woff2"
         >
           {l.char}
         </Text>

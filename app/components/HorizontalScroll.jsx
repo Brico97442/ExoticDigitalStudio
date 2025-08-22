@@ -6,7 +6,7 @@ import localFont from 'next/font/local'
 gsap.registerPlugin(ScrollTrigger)
 
 const Guisol = localFont({
-    src: '../font/Guisol.woff',// Vous pouvez ajouter des options supplémentaires ici
+    src: '../font/Guisol.woff2',// Vous pouvez ajouter des options supplémentaires ici
     variable: '--font-guisol', // Pour utiliser la police en tant que variable CSS
 })
 
