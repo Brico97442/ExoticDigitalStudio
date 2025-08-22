@@ -3,7 +3,7 @@ import { useFrame } from "@react-three/fiber";
 import { Text } from "@react-three/drei";
 import { useControls } from "leva";
 
-const CurvedText3d = ({ words = ["CREATIVE", "WEB", "STUDIO","CREATIVE", "WEB", "STUDIO"] }) => {
+const CurvedText3d = ({ words = ["CREATIVE", "WEB", "STUDIO"] }) => {
   const groupRef = useRef();
   const letterRefs = useRef([]);
 
@@ -17,19 +17,19 @@ const CurvedText3d = ({ words = ["CREATIVE", "WEB", "STUDIO","CREATIVE", "WEB", 
   } = useControls("Curved Text 3D", {
     positionX: { value: 0, min: -50, max: 50, step: 0.1 },
     positionY: { value: 0, min: -50, max: 50, step: 0.1 },
-    positionZ: { value: 6, min: -50, max: 50, step: 0.1 },
+    positionZ: { value: -8.7, min: -50, max: 50, step: 0.1 },
 
-    fontSize: { value: 1.2, min: 0.1, max: 10, step: 0.05 },
+    fontSize: { value: 6, min: 0.1, max: 10, step: 0.05 },
     textColor: "#771A66",
 
     arcRadius: { value: 15, min: 5, max: 360, step: 0.5 },
-    arcAngle: { value: Math.PI * 1.2, min: 0.5, max: 10, step: 0.05 },
-    verticalArc: { value: -2, min: -20, max: 20, step: 0.1 },
+    arcAngle: { value: Math.PI * 1.2, min: 6.17, max: 10, step: 0.05 },
+    verticalArc: { value: 0.5, min: -20, max: 20, step: 0.1 },
 
-    letterSpacing: { value: 0.8, min: 0, max: 5, step: 0.01 },
-    wordSpacing: { value: 2, min: 0, max: 5, step: 0.01 },
+    letterSpacing: { value: 0.57, min: 0, max: 5, step: 0.01 },
+    wordSpacing: { value: 0.51, min: 0, max: 5, step: 0.01 },
 
-    baseAnimationSpeed: { value: 1, min: -5, max: 15, step: 0.1 },
+    baseAnimationSpeed: { value: 0.5, min: -5, max: 15, step: 0.1 },
 
     flipText: true
   });
