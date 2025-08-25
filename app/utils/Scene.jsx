@@ -82,7 +82,7 @@ export default function Scene({ island }) {
               <CurvedText3d
               />
               {/* Lumières globales */}
-              <ambientLight intensity={0.5} color='red' intensity={12}/>
+              <ambientLight  color='red' intensity={2}/>
               <directionalLight position={[5, 5, 5]} intensity={2} />
 
             </group>
