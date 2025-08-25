@@ -68,6 +68,9 @@ importers:
       three:
         specifier: ^0.166.1
         version: 0.166.1
+      troika-three-text:
+        specifier: ^0.52.4
+        version: 0.52.4(three@0.166.1)
     devDependencies:
       '@types/node':
         specifier: 20.14.11
