@@ -5,6 +5,7 @@ import Image from "next/image"
 import logo from "../../assets/LogoExoticDigitalStudioVectorised.webp"
 import Magnetic from '../utils/Magnetic'
 import Aside from './Aside'
+import TextReveal from "./TextReveal"
 
 const Navbar = forwardRef(function Index(props, ref) {
     const [isActive, setIsActive] = useState(false);
@@ -65,11 +66,14 @@ const Navbar = forwardRef(function Index(props, ref) {
                 </Magnetic>
                 <ul className="flex items-center transition text-black text-lg">
                     <div id='navlink' className={`flex gap-[50px] lg:visible z-[6] transition-all duration-300 ease-in-out text-[14px] lg:text-[22px] ${isScrolled ? 'opacity-0 max-h-0 overflow-hidden' : 'opacity-100 max-h-[100px]'}`}>
+                        <TextReveal staggerValue={"0.03"} style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} classValue="">
                         <li className=" transition ease hover:text-[#771A66] z-[5]">
                             <Magnetic>
                                 <TransitionLink href="/pricing" label="Processus" />
                             </Magnetic>
                         </li>
+                        </TextReveal>
+
                         <li className=" transition ease hover:text-[#771A66] z-[5]">
                             <Magnetic>
                                 <TransitionLink href="/realisations" label="Réalisations" />

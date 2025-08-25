@@ -1,28 +1,29 @@
 import React, { useEffect, useRef, Suspense, useState, useCallback } from 'react';
 import { Canvas } from '@react-three/fiber';
 // import { OrbitControls, Environment } from '@react-three/drei';
-import Model from './Model';
+// import Model from './Model';
+import Model2 from './Model2';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
 import { animateScene } from './animation';
-import  CurvedText3d from '../components/CurverdText3d';
+import CurvedText3d from '../components/CurverdText3d';
 import { Stats } from '@react-three/drei';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Scene({ island }) {
-  const divRef = useRef(null); 
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 }); 
+  const divRef = useRef(null);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
 
   // Throttle la fonction de mouvement de souris pour mobile
   const throttledMouseMove = useCallback(
     throttle((event) => {
       if (!isMobile) { // Désactiver le suivi de souris sur mobile
-      setMousePosition({
-        x: (event.clientX / window.innerWidth) * 2 - 1,
-        y: -(event.clientY / window.innerHeight) * 2 + 1,
-      });
+        setMousePosition({
+          x: (event.clientX / window.innerWidth) * 2 - 1,
+          y: -(event.clientY / window.innerHeight) * 2 + 1,
+        });
       }
     }, 16), // ~60fps max
     [isMobile]
@@ -65,22 +66,23 @@ export default function Scene({ island }) {
   };
 
   return (
-    <div 
-      id='scene' 
-      ref={divRef} 
+    <div
+      id='scene'
+      ref={divRef}
       className={`w-[100%] fixed h-[100vh] top-0 flex-col items-center justify-center lg:w-full`}
     >
       <div className='w-full h-full'>
         <Canvas {...canvasConfig} id="three-canvas" className=''>
-        <Stats />
+          <Stats />
           <Suspense fallback={null}>
-            <group  position={[0, 0, 0]}>
-            <Model mousePosition={mousePosition} island={island} />
-          {/* <ambientLight position={[-0.08, 0.08, -0.3]} intensity={1} color={'green'} /> */}
-          <CurvedText3d 
-          />
+            <group position={[0, 0, 0]}>
+              <Model2 mousePosition={mousePosition} island={island} />
+              <CurvedText3d
+              />
+              {/* Lumières globales */}
+              <ambientLight intensity={0.5} color='red' intensity={12}/>
+              <directionalLight position={[5, 5, 5]} intensity={5} />
 
-          
             </group>
           </Suspense>
         </Canvas>
@@ -92,7 +94,7 @@ export default function Scene({ island }) {
 // Fonction throttle pour limiter les appels
 function throttle(func, limit) {
   let inThrottle;
-  return function() {
+  return function () {
     const args = arguments;
     const context = this;
     if (!inThrottle) {
