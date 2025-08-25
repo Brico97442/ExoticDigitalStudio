@@ -73,6 +73,8 @@ export default function Scene({ island }) {
     >
       <div className='w-full h-full'>
         <Canvas {...canvasConfig} id="three-canvas" className=''>
+        <fog attach="fog" args={['#0d1b2a', 2, 30]} />
+
           <Stats />
           <Suspense fallback={null}>
             <group position={[0, 0, 0]}>
@@ -81,7 +83,7 @@ export default function Scene({ island }) {
               />
               {/* Lumières globales */}
               <ambientLight intensity={0.5} color='red' intensity={12}/>
-              <directionalLight position={[5, 5, 5]} intensity={5} />
+              <directionalLight position={[5, 5, 5]} intensity={2} />
 
             </group>
           </Suspense>
