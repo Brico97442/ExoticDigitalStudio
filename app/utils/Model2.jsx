@@ -14,7 +14,7 @@ import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader';
 const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
 
 export default function Model({ mousePosition, island }) {
-  const { nodes } = useGLTF('/media/reunion236.glb', true, true, (loader) => {
+  const { nodes } = useGLTF('/media/reunion2363w.glb', true, true, (loader) => {
     loader.setDRACOLoader(new DRACOLoader().setDecoderPath('/draco/'))
   });
   

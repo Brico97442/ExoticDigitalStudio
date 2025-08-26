@@ -73,14 +73,14 @@ export default function Scene({ island }) {
     >
       <div className='w-full h-full'>
         <Canvas {...canvasConfig} id="three-canvas" className=''>
-        <fog attach="fog" args={['#0d1b2a', 2, 30]} />
+        <fog attach="fog" args={['#ffffff', 2, 30]} />
 
           <Stats />
           <Suspense fallback={null}>
             <group position={[0, 0, 0]}>
               <Model2 mousePosition={mousePosition} island={island} />
-              <CurvedText3d
-              />
+              {/* <CurvedText3d
+              /> */}
               {/* Lumières globales */}
               <ambientLight  color='red' intensity={2}/>
               <directionalLight position={[5, 5, 5]} intensity={2} />
