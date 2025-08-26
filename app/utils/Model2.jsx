@@ -31,7 +31,7 @@ export default function Model({ mousePosition, island }) {
       color: new Color(0, 0.2, 0.8), // Bleu
      depthTest:true,
       transparent: true,
-      opacity: 0.2,
+      opacity: 1.0,
     });
   }, []);
   
@@ -75,7 +75,6 @@ export default function Model({ mousePosition, island }) {
         material={basicMaterial}   // ✅ Matériau appliqué directement
         scale={[0.015, 0.015, 0.015]}
         position={[-0.08, 0.08, -0.3]}
-       
       />
     </group>
   );
