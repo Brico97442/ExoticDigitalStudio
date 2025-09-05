@@ -26,6 +26,7 @@ body::-webkit-scrollbar {
 html {
   overflow-y: hidden;
   box-sizing: border-box;
+  cursor: none;
 }
 
 :root {
