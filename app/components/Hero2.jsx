@@ -37,6 +37,7 @@ export default function Hero() {
         ease: 'power4.inOut',
         duration: 10,
         scrollTrigger: {
+          id: 'hero-text-right',
           trigger: containerRef.current,
           start: '15% top',
           end: '80% center',
@@ -51,6 +52,7 @@ export default function Hero() {
         ease: 'power4.inOut',
         duration: 10,
         scrollTrigger: {
+          id: 'hero-text-left',
           trigger: containerRef.current,
           start: '15% top',
           end: '80% center',
@@ -64,6 +66,7 @@ export default function Hero() {
         {
           ease: 'none',
           scrollTrigger: {
+            id: 'hero-pin',
             trigger: containerRef.current,
             start: 'top top',
             end: 'bottom 100%',
@@ -79,6 +82,7 @@ export default function Hero() {
         duration: 2,
         ease: 'linear',
         scrollTrigger: {
+          id: 'hero-images',
           trigger: imagesContainerRef.current,
           start: 'center center',
           end: 'bottom center',
@@ -89,6 +93,7 @@ export default function Hero() {
       // Animation de transition du masque rectangle vers texte avec scale
       const tl = gsap.timeline({
         scrollTrigger: {
+          id: 'hero-mask-timeline',
           trigger: containerRef.current,
           start: 'top top',
           end: 'center bottom',

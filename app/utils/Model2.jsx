@@ -18,7 +18,7 @@ export default function Model({ mousePosition, island }) {
     loader.setDRACOLoader(new DRACOLoader().setDecoderPath('/draco/'))
   });
   
-  console.log("GLTF nodes:", nodes);
+  // console.log("GLTF nodes:", nodes);
   
   const { viewport, size, scene } = useThree();
   const [initialRotation, setInitialRotation] = useState({ x: 0, y: 0 });
