@@ -164,10 +164,12 @@ export default function Home(stickyElement) {
 
         // Supprimer les classes qui pourraient bloquer le scroll
         body.classList.remove('preloading-active');
+        if (isMobile) {
 
-        // Forcer le scroll à être activé
-        // body.style.overflow = 'auto';
-        // html.style.overflow = 'auto';
+          // Forcer le scroll à être activé
+          body.style.overflow = 'auto';
+          html.style.overflow = 'auto';
+        }
       }
     };
 
@@ -186,7 +188,7 @@ export default function Home(stickyElement) {
     }
     requestAnimationFrame(raf);
 
-   
+
 
     // Rafraîchir les triggers à l'init, après chargement et après le préloader / intro héros
     const doRefresh = () => {
@@ -250,9 +252,9 @@ export default function Home(stickyElement) {
           <div className='h-screen flex flex-col items-start justify-between w-full px-[10px] lg:px-[80px] pt-[20px] lg:pt-[100px] relative z-[3]'>
             <div className="lg:w-full flex lg:justify-center">
 
-            <TextReveal staggerValue={"0.03"} classValue="leading-none lg:w-full lg:justify-center text-center">
-              <h2 id='hero-subtitle' className='lg:w-full pointer-events-none mt-[98px] overflow-hidden text-[#003049] text-[24px] tracking-tighter leading-none lg:text-[36px] lg:mt-[10vh] text-center'>Offrez à vos visiteurs une expérience web captivante<br /> parce que chaque clic mérite sa touche de magie.</h2>
-            </TextReveal>
+              <TextReveal staggerValue={"0.03"} classValue="leading-none lg:w-full lg:justify-center text-center">
+                <h2 id='hero-subtitle' className='lg:w-full pointer-events-none mt-[98px] overflow-hidden text-[#003049] text-[24px] tracking-tighter leading-none lg:text-[36px] lg:mt-[10vh] text-center'>Offrez à vos visiteurs une expérience web captivante<br /> parce que chaque clic mérite sa touche de magie.</h2>
+              </TextReveal>
             </div>
 
             <div style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} className="overflow-hidden absolute right-[10px] bottom-[148px] lg:bottom-[52px] lg:right-[80px]" >
@@ -331,7 +333,7 @@ export default function Home(stickyElement) {
         <Hero2 />
         {/* Section services */}
         {/* <Services /> */}
-        <HorizontalSection/>
+        <HorizontalSection />
         {/* <div className="z-[1] flex justify-center py-[20px] lg:py-[80px] px-[20px] lg:px-[50px]"> */}
         {/* <GridAnimation /> */}
         {/* </div> */}
