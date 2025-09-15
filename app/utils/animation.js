@@ -462,7 +462,7 @@ export const animateScene = (divRef) => {
       xPercent: 0, 
       opacity: 0, 
       ease: isMobile() ? "power2.inOut" : "power3.inOut",
-      immediateRender: true,
+      // immediateRender: true,
     }
   );
 };
