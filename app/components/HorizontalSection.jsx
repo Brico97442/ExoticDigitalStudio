@@ -1,6 +1,7 @@
 import React, { useRef, useLayoutEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import HackHover from "./HackHoverEffect";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -42,7 +43,7 @@ export default function HorizontalScroll() {
         end: () => `+=${panels.scrollWidth - window.innerWidth}`,
         anticipatePin: 1,
         invalidateOnRefresh: true,
-        // markers: true, // active pour debug
+        // markers: true, 
         onUpdate: self => {
           scrollTriggerRef.current = self;
         }
@@ -79,8 +80,10 @@ export default function HorizontalScroll() {
     <section ref={section2Ref} className="relative overflow-hidden">
       <div ref={panelsRef} className="flex">
         <div className="min-w-[100vw] h-screen flex items-center justify-center bg-red-500 text-white text-4xl font-bold">
-          Slide 1
-        </div>
+        <HackHover
+        data="Nos services"
+        classValue="z-[7] lg:ml-[70px] lg:mt-[80px] w-full h-full text-[14px] lg:text-[180px] leading-none tracking-tighter font-normal"
+      />        </div>
         <div className="min-w-[100vw] h-screen flex items-center justify-center bg-green-500 text-white text-4xl font-bold">
           Slide 2
         </div>

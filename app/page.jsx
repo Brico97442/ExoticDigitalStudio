@@ -20,12 +20,12 @@ import localFont from 'next/font/local'
 import { useRouter } from 'next/navigation'
 import ScrollProgressSidebar from "./components/ScrollProgressSidebar";
 import HorizontalSection from "./components/HorizontalSection";
-
-
-gsap.registerPlugin(ScrollTrigger)
 import TextScroll from "./components/TextScroll";
 import Link from "next/link";
 import Services from "./components/Services";
+
+
+gsap.registerPlugin(ScrollTrigger)
 const Scene = dynamic(() => import('./utils/Scene'), {
   ssr: false
 });
@@ -128,7 +128,7 @@ export default function Home(stickyElement) {
     const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
 
     const lenis = new Lenis({
-      duration: 2.5,
+      duration: 1.8,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: 'vertical',
       gestureOrientation: 'vertical',
@@ -166,14 +166,14 @@ export default function Home(stickyElement) {
         body.classList.remove('preloading-active');
 
         // Forcer le scroll à être activé
-        body.style.overflow = 'auto';
-        html.style.overflow = 'auto';
+        // body.style.overflow = 'auto';
+        // html.style.overflow = 'auto';
       }
     };
 
     // Écouter la fin du préloader pour déverrouiller le scroll
     const handlePreloaderDone = () => {
-      setTimeout(forceUnlockScroll, 100);
+      setTimeout(forceUnlockScroll);
     };
 
     if (typeof window !== 'undefined') {
@@ -186,34 +186,7 @@ export default function Home(stickyElement) {
     }
     requestAnimationFrame(raf);
 
-    // Réinitialiser les animations hero quand on revient sur la page
-    // const resetHeroAnimations = () => {
-    //   // Réinitialiser les éléments hero
-    //   const heroElements = [
-    //     '#hero-title',
-    //     '#hero-subtitle', 
-    //     '#hero-scroll',
-    //     '#studio-text',
-    //     '#coordinates-gps p'
-    //   ];
-
-    //   heroElements.forEach(selector => {
-    //     const elements = document.querySelectorAll(selector);
-    //     elements.forEach(el => {
-    //       gsap.set(el, { 
-    //         y: 0, 
-    //         opacity: 1, 
-    //         visibility: 'visible',
-    //         clearProps: 'transform,opacity,visibility'
-    //       });
-    //     });
-    //   });
-
-    //   // Relancer les animations
-    //   setTimeout(() => {
-    //     animateHero(textScroll);
-    //   }, 100);
-    // };
+   
 
     // Rafraîchir les triggers à l'init, après chargement et après le préloader / intro héros
     const doRefresh = () => {
@@ -275,9 +248,12 @@ export default function Home(stickyElement) {
         <Scene island={island} />
         <div ref={heroSection} id="hero" className='h-screen sticky w-full flex flex-col items-center top-0 z-[3]'>
           <div className='h-screen flex flex-col items-start justify-between w-full px-[10px] lg:px-[80px] pt-[20px] lg:pt-[100px] relative z-[3]'>
-            <TextReveal staggerValue={"0.03"} classValue="leading-none lg:w-full ">
-              <h2 id='hero-subtitle' className='lg:w-full pointer-events-none mt-[98px] overflow-hidden text-[#003049] text-[24px] tracking-tighter leading-none lg:text-[36px] lg:mt-[10vh] '>Offrez à vos visiteurs une expérience web captivante<br /> parce que chaque clic mérite sa touche de magie.</h2>
+            <div className="lg:w-full flex lg:justify-center">
+
+            <TextReveal staggerValue={"0.03"} classValue="leading-none lg:w-full lg:justify-center text-center">
+              <h2 id='hero-subtitle' className='lg:w-full pointer-events-none mt-[98px] overflow-hidden text-[#003049] text-[24px] tracking-tighter leading-none lg:text-[36px] lg:mt-[10vh] text-center'>Offrez à vos visiteurs une expérience web captivante<br /> parce que chaque clic mérite sa touche de magie.</h2>
             </TextReveal>
+            </div>
 
             <div style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} className="overflow-hidden absolute right-[10px] bottom-[148px] lg:bottom-[52px] lg:right-[80px]" >
               <h3 id='hero-title' className=' bg-slate-900 pointer-events-none text-[#ECECEC] text-[16px] lg:text-[28px] font-bold-sm tracking-tighter py-2 px-6 rounded-lg '>Reunion Island Digital Studio </h3>
@@ -354,8 +330,8 @@ export default function Home(stickyElement) {
         </div>
         <Hero2 />
         {/* Section services */}
-        <Services />
-        {/* <HorizontalSection/> */}
+        {/* <Services /> */}
+        <HorizontalSection/>
         {/* <div className="z-[1] flex justify-center py-[20px] lg:py-[80px] px-[20px] lg:px-[50px]"> */}
         {/* <GridAnimation /> */}
         {/* </div> */}

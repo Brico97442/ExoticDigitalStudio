@@ -62,7 +62,7 @@ function Services() {
       ref={servicesRef}
     >
       <HackHover
-        data="Services"
+        data="Nos services"
         classValue="z-[7] lg:ml-[70px] lg:mt-[80px] w-full h-full text-[14px] lg:text-[180px] leading-none"
       />
 
