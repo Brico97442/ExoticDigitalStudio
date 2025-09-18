@@ -457,9 +457,9 @@ export const animateScene = (divRef) => {
   });
 
   tl.fromTo(divRef.current,
-    { xPercent: 0, opacity: 1 },
+    { opacity: 1 },
     { 
-      xPercent: 0, 
+      
       opacity: 0, 
       ease: isMobile() ? "power2.inOut" : "power3.inOut",
       // immediateRender: true,
