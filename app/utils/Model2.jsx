@@ -9,7 +9,7 @@ import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader';
 const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
 
 export default function Model({ island }) {
-  const { nodes } = useGLTF('/media/reunion2.glb', true, true, (loader) => {
+  const { nodes } = useGLTF('/media/reunion-draco.glb', true, true, (loader) => {
     loader.setDRACOLoader(new DRACOLoader().setDecoderPath('/draco/'))
   });
 
