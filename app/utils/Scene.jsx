@@ -69,7 +69,7 @@ export default function Scene({ island }) {
     <div
       id='scene'
       ref={divRef}
-      className={`w-[100%] fixed h-[100vh] top-0 flex-col items-center justify-center lg:w-full `}
+      className={`w-[100%] fixed h-[100vh] top-0 flex-col items-center justify-center lg:w-full`}
     >
       <div className='w-full h-full'>
         <Canvas {...canvasConfig} id="three-canvas" className=''>
