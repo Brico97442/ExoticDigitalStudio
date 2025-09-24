@@ -171,20 +171,23 @@ p .word,
   display: inline-block;
   transform: translateY(100%);
   opacity: 0;
-  transition: transform 0.6s ease var(--delay-in), opacity 0.4s ease var(--delay-out);
+  transition: transform 0.6s ease, opacity 0.6s ease;
 }
 
+/* Entrée avec stagger */
 .is-visible .word {
   transform: translateY(0);
   opacity: 1;
-  transition-delay: var(--delay-in);
+  transition-delay: var(--delay-in, 0s); /* delay pour l'apparition */
 }
 
+/* Sortie sans stagger */
 .is-hidden .word {
   transform: translateY(100%);
   opacity: 0;
-  transition-delay: var(--delay-out);
+  transition-delay: var(--delay-out, 0s); /* tous disparaissent en même temps */
 }
+
 
 
 

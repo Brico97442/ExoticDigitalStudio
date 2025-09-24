@@ -22,7 +22,7 @@ export default function TextReveal({ children, classValue, staggerValue }) {
     const total = split.words.length;
     split.words.forEach((word, i) => {
       word.style.setProperty('--delay-in', `${i * staggerValue}s`);
-      word.style.setProperty('--delay-out', `${(total - 1 - i) * staggerValue}s`);
+      word.style.setProperty('--delay-out', `0s`); // plus de cascade
     });
 
     // Observer
