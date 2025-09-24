@@ -160,11 +160,13 @@ p .word,
   overflow: hidden; /* c'est ça qui masque */
   vertical-align: bottom;
 }
+
 .word-wrapper {
   display: inline-flex;
   overflow: hidden;
   vertical-align: bottom;
 }
+
 .word {
   display: inline-block;
   transform: translateY(100%);
