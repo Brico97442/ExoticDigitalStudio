@@ -8,10 +8,9 @@ export default function TextReveal({ children, classValue, staggerValue }) {
   useEffect(() => {
     if (!textRef.current) return;
 
-    // Découpage des mots
     const split = new SplitType(textRef.current, { types: 'words' });
 
-    // Wrap chaque mot dans un span avec overflow: hidden
+    // Wrap chaque mot
     split.words.forEach((word) => {
       const wrapper = document.createElement('span');
       wrapper.className = 'word-wrapper inline-block overflow-hidden';
@@ -19,23 +18,27 @@ export default function TextReveal({ children, classValue, staggerValue }) {
       wrapper.appendChild(word);
     });
 
-    // Ajout du stagger via transition-delay
+    // Définir delays entrée ET sortie
+    const total = split.words.length;
     split.words.forEach((word, i) => {
-      word.style.transitionDelay = `${i * staggerValue}s`;
+      word.style.setProperty('--delay-in', `${i * staggerValue}s`);
+      word.style.setProperty('--delay-out', `${(total - 1 - i) * staggerValue}s`);
     });
 
-    // Observer pour déclencher l'animation
+    // Observer
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.querySelectorAll('.word').forEach(w => w.classList.add('is-visible'));
+            entry.target.classList.add('is-visible');
+            entry.target.classList.remove('is-hidden');
           } else {
-            entry.target.querySelectorAll('.word').forEach(w => w.classList.remove('is-visible'));
+            entry.target.classList.remove('is-visible');
+            entry.target.classList.add('is-hidden');
           }
         });
       },
-      { threshold: 0.15, rootMargin: '0px 0px -25% 0px'}
+      { threshold: 0.15, rootMargin: '0px 0px -25% 0px' }
     );
 
     observer.observe(textRef.current);

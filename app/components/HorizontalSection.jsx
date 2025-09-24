@@ -2,6 +2,7 @@ import React, { useRef, useLayoutEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import HackHover from "./HackHoverEffect";
+import TextReveal from "./TextReveal";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -77,20 +78,43 @@ export default function HorizontalScroll() {
   }, []);
 
   return (
-    <section ref={section2Ref} className="relative overflow-hidden">
-      <div ref={panelsRef} className="flex">
-        <div className="min-w-[100vw] h-screen flex items-center justify-center bg-red-500 text-white text-4xl font-bold">
-        <HackHover
-        data="Nos services"
-        classValue="z-[7] lg:ml-[70px] lg:mt-[80px] w-full h-full text-[14px] lg:text-[180px] leading-none tracking-tighter font-normal"
-      />        </div>
-        <div className="min-w-[100vw] h-screen flex items-center justify-center bg-green-500 text-white text-4xl font-bold">
-          Slide 2
+    <section ref={section2Ref} className="relative">
+      <div ref={panelsRef} className="flex w-full">
+
+        {/* section1 */}
+        <div className="min-w-[100vw] w-full h-screen flex justify-end items-center relative bg-red-500 text-white text-4xl">
+          <HackHover
+            data="Nos services"
+            classValue="w-auto h-auto text-[14px] lg:text-[280px] leading-none tracking-tighter lg:absolute lg:bottom-[80px] lg:left-[80px]"
+          />
+          <div className=" w-1/2">
+            <TextReveal classValue="text-right max-w-[80%] text-[36px]" staggerValue={"0.03"}>
+              <p className="text-right max-w-[80%] text-[36px]">Nous réalisons pour vous des sites sur demandes chaque site conçus par mes soins reflète votre efficacité et votre exigence. </p>
+            </TextReveal>
+          </div>
+
         </div>
-        <div className="min-w-[100vw] h-screen flex items-center justify-center bg-blue-500 text-white text-4xl font-bold">
-          Slide 3
+
+        {/* section2 */}
+        <div className="min-w-[100vw] h-screen flex items-center bg-green-500 lg:p-[80px]">
+          <TextReveal classValue="lg:text-[180px]" staggerValue={"0.08"}>
+            <h2 className='pointer-events-none tracking-tight lg:text-[180px] text-white'>
+              Développement
+            </h2>
+          </TextReveal>
         </div>
-        <div className="min-w-[100vw] h-screen flex items-center justify-center bg-purple-500 text-white text-4xl font-bold">
+
+        {/* section3 */}
+        <div className="min-w-[100vw] h-screen flex items-center justify-center bg-blue-500 text-white">
+          <TextReveal classValue="lg:text-[180px]" staggerValue={"0.08"}>
+            <h2 className='pointer-events-none tracking-tight lg:text-[180px] text-white'>
+              Design
+            </h2>
+          </TextReveal>
+        </div>
+
+        {/* section4 */}
+        <div className="min-w-[100vw] h-screen flex items-center justify-center bg-purple-500 text-white text-4xl">
           Slide 4
         </div>
       </div>
