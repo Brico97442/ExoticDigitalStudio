@@ -280,10 +280,9 @@ export default function Home(stickyElement) {
             </div>
 
             <div className="overflow-hidden mb-[10px] lg:mr-[50px] lg:mb-[80px]">
-              <TextReveal staggerValue={"0.03"} classValue="leading-none h-auto lg:w-full ">
-
+              {/* <TextReveal staggerValue={"0.03"} classValue="leading-none h-auto lg:w-full "> */}
                 <h2 id='studio-text' className='overflow-hidden text-[#003049] pointer-events-none leading-none text-[24px] lg:text-[36px] font-bold-sm tracking-tighter '>Créateur de solutions digitales</h2>
-              </TextReveal>
+              {/* </TextReveal> */}
 
             </div>
             <HorizontalScroll />

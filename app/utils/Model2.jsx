@@ -62,20 +62,20 @@ export default function ParticleIsland({ island }) {
   const pointsMaterial = useMemo(() => {
     return new THREE.PointsMaterial({
       vertexColors: true,
-      size: 0.025,
+      size: 0.02,
       transparent: true,
       opacity: 1.0,
     });
   }, []);
 
   // --- Lumière ---
-  useEffect(() => {
-    if (!scene || isMobile) return;
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 1.2);
-    directionalLight.position.set(5, 5, 5);
-    scene.add(directionalLight);
-    return () => scene.remove(directionalLight);
-  }, [scene]);
+  // useEffect(() => {
+  //   if (!scene || isMobile) return;
+  //   const directionalLight = new THREE.DirectionalLight(0xffffff, 1.2);
+  //   directionalLight.position.set(5, 5, 5);
+  //   scene.add(directionalLight);
+  //   return () => scene.remove(directionalLight);
+  // }, [scene]);
 
   // --- Animations d'intro ---
   useEffect(() => {
@@ -130,9 +130,9 @@ export default function ParticleIsland({ island }) {
       const mouseX = mouseRef.current[0] * 50; // Ajustement échelle
       const mouseY = mouseRef.current[1] * 35; // Ajustement échelle
       
-      const repulsionRadius = 10; // Rayon d'influence
-      const repulsionStrength = 1.5; // Force de répulsion
-      const returnSpeed = 0.05; // Vitesse de retour
+      const repulsionRadius = 15; // Rayon d'influence
+      const repulsionStrength = 4; // Force de répulsion
+      const returnSpeed = 0.02; // Vitesse de retour
       
       for (let i = 0; i < positions.length; i += 3) {
         const particleX = originalPositions[i];
@@ -172,36 +172,6 @@ export default function ParticleIsland({ island }) {
     }
     
     pointsGeometry.attributes.position.needsUpdate = true;
-
-    // Si le test ci-dessus fonctionne, remplacez-le par la répulsion :
-    /*
-    if (!isMobile) {
-      const mouseWorldX = mouseRef.current[0] * 2; // Ajustez selon votre échelle
-      const mouseWorldY = mouseRef.current[1] * 2;
-      
-      for (let i = 0; i < positions.length; i += 3) {
-        const dx = positions[i] - mouseWorldX;
-        const dy = positions[i + 1] - mouseWorldY;
-        const distance = Math.sqrt(dx * dx + dy * dy);
-        
-        if (distance < 0.5 && distance > 0) {
-          const force = (1 - distance / 0.5) * 0.05;
-          const pushX = (dx / distance) * force;
-          const pushY = (dy / distance) * force;
-          
-          positions[i] += pushX;
-          positions[i + 1] += pushY;
-        } else {
-          // Retour vers position originale
-          positions[i] += (originalPositions[i] - positions[i]) * 0.03;
-          positions[i + 1] += (originalPositions[i + 1] - positions[i + 1]) * 0.03;
-          positions[i + 2] += (originalPositions[i + 2] - positions[i + 2]) * 0.03;
-        }
-      }
-      
-      pointsGeometry.attributes.position.needsUpdate = true;
-    }
-    */
   });
 
   return (
