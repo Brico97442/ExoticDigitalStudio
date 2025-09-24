@@ -171,7 +171,7 @@ p .word,
   display: inline-block;
   transform: translateY(100%);
   opacity: 0;
-  transition: transform 0.6s ease var(--delay-in), opacity 0.6s ease var(--delay-in);
+  transition: transform 0.6s ease var(--delay-in), opacity 0.4s ease var(--delay-out);
 }
 
 .is-visible .word {
