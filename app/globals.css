@@ -188,6 +188,26 @@ p .word,
   transition-delay: var(--delay-out, 0s); /* tous disparaissent en même temps */
 }
 
+.text-scroll .text-scroll-word {
+  display: inline-block !important;
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+.text-scroll .text-scroll-char {
+  display: inline-block !important;
+  /* Les caractères seront animés par GSAP, pas par CSS */
+}
+
+/* S'assurer que les styles de TextReveal ne s'appliquent pas à TextScroll */
+.text-scroll .word {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+/*opacity scroll*/
 
 
 

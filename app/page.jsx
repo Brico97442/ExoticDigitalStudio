@@ -312,6 +312,12 @@ export default function Home(stickyElement) {
                     je suis spécialisé dans la <strong> création de site internet moderne</strong>, qui place l&apos;utilisateur au cœur d&apos;une expérience unique.
                   </p>
                 </TextReveal>
+                <TextScroll className=" flex justify-end">
+                  <p className=' w-full pointer-events-none text-right tracking-tight text-[16px] lg:text-[32px] lg:w-2/3 leading-none text-white z-50'>
+                    Développeur freelance basée à l&apos;ile de la Réunion <br />
+                    je suis spécialisé dans la <strong> création de site internet moderne</strong>, qui place l&apos;utilisateur au cœur d&apos;une expérience unique.
+                  </p>
+                </TextScroll>
               </div>
               <div className="w-full text-left">
                 <TextReveal staggerValue={"0.03"} classValue="flex w-full justify-start text-right leading-none">
