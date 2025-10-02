@@ -67,11 +67,12 @@ body {
 .cky-powered-by {
   display: none !important;
 }
-
+#logo-link img{
+  mix-blend-mode: difference;
+}
 /* .cky-consent-bar > div:nth-child(2) {
  display: none!important;
 } */
-
 
 /* section span {
   display: block;

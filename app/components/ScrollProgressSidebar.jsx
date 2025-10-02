@@ -43,7 +43,7 @@ const sidebarContainerStyle = {
   backgroundColor: "#ECECEC",
   borderRadius: "6px",
   overflow: "hidden",
-  zIndex: 8,
+  zIndex: 0,
   border:"none",
   outline:"none",
 };

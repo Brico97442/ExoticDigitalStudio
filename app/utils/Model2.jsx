@@ -8,8 +8,8 @@ import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader';
 
 const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
 
-export default function ParticleIsland({ island }) {
-  const { nodes } = useGLTF('/media/reunion-draco.glb', true, true, (loader) => {
+export default function ParticleIsland({ island, color = '#6a1b9a' }) {
+  const { nodes } = useGLTF('/media/reunion-draco2.glb', true, true, (loader) => {
     loader.setDRACOLoader(new DRACOLoader().setDecoderPath('/draco/'));
   });
 
@@ -61,26 +61,31 @@ export default function ParticleIsland({ island }) {
   // --- Material ---
   const pointsMaterial = useMemo(() => {
     return new THREE.PointsMaterial({
-      vertexColors: true,
-      size: 0.02,
+      color: new THREE.Color(color),
+      vertexColors: false,
+      size: 0.01,
       transparent: true,
       opacity: 1.0,
     });
-  }, []);
+  }, [color]);
 
   // --- Lumière ---
-  // useEffect(() => {
-  //   if (!scene || isMobile) return;
-  //   const directionalLight = new THREE.DirectionalLight(0xffffff, 1.2);
-  //   directionalLight.position.set(5, 5, 5);
-  //   scene.add(directionalLight);
-  //   return () => scene.remove(directionalLight);
-  // }, [scene]);
+  useEffect(() => {
+    if (!scene || isMobile) return;
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 1.2);
+    directionalLight.position.set(5, 5, 5);
+    scene.add(directionalLight);
+    return () => scene.remove(directionalLight);
+  }, [scene]);
 
   // --- Animations d'intro ---
   useEffect(() => {
     if (!island.current) return;
-    island.current.rotation.set(25 * Math.PI / 180, -80 * Math.PI / 180, 0);
+    island.current.rotation.set(
+      25 * Math.PI / 180,
+      -80 * Math.PI / 180,
+      0.1
+    );
     island.current.visible = false;
 
     const runIntro = () => animateIslandIntro(island);
@@ -118,39 +123,39 @@ export default function ParticleIsland({ island }) {
     if (!isMobile) {
       const maxYaw = 0.1;
       const targetY = mouseRef.current[0] * maxYaw;
-      containerRef.current.rotation.y += (targetY - containerRef.current.rotation.y) * 0.12;
+      containerRef.current.rotation.y += (targetY - containerRef.current.rotation.y) * 0.40;
     }
 
     // 🎯 RÉPULSION MOUSE - Version simplifiée
     const positions = pointsGeometry.attributes.position.array;
-    
+
     if (!isMobile) {
       // Convertir les coordonnées souris normalisées vers l'espace du modèle
       // Le modèle est centré autour de 0,0 avec une échelle de ~1 unité
-      const mouseX = mouseRef.current[0] * 50; // Ajustement échelle
-      const mouseY = mouseRef.current[1] * 35; // Ajustement échelle
-      
-      const repulsionRadius = 15; // Rayon d'influence
-      const repulsionStrength = 4; // Force de répulsion
-      const returnSpeed = 0.02; // Vitesse de retour
-      
+      const mouseX = mouseRef.current[0] * 80; // Ajustement échelle
+      const mouseY = mouseRef.current[1] * 20; // Ajustement échelle
+
+      const repulsionRadius = 10; // Rayon d'influence
+      const repulsionStrength = 6; // Force de répulsion
+      const returnSpeed = 0.2; // Vitesse de retour
+
       for (let i = 0; i < positions.length; i += 3) {
         const particleX = originalPositions[i];
         const particleY = originalPositions[i + 1];
-        
+
         // Distance entre particule et souris (ignorons Z pour simplifier)
         const dx = particleX - mouseX;
         const dy = particleY - mouseY;
         const distance = Math.sqrt(dx * dx + dy * dy);
-        
+
         if (distance < repulsionRadius && distance > 0.1) {
           // Force décroissante avec la distance
-          const force = (1 - distance / repulsionRadius) * repulsionStrength;
-          
+          const force = (2 - distance / repulsionRadius) * repulsionStrength;
+
           // Direction de répulsion normalisée
           const pushX = (dx / distance) * force;
           const pushY = (dy / distance) * force;
-          
+
           // Appliquer la répulsion
           positions[i] = originalPositions[i] + pushX;
           positions[i + 1] = originalPositions[i + 1] + pushY;
@@ -170,7 +175,7 @@ export default function ParticleIsland({ island }) {
         positions[i + 2] += (originalPositions[i + 2] - positions[i + 2]) * 0.05;
       }
     }
-    
+
     pointsGeometry.attributes.position.needsUpdate = true;
   });
 

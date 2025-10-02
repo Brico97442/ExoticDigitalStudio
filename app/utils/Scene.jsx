@@ -1,14 +1,16 @@
 import React, { useEffect, useRef, Suspense, useState, useCallback } from 'react';
 import { Canvas } from '@react-three/fiber';
-// import { OrbitControls, Environment } from '@react-three/drei';
+import { OrbitControls, Environment } from '@react-three/drei';
 // import Model from './Model';
 import Model2 from './Model2';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
 import { animateScene } from './animation';
 import CurvedText3d from '../components/CurverdText3d';
-import { Stats } from '@react-three/drei';
-
+import { AccumulativeShadows, RandomizedLight, Stats } from '@react-three/drei';
+import { Bloom, DepthOfField, EffectComposer, ShaderPass, KawaseBlur } from '@react-three/postprocessing';
+import * as THREE from 'three';
+import { BlurPass } from 'postprocessing';
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Scene({ island }) {
@@ -73,20 +75,28 @@ export default function Scene({ island }) {
     >
       <div className='w-full h-full'>
         <Canvas {...canvasConfig} id="three-canvas" className=''>
-        <fog attach="fog" args={['#ffffff', 2, 30]} />
+          
 
+          <fog attach="fog" args={['#771A66', 6, 2]} />
           <Stats />
           <Suspense fallback={null}>
+
             <group position={[0, 0, 0]}>
-              <Model2 mousePosition={mousePosition} island={island} />
+              <Model2 mousePosition={mousePosition} island={island} color="#ECECEC" />
               {/* <CurvedText3d
               /> */}
               {/* Lumières globales */}
-              <ambientLight  color='red' intensity={2}/>
-              <directionalLight position={[5, 5, 5]} intensity={2} />
+              {/* <ambientLight  color='red' intensity={20}/> */}
+              {/* <directionalLight position={[0, 0, -1]} intensity={200} color='#C1121F'/> */}
+
+              {/* <AccumulativeShadows frames={100} alphaTest={0.85} opacity={0.8} color="red" scale={20} position={[0, -0.005, 0]}> */}
+              {/* <RandomizedLight amount={8} radius={6} ambient={0.5} intensity={1} position={[-1.5, 2.5, -2.5]} bias={0.001} /> */}
+              {/* </AccumulativeShadows> */}
+              {/* <OrbitControls /> */}
 
             </group>
           </Suspense>
+            
         </Canvas>
       </div>
     </div>

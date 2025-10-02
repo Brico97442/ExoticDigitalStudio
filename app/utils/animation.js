@@ -1,6 +1,7 @@
 // animation.js - Version complète avec tous les exports
 import gsap from "gsap";
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import * as THREE from 'three';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -334,11 +335,11 @@ export const animateIsland = (island) => {
         { x: -0.08, y: 0.2, z: -0.15, duration: 0.4, ease: "power1.inOut" }
       )
       .to(island.current.position, {
-        x: -0.08, y: 0.1, z: -0.2, duration: 0.25, ease: "power1.inOut"
+        x: -0.08, y: 0.1, z: -0.15, duration: 0.25, ease: "power1.inOut"
       })
-      .to(island.current.position, {
-        x: -0.1, y: 0.12, z: -0.25, duration: 0.25, ease: "power1.inOut"
-      });
+      // .to(island.current.position, {
+      //   x: -0.1, y: 0.12, z: -0.25, duration: 0.25, ease: "power1.inOut"
+      // });
   }
 
   // Animation rotation
@@ -362,13 +363,16 @@ export const animateIsland = (island) => {
   );
 
   // Animation couleur (désactivée sur mobile)
-  if ( island.current.material?.color) {
+  if (island.current.material?.color) {
+    // Couleur cible #072737
+    const targetColor = new THREE.Color('#072737');
+  
     gsap.to(island.current.material.color, {
-      r: 0.5,
-      g: 0.1,
-      b: 0.4,
+      r: targetColor.r,
+      g: targetColor.g,
+      b: targetColor.b,
       ease: "power1.inOut",
-      duration: 6,
+      duration: 0.5,
       delay: 5,
       scrollTrigger: {
         trigger: "#hero",
@@ -469,7 +473,7 @@ export const animateScene = (divRef) => {
 
 export const animateAbout = () => {
   gsap.to(["#main"], {
-    backgroundColor: "#0E0E0E",
+    backgroundColor: "#ECECEC",
     ease: "power1.in",
     scrollTrigger: {
       trigger: "#about",
@@ -493,7 +497,7 @@ export const forceHeroReset = () => {
   const heroElements = [
     '#hero-title',
     '#hero-subtitle', 
-    // '#hero-scroll',
+    '#hero-scroll',
     '#studio-text',
     '#coordinates-gps p'
   ];

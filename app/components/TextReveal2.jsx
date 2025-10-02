@@ -8,7 +8,7 @@ export default function TextReveal({ children, classValue, staggerValue }) {
   useEffect(() => {
     if (!textRef.current) return;
 
-    const split = new SplitType(textRef.current, { types: 'words' });
+    const split = new SplitType(textRef.current, { types: 'letters' });
 
     // Wrap chaque mot
     split.words.forEach((word) => {

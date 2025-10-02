@@ -17,21 +17,32 @@ export default function HorizontalScroll() {
     const panels = panelsRef.current;
     if (!section || !panels) return;
 
+    // --- Fonction pour définir la hauteur du section ---
     const setSectionHeight = () => {
-      // distance horizontale totale à scroller
       const scrollWidth = panels.scrollWidth;
       const viewportWidth = window.innerWidth;
       const totalHorizontal = Math.max(0, scrollWidth - viewportWidth);
-
-      // hauteur verticale nécessaire = viewportHeight + distance horizontale
       section.style.height = `${window.innerHeight + totalHorizontal}px`;
-
       return totalHorizontal;
     };
 
-    // initial
+    // --- Optimisation refresh avec requestAnimationFrame ---
+    let refreshPending = false;
+    const refreshScrollTrigger = () => {
+      if (!refreshPending) {
+        refreshPending = true;
+        requestAnimationFrame(() => {
+          setSectionHeight();
+          ScrollTrigger.refresh();
+          refreshPending = false;
+        });
+      }
+    };
+
+    // --- Initialisation hauteur ---
     setSectionHeight();
 
+    // --- Création tween GSAP ---
     const tween = gsap.to(panels, {
       x: () => -(panels.scrollWidth - window.innerWidth),
       ease: "none",
@@ -44,25 +55,23 @@ export default function HorizontalScroll() {
         end: () => `+=${panels.scrollWidth - window.innerWidth}`,
         anticipatePin: 1,
         invalidateOnRefresh: true,
-        // markers: true, 
-        onUpdate: self => {
-          scrollTriggerRef.current = self;
-        }
+        onUpdate: (self) => (scrollTriggerRef.current = self),
+        // markers: true,
       },
     });
 
-    // Resize: recalculer hauteur + refresh ScrollTrigger
-    const onResize = () => {
-      setSectionHeight();
-      ScrollTrigger.refresh();
-    };
+    // --- Resize listener ---
+    const onResize = refreshScrollTrigger;
     window.addEventListener("resize", onResize);
 
-    // ResizeObserver sur panels pour gérer chargement d'images / contenu dynamique
+    // --- ResizeObserver optimisé ---
     if ("ResizeObserver" in window) {
+      let previousScrollWidth = panels.scrollWidth;
       roRef.current = new ResizeObserver(() => {
-        setSectionHeight();
-        ScrollTrigger.refresh();
+        if (panels.scrollWidth !== previousScrollWidth) {
+          previousScrollWidth = panels.scrollWidth;
+          refreshScrollTrigger();
+        }
       });
       roRef.current.observe(panels);
     }
@@ -72,53 +81,64 @@ export default function HorizontalScroll() {
       if (roRef.current) roRef.current.disconnect();
       tween.kill();
       if (scrollTriggerRef.current) scrollTriggerRef.current.kill();
-      // restaurer style
       section.style.height = "";
     };
   }, []);
 
   return (
     <section ref={section2Ref} className="relative">
-      <div ref={panelsRef} className="flex w-full">
-
+      <div
+        ref={panelsRef}
+        className="flex w-full"
+        style={{ willChange: "transform" }} // GPU optimization
+      >
         {/* section1 */}
-        <div className="min-w-[100vw] w-full h-screen flex justify-end items-center relative bg-red-500 text-white text-4xl">
+        <div className="min-w-[100vw] w-full h-screen flex justify-end items-center relative bg-[#070707] text-4xl">
           <HackHover
             data="Nos services"
-            classValue="w-auto h-auto text-[14px] lg:text-[280px] leading-none tracking-tighter lg:absolute lg:bottom-[80px] lg:left-[80px]"
+            classValue="w-auto h-auto text-[14px] lg:text-[280px] leading-none tracking-tighter text-white lg:absolute lg:bottom-[80px] lg:left-[80px] "
           />
-          <div className=" w-1/2">
-            <TextReveal classValue="text-right max-w-[80%] text-[36px]" staggerValue={"0.03"}>
-              <p className="text-right max-w-[80%] text-[36px]">Nous réalisons pour vous des sites sur demandes chaque site conçus par mes soins reflète votre efficacité et votre exigence. </p>
+          <div className="w-1/2">
+            <TextReveal
+              classValue="text-right max-w-[80%] text-[36px] text-white"
+              staggerValue={"0.03"}
+            >
+              <p className="text-right max-w-[80%] text-[36px]">
+                Nous réalisons pour vous des sites sur demandes chaque site
+                conçus par mes soins reflète votre efficacité et votre
+                exigence.
+              </p>
             </TextReveal>
           </div>
-
         </div>
 
         {/* section2 */}
         <div className="min-w-[100vw] h-screen flex items-center bg-green-500 lg:p-[80px]">
           <TextReveal classValue="lg:text-[180px]" staggerValue={"0.08"}>
-            <h2 className='pointer-events-none tracking-tight lg:text-[180px] text-white'>
+            <h2 className="pointer-events-none tracking-tight lg:text-[180px] text-[#070707]">
               Développement
             </h2>
           </TextReveal>
         </div>
 
         {/* section3 */}
-        <div className="min-w-[100vw] h-screen flex items-center justify-center bg-blue-500 text-white">
+        <div className="min-w-[100vw] h-screen flex items-center lg:p-[80px] bg-blue-500 text-[#070707]">
           <TextReveal classValue="lg:text-[180px]" staggerValue={"0.08"}>
-            <h2 className='pointer-events-none tracking-tight lg:text-[180px] text-white'>
+            <h2 className="pointer-events-none tracking-tight lg:text-[180px] text-[#070707]">
               Design
             </h2>
           </TextReveal>
         </div>
 
         {/* section4 */}
-        <div className="min-w-[100vw] h-screen flex items-center justify-center bg-purple-500 text-white text-4xl">
-          Slide 4
+        <div className="min-w-[100vw] h-screen flex items-center lg:p-[80px] bg-purple-500 text-[#070707] text-4xl">
+          <TextReveal classValue="lg:text-[180px]" staggerValue={"0.08"}>
+            <h2 className="pointer-events-none tracking-tight lg:text-[180px] text-[#070707]">
+              Motion
+            </h2>
+          </TextReveal>
         </div>
       </div>
     </section>
   );
 }
-

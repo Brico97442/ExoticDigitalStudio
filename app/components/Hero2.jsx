@@ -164,24 +164,25 @@ export default function Hero() {
               {/* Masque texte (final) */}
               <g ref={textMaskRef} style={{ opacity: 0 }}>
                 <text
-                  x='10%' y='40%'
+                  x='50px' y='40%'
                   textAnchor='start'
                   dominantBaseline='middle'
-                  fontSize='150px'
+                  fontSize='180px'
                   fill='black'
                   fontWeight='semi-bold'
+                  letterSpacing='0.01'
                 >
                   OSER
                 </text>
                 <text
-                  x='10%' y='55%'
+                  x='10%' y='56%'
                   textAnchor='start'
                   dominantBaseline='middle'
-                  fontSize='150px'
+                  fontSize='180px'
                   fill='black'
                   fontWeight='semi-bold'
                 >
-                  LA DIFFÉRENCE
+                INNOVER
                 </text>
               </g>
             </mask>

@@ -2,7 +2,7 @@
 import { forwardRef, useState, useEffect, useRef } from "react"
 import TransitionLink from "../utils/TransitionLink"
 import Image from "next/image"
-import logo from "../../assets/LogoExoticDigitalStudioVectorised.webp"
+import logo from "../../assets/LogoExoticDigitalStudioWhiteVectorised.png"
 import Magnetic from '../utils/Magnetic'
 import Aside from './Aside'
 import TextReveal from "./TextReveal"
@@ -57,15 +57,15 @@ const Navbar = forwardRef(function Index(props, ref) {
     }
 
     return (
-        <header className="flex w-full absolute h-[80px] lg:h-[180px] items-center justify-center z-[6]">
-            <nav className="flex justify-between w-full items-center px-[10px] lg:px-[80px]">
+        <header className="flex w-full fixed h-[80px] lg:h-[180px] items-center justify-center z-[6]">
+            <nav className="flex justify-between w-full items-center px-[10px] lg:px-[80px] ">
                 <Magnetic>
-                    <div id="logo-link" className="flex z-[900]">
+                    <div id="logo-link" className="flex z-[6] mix-blend-difference">
                         <TransitionLink href='/' label={<Image src={logo} alt="logo de la compagnie" className="z-[100] " width={80} height={55.83} />} />
                     </div>
                 </Magnetic>
-                <ul className="flex items-center transition text-black text-lg">
-                    <div id='navlink' className={`flex gap-[50px] lg:visible z-[6] transition-all duration-300 ease-in-out text-[14px] lg:text-[22px] ${isScrolled ? 'opacity-0 max-h-0 overflow-hidden' : 'opacity-100 max-h-[100px]'}`}>
+                <ul className="flex items-center transition text-[#ECECEC] text-lg">
+                    <div id='navlink' className={`flex gap-[50px] lg:visible z-[6] transition-all duration-300 ease-in-out text-[14px] lg:text-[22px] ${isScrolled ? 'opacity-0 max-h-0 overflow-hidden' : 'opacity-100 max-h-[100px] mix-blend-difference'}`}>
                         <li className=" transition ease hover:text-[#771A66] z-[5]">
                             <Magnetic>
                                 <TransitionLink href="/pricing" label="Processus" />
