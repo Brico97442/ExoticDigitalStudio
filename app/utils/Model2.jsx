@@ -8,13 +8,11 @@ import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader';
 
 const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
 
-export default function ParticleIsland({ island, color = '#6a1b9a' }) {
-  const { viewport, size, scene, camera } = useThree();
-  const { nodes } = size.width < 768 ? useGLTF('/media/reunion23.glb', true, true, (loader) => {
-    loader.setDRACOLoader(new DRACOLoader().setDecoderPath('/draco/'));
-  }) : useGLTF('/media/reunion-draco2.glb', true, true, (loader) => {
-    loader.setDRACOLoader(new DRACOLoader().setDecoderPath('/draco/'));
-  });
+// -------------------------------------------------------------------
+// Base component qui reçoit les `nodes` (peu importe le modèle choisi)
+// -------------------------------------------------------------------
+function ParticleIslandBase({ island, color = '#6a1b9a', nodes }) {
+  const { viewport, size, scene } = useThree();
 
   const scaleFactor = size.width < 768 ? 1.6 : 0.95;
   const groupScale = (viewport.width / 2.4) * scaleFactor;
@@ -50,14 +48,13 @@ export default function ParticleIsland({ island, color = '#6a1b9a' }) {
   // --- Geometry avec positions modifiables ---
   const pointsGeometry = useMemo(() => {
     const geom = new THREE.BufferGeometry();
-    // IMPORTANT: Créer un nouveau Float32Array pour pouvoir le modifier
     const modifiablePositions = new Float32Array(sampledPositions);
     geom.setAttribute('position', new THREE.BufferAttribute(modifiablePositions, 3));
     geom.setAttribute('color', new THREE.Float32BufferAttribute(sampledColors, 3));
     return geom;
   }, [sampledPositions, sampledColors]);
 
-  // --- Original positions - copie séparée ---
+  // --- Positions originales ---
   const originalPositions = useMemo(() => new Float32Array(sampledPositions), [sampledPositions]);
 
   // --- Material ---
@@ -80,14 +77,10 @@ export default function ParticleIsland({ island, color = '#6a1b9a' }) {
     return () => scene.remove(directionalLight);
   }, [scene]);
 
-  // --- Animations d'intro ---
+  // --- Animation d'intro ---
   useEffect(() => {
     if (!island.current) return;
-    island.current.rotation.set(
-      25 * Math.PI / 180,
-      -80 * Math.PI / 180,
-      0.1
-    );
+    island.current.rotation.set(25 * Math.PI / 180, -80 * Math.PI / 180, 0.1);
     island.current.visible = false;
 
     const runIntro = () => animateIslandIntro(island);
@@ -111,66 +104,52 @@ export default function ParticleIsland({ island, color = '#6a1b9a' }) {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
-  // --- Loop ---
+  // --- Animation loop ---
   useFrame((state) => {
     if (!containerRef.current || !island.current) return;
     const t = state.clock.getElapsedTime();
 
-    // ✅ Flotte
+    // Flottement
     const floatAmp = 0.02;
     const floatSpeed = 1;
     containerRef.current.position.y = Math.sin(t * floatSpeed) * floatAmp;
 
-    // ✅ Rotation Y selon souris
+    // Rotation avec la souris
     if (!isMobile) {
       const maxYaw = 0.1;
       const targetY = mouseRef.current[0] * maxYaw;
       containerRef.current.rotation.y += (targetY - containerRef.current.rotation.y) * 0.40;
     }
 
-    // 🎯 RÉPULSION MOUSE - Version simplifiée
+    // Répulsion souris
     const positions = pointsGeometry.attributes.position.array;
-
     if (!isMobile) {
-      // Convertir les coordonnées souris normalisées vers l'espace du modèle
-      // Le modèle est centré autour de 0,0 avec une échelle de ~1 unité
-      const mouseX = mouseRef.current[0] * 80; // Ajustement échelle
-      const mouseY = mouseRef.current[1] * 20; // Ajustement échelle
+      const mouseX = mouseRef.current[0] * 80;
+      const mouseY = mouseRef.current[1] * 20;
 
-      const repulsionRadius = 10; // Rayon d'influence
-      const repulsionStrength = 6; // Force de répulsion
-      const returnSpeed = 0.2; // Vitesse de retour
+      const repulsionRadius = 10;
+      const repulsionStrength = 6;
+      const returnSpeed = 0.2;
 
       for (let i = 0; i < positions.length; i += 3) {
-        const particleX = originalPositions[i];
-        const particleY = originalPositions[i + 1];
-
-        // Distance entre particule et souris (ignorons Z pour simplifier)
-        const dx = particleX - mouseX;
-        const dy = particleY - mouseY;
+        const dx = originalPositions[i] - mouseX;
+        const dy = originalPositions[i + 1] - mouseY;
         const distance = Math.sqrt(dx * dx + dy * dy);
 
         if (distance < repulsionRadius && distance > 0.1) {
-          // Force décroissante avec la distance
           const force = (2 - distance / repulsionRadius) * repulsionStrength;
-
-          // Direction de répulsion normalisée
           const pushX = (dx / distance) * force;
           const pushY = (dy / distance) * force;
-
-          // Appliquer la répulsion
           positions[i] = originalPositions[i] + pushX;
           positions[i + 1] = originalPositions[i + 1] + pushY;
-          positions[i + 2] = originalPositions[i + 2]; // Garder Z original
+          positions[i + 2] = originalPositions[i + 2];
         } else {
-          // Retour progressif vers position originale
           positions[i] += (originalPositions[i] - positions[i]) * returnSpeed;
           positions[i + 1] += (originalPositions[i + 1] - positions[i + 1]) * returnSpeed;
           positions[i + 2] += (originalPositions[i + 2] - positions[i + 2]) * returnSpeed;
         }
       }
     } else {
-      // Sur mobile, juste remettre les positions originales
       for (let i = 0; i < positions.length; i += 3) {
         positions[i] += (originalPositions[i] - positions[i]) * 0.05;
         positions[i + 1] += (originalPositions[i + 1] - positions[i + 1]) * 0.05;
@@ -194,4 +173,29 @@ export default function ParticleIsland({ island, color = '#6a1b9a' }) {
       </group>
     </group>
   );
+}
+
+// -------------------------------------------------------------------
+// Composants spécifiques (chargent chacun un modèle différent)
+// -------------------------------------------------------------------
+function ReunionModel(props) {
+  const { nodes } = useGLTF('/media/reunion23.glb', true, true, (loader) => {
+    loader.setDRACOLoader(new DRACOLoader().setDecoderPath('/draco/'));
+  });
+  return <ParticleIslandBase {...props} nodes={nodes} />;
+}
+
+function DracoModel(props) {
+  const { nodes } = useGLTF('/media/reunion-draco2.glb', true, true, (loader) => {
+    loader.setDRACOLoader(new DRACOLoader().setDecoderPath('/draco/'));
+  });
+  return <ParticleIslandBase {...props} nodes={nodes} />;
+}
+
+// -------------------------------------------------------------------
+// Choix du modèle selon la taille de l'écran
+// -------------------------------------------------------------------
+export default function ParticleIsland(props) {
+  const { size } = useThree();
+  return size.width < 768 ? <ReunionModel {...props} /> : <DracoModel {...props} />;
 }
