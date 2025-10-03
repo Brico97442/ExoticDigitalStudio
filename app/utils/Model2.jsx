@@ -4,28 +4,16 @@ import { useGLTF } from '@react-three/drei';
 import { useThree, useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 import { animateIsland, animateIslandIntro } from './animation';
-import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
+import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader';
 
-const isMobile = typeof window !== 'undefined' ? window.innerWidth < 768 : false;
+const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
 
 export default function ParticleIsland({ island, color = '#6a1b9a' }) {
   const { viewport, size, scene, camera } = useThree();
   const { nodes } = size.width < 768 ? useGLTF('/media/reunion2.glb', true, true, (loader) => {
-    try {
-      const dracoLoader = new DRACOLoader();
-      dracoLoader.setDecoderPath('/draco/');
-      loader.setDRACOLoader(dracoLoader);
-    } catch (error) {
-      console.warn('DRACOLoader initialization failed:', error);
-    }
+    loader.setDRACOLoader(new DRACOLoader().setDecoderPath('/draco/'));
   }) : useGLTF('/media/reunion-draco2.glb', true, true, (loader) => {
-    try {
-      const dracoLoader = new DRACOLoader();
-      dracoLoader.setDecoderPath('/draco/');
-      loader.setDRACOLoader(dracoLoader);
-    } catch (error) {
-      console.warn('DRACOLoader initialization failed:', error);
-    }
+    loader.setDRACOLoader(new DRACOLoader().setDecoderPath('/draco/'));
   });
 
   const scaleFactor = size.width < 768 ? 1.6 : 0.95;
@@ -36,23 +24,9 @@ export default function ParticleIsland({ island, color = '#6a1b9a' }) {
 
   // --- Échantillonnage des vertices ---
   const { sampledPositions, sampledColors } = useMemo(() => {
-    if (!nodes?.reunion?.geometry) {
-      return {
-        sampledPositions: new Float32Array([]),
-        sampledColors: new Float32Array([]),
-      };
-    }
-
     const geom = nodes.reunion.geometry;
-    const pos = geom.attributes.position?.array;
-    const col = geom.attributes.color?.array;
-
-    if (!pos) {
-      return {
-        sampledPositions: new Float32Array([]),
-        sampledColors: new Float32Array([]),
-      };
-    }
+    const pos = geom.attributes.position.array;
+    const col = geom.attributes.color ? geom.attributes.color.array : null;
 
     const sampledPos = [];
     const sampledCol = [];
@@ -76,26 +50,15 @@ export default function ParticleIsland({ island, color = '#6a1b9a' }) {
   // --- Geometry avec positions modifiables ---
   const pointsGeometry = useMemo(() => {
     const geom = new THREE.BufferGeometry();
-    
-    if (sampledPositions.length === 0) {
-      return geom;
-    }
-    
     // IMPORTANT: Créer un nouveau Float32Array pour pouvoir le modifier
     const modifiablePositions = new Float32Array(sampledPositions);
     geom.setAttribute('position', new THREE.BufferAttribute(modifiablePositions, 3));
-    
-    if (sampledColors.length > 0) {
-      geom.setAttribute('color', new THREE.Float32BufferAttribute(sampledColors, 3));
-    }
-    
+    geom.setAttribute('color', new THREE.Float32BufferAttribute(sampledColors, 3));
     return geom;
   }, [sampledPositions, sampledColors]);
 
   // --- Original positions - copie séparée ---
-  const originalPositions = useMemo(() => {
-    return sampledPositions.length > 0 ? new Float32Array(sampledPositions) : new Float32Array([]);
-  }, [sampledPositions]);
+  const originalPositions = useMemo(() => new Float32Array(sampledPositions), [sampledPositions]);
 
   // --- Material ---
   const pointsMaterial = useMemo(() => {
@@ -128,19 +91,13 @@ export default function ParticleIsland({ island, color = '#6a1b9a' }) {
     island.current.visible = false;
 
     const runIntro = () => animateIslandIntro(island);
-    if (typeof window !== 'undefined') {
-      if (window.__preloaderDone) {
-        runIntro();
-      } else {
-        window.addEventListener('preloaderDone', runIntro, { once: true });
-      }
+    if (typeof window !== 'undefined' && window.__preloaderDone) {
+      runIntro();
+    } else {
+      window.addEventListener('preloaderDone', runIntro, { once: true });
     }
     animateIsland(island);
-    return () => {
-      if (typeof window !== 'undefined') {
-        window.removeEventListener('preloaderDone', runIntro);
-      }
-    };
+    return () => window.removeEventListener('preloaderDone', runIntro);
   }, [island]);
 
   // --- Mouse move ---
@@ -156,7 +113,7 @@ export default function ParticleIsland({ island, color = '#6a1b9a' }) {
 
   // --- Loop ---
   useFrame((state) => {
-    if (!containerRef.current || !island.current || !pointsGeometry.attributes.position) return;
+    if (!containerRef.current || !island.current) return;
     const t = state.clock.getElapsedTime();
 
     // ✅ Flotte
@@ -173,8 +130,6 @@ export default function ParticleIsland({ island, color = '#6a1b9a' }) {
 
     // 🎯 RÉPULSION MOUSE - Version simplifiée
     const positions = pointsGeometry.attributes.position.array;
-    
-    if (!positions || positions.length === 0) return;
 
     if (!isMobile) {
       // Convertir les coordonnées souris normalisées vers l'espace du modèle
