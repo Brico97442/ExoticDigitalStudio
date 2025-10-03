@@ -10,9 +10,9 @@ const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
 
 export default function ParticleIsland({ island, color = '#6a1b9a' }) {
   const { viewport, size, scene, camera } = useThree();
-  const { nodes } = size.width < 768 ? useGLTF('/media/reunion-draco2.glb', true, true, (loader) => {
+  const { nodes } = size.width < 768 ? useGLTF('/media/reunion2.glb', true, true, (loader) => {
     loader.setDRACOLoader(new DRACOLoader().setDecoderPath('/draco/'));
-  }) : useGLTF('/media/reunion23.glb', true, true, (loader) => {
+  }) : useGLTF('/media/reunion-draco2.glb', true, true, (loader) => {
     loader.setDRACOLoader(new DRACOLoader().setDecoderPath('/draco/'));
   });
 
