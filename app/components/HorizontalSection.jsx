@@ -113,7 +113,7 @@ export default function HorizontalScroll() {
         </div>
 
         {/* section2 */}
-        <div className="min-w-[100vw] h-screen flex items-center bg-green-500 lg:p-[80px]">
+        <div className="min-w-[100vw] h-screen flex items-center bg-green-500 lg:p-[80px]text[#070707]">
         <HackHover
             data="Développement"
             classValue="w-auto h-auto text-[14px] lg:text-[11.089rem] leading-none tracking-tighter text-white  lg:bottom-[80px] lg:left-[80px] "

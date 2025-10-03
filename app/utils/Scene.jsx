@@ -78,7 +78,7 @@ export default function Scene({ island }) {
           
 
           <fog attach="fog" args={['#771A66', 6, 2]} />
-          {/* <Stats /> */}
+           <Stats /> 
           <Suspense fallback={null}>
 
             <group position={[0, 0, 0]}>

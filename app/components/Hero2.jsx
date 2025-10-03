@@ -86,7 +86,7 @@ export default function Hero() {
           trigger: imagesContainerRef.current,
           start: 'center center',
           end: 'bottom center',
-          scrub: 2,
+          scrub: true,
         },
       })
 
