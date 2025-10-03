@@ -373,13 +373,13 @@ export const animateIsland = (island) => {
       b: targetColor.b,
       ease: "power1.inOut",
       duration: 0.5,
-      delay: 5,
+      delay: 2,
       scrollTrigger: {
         trigger: "#hero",
         endTrigger: "#about",
         start: "bottom center",
         end: "center center",
-        scrub: 1,
+        scrub: true,
         markers: false,
       }
     });
@@ -497,7 +497,7 @@ export const forceHeroReset = () => {
   const heroElements = [
     '#hero-title',
     '#hero-subtitle', 
-    '#hero-scroll',
+    // '#hero-scroll',
     '#studio-text',
     '#coordinates-gps p'
   ];

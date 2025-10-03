@@ -260,9 +260,10 @@ export default function Home(stickyElement) {
             </div>
 
             <div style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} className="overflow-hidden absolute right-[10px] bottom-[148px] lg:bottom-[50px] lg:right-[80px]" >
-              <TextReveal staggerValue={"0.03"} classValue="leading-none h-auto lg:w-full ">
+              {/* <TextReveal staggerValue={"0.03"} classValue="leading-none h-auto lg:w-full ">
                 <h3 id='hero-title' className='backdrop-blur-sm bg-opacity-50 pointer-events-none text-[#ECECEC] text-[16px] lg:text-[28px] font-bold-sm tracking-tighter py-2 px-6 rounded-lg '>Reunion Island Digital Studio </h3>
-              </TextReveal>
+              </TextReveal> */}
+              <HackHover data='Reunion Island Digital Studio' classValue='text-semibold h-auto w-auto text-[48px] pl-[8vw] lg:text-[28px]  hover:backdrop-blur-sm bg-opacity-70  text-[#ECECEC] cursor-default tracking-tighter leading-[0.81] w-auto rounded-lg  mix-blend-difference' />
 
             </div>
             {/* <Image

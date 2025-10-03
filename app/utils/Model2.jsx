@@ -13,7 +13,6 @@ const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
 // -------------------------------------------------------------------
 function ParticleIslandBase({ island, color = '#6a1b9a', nodes }) {
   const { viewport, size, scene } = useThree();
-
   const scaleFactor = size.width < 768 ? 1.6 : 0.95;
   const groupScale = (viewport.width / 2.4) * scaleFactor;
 
@@ -104,15 +103,35 @@ function ParticleIslandBase({ island, color = '#6a1b9a', nodes }) {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
+  // --- Phases de flottement par point ---
+  const pointPhases = useMemo(() => {
+    const phases = [];
+    for (let i = 0; i < sampledPositions.length / 3; i++) {
+      phases.push({
+        x: Math.random() * Math.PI * 2,
+        y: Math.random() * Math.PI * 2,
+        z: Math.random() * Math.PI * 2,
+        speedX: 0.2 + Math.random() * 0.3,
+        speedY: 0.5 + Math.random() * 0.5,
+        speedZ: 0.1 + Math.random() * 0.2
+      });
+    }
+    return phases;
+  }, [sampledPositions.length]);
+
   // --- Animation loop ---
   useFrame((state) => {
     if (!containerRef.current || !island.current) return;
+
     const t = state.clock.getElapsedTime();
 
-    // Flottement
-    const floatAmp = 0.02;
-    const floatSpeed = 1;
-    containerRef.current.position.y = Math.sin(t * floatSpeed) * floatAmp;
+    // Flottement global du groupe
+    const floatAmpY = 0.02;
+    const floatSpeedY = 1;
+    const floatAmpX = 0.015;
+    const floatSpeedX = 0.5;
+    containerRef.current.position.y = Math.sin(t * floatSpeedY) * floatAmpY;
+    containerRef.current.position.x = Math.sin(t * floatSpeedX) * floatAmpX;
 
     // Rotation avec la souris
     if (!isMobile) {
@@ -121,40 +140,46 @@ function ParticleIslandBase({ island, color = '#6a1b9a', nodes }) {
       containerRef.current.rotation.y += (targetY - containerRef.current.rotation.y) * 0.40;
     }
 
-    // Répulsion souris
+    // Mise à jour des positions des points
     const positions = pointsGeometry.attributes.position.array;
-    if (!isMobile) {
-      const mouseX = mouseRef.current[0] * 80;
-      const mouseY = mouseRef.current[1] * 20;
+    for (let i = 0; i < positions.length; i += 3) {
+      const idx = i / 3;
+      const origX = originalPositions[i];
+      const origY = originalPositions[i + 1];
+      const origZ = originalPositions[i + 2];
 
-      const repulsionRadius = 10;
-      const repulsionStrength = 6;
-      const returnSpeed = 0.2;
+      // Flottement individuel
+      const phase = pointPhases[idx];
+      const floatX = Math.sin(t * phase.speedX + phase.x) * 0.005;
+      const floatY = Math.sin(t * phase.speedY + phase.y) * 0.007;
+      const floatZ = Math.sin(t * phase.speedZ + phase.z) * 0.003;
 
-      for (let i = 0; i < positions.length; i += 3) {
-        const dx = originalPositions[i] - mouseX;
-        const dy = originalPositions[i + 1] - mouseY;
+      let targetX = origX + floatX;
+      let targetY = origY + floatY;
+      let targetZ = origZ + floatZ;
+
+      // Répulsion souris
+      if (!isMobile) {
+        const mouseX = mouseRef.current[0] * 80;
+        const mouseY = mouseRef.current[1] * 20;
+        const dx = positions[i] - mouseX;
+        const dy = positions[i + 1] - mouseY;
         const distance = Math.sqrt(dx * dx + dy * dy);
+        const repulsionRadius = 10;
+        const repulsionStrength = 8;
 
-        if (distance < repulsionRadius && distance > 0.1) {
-          const force = (2 - distance / repulsionRadius) * repulsionStrength;
-          const pushX = (dx / distance) * force;
-          const pushY = (dy / distance) * force;
-          positions[i] = originalPositions[i] + pushX;
-          positions[i + 1] = originalPositions[i + 1] + pushY;
-          positions[i + 2] = originalPositions[i + 2];
-        } else {
-          positions[i] += (originalPositions[i] - positions[i]) * returnSpeed;
-          positions[i + 1] += (originalPositions[i + 1] - positions[i + 1]) * returnSpeed;
-          positions[i + 2] += (originalPositions[i + 2] - positions[i + 2]) * returnSpeed;
+        if (distance < repulsionRadius && distance > 0.01) {
+          const force = (repulsionRadius - distance) / repulsionRadius * repulsionStrength;
+          targetX += (dx / distance) * force;
+          targetY += (dy / distance) * force;
         }
       }
-    } else {
-      for (let i = 0; i < positions.length; i += 3) {
-        positions[i] += (originalPositions[i] - positions[i]) * 0.05;
-        positions[i + 1] += (originalPositions[i + 1] - positions[i + 1]) * 0.05;
-        positions[i + 2] += (originalPositions[i + 2] - positions[i + 2]) * 0.05;
-      }
+
+      // LERP vers target
+      const returnSpeed = isMobile ? 0.05 : 0.2;
+      positions[i] += (targetX - positions[i]) * returnSpeed;
+      positions[i + 1] += (targetY - positions[i + 1]) * returnSpeed;
+      positions[i + 2] += (targetZ - positions[i + 2]) * returnSpeed;
     }
 
     pointsGeometry.attributes.position.needsUpdate = true;

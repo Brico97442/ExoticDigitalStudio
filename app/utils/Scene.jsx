@@ -78,7 +78,7 @@ export default function Scene({ island }) {
           
 
           <fog attach="fog" args={['#771A66', 6, 2]} />
-          <Stats />
+          {/* <Stats /> */}
           <Suspense fallback={null}>
 
             <group position={[0, 0, 0]}>
@@ -86,8 +86,8 @@ export default function Scene({ island }) {
               {/* <CurvedText3d
               /> */}
               {/* Lumières globales */}
-              {/* <ambientLight  color='red' intensity={20}/> */}
-              {/* <directionalLight position={[0, 0, -1]} intensity={200} color='#C1121F'/> */}
+              <ambientLight position={mousePosition}  color='red' intensity={20}/>
+              <directionalLight position={mousePosition} intensity={200} color='#C1121F'/>
 
               {/* <AccumulativeShadows frames={100} alphaTest={0.85} opacity={0.8} color="red" scale={20} position={[0, -0.005, 0]}> */}
               {/* <RandomizedLight amount={8} radius={6} ambient={0.5} intensity={1} position={[-1.5, 2.5, -2.5]} bias={0.001} /> */}

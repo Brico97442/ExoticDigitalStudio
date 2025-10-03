@@ -7,7 +7,7 @@ export default function HackHoverInView({
   data,
   classValue = '',
   iterationTiming = 0.33, // vitesse du scramble
-  rootMargin = '0px 0px -10% 0px', // quand déclencher l'entrée (ajuste si besoin)
+  rootMargin = '0px 0px -9.5% 0px', // quand déclencher l'entrée (ajuste si besoin)
   threshold = 0.1, // proportion visible pour déclencher
   once = true, // déclencher une seule fois
 }) {
