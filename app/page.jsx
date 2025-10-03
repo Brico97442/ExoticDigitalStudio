@@ -297,22 +297,22 @@ export default function Home(stickyElement) {
           <HackHover data='Située au Tampon' classValue='z-[0] ml-[20vw] mt-[5vh] w-full h-full text-[14px] z-[3] lg:text-[20px] text-white cursor-default leading-none' />
         </div>
 
-        <div id="about" ref={aboutRef} className="rounded-2xl sticky top-0 h-[220svh] px-[10px] py-[80px] lg:px-[80px] lg:pb-[80px] lg:pt-[50svh] flex flex-col justify-center">
+        <div id="about" ref={aboutRef} className="rounded-2xl sticky top-0 h-[240svh] px-[10px] py-[80px] lg:px-[80px] lg:pb-[80px] lg:pt-[50svh] flex flex-col justify-center">
           <div className=" flex flex-col w-full h-full">
-            <div className='h-full flex flex-col justify-between'>
-              <div style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} className="w-full flex justify-start gap-1">
-                <div id="about-title flex flex-col w-auto text-[#0E0E0E] backdrop-blur-sm bg-opacity-70">
-                  <TextReveal staggerValue={"0.03"} classValue="leading-none h-auto lg:w-full">
-                    <HackHover data='Qui' classValue='text-semibold h-auto uppercase w-auto text-[48px] z-[100] lg:text-[180px] text-[#0E0E0E] cursor-default tracking-tighter leading-[0.8] backdrop-blur-sm bg-opacity-70 rounded-lg  mix-blend-difference' />
-                  </TextReveal>
+            <div className='h-full w-full flex flex-col justify-between'>
+              <div style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} className="w-full flex flex-col items-start">
+                <div id="about-title" className="flex flex-col w-auto text-[#0E0E0E]">
+                  {/* <TextReveal staggerValue={"0.03"} classValue="leading-none h-auto lg:w-full"> */}
+                    <HackHover data='Qui' classValue='text-semibold h-auto uppercase w-auto text-[48px] z-[100]  hover:backdrop-blur-sm hover:bg-opacity-70 lg:text-[17.942rem] text-[#0E0E0E] cursor-default tracking-tighter leading-[0.81] rounded-lg  mix-blend-difference' />
+                  {/* </TextReveal> */}
 
-                  <TextReveal staggerValue={"0.03"} classValue="leading-none h-auto lg:w-full ">
-                    <HackHover data='sommes' classValue='text-semibold h-auto uppercase text-[48px] lg:text-[180px] pl-[8vw] text-[#0E0E0E] cursor-default tracking-tighter leading-[0.8] text-right w-auto backdrop-blur-sm bg-opacity-70 rounded-lg  mix-blend-difference' />
-                  </TextReveal>
+                  {/* <TextReveal staggerValue={"0.03"} classValue="leading-none h-auto lg:w-full "> */}
+                    <HackHover data='sommes' classValue='text-semibold h-auto uppercase w-auto text-[48px] pl-[8vw] lg:text-[17.942rem]  hover:backdrop-blur-sm bg-opacity-70  text-[#0E0E0E] cursor-default tracking-tighter leading-[0.81] w-auto rounded-lg  mix-blend-difference' />
+                  {/* </TextReveal> */}
 
-                  <TextReveal staggerValue={"0.03"} classValue="leading-none h-auto lg:w-full ">
-                    <HackHover data='nous ?' classValue='text-semibold h-auto uppercase text-[48px] lg:text-[180px] text-[#0E0E0E] cursor-default tracking-tighter leading-[0.8] w-auto backdrop-blur-sm bg-opacity-70 rounded-lg  mix-blend-difference' />
-                  </TextReveal>
+                  {/* <TextReveal staggerValue={"0.03"} classValue="leading-none h-auto lg:w-full "> */}
+                    <HackHover data='nous ?' classValue='text-semibold h-auto uppercase text-[48px] lg:text-[17.942rem]  hover:backdrop-blur-sm bg-opacity-70 text-[#0E0E0E] cursor-default tracking-tighter leading-[0.81] w-auto rounded-lg  mix-blend-difference' />
+                  {/* </TextReveal> */}
 
                 </div>
               </div>
@@ -340,7 +340,7 @@ export default function Home(stickyElement) {
 
               <div className="w-full text-left">
                 <TextReveal staggerValue={"0.03"} classValue="flex w-full justify-start text-right leading-none">
-                  <h3 className=" leading-none flex w-3/4 lg:w-2/4 h-full justify-center text-[24px] lg:text-[48px] text-left pointer-events-none backdrop-blur-sm rounded-lg bg-opacity-50 text-[#0E0E0E] pt-[50px] pr-[50px]  pb-[50px]">&quot; J&apos;accompagne ceux et celles qui veulent se démarquer et qui oses assumer fièrement leurs différences. &quot;</h3>
+                  <h3 className=" leading-none flex w-3/4 lg:w-2/4 h-full justify-center text-[24px] lg:text-[2.618rem] text-left pointer-events-none backdrop-blur-sm rounded-lg bg-opacity-50 text-[#0E0E0E] pt-[50px] pr-[50px]  pb-[50px]">&quot;J&apos;accompagne ceux et celles qui veulent se démarquer et oses assumer fièrement leurs différences.&quot;</h3>
                 </TextReveal>
               </div>
             </div>
@@ -351,7 +351,7 @@ export default function Home(stickyElement) {
         <div className="w-full lg:px-[80px] lg:pt-[50vh] overflow-hidden" id="gallery-section">
           <div className="flex justify-end w-full h-[20svh]">
             <TextReveal staggerValue={"0.03"} classValue="z-[7] w-full #text-[#0E0E0E] text-right z-[3] ">
-              <h3 className=" leading-none w-full tracking-tighter z-[4] text-[32px] lg:text-[64px]" style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }}>Changer votre vision du web moderne</h3>
+              <h3 className=" leading-none w-full tracking-tighter z-[4] text-[32px] lg:text-[6.854rem]" style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }}>Changer votre vision du web moderne</h3>
             </TextReveal>
           </div>
         </div>

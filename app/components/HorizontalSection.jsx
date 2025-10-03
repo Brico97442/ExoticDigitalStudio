@@ -114,29 +114,26 @@ export default function HorizontalScroll() {
 
         {/* section2 */}
         <div className="min-w-[100vw] h-screen flex items-center bg-green-500 lg:p-[80px]">
-          <TextReveal classValue="lg:text-[180px]" staggerValue={"0.08"}>
-            <h2 className="pointer-events-none tracking-tight lg:text-[180px] text-[#070707]">
-              Développement
-            </h2>
-          </TextReveal>
+        <HackHover
+            data="Développement"
+            classValue="w-auto h-auto text-[14px] lg:text-[11.089rem] leading-none tracking-tighter text-white  lg:bottom-[80px] lg:left-[80px] "
+          />
         </div>
 
         {/* section3 */}
         <div className="min-w-[100vw] h-screen flex items-center lg:p-[80px] bg-blue-500 text-[#070707]">
-          <TextReveal classValue="lg:text-[180px]" staggerValue={"0.08"}>
-            <h2 className="pointer-events-none tracking-tight lg:text-[180px] text-[#070707]">
-              Design
-            </h2>
-          </TextReveal>
+        <HackHover
+            data="Design"
+            classValue="w-auto h-auto text-[14px] lg:text-[11.089rem] leading-none tracking-tighter text-white  lg:bottom-[80px] lg:left-[80px] "
+          />
         </div>
 
         {/* section4 */}
         <div className="min-w-[100vw] h-screen flex items-center lg:p-[80px] bg-purple-500 text-[#070707] text-4xl">
-          <TextReveal classValue="lg:text-[180px]" staggerValue={"0.08"}>
-            <h2 className="pointer-events-none tracking-tight lg:text-[180px] text-[#070707]">
-              Motion
-            </h2>
-          </TextReveal>
+        <HackHover
+            data="Motion"
+            classValue="w-auto h-auto text-[14px] lg:text-[11.089rem] leading-none tracking-tighter text-white  lg:bottom-[80px] lg:left-[80px] "
+          />
         </div>
       </div>
     </section>

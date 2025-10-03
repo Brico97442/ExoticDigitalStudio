@@ -22,10 +22,10 @@ export default function Hero() {
 
   const pictures = [
     { src: HeroImg, width: '12.5vw', height: '12.5vh', top: '0vh', left: '0vw', scale: 8, zIndex: 10, filter: 'grayscale(20%)' },
-    { src: HeroImg2, width: '20vw', height: '32vh', top: '-9.5vh', left: '-20vw', scale: 6, zIndex: 1, filter: 'grayscale(100%)' },
-    { src: HeroImg3, width: '20vw', height: '32vh', top: '9.5vh', left: '20vw', scale: 6, zIndex: 1, filter: 'grayscale(100%)' },
-    { src: HeroImg4, width: '40vw', height: '15vh', top: '-18vh', left: '14vw', scale: 6.2, zIndex: 1, filter: 'grayscale(100%)' },
-    { src: HeroImg5, width: '40vw', height: '15vh', top: '18vh', left: '-14vw', scale: 6.2, zIndex: 1, filter: 'grayscale(100%)' },
+    { src: HeroImg2, width: '15vw', height: '32vh', top: '-9.5vh', left: '-16vw', scale: 6, zIndex: 1, filter: 'grayscale(100%)' },
+    { src: HeroImg3, width: '15vw', height: '32vh', top: '9.5vh', left: '16vw', scale: 6, zIndex: 1, filter: 'grayscale(100%)' },
+    { src: HeroImg4, width: '30vw', height: '15vh', top: '-18vh', left: '8.8vw', scale: 6.2, zIndex: 1, filter: 'grayscale(100%)' },
+    { src: HeroImg5, width: '30vw', height: '15vh', top: '18vh', left: '-8.8vw', scale: 6.2, zIndex: 1, filter: 'grayscale(100%)' },
   ]
 
   useLayoutEffect(() => {
@@ -167,7 +167,7 @@ export default function Hero() {
                   x='50px' y='40%'
                   textAnchor='start'
                   dominantBaseline='middle'
-                  fontSize='180px'
+                  fontSize='17.942rem'
                   fill='black'
                   fontWeight='semi-bold'
                   letterSpacing='0.01'
@@ -175,10 +175,10 @@ export default function Hero() {
                   OSER
                 </text>
                 <text
-                  x='10%' y='56%'
+                  x='10%' y='65%'
                   textAnchor='start'
                   dominantBaseline='middle'
-                  fontSize='180px'
+                  fontSize='17.942rem'
                   fill='black'
                   fontWeight='semi-bold'
                 >

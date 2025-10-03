@@ -162,6 +162,12 @@ p .word,
   vertical-align: bottom;
 }
 
+#about-title{
+  display: flex!important;
+  flex-direction: column!important;
+  justify-items: flex-start!important;
+}
+
 .word-wrapper {
   display: inline-flex;
   overflow: hidden;
