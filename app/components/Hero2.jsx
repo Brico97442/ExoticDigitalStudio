@@ -41,7 +41,7 @@ export default function Hero() {
           trigger: containerRef.current,
           start: '15% top',
           end: '80% center',
-          scrub: 3,
+          scrub: 2,
         },
       });
       
@@ -56,7 +56,7 @@ export default function Hero() {
           trigger: containerRef.current,
           start: '15% top',
           end: '80% center',
-          scrub: 3,
+          scrub: 2,
         },
       })
 
@@ -86,7 +86,7 @@ export default function Hero() {
           trigger: imagesContainerRef.current,
           start: 'center center',
           end: 'bottom center',
-          scrub: 2,
+          scrub: 2.5,
         },
       })
 
@@ -97,7 +97,7 @@ export default function Hero() {
           trigger: containerRef.current,
           start: 'top top',
           end: 'center bottom',
-          scrub: 2,
+          scrub: 1,
           markers:false,
         },
       })

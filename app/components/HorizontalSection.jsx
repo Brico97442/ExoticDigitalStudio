@@ -113,24 +113,90 @@ export default function HorizontalScroll() {
         </div>
 
         {/* section2 */}
-        <div className="min-w-[100vw] h-screen flex items-center bg-green-500 lg:p-[80px]text[#070707]">
-        <HackHover
+        <div className="min-w-[100vw] h-screen flex flex-col justify-end bg-[#C1121F]/90 lg:p-[80px] ">
+          <div className=" flex flex-col items-end w-full">
+
+            <TextReveal
+              classValue="text-right max-w-[100%] text-[36px] text-white"
+              staggerValue={"0.03"}
+            >
+              <p className=" max-w-[100%] text-[36px] mb-[80px]">
+                Nous réalisons pour vous des sites sur demandes chaque site
+                conçus par mes soins reflète votre efficacité et votre
+                exigence.
+              </p>
+            </TextReveal>
+            <hr className="h-[1px] w-1/2 mb-5 mt-5"></hr>
+            <div className="flex flex-wrap justify-end gap-2 w-full mb-[80px] mt-[80px]">
+              <span className="bg-[#ECECEC]/70 px-3 py-1 rounded-full font-semibold shadow cursor-pointer">Identité visuelle</span>
+              <span className="bg-[#ECECEC]/70 px-3 py-1 rounded-full font-semibold shadow cursor-pointer">UI/UX</span>
+              <span className="bg-[#ECECEC]/70 px-3 py-1 rounded-full font-semibold shadow cursor-pointer">Maquette web</span>
+              <span className="bg-[#ECECEC]/70 px-3 py-1 rounded-full font-semibold shadow cursor-pointer">Direction artistique</span>
+            </div>
+            <div>
+            </div>
+          </div>
+          <HackHover
             data="Développement"
             classValue="w-auto h-auto text-[14px] lg:text-[11.089rem] leading-none tracking-tighter text-white  lg:bottom-[80px] lg:left-[80px] "
           />
         </div>
 
         {/* section3 */}
-        <div className="min-w-[100vw] h-screen flex items-center lg:p-[80px] bg-blue-500 text-[#070707]">
-        <HackHover
+        <div className="min-w-[100vw] h-screen flex flex-col justify-end bg-[#072737] lg:p-[80px] ">
+          <div className=" flex flex-col items-end w-full">
+
+            <TextReveal
+              classValue="text-right max-w-[100%] text-[36px] text-white"
+              staggerValue={"0.03"}
+            >
+              <p className=" max-w-[100%] text-[36px] mb-[80px]">
+                Nous réalisons pour vous des sites sur demandes chaque site
+                conçus par mes soins reflète votre efficacité et votre
+                exigence.
+              </p>
+            </TextReveal>
+            <hr className="h-[1px] w-1/2 mb-5 mt-5"></hr>
+            <div className="flex flex-wrap justify-end gap-2 w-full mb-[80px] mt-[80px]">
+              <span className="bg-[#ECECEC]/70 px-3 py-1 rounded-full font-semibold shadow cursor-pointer">Identité visuelle</span>
+              <span className="bg-[#ECECEC]/70 px-3 py-1 rounded-full font-semibold shadow cursor-pointer">UI/UX</span>
+              <span className="bg-[#ECECEC]/70 px-3 py-1 rounded-full font-semibold shadow cursor-pointer">Maquette web</span>
+              <span className="bg-[#ECECEC]/70 px-3 py-1 rounded-full font-semibold shadow cursor-pointer">Direction artistique</span>
+            </div>
+            <div>
+            </div>
+          </div>
+          <HackHover
             data="Design"
             classValue="w-auto h-auto text-[14px] lg:text-[11.089rem] leading-none tracking-tighter text-white  lg:bottom-[80px] lg:left-[80px] "
           />
         </div>
 
         {/* section4 */}
-        <div className="min-w-[100vw] h-screen flex items-center lg:p-[80px] bg-purple-500 text-[#070707] text-4xl">
-        <HackHover
+        <div className="min-w-[100vw] h-screen flex flex-col justify-end bg-[#771A66] lg:p-[80px] ">
+          <div className=" flex flex-col items-end w-full">
+
+            <TextReveal
+              classValue="text-right max-w-[100%] text-[36px] text-white"
+              staggerValue={"0.03"}
+            >
+              <p className=" max-w-[100%] text-[36px] mb-[80px]">
+                Nous réalisons pour vous des sites sur demandes chaque site
+                conçus par mes soins reflète votre efficacité et votre
+                exigence.
+              </p>
+            </TextReveal>
+            <hr className="h-[1px] w-1/2 mb-5 mt-5"></hr>
+            <div className="flex flex-wrap justify-end gap-2 w-full mb-[80px] mt-[80px]">
+              <span className="bg-[#ECECEC]/70 px-3 py-1 rounded-full font-semibold shadow cursor-pointer">Identité visuelle</span>
+              <span className="bg-[#ECECEC]/70 px-3 py-1 rounded-full font-semibold shadow cursor-pointer">UI/UX</span>
+              <span className="bg-[#ECECEC]/70 px-3 py-1 rounded-full font-semibold shadow cursor-pointer">Maquette web</span>
+              <span className="bg-[#ECECEC]/70 px-3 py-1 rounded-full font-semibold shadow cursor-pointer">Direction artistique</span>
+            </div>
+            <div>
+            </div>
+          </div>
+          <HackHover
             data="Motion"
             classValue="w-auto h-auto text-[14px] lg:text-[11.089rem] leading-none tracking-tighter text-white  lg:bottom-[80px] lg:left-[80px] "
           />

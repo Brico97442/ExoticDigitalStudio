@@ -87,7 +87,7 @@ export default function Scene({ island }) {
               /> */}
               {/* Lumières globales */}
               <ambientLight position={mousePosition}  color='red' intensity={20}/>
-              <directionalLight position={mousePosition} intensity={200} color='#C1121F'/>
+              {/* <directionalLight position={mousePosition} intensity={200} color='#C1121F'/> */}
 
               {/* <AccumulativeShadows frames={100} alphaTest={0.85} opacity={0.8} color="red" scale={20} position={[0, -0.005, 0]}> */}
               {/* <RandomizedLight amount={8} radius={6} ambient={0.5} intensity={1} position={[-1.5, 2.5, -2.5]} bias={0.001} /> */}

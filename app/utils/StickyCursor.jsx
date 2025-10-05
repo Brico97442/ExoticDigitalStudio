@@ -167,7 +167,7 @@ export default function StickyCursor({ stickyElement, heroSection }) {
         src={CursorImg}
         alt="curseur"
         placeholder="blur"
-        className="spin top-0 left-0 object-cover z-[80]"
+        className="spin top-0 left-0 object-fit z-[80]"
       />
     </motion.div>
   </span>

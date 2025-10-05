@@ -229,6 +229,22 @@ export default function Home(stickyElement) {
     animateAbout()
     // animateAboutText()
     animateHero(textScroll);
+    ScrollTrigger.create({
+      trigger: '#hero',
+      start: 'bottom center',
+      end: 'bottom top',  // Pin pendant 100vh supplémentaires
+      pin: '#sticky-texts-container',
+      pinSpacing: false,
+      markers: true,  // Retirez en production
+      onUpdate: (self) => {
+        // Fade out progressif quand on scroll
+        const opacity = 1 - self.progress;
+        gsap.set('#sticky-texts-container', { opacity: opacity });
+      }
+    });
+  
+    // animateHeroTexts();  // ou animateHeroTextsContainer() selon votre choix
+
 
     return () => {
       cancelAnimationFrame(raf);
@@ -258,14 +274,30 @@ export default function Home(stickyElement) {
                   Offrez à vos visiteurs <strong>une expérience web captivante</strong><br /> parce que chaque clic mérite sa touche de magie.</h2>
               </TextReveal>
             </div>
+            <div className="hero-sticky-texts absolute w-full">
 
-            <div style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} className="overflow-hidden absolute right-[10px] bottom-[148px] lg:bottom-[50px] lg:right-[80px]" >
-              {/* <TextReveal staggerValue={"0.03"} classValue="leading-none h-auto lg:w-full ">
-                <h3 id='hero-title' className='backdrop-blur-sm bg-opacity-50 pointer-events-none text-[#ECECEC] text-[16px] lg:text-[28px] font-bold-sm tracking-tighter py-2 px-6 rounded-lg '>Reunion Island Digital Studio </h3>
-              </TextReveal> */}
-              <HackHover data='Reunion Island Digital Studio' classValue='text-semibold h-auto w-auto text-[48px] pl-[8vw] lg:text-[28px]  hover:backdrop-blur-sm bg-opacity-70  text-[#ECECEC] cursor-default tracking-tighter leading-none w-auto rounded-lg  mix-blend-difference' />
 
-            </div>
+</div>
+<div id="sticky-texts-container" className="absolute bottom-[0px] left-0 w-full h-auto ">
+      {/* Reunion Island Digital Studio */}
+      <div style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} 
+           className="w-auto absolute right-[10px] bottom-[148px] lg:bottom-[50px] lg:right-[80px] backdrop-blur-sm bg-opacity-70">
+        <HackHover 
+          id="hero-title"
+          data='Reunion Island Digital Studio' 
+          classValue='text-semibold h-auto w-auto text-[48px] pl-[10px] lg:text-[28px] text-[#ECECEC] cursor-default tracking-tighter leading-none w-auto rounded-lg mix-blend-difference' 
+        />
+      </div>
+
+      {/* Créateur de solutions digitales */}
+      <div className="overflow-hidden absolute bottom-0 left-0 mb-[10px] lg:ml-[0px] lg:mb-[50px] text-[#ECECEC]">
+        <TextReveal staggerValue={"0.03"} classValue="leading-none h-auto lg:w-full">
+          <h2 id='studio-text' className='overflow-hidden text-[#ECECEC] pointer-events-none leading-none text-[24px] lg:text-[36px] font-bold-sm tracking-tighter backdrop-blur-sm bg-opacity-50 py-2 px-6 rounded-lg'>
+            Créateur de solutions digitales
+          </h2>
+        </TextReveal>
+      </div>
+    </div>
             {/* <Image
               src={Arrow2}
               alt='flèche directionnelle indiquant le lien contact'
@@ -285,11 +317,6 @@ export default function Home(stickyElement) {
               </div>
             </div>
 
-            <div className="overflow-hidden mb-[10px] lg:mr-[50px] lg:mb-[50px]  text-[#ECECEC]">
-              <TextReveal staggerValue={"0.03"} classValue="leading-none h-auto lg:w-full ">
-                <h2 id='studio-text' className='overflow-hidden text-[#ECECEC] pointer-events-none leading-none text-[24px] lg:text-[36px] font-bold-sm tracking-tighter backdrop-blur-sm bg-opacity-50 py-2 px-6 rounded-lg '>Créateur de solutions digitales</h2>
-              </TextReveal>
-            </div>
             <HorizontalScroll />
           </div>
         </div>
@@ -351,8 +378,8 @@ export default function Home(stickyElement) {
         {/* <HorizontalScrollReverse /> */}
         <div className="w-full lg:px-[80px] lg:pt-[50vh] overflow-hidden" id="gallery-section">
           <div className="flex justify-end w-full h-[20svh]">
-            <TextReveal staggerValue={"0.03"} classValue="z-[7] w-full #text-[#0E0E0E] text-right z-[3] ">
-              <h3 className=" leading-none w-full tracking-tighter z-[4] text-[32px] lg:text-[6.854rem]" style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }}>Changer votre vision du web moderne</h3>
+            <TextReveal staggerValue={"0.03"} classValue="z-[7] w-full #text-[#0E0E0E] text-right z-[3]">
+              <h3 className=" leading-none w-full tracking-tighter z-[4] text-[32px] lg:text-[6.854rem] text-nowrap" style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }}>Changer votre vision du web moderne</h3>
             </TextReveal>
           </div>
         </div>
