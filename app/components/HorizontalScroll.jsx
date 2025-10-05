@@ -116,22 +116,6 @@ function HorizontalScroll() {
                 }
             );
 
-            // gsap.fromTo(
-            //     "#hero-scroll",
-            //     { yPercent: 100, opacity:1 },
-            //     {
-            //         yPercent: 2,
-            //         opacity: 0,
-            //         ease: "power1.inOut",
-            //         scrollTrigger: {
-            //             trigger: "#hero-scroll",
-            //             start: "top center", // quand le haut de #hero-scroll atteint le bas de la fenêtre
-            //             end: "60% top",      // jusqu'à ce qu'il atteigne le haut de la fenêtre
-            //             scrub: true,
-            //             markers: true,
-            //         }
-            //     }
-            // );
         }
 
         return () => {
