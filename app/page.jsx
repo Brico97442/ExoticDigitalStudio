@@ -24,7 +24,8 @@ import HorizontalSection from "./components/HorizontalSection";
 import TextScroll from "./components/TextScroll";
 import Link from "next/link";
 import Services from "./components/Services";
-
+import LiquidEther from "./utils/LiquiEther";
+import LightRays from "./utils/LightRays";
 
 gsap.registerPlugin(ScrollTrigger)
 const Scene = dynamic(() => import('./utils/Scene'), {
@@ -242,7 +243,7 @@ export default function Home(stickyElement) {
         gsap.set('#sticky-texts-container', { opacity: opacity });
       }
     });
-  
+
     // animateHeroTexts();  // ou animateHeroTextsContainer() selon votre choix
 
 
@@ -258,46 +259,79 @@ export default function Home(stickyElement) {
 
   return (
     <main id="main" className={"flex w-full h-full relative min-h-screen flex-col "}>
+
       <div id="progress" className="flex justify-center items-center fixed my-auto h-full w-[6px] z-[1]">
         {/* <ScrollProgressSidebar /> */}
       </div>
 
       {/* <CookieConsent/> */}
-      <div id="hero-container" className="z-[1] flex w-full h-full min-h-screen flex-col relative">
+      {/* <div className="absolute h-full w-full z-[7]"> */}
+        
+            {/* <LiquidEther
+              colors={['#5227FF', '#FF9FFC', '#B19EEF']}
+              mouseForce={20}
+              cursorSize={50}
+              isViscous={false}
+              viscous={30}
+              iterationsViscous={32}
+              iterationsPoisson={32}
+              resolution={0.5}
+              isBounce={false}
+              autoDemo={true}
+              autoSpeed={0.3}
+              autoIntensity={2.2}
+              takeoverDuration={0.25}
+              autoResumeDelay={3000}
+              autoRampDuration={0.6}
+            /> */}
+            {/* <LightRays
+              raysOrigin="top-center"
+              raysColor="#00ffff"
+              raysSpeed={1.5}
+              lightSpread={0.8}
+              rayLength={1.2}
+              followMouse={true}
+              mouseInfluence={0.1}
+              noiseAmount={0.1}
+              distortion={0.05}
+              className="custom-rays"
+            /> */}
+          
+      {/* </div> */}
+
+      <div id="hero-container" className="z-[1] flex w-full h-full min-h-screen flex-col relative ">
         <Scene island={island} />
         <div ref={heroSection} id="hero" className='h-screen sticky w-full flex flex-col items-center top-0 z-[3]'>
           <div className='h-screen flex flex-col items-start justify-between w-full px-[10px] lg:px-[80px] pt-[20px] lg:pt-[100px] relative z-[3]'>
             <div className="lg:w-full flex lg:justify-center">
 
               <TextReveal staggerValue={"0.03"} classValue="leading-none lg:w-full lg:justify-center text-center">
-                <h2 id='hero-subtitle' className='lg:w-full pointer-events-none mt-[50px] overflow-hidden text-[#ECECEC] text-[24px] tracking-tighter leading-none lg:text-[36px] lg:mt-[10vh] text-center'>
+                <h2 id='hero-subtitle' className='lg:w-full pointer-events-none mt-[100px] overflow-hidden text-[#ECECEC] text-[24px] tracking-tighter leading-none lg:text-[36px] lg:mt-[10vh] text-center'>
                   Offrez à vos visiteurs <strong>une expérience web captivante</strong><br /> parce que chaque clic mérite sa touche de magie.</h2>
               </TextReveal>
             </div>
             <div className="hero-sticky-texts absolute w-full">
+            </div>
+            <div id="sticky-texts-container" className="absolute bottom-[0px] left-0 w-full h-auto ">
+              {/* Reunion Island Digital Studio */}
+              <div style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }}
+                className="w-auto absolute right-[10px] bottom-[148px] lg:bottom-[50px] lg:right-[80px] backdrop-blur-sm bg-opacity-70">
+                <HackHover
+                  id="hero-title"
+                  data='Reunion Island Digital Studio'
+                  classValue='text-semibold h-auto w-auto text-[18px] pl-[10px] lg:text-[28px] text-[#ECECEC] cursor-default tracking-tighter leading-none w-auto rounded-lg mix-blend-difference'
+                />
+              </div>
 
-
-</div>
-<div id="sticky-texts-container" className="absolute bottom-[0px] left-0 w-full h-auto ">
-      {/* Reunion Island Digital Studio */}
-      <div style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} 
-           className="w-auto absolute right-[10px] bottom-[148px] lg:bottom-[50px] lg:right-[80px] backdrop-blur-sm bg-opacity-70">
-        <HackHover 
-          id="hero-title"
-          data='Reunion Island Digital Studio' 
-          classValue='text-semibold h-auto w-auto text-[48px] pl-[10px] lg:text-[28px] text-[#ECECEC] cursor-default tracking-tighter leading-none w-auto rounded-lg mix-blend-difference' 
-        />
-      </div>
-
-      {/* Créateur de solutions digitales */}
-      <div className="overflow-hidden absolute bottom-0 left-0 lg:left-[50px] lg:mb-[50px] text-[#ECECEC]">
-        <TextReveal staggerValue={"0.03"} classValue="leading-none h-auto lg:w-full">
-          <h2 id='studio-text' className='overflow-hidden text-[#ECECEC] pointer-events-none leading-none text-[24px] lg:text-[36px] font-bold-sm tracking-tighter backdrop-blur-sm bg-opacity-50 py-2 px-6 rounded-lg'>
-            Créateur de solutions digitales
-          </h2>
-        </TextReveal>
-      </div>
-    </div>
+              {/* Créateur de solutions digitales */}
+              <div className="overflow-hidden absolute bottom-0 left-0 lg:left-[50px] lg:mb-[50px] text-[#ECECEC]">
+                <TextReveal staggerValue={"0.03"} classValue="leading-none h-auto lg:w-full">
+                  <h2 id='studio-text' className='overflow-hidden text-[#ECECEC] pointer-events-none leading-none text-[18px] lg:text-[36px] font-bold-sm tracking-tighter backdrop-blur-sm bg-opacity-50 py-2 px-6 rounded-lg'>
+                    Créateur de solutions digitales
+                  </h2>
+                </TextReveal>
+              </div>
+            </div>
             {/* <Image
               src={Arrow2}
               alt='flèche directionnelle indiquant le lien contact'
@@ -325,21 +359,21 @@ export default function Home(stickyElement) {
           <HackHover data='Située au Tampon' classValue='z-[0] ml-[20vw] mt-[5vh] w-full h-full text-[14px] z-[3] lg:text-[20px] text-white cursor-default leading-none' />
         </div>
 
-        <div id="about" ref={aboutRef} className="rounded-2xl sticky top-0 h-[240svh] px-[10px] py-[80px] lg:px-[80px] lg:pb-[80px] lg:pt-[50svh] flex flex-col justify-center">
+        <div id="about" ref={aboutRef} className="rounded-2xl sticky top-0 h-auto lg:h-[240svh] px-[10px] py-[80px] lg:px-[80px] lg:pb-[80px] lg:pt-[50svh] flex flex-col justify-center">
           <div className=" flex flex-col w-full h-full">
             <div className='h-full w-full flex flex-col justify-between'>
               <div style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} className="w-full flex flex-col items-start">
                 <div id="about-title" className="flex flex-col w-auto text-[#0E0E0E]">
                   {/* <TextReveal staggerValue={"0.03"} classValue="leading-none h-auto lg:w-full"> */}
-                    <HackHover data='Qui' classValue='text-semibold h-auto uppercase w-auto text-[48px] z-[100]  hover:backdrop-blur-sm hover:bg-opacity-70 lg:text-[17.942rem] text-[#0E0E0E] cursor-default tracking-tighter leading-[0.81] rounded-lg  mix-blend-difference' />
+                  <HackHover data='Qui' classValue='text-semibold h-auto uppercase w-auto text-[48px] z-[100]  hover:backdrop-blur-sm hover:bg-opacity-70 lg:text-[17.942rem] text-[#0E0E0E] cursor-default tracking-tighter leading-[0.81] rounded-lg  mix-blend-difference' />
                   {/* </TextReveal> */}
 
                   {/* <TextReveal staggerValue={"0.03"} classValue="leading-none h-auto lg:w-full "> */}
-                    <HackHover data='sommes' classValue='text-semibold h-auto uppercase w-auto text-[48px] pl-[8vw] lg:text-[17.942rem]  hover:backdrop-blur-sm bg-opacity-70  text-[#0E0E0E] cursor-default tracking-tighter leading-[0.81] w-auto rounded-lg  mix-blend-difference' />
+                  <HackHover data='sommes' classValue='text-semibold h-auto uppercase w-auto text-[48px] pl-[8vw] lg:text-[17.942rem]  hover:backdrop-blur-sm bg-opacity-70  text-[#0E0E0E] cursor-default tracking-tighter leading-[0.81] w-auto rounded-lg  mix-blend-difference' />
                   {/* </TextReveal> */}
 
                   {/* <TextReveal staggerValue={"0.03"} classValue="leading-none h-auto lg:w-full "> */}
-                    <HackHover data='nous ?' classValue='text-semibold h-auto uppercase text-[48px] lg:text-[17.942rem]  hover:backdrop-blur-sm bg-opacity-70 text-[#0E0E0E] cursor-default tracking-tighter leading-[0.81] w-auto rounded-lg  mix-blend-difference' />
+                  <HackHover data='nous ?' classValue='text-semibold h-auto uppercase text-[48px] lg:text-[17.942rem]  hover:backdrop-blur-sm bg-opacity-70 text-[#0E0E0E] cursor-default tracking-tighter leading-[0.81] w-auto rounded-lg  mix-blend-difference' />
                   {/* </TextReveal> */}
 
                 </div>
@@ -355,7 +389,7 @@ export default function Home(stickyElement) {
                   </p>
                 </TextReveal> */}
                 <TextScroll className="">
-                  <p className='absolute top-0 right-0 pointer-events-none text-right tracking-tight text-[16px] lg:text-[32px] lg:w-2/4 leading-none #text-[#0E0E0E] z-50 backdrop-blur-sm rounded-lg bg-opacity-50 pt-[50px] pl-[50px]  pb-[50px]'>
+                  <p className='lg:absolute realative top-0 right-0 pointer-events-none text-right tracking-tight text-[16px] lg:text-[32px] lg:w-2/4 leading-none #text-[#0E0E0E] z-50 backdrop-blur-sm rounded-lg bg-opacity-50 pt-[50px] pl-[50px]  pb-[50px]'>
                     Développeur freelance basée à l&apos;ile de la Réunion
                     je suis spécialisé dans la <strong> création de site internet moderne</strong>, qui place l&apos;utilisateur au cœur d&apos;une expérience unique.
                   </p>

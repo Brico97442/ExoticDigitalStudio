@@ -19,7 +19,7 @@ export default function Hero() {
   const maskShapeRef = useRef(null)
   const textMaskRef = useRef(null)
   const rectMaskRef = useRef(null)
-
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
   const pictures = [
     { src: HeroImg, width: '12.5vw', height: '12.5vh', top: '0vh', left: '0vw', scale: 8, zIndex: 10, filter: 'grayscale(20%)' },
     { src: HeroImg2, width: '15vw', height: '32vh', top: '-9.5vh', left: '-16vw', scale: 6, zIndex: 1, filter: 'grayscale(100%)' },
@@ -44,11 +44,11 @@ export default function Hero() {
           scrub: 2,
         },
       });
-      
+
 
       gsap.to('#text-left', {
         xPercent: -100,
-        x:-80,
+        x: -80,
         ease: 'power4.inOut',
         duration: 10,
         scrollTrigger: {
@@ -72,7 +72,7 @@ export default function Hero() {
             end: 'bottom 100%',
             scrub: 1,
             pin: true,
-            markers:false,
+            markers: false,
           },
         }
       )
@@ -98,23 +98,23 @@ export default function Hero() {
           start: 'top top',
           end: 'center bottom',
           scrub: 1,
-          markers:false,
+          markers: false,
         },
       })
 
       // Réduction du rectangle puis fade vers le texte avec descale
-      tl.fromTo(rectMaskRef.current, 
+      tl.fromTo(rectMaskRef.current,
         {
-          attr: { 
-            width: "100%", 
+          attr: {
+            width: "100%",
             height: "100%",
             x: "0%",
             y: "0%"
           }
         },
-        { 
-          attr: { 
-            width: "0%", 
+        {
+          attr: {
+            width: "0%",
             height: "0%",
             x: "50%",
             y: "50%"
@@ -123,22 +123,22 @@ export default function Hero() {
           ease: 'power2.inOut'
         }
       )
-      .to(rectMaskRef.current, {
-        opacity: 0,
-        duration: 0.8,
-      }, "-=0.1")
-      .fromTo(textMaskRef.current, {
-        opacity: 0,
-        scale: 60,
-        transformOrigin: '50% 50%'
-      }, {
-        opacity: 1,
-        scale: 1,
-        duration: 10,
-        ease: 'power2.inOut'
-      }, "-=0.8")
-      
-    }, sectionRef,containerRef)
+        .to(rectMaskRef.current, {
+          opacity: 0,
+          duration: 0.8,
+        }, "-=0.1")
+        .fromTo(textMaskRef.current, {
+          opacity: 0,
+          scale: 60,
+          transformOrigin: '50% 50%'
+        }, {
+          opacity: 1,
+          scale: 1,
+          duration: 10,
+          ease: 'power2.inOut'
+        }, "-=0.8")
+
+    }, sectionRef, containerRef)
 
     return () => ctx.revert()
   }, [])
@@ -149,9 +149,9 @@ export default function Hero() {
         {/* === SVG Overlay avec masques animés === */}
         <svg className='absolute inset-0 w-full h-full z-[60] pointer-events-none'>
           <defs>
-          <mask id='mask-transition'>
+            <mask id='mask-transition'>
               <rect x='0' y='0' width='100%' height='100%' fill='white' />
-              
+
               {/* Masque rectangle (initial) */}
               <rect
                 ref={rectMaskRef}
@@ -160,14 +160,14 @@ export default function Hero() {
                 fill='black'
                 style={{ opacity: 1 }}
               />
-              
+
               {/* Masque texte (final) */}
               <g ref={textMaskRef} style={{ opacity: 0 }}>
                 <text
                   x='50px' y='40%'
                   textAnchor='start'
                   dominantBaseline='middle'
-                  fontSize='17.942rem'
+                  fontSize= {isMobile? '68px': '17.942rem'}
                   fill='black'
                   fontWeight='semi-bold'
                   letterSpacing='0.01'
@@ -175,25 +175,34 @@ export default function Hero() {
                   OSER
                 </text>
                 <text
-                  x='10%' y='65%'
+                  x='10%' y={isMobile? '50%':'65%'}
                   textAnchor='start'
                   dominantBaseline='middle'
-                  fontSize='17.942rem'
+                  fontSize= {isMobile? '68px': '17.942rem'}
                   fill='black'
                   fontWeight='semi-bold'
                 >
-                INNOVER
+                  INNOVER
                 </text>
               </g>
             </mask>
           </defs>
           <rect x='0' y='0' width='100%' height='100%' fill='#0E0E0E' mask='url(#mask-transition)' />
+          <image
+            href='/media/art1.jpg'
+            width='100%'
+            height='100%'
+            preserveAspectRatio='xMidYMid slice'
+            mask='url(#mask-transition)'
+            filter='difference'
+            className='mix-blend-difference opacity-70'
+          />
         </svg>
 
         {/* Textes latéraux */}
-        <div className='absolute z-[61] flex items-end justify-center w-full h-[100vh] overflow-hidden py-[50px] mx-[50px]'>
-          <p id='text-left' className='absolute left-full text-nowrap uppercase mix-blend-difference text-6xl md:text-[38px] text-white'>L&apos;attention</p>
-          <p id='text-right' className='absolute right-full uppercase mix-blend-difference text-6xl md:text-[38px] text-white'>Capter</p>
+        <div className='absolute z-[61] lg:flex block items-end justify-center w-full h-[100vh] overflow-hidden py-[50px] mx-[50px]'>
+          <p id='text-left' className='absolute left-full text-nowrap uppercase mix-blend-difference text-[20px] lg:text-6xl md:text-[38px] text-white'>Différement</p>
+          <p id='text-right' className='absolute right-full uppercase mix-blend-difference text-[20px] lg:text-6xl md:text-[38px] text-white'>Capter L&apos;attention</p>
         </div>
 
         {/* Contenu animé (images) */}

@@ -93,7 +93,7 @@ export default function HorizontalScroll() {
         style={{ willChange: "transform" }} // GPU optimization
       >
         {/* section1 */}
-        <div className="min-w-[100vw] w-full h-screen flex justify-end items-center relative bg-[#070707] text-4xl">
+        <div className="min-w-[100vw] w-full h-screen flex justify-end items-center relative bg-[#070707]">
           <HackHover
             data="Nos services"
             classValue="w-auto h-auto text-[14px] lg:text-[280px] leading-none tracking-tighter text-white lg:absolute lg:bottom-[80px] lg:left-[80px] "
@@ -103,10 +103,8 @@ export default function HorizontalScroll() {
               classValue="text-right max-w-[80%] text-[36px] text-white"
               staggerValue={"0.03"}
             >
-              <p className="text-right max-w-[80%] text-[36px]">
-                Nous réalisons pour vous des sites sur demandes chaque site
-                conçus par mes soins reflète votre efficacité et votre
-                exigence.
+              <p className="text-right max-w-[100%] text-[36px]">
+              Des expériences interactives uniques, loin des sites conventionnels. Chaque projet est conçu pour surprendre et séduire, avec un rendu haut de gamme.
               </p>
             </TextReveal>
           </div>
@@ -117,21 +115,25 @@ export default function HorizontalScroll() {
           <div className=" flex flex-col items-end w-full">
 
             <TextReveal
-              classValue="text-right max-w-[100%] text-[36px] text-white"
+              classValue="text-rightw-auto text-[36px] text-white"
               staggerValue={"0.03"}
             >
-              <p className=" max-w-[100%] text-[36px] mb-[80px]">
-                Nous réalisons pour vous des sites sur demandes chaque site
-                conçus par mes soins reflète votre efficacité et votre
-                exigence.
+              <p className=" w-auto text-[36px] mb-[80px]">
+                Des conception sur demandes inspirantes exigentes.
               </p>
             </TextReveal>
             <hr className="h-[1px] w-1/2 mb-5 mt-5"></hr>
-            <div className="flex flex-wrap justify-end gap-2 w-full mb-[80px] mt-[80px]">
-              <span className="bg-[#ECECEC]/70 px-3 py-1 rounded-full font-semibold shadow cursor-pointer">Identité visuelle</span>
-              <span className="bg-[#ECECEC]/70 px-3 py-1 rounded-full font-semibold shadow cursor-pointer">UI/UX</span>
-              <span className="bg-[#ECECEC]/70 px-3 py-1 rounded-full font-semibold shadow cursor-pointer">Maquette web</span>
-              <span className="bg-[#ECECEC]/70 px-3 py-1 rounded-full font-semibold shadow cursor-pointer">Direction artistique</span>
+            <div className="flex flex-wrap justify-start gap-2 w-3/6 mb-[80px] mt-[80px]">
+              <span className="hover:bg-[#ECECEC]/70 bg-[#ECECEC]/30 transition-all ease-in-out  duration-500 px-3 py-1 rounded-full font-semibold shadow cursor-pointer">Site Internet</span>
+              <span className="hover:bg-[#ECECEC]/70 bg-[#ECECEC]/30 transition-all ease-in-out duration-500 px-3 py-1 rounded-full font-semibold shadow cursor-pointer">Refonte</span>
+              <span className="hover:bg-[#ECECEC]/70 bg-[#ECECEC]/30 transition-all ease-in-out duration-500 px-3 py-1 rounded-full font-semibold shadow cursor-pointer">Landing Page</span>
+              <span className="hover:bg-[#ECECEC]/70 bg-[#ECECEC]/30 transition-all ease-in-out duration-500 px-3 py-1 rounded-full font-semibold shadow cursor-pointer">Immersion 3D</span>
+              <span className="hover:bg-[#ECECEC]/70 bg-[#ECECEC]/30 transition-all ease-in-out duration-500 px-3 py-1 rounded-full font-semibold shadow cursor-pointer">Application Web</span>
+              <span className="hover:bg-[#ECECEC]/70 bg-[#ECECEC]/30 transition-all ease-in-out duration-500 px-3 py-1 rounded-full font-semibold shadow cursor-pointer">E-Commerce</span>
+              <span className="hover:bg-[#ECECEC]/70 bg-[#ECECEC]/30 transition-all ease-in-out duration-500 px-3 py-1 rounded-full font-semibold shadow cursor-pointer">React Js</span>
+              <span className="hover:bg-[#ECECEC]/70 bg-[#ECECEC]/30 transition-all ease-in-out duration-500 px-3 py-1 rounded-full font-semibold shadow cursor-pointer">Next Js</span>
+              <span className="hover:bg-[#ECECEC]/70 bg-[#ECECEC]/30 transition-all ease-in-out duration-500 px-3 py-1 rounded-full font-semibold shadow cursor-pointer">Wordpress</span>
+              <span className="hover:bg-[#ECECEC]/70 bg-[#ECECEC]/30 transition-all ease-in-out duration-500 px-3 py-1 rounded-full font-semibold shadow cursor-pointer">Webflow</span>
             </div>
             <div>
             </div>
@@ -147,10 +149,10 @@ export default function HorizontalScroll() {
           <div className=" flex flex-col items-end w-full">
 
             <TextReveal
-              classValue="text-right max-w-[100%] text-[36px] text-white"
+              classValue="text-right max-w-[70%] text-[36px] text-white"
               staggerValue={"0.03"}
             >
-              <p className=" max-w-[100%] text-[36px] mb-[80px]">
+              <p className=" max-w-[70%] text-[36px] mb-[80px]">
                 Nous réalisons pour vous des sites sur demandes chaque site
                 conçus par mes soins reflète votre efficacité et votre
                 exigence.
@@ -161,7 +163,7 @@ export default function HorizontalScroll() {
               <span className="bg-[#ECECEC]/70 px-3 py-1 rounded-full font-semibold shadow cursor-pointer">Identité visuelle</span>
               <span className="bg-[#ECECEC]/70 px-3 py-1 rounded-full font-semibold shadow cursor-pointer">UI/UX</span>
               <span className="bg-[#ECECEC]/70 px-3 py-1 rounded-full font-semibold shadow cursor-pointer">Maquette web</span>
-              <span className="bg-[#ECECEC]/70 px-3 py-1 rounded-full font-semibold shadow cursor-pointer">Direction artistique</span>
+              <span className="bg-[#ECECEC]/70 px-3 py-1 rounded-full font-semibold shadow cursor-pointer">Figma</span>
             </div>
             <div>
             </div>
@@ -177,10 +179,10 @@ export default function HorizontalScroll() {
           <div className=" flex flex-col items-end w-full">
 
             <TextReveal
-              classValue="text-right max-w-[100%] text-[36px] text-white"
+              classValue="text-right max-w-[70%] text-[36px] text-white"
               staggerValue={"0.03"}
             >
-              <p className=" max-w-[100%] text-[36px] mb-[80px]">
+              <p className=" max-w-[70%] text-[36px] mb-[80px]">
                 Nous réalisons pour vous des sites sur demandes chaque site
                 conçus par mes soins reflète votre efficacité et votre
                 exigence.
@@ -188,10 +190,12 @@ export default function HorizontalScroll() {
             </TextReveal>
             <hr className="h-[1px] w-1/2 mb-5 mt-5"></hr>
             <div className="flex flex-wrap justify-end gap-2 w-full mb-[80px] mt-[80px]">
-              <span className="bg-[#ECECEC]/70 px-3 py-1 rounded-full font-semibold shadow cursor-pointer">Identité visuelle</span>
-              <span className="bg-[#ECECEC]/70 px-3 py-1 rounded-full font-semibold shadow cursor-pointer">UI/UX</span>
-              <span className="bg-[#ECECEC]/70 px-3 py-1 rounded-full font-semibold shadow cursor-pointer">Maquette web</span>
-              <span className="bg-[#ECECEC]/70 px-3 py-1 rounded-full font-semibold shadow cursor-pointer">Direction artistique</span>
+              <span className="bg-[#ECECEC]/70 px-3 py-1 rounded-full font-semibold shadow cursor-pointer">Gsap</span>
+              <span className="bg-[#ECECEC]/70 px-3 py-1 rounded-full font-semibold shadow cursor-pointer">Motion design</span>
+              <span className="bg-[#ECECEC]/70 px-3 py-1 rounded-full font-semibold shadow cursor-pointer">Three Fiber</span>
+              <span className="bg-[#ECECEC]/70 px-3 py-1 rounded-full font-semibold shadow cursor-pointer">Three Js</span>
+              <span className="bg-[#ECECEC]/70 px-3 py-1 rounded-full font-semibold shadow cursor-pointer">Webgl</span>
+              <span className="bg-[#ECECEC]/70 px-3 py-1 rounded-full font-semibold shadow cursor-pointer">After Effect</span>
             </div>
             <div>
             </div>

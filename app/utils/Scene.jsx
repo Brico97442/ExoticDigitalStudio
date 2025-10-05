@@ -11,6 +11,8 @@ import { AccumulativeShadows, RandomizedLight, Stats } from '@react-three/drei';
 import { Bloom, DepthOfField, EffectComposer, ShaderPass, KawaseBlur } from '@react-three/postprocessing';
 import * as THREE from 'three';
 import { BlurPass } from 'postprocessing';
+import LightRays from "./LightRays"
+import LiquidEther from './LiquiEther';
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Scene({ island }) {
@@ -71,14 +73,43 @@ export default function Scene({ island }) {
     <div
       id='scene'
       ref={divRef}
-      className={`w-[100%] fixed h-[100vh] top-0 flex-col items-center justify-center lg:w-full`}
+      className={`w-[100%] fixed h-[100vh] top-0 flex-col items-center justify-center lg:w-full z-0`}
     >
-      <div className='w-full h-full'>
+      <div className='w-full h-full relative'>
+        {/* <div style={{ width: '100%', height: '100%', position: 'absolute' }}> */}
+          {/* <LightRays
+            raysOrigin="top-center"
+            raysColor="#00ffff"
+            raysSpeed={1.2}
+            lightSpread={0.8}
+            rayLength={1.2}
+            followMouse={true}
+            mouseInfluence={0.1}
+            noiseAmount={0.1}
+            distortion={0.05}
+            className="custom-rays"
+          /> */}
+        {/* </div> */}
+        {/* <LiquidEther
+              colors={['#5227FF', '#FF9FFC', '#B19EEF']}
+              mouseForce={20}
+              cursorSize={50}
+              isViscous={false}
+              viscous={30}
+              iterationsViscous={32}
+              iterationsPoisson={32}
+              resolution={0.5}
+              isBounce={false}
+              autoDemo={true}
+              autoSpeed={0.3}
+              autoIntensity={2.2}
+              takeoverDuration={0.25}
+              autoResumeDelay={3000}
+              autoRampDuration={0.6}
+            /> */}
         <Canvas {...canvasConfig} id="three-canvas" className=''>
-          
-
           <fog attach="fog" args={['#771A66', 6, 2]} />
-           <Stats /> 
+          <Stats />
           <Suspense fallback={null}>
 
             <group position={[0, 0, 0]}>
@@ -86,7 +117,7 @@ export default function Scene({ island }) {
               {/* <CurvedText3d
               /> */}
               {/* Lumières globales */}
-              <ambientLight position={mousePosition}  color='red' intensity={20}/>
+              <ambientLight position={mousePosition} color='red' intensity={20} />
               {/* <directionalLight position={mousePosition} intensity={200} color='#C1121F'/> */}
 
               {/* <AccumulativeShadows frames={100} alphaTest={0.85} opacity={0.8} color="red" scale={20} position={[0, -0.005, 0]}> */}
@@ -96,7 +127,7 @@ export default function Scene({ island }) {
 
             </group>
           </Suspense>
-            
+
         </Canvas>
       </div>
     </div>
