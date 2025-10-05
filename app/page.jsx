@@ -231,7 +231,7 @@ export default function Home(stickyElement) {
     animateHero(textScroll);
     ScrollTrigger.create({
       trigger: '#hero',
-      start: 'bottom 50%',
+      start: 'bottom 55%',
       end: 'bottom top',  // Pin pendant 100vh supplémentaires
       pin: '#sticky-texts-container',
       pinSpacing: false,
@@ -290,7 +290,7 @@ export default function Home(stickyElement) {
       </div>
 
       {/* Créateur de solutions digitales */}
-      <div className="overflow-hidden absolute bottom-0 left-0 mb-[10px] lg:ml-[0px] lg:mb-[50px] text-[#ECECEC]">
+      <div className="overflow-hidden absolute bottom-0 left-0 lg:left-[50px] lg:mb-[50px] text-[#ECECEC]">
         <TextReveal staggerValue={"0.03"} classValue="leading-none h-auto lg:w-full">
           <h2 id='studio-text' className='overflow-hidden text-[#ECECEC] pointer-events-none leading-none text-[24px] lg:text-[36px] font-bold-sm tracking-tighter backdrop-blur-sm bg-opacity-50 py-2 px-6 rounded-lg'>
             Créateur de solutions digitales
