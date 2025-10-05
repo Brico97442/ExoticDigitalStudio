@@ -167,7 +167,7 @@ export default function Hero() {
                   x='50px' y='40%'
                   textAnchor='start'
                   dominantBaseline='middle'
-                  fontSize= {isMobile? '68px': '17.942rem'}
+                  fontSize= { isMobile? '68px': '17.942rem'}
                   fill='black'
                   fontWeight='semi-bold'
                   letterSpacing='0.01'
