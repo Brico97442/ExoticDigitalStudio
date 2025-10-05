@@ -231,11 +231,11 @@ export default function Home(stickyElement) {
     animateHero(textScroll);
     ScrollTrigger.create({
       trigger: '#hero',
-      start: 'bottom center',
+      start: 'bottom 50%',
       end: 'bottom top',  // Pin pendant 100vh supplémentaires
       pin: '#sticky-texts-container',
       pinSpacing: false,
-      markers: true,  // Retirez en production
+      markers: false,  // Retirez en production
       onUpdate: (self) => {
         // Fade out progressif quand on scroll
         const opacity = 1 - self.progress;
