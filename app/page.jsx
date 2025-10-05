@@ -263,7 +263,7 @@ export default function Home(stickyElement) {
               {/* <TextReveal staggerValue={"0.03"} classValue="leading-none h-auto lg:w-full ">
                 <h3 id='hero-title' className='backdrop-blur-sm bg-opacity-50 pointer-events-none text-[#ECECEC] text-[16px] lg:text-[28px] font-bold-sm tracking-tighter py-2 px-6 rounded-lg '>Reunion Island Digital Studio </h3>
               </TextReveal> */}
-              <HackHover data='Reunion Island Digital Studio' classValue='text-semibold h-auto w-auto text-[48px] pl-[8vw] lg:text-[28px]  hover:backdrop-blur-sm bg-opacity-70  text-[#ECECEC] cursor-default tracking-tighter leading-[0.81] w-auto rounded-lg  mix-blend-difference' />
+              <HackHover data='Reunion Island Digital Studio' classValue='text-semibold h-auto w-auto text-[48px] pl-[8vw] lg:text-[28px]  hover:backdrop-blur-sm bg-opacity-70  text-[#ECECEC] cursor-default tracking-tighter leading-none w-auto rounded-lg  mix-blend-difference' />
 
             </div>
             {/* <Image
@@ -381,7 +381,7 @@ export default function Home(stickyElement) {
                 placeholder="blur"
                 className="absolute right-0 lg:right-[80px] lg:group-hover:right-0 group-hover:translate-x-full transition-all duration-500"
               />
-              <HackHover data='CONTACT' classValue=' z-[3]  text-[32px] tracking-tight mx-[10px] lg:mx-[58px] lg:text-[300px] leading-none text-[#0E0E0] text-left group-hover:ml-[290px] transition-all duration-500' />
+              <HackHover data='CONTACT' classValue=' z-[3]  text-[32px] tracking-tight mx-[10px] lg:mx-[58px] lg:text-[300px] font-semibold leading-none text-[#0E0E0] text-left group-hover:ml-[290px] transition-all duration-500' />
               {/* <svg width="164" height="165" viewBox="0 0 164 165" fill="none" xmlns="http://www.w3.org/2000/svg" id="right-arrow" className="absolute right-0 group-hover:translate-x-full transition-all duration-500 ">
               <path d="M0.741753 91.6101L1.04884 71.0174L124.605 72.86L68.8197 15.3855L83.6586 0.982649L163.99 83.7459L81.2264 164.077L66.8236 149.238L124.298 93.4527L0.741753 91.6101Z" fill="black" />
               </svg> */}

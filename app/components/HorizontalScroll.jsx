@@ -43,16 +43,16 @@ function HorizontalScroll() {
 
     useEffect(() => {
         gsap.registerPlugin(ScrollTrigger);
-        gsap.to(slider.current, {
-            scrollTrigger: {
-                trigger: document.documentElement,
-                scrub: 0.5,
-                start: 0,
-                end: window.innerHeight,
-                onUpdate: e => direction = e.direction * -1
+        ScrollTrigger.create({
+            trigger: document.documentElement,
+            start: 0,
+            end: window.innerHeight,
+            scrub: 0.5,
+            onUpdate: (self) => {
+              direction = self.direction * -1;
             },
-            x: "-500px",
-        })
+          });
+          
         requestAnimationFrame(animate);
     }, [])
 
@@ -96,42 +96,43 @@ function HorizontalScroll() {
         }
 
         // Animation du scale de #hero-scroll de 1 à 0 lors du scroll
-        // if ('#hero-scroll') {
-        //     gsap.fromTo(
-        //         "#hero-scroll",
-        //         { scale: 1, opacity:1 },
-        //         {
-        //             scale: 2,
-        //             opacity: 0,
-        //             ease: "power1.inOut",
-        //             transformOrigin:"center",
-        //             scrollTrigger: {
-        //                 trigger: "#hero-scroll",
-        //                 start: "top bottom", // quand le haut de #hero-scroll atteint le bas de la fenêtre
-        //                 end: "center top",      // jusqu'à ce qu'il atteigne le haut de la fenêtre
-        //                 scrub: true,
-        //                 markers: false,
-        //             }
-        //         }
-        //     );
+        if ('#hero-scroll-container') {
+            gsap.fromTo(
+                "#hero-scroll-container",
+                {scale: 1, opacity:1 },
+                
+                {
+                    scale: 2,
+                    opacity: 0,
+                    ease: "power1.inOut",
+                    // transformOrigin: "center bottom",
+                    scrollTrigger: {
+                        trigger: "#hero-scroll-container",
+                        start: "top 40%", // quand le haut de #hero-scroll atteint le bas de la fenêtre
+                        end: "center top",      // jusqu'à ce qu'il atteigne le haut de la fenêtre
+                        scrub: true,
+                        markers: false,
+                    }
+                }
+            );
 
-        //     gsap.fromTo(
-        //         "#hero-scroll",
-        //         { yPercent: 100, opacity:1 },
-        //         {
-        //             yPercent: 2,
-        //             opacity: 0,
-        //             ease: "power1.inOut",
-        //             scrollTrigger: {
-        //                 trigger: "#hero-scroll",
-        //                 start: "top center", // quand le haut de #hero-scroll atteint le bas de la fenêtre
-        //                 end: "60% top",      // jusqu'à ce qu'il atteigne le haut de la fenêtre
-        //                 scrub: true,
-        //                 markers: true,
-        //             }
-        //         }
-        //     );
-        // }
+            // gsap.fromTo(
+            //     "#hero-scroll",
+            //     { yPercent: 100, opacity:1 },
+            //     {
+            //         yPercent: 2,
+            //         opacity: 0,
+            //         ease: "power1.inOut",
+            //         scrollTrigger: {
+            //             trigger: "#hero-scroll",
+            //             start: "top center", // quand le haut de #hero-scroll atteint le bas de la fenêtre
+            //             end: "60% top",      // jusqu'à ce qu'il atteigne le haut de la fenêtre
+            //             scrub: true,
+            //             markers: true,
+            //         }
+            //     }
+            // );
+        }
 
         return () => {
             ScrollTrigger.getAll().forEach(trigger => trigger.kill())
@@ -145,9 +146,9 @@ function HorizontalScroll() {
     }
 
     return (
-        <div id='hero-scroll-container' className={`absolute text-[#ECECEC] bottom-[37vh] lg:bottom-[18vh] h-[7vh] lg:h-[25vh] left-0 w-full z-[6] flex items-center justify-center overflow-hidden`}>
-            <div id='hero-scroll' className='flex flex-col items-center uppercase font-bold absolute z-[6] backdrop-blur-[3px] bg-opacity-[50%] rounded-[20%]' >
-                <div id='slider' ref={slider} className='flex relative whitespace-nowrap z-[6] pointer-events-none' >
+        <div id='hero-scroll-container' className={`absolute text-[#ECECEC] bottom-[37vh] lg:bottom-[18vh] h-[7vh] lg:h-[25vh] left-0 w-full z-[0] flex items-center justify-center`}>
+            <div id='hero-scroll' className='flex flex-col items-center uppercase font-bold absolute top-0 z-[6] backdrop-blur-[3px] bg-opacity-[50%] rounded-[20%]'>
+                <div id='slider' ref={slider} className='flex items-center justify-center relative whitespace-nowrap z-[6] pointer-events-none' >
                     {/* <TextReveal staggerValue={"0.03"} classValue="leading-none lg:w-full flex"> */}
                         <h1 ref={text1} className='absolute z-[6] left-[100%] text-[10vh] flex-row lg:text-[17.942rem] flex items-center pointer-events-none tracking-tighter font-semibold drop-shadow-lg leading-none mix-blend-difference'>
                             studio<Dot />Creativ<Dot />Web<Dot /></h1>

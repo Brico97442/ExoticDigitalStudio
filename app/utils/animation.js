@@ -497,7 +497,7 @@ export const forceHeroReset = () => {
   const heroElements = [
     '#hero-title',
     '#hero-subtitle', 
-    // '#hero-scroll',
+    '#hero-scroll',
     '#studio-text',
     '#coordinates-gps p'
   ];
