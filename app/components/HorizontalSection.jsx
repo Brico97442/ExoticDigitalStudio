@@ -115,7 +115,7 @@ export default function HorizontalScroll() {
           <div className=" flex flex-col items-end w-full">
 
             <TextReveal
-              classValue="text-rightw-auto text-[36px] text-white"
+              classValue=" text-[36px] text-white"
               staggerValue={"0.03"}
             >
               <p className=" w-auto text-[36px] mb-[80px]">
@@ -149,10 +149,10 @@ export default function HorizontalScroll() {
           <div className=" flex flex-col items-end w-full">
 
             <TextReveal
-              classValue="text-right max-w-[70%] text-[36px] text-white"
+              classValue="text-right text-[36px] text-white"
               staggerValue={"0.03"}
             >
-              <p className=" max-w-[70%] text-[36px] mb-[80px]">
+              <p className=" w-auto text-[36px] mb-[80px]">
                 Nous réalisons pour vous des sites sur demandes chaque site
                 conçus par mes soins reflète votre efficacité et votre
                 exigence.
@@ -179,10 +179,10 @@ export default function HorizontalScroll() {
           <div className=" flex flex-col items-end w-full">
 
             <TextReveal
-              classValue="text-right max-w-[70%] text-[36px] text-white"
+              classValue="text-right text-[36px] text-white"
               staggerValue={"0.03"}
             >
-              <p className=" max-w-[70%] text-[36px] mb-[80px]">
+              <p className=" w-auto text-[36px] mb-[80px]">
                 Nous réalisons pour vous des sites sur demandes chaque site
                 conçus par mes soins reflète votre efficacité et votre
                 exigence.
