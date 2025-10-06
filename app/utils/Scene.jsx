@@ -78,7 +78,7 @@ export default function Scene({ island }) {
       alpha: true,
       antialias: !isMobile, // Désactiver l'antialiasing sur mobile
       stencil: false,
-      depth: true
+      depth: false
     }
   };
 
