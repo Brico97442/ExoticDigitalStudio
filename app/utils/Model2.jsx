@@ -27,7 +27,7 @@ function ParticleIslandBase({ island, color = '#6a1b9a', nodes }) {
 
     const sampledPos = [];
     const sampledCol = [];
-    const step = 30;
+    const step = size.width < 768 ? 50 : 30;
 
     for (let i = 0; i < pos.length; i += 3 * step) {
       sampledPos.push(pos[i], pos[i + 1], pos[i + 2]);

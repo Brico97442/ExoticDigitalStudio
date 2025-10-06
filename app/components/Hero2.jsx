@@ -147,7 +147,8 @@ export default function Hero() {
     <div ref={containerRef} className='relative flex flex-col h-[400vh]'>
       <div ref={sectionRef} className='sticky flex items-center justify-center h-[100vh] overflow-hidden rounded-none'>
         {/* === SVG Overlay avec masques animés === */}
-        <svg className='absolute inset-0 w-full h-full z-[60] pointer-events-none'>
+        <svg className='absolute inset-0 w-full h-full z-[60] pointer-events-none'
+        >
           <defs>
             <mask id='mask-transition'>
               <rect x='0' y='0' width='100%' height='100%' fill='white' />
@@ -167,20 +168,21 @@ export default function Hero() {
                   x='50px' y='40%'
                   textAnchor='start'
                   dominantBaseline='middle'
-                  fontSize= {isMobile? '68px!important': '17.942rem'}
-                  fill='black'
+                 fill='black'
                   fontWeight='semi-bold'
                   letterSpacing='0.01'
-                >
+                  className={'text-[68px] lg:text-[17.942rem]'}
+                  >
                   OSER
                 </text>
                 <text
                   x='10%' y={isMobile? '50%':'65%'}
                   textAnchor='start'
                   dominantBaseline='middle'
-                  fontSize= {isMobile? '68px!important': '17.942rem'}
                   fill='black'
                   fontWeight='semi-bold'
+                  className={'text-[68px] lg:text-[17.942rem]'}
+
                 >
                   INNOVER
                 </text>
