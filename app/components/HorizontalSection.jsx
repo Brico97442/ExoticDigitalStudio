@@ -93,7 +93,7 @@ export default function HorizontalScroll() {
         style={{ willChange: "transform" }} // GPU optimization
       >
         {/* section1 */}
-        <div className="min-w-[100vw] w-full h-screen flex justify-end items-center relative bg-[#070707]">
+        <div className="min-w-[100vw] w-screen h-screen flex justify-end items-center relative bg-[#070707]">
           <HackHover
             data="Nos services"
             classValue="w-auto h-auto text-[14px] lg:text-[280px] leading-none tracking-tighter text-white lg:absolute lg:bottom-[80px] lg:left-[80px] "
@@ -111,7 +111,7 @@ export default function HorizontalScroll() {
         </div>
 
         {/* section2 */}
-        <div className="min-w-[100vw] h-screen flex flex-col justify-end bg-[#C1121F]/90 lg:p-[80px] ">
+        <div className="min-w-[100vw] w-screen h-screen flex flex-col justify-end bg-[#C1121F]/90 lg:p-[80px] ">
           <div className=" flex flex-col items-end w-full">
 
             <TextReveal
@@ -145,7 +145,7 @@ export default function HorizontalScroll() {
         </div>
 
         {/* section3 */}
-        <div className="min-w-[100vw] h-screen flex flex-col justify-end bg-[#072737] lg:p-[80px] ">
+        <div className="min-w-[100vw] w-screen h-screen flex flex-col justify-end bg-[#072737] lg:p-[80px] ">
           <div className=" flex flex-col items-end w-full">
 
             <TextReveal
@@ -175,7 +175,7 @@ export default function HorizontalScroll() {
         </div>
 
         {/* section4 */}
-        <div className="min-w-[100vw] h-screen flex flex-col justify-end bg-[#771A66] lg:p-[80px] ">
+        <div className="min-w-[100vw] w-screen h-screen flex flex-col justify-end bg-[#771A66] lg:p-[80px] ">
           <div className=" flex flex-col items-end w-full">
 
             <TextReveal

@@ -88,7 +88,7 @@ export default function Scene({ island }) {
       ref={divRef}
       className={`w-[100%] fixed h-[100vh] top-0 flex-col items-center justify-center lg:w-full `}
     >
-        <LightRays
+        {/* <LightRays
             raysOrigin="top-center"
             raysColor="#ffffff"
             raysSpeed={1}
@@ -99,7 +99,7 @@ export default function Scene({ island }) {
             noiseAmount={0.05}
             distortion={0.03}
             className="z-0 w-full absolute top-0"
-          />
+          /> */}
       <div className='w-full h-full relative'>
         {/* <div style={{ width: '100%', height: '100%', position: 'absolute' }}> */}
         {/* </div> */}

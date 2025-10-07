@@ -289,7 +289,7 @@ const LightRays = ({
   return (
     <div
       ref={containerRef}
-      className={`w-full h-full pointer-events-none overflow-hidden relative ${className}`}
+      className={`w-full scale-100 transform-gpu h-full pointer-events-none overflow-hidden relative ${className}`}
       style={{ position: 'absolute', inset: 0, background: 'transparent', zIndex: 50, pointerEvents: 'none' }}
     />
   );
