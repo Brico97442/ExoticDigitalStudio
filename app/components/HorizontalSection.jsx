@@ -89,7 +89,7 @@ export default function HorizontalScroll() {
     <section ref={section2Ref} className="relative">
       <div
         ref={panelsRef}
-        className="flex w-full min-h-screen"
+        className="flex w-full min-h-screen h-screen"
         style={{ willChange: "transform" }} // GPU optimization
       >
         {/* section1 */}
