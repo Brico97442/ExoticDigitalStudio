@@ -89,7 +89,7 @@ export default function HorizontalScroll() {
     <section ref={section2Ref} className="relative">
       <div
         ref={panelsRef}
-        className="flex w-full"
+        className="flex w-full min-h-screen"
         style={{ willChange: "transform" }} // GPU optimization
       >
         {/* section1 */}
@@ -145,7 +145,7 @@ export default function HorizontalScroll() {
         </div>
 
         {/* section3 */}
-        <div className="min-w-[100vw] w-screen h-screen flex flex-col justify-end bg-[#072737] lg:p-[80px] ">
+        <div className="min-w-[100vw] w-screen h-[100svh] flex flex-col justify-end bg-[#072737] lg:p-[80px] ">
           <div className=" flex flex-col items-end w-full">
 
             <TextReveal
