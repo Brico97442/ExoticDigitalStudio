@@ -171,7 +171,7 @@ export default function Hero() {
                  fill='black'
                   fontWeight='semi-bold'
                   letterSpacing='0.01'
-                  className={'text-[68px] lg:text-[17.942rem]'}
+                  className='text-[68px] lg:text-[17.942rem]'
                   >
                   OSER
                 </text>
@@ -181,7 +181,7 @@ export default function Hero() {
                   dominantBaseline='middle'
                   fill='black'
                   fontWeight='semi-bold'
-                  className={'text-[68px] lg:text-[17.942rem]'}
+                  className='text-[68px] lg:text-[17.942rem]'
 
                 >
                   INNOVER
