@@ -424,7 +424,7 @@ export default function Home(stickyElement) {
         {/* <div className="z-[1] flex justify-center py-[20px] lg:py-[80px] px-[20px] lg:px-[50px]"> */}
         {/* <GridAnimation /> */}
         {/* </div> */}
-        <div id="contact" className="w-full lg:h-screen mx-[10px] lg:py-[80px] flex flex-col items-left text-[#0E0E0] h-screen justify-between relative border-none">
+        <div id="contact" className="w-full lg:h-screen mx-[10px] py-[80px] flex flex-col items-left text-[#0E0E0] h-screen justify-between relative border-none">
           <TextReveal staggerValue={"0.03"} style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} classValue=" text-[#0E0E0] cursor-pointer lg:mt-[50px] mx-[10px] lg:mx-[80px] text-[36px]">
             <h3 style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} className="tracking-tighter">Vous avez des questions ou vous souhaitez collaborer avec nous ?</h3>
           </TextReveal>
