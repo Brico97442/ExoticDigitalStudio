@@ -114,9 +114,8 @@ export default function HorizontalScroll() {
         </div>
 
         {/* section2 */}
-        <div className="min-w-[100vw] w-screen h-screen flex flex-col justify-end bg-[#C1121F]/90 lg:p-[80px] ">
+        <div className="min-w-[100vw] w-screen h-[100dvh] flex flex-col justify-end bg-[#C1121F]/90 lg:p-[80px] ">
           <div className=" flex flex-col items-end w-full">
-
             <TextReveal
               classValue=" text-[16px] lg:text-[36px] text-white"
               staggerValue={"0.03"}
@@ -143,7 +142,7 @@ export default function HorizontalScroll() {
           </div>
           <HackHover
             data="Développement"
-            classValue="w-auto h-auto text-[14px] lg:text-[11.089rem] leading-none tracking-tighter text-white  lg:bottom-[80px] lg:left-[80px] "
+            classValue="w-auto h-auto text-[64px] lg:text-[11.089rem] leading-none tracking-tighter text-white  lg:bottom-[80px] lg:left-[80px] "
           />
         </div>
 
