@@ -94,7 +94,7 @@ export default function HorizontalScroll() {
       >
         {/* section1 */}
         <div className="min-w-[100vw] w-screen h-screen flex justify-end items-center relative bg-[#070707]">
-          <div className="bg-blue-400 h-full flex flex-col-reverse justify-between">
+          <div className="bg-blue-400 h-full flex flex-col justify-between">
 
           <HackHover
             data="Nos services"
@@ -148,7 +148,7 @@ export default function HorizontalScroll() {
         </div>
 
         {/* section3 */}
-        <div className="min-w-[100vw] w-screen h-[100svh] flex flex-col justify-end bg-[#072737] lg:p-[80px] ">
+        <div className="min-w-[100vw] w-screen h-[100dvh] flex flex-col justify-end bg-[#072737] lg:p-[80px] ">
           <div className=" flex flex-col items-end w-full">
 
             <TextReveal
