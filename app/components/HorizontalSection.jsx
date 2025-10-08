@@ -94,19 +94,22 @@ export default function HorizontalScroll() {
       >
         {/* section1 */}
         <div className="min-w-[100vw] w-screen h-screen flex justify-end items-center relative bg-[#070707]">
+          <div className="bg-blue-400 h-full flex flex-col-reverse justify-between">
+
           <HackHover
             data="Nos services"
-            classValue="w-auto h-auto text-[14px] lg:text-[280px] leading-none tracking-tighter text-white lg:absolute lg:bottom-[80px] lg:left-[80px] "
+            classValue="w-auto h-auto text-[64px] lg:text-[280px] leading-none tracking-tighter text-white lg:absolute lg:bottom-[80px] lg:left-[80px] "
           />
-          <div className="w-1/2">
+          <div className="bg-red-400 h-3/4 lg:w-1/2 flex items-center justify-center">
             <TextReveal
-              classValue="text-right max-w-[80%] text-[16px] lg:text-[36px] text-white"
+              classValue="text-right w-auto text-[16px] lg:text-[36px] text-white"
               staggerValue={"0.03"}
             >
               <p className="text-right max-w-[100%] text-[16px] lg:text-[36px]">
-              Des expériences interactives uniques, loin des sites conventionnels. Chaque projet est conçu pour surprendre et séduire, avec un rendu haut de gamme.
+                Des expériences interactives uniques, loin des sites conventionnels. Chaque projet est conçu pour surprendre et séduire, avec un rendu haut de gamme.
               </p>
             </TextReveal>
+          </div>
           </div>
         </div>
 
