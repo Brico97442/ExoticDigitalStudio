@@ -359,7 +359,7 @@ export default function Home(stickyElement) {
           <HackHover data='Située au Tampon' classValue='z-[0] ml-[20vw] mt-[5vh] w-full h-full text-[14px] z-[3] lg:text-[20px] text-white cursor-default leading-none' />
         </div>
 
-        <div id="about" ref={aboutRef} className="rounded-2xl sticky top-0 h-auto lg:h-[240svh] px-[10px] py-[80px] lg:px-[80px] lg:pb-[80px] lg:pt-[50svh] flex flex-col justify-center">
+        <div id="about" ref={aboutRef} className="rounded-2xl sticky top-0 h-screen lg:h-[240svh] px-[10px] py-[80px] lg:px-[80px] lg:pb-[80px] lg:pt-[50svh] flex flex-col justify-center">
           <div className=" flex flex-col w-full h-full">
             <div className='h-full w-full flex flex-col justify-between'>
               <div style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} className="w-full flex flex-col items-start">
