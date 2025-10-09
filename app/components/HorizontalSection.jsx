@@ -113,7 +113,7 @@ export default function HorizontalScroll() {
         </div>
 
         {/* section2 */}
-        <div className="min-w-[100vw] w-screen h-[100dvh] flex flex-col-reverse justify-between lg:flex-col lg:justify-end bg-[#C1121F]/90 lg:p-[80px] p-[20px]">
+        <div className="min-w-[100vw] w-screen h-full flex flex-col-reverse justify-between lg:flex-col lg:justify-end bg-[#C1121F]/90 lg:p-[80px] p-[20px]">
           <div className=" flex flex-col justify-between items-end w-full lg:h-3/4 h-full">
             <TextReveal
               classValue=" text-right lg:text-[36px] text-white"
