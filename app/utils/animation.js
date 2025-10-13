@@ -96,9 +96,16 @@ export const animatePageIn = () => {
   const bannerThree = document.getElementById('banner-3');
   const bannerFour = document.getElementById('banner-4');
   const mainEl = document.querySelector('main');
-
+  
   if (bannerOne && bannerTwo && bannerThree && bannerFour) {
     const tl = gsap.timeline();
+    if (mainEl) {
+      tl.fromTo(
+        mainEl,
+        { opacity: 0 },
+        { opacity: 1, duration: 0.3, ease: "power4.inOut" },
+      );
+    }
 
     // Animation des voiles qui se retirent
     tl.set([bannerOne, bannerTwo, bannerThree, bannerFour], {
@@ -118,13 +125,6 @@ export const animatePageIn = () => {
     });
 
     // Fade-in du main après le retrait des voiles
-    if (mainEl) {
-      tl.fromTo(
-        mainEl,
-        { opacity: 0 },
-        { opacity: 1, duration: 0.3, ease: "power4.inOut" },
-      );
-    }
   }
 };
 

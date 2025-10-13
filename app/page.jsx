@@ -307,7 +307,7 @@ export default function Home(stickyElement) {
 
               <TextReveal staggerValue={"0.03"} classValue="leading-none lg:w-full lg:justify-center text-center">
                 <h2 id='hero-subtitle' className='lg:w-full pointer-events-none mt-[100px] overflow-hidden text-[#ECECEC] text-[24px] tracking-tighter leading-none lg:text-[36px] lg:mt-[10vh] text-center'>
-                  Offrez à vos visiteurs <strong>une expérience web captivante</strong><br /> parce que chaque clic mérite sa touche de magie.</h2>
+                  Offrez à vos visiteurs <strong>des sites web captivant</strong><br /> parce que chaque clic mérite sa touche de magie.</h2>
               </TextReveal>
             </div>
             <div className="hero-sticky-texts absolute w-full">
@@ -350,7 +350,6 @@ export default function Home(stickyElement) {
                 </TextReveal>
               </div>
             </div>
-
             <HorizontalScroll />
           </div>
         </div>
@@ -412,8 +411,8 @@ export default function Home(stickyElement) {
         {/* <HorizontalScrollReverse /> */}
         <div className="w-full lg:px-[80px] lg:pt-[50vh] overflow-hidden" id="gallery-section">
           <div className="flex justify-end w-full h-[20svh]">
-            <TextReveal staggerValue={"0.03"} classValue="z-[7] w-full #text-[#0E0E0E] text-right z-[3]">
-              <h3 className=" leading-none w-full tracking-tighter z-[4] text-[32px] lg:text-[6.854rem] text-nowrap" style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }}>Changer votre vision du web moderne</h3>
+            <TextReveal staggerValue={"0.03"} classValue="z-[7] w-full  #text-[#0E0E0E] text-right z-[3]">
+              <h3 className="w-full tracking-tighter h-auto z-[4] text-[32px] lg:text-[6.854rem]">Changer votre vision du web moderne</h3>
             </TextReveal>
           </div>
         </div>
@@ -442,7 +441,7 @@ export default function Home(stickyElement) {
                 placeholder="blur"
                 className="absolute right-0 lg:right-[80px] lg:group-hover:right-0 group-hover:translate-x-full transition-all duration-500"
               />
-              <HackHover data='CONTACT' classValue=' z-[3]  text-[32px] tracking-tight mx-[10px] lg:mx-[58px] lg:text-[300px] font-semibold leading-none text-[#0E0E0] text-left group-hover:ml-[290px] transition-all duration-500' />
+              <HackHover data='CONTACT' classValue=' z-[3]  text-[32px] tracking-tight mx-[10px] lg:mx-[58px] lg:text-[300px] leading-none text-[#0E0E0] text-left group-hover:ml-[290px] transition-all duration-500' />
               {/* <svg width="164" height="165" viewBox="0 0 164 165" fill="none" xmlns="http://www.w3.org/2000/svg" id="right-arrow" className="absolute right-0 group-hover:translate-x-full transition-all duration-500 ">
               <path d="M0.741753 91.6101L1.04884 71.0174L124.605 72.86L68.8197 15.3855L83.6586 0.982649L163.99 83.7459L81.2264 164.077L66.8236 149.238L124.298 93.4527L0.741753 91.6101Z" fill="black" />
               </svg> */}
