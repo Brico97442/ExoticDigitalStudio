@@ -12,13 +12,13 @@ import HorizontalScroll from "./components/HorizontalScroll";
 // import Button from "./components/Button";
 import gsap from "gsap";
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { animateAbout, animateAboutText, animateHero, animateHeroIntro } from "./utils/animation";
+import { animateAbout, animateAboutText, animateHero, animateHeroIntro, prepareHeroIntro } from "./utils/animation";
 import HackHover from './components/HackHoverEffect'
 import Arrow from '../assets/Vector.png'
 import Arrow2 from '../public/media/arrow2.png'
 import CookieConsent from "./components/CookieConsent"
 import localFont from 'next/font/local'
-import { useRouter } from 'next/navigation'
+import { useRouter, usePathname } from 'next/navigation'
 import ScrollProgressSidebar from "./components/ScrollProgressSidebar";
 import HorizontalSection from "./components/HorizontalSection";
 import TextScroll from "./components/TextScroll";
@@ -39,6 +39,7 @@ const Guisol = localFont({
 
 export default function Home(stickyElement) {
   const router = useRouter();
+  const pathname = usePathname();
   const island = useRef(null);
   const targetRef = useRef(null);
   const arrowRef = useRef(null);
@@ -91,10 +92,8 @@ export default function Home(stickyElement) {
 
     // Réinitialiser quand on revient sur la page
     const handleRouteChange = () => {
-      if (preloaderDone) {
-        // Réinitialiser immédiatement sans délai
-        resetHeroElements();
-      }
+      // Toujours tenter une réinitialisation des éléments du hero
+      resetHeroElements();
     };
 
     // Ajouter les écouteurs d'événements
@@ -111,6 +110,8 @@ export default function Home(stickyElement) {
         originalPushState.apply(history, args);
         handleRouteChange();
       };
+      // Sauvegarder la référence originale pour le cleanup
+      window.__originalPushState = originalPushState;
     }
 
     return () => {
@@ -118,7 +119,10 @@ export default function Home(stickyElement) {
         window.removeEventListener('preloaderDone', handlePreloaderDone);
         window.removeEventListener('popstate', handleRouteChange);
         // Restaurer la fonction originale
-        history.pushState = history.pushState;
+        if (window.__originalPushState) {
+          history.pushState = window.__originalPushState;
+          delete window.__originalPushState;
+        }
       }
     };
   }, []);
@@ -226,6 +230,13 @@ export default function Home(stickyElement) {
 
     // Préparer les éléments au chargement
     prepareHeroElements();
+    // Lancer l'intro du hero juste après préparation
+    setTimeout(() => {
+      try {
+        prepareHeroIntro();
+        animateHeroIntro();
+      } catch {}
+    }, 50);
 
     animateAbout()
     // animateAboutText()
@@ -256,6 +267,19 @@ export default function Home(stickyElement) {
     };
 
   }, [arrowRef, textScroll]);
+
+  // Relancer l'intro du hero sur changement de route vers l'accueil
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    if (pathname === '/') {
+      setTimeout(() => {
+        try {
+          prepareHeroIntro();
+          animateHeroIntro();
+        } catch {}
+      }, 50);
+    }
+  }, [pathname]);
 
   return (
     <main id="main" className={"flex w-full h-full relative min-h-screen flex-col "}>
