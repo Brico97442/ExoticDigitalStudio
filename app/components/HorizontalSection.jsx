@@ -94,17 +94,17 @@ export default function HorizontalScroll() {
       >
         {/* section1 */}
         <div className="min-w-[100vw] w-[100svw] h-screen flex justify-end items-center relative bg-[#070707]">
-          <div className="h-full flex flex-col justify-between p-[20px] lg:p-[80px]">
+          <div className="h-full flex flex-col items-end justify-between px-[20px] lg:pt-[80px] lg:px-[80px]">
             <HackHover
               data="Nos services"
-              classValue="h-auto text-[64px] lg:text-[280px] mt-[60px] lg:mt-[0px] leading-none tracking-tighter text-white lg:absolute lg:bottom-[80px] lg:left-[80px]"
+              classValue="h-auto text-[64px] lg:text-[280px] mt-[60px] lg:mt-[0px] leading-[0.8] tracking-tighter text-white lg:absolute lg:bottom-[80px] lg:left-[80px] "
             />
-            <div className="lg:h-3/4 h-full lg:w-1/2 flex items-center justify-center">
+            <div className="lg:h-3/4 h-full lg:w-1/2 flex items-center justify-end bg-orange-600 p-10 rounded-lg">
               <TextReveal
-                classValue="text-right w-auto lg:text-[36px] text-white"
+                classValue="text-right w-auto lg:text-[36px] text-white mix-blend-difference "
                 staggerValue={"0.03"}
               >
-                <p className="text-right max-w-[100%] text-[24px] lg:text-[36px]">
+                <p className="text-right w-full max-w-[100%] text-[24px] lg:text-[36px] mix-blend-difference">
                   Des expériences interactives uniques, loin des sites conventionnels. Chaque projet est conçu pour surprendre et séduire, avec un rendu haut de gamme.
                 </p>
               </TextReveal>
@@ -113,8 +113,8 @@ export default function HorizontalScroll() {
         </div>
 
         {/* section2 */}
-        <div className="min-w-[100vw] w-screen h-full flex flex-col-reverse justify-between lg:flex-col lg:justify-end bg-[#C1121F]/90 lg:p-[80px] p-[20px]">
-          <div className=" flex flex-col justify-between items-end w-full lg:h-3/4 h-full">
+        <div className="min-w-[100vw] w-screen h-full flex flex-col-reverse justify-between lg:flex-col lg:justify-end bg-[#C1121F]/100 lg:p-[80px] p-[20px]">
+          <div className=" flex flex-col justify-between items-end w-full lg:h-3/4 h-full bg-orange-600">
             <TextReveal
               classValue=" text-right lg:text-[36px] text-white"
               staggerValue={"0.03"}
@@ -139,7 +139,7 @@ export default function HorizontalScroll() {
           </div>
           <HackHover
             data="Développement"
-            classValue="w-auto h-auto text-[48px] lg:text-[11.089rem] leading-none tracking-tighter text-white z-10 mt-[60px] mb-[60px] mb-[60px] lg:mt-[0px]"
+            classValue="w-auto h-auto text-[48px] lg:text-[11.089rem] leading-[0.8] tracking-tighter text-white z-10 mt-[60px] mb-[0px] lg:mt-[0px]"
           />
         </div>
 
@@ -166,7 +166,7 @@ export default function HorizontalScroll() {
           </div>
           <HackHover
             data="Design"
-            classValue="w-auto h-auto text-[48px] lg:text-[11.089rem] leading-none tracking-tighter text-white mt-[60px] mb-[60px] lg:mt-[0px] "
+            classValue="w-auto h-auto text-[48px] lg:text-[11.089rem]  leading-[0.8] tracking-tighter text-white mt-[60px] lg:mt-[0px] "
           />
         </div>
 
@@ -195,7 +195,7 @@ export default function HorizontalScroll() {
           </div>
           <HackHover
             data="Motion"
-            classValue="w-auto h-auto text-[48px] lg:text-[11.089rem] leading-none tracking-tighter text-white mt-[60px] mb-[60px] lg:mt-[0px] "
+            classValue="w-auto h-auto text-[48px] lg:text-[11.089rem]  leading-[0.8] tracking-tighter text-white mt-[60px]  lg:mt-[0px] "
           />
         </div>
       </div>
