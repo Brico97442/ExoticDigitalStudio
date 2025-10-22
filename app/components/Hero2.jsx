@@ -144,8 +144,8 @@ export default function Hero() {
   }, [])
 
   return (
-    <div ref={containerRef} className='relative flex flex-col h-[400vh]'>
-      <div ref={sectionRef} className='sticky flex items-center justify-center h-[100vh] overflow-hidden rounded-none'>
+    <div ref={containerRef} className='relative flex flex-col h-[400vh] mix-blend-difference'>
+      <div ref={sectionRef} className='sticky flex items-center justify-center h-[100vh] overflow-hidden rounded-none mix-blend-difference'>
         {/* === SVG Overlay avec masques animés === */}
         <svg className='absolute inset-0 w-full h-full z-[60] pointer-events-none'
         >
@@ -191,13 +191,13 @@ export default function Hero() {
           </defs>
           <rect x='0' y='0' width='100%' height='100%' fill='#0E0E0E' mask='url(#mask-transition)' />
           <image
-            href='/media/art1.jpg'
+            href='/media/montagne.webp'
             width='100%'
             height='100%'
             preserveAspectRatio='xMidYMid slice'
             mask='url(#mask-transition)'
             filter='difference'
-            className='mix-blend-difference opacity-70'
+            className='mix-blend-difference opacity-95'
           />
         </svg>
 

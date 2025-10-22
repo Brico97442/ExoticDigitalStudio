@@ -31,10 +31,10 @@ export default function Pricing() {
     return (
         <div className="w-full flex flex-col z-[2] relative pt-[110px] pb-[80px] backdrop-blur-[100px]  bg-opacity-50">
             <div className=''>
-                <HackHover data='Nos tarifs' classValue='text-[17.942rem] pl-40 text-white text-left z-[2] tracking-tighter' />
-                <div className='w-full pl-40 pb-[80px] flex flex-col gap-10 text-white'>
-                    <h2 className='text-[30px] font-bold'>Choisissez l’offre qui vous ressemble</h2>
-                    <p className='text-[18px] w-2/3'>
+                <HackHover data='Nos tarifs' classValue='text-[17.942rem] pl-40 text-white text-left z-[2] tracking-tighter leadin-none' />
+                <div className='w-full pl-40 pb-[100px] z-[2] flex flex-col items-center  gap-10 text-white'>
+                    <h2 className='text-[2.618rem] font-semibold'>Choisissez l’offre qui vous ressemble</h2>
+                    <p className='text-[1rem] w-2/3'>
                         Chez nous, la qualité n’est pas optionnelle, et les solutions adaptées à vos besoins ne le sont pas non plus.
                         Vous trouverez ici des offres conçues pour répondre à tous les projets, des plus simples aux plus ambitieux.
                         Parcourez nos options, choisissez celle qui vous convient le mieux, et laissez-nous transformer vos idées en réalité.
