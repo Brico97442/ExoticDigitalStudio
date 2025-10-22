@@ -150,7 +150,7 @@ export default function HorizontalScroll() {
               classValue="text-end lg:text-[36px] text-white w-full"
               staggerValue={"0.03"}
             >
-              <p className=" w-2/4 text-[24px] lg:text-[36px] lg:mb-[80px] ">
+              <p className=" w-3/4 text-[24px] lg:text-[36px] lg:mb-[80px] ">
                 Réalisation de maquette web sur mesure
               </p>
             </TextReveal>
