@@ -3,6 +3,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import HackHover from "./HackHoverEffect";
 import TextReveal from "./TextReveal";
+import Button from "./Button";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -137,6 +138,10 @@ export default function HorizontalScroll() {
               <span className="hover:bg-[#ECECEC]/70 bg-[#ECECEC]/30 transition-all ease-in-out duration-500 px-3 py-1 rounded-full font-semibold shadow cursor-pointer">Webflow</span>
             </div>
           </div>
+            <div className="h-auto w-full flex justify-end">
+            <Button value='Nous contacter'/>
+            </div>
+          
           <HackHover
             data="Développement"
             classValue="w-auto h-auto text-[48px] lg:text-[11.089rem] leading-none tracking-tighter text-white z-10 mt-[60px] mb-[0px] lg:mt-[0px]"
@@ -162,6 +167,9 @@ export default function HorizontalScroll() {
               <span className="bg-[#ECECEC]/70 px-3 py-1 rounded-full font-semibold shadow cursor-pointer">Figma</span>
             </div>
           </div>
+          <div className="h-auto w-full flex justify-end">
+            <Button value='Nous contacter'/>
+            </div>
           <HackHover
             data="Design"
             classValue="w-auto h-auto text-[48px] lg:text-[11.089rem]  leading-none tracking-tighter text-white mt-[60px] lg:mt-[0px] "
@@ -191,6 +199,9 @@ export default function HorizontalScroll() {
               <span className="bg-[#ECECEC]/70 px-3 py-1 rounded-full font-semibold shadow cursor-pointer">After Effect</span>
             </div>
           </div>
+          <div className="h-auto w-full flex justify-end">
+            <Button value='Nous contacter'/>
+            </div>
           <HackHover
             data="Motion"
             classValue="w-auto h-auto text-[48px] lg:text-[11.089rem]  leading-none tracking-tighter text-white mt-[60px]  lg:mt-[0px] "

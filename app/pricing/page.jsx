@@ -31,7 +31,7 @@ export default function Pricing() {
     ];
 
     return (
-        <div className="w-full flex flex-col z-[2] relative pt-[110px] pb-[80px] px-[80px] backdrop-blur-[100px]  bg-opacity-50">
+        <div className="w-full flex flex-col z-[2] relative pt-[110px] pb-[80px] px-[80px] backdrop-blur-[100px] bg-opacity-50">
             <div className='relative'>
                 <HackHover data='Nos tarifs' classValue='text-[17.942rem] text-white text-left z-[2] tracking-tighter leading-none' />
 

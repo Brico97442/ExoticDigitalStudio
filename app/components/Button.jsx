@@ -9,14 +9,14 @@ function Button({ position,value }) {
             {/* <Magnetic> */}
                     <button
                         id='button-cta'
-                        className={`flex flex-col py-6 px-8 rounded-lg relative overflow-hidden h-[50px] lg:min-w-[300px] border-black hover:border-white transition-all duration-500 ease-in-out border-[1px] justify-center items-center  text-[20px] group`}
+                        className={`flex flex-col py-6 px-8 rounded-lg relative overflow-hidden h-[50px] lg:min-w-[300px] border-white hover:border-white transition-all duration-500 ease-in-out border-[1px] justify-center items-center  text-[20px] group`}
                         type="submit"
                     >
-                        <div  className='flex z-[1] items-center justify-center gap-2'>
-                            <p className='z-[1] relative transition-all duration-500 ease-in-out group-hover:text-white lg:text-[18px]'>{value}</p>
+                        <div  className='flex z-[1] items-center justify-center gap-2 text-white'>
+                            <p className='z-[1] relative transition-all duration-500 ease-in-out group-hover:text-orange-500 lg:text-[18px]'>{value}</p>
                             <div id='arrow-btn' className=" arrow__body relative  flex justify-center items-center w-[15px] h-[16px]">
-                                <div className='relative overflow-hidden h-full w-full flex items-center justify-center border-black group-hover:border-white border-r-2 border-t-2 transition-all duration-500 ease-in-out'>
-                                    <div className='bg-black h-[2px] w-[150%] absolute -rotate-45 group-hover:bg-white transition-all duration-500 ease-in-out'></div>
+                                <div className='relative overflow-hidden h-full w-full flex items-center justify-center border-white group-hover:border-orange-500 border-r-2 border-t-2 transition-all duration-500 ease-in-out'>
+                                    <div className='bg-white h-[2px] w-[150%] absolute -rotate-45 group-hover:bg-orange-500 transition-all duration-500 ease-in-out'></div>
                                 </div>
                             </div>
                         </div>
