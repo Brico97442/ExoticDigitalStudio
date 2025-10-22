@@ -12,12 +12,12 @@ export default function Pricing() {
     const offers = [
         {
             title: 'Création site web',
-            features: ['Responsive design','Application évolutive', 'Hébergement offert', 'Suivi complet'],
+            features: ['Responsive design', 'Application évolutive', 'Hébergement offert', 'Suivi complet'],
             price: "900€"
         },
         {
             title: 'Développement sur-mesure',
-            features: ['Application personnalisée', 'Suivi complet','Application évolutive', 'Hébergement premium'],
+            features: ['Application personnalisée', 'Suivi complet', 'Application évolutive', 'Hébergement premium'],
             price: "Sur devis"
         },
         {
@@ -29,29 +29,29 @@ export default function Pricing() {
     ];
 
     return (
-        <div className="w-full flex flex-col z-[2] relative">
-            <div  className=''>
-            <HackHover data='Nos tarifs' classValue='text-[120px] pl-40 text-black text-left z-[2]' />
-            <div className='w-[85vw] pl-40 flex flex-col gap-6'>
-                <h2 className='text-[30px] font-bold'>Choisissez l’offre qui vous ressemble</h2>
-                <p className='text-[18px] w-2/3'>
-                    Chez nous, la qualité n’est pas optionnelle, et les solutions adaptées à vos besoins ne le sont pas non plus.
-                    Vous trouverez ici des offres conçues pour répondre à tous les projets, des plus simples aux plus ambitieux.
-                    Parcourez nos options, choisissez celle qui vous convient le mieux, et laissez-nous transformer vos idées en réalité.
-                </p>
+        <div className="w-full flex flex-col z-[2] relative mt-[110px] pb-[80px] backdrop-blur-[100px]  bg-opacity-50">
+            <div className=''>
+                <HackHover data='Nos tarifs' classValue='text-[17.942rem] pl-40 text-white text-left z-[2] tracking-tighter' />
+                <div className='w-full pl-40 pb-[80px] flex flex-col gap-6'>
+                    <h2 className='text-[30px] font-bold'>Choisissez l’offre qui vous ressemble</h2>
+                    <p className='text-[18px] w-2/3'>
+                        Chez nous, la qualité n’est pas optionnelle, et les solutions adaptées à vos besoins ne le sont pas non plus.
+                        Vous trouverez ici des offres conçues pour répondre à tous les projets, des plus simples aux plus ambitieux.
+                        Parcourez nos options, choisissez celle qui vous convient le mieux, et laissez-nous transformer vos idées en réalité.
+                    </p>
+                </div>
+                <div id='card-wrapper' className='flex gap-6 flex-wrap justify-center'>
+                    {offers.map((offer, index) => (
+                        <PricingCard
+                            key={index}
+                            title={offer.title}
+                            features={offer.features}
+                            price={offer.price}
+                        />
+                    ))}
+                </div>
             </div>
-            <div id='card-wrapper' className='w-[90vw] flex gap-6 flex-wrap justify-center'>
-                {offers.map((offer, index) => (
-                    <PricingCard
-                        key={index}
-                        title={offer.title}
-                        features={offer.features}
-                        price={offer.price}
-                    />
-                ))}
-            </div>
-            </div>
-            
+
         </div>
     );
 }

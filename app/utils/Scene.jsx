@@ -2,7 +2,7 @@ import React, { useEffect, useRef, Suspense, useState, useCallback } from 'react
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Environment } from '@react-three/drei';
 // import Model from './Model';
-import Model2 from './Model2';
+import Model2 from './Model';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
 import { animateScene } from './animation';
@@ -122,7 +122,7 @@ export default function Scene({ island }) {
             /> */}
         <Canvas {...canvasConfig} id="three-canvas" className='' >
           <fog attach="fog" args={['#771A66', 6, 2]} />
-          <Stats />
+          {/* <Stats /> */}
           <Suspense fallback={null}>
 
             <group position={[0, 0, 0]}>

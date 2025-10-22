@@ -178,6 +178,7 @@ p .word,
   display: inline-block;
   transform: translateY(100%);
   opacity: 0;
+  height: auto;
   transition: transform 0.6s ease, opacity 0.6s ease;
 }
 
