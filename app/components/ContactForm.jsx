@@ -64,10 +64,10 @@ function ContactForm() {
                     placeholder="Votre Message"
                     required>
                 </textarea>
-                <Magnetic>
+                {/* <Magnetic> */}
                     {/* <button className=" z-[1] w-full h-full min-w-[200px] border border-black p-2 rounded-full bg-purple-600 text-white" type="submit">Envoyer</button> */}
                     <Button value='Envoyer' type="submit"/>
-                </Magnetic>
+                {/* </Magnetic> */}
                 {successMessage && <p>{successMessage}</p>}
             </form></div>
 

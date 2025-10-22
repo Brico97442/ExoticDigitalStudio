@@ -202,10 +202,10 @@ export default function Hero() {
         </svg>
 
         {/* Textes latéraux */}
-        <div className='absolute z-[61] lg:flex block items-end justify-center w-full h-[100vh] overflow-hidden py-[50px] mx-[50px]'>
+        {/* <div className='absolute z-[61] lg:flex block items-end justify-center w-full h-[100vh] overflow-hidden py-[50px] mx-[50px]'>
           <p id='text-left' className='absolute left-full text-nowrap uppercase mix-blend-difference text-[20px] lg:text-6xl md:text-[38px] text-white'>Différement</p>
           <p id='text-right' className='absolute right-full uppercase mix-blend-difference text-[20px] lg:text-6xl md:text-[38px] text-white'>Capter L&apos;attention</p>
-        </div>
+        </div> */}
 
         {/* Contenu animé (images) */}
         <div ref={imagesContainerRef} className='relative z-40 flex items-center justify-center w-full h-full'>
