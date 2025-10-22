@@ -120,7 +120,7 @@ export default function HorizontalScroll() {
               staggerValue={"0.03"}
             >
               <p className=" w-2/3 text-[24px] lg:text-[36px] lg:mb-[80px]">
-                Je conçois des sites internets, landings pages et web applications performante, Seo friendly. Du site internet moderne à l'intégration 3D.
+                Je conçois des sites internets, landings pages et web applications performante, Seo friendly. Du site internet moderne à l&apos;intégration 3D.
               </p>
             </TextReveal>
             <hr className="h-[1px] w-full lg:w-1/2 mb-5 mt-5"></hr>
