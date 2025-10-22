@@ -68,7 +68,7 @@ const Navbar = forwardRef(function Index(props, ref) {
                     <div id='navlink' className={`flex gap-[50px] lg:visible z-[6] transition-all duration-300 ease-in-out text-[14px] lg:text-[22px] ${isScrolled ? 'opacity-0 max-h-0 overflow-hidden' : 'opacity-100 max-h-[100px] mix-blend-difference'}`}>
                         <li className=" transition ease hover:text-[#771A66] z-[5]">
                             <Magnetic>
-                                <TransitionLink href="/pricing" label="Processus" />
+                                <TransitionLink href="/pricing" label="Tarifs" />
                             </Magnetic>
                         </li>
 

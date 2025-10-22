@@ -14,7 +14,7 @@ function Aside({ isOpen, onClose }) {
     
     const navItems = [
         {
-            label: "Processus",
+            label: "Tarifs",
             href: "/pricing",
         },
         {
@@ -68,7 +68,7 @@ function Aside({ isOpen, onClose }) {
                                         label={item.label}
                                         onClick={handleLinkClick}
                                     >
-                                     <HackHover data={item.label} iterationTiming='40' classValue='tracking-tighter uppercase leading-none hover:text-[#771A66] text-[150px] text-white w-full'/>
+                                     <HackHover data={item.label} iterationTiming='40' classValue='tracking-tighter uppercase leading-none hover:text-[#771A66] text-[32px] lg:text-[150px] text-white w-full'/>
                                     </TransitionLink>
                                 </li>
                             ))}

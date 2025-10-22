@@ -57,13 +57,13 @@ function Services() {
 
   return (
     <div
-      className="min-h-screen h-full w-full bg-[#ECECEC] relative overflow-hidden z-[7] rounded-t-4xl"
+      className="min-h-screen h-full w-full relative overflow-hidden z-[10] rounded-t-4xl"
       id="services"
       ref={servicesRef}
     >
       <HackHover
         data="Nos services"
-        classValue="z-[7] lg:ml-[70px] lg:mt-[80px] w-full h-full text-[14px] lg:text-[180px] leading-none"
+        classValue="z-[10] lg:ml-[70px] lg:mt-[80px] w-full h-full text-[14px] lg:text-[180px] leading-none"
       />
 
       <div className="flex flex-col md:flex-row w-full">

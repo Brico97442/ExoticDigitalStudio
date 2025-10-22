@@ -128,7 +128,7 @@ export default function HackHoverInView({
         >
           <motion.span
             ref={(el) => (spansRef.current[i] = el)}
-            className="inline-block"
+            className="inline-block content-fit"
             data-value={char}
             variants={letterVariants}
           >
