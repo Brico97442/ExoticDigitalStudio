@@ -105,7 +105,7 @@ export default function HorizontalScroll() {
                 staggerValue={"0.03"}
               >
                 <p className="text-right w-full max-w-[100%] text-[24px] lg:text-[36px] mix-blend-difference">
-                  Des expériences interactives uniques, loin des sites conventionnels. Chaque projet est conçu pour surprendre et séduire, avec un rendu haut de gamme.
+                  Des expériences interactives uniques, loin des sites conventionnels. Chaque projet est conçu pour surprendre et séduire, avec un rendu premium.
                 </p>
               </TextReveal>
             </div>
@@ -119,8 +119,8 @@ export default function HorizontalScroll() {
               classValue=" text-right lg:text-[36px] text-white"
               staggerValue={"0.03"}
             >
-              <p className=" w-auto text-[24px] lg:text-[36px] lg:mb-[80px]">
-                Des conception sur demandes inspirantes exigentes.
+              <p className=" w-2/3 text-[24px] lg:text-[36px] lg:mb-[80px]">
+                Je conçois des sites internets, landings pages et web applications performante, Seo friendly. Du site internet moderne à l'intégration 3D.
               </p>
             </TextReveal>
             <hr className="h-[1px] w-full lg:w-1/2 mb-5 mt-5"></hr>
@@ -151,14 +151,12 @@ export default function HorizontalScroll() {
               staggerValue={"0.03"}
             >
               <p className=" w-2/4 text-[24px] lg:text-[36px] lg:mb-[80px] ">
-                Nous réalisons pour vous des sites sur demandes chaque site
-                conçus par mes soins reflète votre efficacité et votre
-                exigence.
+                Réalisation de maquette web sur mesure
               </p>
             </TextReveal>
             <hr className="h-[1px] w-full lg:w-1/2 mb-5 mt-5"></hr>
             <div className="flex flex-wrap justify-end gap-2 w-full lg:mb-[80px] lg:mt-[80px]">
-              <span className="bg-[#ECECEC]/70 px-3 py-1 rounded-full font-semibold shadow cursor-pointer">Identité visuelle</span>
+              {/* <span className="bg-[#ECECEC]/70 px-3 py-1 rounded-full font-semibold shadow cursor-pointer">Identité visuelle</span> */}
               <span className="bg-[#ECECEC]/70 px-3 py-1 rounded-full font-semibold shadow cursor-pointer">UI/UX</span>
               <span className="bg-[#ECECEC]/70 px-3 py-1 rounded-full font-semibold shadow cursor-pointer">Maquette web</span>
               <span className="bg-[#ECECEC]/70 px-3 py-1 rounded-full font-semibold shadow cursor-pointer">Figma</span>

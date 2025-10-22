@@ -9,7 +9,7 @@ function Button({ position,value }) {
             {/* <Magnetic> */}
                     <button
                         id='button-cta'
-                        className={`flex flex-col py-6 px-8 rounded-full relative overflow-hidden h-[50px] lg:min-w-[300px] border-black hover:border-white transition-all duration-500 ease-in-out border-[1px] justify-center items-center  text-[20px] group`}
+                        className={`flex flex-col py-6 px-8 rounded-lg relative overflow-hidden h-[50px] lg:min-w-[300px] border-black hover:border-white transition-all duration-500 ease-in-out border-[1px] justify-center items-center  text-[20px] group`}
                         type="submit"
                     >
                         <div  className='flex z-[1] items-center justify-center gap-2'>
@@ -23,7 +23,7 @@ function Button({ position,value }) {
 
                         <div
                             id='progress-background'
-                            className={`absolute rounded-[350px] bottom-0 left-0 w-full h-0 bg-purple-700/50 transition-all duration-500 ease-in-out group-hover:h-full`}
+                            className={`absolute rounded-lg bottom-0 left-0 w-full h-0 bg-purple-700/50 transition-all duration-500 ease-in-out group-hover:h-full`}
                         >
                         </div>
 

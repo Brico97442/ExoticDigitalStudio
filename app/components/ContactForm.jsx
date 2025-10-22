@@ -58,7 +58,7 @@ function ContactForm() {
                     placeholder="Sujet"
 
                 />
-                <textarea className="min-h-[25vh] px-4 py-6 w-full z-[1] rounded-lg placeholder:text-[18px]"
+                <textarea className="min-h-[25vh] px-4 py-6 my-6 w-full z-[1] rounded-lg placeholder:text-[18px]"
                     id="message"
                     name="message"
                     placeholder="Votre Message"
