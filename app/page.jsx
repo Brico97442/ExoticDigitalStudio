@@ -26,6 +26,9 @@ import Link from "next/link";
 import Services from "./components/Services";
 import LiquidEther from "./utils/LiquiEther";
 import LightRays from "./utils/LightRays";
+import TransitionLink from "./utils/TransitionLink";
+import logo from "../assets/LogoExoticDigitalStudioWhite.webp"
+import Magnetic from "../app/utils/Magnetic"
 
 gsap.registerPlugin(ScrollTrigger)
 const Scene = dynamic(() => import('./utils/Scene'), {
@@ -323,9 +326,14 @@ export default function Home(stickyElement) {
 
       {/* </div> */}
 
+      {/* <div id="logo-link" className="fixed top-[60px] left-[80px] z-[20] mix-blend-difference">
+        <Magnetic>
+          <TransitionLink href='/' label={<Image src={logo} alt="logo de la compagnie" className="z-[10] mix-blend-difference" width={80} height={55.83} />} />
+        </Magnetic>
+      </div> */}
       <div id="hero-container" className="z-[1] flex w-full h-full min-h-screen flex-col relative ">
         <Scene island={island} />
-        <div ref={heroSection} id="hero" className='h-screen sticky w-full flex flex-col items-center top-0 z-[3]'>
+        <div ref={heroSection} id="hero" className='h-screen sticky w-full flex flex-col items-center top-0 z-[3] mix-blend-normal'>
           <div className='h-screen flex flex-col items-start justify-between w-full px-[10px] lg:px-[80px] pt-[20px] lg:pt-[100px] relative z-[3]'>
             <div className="lg:w-full flex lg:justify-center">
 
@@ -339,7 +347,7 @@ export default function Home(stickyElement) {
             <div id="sticky-texts-container" className="absolute bottom-[0px] left-0 w-full h-auto ">
               {/* Reunion Island Digital Studio */}
               <div style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }}
-                className="w-auto absolute right-[10px] bottom-[148px] lg:bottom-[50px] lg:right-[80px] backdrop-blur-sm bg-opacity-70 mix-blend-difference">
+                className="w-auto absolute right-[10px] bottom-[148px] lg:bottom-[50px] lg:right-[80px] backdrop-blur-sm bg-opacity-70 ">
                 <HackHover
                   id="hero-title"
                   data='Reunion Island Digital Studio'
@@ -374,7 +382,7 @@ export default function Home(stickyElement) {
           {/* <HackHover data='Située au Tampon' classValue='z-[0] ml-[20vw] mt-[5vh] w-full h-full text-[14px] z-[3] lg:text-[20px] text-white cursor-default leading-none' /> */}
         </div>
 
-        <div id="about" ref={aboutRef} className="rounded-2xl sticky top-0 h-screen lg:h-[300svh] px-[10px] py-[80px] lg:px-[80px] lg:pb-[80px] lg:pt-[50svh] flex flex-col justify-center">
+        <div id="about" ref={aboutRef} className="rounded-2xl mix-blend-normal sticky top-0 h-screen lg:h-[300svh] px-[10px] py-[80px] lg:px-[80px] lg:pb-[80px] lg:pt-[50svh] flex flex-col justify-center">
           <div className=" flex flex-col w-full h-full flex-wrap">
             <div className='h-full w-full flex flex-col justify-between'>
               <div style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }} className="w-full flex flex-col items-start">

@@ -27,7 +27,7 @@ function Footer() {
             <div className='fixed bottom-0 flex flex-col lg:flex-row h-[60vh] text-white lg:items-center w-full px-[20px] lg:px-[80px] pb-[10px] lg:pb-[80px] '>
                 <div className='z-[4] w-full flex justify-between lg:justify-center flex-col-reverse lg:flex-row relative'>
                     <div className='relative h-full w-1/3 '>
-                        <Image src={logo} alt="logo de l'entreprise Exotik Digital Studio" width={100} height={80} className='z-[4]' />
+                        <Image src={logo} alt="logo de l'entreprise Exotik Digital Studio" width={100} height={80} className='z-[4] mix-blend-difference' />
                     </div>
                     <div className='flex w-full '>
                         <div className='z-[4] flex flex-col items-center  w-1/3'>

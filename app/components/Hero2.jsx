@@ -144,7 +144,7 @@ export default function Hero() {
   }, [])
 
   return (
-    <div ref={containerRef} className='relative flex flex-col h-[400vh] mix-blend-difference'>
+    <div ref={containerRef} className='relative flex flex-col h-[400vh] '>
       <div ref={sectionRef} className='sticky flex items-center justify-center h-[100vh] overflow-hidden rounded-none mix-blend-difference'>
         {/* === SVG Overlay avec masques animés === */}
         <svg className='absolute inset-0 w-full h-full z-[60] pointer-events-none'
@@ -208,11 +208,11 @@ export default function Hero() {
         </div> */}
 
         {/* Contenu animé (images) */}
-        <div ref={imagesContainerRef} className='relative z-40 flex items-center justify-center w-full h-full'>
+        <div ref={imagesContainerRef} className='relative z-40 flex items-center justify-center w-full h-full mix-blend-normal'>
           {pictures.map((picture, index) => (
-            <div key={index} className='absolute top-0 flex items-center justify-center w-full h-full' style={{ zIndex: picture.zIndex }}>
+            <div key={index} className='absolute top-0 flex items-center justify-center w-full h-full mix-blend-normal' style={{ zIndex: picture.zIndex }}>
               <div
-                className='relative z-50'
+                className='relative z-50 mix-blend-normal'
                 style={{
                   width: picture.width,
                   height: picture.height,

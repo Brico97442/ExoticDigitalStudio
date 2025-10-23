@@ -124,7 +124,7 @@ function PreLoader() {
                     <h2 className='absolute left-0 lg:right-0 top-[20px] lg:top-[50vh] text-white text-sm'>
                         Reunion Island Studio
                     </h2>
-                    <div className=' absolute flex w-[200px] lg:w-full h-full flex justify-center items-center'>
+                    <div className=' absolute flex w-[200px] lg:w-full h-full justify-center items-center'>
                         {/* <Image objectFit="cover" src={logo} className="" alt="logo de la compagnie" width={280} height={100} /> */}
                         <video
                             ref={videoRef}
@@ -132,7 +132,7 @@ function PreLoader() {
                             height="100"
                             autoPlay
                             muted
-                            className="object-cover"
+                            className="object-cover mix-blend-difference"
                             loading="lazy"
                         >
                             <source src="media/LogoExoticDigitalStudioWhiteVectorised.mp4" type="video/mp4" />
