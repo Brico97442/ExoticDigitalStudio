@@ -102,7 +102,7 @@ export default function HorizontalScroll() {
             />
             <div className="lg:h-3/4 h-full lg:w-1/2 w-full flex items-center justify-end p-10 rounded-lg">
               <TextReveal
-                classValue="text-right w-auto lg:text-[36px] text-white mix-blend-difference "
+                classValue="text-right w-auto lg:text-[2.618rem] text-white mix-blend-difference "
                 staggerValue={"0.03"}
               >
                 <p className="text-right w-full max-w-[100%] text-[24px] lg:text-[2.618rem] mix-blend-difference">
@@ -115,12 +115,12 @@ export default function HorizontalScroll() {
 
         {/* section2 */}
         <div className="min-w-[100vw] w-screen h-full flex flex-col-reverse justify-between lg:flex-col lg:justify-end bg-[#C1121F]/100 lg:p-[80px] p-[20px]">
-          <div className=" flex flex-col justify-between items-end w-full lg:h-2/4 h-full ">
+          <div className=" flex flex-col justify-between items-end w-full lg:h-auto h-full lg:bt-[120px]">
             <TextReveal
-              classValue=" text-right lg:text-[36px] text-white"
+              classValue=" text-right lg:text-[2.618rem] text-white leading-none h-auto"
               staggerValue={"0.03"}
             >
-              <p className=" w-2/3 text-[24px] lg:text-[36px] lg:mb-[80px]">
+              <p className=" w-full text-[24px] lg:text-[2.618rem] h-auto lg:mb-[80px] leading-none">
                 Je conçois des sites internets, landings pages et web applications performante, Seo friendly. Du site internet moderne à l&apos;intégration 3D.
               </p>
             </TextReveal>
@@ -152,10 +152,10 @@ export default function HorizontalScroll() {
         <div className="min-w-[100vw] w-screen h-full flex flex-col-reverse lg:flex-col justify-between lg:justify-end bg-[#072737] lg:p-[80px] p-[20px]">
           <div className=" flex flex-col items-end justify-start w-full lg:h-2/4 h-full">
             <TextReveal
-              classValue="text-end lg:text-[36px] text-white w-full"
+              classValue="text-end lg:text-[2.618rem] text-white w-full"
               staggerValue={"0.03"}
             >
-              <p className=" w-3/4 text-[24px] lg:text-[36px] lg:mb-[80px] ">
+              <p className=" w-3/4 text-[24px] lg:text-[2.618rem] lg:mb-[80px] ">
                 Réalisation de maquette web sur mesure
               </p>
             </TextReveal>

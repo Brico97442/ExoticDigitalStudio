@@ -43,7 +43,7 @@ export default function Pricing() {
                         <h2 className='text-[4.236rem] font-semibold'>Choisissez l’offre qui vous ressemble</h2>
                     </TextReveal>
                     <TextReveal>
-                        <p className='text-[1.618rem] w-3/4 tracking-normal text-right '>
+                        <p className='text-[1.618rem] w-auto tracking-normal text-right '>
                             Chez nous, la qualité n’est pas optionnelle, et les solutions adaptées à vos besoins ne le sont pas non plus.
                             Vous trouverez ici des offres conçues pour répondre à tous les projets, des plus simples aux plus ambitieux.
                             Parcourez nos options, choisissez celle qui vous convient le mieux, et laissez-nous transformer vos idées en réalité.
