@@ -338,7 +338,7 @@ export default function Home(stickyElement) {
             <div className="lg:w-full flex lg:justify-center">
 
               <TextReveal staggerValue={"0.03"} classValue="leading-none lg:w-full lg:justify-center text-center">
-                <h2 id='hero-subtitle' className='lg:w-full pointer-events-none mt-[100px] overflow-hidden text-[#ECECEC] text-[24px] tracking-tighter leading-none lg:text-[36px] lg:mt-[10vh] text-center'>
+                <h2 id='hero-subtitle' className='lg:w-full pointer-events-none mt-[130px] overflow-hidden text-[#ECECEC] text-[24px] tracking-tighter leading-none lg:text-[36px] lg:mt-[10vh] text-center'>
                   Offrez à vos visiteurs <strong>des sites web captivant</strong><br /> parce que chaque clic mérite sa touche de magie.</h2>
               </TextReveal>
             </div>
@@ -347,7 +347,7 @@ export default function Home(stickyElement) {
             <div id="sticky-texts-container" className="absolute bottom-[0px] left-0 w-full h-auto ">
               {/* Reunion Island Digital Studio */}
               <div style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }}
-                className="w-auto absolute right-[10px] bottom-[148px] lg:bottom-[50px] lg:right-[80px] backdrop-blur-sm bg-opacity-70 ">
+                className="w-auto absolute right-[20px] bottom-[50px] lg:bottom-[50px] lg:right-[80px] backdrop-blur-sm bg-opacity-70 ">
                 <HackHover
                   id="hero-title"
                   data='Reunion Island Digital Studio'
@@ -364,7 +364,7 @@ export default function Home(stickyElement) {
               </div>
             </div>
 
-            <div className="absolute right-[0px] bottom-[50vh] flex flex-col items-end justify-center mr-[10px] lg:mr-[80px]  text-[#ECECEC]">
+            <div className="absolute right-[0px] bottom-[50vh] flex flex-col items-end justify-center mr-[20px] lg:mr-[80px]  text-[#ECECEC]">
               <div id="coordinates-gps" className="flex flex-col items-end text-[8px] w-full lg:text-[16px] tracking-tighter leading-none ">
                 <TextReveal staggerValue={"0.1"} classValue="leading-none text-right w-full">
                   <p>21° 16&apos; 41″ S</p>

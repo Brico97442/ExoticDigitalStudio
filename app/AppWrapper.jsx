@@ -26,7 +26,7 @@ export default function AppWrapper({ children }) {
       <PreLoader />
       <Template>
         <main className="flex w-full h-full bg-gradient-to-b from-[#0E0E0E] to-[#737373]" id="main">
-          <div id="logo-link" className="fixed top-[60px] left-[80px] z-[10] mix-blend-difference">
+          <div id="logo-link" className="fixed top-[20px] left-[20px] lg:top-[60px] lg:left-[80px] z-[10] mix-blend-difference">
             <Magnetic>
               <TransitionLink href='/' label={<Image src={logo} alt="logo de la compagnie" className="z-[10] mix-blend-difference" width={80} height={55.83} />} />
             </Magnetic>
