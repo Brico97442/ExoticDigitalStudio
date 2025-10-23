@@ -144,7 +144,7 @@ export default function HorizontalScroll() {
           
           <HackHover
             data="Développement"
-            classValue="w-auto h-auto text-[48px] lg:text-[11.089rem] leading-none tracking-tighter text-white z-10 mt-[60px] mb-[0px] lg:mt-[0px]"
+            classValue="w-auto h-auto text-[2.618rem] lg:text-[11.089rem] leading-none tracking-tighter text-white z-10 mt-[60px] mb-[0px] lg:mt-[0px]"
           />
         </div>
 
@@ -172,7 +172,7 @@ export default function HorizontalScroll() {
             </div>
           <HackHover
             data="Design"
-            classValue="w-auto h-auto text-[48px] lg:text-[11.089rem]  leading-none tracking-tighter text-white mt-[60px] lg:mt-[0px] "
+            classValue="w-auto h-auto text-[2.618rem] lg:text-[11.089rem]  leading-none tracking-tighter text-white mt-[60px] lg:mt-[0px] "
           />
         </div>
 
@@ -204,7 +204,7 @@ export default function HorizontalScroll() {
             </div>
           <HackHover
             data="Motion"
-            classValue="w-auto h-auto text-[48px] lg:text-[11.089rem]  leading-none tracking-tighter text-white mt-[60px]  lg:mt-[0px] "
+            classValue="w-auto h-auto text-[2.618rem] lg:text-[11.089rem]  leading-none tracking-tighter text-white mt-[60px]  lg:mt-[0px] "
           />
         </div>
       </div>

@@ -337,9 +337,9 @@ export const animateIsland = (island) => {
       .to(island.current.position, {
         x: -0.08, y: 0.1, z: -0.15, duration: 0.25, ease: "power1.inOut"
       })
-      // .to(island.current.position, {
-      //   x: -0.1, y: 0.12, z: -0.25, duration: 0.25, ease: "power1.inOut"
-      // });
+      .to(island.current.position, {
+        x: -0.08, y: 0.1, z: 0, duration: 0.4, ease: "power1.inOut"
+      });
   }
 
   // Animation rotation

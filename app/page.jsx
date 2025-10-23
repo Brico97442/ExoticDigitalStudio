@@ -351,13 +351,13 @@ export default function Home(stickyElement) {
                 <HackHover
                   id="hero-title"
                   data='Reunion Island Digital Studio'
-                  classValue='text-semibold h-auto w-auto text-[18px] pl-[10px] lg:text-[28px] text-[#ECECEC] cursor-default tracking-tighter leading-none w-auto rounded-lg mix-blend-difference'
+                  classValue='text-semibold h-auto w-auto text-[18px] pl-[10px] lg:text-[1.618rem] text-[#ECECEC] cursor-default tracking-tighter leading-none w-auto rounded-lg mix-blend-difference'
                 />
               </div>
 
               <div className="overflow-hidden absolute bottom-0 left-0 lg:left-[50px] lg:mb-[50px] text-[#ECECEC]">
                 <TextReveal staggerValue={"0.03"} classValue="leading-none h-auto lg:w-full">
-                  <h2 id='studio-text' className='overflow-hidden text-[#ECECEC] pointer-events-none leading-none text-[18px] lg:text-[36px] font-bold-sm tracking-tighter backdrop-blur-sm bg-opacity-50 py-2 px-6 rounded-lg mix-blend-difference'>
+                  <h2 id='studio-text' className='overflow-hidden text-[#ECECEC] pointer-events-none leading-none text-[18px] lg:text-[2.618rem] font-bold-sm tracking-tighter backdrop-blur-sm bg-opacity-50 py-2 px-6 rounded-lg mix-blend-difference'>
                     Créateur de solutions digitales
                   </h2>
                 </TextReveal>
@@ -365,7 +365,7 @@ export default function Home(stickyElement) {
             </div>
 
             <div className="absolute right-[0px] bottom-[50vh] flex flex-col items-end justify-center mr-[20px] lg:mr-[80px]  text-[#ECECEC]">
-              <div id="coordinates-gps" className="flex flex-col items-end text-[8px] w-full lg:text-[16px] tracking-tighter leading-none ">
+              <div id="coordinates-gps" className="flex flex-col items-end text-[8px] w-full lg:text-[1rem] tracking-tighter ">
                 <TextReveal staggerValue={"0.1"} classValue="leading-none text-right w-full">
                   <p>21° 16&apos; 41″ S</p>
                 </TextReveal>
