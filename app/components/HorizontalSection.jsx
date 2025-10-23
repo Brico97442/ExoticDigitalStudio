@@ -105,7 +105,7 @@ export default function HorizontalScroll() {
                 classValue="text-right w-auto lg:text-[36px] text-white mix-blend-difference "
                 staggerValue={"0.03"}
               >
-                <p className="text-right w-full max-w-[100%] text-[24px] lg:text-[36px] mix-blend-difference">
+                <p className="text-right w-full max-w-[100%] text-[24px] lg:text-[2.618rem] mix-blend-difference">
                   Des expériences interactives uniques, loin des sites conventionnels. Chaque projet est conçu pour surprendre et séduire, avec un rendu premium.
                 </p>
               </TextReveal>
