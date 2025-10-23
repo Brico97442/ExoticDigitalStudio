@@ -139,7 +139,7 @@ export default function HorizontalScroll() {
             </div>
           </div>
             <div className="h-auto w-full flex justify-end">
-            <Button value='Nous contacter'/>
+            <Button value='Contact'/>
             </div>
           
           <HackHover
@@ -168,7 +168,7 @@ export default function HorizontalScroll() {
             </div>
           </div>
           <div className="h-auto w-full flex justify-end">
-            <Button value='Nous contacter'/>
+            <Button value='Contact'/>
             </div>
           <HackHover
             data="Design"
@@ -200,7 +200,7 @@ export default function HorizontalScroll() {
             </div>
           </div>
           <div className="h-auto w-full flex justify-end">
-            <Button value='Nous contacter'/>
+            <Button value='Contact'/>
             </div>
           <HackHover
             data="Motion"

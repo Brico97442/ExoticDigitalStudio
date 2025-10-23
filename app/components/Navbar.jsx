@@ -18,13 +18,13 @@ const Navbar = forwardRef(function Index(props, ref) {
         } else {
             document.body.classList.remove('no-scroll');
         }
-        
+
         // Cleanup au démontage
         return () => {
             document.body.classList.remove('no-scroll');
         };
     }, [isActive]);
-    
+
     useEffect(() => {
         const handleScroll = () => {
             const scrollPosition = window.scrollY;
@@ -61,9 +61,9 @@ const Navbar = forwardRef(function Index(props, ref) {
             <nav className="flex justify-between w-full items-center px-[10px] lg:px-[80px]   ">
                 <Magnetic>
                     {!isActive && (
-                      <div id="logo-link" className="flex z-[6]  mix-blend-difference invisible">
-                        <TransitionLink href='/' label={<Image src={logo} alt="logo de la compagnie" className="z-[100] mix-blend-difference" width={80} height={55.83} />} />
-                      </div>
+                        <div id="logo-link" className="flex z-[6]  mix-blend-difference invisible">
+                            <TransitionLink href='/' label={<Image src={logo} alt="logo de la compagnie" className="z-[100] mix-blend-difference" width={80} height={55.83} />} />
+                        </div>
                     )}
                 </Magnetic>
                 <ul className="flex items-center transition text-[#ECECEC] text-lg">
@@ -85,12 +85,22 @@ const Navbar = forwardRef(function Index(props, ref) {
                             </Magnetic>
                         </li>
                     </div>
-                    <li onClick={toggleAside} className={`absolute mix-blend-difference  right-[15px] lg:right-[80px] justify-center items-center cursor-pointer w-[35px] h-[18px] p-[30px] z-[20] ${(isScrolled || isActive) ? 'flex opacity-100 max-w-[100px] transition-all ease duration-1000' : 'hidden opacity-0 max-w-0 overflow-hidden  transition-all ease duration-1000'}`}>
+                    <li onClick={toggleAside} className={`absolute mix-blend-difference  right-[15px] lg:right-[80px] justify-center items-center cursor-pointer w-[35px] h-[18px] p-[30px] z-[20] ${(isScrolled || isActive) ? 'flex opacity-100 max-w-[100px] transition-all ease duration-500' : 'hidden opacity-0 max-w-0 overflow-hidden  transition-all ease duration-500'}`}>
                         <div className="fixed flex justify-center w-full items-center z-[30] mix-blend-difference">
                             <Magnetic>
-                                <div className={`burger-menu ${isActive ? 'burger-active' : ''}`}>
-                                    <div ref={ref} className="bounds mix-blend-difference">
+                                <div className={`group burger-menu mix-blend-difference background-difference ${isActive ? 'burger-active' : ''}`}>
+                                    <div ref={ref} className="bounds mix-blend-difference flex justify-center items-center transition-all duration-300 ease-in-out">
                                     </div>
+                                    <p
+                                        className={`
+    mix-blend-difference p-6 scale-[1] text-[1em] uppercase
+    ${isActive ? 'opacity-0 invisible pointer-events-none' : 'opacity-100 visible'}
+    group-hover:opacity-0 group-hover:scale-0 group-active:opacity-0 group-active:scale-0 group-active:invisible
+    transition-all duration-300 ease-in-out
+  `}
+                                    >
+                                        menu
+                                    </p>
                                 </div>
                             </Magnetic>
                         </div>

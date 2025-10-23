@@ -411,16 +411,6 @@ export default function Home(stickyElement) {
                     je suis spécialisé dans la <strong> création de site internet moderne</strong>, qui place l&apos;utilisateur au cœur d&apos;une expérience unique.
                   </p>
                 </TextReveal>
-                {/* <TextScroll className="">
-                  <p className='lg:absolute relative top-0 right-0 pointer-events-none text-right tracking-tight text-[16px] lg:text-[32px] lg:w-2/4 leading-none #text-[#0E0E0E] z-50 backdrop-blur-sm rounded-lg bg-opacity-50 pt-[50px] pl-[50px]  pb-[50px]'>
-                    Développeur freelance basée à l&apos;ile de la Réunion
-                    je suis spécialisé dans la <strong> création de site internet moderne</strong>, qui place l&apos;utilisateur au cœur d&apos;une expérience unique.
-                  </p>
-                </TextScroll> */}
-                {/* <p className='absolute top-0 right-0 pointer-events-none text-right tracking-tight text-[16px] lg:text-[32px] lg:w-2/3 leading-none text-white z-40'>
-                    Développeur freelance basée à l&apos;ile de la Réunion <br />
-                    je suis spécialisé dans la <strong> création de site internet moderne</strong>, qui place l&apos;utilisateur au cœur d&apos;une expérience unique.
-                  </p> */}
               </div>
 
               <div className="w-full ">

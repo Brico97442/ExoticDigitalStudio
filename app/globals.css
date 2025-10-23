@@ -27,6 +27,7 @@ html {
   overflow-y: hidden;
   box-sizing: border-box;
   cursor: none;
+  font-size: 16px;
 }
 
 :root {
@@ -106,7 +107,6 @@ body {
 
 .burger-menu {
   display: flex;
-  padding: 30px;
   cursor: pointer;
   pointer-events: none;
   position: relative;
@@ -125,20 +125,77 @@ body {
   height: 3px;
   /* pas de blend pour éviter le point au centre */
   mix-blend-mode: normal;
-  background-color: #660708;
+  background-color: #fff;
   box-sizing: border-box;
   transform-origin: center;
   transition: transform 0.3s ease, background-color 0.3s ease;
+  background-blend-mode: difference;
+
 }
 
+.burger-menu {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.burger-menu::before,
+.burger-menu::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: 40px;
+  height: 3px;
+  background-color: #fff;
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+/* Légèrement décalées par défaut */
 .burger-menu::before {
-  top: calc(50% - 6px);           /* barre du haut */
+  top: calc(50% - 20px);
   transform: translateX(-50%) rotate(0deg);
 }
 
 .burger-menu::after {
-  top: calc(50% + 6px);           /* barre du bas */
+  top: calc(50% + 20px);
   transform: translateX(-50%) rotate(0deg);
+}
+
+/* === Quand on survole le sticky element === */
+li:hover .burger-menu::before {
+  top: calc(50% - 6px);
+}
+
+li:hover .burger-menu::after {
+  top: calc(50% + 6px);
+}
+
+/* === Disparition du texte "menu" === */
+/* li:hover .burger-menu p {
+  opacity: 0;
+  transform: scale(0);
+  transition: all 0.3s ease;
+} */
+
+/* Animation du retour (quand on quitte le hover) */
+/* .burger-menu p {
+  opacity: 1;
+  transform: scale(1);
+  transition: all 0.3s ease;
+} */
+.burger-menu::before:hover{
+  top: 0;   
+}
+
+.burger-menu::after:hover{
+  top: 0;
+  transform: translateX(-50%) rotate(0deg);
+     
 }
 
 .burger-active::before {
@@ -149,6 +206,7 @@ body {
 .burger-active::after {
   top: 50%;
   transform: translate(-50%, -50%) rotate(45deg);
+  transform-origin: center;
 }
 
 h1 .word,

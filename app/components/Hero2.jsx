@@ -165,7 +165,7 @@ export default function Hero() {
               {/* Masque texte (final) */}
               <g ref={textMaskRef} style={{ opacity: 0 }}>
                 <text
-                  x='50px' y='40%'
+                  x='50px' y='38%'
                   textAnchor='start'
                   dominantBaseline='middle'
                  fill='black'
