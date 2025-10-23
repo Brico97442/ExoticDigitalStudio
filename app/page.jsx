@@ -52,6 +52,8 @@ export default function Home(stickyElement) {
   const locationRef = useRef(null)
   // const stickyElement = useRef(null);
   // Réinitialiser les animations hero quand on revient sur la page
+  const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+
   useEffect(() => {
     let preloaderDone = false;
 
@@ -338,7 +340,7 @@ export default function Home(stickyElement) {
             <div className="lg:w-full flex lg:justify-center">
 
               <TextReveal staggerValue={"0.03"} classValue="leading-none lg:w-full lg:justify-center text-center">
-                <h2 id='hero-subtitle' className='lg:w-full pointer-events-none mt-[130px] overflow-hidden text-[#ECECEC] text-[24px] tracking-tighter leading-none lg:text-[2.618rem] lg:mt-[10vh] text-center'>
+                <h2 id='hero-subtitle' className='lg:w-full pointer-events-none mt-[130px] overflow-hidden text-[#ECECEC] text-[1.618rem] tracking-tighter leading-none lg:text-[2.618rem] lg:mt-[10vh] text-center'>
                   Offrez à vos visiteurs <strong>des sites web captivant</strong><br /> parce que chaque clic mérite sa touche de magie.</h2>
               </TextReveal>
             </div>
@@ -347,17 +349,17 @@ export default function Home(stickyElement) {
             <div id="sticky-texts-container" className="absolute bottom-[0px] left-0 w-full h-auto ">
               {/* Reunion Island Digital Studio */}
               <div style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }}
-                className="w-auto absolute right-[20px] bottom-[50px] lg:bottom-[50px] lg:right-[80px] backdrop-blur-sm bg-opacity-70 ">
+                className={`w-auto absolute right-[20px] bottom-[50px] lg:bottom-[50px] ${!isMobile?'lg:right-[80px]':'lg:left-[20px]'} backdrop-blur-sm bg-opacity-70`}>
                 <HackHover
                   id="hero-title"
                   data='Reunion Island Digital Studio'
-                  classValue='text-semibold h-auto w-auto text-[18px] pl-[10px] lg:text-[1.618rem] text-[#ECECEC] cursor-default tracking-tighter leading-none w-auto rounded-lg mix-blend-difference'
+                  classValue='text-semibold h-auto w-auto text-[1rem] pl-[10px] lg:text-[1.618rem] text-[#ECECEC] cursor-default tracking-tighter leading-none w-auto rounded-lg mix-blend-difference'
                 />
               </div>
 
               <div className="overflow-hidden absolute bottom-0 left-0 lg:left-[50px] lg:mb-[50px] text-[#ECECEC]">
                 <TextReveal staggerValue={"0.03"} classValue="leading-none h-auto lg:w-full">
-                  <h2 id='studio-text' className='overflow-hidden text-[#ECECEC] pointer-events-none leading-none text-[18px] lg:text-[2.618rem] font-bold-sm tracking-tighter backdrop-blur-sm bg-opacity-50 py-2 px-6 rounded-lg mix-blend-difference'>
+                  <h2 id='studio-text' className='overflow-hidden text-[#ECECEC] pointer-events-none leading-none text-[1rem] lg:text-[2.618rem] font-bold-sm tracking-tighter backdrop-blur-sm bg-opacity-50 py-2 px-6 rounded-lg mix-blend-difference'>
                     Créateur de solutions digitales
                   </h2>
                 </TextReveal>
@@ -365,7 +367,7 @@ export default function Home(stickyElement) {
             </div>
 
             <div className="absolute right-[0px] bottom-[50vh] flex flex-col items-end justify-center mr-[20px] lg:mr-[80px]  text-[#ECECEC]">
-              <div id="coordinates-gps" className="flex flex-col items-end text-[8px] w-full lg:text-[1rem] tracking-tighter ">
+              <div id="coordinates-gps" className="flex flex-col items-end text-[0.618rem] w-full lg:text-[1rem] tracking-tighter ">
                 <TextReveal staggerValue={"0.1"} classValue="leading-none text-right w-full">
                   <p>21° 16&apos; 41″ S</p>
                 </TextReveal>
@@ -406,7 +408,7 @@ export default function Home(stickyElement) {
               </TextReveal> */}
               <div className="w-full flex justify-end relative">
                 <TextReveal classValue="flex w-full justify-end text-right" staggerValue={"0.03"} >
-                  <p id="about_target-ref" ref={targetRef} className=' pointer-events-none text-center tracking-tight text-[1rem] lg:text-[32px] w-full lg:w-2/3 z-[50] leading-none backdrop-blur-sm rounded-lg bg-opacity-50 pt-[50px] lg:pl-[50px]  pb-[50px]'>
+                  <p id="about_target-ref" ref={targetRef} className=' pointer-events-none text-right tracking-normal text-[1rem] lg:text-[32px] w-full lg:w-2/3 z-[50] leading-none backdrop-blur-sm rounded-lg bg-opacity-50 pt-[50px] lg:pl-[50px]  pb-[50px]'>
                     Développeur freelance basée à l&apos;ile de la Réunion je suis spécialisé dans la <strong> création de site internet moderne</strong>, qui place l&apos;utilisateur au cœur d&apos;une expérience unique.
                   </p>
                 </TextReveal>
