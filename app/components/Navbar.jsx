@@ -6,6 +6,7 @@ import logo from "../../assets/LogoExoticDigitalStudioWhiteVectorised.png"
 import Magnetic from '../utils/Magnetic'
 import Aside from './Aside'
 import TextReveal from "./TextReveal"
+const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
 
 const Navbar = forwardRef(function Index(props, ref) {
     const [isActive, setIsActive] = useState(false);
@@ -57,7 +58,7 @@ const Navbar = forwardRef(function Index(props, ref) {
     }
 
     return (
-        <header className="flex w-full fixed h-[80px] lg:h-[180px] items-center justify-center z-[6] ">
+        <header className="flex w-full fixed h-[100px] lg:h-[180px] items-center justify-center z-[6] ">
             <nav className="flex justify-between w-full items-center px-[10px] lg:px-[80px]   ">
                 <Magnetic>
                     {!isActive && (
@@ -85,7 +86,7 @@ const Navbar = forwardRef(function Index(props, ref) {
                             </Magnetic>
                         </li>
                     </div>
-                    <li onClick={toggleAside} className={`absolute mix-blend-difference  right-[15px] lg:right-[80px] justify-center items-center cursor-pointer w-[35px] h-[18px] p-[30px] z-[20] ${(isScrolled || isActive) ? 'flex opacity-100 max-w-[100px] transition-all ease duration-500' : 'hidden opacity-0 max-w-0 overflow-hidden  transition-all ease duration-500'}`}>
+                    <li onClick={toggleAside} className={`absolute mix-blend-difference  right-[15px] lg:right-[80px] justify-center items-center cursor-pointer w-[35px] h-[18px] p-[30px] z-[20] ${(!isMobile || isScrolled || isActive) ? 'flex opacity-100 max-w-[100px] transition-all ease duration-500' : 'hidden opacity-0 max-w-0 overflow-hidden  transition-all ease duration-500'}`}>
                         <div className="fixed flex justify-center w-full items-center z-[30] mix-blend-difference">
                             <Magnetic>
                                 <div className={`group burger-menu w-auto mix-blend-difference background-difference ${isActive ? 'burger-active' : ''}`}>

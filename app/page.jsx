@@ -338,7 +338,7 @@ export default function Home(stickyElement) {
             <div className="lg:w-full flex lg:justify-center">
 
               <TextReveal staggerValue={"0.03"} classValue="leading-none lg:w-full lg:justify-center text-center">
-                <h2 id='hero-subtitle' className='lg:w-full pointer-events-none mt-[130px] overflow-hidden text-[#ECECEC] text-[24px] tracking-tighter leading-none lg:text-[36px] lg:mt-[10vh] text-center'>
+                <h2 id='hero-subtitle' className='lg:w-full pointer-events-none mt-[130px] overflow-hidden text-[#ECECEC] text-[24px] tracking-tighter leading-none lg:text-[2.618rem] lg:mt-[10vh] text-center'>
                   Offrez à vos visiteurs <strong>des sites web captivant</strong><br /> parce que chaque clic mérite sa touche de magie.</h2>
               </TextReveal>
             </div>
@@ -406,16 +406,15 @@ export default function Home(stickyElement) {
               </TextReveal> */}
               <div className="w-full flex justify-end relative">
                 <TextReveal classValue="flex w-full justify-end text-right" staggerValue={"0.03"} >
-                  <p id="about_target-ref" ref={targetRef} className=' pointer-events-none text-right tracking-tight text-[16px] lg:text-[32px] lg:w-2/3 z-[50] leading-none backdrop-blur-sm rounded-lg bg-opacity-50 pt-[50px] pl-[50px]  pb-[50px]'>
-                    Développeur freelance basée à l&apos;ile de la Réunion <br />
-                    je suis spécialisé dans la <strong> création de site internet moderne</strong>, qui place l&apos;utilisateur au cœur d&apos;une expérience unique.
+                  <p id="about_target-ref" ref={targetRef} className=' pointer-events-none text-center tracking-tight text-[1rem] lg:text-[32px] w-full lg:w-2/3 z-[50] leading-none backdrop-blur-sm rounded-lg bg-opacity-50 pt-[50px] lg:pl-[50px]  pb-[50px]'>
+                    Développeur freelance basée à l&apos;ile de la Réunion je suis spécialisé dans la <strong> création de site internet moderne</strong>, qui place l&apos;utilisateur au cœur d&apos;une expérience unique.
                   </p>
                 </TextReveal>
               </div>
 
               <div className="w-full ">
                 <TextScroll>
-                  <h3 className="leading-none w-3/4 lg:w-3/4 h-full text-[24px] lg:text-[6.854rem] tracking-tighter text-left pointer-events-none backdrop-blur-sm rounded-2xl bg-opacity-50 text-[#0E0E0E] pt-[50px] pr-[50px]  pb-[50px]">&quot;J&apos;accompagne ceux et celles qui veulent se démarquer et oses assumer fièrement leurs différences.&quot;</h3>
+                  <h3 className="leading-none w-full lg:w-3/4 h-full text-[1.618rem] lg:text-[6.854rem] tracking-tighter text-left pointer-events-none backdrop-blur-sm rounded-2xl bg-opacity-50 text-[#0E0E0E] pt-[50px] pr-[50px]  pb-[50px]">&quot;J&apos;accompagne ceux et celles qui veulent se démarquer et oses assumer fièrement leurs différences.&quot;</h3>
                 </TextScroll>
               </div>
             </div>
