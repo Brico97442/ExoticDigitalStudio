@@ -81,7 +81,7 @@ export default function GridAnimation() {
                         </div>
                         <div className="flex flex-col items-start gap-6 justify-center w-full lg:w-1/2 border-b-white border-b">
                             <h2 className=' text-xl lg:text-6xl text-left w-full uppercase tracking-tighter'>D2SEM</h2>
-                            <TextReveal classValue="text-black text-[14px] lg:text-[32px]">
+                            <TextReveal classValue="text-white text-[14px] lg:text-[32px]">
                                 <p className='flex text-wrap tracking-tighter text-[14px] lg:text-[32px] leading-none'>Nous transformons vos idées en applications web sur mesure, performantes et adaptées à vos besoins. Nous utilisons les dernières technologies pour garantir une expérience utilisateur fluide, sécurisée et accessible sur tous les supports.</p>
                             </TextReveal>
                             <div className='flex gap-2 lg:gap-4 flex-wrap'>
@@ -107,7 +107,7 @@ export default function GridAnimation() {
                         </div>
                         <div className="flex flex-col items-start gap-6 justify-center w-full lg:w-1/2 border-b-white border-b">
                             <h2 className='text-xl lg:text-6xl tracking-tighter'>Le bon plan réunion</h2>
-                            <TextReveal classValue="text-black text-[14px] lg:text-[32px]">
+                            <TextReveal classValue="text-white text-[14px] lg:text-[32px]">
                                 <p>Donnez vie à vos support grâce à l&apos;art du Motion Design</p>
                             </TextReveal>
                             <div className='flex gap-2 lg:gap-4 flex-wrap'>
