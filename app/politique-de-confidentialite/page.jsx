@@ -4,7 +4,7 @@
 export default function ConfidentialPolitic() {
 
     return (
-        <div className=" w-full flex flex-col z-[1] relative text-6xl py-8">
+        <div className=" w-full flex flex-col z-[1] relative text-6xl py-8 backdrop-blur-[100px]  bg-opacity-50">
            <h1 className="tracking-tighter text-[180px] leadind-none pl-[80px] pt-40">Politique de confidentialité</h1>
            <div className=" w-full h-full px-[50px] z-[2] mt-16">
             <div className="bg-white text-black rounded-lg p-16 text-xl leading-relaxed shadow-lg max-w-[70%] mx-auto py-20 flex flex-col gap-8">
