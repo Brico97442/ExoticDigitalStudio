@@ -86,11 +86,11 @@ const Navbar = forwardRef(function Index(props, ref) {
                             </Magnetic>
                         </li>
                     </div>
-                    <li onClick={toggleAside} className={`group  rounded-full absolute mix-blend-difference right-[15px] lg:right-[80px] justify-center items-center  w-[35px] h-[18px] p-[40px] z-[20] ${(isScrolled || isActive) ? 'flex opacity-100 max-w-[100px] transition-all ease duration-500' : 'hidden opacity-0 max-w-0 overflow-hidden transition-all ease duration-500'}`}>
+                    <li onClick={toggleAside} className={`group absolute mix-blend-difference right-[15px] lg:right-[80px] justify-center items-center  w-[35px] h-[18px] p-[40px] z-[20] ${(isScrolled || isActive) ? 'flex opacity-100 max-w-[100px] transition-all ease duration-500' : 'hidden opacity-0 max-w-0 overflow-hidden transition-all ease duration-500'}`}>
                         <div className="fixed flex justify-center w-full items-center z-[30] mix-blend-difference">
                             <Magnetic>
                                 <div className={` burger-menu w-auto mix-blend-difference background-difference ${isActive ? 'burger-active' : ''}`}>
-                                    <div ref={ref} className=" bounds mix-blend-difference flex justify-center items-center transition-all duration-300 ease-in-out py-6 pl-8">
+                                    <div ref={ref} className=" bounds mix-blend-difference flex justify-center items-center transition-all duration-300 ease-in-out ">
                                     </div>
                                     <p
                                         className={`
