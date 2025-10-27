@@ -408,7 +408,7 @@ export default function Home(stickyElement) {
               </TextReveal> */}
               <div className="w-full flex justify-end relative">
                 <TextReveal classValue="flex w-full justify-end text-right" staggerValue={"0.03"} >
-                  <p id="about_target-ref" ref={targetRef} className=' pointer-events-none text-right tracking-normal text-[1.618rem] lg:text-[2.618rem] w-full lg:w-2/3 z-[50] leading-none backdrop-blur-sm rounded-lg bg-opacity-50 pt-[20px] lg:pl-[50px]  pb-[50px]'>
+                  <p id="about_target-ref" ref={targetRef} className=' pointer-events-none lg:text-right tracking-tighter text-[1.618rem] lg:text-[2.618rem] w-full lg:w-2/3 z-[50] leading-none backdrop-blur-sm rounded-lg bg-opacity-50 pt-[20px] pl-[20px] lg:pl-[50px] pb-[20px] lg:pb-[50px]'>
                     Développeur freelance basée à l&apos;ile de la Réunion je suis spécialisé dans la <strong> création de site internet moderne</strong>, qui place l&apos;utilisateur au cœur d&apos;une expérience unique.
                   </p>
                 </TextReveal>

@@ -173,7 +173,7 @@ export default function Hero() {
                   dominantBaseline="middle"
                   fill="black"
                   fontWeight="400"
-                  className="hero-text-1 text-[6.854rem] lg:text-[17.942rem]"
+                  className="hero-text-1 text-[4.236rem] lg:text-[17.942rem]"
                 >
                   OSER
                 </text>
@@ -185,7 +185,7 @@ export default function Hero() {
                   dominantBaseline="middle"
                   fill="black"
                   fontWeight="400"
-                  className="hero-text-2 text-[6.854rem] lg:text-[17.942rem]"
+                  className="hero-text-2 text-[4.236rem] lg:text-[17.942rem]"
                 >
                   INNOVER
                 </text>
