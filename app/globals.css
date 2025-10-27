@@ -43,6 +43,24 @@ html {
   overflow: hidden;
 } */
 
+/* === Responsive centrage du texte du Hero === */
+/* globals.css ou module.css */
+@media (max-width: 768px) {
+  .hero-text-1 {
+    position: absolute; /* nécessaire pour centrer */
+    left: 0%;
+    top: 0%;
+    transform: translate(-10%, 10%);
+  }
+
+  .hero-text-2 {
+    position: absolute; /* nécessaire pour centrer */
+    left: 0px;
+    top: 0px;
+    transform: translate(-40px, -%);
+  }
+}
+
 
 body {
   color: rgb(var(--foreground-rgb));

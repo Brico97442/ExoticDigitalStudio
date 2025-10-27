@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useRef, useLayoutEffect } from 'react'
+// import { isMobile } from 'react-device-detect'
 import Image from 'next/image'
 import HeroImg from '../../public/media/asset1.jpg'
 import HeroImg2 from '../../public/media/art2.jpg'
@@ -165,24 +166,26 @@ export default function Hero() {
               {/* Masque texte (final) */}
               <g ref={textMaskRef} style={{ opacity: 0 }}>
                 <text
-                  x={isMobile?'18%':'50px' } y={isMobile? '80%':'38%'}
-                  textAnchor='start'
-                  dominantBaseline='middle'
-                 fill='black'
-                  fontWeight='semi-bold'
-                  letterSpacing='0.01'
-                  className='text-[6.854rem] lg:text-[17.942rem] '
-                  >
+                  id="oser-text"
+                  x="50px"
+                  y="38%"
+                  textAnchor="start"
+                  dominantBaseline="middle"
+                  fill="black"
+                  fontWeight="400"
+                  className="hero-text-1 text-[6.854rem] lg:text-[17.942rem]"
+                >
                   OSER
                 </text>
                 <text
-                  x={isMobile?'0px':'10%' } y={isMobile? '61%':'65%'}
-                  textAnchor='start'
-                  dominantBaseline='middle'
-                  fill='black'
-                  fontWeight='semi-bold'
-                  className='text-[6.854rem] lg:text-[17.942rem]'
-
+                  id="innover-text"
+                  x="10%"
+                  y="65%"
+                  textAnchor="start"
+                  dominantBaseline="middle"
+                  fill="black"
+                  fontWeight="400"
+                  className="hero-text-2 text-[6.854rem] lg:text-[17.942rem]"
                 >
                   INNOVER
                 </text>
