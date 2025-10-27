@@ -134,11 +134,11 @@ function HorizontalScroll() {
             <div id='hero-scroll' className='flex flex-col items-center uppercase font-bold absolute top-0 z-[6] backdrop-blur-[2px] mask-t-from-50% bg-opacity-[50%] rounded-[20%] '>
                 <div id='slider' ref={slider} className='flex items-center justify-center relative whitespace-nowrap z-[6] pointer-events-none' >
                     {/* <TextReveal staggerValue={"0.03"} classValue="leading-none lg:w-full flex"> */}
-                        <h1 ref={text1} className='absolute z-[6] left-[100%] text-[11.089rem] flex-row lg:text-[17.942rem] flex items-center pointer-events-none tracking-tighter font-semibold drop-shadow-lg leading-none mix-blend-difference'>
+                        <h1 ref={text1} className='absolute z-[6] left-[100%] text-[6.854rem] flex-row lg:text-[17.942rem] flex items-center pointer-events-none tracking-tighter font-semibold drop-shadow-lg leading-none mix-blend-difference'>
                             studio<Dot />Creativ<Dot />Web<Dot /></h1>
                     {/* </TextReveal> */}
                     {/* <TextReveal staggerValue={"0.03"} classValue="leading-none lg:w-full flex"> */}
-                        <h1 ref={text2} className=' text-[11.089rem] z-[6] lg:text-[17.942rem] flex flex-row items-center pointer-events-none tracking-tighter font-semibold drop-shadow-lg leading-none mix-blend-difference'>studio<Dot />Creativ<Dot />Web<Dot /></h1>
+                        <h1 ref={text2} className=' text-[6.854rem] z-[6] lg:text-[17.942rem] flex flex-row items-center pointer-events-none tracking-tighter font-semibold drop-shadow-lg leading-none mix-blend-difference'>studio<Dot />Creativ<Dot />Web<Dot /></h1>
                     {/* </TextReveal> */}
 
                 </div>
