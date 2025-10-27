@@ -121,7 +121,7 @@ export default function HorizontalScroll() {
                 classValue=" text-right lg:text-[2.618rem] text-white leading-none h-auto"
                 staggerValue={"0.03"}
               >
-                <p className=" w-full text-[1.618rem] lg:text-[2.618rem] h-auto lg:mb-[80px] leading-none">
+                <p className=" w-full text-[1.618rem] lg:text-[2.618rem] h-auto lg:mb-[80px] leading-none lg:pl-[1/4]">
                   Je conçois des sites internets, landings pages et web applications performante, Seo friendly. Du site internet moderne à l&apos;intégration 3D.
                 </p>
               </TextReveal>
@@ -157,7 +157,7 @@ export default function HorizontalScroll() {
                 classValue=" text-right lg:text-[2.618rem] text-white leading-none h-auto"
                 staggerValue={"0.03"}
               >
-                <p className=" w-full text-[1.618rem] lg:text-[2.618rem] h-auto lg:mb-[80px] leading-none">
+                <p className=" w-full text-[1.618rem] lg:text-[2.618rem] h-auto lg:mb-[80px] leading-none lg:pl-[1/4]">
                   Besoin d&apos;un design pour un site web, landing page ou web applications ?
                 </p>
               </TextReveal>
@@ -188,7 +188,7 @@ export default function HorizontalScroll() {
                 classValue=" text-right lg:text-[2.618rem] text-white leading-none h-auto"
                 staggerValue={"0.03"}
               >
-                <p className=" w-full text-[1.618rem] lg:text-[2.618rem] h-auto lg:mb-[80px] leading-none">
+                <p className=" w-full text-[1.618rem] lg:text-[2.618rem] h-auto lg:mb-[80px] leading-none lg:pl-[1/4]">
                   Je conçois des sites internets, landings pages et web applications performante, Seo friendly. Du site internet moderne à l&apos;intégration 3D.
                 </p>
               </TextReveal>
