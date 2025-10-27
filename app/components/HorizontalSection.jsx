@@ -98,14 +98,14 @@ export default function HorizontalScroll() {
           <div className="h-full flex flex-col items-end justify-between px-[20px] pb-[0] lg:pt-[80px] lg:px-[80px] lg:pb-[0]">
             <HackHover
               data="Nos services"
-              classValue="h-auto text-[64px] lg:text-[17.942rem] mt-[60px] lg:mt-[0px] leading-none tracking-tighter text-white lg:absolute lg:bottom-[80px] left-[20px] lg:left-[80px] "
+              classValue="h-auto text-[4.236rem] lg:text-[17.942rem] mt-[60px] lg:mt-[0px] leading-none tracking-tighter text-white lg:absolute lg:bottom-[80px] left-[20px] lg:left-[80px] "
             />
             <div className="lg:h-3/4 h-full lg:w-1/2 w-full flex items-center justify-end p-10 rounded-lg">
               <TextReveal
                 classValue="text-right w-auto lg:text-[2.618rem] text-white mix-blend-difference "
                 staggerValue={"0.03"}
               >
-                <p className="text-right w-full max-w-[100%] text-[24px] lg:text-[2.618rem] mix-blend-difference">
+                <p className="text-right w-full max-w-[100%] text-[2.618rem] lg:text-[2.618rem] mix-blend-difference">
                   Des expériences interactives uniques, loin des sites conventionnels. Chaque projet est conçu pour surprendre et séduire, avec un rendu premium.
                 </p>
               </TextReveal>
@@ -120,7 +120,7 @@ export default function HorizontalScroll() {
               classValue=" text-right lg:text-[2.618rem] text-white leading-none h-auto"
               staggerValue={"0.03"}
             >
-              <p className=" w-full text-[24px] lg:text-[2.618rem] h-auto lg:mb-[80px] leading-none">
+              <p className=" w-full text-[1.618rem] lg:text-[2.618rem] h-auto lg:mb-[80px] leading-none">
                 Je conçois des sites internets, landings pages et web applications performante, Seo friendly. Du site internet moderne à l&apos;intégration 3D.
               </p>
             </TextReveal>

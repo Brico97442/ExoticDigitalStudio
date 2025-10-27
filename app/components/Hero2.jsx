@@ -165,23 +165,23 @@ export default function Hero() {
               {/* Masque texte (final) */}
               <g ref={textMaskRef} style={{ opacity: 0 }}>
                 <text
-                  x='50px' y='38%'
+                  x={isMobile?'18%':'50px' } y={isMobile? '80%':'38%'}
                   textAnchor='start'
                   dominantBaseline='middle'
                  fill='black'
                   fontWeight='semi-bold'
                   letterSpacing='0.01'
-                  className='text-[68px] lg:text-[17.942rem]'
+                  className='text-[6.854rem] lg:text-[17.942rem] '
                   >
                   OSER
                 </text>
                 <text
-                  x='10%' y={isMobile? '50%':'65%'}
+                  x={isMobile?'0px':'10%' } y={isMobile? '61%':'65%'}
                   textAnchor='start'
                   dominantBaseline='middle'
                   fill='black'
                   fontWeight='semi-bold'
-                  className='text-[68px] lg:text-[17.942rem]'
+                  className='text-[6.854rem] lg:text-[17.942rem]'
 
                 >
                   INNOVER
