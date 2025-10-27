@@ -94,11 +94,11 @@ export default function HorizontalScroll() {
         style={{ willChange: "transform" }} // GPU optimization
       >
         {/* section1 */}
-        <div className="min-w-[100vw] w-[100svw] h-screen flex justify-end items-center relative bg-[#070707]">
+        <div className="min-w-[100vw] w-[100svw] h-screen flex justify-between items-center relative bg-[#070707]">
           <div className="h-full flex flex-col items-end justify-between px-[0px] pb-[0] lg:pt-[80px] lg:px-[80px] lg:pb-[0]">
             <HackHover
               data="Nos services"
-              classValue="h-auto w-full text-[4.236rem] lg:text-[17.942rem] mt-[60px] lg:mt-[0px] leading-none tracking-tighter text-white lg:absolute lg:bottom-[80px] left-[0px] lg:left-[80px] "
+              classValue="h-auto w-full text-[4.236rem] lg:text-[17.942rem] mt-[60px] lg:mt-[0px] leading-none tracking-tighter text-white lg:absolute lg:bottom-[0px] left-[0px] lg:left-[80px] "
             />
             <div className="lg:h-3/4 h-full lg:w-1/2 w-full flex items-center justify-end p-[20px] rounded-lg">
               <TextReveal
@@ -114,9 +114,9 @@ export default function HorizontalScroll() {
         </div>
 
         {/* section2 */}
-        <div className="min-w-[100vw] gap-[20px] w-screen h-full flex flex-col-reverse justify-between lg:flex-col lg:justify-end bg-[#C1121F]/100 lg:p-[80px] p-[20px]">
+        <div className="min-w-[100vw] gap-[20px] w-screen h-full flex flex-col-reverse justify-between lg:flex-col lg:justify-between bg-[#C1121F]/100 lg:p-[80px] p-[20px]">
           <div className=" flex flex-col justify-between items-end w-full lg:h-auto h-full lg:pt-[120px]">
-            <div className="w-full h-full flex flex-col lg:flex-col">
+            <div className="w-full h-full flex flex-col items-end lg:flex-col">
               <TextReveal
                 classValue=" text-right lg:text-[2.618rem] text-white leading-none h-auto"
                 staggerValue={"0.03"}
@@ -145,14 +145,14 @@ export default function HorizontalScroll() {
           </div>
           <HackHover
             data="Développement"
-            classValue="w-auto h-auto text-[2.618rem] lg:text-[11.089rem] leading-none tracking-tighter text-white z-10 mt-[60px] mb-[0px] lg:mt-[0px]"
+            classValue="w-auto h-auto text-[4.236rem] lg:text-[11.089rem] leading-none tracking-tighter text-white z-10 mt-[60px] mb-[0px] lg:mt-[0px]"
           />
         </div>
 
         {/* section3 */}
-        <div className="min-w-[100vw] gap-[20px] w-screen h-full flex flex-col-reverse justify-between lg:flex-col lg:justify-end bg-[#771A66]/100 lg:p-[80px] p-[20px]">
+        <div className="min-w-[100vw] gap-[20px] w-screen h-full flex flex-col-reverse justify-between lg:flex-col lg:justify-between bg-[#771A66]/100 lg:p-[80px] p-[20px]">
           <div className=" flex flex-col justify-between items-end w-full lg:h-auto h-full lg:pt-[120px]">
-            <div className="w-full h-full flex flex-col lg:flex-col">
+            <div className="w-full h-full flex flex-col lg:flex-col items-end">
               <TextReveal
                 classValue=" text-right lg:text-[2.618rem] text-white leading-none h-auto"
                 staggerValue={"0.03"}
@@ -181,9 +181,9 @@ export default function HorizontalScroll() {
         </div>
 
         {/* section4 */}
-        <div className="min-w-[100vw] gap-[20px] w-screen h-full flex flex-col-reverse justify-between lg:flex-col lg:justify-end bg-[#072737]/100 lg:p-[80px] p-[20px]">
+        <div className="min-w-[100vw] gap-[20px] w-screen h-full flex flex-col-reverse justify-between lg:flex-col lg:justify-between bg-[#072737]/100 lg:p-[80px] p-[20px]">
           <div className=" flex flex-col justify-between items-end w-full lg:h-auto h-full lg:pt-[120px]">
-            <div className="w-full h-full flex flex-col lg:flex-col">
+            <div className="w-full h-full flex flex-col lg:flex-col items-end">
               <TextReveal
                 classValue=" text-right lg:text-[2.618rem] text-white leading-none h-auto"
                 staggerValue={"0.03"}
@@ -212,7 +212,7 @@ export default function HorizontalScroll() {
           </div>
           <HackHover
             data="Motion"
-            classValue="w-auto h-auto text-[2.618rem] lg:text-[11.089rem] leading-none tracking-tighter text-white z-10 mt-[60px] mb-[0px] lg:mt-[0px]"
+            classValue="w-auto text-[2.618rem] lg:text-[11.089rem] leading-none tracking-tighter text-white z-10 mt-[60px] mb-[0px] lg:mt-[0px]"
           />
         </div>
       </div>
