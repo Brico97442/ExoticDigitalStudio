@@ -158,7 +158,7 @@ export default function HorizontalScroll() {
                 staggerValue={"0.03"}
               >
                 <p className=" w-full text-[1.618rem] lg:text-[2.618rem] h-auto lg:mb-[80px] leading-none">
-                  Besoin d'un design pour un site web, landing page ou web applications ?
+                  Besoin d&apos;un design pour un site web, landing page ou web applications ?
                 </p>
               </TextReveal>
               <hr className="h-[1px] w-full lg:w-1/2 mb-5 mt-5"></hr>
