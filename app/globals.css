@@ -57,7 +57,7 @@ html {
     position: absolute; /* nécessaire pour centrer */
     left: 0px;
     top: 0px;
-    transform: translate(-40px, -%);
+    transform: translate(-40px, -6%);
   }
 }
 
