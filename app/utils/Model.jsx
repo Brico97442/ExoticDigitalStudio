@@ -19,7 +19,7 @@ function ParticleIslandBase({ island, color = '#6a1b9a', nodes }) {
   const containerRef = useRef(null);
   const mouseRef = useRef([0, 0]);
 
-  // --- Échantillonnage des vertices ---
+  // --- Sampling des vertices ---
   const { sampledPositions, sampledColors } = useMemo(() => {
     const geom = nodes.reunion.geometry;
     const pos = geom.attributes.position.array;
@@ -31,11 +31,9 @@ function ParticleIslandBase({ island, color = '#6a1b9a', nodes }) {
 
     for (let i = 0; i < pos.length; i += 3 * step) {
       sampledPos.push(pos[i], pos[i + 1], pos[i + 2]);
-      if (col) {
-        sampledCol.push(col[i], col[i + 1], col[i + 2]);
-      } else {
-        sampledCol.push(0, 0.2, 0.8);
-      }
+
+      if (col) sampledCol.push(col[i], col[i + 1], col[i + 2]);
+      else sampledCol.push(0, 0.2, 0.8);
     }
 
     return {
@@ -44,7 +42,7 @@ function ParticleIslandBase({ island, color = '#6a1b9a', nodes }) {
     };
   }, [nodes]);
 
-  // --- Geometry avec positions modifiables ---
+  // Point geometry avec positions modifiables
   const pointsGeometry = useMemo(() => {
     const geom = new THREE.BufferGeometry();
     const modifiablePositions = new Float32Array(sampledPositions);
@@ -53,10 +51,8 @@ function ParticleIslandBase({ island, color = '#6a1b9a', nodes }) {
     return geom;
   }, [sampledPositions, sampledColors]);
 
-  // --- Positions originales ---
   const originalPositions = useMemo(() => new Float32Array(sampledPositions), [sampledPositions]);
 
-  // --- Material ---
   const pointsMaterial = useMemo(() => {
     return new THREE.PointsMaterial({
       color: new THREE.Color(color),
@@ -67,7 +63,7 @@ function ParticleIslandBase({ island, color = '#6a1b9a', nodes }) {
     });
   }, [color]);
 
-  // --- Lumière ---
+  // Lumière
   useEffect(() => {
     if (!scene || isMobile) return;
     const directionalLight = new THREE.DirectionalLight(0xffffff, 1.2);
@@ -76,34 +72,47 @@ function ParticleIslandBase({ island, color = '#6a1b9a', nodes }) {
     return () => scene.remove(directionalLight);
   }, [scene]);
 
-  // --- Animation d'intro ---
+  // Intro animation - ne se joue qu'une seule fois
   useEffect(() => {
     if (!island.current) return;
-    island.current.rotation.set(25 * Math.PI / 180, -80 * Math.PI / 180, 0.1);
-    island.current.visible = false;
+    
+    // Vérifier si l'intro a déjà été jouée
+    if (!window.__islandIntroPlayed) {
+      island.current.rotation.set(25 * Math.PI/180, -80 * Math.PI/180, 0.1);
+      island.current.visible = false;
 
-    const runIntro = () => animateIslandIntro(island);
-    if (typeof window !== 'undefined' && window.__preloaderDone) {
-      runIntro();
+      const runIntro = () => {
+        animateIslandIntro(island);
+        window.__islandIntroPlayed = true;
+      };
+      
+      if (typeof window !== 'undefined' && window.__preloaderDone) {
+        runIntro();
+      } else {
+        window.addEventListener("preloaderDone", runIntro, { once: true });
+      }
+
+      return () => window.removeEventListener("preloaderDone", runIntro);
     } else {
-      window.addEventListener('preloaderDone', runIntro, { once: true });
+      // Si l'intro a déjà été jouée, rendre visible immédiatement
+      island.current.visible = true;
     }
+
     animateIsland(island);
-    return () => window.removeEventListener('preloaderDone', runIntro);
   }, [island]);
 
-  // --- Mouse move ---
+  // Mouse move
   useEffect(() => {
     if (isMobile) return;
     const handleMouseMove = (e) => {
       mouseRef.current[0] = (e.clientX / window.innerWidth) * 2 - 1;
       mouseRef.current[1] = -(e.clientY / window.innerHeight) * 2 + 1;
     };
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
-  // --- Phases de flottement par point ---
+  // Per-point phases
   const pointPhases = useMemo(() => {
     const phases = [];
     for (let i = 0; i < sampledPositions.length / 3; i++) {
@@ -119,37 +128,32 @@ function ParticleIslandBase({ island, color = '#6a1b9a', nodes }) {
     return phases;
   }, [sampledPositions.length]);
 
-  // --- Animation loop ---
   useFrame((state) => {
     if (!containerRef.current || !island.current) return;
 
     const t = state.clock.getElapsedTime();
 
-    // Flottement global du groupe
-    const floatAmpY = 0.02;
-    const floatSpeedY = 1;
-    const floatAmpX = 0.015;
-    const floatSpeedX = 0.5;
-    containerRef.current.position.y = Math.sin(t * floatSpeedY) * floatAmpY;
-    containerRef.current.position.x = Math.sin(t * floatSpeedX) * floatAmpX;
+    // Flottement global
+    containerRef.current.position.y = Math.sin(t) * 0.02;
+    containerRef.current.position.x = Math.sin(t * 0.5) * 0.015;
 
-    // Rotation avec la souris
+    // Rotation with mouse
     if (!isMobile) {
       const maxYaw = 0.1;
       const targetY = mouseRef.current[0] * maxYaw;
-      containerRef.current.rotation.y += (targetY - containerRef.current.rotation.y) * 0.40;
+      containerRef.current.rotation.y += (targetY - containerRef.current.rotation.y) * 0.4;
     }
 
-    // Mise à jour des positions des points
     const positions = pointsGeometry.attributes.position.array;
     for (let i = 0; i < positions.length; i += 3) {
       const idx = i / 3;
+      const phase = pointPhases[idx];
+
       const origX = originalPositions[i];
       const origY = originalPositions[i + 1];
       const origZ = originalPositions[i + 2];
 
       // Flottement individuel
-      const phase = pointPhases[idx];
       const floatX = Math.sin(t * phase.speedX + phase.x) * 0.005;
       const floatY = Math.sin(t * phase.speedY + phase.y) * 0.007;
       const floatZ = Math.sin(t * phase.speedZ + phase.z) * 0.003;
@@ -158,7 +162,7 @@ function ParticleIslandBase({ island, color = '#6a1b9a', nodes }) {
       let targetY = origY + floatY;
       let targetZ = origZ + floatZ;
 
-      // Répulsion souris
+      // Répulsion souris (RESTAURÉE)
       if (!isMobile) {
         const mouseX = mouseRef.current[0] * 80;
         const mouseY = mouseRef.current[1] * 20;
@@ -175,8 +179,8 @@ function ParticleIslandBase({ island, color = '#6a1b9a', nodes }) {
         }
       }
 
-      // LERP vers target
       const returnSpeed = isMobile ? 0.05 : 0.2;
+
       positions[i] += (targetX - positions[i]) * returnSpeed;
       positions[i + 1] += (targetY - positions[i + 1]) * returnSpeed;
       positions[i + 2] += (targetZ - positions[i + 2]) * returnSpeed;
@@ -201,7 +205,7 @@ function ParticleIslandBase({ island, color = '#6a1b9a', nodes }) {
 }
 
 // -------------------------------------------------------------------
-// Composants spécifiques (chargent chacun un modèle différent)
+// Composants spécifiques
 // -------------------------------------------------------------------
 function ReunionModel(props) {
   const { nodes } = useGLTF('/media/reunion23.glb', true, true, (loader) => {
@@ -217,10 +221,71 @@ function DracoModel(props) {
   return <ParticleIslandBase {...props} nodes={nodes} />;
 }
 
+// Exemple de 3ème modèle - remplacez par votre propre fichier
+// function ThirdModel(props) {
+//   const { nodes } = useGLTF('/media/reunion-model3.glb', true, true, (loader) => {
+//     loader.setDRACOLoader(new DRACOLoader().setDecoderPath('/draco/'));
+//   });
+//   return <ParticleIslandBase {...props} nodes={nodes} />;
+// }
+
 // -------------------------------------------------------------------
-// Choix du modèle selon la taille de l'écran
+// Wrapper avec transition fluide
 // -------------------------------------------------------------------
-export default function ParticleIsland(props) {
-  const { size } = useThree();
-  return size.width < 768 ? <ReunionModel {...props} /> : <DracoModel {...props} />;
+function ModelWithTransition({ modelIndex, island, ...props }) {
+  const [currentModel, setCurrentModel] = React.useState(modelIndex);
+  const [targetOpacity, setTargetOpacity] = React.useState(1);
+  const opacityRef = React.useRef(1);
+
+  // Appliquer l'opacité au material dans useFrame
+  useFrame(() => {
+    if (island.current && island.current.material) {
+      // Interpolation smooth vers la target opacity
+      opacityRef.current += (targetOpacity - opacityRef.current) * 0.1;
+      island.current.material.opacity = opacityRef.current;
+      island.current.material.needsUpdate = true;
+    }
+  });
+
+  React.useEffect(() => {
+    if (modelIndex !== currentModel) {
+      // Fade out
+      setTargetOpacity(0);
+      
+      // Attendre la fin du fade out avant de changer le modèle
+      const fadeOutTimer = setTimeout(() => {
+        setCurrentModel(modelIndex);
+        
+        // Petit délai pour s'assurer que le nouveau modèle est monté
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            // Fade in
+            setTargetOpacity(1);
+          });
+        });
+      }, 500); // Durée du fade out
+      
+      return () => clearTimeout(fadeOutTimer);
+    }
+  }, [modelIndex, currentModel]);
+
+  const modelProps = { island, ...props };
+
+  switch (currentModel) {
+    case 1:
+      return <ReunionModel {...modelProps} />;
+
+    // case 2:
+    //   return <ThirdModel {...modelProps} />;
+    default:
+      return <DracoModel {...modelProps} />;
+
+  }
+}
+
+// -------------------------------------------------------------------
+// Choix dynamique du modèle via modelIndex avec transitions fluides
+// -------------------------------------------------------------------
+export default function ParticleIsland({ modelIndex = 0, ...props }) {
+  return <ModelWithTransition modelIndex={modelIndex} {...props} />;
 }

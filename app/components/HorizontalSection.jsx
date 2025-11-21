@@ -194,16 +194,14 @@ export default function HorizontalScroll() {
               </TextReveal>
               <hr className="h-[1px] w-full lg:w-1/2 mb-5 mt-5"></hr>
               <div className="flex flex-wrap justify-end gap-2 w-full lg:w-3/6 lg:mb-[80px] lg:mt-[80px]">
-                <span className="hover:bg-[#ECECEC]/70 bg-[#ECECEC]/30 transition-all ease-in-out  duration-500 px-3 py-1 rounded-full font-semibold shadow cursor-pointer">Site Internet</span>
-                <span className="hover:bg-[#ECECEC]/70 bg-[#ECECEC]/30 transition-all ease-in-out duration-500 px-3 py-1 rounded-full font-semibold shadow cursor-pointer">Refonte</span>
-                <span className="hover:bg-[#ECECEC]/70 bg-[#ECECEC]/30 transition-all ease-in-out duration-500 px-3 py-1 rounded-full font-semibold shadow cursor-pointer">Landing Page</span>
-                <span className="hover:bg-[#ECECEC]/70 bg-[#ECECEC]/30 transition-all ease-in-out duration-500 px-3 py-1 rounded-full font-semibold shadow cursor-pointer">Immersion 3D</span>
+                <span className="hover:bg-[#ECECEC]/70 bg-[#ECECEC]/30 transition-all ease-in-out  duration-500 px-3 py-1 rounded-full font-semibold shadow cursor-pointer">Illustrator</span>
+                <span className="hover:bg-[#ECECEC]/70 bg-[#ECECEC]/30 transition-all ease-in-out duration-500 px-3 py-1 rounded-full font-semibold shadow cursor-pointer">After Effect</span>
+                <span className="hover:bg-[#ECECEC]/70 bg-[#ECECEC]/30 transition-all ease-in-out duration-500 px-3 py-1 rounded-full font-semibold shadow cursor-pointer">3D Motion</span>
                 <span className="hover:bg-[#ECECEC]/70 bg-[#ECECEC]/30 transition-all ease-in-out duration-500 px-3 py-1 rounded-full font-semibold shadow cursor-pointer">Application Web</span>
-                <span className="hover:bg-[#ECECEC]/70 bg-[#ECECEC]/30 transition-all ease-in-out duration-500 px-3 py-1 rounded-full font-semibold shadow cursor-pointer">E-Commerce</span>
-                <span className="hover:bg-[#ECECEC]/70 bg-[#ECECEC]/30 transition-all ease-in-out duration-500 px-3 py-1 rounded-full font-semibold shadow cursor-pointer">React Js</span>
-                <span className="hover:bg-[#ECECEC]/70 bg-[#ECECEC]/30 transition-all ease-in-out duration-500 px-3 py-1 rounded-full font-semibold shadow cursor-pointer">Next Js</span>
-                <span className="hover:bg-[#ECECEC]/70 bg-[#ECECEC]/30 transition-all ease-in-out duration-500 px-3 py-1 rounded-full font-semibold shadow cursor-pointer">Wordpress</span>
-                <span className="hover:bg-[#ECECEC]/70 bg-[#ECECEC]/30 transition-all ease-in-out duration-500 px-3 py-1 rounded-full font-semibold shadow cursor-pointer">Webflow</span>
+                <span className="hover:bg-[#ECECEC]/70 bg-[#ECECEC]/30 transition-all ease-in-out duration-500 px-3 py-1 rounded-full font-semibold shadow cursor-pointer">Flat Design</span>
+                <span className="hover:bg-[#ECECEC]/70 bg-[#ECECEC]/30 transition-all ease-in-out duration-500 px-3 py-1 rounded-full font-semibold shadow cursor-pointer">Three Fiber</span>
+                <span className="hover:bg-[#ECECEC]/70 bg-[#ECECEC]/30 transition-all ease-in-out duration-500 px-3 py-1 rounded-full font-semibold shadow cursor-pointer">Gsap Animation</span>
+
               </div>
             </div>
             <div className="h-auto w-full flex justify-end">
