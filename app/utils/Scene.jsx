@@ -3,7 +3,7 @@ import { Canvas } from '@react-three/fiber';
 import Model2 from './Model';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
-import { animateScene } from './animation';
+import { animateScene, animateScene2 } from './animation';
 import * as THREE from 'three';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -11,6 +11,7 @@ gsap.registerPlugin(ScrollTrigger);
 export default function Scene({ island }) {
 
   const divRef = useRef(null);
+  const section2Ref = useRef(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [modelIndex, setModelIndex] = useState(0);
   const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
@@ -25,8 +26,10 @@ export default function Scene({ island }) {
   }, [isMobile]);
 
   useEffect(() => {
-    if (divRef.current) animateScene(divRef);
-
+    if (divRef.current) {
+      animateScene(divRef);
+      animateScene2(divRef); // ← Appel de la fonction
+    }
     if (!isMobile) {
       window.addEventListener('mousemove', throttledMouseMove);
     }
@@ -43,11 +46,23 @@ export default function Scene({ island }) {
   // -------------------------------------------
   useEffect(() => {
     ScrollTrigger.create({
-      trigger: "#about",
+      trigger: "#section1",
       start: "top center",
+      end:"bottom bottom",
       onEnter: () => setModelIndex(1),      // modèle suivant
       onLeaveBack: () => setModelIndex(0),  // modèle précédent
+      markers: false,
     });
+
+    ScrollTrigger.create({
+      trigger: "#section2",
+      start: "+=300% center",
+      end:"bottom bottom",
+      onEnter: () => setModelIndex(2),      // modèle suivant
+      onLeaveBack: () => setModelIndex(1),  // modèle précédent
+      markers: true,
+    });
+   
   }, []);
   // -------------------------------------------
 
@@ -60,7 +75,7 @@ export default function Scene({ island }) {
   };
 
   return (
-    <div id='scene' ref={divRef} className='w-full fixed h-[100vh] top-0'>
+    <div id='scene' ref={divRef} className='w-full fixed h-[100vh] top-0 z-50'>
       <Canvas {...canvasConfig} id="three-canvas">
         <fog attach="fog" args={['#771A66', 6, 2]} />
         <Suspense fallback={null}>

@@ -11,7 +11,7 @@ const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
 // -------------------------------------------------------------------
 // Base component qui reçoit les `nodes` (peu importe le modèle choisi)
 // -------------------------------------------------------------------
-function ParticleIslandBase({ island, color = '#6a1b9a', nodes }) {
+function ParticleIslandBase({ island, color = '#6a1b9a', nodes, position = [-0.08, 0.08, -0.3], scale = [0.015, 0.015, 0.015] }) {
   const { viewport, size, scene } = useThree();
   const scaleFactor = size.width < 768 ? 1.6 : 0.95;
   const groupScale = (viewport.width / 2.4) * scaleFactor;
@@ -163,19 +163,41 @@ function ParticleIslandBase({ island, color = '#6a1b9a', nodes }) {
       let targetZ = origZ + floatZ;
 
       // Répulsion souris (RESTAURÉE)
+     // Répulsion souris naturelle et circulaire
+      // Répulsion souris organique - VERSION DEBUG
       if (!isMobile) {
-        const mouseX = mouseRef.current[0] * 80;
-        const mouseY = mouseRef.current[1] * 20;
-        const dx = positions[i] - mouseX;
-        const dy = positions[i + 1] - mouseY;
-        const distance = Math.sqrt(dx * dx + dy * dy);
-        const repulsionRadius = 10;
-        const repulsionStrength = 8;
+        // Essayer plusieurs échelles pour trouver la bonne
+        const scales = [0.1, 0.5, 1, 2, 5, 10, 20, 50];
+        
+        for (let s of scales) {
+          const mouseX = mouseRef.current[0] * s;
+          const mouseY = mouseRef.current[1] * s;
+          
+          const pointX = positions[i];
+          const pointY = positions[i + 1];
+          const pointZ = positions[i + 2];
+          
+          const dx = pointX - mouseX;
+          const dy = pointY - mouseY;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+          
+          // Test avec rayon large
+          const repulsionRadius = 0.3;
+          const repulsionStrength = 4;
 
-        if (distance < repulsionRadius && distance > 0.01) {
-          const force = (repulsionRadius - distance) / repulsionRadius * repulsionStrength;
-          targetX += (dx / distance) * force;
-          targetY += (dy / distance) * force;
+          if (distance < repulsionRadius && distance > 0.001) {
+            const forceFactor = (repulsionRadius - distance) / repulsionRadius;
+            const force = forceFactor * repulsionStrength;
+            
+            targetX += (dx / distance) * force;
+            targetY += (dy / distance) * force;
+            
+            // Log pour debug
+            if (idx === 0 && Math.random() < 0.01) {
+              console.log(`Scale ${s}: distance=${distance.toFixed(2)}, force=${force.toFixed(4)}`);
+            }
+            break; // Sortir dès qu'on trouve une échelle qui fonctionne
+          }
         }
       }
 
@@ -196,8 +218,8 @@ function ParticleIslandBase({ island, color = '#6a1b9a', nodes }) {
           ref={island}
           geometry={pointsGeometry}
           material={pointsMaterial}
-          scale={[0.015, 0.015, 0.015]}
-          position={[-0.08, 0.08, -0.3]}
+          scale={scale}
+          // position={position}
         />
       </group>
     </group>
@@ -205,29 +227,51 @@ function ParticleIslandBase({ island, color = '#6a1b9a', nodes }) {
 }
 
 // -------------------------------------------------------------------
-// Composants spécifiques
+// Composants spécifiques avec leurs positions personnalisées
 // -------------------------------------------------------------------
 function ReunionModel(props) {
-  const { nodes } = useGLTF('/media/reunion23.glb', true, true, (loader) => {
+  const { nodes } = useGLTF('/media/ball.glb', true, true, (loader) => {
     loader.setDRACOLoader(new DRACOLoader().setDecoderPath('/draco/'));
   });
-  return <ParticleIslandBase {...props} nodes={nodes} />;
+  return (
+    <ParticleIslandBase 
+      {...props} 
+      nodes={nodes}
+      // position={[-0, 0, -0]}  // Position du modèle 1
+      scale={[0.25, 0.25, 0.25]}    // Scale du modèle 1
+    />
+  );
 }
 
 function DracoModel(props) {
   const { nodes } = useGLTF('/media/reunion-draco2.glb', true, true, (loader) => {
     loader.setDRACOLoader(new DRACOLoader().setDecoderPath('/draco/'));
   });
-  return <ParticleIslandBase {...props} nodes={nodes} />;
+  return (
+    <ParticleIslandBase 
+      {...props} 
+      nodes={nodes}
+      // position={[-0.08, 0.08, -0.3]}       // Position du modèle 2 (différente)
+      scale={[0.015, 0.015, 0.015]}       // Scale du modèle 2 (différent)
+    />
+  );
 }
 
 // Exemple de 3ème modèle - remplacez par votre propre fichier
-// function ThirdModel(props) {
-//   const { nodes } = useGLTF('/media/reunion-model3.glb', true, true, (loader) => {
-//     loader.setDRACOLoader(new DRACOLoader().setDecoderPath('/draco/'));
-//   });
-//   return <ParticleIslandBase {...props} nodes={nodes} />;
-// }
+function ThirdModel(props) {
+  const { nodes } = useGLTF('/media/dev.glb', true, true, (loader) => {
+    loader.setDRACOLoader(new DRACOLoader().setDecoderPath('/draco/'));
+  });
+
+  return (
+    <ParticleIslandBase 
+      {...props} 
+      nodes={nodes}
+      position={[-0.1, 0.05, -0.4]}    // Position du modèle 3 (différente)
+      scale={[0.018, 0.018, 0.018]}    // Scale du modèle 3 (différent)
+    />
+  );
+}
 
 // -------------------------------------------------------------------
 // Wrapper avec transition fluide
@@ -273,13 +317,11 @@ function ModelWithTransition({ modelIndex, island, ...props }) {
 
   switch (currentModel) {
     case 1:
-      return <ReunionModel {...modelProps} />;
-
-    // case 2:
-    //   return <ThirdModel {...modelProps} />;
-    default:
       return <DracoModel {...modelProps} />;
-
+    case 2:
+      return <ThirdModel {...modelProps} />;
+    default:
+      return <ReunionModel {...modelProps} />;
   }
 }
 

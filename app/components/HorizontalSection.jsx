@@ -87,14 +87,14 @@ export default function HorizontalScroll() {
   }, []);
 
   return (
-    <section ref={section2Ref} className="relative">
+    <section ref={section2Ref} className="relative" id="horizontal-section">
       <div
         ref={panelsRef}
         className="flex w-full min-h-screen h-screen"
         style={{ willChange: "transform" }} // GPU optimization
       >
         {/* section1 */}
-        <div className="min-w-[100vw] w-[100svw] h-screen flex justify-between items-center relative bg-[#070707]">
+        <div id="section1" className="min-w-[100vw] w-[100svw] h-screen flex justify-between items-center relative bg-[#070707]">
           <div className="h-full flex flex-col items-end justify-between px-[0px] pb-[0] lg:pt-[80px] lg:px-[80px] lg:pb-[0]">
             <HackHover
               data="Nos services"
@@ -114,9 +114,9 @@ export default function HorizontalScroll() {
         </div>
 
         {/* section2 */}
-        <div className="min-w-[100vw] gap-[20px] w-screen h-full flex flex-col-reverse justify-between lg:flex-col lg:justify-between bg-[#C1121F]/100 lg:p-[80px] p-[20px]">
+        <div id="section2" className="min-w-[100vw] gap-[20px] w-screen h-full flex flex-col-reverse justify-between lg:flex-col lg:justify-between bg-[#C1121F]/100 lg:p-[80px] p-[20px]">
           <div className=" flex flex-col justify-between items-end w-full lg:h-auto h-full lg:pt-[120px]">
-            <div className="w-full h-full flex flex-col items-end lg:flex-col">
+            <div className="w-full h-full flex flex-col items-end lg:flex-col z-[60]">
               <TextReveal
                 classValue=" text-right lg:text-[2.618rem] text-white leading-none h-auto"
                 staggerValue={"0.03"}
@@ -150,9 +150,9 @@ export default function HorizontalScroll() {
         </div>
 
         {/* section3 */}
-        <div className="min-w-[100vw] gap-[20px] w-screen h-full flex flex-col-reverse justify-between lg:flex-col lg:justify-between bg-[#771A66]/100 lg:p-[80px] p-[20px]">
+        <div id="section3" className="min-w-[100vw] gap-[20px] w-screen h-full flex flex-col-reverse justify-between lg:flex-col lg:justify-between bg-[#771A66]/100 lg:p-[80px] p-[20px]">
           <div className=" flex flex-col justify-between items-end w-full lg:h-auto h-full lg:pt-[120px]">
-            <div className="w-full h-full flex flex-col lg:flex-col items-end">
+            <div className="w-full h-full flex flex-col lg:flex-col items-end z-[60]">
               <TextReveal
                 classValue=" text-right lg:text-[2.618rem] text-white leading-none h-auto"
                 staggerValue={"0.03"}
@@ -181,9 +181,9 @@ export default function HorizontalScroll() {
         </div>
 
         {/* section4 */}
-        <div className="min-w-[100vw] gap-[20px] w-screen h-full flex flex-col-reverse justify-between lg:flex-col lg:justify-between bg-[#072737]/100 lg:p-[80px] p-[20px]">
+        <div id="section4" className="min-w-[100vw] gap-[20px] w-screen h-full flex flex-col-reverse justify-between lg:flex-col lg:justify-between bg-[#072737]/100 lg:p-[80px] p-[20px]">
           <div className=" flex flex-col justify-between items-end w-full lg:h-auto h-full lg:pt-[120px]">
-            <div className="w-full h-full flex flex-col lg:flex-col items-end">
+            <div className="w-full h-full flex flex-col lg:flex-col items-end z-[60]">
               <TextReveal
                 classValue=" text-right lg:text-[2.618rem] text-white leading-none h-auto"
                 staggerValue={"0.03"}

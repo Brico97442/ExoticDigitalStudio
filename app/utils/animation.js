@@ -52,7 +52,7 @@ export const animatePageOut = (href, router) => {
 
   if (bannerOne && bannerTwo && bannerThree && bannerFour) {
     lockTransitionScroll();
-    try { prepareNavLinksIntro(); } catch {}
+    try { prepareNavLinksIntro(); } catch { }
 
     const tl = gsap.timeline();
 
@@ -96,7 +96,7 @@ export const animatePageIn = () => {
   const bannerThree = document.getElementById('banner-3');
   const bannerFour = document.getElementById('banner-4');
   const mainEl = document.querySelector('main');
-  
+
   if (bannerOne && bannerTwo && bannerThree && bannerFour) {
     const tl = gsap.timeline();
     if (mainEl) {
@@ -120,7 +120,7 @@ export const animatePageIn = () => {
       zIndex: 10,
       onComplete: () => {
         unlockTransitionScroll();
-        try { animateNavLinksIntro(); } catch {}
+        try { animateNavLinksIntro(); } catch { }
       },
     });
 
@@ -180,8 +180,8 @@ export const animateOverlayText = (overlayTextRef) => {
 
 // Hero animation
 export const animateHero = (arrowRef) => {
-  const config = isMobile() ? 
-    { ease: "power2.inOut", duration: 5, scrub: 1 } : 
+  const config = isMobile() ?
+    { ease: "power2.inOut", duration: 5, scrub: 1 } :
     { ease: "power4.inOut", duration: 10, scrub: 2 };
 
   gsap.fromTo(
@@ -207,11 +207,11 @@ export const animateHeroIntro = () => {
   if (typeof window !== 'undefined') {
     if (window.__heroIntroDone) return;
     if (window.__heroIntroTl) {
-      try { window.__heroIntroTl.kill(); } catch {}
+      try { window.__heroIntroTl.kill(); } catch { }
       window.__heroIntroTl = null;
     }
   }
-  
+
   const selectors = [
     '#hero-title',
     '#hero-subtitle',
@@ -232,7 +232,7 @@ export const animateHeroIntro = () => {
   if (typeof window !== 'undefined') {
     window.__heroIntroTl = tl;
   }
-  
+
   tl.set(targets, { y: 100, opacity: 0, visibility: 'hidden', willChange: 'transform, opacity' })
     .to(targets, {
       y: 0,
@@ -247,7 +247,7 @@ export const animateHeroIntro = () => {
           window.__heroIntroDone = true;
           window.dispatchEvent(new Event('heroIntroDone'));
           window.__heroIntroTl = null;
-        } catch {}
+        } catch { }
       }
     });
 };
@@ -295,18 +295,18 @@ export const animateIsland = (island) => {
     }
   })
 
-  .fromTo("#location-info",
-    { opacity: 0, visibility: "hidden" },
-    { opacity: 1, visibility: "visible", ease: "power3.inOut", duration: 1 }
-  )
-  .to("#location-info",
-    { 
-      opacity: 0,
-      ease: "power3.inOut",
-      duration: 1,
-      onComplete: () => gsap.set("#location-info", { visibility: "hidden" })
-    }
-  );
+    .fromTo("#location-info",
+      { opacity: 0, visibility: "hidden" },
+      { opacity: 1, visibility: "visible", ease: "power3.inOut", duration: 1 }
+    )
+    .to("#location-info",
+      {
+        opacity: 0,
+        ease: "power3.inOut",
+        duration: 1,
+        onComplete: () => gsap.set("#location-info", { visibility: "hidden" })
+      }
+    );
 
   // Animation de position optimisée pour mobile
   const positionTL = gsap.timeline({
@@ -339,6 +339,9 @@ export const animateIsland = (island) => {
       })
       .to(island.current.position, {
         x: -0.08, y: 0.1, z: 0, duration: 0.4, ease: "power1.inOut"
+      })
+      .to(island.current.position, {
+        x: -0.08, y: -0, z: -0.3, duration: 0.4, ease: "power1.inOut"
       });
   }
 
@@ -366,7 +369,7 @@ export const animateIsland = (island) => {
   if (island.current.material?.color) {
     // Couleur cible #072737
     const targetColor = new THREE.Color('#072737');
-  
+
     gsap.to(island.current.material.color, {
       r: targetColor.r,
       g: targetColor.g,
@@ -388,7 +391,7 @@ export const animateIsland = (island) => {
 
 export const animateIslandIntro = (island) => {
   if (!island?.current) return;
-  
+
   const startPosition = { x: -0.08, y: -0.3, z: -0.8 };
   const endPosition = { x: -0.08, y: 0.08, z: -0.3 };
   const startRotation = { x: 15 * (Math.PI / 180), y: -100 * (Math.PI / 180) };
@@ -399,20 +402,20 @@ export const animateIslandIntro = (island) => {
     .set(island.current.position, startPosition)
     .set(island.current.rotation, startRotation)
     .fromTo(
-      island.current.material, 
-      { opacity: 0 }, 
-      { opacity: 1, duration: isMobile() ? 0.4 : 0.6, ease: 'power2.out' }, 
+      island.current.material,
+      { opacity: 0 },
+      { opacity: 1, duration: isMobile() ? 0.4 : 0.6, ease: 'power2.out' },
       0
     )
-    .to(island.current.position, { 
-      ...endPosition, 
-      duration: isMobile() ? 1 : 2, 
-      ease: 'power3.out' 
+    .to(island.current.position, {
+      ...endPosition,
+      duration: isMobile() ? 1 : 2,
+      ease: 'power3.out'
     }, 0)
-    .to(island.current.rotation, { 
-      ...endRotation, 
-      duration: isMobile() ? 1 : 2, 
-      ease: 'power3.out' 
+    .to(island.current.rotation, {
+      ...endRotation,
+      duration: isMobile() ? 1 : 2,
+      ease: 'power3.out'
     }, 0);
 };
 
@@ -462,11 +465,33 @@ export const animateScene = (divRef) => {
 
   tl.fromTo(divRef.current,
     { opacity: 1 },
-    { 
-      
-      opacity: 0, 
+    {
+
+      opacity: 0,
       ease: isMobile() ? "power2.inOut" : "power3.inOut",
       // immediateRender: true,
+    }
+  );
+};
+
+export const animateScene2 = (divRef) => {
+  if (!divRef.current) return;
+
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: "#section2",
+      start: "+=250% bottom",
+      end: "bottom bottom",
+      scrub: isMobile() ? 0.5 : 1,
+      markers: false, // Mettez à true pour déboguer
+    }
+  });
+
+  tl.fromTo(divRef.current,
+    { opacity: 0 },
+    {
+      opacity: 1,
+      ease: isMobile() ? "power2.inOut" : "power3.inOut",
     }
   );
 };
@@ -488,7 +513,7 @@ export const animateAbout = () => {
 // Fonction pour forcer la réinitialisation des animations hero
 export const forceHeroReset = () => {
   const isPreloaderActive = typeof document !== 'undefined' && (document.body?.classList?.contains('preloading-active') || window.__preloaderDone === false);
-  
+
   if (isPreloaderActive) {
     console.log('Préloader actif, réinitialisation différée');
     return;
@@ -496,18 +521,18 @@ export const forceHeroReset = () => {
 
   const heroElements = [
     '#hero-title',
-    '#hero-subtitle', 
+    '#hero-subtitle',
     '#hero-scroll',
     '#studio-text',
     '#coordinates-gps p'
   ];
-  
+
   heroElements.forEach(selector => {
     const elements = document.querySelectorAll(selector);
     elements.forEach(el => {
-      gsap.set(el, { 
-        y: 0, 
-        opacity: 1, 
+      gsap.set(el, {
+        y: 0,
+        opacity: 1,
         visibility: 'visible',
         clearProps: 'transform,opacity,visibility'
       });
