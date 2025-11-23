@@ -12,12 +12,19 @@ const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
 // Base component qui reçoit les `nodes` (peu importe le modèle choisi)
 // -------------------------------------------------------------------
 function ParticleIslandBase({ island, color = '#6a1b9a', nodes, position = [-0.08, 0.08, -0.3], scale = [0.015, 0.015, 0.015] }) {
-  const { viewport, size, scene } = useThree();
+  const { viewport, size, scene, camera } = useThree();
   const scaleFactor = size.width < 768 ? 1.6 : 0.95;
   const groupScale = (viewport.width / 2.4) * scaleFactor;
 
   const containerRef = useRef(null);
-  const mouseRef = useRef([0, 0]);
+  const mouseRef = useRef(new THREE.Vector2());
+  const raycaster = useRef(new THREE.Raycaster());
+  const targetPositionsRef = useRef(null);
+  
+  // Réutiliser les objets pour éviter les allocations
+  const tempVec3 = useRef(new THREE.Vector3());
+  const mouseWorld = useRef(new THREE.Vector3());
+  const plane = useRef(new THREE.Plane(new THREE.Vector3(0, 0, 1), 0));
 
   // --- Sampling des vertices ---
   const { sampledPositions, sampledColors } = useMemo(() => {
@@ -53,6 +60,14 @@ function ParticleIslandBase({ island, color = '#6a1b9a', nodes, position = [-0.0
 
   const originalPositions = useMemo(() => new Float32Array(sampledPositions), [sampledPositions]);
 
+  // Initialiser le tableau des positions cibles
+  useEffect(() => {
+    targetPositionsRef.current = new Float32Array(sampledPositions.length);
+    for (let i = 0; i < sampledPositions.length; i++) {
+      targetPositionsRef.current[i] = sampledPositions[i];
+    }
+  }, [sampledPositions]);
+
   const pointsMaterial = useMemo(() => {
     return new THREE.PointsMaterial({
       color: new THREE.Color(color),
@@ -76,7 +91,6 @@ function ParticleIslandBase({ island, color = '#6a1b9a', nodes, position = [-0.0
   useEffect(() => {
     if (!island.current) return;
     
-    // Vérifier si l'intro a déjà été jouée
     if (!window.__islandIntroPlayed) {
       island.current.rotation.set(25 * Math.PI/180, -80 * Math.PI/180, 0.1);
       island.current.visible = false;
@@ -94,22 +108,39 @@ function ParticleIslandBase({ island, color = '#6a1b9a', nodes, position = [-0.0
 
       return () => window.removeEventListener("preloaderDone", runIntro);
     } else {
-      // Si l'intro a déjà été jouée, rendre visible immédiatement
       island.current.visible = true;
     }
 
     animateIsland(island);
   }, [island]);
 
-  // Mouse move
+  // Mouse move - throttled pour performance
   useEffect(() => {
     if (isMobile) return;
+    
+    let rafId = null;
+    let pendingUpdate = false;
+    
     const handleMouseMove = (e) => {
-      mouseRef.current[0] = (e.clientX / window.innerWidth) * 2 - 1;
-      mouseRef.current[1] = -(e.clientY / window.innerHeight) * 2 + 1;
+      if (!pendingUpdate) {
+        pendingUpdate = true;
+        
+        rafId = requestAnimationFrame(() => {
+          // Normaliser les coordonnées de la souris (-1 à +1)
+          mouseRef.current.x = (e.clientX / window.innerWidth) * 2 - 1;
+          mouseRef.current.y = -(e.clientY / window.innerHeight) * 2 + 1;
+          
+          pendingUpdate = false;
+        });
+      }
     };
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
+    
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
+    
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      if (rafId) cancelAnimationFrame(rafId);
+    };
   }, []);
 
   // Per-point phases
@@ -129,7 +160,7 @@ function ParticleIslandBase({ island, color = '#6a1b9a', nodes, position = [-0.0
   }, [sampledPositions.length]);
 
   useFrame((state) => {
-    if (!containerRef.current || !island.current) return;
+    if (!containerRef.current || !island.current || !targetPositionsRef.current) return;
 
     const t = state.clock.getElapsedTime();
 
@@ -140,11 +171,33 @@ function ParticleIslandBase({ island, color = '#6a1b9a', nodes, position = [-0.0
     // Rotation with mouse
     if (!isMobile) {
       const maxYaw = 0.1;
-      const targetY = mouseRef.current[0] * maxYaw;
+      const targetY = mouseRef.current.x * maxYaw;
       containerRef.current.rotation.y += (targetY - containerRef.current.rotation.y) * 0.4;
     }
 
     const positions = pointsGeometry.attributes.position.array;
+    const targetPositions = targetPositionsRef.current;
+    
+    // Paramètres de répulsion (pré-calculés)
+    const repulsionRadius = 2.5;
+    const repulsionRadiusSq = repulsionRadius * repulsionRadius;
+    const repulsionStrength = 5;
+    const returnSpeed = 0.15;
+    
+    // Calculer la position de la souris une seule fois par frame
+    let hasMouseIntersection = false;
+    if (!isMobile) {
+      raycaster.current.setFromCamera(mouseRef.current, camera);
+      hasMouseIntersection = raycaster.current.ray.intersectPlane(plane.current, mouseWorld.current);
+    }
+
+    // Pré-calculer la matrice de transformation une seule fois
+    const worldMatrix = island.current.matrixWorld;
+    
+    // Réutiliser le même vecteur temporaire
+    const worldPos = tempVec3.current;
+
+    // Batch update des positions
     for (let i = 0; i < positions.length; i += 3) {
       const idx = i / 3;
       const phase = pointPhases[idx];
@@ -162,52 +215,50 @@ function ParticleIslandBase({ island, color = '#6a1b9a', nodes, position = [-0.0
       let targetY = origY + floatY;
       let targetZ = origZ + floatZ;
 
-      // Répulsion souris (RESTAURÉE)
-     // Répulsion souris naturelle et circulaire
-      // Répulsion souris organique - VERSION DEBUG
-      if (!isMobile) {
-        // Essayer plusieurs échelles pour trouver la bonne
-        const scales = [0.1, 0.5, 1, 2, 5, 10, 20, 50];
+      // Répulsion souris (seulement sur desktop)
+      if (hasMouseIntersection) {
+        // Réutiliser worldPos au lieu de créer un nouveau Vector3
+        worldPos.set(positions[i], positions[i + 1], positions[i + 2]);
+        worldPos.applyMatrix4(worldMatrix);
         
-        for (let s of scales) {
-          const mouseX = mouseRef.current[0] * s;
-          const mouseY = mouseRef.current[1] * s;
+        // Distance 2D au carré (éviter sqrt)
+        const dx = worldPos.x - mouseWorld.current.x;
+        const dy = worldPos.y - mouseWorld.current.y;
+        const distSq = dx * dx + dy * dy;
+        
+        // Si dans le rayon de répulsion
+        if (distSq < repulsionRadiusSq && distSq > 0.0001) {
+          const dist = Math.sqrt(distSq);
           
-          const pointX = positions[i];
-          const pointY = positions[i + 1];
-          const pointZ = positions[i + 2];
+          // Calcul de la force (optimisé)
+          const invRadius = 1 / repulsionRadius;
+          const factor = 1 - (dist * invRadius);
+          const force = factor * factor * repulsionStrength;
           
-          const dx = pointX - mouseX;
-          const dy = pointY - mouseY;
-          const distance = Math.sqrt(dx * dx + dy * dy);
+          // Direction normalisée (réutiliser invDist)
+          const invDist = 1 / dist;
+          const dirX = dx * invDist;
+          const dirY = dy * invDist;
           
-          // Test avec rayon large
-          const repulsionRadius = 0.3;
-          const repulsionStrength = 4;
-
-          if (distance < repulsionRadius && distance > 0.001) {
-            const forceFactor = (repulsionRadius - distance) / repulsionRadius;
-            const force = forceFactor * repulsionStrength;
-            
-            targetX += (dx / distance) * force;
-            targetY += (dy / distance) * force;
-            
-            // Log pour debug
-            if (idx === 0 && Math.random() < 0.01) {
-              console.log(`Scale ${s}: distance=${distance.toFixed(2)}, force=${force.toFixed(4)}`);
-            }
-            break; // Sortir dès qu'on trouve une échelle qui fonctionne
-          }
+          // Appliquer en espace local
+          targetX += dirX * force;
+          targetY += dirY * force;
+          targetZ += force * 0.1;
         }
       }
 
-      const returnSpeed = isMobile ? 0.05 : 0.2;
+      // Stocker les positions cibles
+      targetPositions[i] = targetX;
+      targetPositions[i + 1] = targetY;
+      targetPositions[i + 2] = targetZ;
 
+      // Interpolation smooth vers la cible
       positions[i] += (targetX - positions[i]) * returnSpeed;
       positions[i + 1] += (targetY - positions[i + 1]) * returnSpeed;
       positions[i + 2] += (targetZ - positions[i + 2]) * returnSpeed;
     }
 
+    // Marquer pour mise à jour GPU (une seule fois par frame)
     pointsGeometry.attributes.position.needsUpdate = true;
   });
 
@@ -219,7 +270,7 @@ function ParticleIslandBase({ island, color = '#6a1b9a', nodes, position = [-0.0
           geometry={pointsGeometry}
           material={pointsMaterial}
           scale={scale}
-          // position={position}
+          position={position}
         />
       </group>
     </group>
@@ -237,8 +288,8 @@ function ReunionModel(props) {
     <ParticleIslandBase 
       {...props} 
       nodes={nodes}
-      // position={[-0, 0, -0]}  // Position du modèle 1
-      scale={[0.25, 0.25, 0.25]}    // Scale du modèle 1
+      position={[-0, 0, -0]}
+      scale={[0.25, 0.25, 0.25]}
     />
   );
 }
@@ -251,13 +302,11 @@ function DracoModel(props) {
     <ParticleIslandBase 
       {...props} 
       nodes={nodes}
-      // position={[-0.08, 0.08, -0.3]}       // Position du modèle 2 (différente)
-      scale={[0.015, 0.015, 0.015]}       // Scale du modèle 2 (différent)
+      scale={[0.015, 0.015, 0.015]}
     />
   );
 }
 
-// Exemple de 3ème modèle - remplacez par votre propre fichier
 function ThirdModel(props) {
   const { nodes } = useGLTF('/media/dev.glb', true, true, (loader) => {
     loader.setDRACOLoader(new DRACOLoader().setDecoderPath('/draco/'));
@@ -267,8 +316,8 @@ function ThirdModel(props) {
     <ParticleIslandBase 
       {...props} 
       nodes={nodes}
-      position={[-0.1, 0.05, -0.4]}    // Position du modèle 3 (différente)
-      scale={[0.018, 0.018, 0.018]}    // Scale du modèle 3 (différent)
+      position={[-0.1, 0.05, -0.4]}
+      scale={[0.018, 0.018, 0.018]}
     />
   );
 }
@@ -281,10 +330,8 @@ function ModelWithTransition({ modelIndex, island, ...props }) {
   const [targetOpacity, setTargetOpacity] = React.useState(1);
   const opacityRef = React.useRef(1);
 
-  // Appliquer l'opacité au material dans useFrame
   useFrame(() => {
     if (island.current && island.current.material) {
-      // Interpolation smooth vers la target opacity
       opacityRef.current += (targetOpacity - opacityRef.current) * 0.1;
       island.current.material.opacity = opacityRef.current;
       island.current.material.needsUpdate = true;
@@ -293,21 +340,17 @@ function ModelWithTransition({ modelIndex, island, ...props }) {
 
   React.useEffect(() => {
     if (modelIndex !== currentModel) {
-      // Fade out
       setTargetOpacity(0);
       
-      // Attendre la fin du fade out avant de changer le modèle
       const fadeOutTimer = setTimeout(() => {
         setCurrentModel(modelIndex);
         
-        // Petit délai pour s'assurer que le nouveau modèle est monté
         requestAnimationFrame(() => {
           requestAnimationFrame(() => {
-            // Fade in
             setTargetOpacity(1);
           });
         });
-      }, 500); // Durée du fade out
+      }, 500);
       
       return () => clearTimeout(fadeOutTimer);
     }

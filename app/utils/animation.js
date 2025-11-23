@@ -341,7 +341,7 @@ export const animateIsland = (island) => {
         x: -0.08, y: 0.1, z: 0, duration: 0.4, ease: "power1.inOut"
       })
       .to(island.current.position, {
-        x: -0.08, y: -0, z: -0.3, duration: 0.4, ease: "power1.inOut"
+        x: -0.5, y: -0, z: -0.3, duration: 0.4, ease: "power1.inOut"
       });
   }
 
@@ -475,25 +475,25 @@ export const animateScene = (divRef) => {
 };
 
 export const animateScene2 = (divRef) => {
-  if (!divRef.current) return;
+  // if (!divRef.current) return;
 
-  const tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: "#section2",
-      start: "+=250% bottom",
-      end: "bottom bottom",
-      scrub: isMobile() ? 0.5 : 1,
-      markers: false, // Mettez à true pour déboguer
-    }
-  });
+  // const tl = gsap.timeline({
+  //   scrollTrigger: {
+  //     trigger: "#section2",
+  //     start: "+50% bottom",
+  //     end: "bottom bottom",
+  //     scrub: isMobile() ? 0.5 : 1,
+  //     markers: false, // Mettez à true pour déboguer
+  //   }
+  // });
 
-  tl.fromTo(divRef.current,
-    { opacity: 0 },
-    {
-      opacity: 1,
-      ease: isMobile() ? "power2.inOut" : "power3.inOut",
-    }
-  );
+  // tl.fromTo(divRef.current,
+  //   { opacity: 0 },
+  //   {
+  //     opacity: 1,
+  //     ease: isMobile() ? "power2.inOut" : "power3.inOut",
+  //   }
+  // );
 };
 
 export const animateAbout = () => {

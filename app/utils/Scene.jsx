@@ -11,7 +11,6 @@ gsap.registerPlugin(ScrollTrigger);
 export default function Scene({ island }) {
 
   const divRef = useRef(null);
-  const section2Ref = useRef(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [modelIndex, setModelIndex] = useState(0);
   const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
@@ -45,13 +44,21 @@ export default function Scene({ island }) {
   // 👉 ICI : Animation GSAP pour changer de modèle
   // -------------------------------------------
   useEffect(() => {
+    // ScrollTrigger.create({
+    //   trigger: "#section1",
+    //   start: "top center",
+    //   end:"bottom bottom",
+    //   onEnter: () => setModelIndex(1),      // modèle suivant
+    //   onLeaveBack: () => setModelIndex(0),  // modèle précédent
+    //   markers: false,
+    // });
     ScrollTrigger.create({
-      trigger: "#section1",
-      start: "top center",
+      trigger: "#about",
+      start: "45% center",
       end:"bottom bottom",
       onEnter: () => setModelIndex(1),      // modèle suivant
       onLeaveBack: () => setModelIndex(0),  // modèle précédent
-      markers: false,
+      markers: true,
     });
 
     ScrollTrigger.create({
@@ -60,7 +67,7 @@ export default function Scene({ island }) {
       end:"bottom bottom",
       onEnter: () => setModelIndex(2),      // modèle suivant
       onLeaveBack: () => setModelIndex(1),  // modèle précédent
-      markers: true,
+      markers: false,
     });
    
   }, []);
@@ -75,7 +82,7 @@ export default function Scene({ island }) {
   };
 
   return (
-    <div id='scene' ref={divRef} className='w-full fixed h-[100vh] top-0 z-50'>
+    <div id='scene' ref={divRef} className='w-full fixed h-[100vh] top-0 z-50 opacity-100'>
       <Canvas {...canvasConfig} id="three-canvas">
         <fog attach="fog" args={['#771A66', 6, 2]} />
         <Suspense fallback={null}>
