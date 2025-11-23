@@ -82,7 +82,7 @@ export default function Scene({ island }) {
   };
 
   return (
-    <div id='scene' ref={divRef} className='w-full fixed h-[100vh] top-0 z-50 opacity-100'>
+    <div id='scene' ref={divRef} className='w-full fixed h-[100vh] top-0  opacity-100'>
       <Canvas {...canvasConfig} id="three-canvas">
         <fog attach="fog" args={['#771A66', 6, 2]} />
         <Suspense fallback={null}>
